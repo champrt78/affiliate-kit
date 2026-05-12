@@ -1,0 +1,24 @@
+---
+interface Props {
+  siteName: string;
+}
+const { siteName } = Astro.props;
+---
+<aside class="disclosure">
+  <strong>Affiliate disclosure:</strong> {siteName} is a participant in affiliate
+  programs, including the Amazon Services LLC Associates Program. We may earn a
+  commission from qualifying purchases made through links on this site, at no
+  additional cost to you.
+</aside>
+
+<style>
+  .disclosure {
+    background: var(--color-surface);
+    border-left: 3px solid var(--color-muted);
+    padding: var(--space-3) var(--space-4);
+    margin: var(--space-6) 0;
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    border-radius: var(--radius-sm);
+  }
+</style>

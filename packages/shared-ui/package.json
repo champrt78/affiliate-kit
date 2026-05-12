@@ -1,0 +1,22 @@
+{
+  "name": "@affkit/shared-ui",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./BaseLayout.astro": "./src/components/BaseLayout.astro",
+    "./CTA.astro": "./src/components/CTA.astro",
+    "./ComparisonTable.astro": "./src/components/ComparisonTable.astro",
+    "./Hero.astro": "./src/components/Hero.astro",
+    "./AffiliateDisclosure.astro": "./src/components/AffiliateDisclosure.astro"
+  },
+  "dependencies": {
+    "@affkit/shared-styles": "workspace:*"
+  },
+  "peerDependencies": {
+    "astro": "^4.0.0"
+  },
+  "devDependencies": {
+    "astro": "^4.16.0"
+  }
+}

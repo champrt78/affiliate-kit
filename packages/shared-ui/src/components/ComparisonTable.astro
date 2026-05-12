@@ -1,0 +1,67 @@
+---
+interface Row {
+  product: string;
+  values: string[];
+  ctaHref?: string;
+}
+
+interface Props {
+  headers: string[];
+  rows: Row[];
+}
+
+const { headers, rows } = Astro.props;
+const showCtaCol = rows.some((r) => r.ctaHref);
+---
+<div class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        {headers.map((h) => <th>{h}</th>)}
+        {showCtaCol && <th>Buy</th>}
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr>
+          <td class="product">{row.product}</td>
+          {row.values.map((v) => <td>{v}</td>)}
+          {showCtaCol && (
+            <td>
+              {row.ctaHref ? (
+                <a href={row.ctaHref} rel="nofollow sponsored noopener" target="_blank">
+                  Check price
+                </a>
+              ) : (
+                <span class="muted">—</span>
+              )}
+            </td>
+          )}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .table-wrapper {
+    overflow-x: auto;
+    margin: var(--space-6) 0;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: var(--text-sm);
+  }
+  th, td {
+    padding: var(--space-2) var(--space-3);
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+  }
+  th {
+    background: var(--color-surface);
+    font-weight: 600;
+  }
+  .product { font-weight: 600; }
+  .muted { color: var(--color-muted); }
+</style>
