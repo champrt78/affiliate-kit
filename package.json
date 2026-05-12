@@ -1,0 +1,20 @@
+{
+  "name": "affiliate-sites",
+  "version": "0.0.1",
+  "private": true,
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "pnpm -r --if-present build",
+    "dev": "pnpm -r --if-present --parallel dev",
+    "test": "pnpm -r --if-present test",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "lint": "pnpm -r --if-present lint",
+    "install-plugin": "pwsh ./scripts/install-plugin.ps1"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}

@@ -1,20 +1,20 @@
 # affiliate-kit
 
-Design + (eventually) implementation of a Claude Code plugin and Astro monorepo for operating 5 affiliate sites with minimal active overhead.
+A Claude Code plugin and Astro monorepo for operating 5 affiliate sites with minimal active overhead.
 
 ## Status
 
-**Design phase.** Spec is written and approved. Implementation plan not yet generated.
+**Phase 1 complete (toolkit built).** Site bootstrapping (Cloudflare provisioning + first real site) is deferred to the basement PC — see [`docs/BASEMENT_SETUP.md`](docs/BASEMENT_SETUP.md).
 
-## What's here
+## Docs
 
-- [`2026-05-12-affiliate-kit-design.md`](2026-05-12-affiliate-kit-design.md) — the design spec
+- [Design spec](docs/2026-05-12-affiliate-kit-design.md)
+- [Phase 1 plan](docs/2026-05-12-affiliate-kit-plan-phase-1.md)
+- [Basement setup checklist](docs/BASEMENT_SETUP.md)
 
-## What's coming
+## Local layout
 
-- Implementation plan (next step — via the `writing-plans` Claude Code skill)
-- Plugin code under `plugin/`
-- Astro monorepo under `affiliate-sites/` (or as a separate repo — TBD)
+This repo lives at `~/source/repos/affiliate-sites/` on every machine. The plugin source under `plugin/` is copied to `~/.claude/plugins/affiliate-kit/` by `scripts/install-plugin.ps1`.
 
 ## The 5 sites
 
@@ -29,3 +29,7 @@ Design + (eventually) implementation of a Claude Code plugin and Astro monorepo 
 ## Stack
 
 Astro static → Cloudflare Pages → Workers (link cloaking) + R2 (images) + Web Analytics. Domains on Porkbun, nameservers pointed at Cloudflare.
+
+## Quick commands (after install)
+
+See [`COMMANDS.md`](COMMANDS.md).
