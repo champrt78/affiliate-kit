@@ -243,7 +243,7 @@ Add a temporary KV entry:
 # Get your namespace id from wrangler.toml in workers/link-cloaker/
 $kvId = "<your AFFILIATE_LINKS id>"
 
-wrangler kv key put --namespace-id=$kvId "mywildlifecam:test-product" "https://example.com/test"
+wrangler kv key put --remote --namespace-id=$kvId "mywildlifecam:test-product" "https://example.com/test"
 ```
 
 Visit `https://mywildlifecam.com/go/mywildlifecam/test-product` — should 302 to `https://example.com/test`.
@@ -253,7 +253,7 @@ Visit `https://mywildlifecam.com/go/mywildlifecam/does-not-exist` — should ret
 Delete the test entry:
 
 ```powershell
-wrangler kv key delete --namespace-id=$kvId "mywildlifecam:test-product"
+wrangler kv key delete --remote --namespace-id=$kvId "mywildlifecam:test-product"
 ```
 
 ---
