@@ -14,7 +14,7 @@ The user invoked: `/aff-bootstrap <slug>` (plus possibly more args).
 
 The slug must be lowercase, alphanumeric, with single dashes between words. It must match one of the 5 known sites:
 
-- `mywildlifecam` → `mywildlifecam.fyi` — niche: trail cameras / wildlife cams — siteName: MyWildlifeCam
+- `mywildlifecam` → `mywildlifecam.com` — niche: trail cameras / wildlife cams — siteName: MyWildlifeCam
 - `fussybean` → `fussybean.com` — niche: coffee and espresso — siteName: FussyBean
 - `detailerpicks` → `detailerpicks.com` — niche: car detailing — siteName: DetailerPicks
 - `starteraquarium` → `starteraquarium.com` — niche: beginner aquariums — siteName: StarterAquarium
@@ -28,7 +28,7 @@ If the slug matches a known site, you already know `siteName`, `apex`, and `nich
 
 You still need to ask the user (or accept from flags):
 - `tagline` — one-line site tagline (e.g. "Honest reviews of wildlife cameras for the backyard naturalist.")
-- `contactEmail` — contact email (e.g. "hello@mywildlifecam.fyi")
+- `contactEmail` — contact email (e.g. "hello@mywildlifecam.com")
 
 Ask politely if any are missing.
 

@@ -1,6 +1,6 @@
 # Basement PC Setup — Affiliate Kit Phase 1
 
-This is the checklist you run on the basement PC (or any fresh machine) to take the toolkit from `git clone` to `mywildlifecam.fyi is live on the internet`. Every step is annotated with what it does and why it can't be automated from the work PC.
+This is the checklist you run on the basement PC (or any fresh machine) to take the toolkit from `git clone` to `mywildlifecam.com is live on the internet`. Every step is annotated with what it does and why it can't be automated from the work PC.
 
 If you hit anything weird, the source of truth for the design is `docs/2026-05-12-affiliate-kit-design.md` and the original plan is `docs/2026-05-12-affiliate-kit-plan-phase-1.md`.
 
@@ -82,7 +82,7 @@ These steps create the resources the toolkit talks to. Done once per Cloudflare 
 
 ### 5a. Add all 5 domains to Cloudflare
 
-For each of: `mywildlifecam.fyi`, `fussybean.com`, `detailerpicks.com`, `starteraquarium.com`, `gameovergear.games`:
+For each of: `mywildlifecam.com`, `fussybean.com`, `detailerpicks.com`, `starteraquarium.com`, `gameovergear.games`:
 
 1. Cloudflare dashboard → **Add Site** → enter domain → choose **Free** plan.
 2. Cloudflare gives you 2 nameservers (e.g. `xxx.ns.cloudflare.com`). Note them.
@@ -101,10 +101,13 @@ Dashboard → **My Profile** → **API Tokens** → **Create Token** → **Custo
 Permissions:
 - `Account` → `Cloudflare Pages` → `Edit`
 - `Account` → `Workers Scripts` → `Edit`
+- `Account` → `Workers KV Storage` → `Edit`
 - `Account` → `Workers R2 Storage` → `Edit`
 - `Account` → `Account Settings` → `Read`
 - `Zone` → `DNS` → `Edit`
 - `Zone` → `Workers Routes` → `Edit`
+
+Note: Cloudflare's new API token UI groups permissions under "Account" scope and "Zone" scope as separate policies. Add a second policy with scope = "All zones in an account" for the two Zone-level permissions (DNS + Workers Routes). Account-level permissions go in the first policy.
 
 Zone Resources: **Include — All zones from an account** (so this single token works for all 5 sites).
 Account Resources: **Include — All accounts**.
@@ -191,7 +194,7 @@ git push
 
 ---
 
-## Part 9 — Bootstrap mywildlifecam.fyi (the proof)
+## Part 9 — Bootstrap mywildlifecam.com (the proof)
 
 Open Claude Code in the monorepo directory:
 
@@ -207,14 +210,14 @@ In the Claude session, type:
 ```
 
 Claude will:
-1. Recognize `mywildlifecam` from the known-sites list (siteName: MyWildlifeCam, apex: mywildlifecam.fyi, niche: trail cameras).
+1. Recognize `mywildlifecam` from the known-sites list (siteName: MyWildlifeCam, apex: mywildlifecam.com, niche: trail cameras).
 2. Ask you for `tagline` and `contactEmail`.
 3. Show a confirmation table.
 4. Run the CLI which copies the template, builds the site, creates the Pages project, deploys, attaches the domain, creates DNS, attaches the Worker route.
 
 Suggested values:
 - **tagline**: "Honest reviews of trail cameras for the backyard naturalist."
-- **contactEmail**: `hello@mywildlifecam.fyi`
+- **contactEmail**: `hello@mywildlifecam.com`
 
 Expected runtime: 1-3 minutes.
 
@@ -223,14 +226,14 @@ Expected runtime: 1-3 minutes.
 ## Part 10 — Verify the site is live
 
 ```powershell
-curl -I https://mywildlifecam.fyi
+curl -I https://mywildlifecam.com
 ```
 
 Expected: `HTTP/2 200` with `server: cloudflare`.
 
 If you get NXDOMAIN, DNS propagation isn't done. Wait 5-15 minutes and retry.
 
-Visit `https://mywildlifecam.fyi` in a browser. You should see the MyWildlifeCam homepage with the tagline you set.
+Visit `https://mywildlifecam.com` in a browser. You should see the MyWildlifeCam homepage with the tagline you set.
 
 ### Smoke-test the link cloaker
 
@@ -243,9 +246,9 @@ $kvId = "<your AFFILIATE_LINKS id>"
 wrangler kv key put --namespace-id=$kvId "mywildlifecam:test-product" "https://example.com/test"
 ```
 
-Visit `https://mywildlifecam.fyi/go/mywildlifecam/test-product` — should 302 to `https://example.com/test`.
+Visit `https://mywildlifecam.com/go/mywildlifecam/test-product` — should 302 to `https://example.com/test`.
 
-Visit `https://mywildlifecam.fyi/go/mywildlifecam/does-not-exist` — should return 404.
+Visit `https://mywildlifecam.com/go/mywildlifecam/does-not-exist` — should return 404.
 
 Delete the test entry:
 
@@ -260,7 +263,7 @@ wrangler kv key delete --namespace-id=$kvId "mywildlifecam:test-product"
 ```powershell
 cd $env:USERPROFILE\source\repos\affiliate-sites
 git add sites/mywildlifecam
-git commit -m "feat: bootstrap mywildlifecam.fyi"
+git commit -m "feat: bootstrap mywildlifecam.com"
 git push
 ```
 
@@ -271,8 +274,8 @@ git push
 You should now have:
 
 - 5 domains added to Cloudflare with nameservers pointed correctly
-- The link-cloaker Worker deployed and routed at `mywildlifecam.fyi/go/*`
-- `mywildlifecam.fyi` live on Cloudflare Pages with all 5 standard pages (home, about, disclosure, privacy, contact)
+- The link-cloaker Worker deployed and routed at `mywildlifecam.com/go/*`
+- `mywildlifecam.com` live on Cloudflare Pages with all 5 standard pages (home, about, disclosure, privacy, contact)
 - The Claude Code plugin installed, with `/aff-bootstrap` working
 
 **What you do NOT have yet** (Phase 2):
@@ -301,7 +304,7 @@ You ran bootstrap before. Either delete `sites/mywildlifecam/` and retry, or pic
 Wrangler isn't installed globally. `npm install -g wrangler`.
 
 **Site loads but `/go/<slug>/<x>` doesn't redirect**
-The Worker route isn't attached. Manually check in Cloudflare dashboard → your domain → Workers Routes. There should be a route `mywildlifecam.fyi/go/*` → `affkit-link-cloaker`. If missing, the API call during bootstrap failed silently — re-run bootstrap or attach manually.
+The Worker route isn't attached. Manually check in Cloudflare dashboard → your domain → Workers Routes. There should be a route `mywildlifecam.com/go/*` → `affkit-link-cloaker`. If missing, the API call during bootstrap failed silently — re-run bootstrap or attach manually.
 
 **DNS still shows old Porkbun records after 24h**
 Make sure you replaced the nameservers AT Porkbun (Authoritative Nameservers section), not the DNS records themselves. Porkbun won't relinquish authority until nameservers point elsewhere.
