@@ -9,7 +9,7 @@ workers_dev = false
 #   wrangler kv namespace create AFFILIATE_LINKS
 [[kv_namespaces]]
 binding = "AFFILIATE_LINKS"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
+id = "83ca8a76111b47899caba8670c48dfbc"
 
 # Analytics Engine dataset for click logging.
 [[analytics_engine_datasets]]
