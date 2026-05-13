@@ -72,17 +72,22 @@ export interface AttachDomainInput {
 }
 
 export async function attachDomain(input: AttachDomainInput): Promise<void> {
-  const env = withCfToken(input.apiToken, input.accountId);
-  const result = await runWrangler(
-    ["pages", "domain", "add", input.domain, "--project-name", input.projectName],
-    env
+  const url = `https://api.cloudflare.com/client/v4/accounts/${input.accountId}/pages/projects/${input.projectName}/domains`;
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${input.apiToken}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name: input.domain }),
+  });
+  const body = (await res.json()) as { success: boolean; errors?: Array<{ code: number; message: string }> };
+  if (body.success) return;
+  const alreadyAttached = body.errors?.some(
+    (e) => e.message?.toLowerCase().includes("already") || e.code === 8000007
   );
-  if (result.exitCode !== 0) {
-    if (result.stderr.includes("already") || result.stdout.includes("already")) {
-      return;
-    }
-    throw new Error(
-      `wrangler pages domain add failed (exit ${result.exitCode}): ${result.stderr || result.stdout}`
-    );
-  }
+  if (alreadyAttached) return;
+  throw new Error(
+    `attach pages domain failed: ${JSON.stringify(body.errors ?? body)}`
+  );
 }

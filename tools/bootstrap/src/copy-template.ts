@@ -67,7 +67,13 @@ export async function copyTemplate(input: CopyTemplateInput): Promise<void> {
     throw new Error(`sites/${input.slug} already exists`);
   }
 
-  await cp(source, dest, { recursive: true });
+  await cp(source, dest, {
+    recursive: true,
+    filter: (src) => {
+      const normalized = src.replaceAll("\\", "/");
+      return !normalized.includes("/node_modules") && !normalized.includes("/.astro") && !normalized.includes("/dist");
+    },
+  });
 
   const pkgPath = join(dest, "package.json");
   if (await exists(pkgPath)) {
