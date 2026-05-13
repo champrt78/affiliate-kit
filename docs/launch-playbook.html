@@ -423,6 +423,28 @@
     <p class="meta">Built 2026-05-13 · Updated as availability changes · Tick the checkboxes — your progress saves automatically</p>
   </header>
 
+  <section class="card" id="tldr" style="border-left: 4px solid var(--accent);">
+    <h2>Tonight at a glance — Barney-style version</h2>
+    <p class="lede">You're tired. Here's the absolute minimum tonight. ~2 hours total. Skip everything else for this week.</p>
+    <table>
+      <thead><tr><th>What</th><th>Time</th><th>Email to use</th></tr></thead>
+      <tbody>
+        <tr><td>Step 9 — Rotate the leaked gh token (do this first, 1 command)</td><td>2 min</td><td>n/a</td></tr>
+        <tr><td>Step 1 — Eyeball 3 Carillon handles in browser</td><td>5 min</td><td>n/a</td></tr>
+        <tr><td>Step 2 — Eyeball 5 Semper Fi handles in browser</td><td>5 min</td><td>n/a</td></tr>
+        <tr><td>Step 3 — USPTO TESS scan for both brand names</td><td>10 min</td><td>n/a</td></tr>
+        <tr><td>Step 4 — Buy <code>carillonstation.com</code> on Porkbun</td><td>5 min · $11</td><td>The email tied to your existing Porkbun account</td></tr>
+        <tr><td>Step 7 — Claim 5-10 social handles</td><td>60-90 min</td><td><strong>Your master personal Gmail.</strong> Same one for every signup tonight.</td></tr>
+        <tr><td>Step 8 — Turn on 2FA for that Gmail</td><td>10 min</td><td>n/a</td></tr>
+      </tbody>
+    </table>
+    <div class="callout tip">
+      <strong>Skip tonight (do this week):</strong>
+      Step 5 (Cloudflare wiring), Step 6 (Email Routing for Semper Fi), Step 10 (defensive accounts), Step 11 (swap emails to branded). These are all <em>this-week</em> tasks. Don't try to do them tired tonight — the social handles are the only thing where someone else could grab your name. Everything else can wait.
+    </div>
+    <p><strong>You do NOT need to set up <code>hello@carillonstation.com</code> or <code>hello@semperfistudios.com</code> tonight.</strong> Tonight, every signup uses your master Gmail. We migrate to branded emails later in the week (Steps 5-6 walk you through it click-by-click when you're ready).</p>
+  </section>
+
   <div class="progress-wrap">
     <div class="progress-label">
       <span>Progress</span>
@@ -434,6 +456,7 @@
   <nav class="toc">
     <h2>Table of contents</h2>
     <ol>
+      <li><a href="#tldr">Tonight at a glance — start here</a></li>
       <li><a href="#availability">Where we stand — availability snapshot</a></li>
       <li><a href="#email-strategy">Email strategy (read this first)</a></li>
       <li><a href="#decision-framework">Decision framework — which handle matters where</a></li>
@@ -497,6 +520,11 @@
   <section class="card" id="email-strategy">
     <h2>Email strategy — read this first</h2>
     <p class="lede">One master Gmail + branded forwarders per domain. Best of both worlds.</p>
+
+    <div class="callout tip">
+      <strong>For tonight only — the simple answer</strong>
+      Use <strong>your master personal Gmail</strong> for every social signup tonight. Don't worry about <code>hello@carillonstation.com</code> or <code>hello@semperfistudios.com</code> — those don't exist yet and you don't need them tonight. We set them up later this week (Steps 5-6). All the signup forms will ask for an email — paste your master Gmail every time.
+    </div>
 
     <h3>The pattern in one line</h3>
     <p><strong>Sign up for everything with one master personal Gmail tonight. Wire <code>hello@brand.com</code> forwarders this week. Swap the platform emails to the branded addresses whenever convenient.</strong></p>
@@ -732,13 +760,22 @@
       <input type="checkbox" class="step-check" data-step="4">
     </div>
     <div class="step-body">
+      <p><strong>Email for this signup:</strong> the email tied to your existing Porkbun account (the one you used to buy the 5 affiliate domains + semperfistudios.com). You're not creating a new account.</p>
       <ol>
-        <li>Open <a href="https://porkbun.com" target="_blank" rel="noopener">porkbun.com</a> and log in.</li>
-        <li>Search <code>carillonstation.com</code>. It should be available (DNS verified earlier).</li>
-        <li>Add to cart. <strong>Defensive optional:</strong> also grab <code>carillonstation.tv</code> (~$30) and <code>carillonstation.net</code> (~$11) so a competitor can't grab them once you're public.</li>
-        <li>Check out. Enable WHOIS privacy (Porkbun does this free).</li>
+        <li>Open <a href="https://porkbun.com" target="_blank" rel="noopener">porkbun.com</a> in a new tab.</li>
+        <li>Click <strong>"Account"</strong> top right → log in with your existing credentials.</li>
+        <li>On the homepage, find the big search box. Type: <code>carillonstation.com</code> → press Enter.</li>
+        <li>You'll see a results page. <code>carillonstation.com</code> row at the top — click the <strong>green "ADD"</strong> button next to it.</li>
+        <li><strong>Optional defensive:</strong> on the same results page, scroll down. If you see <code>carillonstation.net</code> at a reasonable price (~$11), click ADD on that too. Skip <code>.tv</code> if it's $30+ — not worth defensive money.</li>
+        <li>Click the <strong>cart icon</strong> top right.</li>
+        <li>On the cart page, you'll see a "WHOIS Privacy" toggle. Confirm it's <strong>ON</strong> (free, hides your home address from public WHOIS lookups).</li>
+        <li>Choose registration period: <strong>1 year is fine.</strong> Auto-renew can stay default.</li>
+        <li>Click <strong>"CHECKOUT"</strong>.</li>
+        <li>Confirm payment method, click <strong>"PURCHASE"</strong>.</li>
+        <li>You'll get an order confirmation email at your Porkbun-account email. Domain is yours within seconds.</li>
+        <li>Don't worry about nameservers right now — Porkbun's defaults work fine until you wire Cloudflare (Step 5, this week).</li>
       </ol>
-      <p>Keep the same Porkbun account you use for the affiliate sites — one billing surface, one renewal calendar.</p>
+      <p><strong>Done.</strong> Move to Step 7 to start claiming social handles. (Step 5 — Cloudflare wiring — is a this-week task, not tonight.)</p>
     </div>
   </section>
 
@@ -748,27 +785,76 @@
       <div class="step-title-wrap">
         <h3 class="step-title">Wire Cloudflare + Email Routing for carillonstation.com</h3>
         <div class="step-meta">
-          <span class="badge tonight">tonight</span>
-          <span class="badge time">15 min (plus DNS propagation)</span>
+          <span class="badge thisweek">this week (NOT tonight)</span>
+          <span class="badge time">25 min + propagation wait</span>
           <span class="brand-pill carillon">Carillon</span>
         </div>
       </div>
       <input type="checkbox" class="step-check" data-step="5">
     </div>
     <div class="step-body">
+      <div class="callout warn">
+        <strong>Don't do this tonight</strong>
+        Skip this step on basketball night. It takes 25 min of focused clicking plus a DNS-propagation wait of 5-60 min. The branded email is nice-to-have, not blocking. Your social signups in Step 7 work fine with your master Gmail. Come back to this step rested.
+      </div>
+
+      <h3>Part A — Move <code>carillonstation.com</code> onto Cloudflare DNS</h3>
       <ol>
-        <li>Cloudflare dashboard → <strong>Add Site</strong> → enter <code>carillonstation.com</code> → choose the Free plan.</li>
-        <li>Cloudflare gives you two nameservers like <code>xxx.ns.cloudflare.com</code>. Copy them.</li>
-        <li>Porkbun → <code>carillonstation.com</code> → <strong>Authoritative Nameservers</strong> → paste the two from Cloudflare. Save.</li>
-        <li>Wait for propagation (Cloudflare checks every few minutes — typically &lt; 1 hour). You can continue with other steps while this propagates.</li>
-        <li>Once Cloudflare confirms active: <strong>Email</strong> → <strong>Email Routing</strong> → click "Get started."</li>
-        <li>Cloudflare adds the MX and TXT records automatically. Approve.</li>
-        <li>Add a routing rule: <code>hello@carillonstation.com</code> → <code>your-master-gmail@gmail.com</code>.</li>
-        <li>Add a wildcard catch-all (recommended): <code>*@carillonstation.com</code> → same target. Catches <code>support@</code>, <code>roy@</code>, anything else, plus typos.</li>
-        <li>Verify the target email in Gmail (Cloudflare sends a confirmation link to your master Gmail — click it).</li>
-        <li>Test: send an email from another address to <code>hello@carillonstation.com</code>. It should land in your master Gmail within seconds.</li>
+        <li>Open <a href="https://dash.cloudflare.com" target="_blank" rel="noopener">dash.cloudflare.com</a>. Log in (same account you use for the affiliate sites).</li>
+        <li>On the home dashboard, click the blue <strong>"+ Add a domain"</strong> button (top right).</li>
+        <li>Type: <code>carillonstation.com</code> → click <strong>"Continue"</strong>.</li>
+        <li>Choose plan: scroll to the bottom, find <strong>"Free"</strong> → click <strong>"Continue"</strong>.</li>
+        <li>Cloudflare scans for existing DNS records (will be empty for a fresh domain). Click <strong>"Continue"</strong>.</li>
+        <li>You'll see a "Change your nameservers" screen with <strong>two nameservers</strong> like:
+          <pre><code>example1.ns.cloudflare.com
+example2.ns.cloudflare.com</code></pre>
+          <strong>Copy both</strong> (yours will be different — they're per-account).</li>
+        <li>Open a new tab → <a href="https://porkbun.com" target="_blank" rel="noopener">porkbun.com</a> → log in.</li>
+        <li>On the Porkbun dashboard, find <code>carillonstation.com</code> in your domain list → click <strong>"DETAILS"</strong> on the right.</li>
+        <li>Scroll to the section labeled <strong>"AUTHORITATIVE NAMESERVERS"</strong> → click the <strong>edit icon (pencil)</strong>.</li>
+        <li>Delete the existing Porkbun nameservers. Paste the two Cloudflare nameservers, one per line.</li>
+        <li>Click <strong>"SUBMIT"</strong> → confirm.</li>
+        <li>Back at Cloudflare → at the bottom of the nameserver-change screen, click <strong>"Done, check nameservers"</strong>.</li>
+        <li><strong>Propagation wait:</strong> 5-60 minutes typically. Cloudflare emails you when it's confirmed. While you wait, do Part B prep below in the same dashboard.</li>
       </ol>
-      <p>That's the entire branded-email setup for Carillon Station. Free. Forever.</p>
+
+      <h3>Part B — Enable Email Routing (after Part A confirms)</h3>
+      <ol>
+        <li>Back in Cloudflare dashboard → click your domain (<code>carillonstation.com</code>) from the home dashboard.</li>
+        <li>Left sidebar → <strong>Email</strong> → <strong>Email Routing</strong>.</li>
+        <li>You'll see a "Get started" page. Click the blue <strong>"Enable Email Routing"</strong> button.</li>
+        <li>Cloudflare will say "Add DNS records to start sending emails." Click <strong>"Add records and enable"</strong>. This automatically adds the MX + TXT records to your DNS.</li>
+        <li>Now you're on the Email Routing dashboard. Click the <strong>"Routing rules"</strong> tab if not already there.</li>
+        <li>Click <strong>"Create address"</strong> (a blue button).</li>
+        <li>Fill in the form:
+          <ul>
+            <li><strong>Custom address:</strong> <code>hello</code> (Cloudflare adds <code>@carillonstation.com</code>)</li>
+            <li><strong>Action:</strong> dropdown → choose <strong>"Send to an email"</strong></li>
+            <li><strong>Destination address:</strong> <code>your-master-gmail@gmail.com</code> (the actual address you'll be using)</li>
+          </ul>
+        </li>
+        <li>Click <strong>"Save"</strong>.</li>
+        <li>Cloudflare will say "Verify your destination address." Open your master Gmail in a new tab — there's an email from Cloudflare titled "Verify your email" — click the verification link inside.</li>
+        <li>Back at Cloudflare → confirm the destination shows as "Verified" (green check).</li>
+      </ol>
+
+      <h3>Part C — Wildcard catch-all (optional but recommended)</h3>
+      <ol>
+        <li>Still on the Email Routing dashboard → click the <strong>"Catch-all address"</strong> tab.</li>
+        <li>Toggle the <strong>"Catch-all address"</strong> switch to <strong>ON</strong>.</li>
+        <li>Action: <strong>"Send to an email"</strong>.</li>
+        <li>Destination: <code>your-master-gmail@gmail.com</code> (already verified).</li>
+        <li>Click <strong>"Save"</strong>.</li>
+      </ol>
+      <p>Now <em>any</em> email to <code>anything@carillonstation.com</code> forwards to your master Gmail. Useful for defensive social accounts (Step 10) and for creating one-off addresses like <code>contact@</code>, <code>press@</code>, <code>support@</code> without setup.</p>
+
+      <h3>Part D — Test it works</h3>
+      <ol>
+        <li>From your phone (or another email), send a quick test email to <code>hello@carillonstation.com</code>. Subject: "test". Body: anything.</li>
+        <li>Check your master Gmail. Should arrive within 30 seconds. The "from" address shown will be the sender's real email, forwarded transparently.</li>
+        <li>If it works → done. Branded email for Carillon Station is live. If it doesn't within 5 min, check Cloudflare → Email Routing → Routing rules to confirm the rule is "Active" (green dot).</li>
+      </ol>
+      <p>That's the entire branded-email setup. Free. Forever. Skip this tonight — come back to it Tuesday.</p>
     </div>
   </section>
 
@@ -778,24 +864,38 @@
       <div class="step-title-wrap">
         <h3 class="step-title">Cloudflare Email Routing for semperfistudios.com</h3>
         <div class="step-meta">
-          <span class="badge tonight">tonight</span>
-          <span class="badge time">5 min</span>
+          <span class="badge thisweek">this week (NOT tonight)</span>
+          <span class="badge time">10 min</span>
           <span class="brand-pill semperfi">Semper Fi</span>
         </div>
       </div>
       <input type="checkbox" class="step-check" data-step="6">
     </div>
     <div class="step-body">
-      <p>Domain's already on Cloudflare (you bought it through Porkbun and pointed nameservers earlier). Just the routing setup:</p>
+      <div class="callout warn">
+        <strong>Don't do this tonight either</strong>
+        Same as Step 5 — branded email is nice-to-have, not blocking. Your master Gmail covers all signups. Come back rested.
+      </div>
+      <p>Domain's already on Cloudflare (you bought it through Porkbun and pointed nameservers in May). Just the Email Routing setup — Part A from Step 5 is already done.</p>
       <ol>
-        <li>Cloudflare dashboard → <code>semperfistudios.com</code> → <strong>Email</strong> → <strong>Email Routing</strong> → "Get started."</li>
-        <li>Approve the auto-added MX/TXT records.</li>
-        <li>Add rule: <code>hello@semperfistudios.com</code> → <code>your-master-gmail@gmail.com</code>.</li>
-        <li>Add wildcard: <code>*@semperfistudios.com</code> → same target.</li>
-        <li>Verify the destination if needed.</li>
-        <li>Test: send to <code>hello@semperfistudios.com</code> from another inbox.</li>
+        <li>Open <a href="https://dash.cloudflare.com" target="_blank" rel="noopener">dash.cloudflare.com</a> → click <code>semperfistudios.com</code> from the home dashboard.</li>
+        <li>Left sidebar → <strong>Email</strong> → <strong>Email Routing</strong>.</li>
+        <li>Click <strong>"Enable Email Routing"</strong>.</li>
+        <li>"Add DNS records to start sending emails" → click <strong>"Add records and enable"</strong>.</li>
+        <li>Click the <strong>"Routing rules"</strong> tab → <strong>"Create address"</strong>.</li>
+        <li>Fill in:
+          <ul>
+            <li>Custom address: <code>hello</code></li>
+            <li>Action: <strong>"Send to an email"</strong></li>
+            <li>Destination: <code>your-master-gmail@gmail.com</code></li>
+          </ul>
+        </li>
+        <li>Click <strong>"Save"</strong>.</li>
+        <li>Your destination is already verified from Step 5 — no second verification needed.</li>
+        <li>Click the <strong>"Catch-all address"</strong> tab → toggle <strong>ON</strong> → destination <code>your-master-gmail@gmail.com</code> → <strong>Save</strong>.</li>
+        <li>Test: send a test email from your phone to <code>hello@semperfistudios.com</code>. Confirm it lands in your master Gmail.</li>
       </ol>
-      <p>Now both brands have professional <code>hello@brand.com</code> addresses, all dumping into one inbox.</p>
+      <p>Now both brands have <code>hello@brand.com</code> addresses. Both forward to one inbox.</p>
     </div>
   </section>
 
@@ -813,7 +913,31 @@
       <input type="checkbox" class="step-check" data-step="7">
     </div>
     <div class="step-body">
-      <p>Use your <strong>master personal Gmail</strong> for every signup. You'll swap to <code>hello@brand.com</code> in Step 11 once Email Routing is verified. Don't get stuck on perfect profile setup tonight — just claim the names and minimum viable bio.</p>
+      <div class="callout tip">
+        <strong>The same email for every signup tonight</strong>
+        Every signup form below asks for an email. <strong>Paste your master personal Gmail.</strong> Same one for every platform, every brand, every account. Do NOT use <code>hello@carillonstation.com</code> — that email doesn't exist yet and you don't need it tonight. You'll swap to branded addresses in Step 11 (this week).
+      </div>
+
+      <p>Don't get stuck on perfect profile setup tonight — just claim the names + bio + link. You can polish over the weekend.</p>
+
+      <h3>Copy-paste-ready bio + link (use the same on every platform)</h3>
+      <p>For each profile, paste these exact values into the bio and "website" fields:</p>
+      <table>
+        <thead><tr><th>Brand</th><th>Bio (paste verbatim)</th><th>Website / link</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="brand-pill carillon">Carillon Station</span></td>
+            <td><code>Sleep stories from a quiet station at the edge of the routes.</code></td>
+            <td><code>https://carillonstation.com</code> (will be a coming-soon page until you set one up; that's fine)</td>
+          </tr>
+          <tr>
+            <td><span class="brand-pill semperfi">Semper Fi Studios</span></td>
+            <td><code>Marine veteran-owned web studio. Affiliate sites + local business websites.</code></td>
+            <td><code>https://semperfistudios.com</code></td>
+          </tr>
+        </tbody>
+      </table>
+      <p><strong>Avatar:</strong> For tonight, use a simple text-only image. Free easy option: <a href="https://www.canva.com/create/logos/" target="_blank" rel="noopener">canva.com/create/logos</a> → type the brand name → pick a clean sans-serif design → download as PNG. 5 minutes per brand, max. Same image on every platform.</p>
 
       <h3>Carillon Station — Tier 1 (5 platforms)</h3>
       <p>The sleep audio drama lives most on YouTube, but defensive claims matter.</p>
