@@ -1,0 +1,26 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+<MainLayout
+  title="Contact"
+  description="Get in touch with StarterAquarium."
+>
+  <article>
+    <h1>Contact</h1>
+
+    <p>
+      Have a correction, a product suggestion, or feedback on a review?
+      Send a note to <a href="mailto:hello@starteraquarium.com">hello@starteraquarium.com</a>.
+    </p>
+
+    <p>
+      We read everything but can't always reply. Genuine corrections
+      get fixed quickly.
+    </p>
+  </article>
+</MainLayout>
+
+<style>
+  article { max-width: var(--content-max); margin: 0 auto; }
+  h1 { font-size: var(--text-3xl); margin-bottom: var(--space-6); }
+</style>

@@ -1,0 +1,32 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Hero from "@affkit/shared-ui/Hero.astro";
+---
+<MainLayout
+  title="MyWildlifeCam"
+  description="MyWildlifeCam — honest, hands-on reviews and buyer's guides for trail cameras / wildlife cams."
+>
+  <Hero
+    title="MyWildlifeCam"
+    tagline="Honest reviews of trail cameras for the backyard naturalist."
+  />
+
+  <section>
+    <h2>Latest reviews</h2>
+    <p class="muted">No reviews published yet. New content lands every quarter.</p>
+  </section>
+
+  <section>
+    <h2>Buyer's guides</h2>
+    <p class="muted">Coming soon.</p>
+  </section>
+</MainLayout>
+
+<style>
+  section { margin: var(--space-12) 0; }
+  h2 {
+    font-size: var(--text-2xl);
+    margin: 0 0 var(--space-4);
+  }
+  .muted { color: var(--color-muted); }
+</style>

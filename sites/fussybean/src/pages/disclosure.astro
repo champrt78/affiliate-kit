@@ -1,0 +1,58 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+<MainLayout
+  title="Affiliate disclosure"
+  description="Affiliate disclosure for FussyBean."
+>
+  <article>
+    <h1>Affiliate disclosure</h1>
+
+    <p><strong>Last updated:</strong> {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</p>
+
+    <p>
+      FussyBean ("we", "us", "our") participates in affiliate marketing
+      programs. When you click a link on this site and make a purchase,
+      we may receive a commission from the retailer at no additional cost
+      to you.
+    </p>
+
+    <h2>Amazon Services LLC Associates Program</h2>
+    <p>
+      FussyBean is a participant in the Amazon Services LLC Associates
+      Program, an affiliate advertising program designed to provide a means
+      for sites to earn advertising fees by advertising and linking to
+      Amazon.com.
+    </p>
+
+    <h2>Other affiliate relationships</h2>
+    <p>
+      We may also participate in affiliate programs with other retailers
+      and manufacturers relevant to coffee and espresso. These relationships
+      do not influence our editorial recommendations.
+    </p>
+
+    <h2>How affiliate links are marked</h2>
+    <p>
+      All outbound product links on this site use the <code>nofollow sponsored</code>
+      rel attribute as required by FTC guidelines and search engine policies.
+      You can identify affiliate links by their <code>/go/</code> path prefix.
+    </p>
+
+    <h2>FTC disclosure</h2>
+    <p>
+      In accordance with the Federal Trade Commission's 16 CFR Part 255:
+      "Guides Concerning the Use of Endorsements and Testimonials in
+      Advertising," this site discloses that it receives compensation
+      from affiliated retailers when readers click affiliate links and
+      make purchases.
+    </p>
+  </article>
+</MainLayout>
+
+<style>
+  article { max-width: var(--content-max); margin: 0 auto; }
+  h1 { font-size: var(--text-3xl); margin-bottom: var(--space-6); }
+  h2 { margin-top: var(--space-8); }
+  code { background: var(--color-surface); padding: 0 var(--space-1); border-radius: var(--radius-sm); }
+</style>

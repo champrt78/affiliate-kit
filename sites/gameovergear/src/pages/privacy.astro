@@ -1,0 +1,49 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+<MainLayout
+  title="Privacy policy"
+  description="Privacy policy for GameOverGear."
+>
+  <article>
+    <h1>Privacy policy</h1>
+
+    <p><strong>Last updated:</strong> {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</p>
+
+    <h2>What we collect</h2>
+    <p>
+      GameOverGear uses Cloudflare Web Analytics, which is privacy-friendly
+      by design: no cookies, no fingerprinting, and no personal data is
+      collected or sold. We see aggregate stats like page views and
+      referrers — never individual visitors.
+    </p>
+
+    <h2>Affiliate clicks</h2>
+    <p>
+      When you click a <code>/go/</code> affiliate link, our Cloudflare
+      Worker logs the click (timestamp, target product, referring page)
+      so we can understand which products our readers find interesting.
+      This data is aggregate; no personal identifiers are stored.
+    </p>
+
+    <h2>What happens after you click</h2>
+    <p>
+      Once you leave GameOverGear via an affiliate link, you're on the
+      destination retailer's site under their privacy policy (Amazon, the
+      brand's direct site, etc.). We have no control over their tracking.
+    </p>
+
+    <h2>Cookies</h2>
+    <p>GameOverGear does not set any first-party tracking cookies.</p>
+
+    <h2>Contact</h2>
+    <p>Questions about this policy? See the <a href="/contact/">contact</a> page.</p>
+  </article>
+</MainLayout>
+
+<style>
+  article { max-width: var(--content-max); margin: 0 auto; }
+  h1 { font-size: var(--text-3xl); margin-bottom: var(--space-6); }
+  h2 { margin-top: var(--space-8); }
+  code { background: var(--color-surface); padding: 0 var(--space-1); border-radius: var(--radius-sm); }
+</style>

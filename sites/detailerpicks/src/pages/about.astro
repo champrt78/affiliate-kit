@@ -1,0 +1,51 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+<MainLayout
+  title="About"
+  description="About DetailerPicks — who we are and how we review."
+>
+  <article>
+    <h1>About DetailerPicks</h1>
+
+    <p>
+      DetailerPicks is a small, independent site covering car detailing.
+      We test products where we can, research thoroughly where we can't,
+      and tell you which one we'd actually buy with our own money.
+    </p>
+
+    <h2>How we review</h2>
+    <p>
+      Every product on this site falls into one of two categories:
+    </p>
+    <ul>
+      <li>
+        <strong>Reviews</strong> — products we have first-hand experience with.
+        Our "My Take" section reflects real use.
+      </li>
+      <li>
+        <strong>Buyer's guides</strong> — comparative roundups of products
+        we've researched but don't own. We tell you which one is best for
+        which use case, based on specs, reputation, and community feedback.
+      </li>
+    </ul>
+
+    <h2>How we make money</h2>
+    <p>
+      We earn affiliate commissions when you buy through our links. It
+      doesn't change the price you pay. We don't accept payment in exchange
+      for positive coverage and we'll flag any product where we have a
+      conflict of interest. Full details in our
+      <a href="/disclosure/">affiliate disclosure</a>.
+    </p>
+  </article>
+</MainLayout>
+
+<style>
+  article {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+  h1 { font-size: var(--text-3xl); margin-bottom: var(--space-6); }
+  h2 { margin-top: var(--space-8); }
+</style>
