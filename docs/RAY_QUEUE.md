@@ -6,11 +6,11 @@ Last refreshed: **2026-05-14**
 
 ---
 
-## 1. Claim Starwatch handles + register `starwatchstation.tv`
+## 1. Claim Starwatch handles + register `starwatchstation.space`
 
-**What:** Snag the 7 Tier 1 social handles (`@StarwatchStation` on YouTube, Bluesky, IG, TikTok, LinkedIn, Facebook; `@StarwatchTV` on X because the 15-char cap breaks the full name) and buy the domain at Porkbun.
+**What:** Snag the 7 Tier 1 social handles (`@StarwatchStation` on YouTube, Bluesky, IG, TikTok, LinkedIn, Facebook; `@StarwatchSpace` on X because the 15-char cap breaks the 16-char full name — `@StarwatchSpace` at 14 fits and echoes the `.space` domain) and buy the domain at Porkbun.
 
-**Walk through:** `docs/launch-playbook.html` — open in browser. The Starwatch sections are rewritten and current (`.tv` domain noted, X-cap explained inline, DST fandom-contraction blurb in place). Same click-by-click style you used for Semper Fi last night.
+**Walk through:** `docs/launch-playbook.html` — open in browser. The Starwatch sections are rewritten and current (`.space` domain noted, X-cap explained inline, DST fandom-contraction blurb in place). Same click-by-click style you used for Semper Fi last night.
 
 **Effort:** ~30-60 minutes if no handles are taken; longer if you have to fall back per-platform (Step 2b in the playbook covers reclamation paths).
 
@@ -64,7 +64,7 @@ Last refreshed: **2026-05-14**
 
 | # | Task | Effort | Blocks |
 |---|---|---|---|
-| 1 | Starwatch handles + `.tv` | 30-60min | Brand cohesion; window closes when someone notices |
+| 1 | Starwatch handles + `.space` | 30-60min | Brand cohesion; window closes when someone notices |
 | 2 | Amazon Associates app | 10min + 1-3d wait | Review #1 revenue |
 | 3 | Starwatch Phase 12 (s01e01) | 2-3hrs | Starwatch Arc A → main merge |
 | 4 | R2 + PA-API | 30s + later | Review #1 hero images (workaround exists) |
