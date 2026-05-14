@@ -27,41 +27,33 @@ describe("sanitizeSlug", () => {
 });
 
 describe("cloakedLink", () => {
-  it("builds a /go/<site>/<slug> path", () => {
-    expect(cloakedLink({ site: "mywildlifecam", slug: "reconyx-hc600" })).toBe(
-      "/go/mywildlifecam/reconyx-hc600"
-    );
+  it("builds a /go/<slug> path (no site segment, per U9)", () => {
+    expect(cloakedLink({ slug: "reconyx-hc600" })).toBe("/go/reconyx-hc600");
   });
 
   it("sanitizes the slug input", () => {
-    expect(cloakedLink({ site: "mywildlifecam", slug: "Reconyx HC600" })).toBe(
-      "/go/mywildlifecam/reconyx-hc600"
-    );
+    expect(cloakedLink({ slug: "Reconyx HC600" })).toBe("/go/reconyx-hc600");
   });
 
   it("accepts an optional source tag and appends it as a query param", () => {
     expect(
       cloakedLink({
-        site: "fussybean",
         slug: "breville-bambino",
         source: "comparison-table",
       })
-    ).toBe("/go/fussybean/breville-bambino?src=comparison-table");
+    ).toBe("/go/breville-bambino?src=comparison-table");
   });
 
   it("sanitizes the source tag", () => {
     expect(
       cloakedLink({
-        site: "fussybean",
         slug: "breville-bambino",
         source: "Comparison Table!",
       })
-    ).toBe("/go/fussybean/breville-bambino?src=comparison-table");
+    ).toBe("/go/breville-bambino?src=comparison-table");
   });
 
-  it("rejects empty site", () => {
-    expect(() => cloakedLink({ site: "", slug: "x" })).toThrow(
-      "site cannot be empty"
-    );
+  it("rejects empty slug", () => {
+    expect(() => cloakedLink({ slug: "" })).toThrow("slug cannot be empty");
   });
 });

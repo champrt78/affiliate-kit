@@ -1,5 +1,4 @@
 export interface CloakedLinkOptions {
-  site: string;
   slug: string;
   source?: string;
 }
@@ -20,13 +19,19 @@ export function sanitizeSlug(input: string): string {
   return slug;
 }
 
+/**
+ * Build a cloaked affiliate-link path.
+ *
+ * Post-U9: the URL no longer carries a `<site>` segment. The Worker derives
+ * the site from the Host header (each apex has its own canonical site slug),
+ * which closes the cross-tenant link-leak and produces a cleaner URL.
+ *
+ * KV storage keys remain namespaced as `<site>:<slug>` inside the Worker —
+ * only the URL shape changed.
+ */
 export function cloakedLink(options: CloakedLinkOptions): string {
-  if (options.site.trim().length === 0) {
-    throw new Error("site cannot be empty");
-  }
-  const site = sanitizeSlug(options.site);
   const slug = sanitizeSlug(options.slug);
-  const base = `/go/${site}/${slug}`;
+  const base = `/go/${slug}`;
   if (options.source) {
     const src = sanitizeSlug(options.source);
     return `${base}?src=${src}`;
