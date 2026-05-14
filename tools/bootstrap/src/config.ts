@@ -4,7 +4,6 @@ import { join } from "node:path";
 
 export interface PluginConfig {
   monorepo_path: string;
-  tone: "polite" | "snarky" | "spicy";
   tokens: {
     cloudflare_api: string;
     cloudflare_account_id: string;

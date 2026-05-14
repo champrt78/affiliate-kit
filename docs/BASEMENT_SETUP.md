@@ -142,7 +142,6 @@ Create `~/.claude/plugins/affiliate-kit/config.json` with this content (replace 
 ```json
 {
   "monorepo_path": "C:/Users/<your-username>/source/repos/affiliate-sites",
-  "tone": "snarky",
   "tokens": {
     "cloudflare_api": "<paste the API token from step 5c>",
     "cloudflare_account_id": "<paste the account id from step 5b>"

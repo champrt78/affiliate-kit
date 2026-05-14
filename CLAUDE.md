@@ -27,7 +27,7 @@ This file teaches Claude the conventions for working inside this monorepo. Read 
 - Frequent commits; one logical change per commit.
 
 ## Tone of generated output
-- Default snarky-but-friendly. `--spicy` flag for unhinged mode. Configurable in `~/.claude/plugins/affiliate-kit/config.json`.
+- Tone is currently fixed at snarky-but-friendly. Configurable tone is deferred until a concrete consumer exists.
 - Every command's output ends with a `Next:` block telling the user what to do next.
 
 ## When in doubt
