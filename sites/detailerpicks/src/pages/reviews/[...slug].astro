@@ -1,0 +1,175 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import MainLayout from "../../layouts/MainLayout.astro";
+import CTA from "@affkit/shared-ui/CTA.astro";
+import { cloakedLink } from "@affkit/shared-utils";
+import { productSchema, reviewSchema } from "@affkit/shared-utils";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("reviews");
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<"reviews">;
+}
+
+const { entry } = Astro.props;
+const { data, body } = entry;
+const { Content } = await entry.render();
+
+// DRAFT detection — raw body contains the placeholder from review.md.tmpl
+const DRAFT_MARKER = "_Waiting for the human._";
+const isDraft = typeof body === "string" && body.includes(DRAFT_MARKER);
+
+const pubDateIso = data.pubDate instanceof Date
+  ? data.pubDate.toISOString()
+  : new Date(data.pubDate).toISOString();
+
+const heroImage = data.images?.hero && data.images.hero.length > 0
+  ? data.images.hero
+  : "";
+
+const offerUrl = data.product.affiliate?.amazon
+  ?? data.product.affiliate?.direct
+  ?? undefined;
+
+const productLd = productSchema({
+  name: data.product.name,
+  brand: data.product.brand,
+  sku: data.product.sku ?? entry.slug,
+  image: heroImage,
+  description: data.description,
+  offerUrl,
+  price: data.product.price,
+  currency: data.product.currency,
+});
+
+const rating = data.rating ?? 5;
+const reviewLd = reviewSchema({
+  productName: data.product.name,
+  rating,
+  author: Astro.site?.hostname ?? "Editor",
+  datePublished: pubDateIso,
+  reviewBody: data.description,
+});
+
+const cloakedHref = cloakedLink({ slug: entry.slug });
+
+const robotsContent = isDraft ? "noindex, nofollow" : "index, follow";
+---
+<MainLayout
+  title={data.title}
+  description={data.description}
+  robotsContent={robotsContent}
+  ogType="article"
+  ogImage={heroImage || undefined}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(productLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(reviewLd)} />
+
+  {isDraft && (
+    <aside class="draft-banner" role="alert">
+      <strong>DRAFT</strong> — this review's "My Take" section hasn't been filled in.
+      Don't link to this page yet. Indexing is disabled until it's complete.
+    </aside>
+  )}
+
+  <article class="review">
+    <header class="review-header">
+      <p class="kicker">{data.product.brand} · Review</p>
+      <h1>{data.title}</h1>
+      <p class="description">{data.description}</p>
+      {heroImage && (
+        <img src={heroImage} alt={data.product.name} class="hero" />
+      )}
+      <div class="cta-wrap">
+        <CTA href={cloakedHref} rel="sponsored noopener" target="_blank">
+          Check price on Amazon
+        </CTA>
+      </div>
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <footer class="review-footer">
+      <div class="cta-wrap">
+        <CTA href={cloakedHref} rel="sponsored noopener" target="_blank">
+          See it on Amazon
+        </CTA>
+      </div>
+      <p class="updated">
+        Last updated:
+        <time datetime={data.lastUpdated instanceof Date ? data.lastUpdated.toISOString() : String(data.lastUpdated)}>
+          {data.lastUpdated instanceof Date ? data.lastUpdated.toISOString().slice(0, 10) : String(data.lastUpdated)}
+        </time>
+      </p>
+    </footer>
+  </article>
+</MainLayout>
+
+<style>
+  .draft-banner {
+    background: #fef3c7;
+    border: 2px solid #d97706;
+    color: #78350f;
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-6);
+    font-size: var(--text-sm);
+  }
+  .draft-banner strong { font-size: var(--text-base); }
+  .review { max-width: var(--content-max); margin: 0 auto; }
+  .review-header { margin-bottom: var(--space-8); }
+  .kicker {
+    text-transform: uppercase;
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+    margin: 0 0 var(--space-2);
+  }
+  h1 {
+    font-size: var(--text-3xl);
+    line-height: 1.2;
+    margin: 0 0 var(--space-3);
+  }
+  .description {
+    font-size: var(--text-lg);
+    color: var(--color-muted);
+    margin: 0 0 var(--space-6);
+  }
+  .hero {
+    width: 100%;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-6);
+  }
+  .cta-wrap { margin: var(--space-6) 0; }
+  .prose { line-height: 1.7; }
+  .prose :global(h2) {
+    font-size: var(--text-2xl);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-3);
+  }
+  .prose :global(h3) {
+    font-size: var(--text-xl);
+    margin-top: var(--space-6);
+  }
+  .prose :global(blockquote) {
+    border-left: 4px solid var(--color-brand);
+    margin: var(--space-4) 0;
+    padding: var(--space-2) var(--space-4);
+    color: var(--color-muted);
+    background: var(--color-surface);
+  }
+  .review-footer {
+    margin-top: var(--space-8);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border);
+  }
+  .updated { color: var(--color-muted); font-size: var(--text-sm); }
+</style>

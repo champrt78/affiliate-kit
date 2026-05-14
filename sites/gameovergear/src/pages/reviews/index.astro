@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+import MainLayout from "../../layouts/MainLayout.astro";
+import ReviewCard from "@affkit/shared-ui/ReviewCard.astro";
+
+const entries = await getCollection("reviews");
+const sorted = entries.sort((a, b) => {
+  const aTime = a.data.pubDate instanceof Date ? a.data.pubDate.getTime() : new Date(a.data.pubDate).getTime();
+  const bTime = b.data.pubDate instanceof Date ? b.data.pubDate.getTime() : new Date(b.data.pubDate).getTime();
+  return bTime - aTime;
+});
+---
+<MainLayout
+  title="Reviews"
+  description="Hands-on product reviews — what works, what doesn't, and what we'd actually buy."
+>
+  <header class="page-header">
+    <h1>Reviews</h1>
+    <p class="lede">Hands-on product reviews. What works, what doesn't, and what we'd buy with our own money.</p>
+  </header>
+
+  {sorted.length === 0 ? (
+    <p class="empty">No reviews yet — check back soon.</p>
+  ) : (
+    <div class="grid">
+      {sorted.map((entry) => <ReviewCard entry={entry} />)}
+    </div>
+  )}
+</MainLayout>
+
+<style>
+  .page-header { margin-bottom: var(--space-8); }
+  .page-header h1 { font-size: var(--text-3xl); margin: 0 0 var(--space-3); }
+  .lede { font-size: var(--text-lg); color: var(--color-muted); margin: 0; }
+  .empty { color: var(--color-muted); }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-6);
+  }
+</style>

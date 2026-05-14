@@ -1,0 +1,140 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import MainLayout from "../../layouts/MainLayout.astro";
+import CTA from "@affkit/shared-ui/CTA.astro";
+import { cloakedLink } from "@affkit/shared-utils";
+import { productSchema } from "@affkit/shared-utils";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("buyers-guides");
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<"buyers-guides">;
+}
+
+const { entry } = Astro.props;
+const { data, body } = entry;
+const { Content } = await entry.render();
+
+// DRAFT detection — the buyers-guide template uses a separate placeholder comment
+const DRAFT_MARKER = "replace with the actual editor's note before publishing";
+const isDraft = typeof body === "string" && body.includes(DRAFT_MARKER);
+
+// One JSON-LD Product entry per listed product. Google reads each block independently.
+const productLds = data.products.map((p) =>
+  productSchema({
+    name: p.name,
+    brand: p.brand,
+    sku: p.name,
+    image: "",
+    description: data.description,
+    offerUrl: p.affiliateUrl,
+  })
+);
+
+const cloakedHref = cloakedLink({ slug: entry.slug });
+
+const robotsContent = isDraft ? "noindex, nofollow" : "index, follow";
+---
+<MainLayout
+  title={data.title}
+  description={data.description}
+  robotsContent={robotsContent}
+  ogType="article"
+>
+  {productLds.map((ld) => (
+    <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+  ))}
+
+  {isDraft && (
+    <aside class="draft-banner" role="alert">
+      <strong>DRAFT</strong> — this guide's editor's note hasn't been filled in.
+      Don't link to this page yet. Indexing is disabled until it's complete.
+    </aside>
+  )}
+
+  <article class="guide">
+    <header class="guide-header">
+      <p class="kicker">Buyer's Guide</p>
+      <h1>{data.title}</h1>
+      <p class="description">{data.description}</p>
+      <div class="cta-wrap">
+        <CTA href={cloakedHref} rel="sponsored noopener" target="_blank">
+          See the top pick on Amazon
+        </CTA>
+      </div>
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <footer class="guide-footer">
+      <div class="cta-wrap">
+        <CTA href={cloakedHref} rel="sponsored noopener" target="_blank">
+          See the top pick on Amazon
+        </CTA>
+      </div>
+      <p class="updated">
+        Last updated:
+        <time datetime={data.lastUpdated instanceof Date ? data.lastUpdated.toISOString() : String(data.lastUpdated)}>
+          {data.lastUpdated instanceof Date ? data.lastUpdated.toISOString().slice(0, 10) : String(data.lastUpdated)}
+        </time>
+      </p>
+    </footer>
+  </article>
+</MainLayout>
+
+<style>
+  .draft-banner {
+    background: #fef3c7;
+    border: 2px solid #d97706;
+    color: #78350f;
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-6);
+    font-size: var(--text-sm);
+  }
+  .draft-banner strong { font-size: var(--text-base); }
+  .guide { max-width: var(--content-max); margin: 0 auto; }
+  .guide-header { margin-bottom: var(--space-8); }
+  .kicker {
+    text-transform: uppercase;
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+    margin: 0 0 var(--space-2);
+  }
+  h1 {
+    font-size: var(--text-3xl);
+    line-height: 1.2;
+    margin: 0 0 var(--space-3);
+  }
+  .description {
+    font-size: var(--text-lg);
+    color: var(--color-muted);
+    margin: 0 0 var(--space-6);
+  }
+  .cta-wrap { margin: var(--space-6) 0; }
+  .prose { line-height: 1.7; }
+  .prose :global(h2) {
+    font-size: var(--text-2xl);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-3);
+  }
+  .prose :global(h3) {
+    font-size: var(--text-xl);
+    margin-top: var(--space-6);
+  }
+  .guide-footer {
+    margin-top: var(--space-8);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border);
+  }
+  .updated { color: var(--color-muted); font-size: var(--text-sm); }
+</style>

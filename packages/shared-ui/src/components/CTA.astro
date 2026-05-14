@@ -3,15 +3,19 @@ interface Props {
   href: string;
   variant?: "primary" | "secondary";
   external?: boolean;
+  rel?: string;
+  target?: string;
 }
 
-const { href, variant = "primary", external = true } = Astro.props;
+const { href, variant = "primary", external = true, rel, target } = Astro.props;
+const resolvedRel = rel ?? (external ? "nofollow sponsored noopener" : undefined);
+const resolvedTarget = target ?? (external ? "_blank" : undefined);
 ---
 <a
   href={href}
   class:list={["cta", variant]}
-  rel={external ? "nofollow sponsored noopener" : undefined}
-  target={external ? "_blank" : undefined}
+  rel={resolvedRel}
+  target={resolvedTarget}
 >
   <slot />
 </a>

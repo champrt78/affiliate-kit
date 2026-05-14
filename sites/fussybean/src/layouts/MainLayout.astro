@@ -6,12 +6,23 @@ interface Props {
   title: string;
   description: string;
   canonical?: string;
+  robotsContent?: string;
+  ogType?: string;
+  ogImage?: string;
 }
 
-const { title, description, canonical } = Astro.props;
+const { title, description, canonical, robotsContent, ogType, ogImage } = Astro.props;
 const siteName = "FussyBean";
 ---
-<BaseLayout title={title} description={description} canonical={canonical} siteName={siteName}>
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  siteName={siteName}
+  robotsContent={robotsContent}
+  ogType={ogType}
+  ogImage={ogImage}
+>
   <header class="site-header">
     <a href="/" class="brand">FussyBean</a>
     <nav>

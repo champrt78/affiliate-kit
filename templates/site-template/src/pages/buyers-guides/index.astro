@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+import MainLayout from "../../layouts/MainLayout.astro";
+import BuyersGuideCard from "@affkit/shared-ui/BuyersGuideCard.astro";
+
+const entries = await getCollection("buyers-guides");
+const sorted = entries.sort((a, b) => {
+  const aTime = a.data.pubDate instanceof Date ? a.data.pubDate.getTime() : new Date(a.data.pubDate).getTime();
+  const bTime = b.data.pubDate instanceof Date ? b.data.pubDate.getTime() : new Date(b.data.pubDate).getTime();
+  return bTime - aTime;
+});
+---
+<MainLayout
+  title="Buyer's guides"
+  description="Comparative roundups of products we've researched but don't own — which one to buy for which use case."
+>
+  <header class="page-header">
+    <h1>Buyer's guides</h1>
+    <p class="lede">Comparative roundups of products we've researched but don't own. Honest about the sourcing; useful for picking what to buy.</p>
+  </header>
+
+  {sorted.length === 0 ? (
+    <p class="empty">No buyer's guides yet — check back soon.</p>
+  ) : (
+    <div class="grid">
+      {sorted.map((entry) => <BuyersGuideCard entry={entry} />)}
+    </div>
+  )}
+</MainLayout>
+
+<style>
+  .page-header { margin-bottom: var(--space-8); }
+  .page-header h1 { font-size: var(--text-3xl); margin: 0 0 var(--space-3); }
+  .lede { font-size: var(--text-lg); color: var(--color-muted); margin: 0; }
+  .empty { color: var(--color-muted); }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-6);
+  }
+</style>

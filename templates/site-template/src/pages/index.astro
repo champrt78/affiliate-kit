@@ -1,6 +1,17 @@
 ---
+import { getCollection } from "astro:content";
 import MainLayout from "../layouts/MainLayout.astro";
 import Hero from "@affkit/shared-ui/Hero.astro";
+import ReviewCard from "@affkit/shared-ui/ReviewCard.astro";
+
+const allReviews = await getCollection("reviews");
+const latest = allReviews
+  .sort((a, b) => {
+    const aTime = a.data.pubDate instanceof Date ? a.data.pubDate.getTime() : new Date(a.data.pubDate).getTime();
+    const bTime = b.data.pubDate instanceof Date ? b.data.pubDate.getTime() : new Date(b.data.pubDate).getTime();
+    return bTime - aTime;
+  })
+  .slice(0, 6);
 ---
 <MainLayout
   title="__SITE_NAME__"
@@ -12,21 +23,51 @@ import Hero from "@affkit/shared-ui/Hero.astro";
   />
 
   <section>
-    <h2>Latest reviews</h2>
-    <p class="muted">No reviews published yet. New content lands every quarter.</p>
+    <div class="section-head">
+      <h2>Latest reviews</h2>
+      {latest.length > 0 && <a href="/reviews/" class="see-all">See all reviews →</a>}
+    </div>
+    {latest.length === 0 ? (
+      <p class="muted">No reviews published yet. New content lands every quarter.</p>
+    ) : (
+      <div class="grid">
+        {latest.map((entry) => <ReviewCard entry={entry} />)}
+      </div>
+    )}
   </section>
 
   <section>
-    <h2>Buyer's guides</h2>
-    <p class="muted">Coming soon.</p>
+    <div class="section-head">
+      <h2>Buyer's guides</h2>
+      <a href="/buyers-guides/" class="see-all">Browse guides →</a>
+    </div>
+    <p class="muted">Comparative roundups of products we've researched but don't own.</p>
   </section>
 </MainLayout>
 
 <style>
   section { margin: var(--space-12) 0; }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: var(--space-4);
+  }
   h2 {
     font-size: var(--text-2xl);
-    margin: 0 0 var(--space-4);
+    margin: 0;
   }
+  .see-all {
+    color: var(--color-brand);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    font-weight: 600;
+  }
+  .see-all:hover { text-decoration: underline; }
   .muted { color: var(--color-muted); }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-6);
+  }
 </style>
