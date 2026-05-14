@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brand Launch Playbook — Carillon Station + Semper Fi Studios</title>
+<title>Brand Launch Playbook — Starwatch Station + Semper Fi Studios</title>
 <style>
   :root {
     --bg: #f7f7f8;
@@ -418,7 +418,7 @@
     font-weight: 600;
     margin-right: 4px;
   }
-  .brand-pill.carillon {
+  .brand-pill.starwatch {
     background: #f3e8ff;
     color: #7c3aed;
   }
@@ -481,7 +481,7 @@
 
   <header class="masthead">
     <h1>Brand Launch Playbook</h1>
-    <p class="subtitle">Carillon Station + Semper Fi Studios — claim handles, register domains, wire emails, set up safely. Tonight's checklist.</p>
+    <p class="subtitle">Starwatch Station: Stories of a Deep Space Trucker + Semper Fi Studios — claim handles, register domains, wire emails, set up safely. Tonight's checklist.</p>
     <p class="meta">Built 2026-05-13 · Updated as availability changes · Tick the checkboxes — your progress saves automatically</p>
   </header>
 
@@ -492,10 +492,10 @@
       <thead><tr><th>What</th><th>Time</th><th>Email to use</th></tr></thead>
       <tbody>
         <tr><td>Step 9 — Rotate the leaked gh token (do this first, 1 command)</td><td>2 min</td><td>n/a</td></tr>
-        <tr><td>Step 1 — Eyeball 3 Carillon handles in browser</td><td>5 min</td><td>n/a</td></tr>
+        <tr><td>Step 1 — Eyeball 3 Starwatch handles in browser</td><td>5 min</td><td>n/a</td></tr>
         <tr><td>Step 2 — Eyeball 5 Semper Fi handles in browser</td><td>5 min</td><td>n/a</td></tr>
         <tr><td>Step 3 — USPTO TESS scan for both brand names</td><td>10 min</td><td>n/a</td></tr>
-        <tr><td>Step 4 — Buy <code>carillonstation.com</code> on Porkbun</td><td>5 min · $11</td><td>The email tied to your existing Porkbun account</td></tr>
+        <tr><td>Step 4 — Buy <code>starwatchstation.tv</code> on Porkbun</td><td>5 min · $11</td><td>The email tied to your existing Porkbun account</td></tr>
         <tr><td>Step 7 — Claim 5-10 social handles</td><td>60-90 min</td><td><strong>Your master personal Gmail.</strong> Same one for every signup tonight.</td></tr>
         <tr><td>Step 8 — Turn on 2FA for that Gmail</td><td>10 min</td><td>n/a</td></tr>
       </tbody>
@@ -504,7 +504,7 @@
       <strong>Skip tonight (do this week):</strong>
       Step 5 (Cloudflare wiring), Step 6 (Email Routing for Semper Fi), Step 10 (defensive accounts), Step 11 (swap emails to branded). These are all <em>this-week</em> tasks. Don't try to do them tired tonight — the social handles are the only thing where someone else could grab your name. Everything else can wait.
     </div>
-    <p><strong>You do NOT need to set up <code>hello@carillonstation.com</code> or <code>hello@semperfistudios.com</code> tonight.</strong> Tonight, every signup uses your master Gmail. We migrate to branded emails later in the week (Steps 5-6 walk you through it click-by-click when you're ready).</p>
+    <p><strong>You do NOT need to set up <code>hello@starwatchstation.tv</code> or <code>hello@semperfistudios.com</code> tonight.</strong> Tonight, every signup uses your master Gmail. We migrate to branded emails later in the week (Steps 5-6 walk you through it click-by-click when you're ready).</p>
   </section>
 
   <div class="progress-wrap">
@@ -522,12 +522,12 @@
       <li><a href="#availability">Where we stand — availability snapshot</a></li>
       <li><a href="#email-strategy">Email strategy (read this first)</a></li>
       <li><a href="#decision-framework">Decision framework — which handle matters where</a></li>
-      <li><a href="#step-1">Step 1 — Verify ambiguous Carillon handles</a></li>
+      <li><a href="#step-1">Step 1 — Verify ambiguous Starwatch handles</a></li>
       <li><a href="#step-2">Step 2 — Lock the Semper Fi fallback handle</a></li>
       <li><a href="#step-2b">Step 2b — Handle taken? What works per platform (reference)</a></li>
       <li><a href="#step-3">Step 3 — USPTO TESS quick scan (both brands)</a></li>
-      <li><a href="#step-4">Step 4 — Register carillonstation.com</a></li>
-      <li><a href="#step-5">Step 5 — Wire Cloudflare for carillonstation.com</a></li>
+      <li><a href="#step-4">Step 4 — Register starwatchstation.tv</a></li>
+      <li><a href="#step-5">Step 5 — Wire Cloudflare for starwatchstation.tv</a></li>
       <li><a href="#step-6">Step 6 — Cloudflare Email Routing — Semper Fi</a></li>
       <li><a href="#step-7">Step 7 — Claim Tier 1 social handles (both brands)</a></li>
       <li><a href="#step-8">Step 8 — Lock down your master Gmail</a></li>
@@ -545,16 +545,16 @@
     <h2>Where we stand — availability snapshot</h2>
     <p class="lede">Verified before you sat down. Manual-check items are flagged.</p>
 
-    <h3><span class="brand-pill carillon">Carillon Station</span> Channel handles</h3>
+    <h3><span class="brand-pill starwatch">Starwatch Station</span> Channel handles</h3>
     <table>
       <thead><tr><th>Asset</th><th>Status</th><th>How checked</th></tr></thead>
       <tbody>
-        <tr><td><code>carillonstation.com</code></td><td class="status-ok">AVAILABLE</td><td>Cloudflare DNS-over-HTTPS: NXDOMAIN (Status 3)</td></tr>
-        <tr><td>YouTube <code>@CarillonStation</code></td><td class="status-ok">AVAILABLE</td><td>youtube.com/@CarillonStation → HTTP 404</td></tr>
-        <tr><td>Bluesky <code>carillonstation.bsky.social</code></td><td class="status-ok">AVAILABLE</td><td>Bluesky API: <code>Unable to resolve handle</code></td></tr>
-        <tr><td>Instagram <code>@carillonstation</code></td><td class="status-tbd">VERIFY MANUALLY (Step 1)</td><td>Instagram serves SPA shell to bots</td></tr>
-        <tr><td>X <code>@CarillonStation</code></td><td class="status-tbd">VERIFY MANUALLY (Step 1)</td><td>X returns 402 to unauth requests</td></tr>
-        <tr><td>TikTok <code>@carillonstation</code></td><td class="status-tbd">VERIFY MANUALLY (Step 1)</td><td>TikTok serves SPA shell</td></tr>
+        <tr><td><code>starwatchstation.tv</code></td><td class="status-ok">AVAILABLE</td><td>Cloudflare DNS-over-HTTPS: NXDOMAIN (Status 3)</td></tr>
+        <tr><td>YouTube <code>@StarwatchStation</code></td><td class="status-ok">AVAILABLE</td><td>youtube.com/@StarwatchStation → HTTP 404</td></tr>
+        <tr><td>Bluesky <code>starwatchstation.bsky.social</code></td><td class="status-ok">AVAILABLE</td><td>Bluesky API: <code>Unable to resolve handle</code></td></tr>
+        <tr><td>Instagram <code>@starwatchstation</code></td><td class="status-tbd">VERIFY MANUALLY (Step 1)</td><td>Instagram serves SPA shell to bots</td></tr>
+        <tr><td>X <code>@StarwatchTV</code> (15-char cap — <code>@StarwatchStation</code> is 16 chars)</td><td class="status-tbd">VERIFY MANUALLY (Step 1)</td><td>X returns 402 to unauth requests</td></tr>
+        <tr><td>TikTok <code>@starwatchstation</code></td><td class="status-tbd">VERIFY MANUALLY (Step 1)</td><td>TikTok serves SPA shell</td></tr>
       </tbody>
     </table>
 
@@ -586,7 +586,7 @@
 
     <div class="callout tip">
       <strong>For tonight only — the simple answer</strong>
-      Use <strong>your master personal Gmail</strong> for every social signup tonight. Don't worry about <code>hello@carillonstation.com</code> or <code>hello@semperfistudios.com</code> — those don't exist yet and you don't need them tonight. We set them up later this week (Steps 5-6). All the signup forms will ask for an email — paste your master Gmail every time.
+      Use <strong>your master personal Gmail</strong> for every social signup tonight. Don't worry about <code>hello@starwatchstation.tv</code> or <code>hello@semperfistudios.com</code> — those don't exist yet and you don't need them tonight. We set them up later this week (Steps 5-6). All the signup forms will ask for an email — paste your master Gmail every time.
     </div>
 
     <h3>The pattern in one line</h3>
@@ -603,7 +603,7 @@
         </tr>
         <tr>
           <td>Brand outward-facing comms (site footer, customer email, social bios)</td>
-          <td>Branded forwarder — <code>hello@carillonstation.com</code>, <code>hello@semperfistudios.com</code></td>
+          <td>Branded forwarder — <code>hello@starwatchstation.tv</code>, <code>hello@semperfistudios.com</code></td>
           <td>Looks professional. Moves with the domain if you sell. All forward to the same inbox anyway.</td>
         </tr>
         <tr>
@@ -631,7 +631,7 @@
     <p class="lede">Don't fall back across every platform just because one is taken. Fall back only on the platform where it's actually taken. Per-platform thinking beats unified-fallback rigidity.</p>
 
     <h3>The rule</h3>
-    <p><strong>Only pivot the entire brand if the handle is taken on the platform that DRIVES the business.</strong> For Semper Fi that's LinkedIn + your domain (already owned). For Carillon Station that's YouTube (verified clean). Everywhere else can absorb a per-platform fallback.</p>
+    <p><strong>Only pivot the entire brand if the handle is taken on the platform that DRIVES the business.</strong> For Semper Fi that's LinkedIn + your domain (already owned). For Starwatch Station that's YouTube (verified clean). Everywhere else can absorb a per-platform fallback.</p>
 
     <h3>How to check each platform tonight — the two-question rule</h3>
     <ol>
@@ -659,8 +659,12 @@
       </tbody>
     </table>
 
-    <h3><span class="brand-pill carillon">Carillon Station</span> per-platform priority</h3>
+    <h3><span class="brand-pill starwatch">Starwatch Station</span> per-platform priority</h3>
     <p>Content business — YouTube is non-negotiable. Cross-promotion drives growth, so consistency matters MORE than for a service brand.</p>
+    <div class="callout">
+      <strong>Brand at a glance</strong>
+      <em>Starwatch Station: Stories of a Deep Space Trucker.</em> Narrator is a retired deep space trucker — Han Solo-coded blue-collar criminality, mix of legitimate cargo runs and the off-manifest "dangerous ones." Hoped-for fandom contraction: <strong>DST</strong> (Deep Space Trucker). Use it where it reads naturally; let the fans pick it up on their own.
+    </div>
     <table>
       <thead><tr><th>Platform</th><th>Why it matters</th><th>If primary is taken</th></tr></thead>
       <tbody>
@@ -668,7 +672,7 @@
         <tr><td>Instagram</td><td>Short-form clips, thumbnails, cross-promo to YT.</td><td>Fallback unified if forced.</td></tr>
         <tr><td>TikTok</td><td>Sleep niche has real traction. Audio-drama clips perform.</td><td>Fallback acceptable.</td></tr>
         <tr><td>X</td><td>Audio-drama / podcasting community lives on X.</td><td>Fallback acceptable.</td></tr>
-        <tr><td>Bluesky</td><td>Small but vocal audience. Custom-domain handle option.</td><td>Per-platform OK; will migrate to <code>@carillonstation.com</code> on Bluesky later.</td></tr>
+        <tr><td>Bluesky</td><td>Small but vocal audience. Custom-domain handle option.</td><td>Per-platform OK; will migrate to <code>@starwatchstation.tv</code> on Bluesky later.</td></tr>
         <tr><td>Reddit</td><td>r/sleeptales, r/audiodrama, r/scifi communities.</td><td>Any reasonable variant.</td></tr>
         <tr><td>Facebook + LinkedIn</td><td>Effectively useless for this brand.</td><td>Skip entirely.</td></tr>
       </tbody>
@@ -676,7 +680,7 @@
 
     <div class="callout tip">
       <strong>Bluesky's escape hatch</strong>
-      Bluesky lets you set a custom domain as your handle (`@yourdomain.com` instead of `@you.bsky.social`). Once you own <code>semperfistudios.com</code> and <code>carillonstation.com</code>, you can be <code>@semperfistudios.com</code> and <code>@carillonstation.com</code> on Bluesky regardless of what was taken at the <code>.bsky.social</code> level. Worth setting up later this week — see <a href="https://bsky.social/about/blog/4-28-2023-domain-handle-tutorial" target="_blank" rel="noopener">Bluesky's domain-handle docs</a>.
+      Bluesky lets you set a custom domain as your handle (`@yourdomain.com` instead of `@you.bsky.social`). Once you own <code>semperfistudios.com</code> and <code>starwatchstation.tv</code>, you can be <code>@semperfistudios.com</code> and <code>@starwatchstation.tv</code> on Bluesky regardless of what was taken at the <code>.bsky.social</code> level. Worth setting up later this week — see <a href="https://bsky.social/about/blog/4-28-2023-domain-handle-tutorial" target="_blank" rel="noopener">Bluesky's domain-handle docs</a>.
     </div>
 
     <div class="callout">
@@ -691,11 +695,11 @@
     <div class="step-head">
       <div class="step-num">1</div>
       <div class="step-title-wrap">
-        <h3 class="step-title">Verify the 3 ambiguous Carillon Station handles</h3>
+        <h3 class="step-title">Verify the 3 ambiguous Starwatch Station handles</h3>
         <div class="step-meta">
           <span class="badge tonight">tonight</span>
           <span class="badge time">5 min</span>
-          <span class="brand-pill carillon">Carillon</span>
+          <span class="brand-pill starwatch">Starwatch</span>
         </div>
       </div>
       <input type="checkbox" class="step-check" data-step="1">
@@ -703,14 +707,14 @@
     <div class="step-body">
       <p>Three platforms came back ambiguous because they hide content behind JavaScript and login walls. Open each in a browser and eyeball.</p>
       <ol>
-        <li>Open <a href="https://www.instagram.com/carillonstation" target="_blank" rel="noopener">instagram.com/carillonstation</a> — if you see "Sorry, this page isn't available," it's <strong>AVAILABLE</strong>.</li>
-        <li>Open <a href="https://x.com/CarillonStation" target="_blank" rel="noopener">x.com/CarillonStation</a> — if you see "This account doesn't exist," it's <strong>AVAILABLE</strong>.</li>
-        <li>Open <a href="https://www.tiktok.com/@carillonstation" target="_blank" rel="noopener">tiktok.com/@carillonstation</a> — if you see "Couldn't find this account," it's <strong>AVAILABLE</strong>.</li>
+        <li>Open <a href="https://www.instagram.com/starwatchstation" target="_blank" rel="noopener">instagram.com/starwatchstation</a> — if you see "Sorry, this page isn't available," it's <strong>AVAILABLE</strong>.</li>
+        <li>Open <a href="https://x.com/StarwatchTV" target="_blank" rel="noopener">x.com/StarwatchTV</a> — if you see "This account doesn't exist," it's <strong>AVAILABLE</strong>. (X handle is <code>@StarwatchTV</code>, not <code>@StarwatchStation</code> — X caps usernames at 15 chars and the full name is 16.)</li>
+        <li>Open <a href="https://www.tiktok.com/@starwatchstation" target="_blank" rel="noopener">tiktok.com/@starwatchstation</a> — if you see "Couldn't find this account," it's <strong>AVAILABLE</strong>.</li>
       </ol>
-      <p><strong>Decision rule:</strong> if any one is TAKEN, you need a unified fallback handle for Carillon Station before claiming anything. Suggested fallback order: <code>@carillonstation_</code>, <code>@thecarillonstation</code>, <code>@carillonstationyt</code>. Pick the first one that's clean on all three platforms AND on YouTube + Bluesky (you can confirm those quickly via the URL pattern).</p>
+      <p><strong>Decision rule:</strong> if any one is TAKEN, you need a unified fallback handle for Starwatch Station before claiming anything. Suggested fallback order: <code>@starwatchstation_</code>, <code>@thestarwatchstation</code>, <code>@starwatchstationyt</code>. Pick the first one that's clean on all three platforms AND on YouTube + Bluesky (you can confirm those quickly via the URL pattern).</p>
       <div class="callout tip">
         <strong>Faster path</strong>
-        Run <code>carillonstation</code> through <a href="https://namechk.com" target="_blank" rel="noopener">namechk.com</a> — checks 30+ platforms at once. About 30 seconds.
+        Run <code>starwatchstation</code> through <a href="https://namechk.com" target="_blank" rel="noopener">namechk.com</a> — checks 30+ platforms at once. About 30 seconds.
       </div>
     </div>
   </section>
@@ -889,7 +893,7 @@
                 <a class="reclaim-btn" href="https://bsky.social/about/blog/4-28-2023-domain-handle-tutorial" target="_blank" rel="noopener">Set domain as handle</a>
               </div>
             </td>
-            <td>Skip the fight. Set your handle to <code>@semperfistudios.com</code> or <code>@carillonstation.com</code> via a DNS TXT record. Auto-verifies. Beats any <code>.bsky.social</code> claim.</td>
+            <td>Skip the fight. Set your handle to <code>@semperfistudios.com</code> or <code>@starwatchstation.tv</code> via a DNS TXT record. Auto-verifies. Beats any <code>.bsky.social</code> claim.</td>
             <td>Bluesky accounts are tied to DIDs and aren't transferable in the official sense. The DNS path is the answer.</td>
           </tr>
         </tbody>
@@ -941,15 +945,15 @@
       <p>Free 5-minute defensive check. You're not filing a trademark — just confirming no one else holds one that would force a rename later.</p>
       <ol>
         <li>Open <a href="https://tmsearch.uspto.gov" target="_blank" rel="noopener">tmsearch.uspto.gov</a> (the new system, replaces TESS proper).</li>
-        <li>Search exact phrase: <code>"Carillon Station"</code> with the quotes. Filter to "Live" status. Note any direct hits in class 41 (entertainment) or class 35 (advertising).</li>
+        <li>Search exact phrase: <code>"Starwatch Station"</code> with the quotes. Filter to "Live" status. Note any direct hits in class 41 (entertainment) or class 35 (advertising).</li>
         <li>Search exact phrase: <code>"Semper Fi Studios"</code>. Note hits in class 35 (advertising / marketing), class 41 (entertainment), class 42 (technology services / website design).</li>
-        <li>For each direct hit, click through and read the goods/services description. If the registered use overlaps with yours (e.g. another "Carillon Station" entertainment channel), you have a real problem and need to pivot the name.</li>
+        <li>For each direct hit, click through and read the goods/services description. If the registered use overlaps with yours (e.g. another "Starwatch Station" entertainment channel), you have a real problem and need to pivot the name.</li>
       </ol>
       <div class="callout">
         <strong>What "direct hit" means</strong>
-        Exact same phrase + overlapping commercial class = problem. <code>"The Carillon at Stationhouse Pub"</code> (different phrase, different class) is not a hit. Be honest with yourself about overlap.
+        Exact same phrase + overlapping commercial class = problem. <code>"Starwatch Observatory Tours"</code> (different phrase, different class) is not a hit. Be honest with yourself about overlap.
       </div>
-      <p><strong>Bonus check:</strong> Google each phrase in quotes (e.g. <code>"Carillon Station" channel</code>) — look for unregistered commercial uses that USPTO won't show but Google will.</p>
+      <p><strong>Bonus check:</strong> Google each phrase in quotes (e.g. <code>"Starwatch Station" channel</code>) — look for unregistered commercial uses that USPTO won't show but Google will.</p>
       <p><strong>Optional for Semper Fi:</strong> visit <a href="https://trademark.marines.mil" target="_blank" rel="noopener">trademark.marines.mil</a> (USMC Trademark Licensing Office) to confirm "Semper Fi" is fair use for a service business. Low risk, but if you want a paper trail, this is where it lives.</p>
     </div>
   </section>
@@ -958,24 +962,28 @@
     <div class="step-head">
       <div class="step-num">4</div>
       <div class="step-title-wrap">
-        <h3 class="step-title">Register carillonstation.com on Porkbun</h3>
+        <h3 class="step-title">Register starwatchstation.tv on Porkbun</h3>
         <div class="step-meta">
           <span class="badge tonight">tonight</span>
           <span class="badge time">5 min</span>
           <span class="badge critical">~$11</span>
-          <span class="brand-pill carillon">Carillon</span>
+          <span class="brand-pill starwatch">Starwatch</span>
         </div>
       </div>
       <input type="checkbox" class="step-check" data-step="4">
     </div>
     <div class="step-body">
       <p><strong>Email for this signup:</strong> the email tied to your existing Porkbun account (the one you used to buy the 5 affiliate domains + semperfistudios.com). You're not creating a new account.</p>
+      <div class="callout">
+        <strong>Why <code>.tv</code> and not <code>.com</code></strong>
+        <code>starwatchstation.com</code> is squatted by a parking-page registrar. <code>.tv</code> is the right call anyway — brand-fit for a YouTube-first show, and reads as "Starwatch Station, the channel" at a glance.
+      </div>
       <ol>
         <li>Open <a href="https://porkbun.com" target="_blank" rel="noopener">porkbun.com</a> in a new tab.</li>
         <li>Click <strong>"Account"</strong> top right → log in with your existing credentials.</li>
-        <li>On the homepage, find the big search box. Type: <code>carillonstation.com</code> → press Enter.</li>
-        <li>You'll see a results page. <code>carillonstation.com</code> row at the top — click the <strong>green "ADD"</strong> button next to it.</li>
-        <li><strong>Optional defensive:</strong> on the same results page, scroll down. If you see <code>carillonstation.net</code> at a reasonable price (~$11), click ADD on that too. Skip <code>.tv</code> if it's $30+ — not worth defensive money.</li>
+        <li>On the homepage, find the big search box. Type: <code>starwatchstation.tv</code> → press Enter.</li>
+        <li>You'll see a results page. <code>starwatchstation.tv</code> row at the top — click the <strong>green "ADD"</strong> button next to it. (Heads up: <code>.tv</code> registrations typically run higher than <code>.com</code> — verify the price at checkout before committing.)</li>
+        <li><strong>Optional defensive:</strong> on the same results page, scroll down. If you see <code>starwatchstation.net</code> or <code>starwatchstation.show</code> at a reasonable price (~$11), click ADD on those too. Skip any TLD priced $30+ — not worth defensive money.</li>
         <li>Click the <strong>cart icon</strong> top right.</li>
         <li>On the cart page, you'll see a "WHOIS Privacy" toggle. Confirm it's <strong>ON</strong> (free, hides your home address from public WHOIS lookups).</li>
         <li>Choose registration period: <strong>1 year is fine.</strong> Auto-renew can stay default.</li>
@@ -992,11 +1000,11 @@
     <div class="step-head">
       <div class="step-num">5</div>
       <div class="step-title-wrap">
-        <h3 class="step-title">Wire Cloudflare + Email Routing for carillonstation.com</h3>
+        <h3 class="step-title">Wire Cloudflare + Email Routing for starwatchstation.tv</h3>
         <div class="step-meta">
           <span class="badge thisweek">this week (NOT tonight)</span>
           <span class="badge time">25 min + propagation wait</span>
-          <span class="brand-pill carillon">Carillon</span>
+          <span class="brand-pill starwatch">Starwatch</span>
         </div>
       </div>
       <input type="checkbox" class="step-check" data-step="5">
@@ -1007,11 +1015,11 @@
         Skip this step on basketball night. It takes 25 min of focused clicking plus a DNS-propagation wait of 5-60 min. The branded email is nice-to-have, not blocking. Your social signups in Step 7 work fine with your master Gmail. Come back to this step rested.
       </div>
 
-      <h3>Part A — Move <code>carillonstation.com</code> onto Cloudflare DNS</h3>
+      <h3>Part A — Move <code>starwatchstation.tv</code> onto Cloudflare DNS</h3>
       <ol>
         <li>Open <a href="https://dash.cloudflare.com" target="_blank" rel="noopener">dash.cloudflare.com</a>. Log in (same account you use for the affiliate sites).</li>
         <li>On the home dashboard, click the blue <strong>"+ Add a domain"</strong> button (top right).</li>
-        <li>Type: <code>carillonstation.com</code> → click <strong>"Continue"</strong>.</li>
+        <li>Type: <code>starwatchstation.tv</code> → click <strong>"Continue"</strong>.</li>
         <li>Choose plan: scroll to the bottom, find <strong>"Free"</strong> → click <strong>"Continue"</strong>.</li>
         <li>Cloudflare scans for existing DNS records (will be empty for a fresh domain). Click <strong>"Continue"</strong>.</li>
         <li>You'll see a "Change your nameservers" screen with <strong>two nameservers</strong> like:
@@ -1019,7 +1027,7 @@
 example2.ns.cloudflare.com</code></pre>
           <strong>Copy both</strong> (yours will be different — they're per-account).</li>
         <li>Open a new tab → <a href="https://porkbun.com" target="_blank" rel="noopener">porkbun.com</a> → log in.</li>
-        <li>On the Porkbun dashboard, find <code>carillonstation.com</code> in your domain list → click <strong>"DETAILS"</strong> on the right.</li>
+        <li>On the Porkbun dashboard, find <code>starwatchstation.tv</code> in your domain list → click <strong>"DETAILS"</strong> on the right.</li>
         <li>Scroll to the section labeled <strong>"AUTHORITATIVE NAMESERVERS"</strong> → click the <strong>edit icon (pencil)</strong>.</li>
         <li>Delete the existing Porkbun nameservers. Paste the two Cloudflare nameservers, one per line.</li>
         <li>Click <strong>"SUBMIT"</strong> → confirm.</li>
@@ -1029,7 +1037,7 @@ example2.ns.cloudflare.com</code></pre>
 
       <h3>Part B — Enable Email Routing (after Part A confirms)</h3>
       <ol>
-        <li>Back in Cloudflare dashboard → click your domain (<code>carillonstation.com</code>) from the home dashboard.</li>
+        <li>Back in Cloudflare dashboard → click your domain (<code>starwatchstation.tv</code>) from the home dashboard.</li>
         <li>Left sidebar → <strong>Email</strong> → <strong>Email Routing</strong>.</li>
         <li>You'll see a "Get started" page. Click the blue <strong>"Enable Email Routing"</strong> button.</li>
         <li>Cloudflare will say "Add DNS records to start sending emails." Click <strong>"Add records and enable"</strong>. This automatically adds the MX + TXT records to your DNS.</li>
@@ -1037,7 +1045,7 @@ example2.ns.cloudflare.com</code></pre>
         <li>Click <strong>"Create address"</strong> (a blue button).</li>
         <li>Fill in the form:
           <ul>
-            <li><strong>Custom address:</strong> <code>hello</code> (Cloudflare adds <code>@carillonstation.com</code>)</li>
+            <li><strong>Custom address:</strong> <code>hello</code> (Cloudflare adds <code>@starwatchstation.tv</code>)</li>
             <li><strong>Action:</strong> dropdown → choose <strong>"Send to an email"</strong></li>
             <li><strong>Destination address:</strong> <code>your-master-gmail@gmail.com</code> (the actual address you'll be using)</li>
           </ul>
@@ -1055,13 +1063,13 @@ example2.ns.cloudflare.com</code></pre>
         <li>Destination: <code>your-master-gmail@gmail.com</code> (already verified).</li>
         <li>Click <strong>"Save"</strong>.</li>
       </ol>
-      <p>Now <em>any</em> email to <code>anything@carillonstation.com</code> forwards to your master Gmail. Useful for defensive social accounts (Step 10) and for creating one-off addresses like <code>contact@</code>, <code>press@</code>, <code>support@</code> without setup.</p>
+      <p>Now <em>any</em> email to <code>anything@starwatchstation.tv</code> forwards to your master Gmail. Useful for defensive social accounts (Step 10) and for creating one-off addresses like <code>contact@</code>, <code>press@</code>, <code>support@</code> without setup.</p>
 
       <h3>Part D — Test it works</h3>
       <ol>
-        <li>From your phone (or another email), send a quick test email to <code>hello@carillonstation.com</code>. Subject: "test". Body: anything.</li>
+        <li>From your phone (or another email), send a quick test email to <code>hello@starwatchstation.tv</code>. Subject: "test". Body: anything.</li>
         <li>Check your master Gmail. Should arrive within 30 seconds. The "from" address shown will be the sender's real email, forwarded transparently.</li>
-        <li>If it works → done. Branded email for Carillon Station is live. If it doesn't within 5 min, check Cloudflare → Email Routing → Routing rules to confirm the rule is "Active" (green dot).</li>
+        <li>If it works → done. Branded email for Starwatch Station is live. If it doesn't within 5 min, check Cloudflare → Email Routing → Routing rules to confirm the rule is "Active" (green dot).</li>
       </ol>
       <p>That's the entire branded-email setup. Free. Forever. Skip this tonight — come back to it Tuesday.</p>
     </div>
@@ -1124,7 +1132,7 @@ example2.ns.cloudflare.com</code></pre>
     <div class="step-body">
       <div class="callout tip">
         <strong>The same email for every signup tonight</strong>
-        Every signup form below asks for an email. <strong>Paste your master personal Gmail.</strong> Same one for every platform, every brand, every account. Do NOT use <code>hello@carillonstation.com</code> — that email doesn't exist yet and you don't need it tonight. You'll swap to branded addresses in Step 11 (this week).
+        Every signup form below asks for an email. <strong>Paste your master personal Gmail.</strong> Same one for every platform, every brand, every account. Do NOT use <code>hello@starwatchstation.tv</code> — that email doesn't exist yet and you don't need it tonight. You'll swap to branded addresses in Step 11 (this week).
       </div>
 
       <p>Don't get stuck on perfect profile setup tonight — just claim the names + bio + link. You can polish over the weekend.</p>
@@ -1135,9 +1143,9 @@ example2.ns.cloudflare.com</code></pre>
         <thead><tr><th>Brand</th><th>Bio (paste verbatim)</th><th>Website / link</th></tr></thead>
         <tbody>
           <tr>
-            <td><span class="brand-pill carillon">Carillon Station</span></td>
+            <td><span class="brand-pill starwatch">Starwatch Station</span></td>
             <td><code>Sleep stories from a quiet station at the edge of the routes.</code></td>
-            <td><code>https://carillonstation.com</code> (will be a coming-soon page until you set one up; that's fine)</td>
+            <td><code>https://starwatchstation.tv</code> (will be a coming-soon page until you set one up; that's fine)</td>
           </tr>
           <tr>
             <td><span class="brand-pill semperfi">Semper Fi Studios</span></td>
@@ -1148,34 +1156,34 @@ example2.ns.cloudflare.com</code></pre>
       </table>
       <p><strong>Avatar:</strong> For tonight, use a simple text-only image. Free easy option: <a href="https://www.canva.com/create/logos/" target="_blank" rel="noopener">canva.com/create/logos</a> → type the brand name → pick a clean sans-serif design → download as PNG. 5 minutes per brand, max. Same image on every platform.</p>
 
-      <h3><span class="brand-pill carillon">Carillon Station</span> — Tier 1 (5 platforms)</h3>
+      <h3><span class="brand-pill starwatch">Starwatch Station</span> — Tier 1 (5 platforms)</h3>
       <p>The sleep audio drama lives most on YouTube, but defensive claims matter. <strong>Click the green button on each row — it drops you straight on the signup page.</strong></p>
       <table>
         <thead><tr><th>Platform</th><th>Handle to claim</th><th>Click to sign up</th></tr></thead>
         <tbody>
           <tr>
             <td><strong>YouTube</strong></td>
-            <td><code>@CarillonStation</code></td>
+            <td><code>@StarwatchStation</code></td>
             <td><a class="signup-btn" href="https://www.youtube.com/account_advanced" target="_blank" rel="noopener">Create YouTube handle</a></td>
           </tr>
           <tr>
             <td><strong>Instagram</strong></td>
-            <td><code>@carillonstation</code></td>
+            <td><code>@starwatchstation</code></td>
             <td><a class="signup-btn" href="https://www.instagram.com/accounts/emailsignup" target="_blank" rel="noopener">Sign up on Instagram</a></td>
           </tr>
           <tr>
             <td><strong>X</strong></td>
-            <td><code>@CarillonStation</code></td>
+            <td><code>@StarwatchTV</code> <span style="font-size: 12px; color: var(--text-muted);">(15-char cap forces variant; full name is 16)</span></td>
             <td><a class="signup-btn" href="https://x.com/i/flow/signup" target="_blank" rel="noopener">Sign up on X</a></td>
           </tr>
           <tr>
             <td><strong>TikTok</strong></td>
-            <td><code>@carillonstation</code></td>
+            <td><code>@starwatchstation</code></td>
             <td><a class="signup-btn" href="https://www.tiktok.com/signup" target="_blank" rel="noopener">Sign up on TikTok</a></td>
           </tr>
           <tr>
             <td><strong>Bluesky</strong></td>
-            <td><code>carillonstation.bsky.social</code></td>
+            <td><code>starwatchstation.bsky.social</code></td>
             <td><a class="signup-btn" href="https://bsky.app/" target="_blank" rel="noopener">Sign up on Bluesky</a></td>
           </tr>
         </tbody>
@@ -1224,11 +1232,11 @@ example2.ns.cloudflare.com</code></pre>
         <li><strong>Avatar:</strong> a placeholder text logo. Solid background, brand name in clean sans-serif. 5 minutes in any tool. Same image everywhere.</li>
         <li><strong>Bio:</strong>
           <ul>
-            <li>Carillon Station: "Sleep stories from a quiet station at the edge of the routes."</li>
+            <li>Starwatch Station: "Sleep stories from a quiet station at the edge of the routes."</li>
             <li>Semper Fi Studios: "Marine veteran-owned web studio. Affiliate sites + local business websites."</li>
           </ul>
         </li>
-        <li><strong>Link in bio:</strong> the brand's domain (even if it's a coming-soon page). <code>carillonstation.com</code> or <code>semperfistudios.com</code>.</li>
+        <li><strong>Link in bio:</strong> the brand's domain (even if it's a coming-soon page). <code>starwatchstation.tv</code> or <code>semperfistudios.com</code>.</li>
       </ul>
 
       <div class="callout warn">
@@ -1313,22 +1321,22 @@ example2.ns.cloudflare.com</code></pre>
         A defensive account is one you create not to USE but to PREVENT impersonators / squatters / lookalikes. The profile is mostly empty — placeholder avatar, a one-line bio pointing at your real handle, no posts. Goal: sit on the username so nobody else can register it and confuse your audience.
       </div>
 
-      <p>Not blocking tonight, but cheap insurance to claim before any public mention. Each defensive account needs a unique email — use your Cloudflare wildcard (<code>defensive-ig@semperfistudios.com</code>, <code>placeholder-tt@carillonstation.com</code>, etc.) so they all forward to your master Gmail.</p>
+      <p>Not blocking tonight, but cheap insurance to claim before any public mention. Each defensive account needs a unique email — use your Cloudflare wildcard (<code>defensive-ig@semperfistudios.com</code>, <code>placeholder-tt@starwatchstation.tv</code>, etc.) so they all forward to your master Gmail.</p>
 
       <h3>What to claim defensively</h3>
       <ul>
         <li><strong>The fallback handle on platforms where you got the primary.</strong> If you got <code>@semperfistudios</code> on Instagram, also claim <code>@semperfistudiosco</code> on Instagram so an impersonator can't grab it. (And vice versa.)</li>
-        <li><strong>Common typos / variants of your primary.</strong> For Carillon Station: <code>@CarillonStation</code> (different cap), <code>@carillon_station</code>, <code>@TheCarillonStation</code>. For Semper Fi: <code>@SemperFiStudio</code> (singular), <code>@SemperFi_Studios</code>.</li>
+        <li><strong>Common typos / variants of your primary.</strong> For Starwatch Station: <code>@starwatch_station</code>, <code>@TheStarwatchStation</code>, <code>@StarwatchStationTV</code>, and the X variant <code>@StarwatchTV</code> mirrored on other platforms so impersonators can't bridge the gap. For Semper Fi: <code>@SemperFiStudio</code> (singular), <code>@SemperFi_Studios</code>.</li>
         <li><strong>3-5 max per platform.</strong> Don't try to claim every conceivable variant — diminishing returns past the obvious impersonator targets.</li>
       </ul>
 
       <h3>Other platforms worth Tier-2 / Tier-3 claims</h3>
       <ul>
         <li><strong>Threads</strong> (Meta) — auto-imports from Instagram if you say yes during IG setup. Skip if you want them independent.</li>
-        <li><strong>Reddit</strong> — <code>u/CarillonStation</code> and <code>u/semperfistudios</code> (and the fallback). Useful for community participation in <code>r/sleeptales</code>, <code>r/audiodrama</code>, <code>r/Entrepreneur</code>, <code>r/SmallBusiness</code>, <code>r/SideHustle</code>.</li>
+        <li><strong>Reddit</strong> — <code>u/StarwatchStation</code> and <code>u/semperfistudios</code> (and the fallback). Useful for community participation in <code>r/sleeptales</code>, <code>r/audiodrama</code>, <code>r/Entrepreneur</code>, <code>r/SmallBusiness</code>, <code>r/SideHustle</code>.</li>
         <li><strong>GitHub orgs</strong> — only if you ever plan to ship public templates. <a href="https://github.com/account/organizations/new" target="_blank" rel="noopener">github.com/account/organizations/new</a></li>
-        <li><strong>Pinterest</strong> — relevant for Carillon Station eventually (cover-art pins). Not urgent.</li>
-        <li><strong>Spotify for Podcasters</strong> — only when Carillon Station has an audio version. Defer to Arc B.</li>
+        <li><strong>Pinterest</strong> — relevant for Starwatch Station eventually (cover-art pins). Not urgent.</li>
+        <li><strong>Spotify for Podcasters</strong> — only when Starwatch Station has an audio version. Defer to Arc B.</li>
       </ul>
 
       <p>For each, skip profile setup beyond avatar + bio + link back to your real handle.</p>
@@ -1351,7 +1359,7 @@ example2.ns.cloudflare.com</code></pre>
     <div class="step-body">
       <p>Once Email Routing is verified (Steps 5-6) and you've actually received a test email at each <code>hello@brand.com</code>, update the platforms.</p>
       <ol>
-        <li>For each Tier 1 social account: profile settings → contact info → swap from master Gmail to <code>hello@carillonstation.com</code> (or Semper Fi's branded). Save.</li>
+        <li>For each Tier 1 social account: profile settings → contact info → swap from master Gmail to <code>hello@starwatchstation.tv</code> (or Semper Fi's branded). Save.</li>
         <li>The platform-of-record accounts (Google, Cloudflare, Porkbun, AWS, Anthropic, Vercel) stay on the master Gmail — do NOT swap these.</li>
         <li>On each brand's domain (or coming-soon page), put <code>hello@brand.com</code> in the footer / contact section.</li>
       </ol>
@@ -1366,20 +1374,20 @@ example2.ns.cloudflare.com</code></pre>
     <div class="step-head">
       <div class="step-num">12</div>
       <div class="step-title-wrap">
-        <h3 class="step-title">Phase 12 — Write Carillon Station s01e01</h3>
+        <h3 class="step-title">Phase 12 — Write Starwatch Station s01e01</h3>
         <div class="step-meta">
           <span class="badge thisweek">this week</span>
           <span class="badge time">2-3 hours</span>
-          <span class="brand-pill carillon">Carillon</span>
+          <span class="brand-pill starwatch">Starwatch</span>
         </div>
       </div>
       <input type="checkbox" class="step-check" data-step="12">
     </div>
     <div class="step-body">
-      <p>The Carillon Station plugin is fully built. The last piece of the Arc A foundation is writing episode 1 end-to-end through the command surface to prove the loop works.</p>
+      <p>The Starwatch Station plugin is fully built. The last piece of the Arc A foundation is writing episode 1 end-to-end through the command surface to prove the loop works.</p>
       <ol>
         <li>Pull the latest <code>phase-1-implementation</code> branch.<br>
-          <pre><code>cd $env:USERPROFILE\source\repos\carillon-station
+          <pre><code>cd $env:USERPROFILE\source\repos\starwatch-station
 git checkout phase-1-implementation
 git pull
 pwsh scripts/install-plugin.ps1</code></pre>
@@ -1421,8 +1429,8 @@ pwsh scripts/install-plugin.ps1</code></pre>
     <h3>Existing related docs</h3>
     <ul>
       <li>Semper Fi launch checklist (parent): <code>docs/semperfistudios-launch-checklist.md</code></li>
-      <li>Carillon Station spec: <code>github.com/champrt78/carillon-station</code> → <code>docs/superpowers/specs/2026-05-13-carillon-station-design.md</code></li>
-      <li>Carillon Station phase-1 implementation plan: <code>github.com/champrt78/carillon-station</code> → <code>docs/superpowers/plans/2026-05-13-carillon-station-phase-1.md</code></li>
+      <li>Starwatch Station spec: <code>github.com/champrt78/starwatch-station</code> → <code>docs/superpowers/specs/2026-05-13-starwatch-station-design.md</code></li>
+      <li>Starwatch Station phase-1 implementation plan: <code>github.com/champrt78/starwatch-station</code> → <code>docs/superpowers/plans/2026-05-13-starwatch-station-phase-1.md</code></li>
       <li>Affiliate sites repo: <code>github.com/champrt78/affiliate-kit</code></li>
     </ul>
     <h3>Tools / sites you'll touch tonight</h3>
