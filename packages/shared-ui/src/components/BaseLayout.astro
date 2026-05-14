@@ -6,10 +6,26 @@ interface Props {
   description: string;
   canonical?: string;
   siteName: string;
+  robotsContent?: string;
+  themeColor?: string;
+  ogType?: string;
+  ogImage?: string;
 }
 
-const { title, description, canonical, siteName } = Astro.props;
+const {
+  title,
+  description,
+  canonical,
+  siteName,
+  robotsContent,
+  themeColor,
+  ogType,
+  ogImage,
+} = Astro.props;
 const fullTitle = title.includes(siteName) ? title : `${title} — ${siteName}`;
+const canonicalHref = canonical ?? Astro.url.href;
+const defaultOgImage = `${Astro.site ?? ""}og-default.png`;
+const resolvedOgImage = ogImage ?? defaultOgImage;
 ---
 <!doctype html>
 <html lang="en">
@@ -17,13 +33,19 @@ const fullTitle = title.includes(siteName) ? title : `${title} — ${siteName}`;
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
-  {canonical && <link rel="canonical" href={canonical} />}
+  <meta name="robots" content={robotsContent ?? "index, follow"} />
+  <meta name="theme-color" content={themeColor ?? "#000000"} />
+  <link rel="canonical" href={canonicalHref} />
   <title>{fullTitle}</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
-  {canonical && <meta property="og:url" content={canonical} />}
-  <meta property="og:type" content="website" />
+  <meta property="og:url" content={Astro.url.href} />
+  <meta property="og:type" content={ogType ?? "website"} />
+  <meta property="og:image" content={resolvedOgImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content={resolvedOgImage} />
 </head>
 <body>
   <slot />

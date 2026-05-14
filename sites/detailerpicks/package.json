@@ -13,6 +13,7 @@
     "@affkit/shared-styles": "workspace:*",
     "@affkit/shared-ui": "workspace:*",
     "@affkit/shared-utils": "workspace:*",
+    "@astrojs/sitemap": "^3.2.0",
     "astro": "^4.16.0"
   },
   "devDependencies": {

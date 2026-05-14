@@ -29,6 +29,10 @@ async function makeFakeTemplate(root: string) {
     join(root, "templates", "site-template", "public", "favicon.svg"),
     `<svg><text>__INITIAL__</text></svg>`
   );
+  await writeFile(
+    join(root, "templates", "site-template", "astro.config.mjs"),
+    `import { defineConfig } from "astro/config";\nexport default defineConfig({ site: "__SITE_URL__" });\n`
+  );
 }
 
 describe("copyTemplate", () => {
@@ -110,6 +114,26 @@ describe("copyTemplate", () => {
       "utf-8"
     );
     expect(svg).toContain("<text>F</text>");
+  });
+
+  it("substitutes __SITE_URL__ in astro.config.mjs as a literal site value", async () => {
+    await copyTemplate({
+      monorepoRoot: workDir,
+      slug: "gameovergear",
+      siteName: "GameOverGear",
+      siteUrl: "https://gameovergear.games",
+      niche: "gaming gear",
+      tagline: "Loadouts that don't quit.",
+      contactEmail: "hello@gameovergear.games",
+    });
+    const config = await readFile(
+      join(workDir, "sites", "gameovergear", "astro.config.mjs"),
+      "utf-8"
+    );
+    expect(config).toContain(`site: "https://gameovergear.games"`);
+    expect(config).not.toContain("__SITE_URL__");
+    expect(config).not.toContain("process.env.SITE_URL");
+    expect(config).not.toContain("https://example.com");
   });
 
   it("refuses to overwrite an existing site directory", async () => {

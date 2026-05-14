@@ -1,10 +1,14 @@
 import { defineConfig } from "astro/config";
-
-const site = process.env.SITE_URL ?? "https://example.com";
+import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site,
+  site: "https://fussybean.com",
   output: "static",
+  integrations: [
+    sitemap({
+      filter: (page) => !page.startsWith("/go/"),
+    }),
+  ],
   build: {
     inlineStylesheets: "auto",
   },
