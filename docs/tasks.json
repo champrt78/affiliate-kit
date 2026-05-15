@@ -1,0 +1,69 @@
+{
+  "tasks": [
+    {
+      "id": "amazon01",
+      "title": "Apply for Amazon Associates under mywildlifecam.com",
+      "status": "todo",
+      "completion_percent": 0,
+      "description": "Submit the Amazon Associates application using mywildlifecam.com as the apex. The site is HTTP 200, has Disclosure + Privacy + About pages — qualifies. Apply, wait 1-3 days for approval, then plug the tracking tag into scripts/add-link.ps1 calls. Application URL: https://affiliate-program.amazon.com/",
+      "due": "today",
+      "estimate": "10 min + 1-3 day wait",
+      "subtasks": [
+        { "id": "a1", "title": "Submit application at affiliate-program.amazon.com", "done": false },
+        { "id": "a2", "title": "Wait for approval email (1-3 days)", "done": false },
+        { "id": "a3", "title": "Add tracking tag to scripts/add-link.ps1 default calls", "done": false },
+        { "id": "a4", "title": "Backfill tag into existing KV entries", "done": false }
+      ],
+      "notes": "Required before review #1 can earn revenue. Every Amazon link shipped without a tracking tag = unattributable click. From RAY_QUEUE.md task #2."
+    },
+    {
+      "id": "r2-paapi",
+      "title": "Enable Cloudflare R2 + apply for Amazon PA-API",
+      "status": "todo",
+      "completion_percent": 0,
+      "description": "Two-step toward product images. (a) Enable R2 in the CF dashboard for hero image hosting. (b) Apply for PA-API (gated on 3 qualifying Associates sales in 180 days — chicken-and-egg with the Associates application).",
+      "due": "this week",
+      "estimate": "30s (R2) + 10min (PA-API when eligible)",
+      "subtasks": [
+        { "id": "r1", "title": "Toggle R2 ON at dash.cloudflare.com → R2", "done": false },
+        { "id": "r2", "title": "Wait until 3 Associates sales accumulated", "done": false },
+        { "id": "r3", "title": "Apply for PA-API at Associates console", "done": false }
+      ],
+      "notes": "Workaround until R2 lands: paste Amazon image URLs into review frontmatter (images.hero: 'https://m.media-amazon.com/...'). Not bulletproof. From RAY_QUEUE.md task #4."
+    },
+    {
+      "id": "first-review",
+      "title": "Run first real review via scripts/new-review.ps1",
+      "status": "todo",
+      "completion_percent": 0,
+      "description": "Use the scaffolding script to scaffold and publish the first actual review on mywildlifecam (hero site). Proves the Phase 2 content pipeline end-to-end.",
+      "due": "this week",
+      "estimate": "60-90 min for a real review",
+      "subtasks": [
+        { "id": "rv1", "title": "Pick the first product to review", "done": false },
+        { "id": "rv2", "title": "Run pwsh scripts/new-review.ps1 -Site mywildlifecam -Slug <slug>", "done": false },
+        { "id": "rv3", "title": "Fill the ## My Take section (DRAFT guard catches empty)", "done": false },
+        { "id": "rv4", "title": "Wire affiliate links via scripts/add-link.ps1", "done": false },
+        { "id": "rv5", "title": "Verify JSON-LD productSchema renders + canonical URL is right", "done": false },
+        { "id": "rv6", "title": "Deploy and verify HTTP 200 on the new review URL", "done": false }
+      ],
+      "notes": "Best done AFTER Amazon Associates approval so links earn from launch. Otherwise links cloak but earn nothing."
+    },
+    {
+      "id": "askbigchew",
+      "title": "Migrate askbigchew DNS to Cloudflare",
+      "status": "todo",
+      "completion_percent": 0,
+      "description": "Walk-through doc exists at docs/askbigchew-cloudflare-migration.html. 6th sister site that needs to come under the same Cloudflare umbrella as the other 5.",
+      "due": "this week",
+      "estimate": "20-30 min",
+      "subtasks": [
+        { "id": "ab1", "title": "Open docs/askbigchew-cloudflare-migration.html and follow the click-by-click", "done": false },
+        { "id": "ab2", "title": "Add askbigchew to CF Pages", "done": false },
+        { "id": "ab3", "title": "Update apex DNS at current registrar to CF", "done": false },
+        { "id": "ab4", "title": "Verify HTTP 200 + SSL", "done": false }
+      ],
+      "notes": "Standalone task — not blocked by anything; not blocking anything."
+    }
+  ]
+}

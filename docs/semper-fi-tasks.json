@@ -1,0 +1,73 @@
+{
+  "tasks": [
+    {
+      "id": "tier2-socials",
+      "title": "Tier 2 defensive social registrations",
+      "status": "todo",
+      "completion_percent": 0,
+      "description": "Claim @semperfistudios (or fallback handle) on Reddit, Threads, Pinterest, and other Tier 2 platforms per the launch checklist. Cheap insurance against squatters.",
+      "due": "this week",
+      "estimate": "30-45 min",
+      "subtasks": [
+        { "id": "t1", "title": "Reddit u/semperfistudios", "done": false },
+        { "id": "t2", "title": "Threads (auto-imports from Instagram if done first)", "done": false },
+        { "id": "t3", "title": "Pinterest", "done": false },
+        { "id": "t4", "title": "Cross-post Bluesky", "done": false }
+      ],
+      "notes": "From docs/semperfistudios-launch-checklist.md → Tier 2 section. Tier 1 (7 handles + domain) is already done."
+    },
+    {
+      "id": "tiktok-swap",
+      "title": "TikTok username swap to canonical handle",
+      "status": "todo",
+      "completion_percent": 0,
+      "description": "TikTok blocked the canonical username swap until 2026-06-11 by their 30-day cooldown rule. Re-attempt after that date.",
+      "due": "2026-06-11",
+      "estimate": "5 min",
+      "subtasks": [
+        { "id": "tt1", "title": "Wait until 2026-06-11 (cooldown expires)", "done": false },
+        { "id": "tt2", "title": "Attempt swap from @semperfistudios1775 → @semperfistudios", "done": false },
+        { "id": "tt3", "title": "Update bio + cross-platform references if successful", "done": false }
+      ],
+      "notes": "Blocked on calendar. Hard date 2026-06-11."
+    },
+    {
+      "id": "service-page",
+      "title": "Define service offerings on semperfistudios.com",
+      "status": "todo",
+      "completion_percent": 0,
+      "description": "The domain is owned but nothing's at it yet. Need a one-page site (or simple landing) that names: who the brand is (Marine-veteran-owned), what's offered (done-for-you affiliate sites + local business web design), how to engage.",
+      "due": "this week",
+      "estimate": "2-3 hr",
+      "subtasks": [
+        { "id": "sp1", "title": "Pick site shape (one-page, simple, no CMS yet)", "done": false },
+        { "id": "sp2", "title": "Write service descriptions for each offering", "done": false },
+        { "id": "sp3", "title": "Add contact form or scheduling link", "done": false },
+        { "id": "sp4", "title": "Deploy to Cloudflare Pages", "done": false }
+      ],
+      "notes": "Visiting semperfistudios.com today returns nothing useful — that's a credibility leak for any social link clicker."
+    },
+    {
+      "id": "first-client",
+      "title": "First client engagement",
+      "status": "todo",
+      "completion_percent": 0,
+      "description": "Get the first paying client through the door. Source via social participation in r/Entrepreneur, r/SmallBusiness, r/affiliate, r/veterans, r/SideHustle (Reddit handle from Tier 2 above), or LinkedIn outreach.",
+      "due": "this month",
+      "estimate": "ongoing",
+      "subtasks": [],
+      "notes": "Soft deadline — measures whether the brand actually has a market or is just identity work."
+    },
+    {
+      "id": "repo-split-decision",
+      "title": "Decide whether Semper Fi should split into its own repo",
+      "status": "todo",
+      "completion_percent": 0,
+      "description": "Currently lives in affiliate-sites/docs/. Splitting decision depends on whether Semper Fi's tooling and content diverges enough from Affiliate Kit's. Track for a week or two then decide.",
+      "due": "next",
+      "estimate": "decision: 30 min · execution: 2 hr if yes",
+      "subtasks": [],
+      "notes": "If split: move docs into a new champrt78/semperfistudios repo and update projects-hub config.js to drop the custom path overrides."
+    }
+  ]
+}
