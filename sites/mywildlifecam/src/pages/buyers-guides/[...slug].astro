@@ -21,8 +21,8 @@ const { entry } = Astro.props;
 const { data, body } = entry;
 const { Content } = await entry.render();
 
-// DRAFT detection — the buyers-guide template uses a separate placeholder comment
-const DRAFT_MARKER = "replace with the actual editor's note before publishing";
+// DRAFT detection — shared marker across review + buyers-guide piece types
+const DRAFT_MARKER = "_The Bottom Line is being written._";
 const isDraft = typeof body === "string" && body.includes(DRAFT_MARKER);
 
 // One JSON-LD Product entry per listed product. Google reads each block independently.
@@ -53,7 +53,7 @@ const robotsContent = isDraft ? "noindex, nofollow" : "index, follow";
 
   {isDraft && (
     <aside class="draft-banner" role="alert">
-      <strong>DRAFT</strong> — this guide's editor's note hasn't been filled in.
+      <strong>DRAFT</strong> — this guide's "Bottom Line" section hasn't been filled in.
       Don't link to this page yet. Indexing is disabled until it's complete.
     </aside>
   )}
