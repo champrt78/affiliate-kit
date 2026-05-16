@@ -1,4 +1,4 @@
-import { runWrangler, withCfToken } from "./wrangler";
+import { runWrangler, withCfToken } from "./wrangler.js";
 
 export interface CreateR2BucketInput {
   bucketName: string;
