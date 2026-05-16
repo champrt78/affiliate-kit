@@ -86,6 +86,135 @@ Set-Content -Path $targetPath -Value $content -NoNewline
 
 Write-Host "[ok] Wrote $targetPath"
 
+# -----------------------------------------------------------------------------
+# Sibling AI-drafting prompt file: <slug>.prompt.md
+#
+# Composes a markdown prompt the publisher pastes into Claude to expand the
+# scaffold. Pulls voice doctrine (forbidden phrases + preferred framings) and
+# per-site reader-segment metadata. If either source file is missing, emits a
+# stub with a <!-- WARNING --> line — never blocks the scaffold itself.
+# -----------------------------------------------------------------------------
+
+$voiceDoctrinePath = Join-Path $repoRoot "docs/voice-doctrine.md"
+$siteConfigPath = Join-Path $repoRoot "sites/$Site/src/data/site-config.json"
+$promptPath = [System.IO.Path]::ChangeExtension($targetPath, $null) + "prompt.md"
+# ChangeExtension to $null strips the extension entirely (returns "...slug.")
+# so we re-attach "prompt.md" to yield "<slug>.prompt.md".
+
+$voiceWarning = $null
+$siteWarning = $null
+
+$voiceDoctrine = $null
+if (Test-Path $voiceDoctrinePath) {
+    $voiceDoctrine = Get-Content $voiceDoctrinePath -Raw
+} else {
+    $voiceWarning = "<!-- WARNING: voice doctrine ($voiceDoctrinePath) missing — prompt is incomplete. Run U1 to create it. -->"
+}
+
+$siteConfig = $null
+if (Test-Path $siteConfigPath) {
+    try {
+        $siteConfig = Get-Content $siteConfigPath -Raw | ConvertFrom-Json
+    } catch {
+        $siteWarning = "<!-- WARNING: site-config.json ($siteConfigPath) failed to parse: $($_.Exception.Message) -->"
+    }
+} else {
+    $siteWarning = "<!-- WARNING: site-config.json ($siteConfigPath) missing — reader-segment context unavailable. -->"
+}
+
+# Extract a single H2 section verbatim from voice doctrine markdown. Returns
+# the heading + body up to (but not including) the next H2 or horizontal rule.
+function Get-DoctrineSection {
+    param(
+        [string]$Doctrine,
+        [string]$Heading
+    )
+    if (-not $Doctrine) { return $null }
+    $pattern = "(?ms)^##\s+$([regex]::Escape($Heading))\s*$.*?(?=^##\s+|^---\s*$)"
+    $match = [regex]::Match($Doctrine, $pattern)
+    if ($match.Success) {
+        return $match.Value.TrimEnd()
+    }
+    return $null
+}
+
+$forbiddenSection = Get-DoctrineSection -Doctrine $voiceDoctrine -Heading "Forbidden phrases"
+$preferredSection = Get-DoctrineSection -Doctrine $voiceDoctrine -Heading "Preferred framings"
+
+# Reader-segment context lines. Build defensively in case site-config is null.
+if ($siteConfig) {
+    $siteName = $siteConfig.siteName
+    $niche = $siteConfig.niche
+    $brandTone = $siteConfig.brandTone
+    $primary = if ($siteConfig.primarySegments) { ($siteConfig.primarySegments -join ", ") } else { "(none specified)" }
+    $secondary = if ($siteConfig.secondarySegments) { ($siteConfig.secondarySegments -join ", ") } else { "(none specified)" }
+    $excluded = if ($siteConfig.excludedSegments) { ($siteConfig.excludedSegments -join ", ") } else { "(none specified)" }
+} else {
+    $siteName = $Site
+    $niche = "(unknown — site-config.json missing)"
+    $brandTone = "(unknown — site-config.json missing)"
+    $primary = "(unknown)"
+    $secondary = "(unknown)"
+    $excluded = "(unknown)"
+}
+
+$promptLines = New-Object System.Collections.Generic.List[string]
+$promptLines.Add("# AI Drafting Prompt — $siteName — $ProductName")
+$promptLines.Add("")
+if ($voiceWarning) { $promptLines.Add($voiceWarning); $promptLines.Add("") }
+if ($siteWarning)  { $promptLines.Add($siteWarning);  $promptLines.Add("") }
+$promptLines.Add("You are drafting a comparison-and-fit affiliate piece for $siteName ($niche).")
+$promptLines.Add("Reader profile: primary = [$primary], secondary = [$secondary], EXPLICITLY EXCLUDED = [$excluded].")
+$promptLines.Add("Brand tone: $brandTone.")
+$promptLines.Add("")
+$promptLines.Add("## Piece context")
+$promptLines.Add("")
+$promptLines.Add("- Product: $ProductName ($Brand)")
+$promptLines.Add("- Piece type: buyers-guide")
+$promptLines.Add("- Slug: $Slug")
+$promptLines.Add("- Pub date: $pubDate")
+$promptLines.Add("")
+if ($forbiddenSection) {
+    $promptLines.Add("## Voice doctrine (MANDATORY — never produce these phrases)")
+    $promptLines.Add("")
+    $promptLines.Add($forbiddenSection)
+    $promptLines.Add("")
+} else {
+    $promptLines.Add("## Voice doctrine (MANDATORY — never produce these phrases)")
+    $promptLines.Add("")
+    $promptLines.Add("<!-- WARNING: 'Forbidden phrases' section not found in voice doctrine. -->")
+    $promptLines.Add("")
+}
+if ($preferredSection) {
+    $promptLines.Add($preferredSection)
+    $promptLines.Add("")
+} else {
+    $promptLines.Add("## Preferred framings")
+    $promptLines.Add("")
+    $promptLines.Add("<!-- WARNING: 'Preferred framings' section not found in voice doctrine. -->")
+    $promptLines.Add("")
+}
+$promptLines.Add("## Your task")
+$promptLines.Add("")
+$promptLines.Add("Draft the markdown body of ``$Slug.md`` per the scaffold below. The ``## Bottom Line`` section")
+$promptLines.Add("STAYS as the placeholder (``> _The Bottom Line is being written._``) — the publisher writes")
+$promptLines.Add("that themselves. Fill ``## Who This Is For`` and all other sections, drawing only from spec")
+$promptLines.Add("sheets, manufacturer documentation, and aggregated owner reviews. Cite sources where you")
+$promptLines.Add("make specific claims. This is a buyer's guide — frame as research synthesis, not a personal")
+$promptLines.Add("review.")
+$promptLines.Add("")
+$promptLines.Add("## Scaffold to fill")
+$promptLines.Add("")
+$promptLines.Add('```markdown')
+$promptLines.Add($content)
+$promptLines.Add('```')
+$promptLines.Add("")
+
+$promptBody = ($promptLines -join "`n")
+Set-Content -Path $promptPath -Value $promptBody -NoNewline
+
+Write-Host "[ok] Wrote $promptPath"
+
 # Delegate the KV write to add-link.ps1 unless suppressed.
 if (-not $NoKV) {
     $addLink = Join-Path $PSScriptRoot "add-link.ps1"
@@ -115,8 +244,11 @@ if (-not $NoKV) {
 
 Write-Host ""
 Write-Host "Next:"
-Write-Host "  - Open sites/$Site/src/content/buyers-guides/$Slug.md"
-Write-Host "  - Fill in ``## Editor's Note`` (the build will block until you do)"
+Write-Host "  - Open $promptPath"
+Write-Host "  - Paste its contents into Claude to draft the body"
+Write-Host "  - Review the AI output against docs/voice-doctrine.md"
+Write-Host "  - Write your ``## Bottom Line`` section in sites/$Site/src/content/buyers-guides/$Slug.md"
+Write-Host "  - Run: pwsh scripts/lint-voice.ps1 sites/$Site/src/content/buyers-guides/$Slug.md (before commit)"
 Write-Host "  - Buyer's guides are NOT personal reviews — frame as research synthesis"
 Write-Host "  - Verify the cloaked link: <apex>/go/$Slug should 302 to $AmazonUrl (post-publish)"
 Write-Host "  - Commit + push when ready: git add . && git commit -m `"feat: add $Slug buyer's guide`""
