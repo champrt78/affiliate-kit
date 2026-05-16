@@ -30,7 +30,10 @@ lastUpdated: 2026-05-16
 
 ## Bottom Line
 
-> _The Bottom Line is being written._
+> Don't overthink it, it shakes out like this:
+1. Pick the Spypoint Flex-M if you want photos delivered to your phone without thinking about it.
+2. Pick the Stealth Cam DS4K Ultimate if you want the sharpest image and don't mind walking out for the SD card.
+3. Pick the Wosports H-41 if you want to find out if this is something you care about for less than eighty bucks.
 
 ## Who This Is For
 
