@@ -31,7 +31,7 @@ images:
 
 ## Bottom Line
 
-> _The Bottom Line is being written._
+> If photo quality is your goal, this is the move. Buy once, cry once. The trade-off is twelve AA batteries and a walk to swap the SD card.
 
 ## Who This Is For
 
