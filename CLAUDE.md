@@ -4,21 +4,29 @@ This file teaches Claude the conventions for working inside this monorepo. Read 
 
 ## Session Documentation (NON-NEGOTIABLE — applies to every session in this repo)
 
-Update `docs/sessions/Session_YYYY-MM-DD.md` and `docs/PROJECT_STATE.md` PROACTIVELY throughout every session, after every meaningful action (commit, fix, decision, discovery, gotcha). NOT at the end. NOT as a batched catch-up.
+**Two files, two different bars. Don't conflate them.**
 
-**Why this is non-negotiable here:**
-- **It keeps Ray honest and real.** The act of being able to read the narrative of what happened — with rationale, surprises, and gotchas — is how Ray prevents self-deception, drift, and duplicate efforts across sessions. This is HIS workflow, not just an AI handoff convenience.
-- **It's the channel for "weird dev things" Ray didn't see during execution.** When Claude catches a subtle technical thing (a build-time gotcha, a schema constraint, a tool oddity, a non-obvious failure mode), Ray often missed it because it happened in a subagent's output or mid-edit. The session log is the explicit deliverable for surfacing those to him.
-- **Memory files are NOT a substitute.** Memory is for indexed facts; the session log is for narrative.
+### Session log (`docs/sessions/Session_YYYY-MM-DD.md`)
+**Day-by-day narrative. Helps Ray and Claude remember what was done the day before.** Updated PROACTIVELY after every meaningful action — not at end of session, not as a batched catch-up.
 
-**Concrete bar:**
-- After every commit → add a bullet in "What We Did" with the short hash + one-line description. Immediately.
-- After a decision → write it to "Decisions" with rationale, while rationale is still fresh.
-- After any discovery/gotcha/surprise → "Discoveries / Gotchas" section. Immediately.
-- PROJECT_STATE.md → append a sub-day entry (`**2026-05-16 (evening)**`) whenever a coherent burst of work deserves visibility, not just at major milestones.
+- After every commit → bullet in "What We Did" with short hash + one-line description. Immediately.
+- After a decision → write it to "Decisions" with rationale, while rationale is fresh.
+- After any discovery/gotcha/surprise → "Discoveries / Gotchas" section. Immediately. This is the explicit channel for surfacing "weird dev things" Ray didn't see during execution (subtle build-time gotchas, schema constraints, tool oddities, non-obvious failure modes — things that happened in a subagent's output or mid-edit verification).
 - When subagents return → orchestrator updates the session log on return; don't rely on the subagent to do it.
 
-Full rule with audiences and rationale is in `~/.claude/CLAUDE.md` "Session Documentation" section. Project rule mirrors it; this section just makes the non-negotiable visible in-repo.
+### Project state (`docs/PROJECT_STATE.md`)
+**Overall project state. Big wins and milestones only.** High bar. Not every commit, not every bug fix, not every tracker refresh.
+
+- Examples that ARE PROJECT_STATE-worthy: "Phase 1 complete," "MVP shipped," "Strategic pivot locked," "First piece scaffolded as DRAFT," "Show title locked," "All 5 sites live on Cloudflare."
+- Examples that are NOT PROJECT_STATE-worthy: bug fixes, tracker refreshes, smoke tests, refactors, in-progress work. Those live only in the session log.
+- The bar: would you tell someone "today we shipped X" in a status update? If yes, PROJECT_STATE-worthy. If it's "we made progress and fixed a bug along the way," session-log-only.
+
+### Why this is non-negotiable here
+- **It keeps Ray honest and real.** Reading the narrative is how he prevents drift, self-deception, and duplicate efforts. HIS workflow, not just an AI convenience.
+- **Session log is the channel for "weird dev things"** Ray didn't see during execution — an explicit deliverable, not a side effect.
+- **Memory files are NOT a substitute.** Memory is for indexed facts; session log is for narrative.
+
+Full rule with audiences and rationale lives in `~/.claude/CLAUDE.md` "Session Documentation." Project rule mirrors it; this section makes the bar visible in-repo.
 
 ## Layout
 - `packages/` — shared code (utils, UI components, styles). Published as workspace packages.
