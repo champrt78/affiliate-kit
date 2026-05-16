@@ -258,3 +258,4 @@ Write-Host "  - Run: pwsh scripts/lint-voice.ps1 sites/$Site/src/content/buyers-
 Write-Host "  - Buyer's guides are NOT personal reviews — frame as research synthesis"
 Write-Host "  - Verify the cloaked link: <apex>/go/$Slug should 302 to $AmazonUrl (post-publish)"
 Write-Host "  - Commit + push when ready: git add . && git commit -m `"feat: add $Slug buyer's guide`""
+Write-Host "  - Deploy: pwsh scripts/deploy.ps1 -Site $Site  (skip if CF Pages GitHub auto-deploy is wired up — see docs/cf-pages-github-setup.md)"

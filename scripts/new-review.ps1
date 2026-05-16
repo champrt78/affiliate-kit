@@ -272,3 +272,4 @@ Write-Host "  - Write your ``## Bottom Line`` section in sites/$Site/src/content
 Write-Host "  - Run: pwsh scripts/lint-voice.ps1 sites/$Site/src/content/reviews/$Slug.md (before commit)"
 Write-Host "  - Verify the cloaked link: <apex>/go/$Slug should 302 to $AmazonUrl (post-publish)"
 Write-Host "  - Commit + push when ready: git add . && git commit -m `"feat: add $Slug review`""
+Write-Host "  - Deploy: pwsh scripts/deploy.ps1 -Site $Site  (skip if CF Pages GitHub auto-deploy is wired up — see docs/cf-pages-github-setup.md)"

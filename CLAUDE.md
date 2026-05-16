@@ -28,6 +28,13 @@ This file teaches Claude the conventions for working inside this monorepo. Read 
 
 Full rule with audiences and rationale lives in `~/.claude/CLAUDE.md` "Session Documentation." Project rule mirrors it; this section makes the bar visible in-repo.
 
+## Deploy
+
+- 5 sites live on Cloudflare Pages. Apexes: `mywildlifecam.com`, `detailerpicks.com`, `fussybean.com`, `starteraquarium.com`, `gameovergear.games`.
+- **Steady state (post-Phase-B):** pushes to `main` auto-deploy via CF Pages GitHub integration. Walkthrough at `docs/cf-pages-github-setup.md`.
+- **Interim state (until Phase B is wired):** no auto-deploy. Manual deploy required per site after every push: `pwsh scripts/deploy.ps1 -Site <slug>`. Check `wrangler pages project list` — if any project shows `Git Provider: No`, that site needs the GitHub-connection walkthrough before pushes will auto-deploy it.
+- `scripts/deploy.ps1` is always useful as a manual override (hotfixes, force redeploy without committing). Wraps `pnpm --filter <site> build` + `wrangler pages deploy`.
+
 ## Layout
 - `packages/` — shared code (utils, UI components, styles). Published as workspace packages.
 - `templates/` — source templates used by `/aff-bootstrap`. Do not edit a site directly; if you need to change something across sites, change it in `templates/site-template/` and re-run the bootstrap or manually sync.
