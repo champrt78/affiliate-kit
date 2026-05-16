@@ -1,0 +1,32 @@
+{
+  "siteName": "MyWildlifeCam",
+  "domain": "mywildlifecam.com",
+  "niche": "trail cameras and wildlife cameras",
+  "tier": "hero",
+  "primarySegments": [
+    "homeowners",
+    "property owners",
+    "first-time buyers",
+    "gift buyers"
+  ],
+  "secondarySegments": [
+    "backpackers"
+  ],
+  "excludedSegments": [
+    "hunters"
+  ],
+  "brandTone": "snarky-but-friendly",
+  "voiceDoctrineVersion": 1,
+  "featureAxes": [
+    "image resolution",
+    "trigger speed",
+    "detection range",
+    "battery life",
+    "weather sealing",
+    "connectivity",
+    "storage",
+    "night-vision range",
+    "mounting flexibility",
+    "price tier"
+  ]
+}
