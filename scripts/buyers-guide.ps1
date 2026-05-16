@@ -97,9 +97,15 @@ Write-Host "[ok] Wrote $targetPath"
 
 $voiceDoctrinePath = Join-Path $repoRoot "docs/voice-doctrine.md"
 $siteConfigPath = Join-Path $repoRoot "sites/$Site/src/data/site-config.json"
-$promptPath = [System.IO.Path]::ChangeExtension($targetPath, $null) + "prompt.md"
-# ChangeExtension to $null strips the extension entirely (returns "...slug.")
-# so we re-attach "prompt.md" to yield "<slug>.prompt.md".
+
+# Prompt file lives OUTSIDE src/content/ so Astro doesn't pick it up as a Zod-validated
+# collection entry (that error blocks the build and is non-obvious). Lives at
+# sites/<slug>/prompts/<slug>.prompt.md — adjacent to its site, outside Astro's build view.
+$promptDir = Join-Path $repoRoot "sites/$Site/prompts"
+if (-not (Test-Path $promptDir)) {
+	New-Item -ItemType Directory -Path $promptDir -Force | Out-Null
+}
+$promptPath = Join-Path $promptDir "$Slug.prompt.md"
 
 $voiceWarning = $null
 $siteWarning = $null
