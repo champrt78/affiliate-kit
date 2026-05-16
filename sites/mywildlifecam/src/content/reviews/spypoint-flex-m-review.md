@@ -31,7 +31,8 @@ images:
 
 ## Bottom Line
 
-> _The Bottom Line is being written._
+> Buy it if you want convenience, skip it if you want gallery-quality photos.
+ The Flex-M is the smart starting point if you want cellular trail-cam photos without committing to a monthly bill. The dual-SIM auto-carrier-detection solves the most common cellular failure mode, and the free 100-photo plan covers casual backyard use indefinitely. The caveat is image quality under motion, which is just-okay rather than great.
 
 ## Who This Is For
 
