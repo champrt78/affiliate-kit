@@ -3,7 +3,7 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import MainLayout from "../../layouts/MainLayout.astro";
 import CTA from "@affkit/shared-ui/CTA.astro";
 import { cloakedLink } from "@affkit/shared-utils";
-import { productSchema, reviewSchema } from "@affkit/shared-utils";
+import { productSchema } from "@affkit/shared-utils";
 
 export async function getStaticPaths() {
   const entries = await getCollection("reviews");
@@ -48,15 +48,6 @@ const productLd = productSchema({
   currency: data.product.currency,
 });
 
-const rating = data.rating ?? 5;
-const reviewLd = reviewSchema({
-  productName: data.product.name,
-  rating,
-  author: Astro.site?.hostname ?? "Editor",
-  datePublished: pubDateIso,
-  reviewBody: data.description,
-});
-
 const cloakedHref = cloakedLink({ slug: entry.slug });
 
 const robotsContent = isDraft ? "noindex, nofollow" : "index, follow";
@@ -69,7 +60,6 @@ const robotsContent = isDraft ? "noindex, nofollow" : "index, follow";
   ogImage={heroImage || undefined}
 >
   <script type="application/ld+json" set:html={JSON.stringify(productLd)} />
-  <script type="application/ld+json" set:html={JSON.stringify(reviewLd)} />
 
   {isDraft && (
     <aside class="draft-banner" role="alert">
