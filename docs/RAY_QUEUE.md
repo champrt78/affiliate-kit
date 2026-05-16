@@ -2,56 +2,42 @@
 
 > Your open tasks across both repos. This is an index — the actual walkthroughs live in the linked docs. Read this when you sit down and forget where you left off.
 
-Last refreshed: **2026-05-16** — comparison-and-fit content framework MVP shipped tonight; piece #1 is now the active build.
+Last refreshed: **2026-05-16 (evening)** — comparison-and-fit framework MVP shipped + piece #1 LIVE on mywildlifecam. Piece #2 is the new top item.
 
 ---
 
-## 1. Scaffold piece #1 on mywildlifecam under the new framework
+## 1. Scaffold piece #2 on mywildlifecam
 
-**What:** The MVP shipped tonight (2026-05-16). 9 implementation units, all committed to main + pushed. The full pipeline is live: voice doctrine v1 + per-site config + scaffolders that emit a sibling `.prompt.md` artifact + a `lint-voice.ps1` back-stop. Now you actually use it to write piece #1.
+**What:** Piece #1 ("Best Trail Cameras for Backyard Wildlife") shipped 2026-05-16 evening. The framework is proven end-to-end on real content. Piece #2 builds toward the 2-3-pieces-live threshold needed before applying for Amazon Associates (task #4). It also exercises the framework against a new product or topic to surface any edge cases the first piece didn't hit.
+
+**Topic candidates for piece #2:**
+- A single-product review (different shape from piece #1's buying-guide). Real example: a deep review of the Stealth Cam DS4K Ultimate (the piece #1 image-quality pick) — "review" piece type tests the other half of the framework.
+- A buying-guide for a tighter use case: "Best Trail Cameras Under $100" or "Best Trail Cameras for Apartment Balconies" (urban wildlife angle).
+- A topic-led piece: "What Trail Cam Photos Reveal About Your Backyard" (informational, drives traffic, can link to piece #1).
 
 **Walk through:**
 
 ```pwsh
-# 1. Pick a product. Target reader: homeowners / property owners / first-time buyers / gift buyers. NOT hunters.
-# Example: Spypoint Flex-M (cellular trail cam) or Stealth Cam DS4K (SD-card trail cam under $150).
+# Single-product piece
+pwsh scripts/new-review.ps1 -Site mywildlifecam -Slug <slug> -ProductName "..." -Brand "..." -AmazonUrl "https://amzn.to/..."
 
-# 2. Scaffold
-pwsh scripts/new-review.ps1 -Site mywildlifecam -Slug <product-slug> -ProductName "..." -Brand "..." -AmazonUrl "https://amzn.to/..."
-
-# This produces TWO files:
-#   sites/mywildlifecam/src/content/reviews/<slug>.md          ← the scaffold
-#   sites/mywildlifecam/src/content/reviews/<slug>.prompt.md   ← the AI prompt (sibling)
-
-# 3. Open the .prompt.md file, copy its contents, paste into Claude (or your AI of choice).
-#    Ask Claude to draft the body sections (everything except ## Bottom Line).
-
-# 4. Review the AI draft against docs/voice-doctrine.md. Edit anything that drifts.
-
-# 5. Write your ## Bottom Line section in your own voice.
-#    The placeholder "> _The Bottom Line is being written._" must be replaced or the page renders DRAFT + noindex.
-
-# 6. Back-stop check before commit
-pwsh scripts/lint-voice.ps1 sites/mywildlifecam/src/content/reviews/<slug>.md
-
-# 7. Preview locally
-pnpm --filter mywildlifecam dev
-
-# 8. Commit + push when ready
-git add sites/mywildlifecam/src/content/reviews/<slug>.md
-git commit -m "feat(content): mywildlifecam — <slug>"
-git push
+# Buyer's guide piece
+pwsh scripts/buyers-guide.ps1 -Site mywildlifecam -Slug <slug> -ProductName "..." -Brand "..." -AmazonUrl "https://amzn.to/..."
 ```
 
-**Effort:** 2-3 hours for the first piece (you're learning the prompt template, the AI dance, the voice doctrine in practice). Subsequent pieces should hit the 60-75 min target.
+Then: paste `<slug>.prompt.md` into Claude, AI drafts body, you spec-verify (REQUIRED — piece #1's review caught a fictional "Wosports H7" before publish), you write the Bottom Line, lint, build, push.
 
-**Blocks:** Nothing for piece #1. Amazon Associates application (task #4) waits on 2-3 pieces being live first.
+**Effort:** ~60-90 min now that you've shipped one. Spec-verification eats 15-20 min; Bottom Line 5-10 min; rest is mechanical.
 
-**Reference docs:**
-- `docs/voice-doctrine.md` — forbidden phrases + preferred framings + direct-question responses
-- `docs/brainstorms/2026-05-15-content-framework-requirements.md` — the locked strategy
-- `docs/plans/2026-05-16-001-feat-comparison-fit-content-framework-mvp-plan.md` — what's in place
-- `sites/mywildlifecam/src/data/site-config.json` — your reader-segment + niche metadata
+**Blocks:** Amazon Associates app (#4) needs 2-3 pieces live. Cellular R2 image hosting (#7) would be nicer-to-have than required.
+
+**Reference docs:** Same as before. `docs/voice-doctrine.md` is the live source of truth; lint backstop catches forbidden phrases including em dashes. `sites/mywildlifecam/src/data/site-config.json` has the reader segments.
+
+---
+
+## 1a. (DONE 2026-05-16) Piece #1 — "Best Trail Cameras for Backyard Wildlife"
+
+Live at `mywildlifecam.com/buyers-guides/best-trail-cameras-for-backyard-wildlife`. 3 picks (Spypoint Flex-M, Stealth Cam DS4K Ultimate, Wosports H-41). Validates the comparison-and-fit framework end-to-end. Lessons learned (em dashes banned, defensive exclusions banned) folded into voice doctrine.
 
 ---
 
@@ -141,7 +127,7 @@ git push
 
 | # | Task | Effort | Blocks |
 |---|---|---|---|
-| 1 | **Scaffold piece #1 on mywildlifecam** | 2-3hrs first piece; 60-75 min after | Amazon Associates app + R2 + the whole content cycle. **Top of queue.** |
+| 1 | **Scaffold piece #2 on mywildlifecam** | 60-90 min | Amazon Associates threshold (need 2-3 live). **Top of queue.** |
 | 2 | Starwatch handles + `.space` | 30-60min | Brand cohesion; window closes when someone notices |
 | 3 | askbigchew strategy brainstorm | 1-2hrs ce-brainstorm | Piece #1 on askbigchew (not piece #1 on mywildlifecam) |
 | 4 | Amazon Associates app (deferred) | 10min + 1-3d wait | Pieces #3+ revenue; gated on 2-3 pieces live |
@@ -149,7 +135,7 @@ git push
 | 6 | askbigchew DNS migration | 20-30min | Brings askbigchew under CF umbrella |
 | 7 | R2 + PA-API | 30s + later | Piece imagery (workaround = Amazon hotlinks) |
 
-**Suggested order:** #1 is the active build (the whole point of last few sessions). #2 is time-sensitive (handles window). #3 can slot in alongside #1 work. #4 is gated by #1 progressing. #5 is its own session.
+**Suggested order:** #1 keeps the content cycle alive (piece #2 → #3 → trigger Amazon Associates app). #2 is time-sensitive. #3 slots alongside any session. #4 unlocks after #1 hits 2-3 pieces. #5 is its own session.
 
 ---
 

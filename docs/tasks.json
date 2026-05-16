@@ -51,22 +51,40 @@
     {
       "id": "first-review",
       "title": "Scaffold + ship piece #1 on mywildlifecam under new framework",
+      "status": "done",
+      "completion_percent": 100,
+      "completed_date": "2026-05-16",
+      "description": "DONE 2026-05-16 evening. Shipped as buying guide 'Best Trail Cameras for Backyard Wildlife' at mywildlifecam.com/buyers-guides/best-trail-cameras-for-backyard-wildlife. 3 picks: Spypoint Flex-M (cellular), Stealth Cam DS4K Ultimate (image quality), Wosports H-41 (budget). Ray wrote Bottom Line. Spec-verification caught fictional Wosports H7 before publish. Voice review surfaced 2 doctrine evolutions: em dashes banned, defensive audience exclusions banned. Framework end-to-end validated.",
+      "subtasks": [
+        { "id": "rv1", "title": "Pick first product or buying-guide topic (backyard wildlife buyer's guide)", "done": true },
+        { "id": "rv2", "title": "Run scaffolder (used scripts/buyers-guide.ps1)", "done": true },
+        { "id": "rv3", "title": "AI-draft body via prompt file paste-in", "done": true },
+        { "id": "rv4", "title": "Voice-doctrine compliance review (em dashes + defensive exclusions caught + doctrine updated)", "done": true },
+        { "id": "rv5", "title": "Ray wrote ## Bottom Line in own voice", "done": true },
+        { "id": "rv6", "title": "lint-voice.ps1 clean", "done": true },
+        { "id": "rv7", "title": "Build verified: DRAFT banner gone, robots: index/follow", "done": true },
+        { "id": "rv8", "title": "Commit + push (commit e07f0ef + 01c7921; CF Pages deploys on push)", "done": true }
+      ],
+      "notes": "Shipped 2026-05-16. Doctrine evolutions saved as feedback memories. Refinements identified for future scaffolders: strip HUMAN TODO blocks post-publish; reframe excludedSegments as internal-only in AI prompt."
+    },
+    {
+      "id": "second-piece",
+      "title": "Scaffold + ship piece #2 on mywildlifecam",
       "status": "todo",
       "completion_percent": 0,
-      "description": "TOP-OF-QUEUE. Use the new scaffolders + voice doctrine + lint stack to produce piece #1 — a single-product or buying-guide piece in comparison-and-fit voice. Ray writes the ## Bottom Line section. Proves the framework end-to-end on real content.",
-      "due": "next session",
-      "estimate": "2-3 hr for first piece (learning curve); ~60-75 min for subsequent pieces",
+      "description": "TOP-OF-QUEUE. Builds toward the 2-3-piece threshold required before the Amazon Associates application. Also exercises the framework against either a different piece type (single-product review vs piece #1's buying guide) or a different topic / use case. Natural candidates: (a) single-product review of Spypoint Flex-M (the top recommendation from piece #1, creates cross-link), (b) single-product review of Stealth Cam DS4K Ultimate, (c) a tighter buyer's guide ('Best Trail Cameras Under $100', 'Best Trail Cams for Apartment Balconies'), (d) topic-led piece ('What Trail Cam Photos Reveal About Your Backyard').",
+      "due": "this week",
+      "estimate": "60-90 min (spec-verification ~15-20, Bottom Line ~5-10, rest mechanical)",
       "subtasks": [
-        { "id": "rv1", "title": "Pick first product or buying-guide topic — target: homeowners / property owners / first-timer / gift buyer; NOT hunters", "done": false },
-        { "id": "rv2", "title": "Run `pwsh scripts/new-review.ps1 -Site mywildlifecam -Slug <slug> -ProductName \"...\" -Brand \"...\" -AmazonUrl \"https://amzn.to/...\"`", "done": false },
-        { "id": "rv3", "title": "Open the generated `<slug>.prompt.md`, paste into Claude, ask Claude to draft the body (everything except ## Bottom Line)", "done": false },
-        { "id": "rv4", "title": "Review AI draft for voice-doctrine compliance; edit as needed", "done": false },
-        { "id": "rv5", "title": "Write ## Bottom Line in Ray's own voice (the hard DRAFT/noindex gate)", "done": false },
-        { "id": "rv6", "title": "Run `pwsh scripts/lint-voice.ps1 sites/mywildlifecam/src/content/reviews/<slug>.md` before commit", "done": false },
-        { "id": "rv7", "title": "Preview locally with `pnpm --filter mywildlifecam dev`; verify productSchema JSON-LD renders; verify DRAFT banner gone after Bottom Line filled", "done": false },
-        { "id": "rv8", "title": "Commit + push; verify HTTP 200 + canonical URL on the deployed site", "done": false }
+        { "id": "p2a", "title": "Pick topic + product (lock with Ray)", "done": false },
+        { "id": "p2b", "title": "Run scaffolder (new-review.ps1 or buyers-guide.ps1)", "done": false },
+        { "id": "p2c", "title": "AI-draft body via prompt file", "done": false },
+        { "id": "p2d", "title": "Spec-verify against current Amazon/manufacturer listings (REQUIRED — piece #1 caught a fictional product, this step is non-negotiable)", "done": false },
+        { "id": "p2e", "title": "Voice-doctrine compliance review (lint catches em dashes; manual check for defensive exclusions)", "done": false },
+        { "id": "p2f", "title": "Ray writes ## Bottom Line", "done": false },
+        { "id": "p2g", "title": "Lint + build + commit + push", "done": false }
       ],
-      "notes": "Scaffolder + voice doctrine + lint all live as of 2026-05-16. Frontmatter-only specs for piece #1 (MVP carve-out per R9); product database lands when piece #2 or #3 hits the trigger boundary."
+      "notes": "Subsequent-piece flow (F2) per requirements doc. Frontmatter-only specs still per R9 carve-out — product database lands when a product repeats across pieces (the F2 trigger boundary)."
     },
     {
       "id": "askbigchew-strategy",
