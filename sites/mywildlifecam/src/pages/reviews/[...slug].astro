@@ -22,7 +22,7 @@ const { data, body } = entry;
 const { Content } = await entry.render();
 
 // DRAFT detection — raw body contains the placeholder from review.md.tmpl
-const DRAFT_MARKER = "_Waiting for the human._";
+const DRAFT_MARKER = "_The Bottom Line is being written._";
 const isDraft = typeof body === "string" && body.includes(DRAFT_MARKER);
 
 const pubDateIso = data.pubDate instanceof Date
@@ -63,7 +63,7 @@ const robotsContent = isDraft ? "noindex, nofollow" : "index, follow";
 
   {isDraft && (
     <aside class="draft-banner" role="alert">
-      <strong>DRAFT</strong> — this review's "My Take" section hasn't been filled in.
+      <strong>DRAFT</strong> — this review's "Bottom Line" section hasn't been filled in.
       Don't link to this page yet. Indexing is disabled until it's complete.
     </aside>
   )}
