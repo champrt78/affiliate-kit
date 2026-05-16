@@ -2,81 +2,138 @@
 
 > Your open tasks across both repos. This is an index — the actual walkthroughs live in the linked docs. Read this when you sit down and forget where you left off.
 
-Last refreshed: **2026-05-15**
+Last refreshed: **2026-05-16** — comparison-and-fit content framework MVP shipped tonight; piece #1 is now the active build.
 
 ---
 
-## 1. Address 3 quick-fix findings from ce-doc-review, then ce-plan the content framework
+## 1. Scaffold piece #1 on mywildlifecam under the new framework
 
-**What:** The 2026-05-15 brainstorm pivoted the content strategy to comparison-and-fit (never claim hands-on). Requirements doc at `docs/brainstorms/2026-05-15-content-framework-requirements.md`. Autonomous `ce-doc-review` run surfaced 26 findings — 3 have one obvious fix and should land before re-planning:
+**What:** The MVP shipped tonight (2026-05-16). 9 implementation units, all committed to main + pushed. The full pipeline is live: voice doctrine v1 + per-site config + scaffolders that emit a sibling `.prompt.md` artifact + a `lint-voice.ps1` back-stop. Now you actually use it to write piece #1.
 
-1. R9/R14 product-database contradiction — add MVP carve-out to R9
-2. DRAFT_MARKER sync — add note to R14 listing the 7-file sync (template + 5 forked sites)
-3. Buyer's-guide template hands-on disclaimer — note in R14 that MVP deletes the existing `templates/buyers-guide.md.tmpl` lines
+**Walk through:**
 
-Then either re-run `ce-doc-review` (Round 2) or jump to `ce-plan` and let it address remaining findings at unit level. Then `ce-work` to execute the MVP minimum-change set (~3-6 hr of Claude work + your review).
+```pwsh
+# 1. Pick a product. Target reader: homeowners / property owners / first-time buyers / gift buyers. NOT hunters.
+# Example: Spypoint Flex-M (cellular trail cam) or Stealth Cam DS4K (SD-card trail cam under $150).
 
-**Walk through:** `docs/sessions/Session_2026-05-15.md` has the full breakdown of all 26 findings organized by severity.
+# 2. Scaffold
+pwsh scripts/new-review.ps1 -Site mywildlifecam -Slug <product-slug> -ProductName "..." -Brand "..." -AmazonUrl "https://amzn.to/..."
 
-**Effort:** 15-30 min to apply quick-fixes; 1-2 hr for ce-plan; 3-6 hr for ce-work MVP execution.
+# This produces TWO files:
+#   sites/mywildlifecam/src/content/reviews/<slug>.md          ← the scaffold
+#   sites/mywildlifecam/src/content/reviews/<slug>.prompt.md   ← the AI prompt (sibling)
 
-**Blocks:** Everything downstream — piece #1 cannot ship under the new framework until the MVP units land.
+# 3. Open the .prompt.md file, copy its contents, paste into Claude (or your AI of choice).
+#    Ask Claude to draft the body sections (everything except ## Bottom Line).
+
+# 4. Review the AI draft against docs/voice-doctrine.md. Edit anything that drifts.
+
+# 5. Write your ## Bottom Line section in your own voice.
+#    The placeholder "> _The Bottom Line is being written._" must be replaced or the page renders DRAFT + noindex.
+
+# 6. Back-stop check before commit
+pwsh scripts/lint-voice.ps1 sites/mywildlifecam/src/content/reviews/<slug>.md
+
+# 7. Preview locally
+pnpm --filter mywildlifecam dev
+
+# 8. Commit + push when ready
+git add sites/mywildlifecam/src/content/reviews/<slug>.md
+git commit -m "feat(content): mywildlifecam — <slug>"
+git push
+```
+
+**Effort:** 2-3 hours for the first piece (you're learning the prompt template, the AI dance, the voice doctrine in practice). Subsequent pieces should hit the 60-75 min target.
+
+**Blocks:** Nothing for piece #1. Amazon Associates application (task #4) waits on 2-3 pieces being live first.
+
+**Reference docs:**
+- `docs/voice-doctrine.md` — forbidden phrases + preferred framings + direct-question responses
+- `docs/brainstorms/2026-05-15-content-framework-requirements.md` — the locked strategy
+- `docs/plans/2026-05-16-001-feat-comparison-fit-content-framework-mvp-plan.md` — what's in place
+- `sites/mywildlifecam/src/data/site-config.json` — your reader-segment + niche metadata
 
 ---
 
 ## 2. Claim Starwatch handles + register `starwatchstation.space`
 
-**What:** Snag the 7 Tier 1 social handles (`@StarwatchStation` on YouTube, Bluesky, IG, TikTok, LinkedIn, Facebook; `@StarwatchSpace` on X because the 15-char cap breaks the 16-char full name — `@StarwatchSpace` at 14 fits and echoes the `.space` domain) and buy the domain at Porkbun.
+**What:** Snag the 7 Tier 1 social handles (`@StarwatchStation` on YouTube, Bluesky, IG, TikTok, LinkedIn, Facebook; `@StarwatchSpace` on X because of the 15-char cap) and buy the domain at Porkbun. Same playbook you ran for Semper Fi.
 
-**Walk through:** `docs/launch-playbook.html` — open in browser. The Starwatch sections are rewritten and current (`.space` domain noted, X-cap explained inline, DST fandom-contraction blurb in place). Same click-by-click style you used for Semper Fi last night.
+**Walk through:** `docs/launch-playbook.html` — open in browser. The Starwatch sections are current (`.space` domain, X-cap explained, DST fandom-contraction blurb in place).
 
-**Effort:** ~30-60 minutes if no handles are taken; longer if you have to fall back per-platform (Step 2b in the playbook covers reclamation paths).
+**Effort:** ~30-60 minutes if no handles are taken; longer if you fall back per-platform.
 
-**Blocks:** Nothing depends on this for code, but **the rename window closes the moment someone notices "Starwatch Station" is unclaimed.** Do this first.
+**Blocks:** Nothing in code depends on this. **But the rename window closes the moment someone notices "Starwatch Station" is unclaimed.** Time-sensitive.
 
 ---
 
-## 3. Apply for Amazon Associates under `mywildlifecam.com` (DEFERRED)
+## 3. Brainstorm askbigchew integration strategy (`ce-brainstorm`)
+
+**What:** Surfaced 2026-05-16 mid-MVP — askbigchew is the one affiliate site where you actually own the products (you have a bulldog). The new voice doctrine assumes no hands-on. Open questions:
+
+1. Migrate askbigchew from its Next.js+MDX repo into this Astro monorepo as site #6 proper? Or keep it separate?
+2. Does askbigchew get a voice-doctrine variant that allows hands-on claims since you actually own the products?
+3. Hero/satellite reshuffle — is bulldog the new hero now that you have actual experience?
+4. Universal anatomy holds, or askbigchew gets its own variant?
+
+**Walk through:** Run `ce-brainstorm` in this repo. Reference `CLAUDE.md` (askbigchew section), the current migration walkthrough at `docs/askbigchew-cloudflare-migration.html`, and the content framework at `docs/brainstorms/2026-05-15-content-framework-requirements.md`.
+
+**Effort:** 1-2 hr brainstorm + decision. Could be slotted in alongside piece #1 work or as its own session.
+
+**Blocks:** Nothing — askbigchew is operating fine on its current (separate) repo + stack. This is a strategic question, not an outage.
+
+---
+
+## 4. Apply for Amazon Associates under `mywildlifecam.com` (DEFERRED)
 
 **What:** Submit the Amazon Associates application using `mywildlifecam.com` as the apex, with all 6 site URLs listed under one account.
 
-**DEFERRED per 2026-05-15 brainstorm Key Decision.** The 180-day-3-sales clock starts at approval; applying with zero published pieces burns the clock before any conversion content exists. Apply AFTER 2-3 pieces are live on mywildlifecam.
+**DEFERRED per 2026-05-15 brainstorm Key Decision.** The 180-day-3-sales clock starts at approval; applying with zero published pieces burns the clock. Apply AFTER 2-3 pieces are live on mywildlifecam.
 
-**Walk through:** Application at `https://affiliate-program.amazon.com/`. Primary Store ID at signup = `mywildlifecam` (becomes `mywildlifecam-20`); after approval create per-site tracking tags in the Associates dashboard (`detailerpicks-20`, `fussybean-20`, etc.).
+**Walk through:** Application at `https://affiliate-program.amazon.com/`. Primary Store ID at signup = `mywildlifecam` (becomes `mywildlifecam-20`); after approval create per-site tracking tags in the Associates dashboard.
 
-**Effort:** 10 minutes to apply. 1-3 days to approve. Zero code on your side.
+**Effort:** 10 minutes to apply. 1-3 days to approve.
 
-**Blocks:** Required before pieces #3+ can earn revenue at scale. Pieces #1-2 will ship without working Amazon affiliate tags — links cloak fine via the Worker, just zero commission until tag is added retroactively.
-
-**Note:** Sequence is intentional: ship pieces 1-2 under the new framework FIRST (proves the strategy + gives Amazon something to evaluate at approval), THEN apply, THEN backfill tags.
+**Blocks:** Required before pieces #3+ earn revenue at scale. Pieces #1-2 will ship without working Amazon affiliate tags; links cloak fine via the Worker but zero commission until tags are added retroactively.
 
 ---
 
-## 4. Phase 12 on Starwatch — interactive s01e01 round-trip
+## 5. Phase 12 on Starwatch — interactive s01e01 round-trip
 
 **What:** Validate the renamed plugin end-to-end by writing the first episode interactively. Tests the full `/show-arc-bootstrap` → `/show-arc-plan-season` → `/show-new-episode` → `/show-episode-edits` → `/show-episode-finalize` chain. After s01e01 finalizes cleanly, merge `phase-1-implementation` → `main` and Arc A is officially done.
 
 **Walk through:**
 - Start at `~/source/repos/starwatch-station/`
-- Run `pwsh scripts/install-plugin.ps1` if you haven't reinstalled the renamed plugin (creates `~/.claude/plugins/starwatch-station/`)
+- Run `pwsh scripts/install-plugin.ps1` if the renamed plugin hasn't been reinstalled
 - Open Claude Code in that directory, type `/show-help`, follow the `Next:` block
-- Detailed expected flow: `starwatch-station/docs/sessions/Session_2026-05-13.md` → "Next Steps (when Ray returns to this)" — gives the exact command sequence including all flags
 
-**Effort:** ~2-3 hours for a real episode (depends how much polish you want before finalizing). Pre-flight `pwsh scripts/lint.ps1` once after bootstrap before drafting — catches schema drift cheaply.
+**Effort:** ~2-3 hours for a real episode.
 
-**Blocks:** This is the gate before merging `phase-1-implementation` → `main` on the Starwatch repo. The branch has 19+ commits, never been merged, ready when you are.
+**Blocks:** This is the gate before merging `phase-1-implementation` → `main` on the Starwatch repo.
 
 ---
 
-## 5. Enable Cloudflare R2 + apply for Amazon PA-API
+## 6. Migrate askbigchew DNS to Cloudflare
 
-**What:** Two-step toward product images. (a) Enable R2 in the CF dashboard so we have a bucket to host hero images. (b) Apply for Amazon PA-API (gated on 3 qualifying Associates sales in 180 days — chicken-and-egg with task #2).
+**What:** Bring askbigchew under the same Cloudflare umbrella as the other 5 sites (CF Pages + shared link-cloaker Worker). Independent of the askbigchew strategic question (#3) — DNS migration can land regardless of whether askbigchew eventually migrates into this monorepo or stays separate.
 
-**Walk through:** Not built yet, no dedicated doc. R2 is a dashboard toggle at `dash.cloudflare.com → R2`. PA-API enrollment is at the Amazon Associates console post-3-sales.
+**Walk through:** `docs/askbigchew-cloudflare-migration.html` — open in browser, follow the click-by-click.
 
-**Effort:** R2 enable = 30 seconds. PA-API enrollment when eligible = 10 minutes.
+**Effort:** ~20-30 minutes.
 
-**Blocks:** Review #1 image hosting. **Workaround until then:** paste Amazon image URLs directly into review frontmatter (`images.hero: "https://m.media-amazon.com/..."`). Not bulletproof (Amazon can rotate URLs) but unblocks the first few reviews.
+**Blocks:** Nothing.
+
+---
+
+## 7. Enable Cloudflare R2 + apply for Amazon PA-API
+
+**What:** Two-step toward product images. (a) Enable R2 in the CF dashboard for hero image hosting. (b) Apply for PA-API (gated on 3 qualifying Associates sales in 180 days).
+
+**Walk through:** R2 is a 30-second dashboard toggle at `dash.cloudflare.com → R2`. PA-API enrollment is at the Amazon Associates console post-3-sales.
+
+**Effort:** 30 seconds (R2) + 10 minutes (PA-API when eligible).
+
+**Workaround until PA-API:** Per `docs/brainstorms/2026-05-15-content-framework-requirements.md` R13, paste Amazon listing image URLs directly into review frontmatter. Not bulletproof (Amazon can rotate URLs) but unblocks the first few pieces.
 
 ---
 
@@ -84,20 +141,25 @@ Then either re-run `ce-doc-review` (Round 2) or jump to `ce-plan` and let it add
 
 | # | Task | Effort | Blocks |
 |---|---|---|---|
-| 1 | Content framework: fixes → plan → MVP | 4-8hrs across sessions | Piece #1 cannot ship under new strategy until MVP lands |
+| 1 | **Scaffold piece #1 on mywildlifecam** | 2-3hrs first piece; 60-75 min after | Amazon Associates app + R2 + the whole content cycle. **Top of queue.** |
 | 2 | Starwatch handles + `.space` | 30-60min | Brand cohesion; window closes when someone notices |
-| 3 | Amazon Associates app (deferred) | 10min + 1-3d wait | Pieces #3+ revenue; explicitly waits for 2-3 pieces published first |
-| 4 | Starwatch Phase 12 (s01e01) | 2-3hrs | Starwatch Arc A → main merge |
-| 5 | R2 + PA-API | 30s + later | Piece imagery (workaround = Amazon hotlinks per MVP) |
+| 3 | askbigchew strategy brainstorm | 1-2hrs ce-brainstorm | Piece #1 on askbigchew (not piece #1 on mywildlifecam) |
+| 4 | Amazon Associates app (deferred) | 10min + 1-3d wait | Pieces #3+ revenue; gated on 2-3 pieces live |
+| 5 | Starwatch Phase 12 (s01e01) | 2-3hrs | Starwatch Arc A → main merge |
+| 6 | askbigchew DNS migration | 20-30min | Brings askbigchew under CF umbrella |
+| 7 | R2 + PA-API | 30s + later | Piece imagery (workaround = Amazon hotlinks) |
 
-**Suggested order:** #1 is the active build (most of next session). #2 stays time-sensitive (handle window). #3 is gated by #1 progressing to "pieces 1-2 live." #4 is its own session. #5a (R2 toggle) is a 30-second standalone.
+**Suggested order:** #1 is the active build (the whole point of last few sessions). #2 is time-sensitive (handles window). #3 can slot in alongside #1 work. #4 is gated by #1 progressing. #5 is its own session.
 
 ---
 
 ## Where to find me again
 
-- Open this file (`docs/RAY_QUEUE.md`) when you forget what's next.
-- `docs/PROJECT_STATE.md` is the running history of what's been done.
-- `docs/sessions/Session_*.md` for narrative context from a specific day.
-- `docs/PLAYBOOK.md` is your per-review workflow once you're actually writing.
-- `docs/launch-playbook.html` is the brand-launch click-by-click for handle claims.
+- This file (`docs/RAY_QUEUE.md`) — start here when you forget what's next
+- `docs/PROJECT_STATE.md` — running history of what's been done (most recent on top)
+- `docs/sessions/Session_*.md` — narrative context from a specific day
+- `docs/voice-doctrine.md` — the live source of truth for content tone (read this before drafting)
+- `docs/brainstorms/2026-05-15-content-framework-requirements.md` — the locked content strategy
+- `docs/plans/2026-05-16-001-feat-comparison-fit-content-framework-mvp-plan.md` — architectural decisions from the MVP build
+- `docs/launch-playbook.html` — brand-launch click-by-click (Starwatch + Semper Fi handles)
+- `docs/PLAYBOOK.md` — operational cadence (90-day cycles, refresh sweeps, KV ops); per-piece content rules stale post-2026-05-15 framework

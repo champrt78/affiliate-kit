@@ -3,77 +3,94 @@
     {
       "id": "content-framework-fixes",
       "title": "Apply 3 quick-fix findings from 2026-05-15 ce-doc-review",
-      "status": "todo",
-      "completion_percent": 0,
-      "description": "Three findings from the 2026-05-15 autonomous ce-doc-review run have one clear correct answer and should be applied to docs/brainstorms/2026-05-15-content-framework-requirements.md before either re-running doc-review (Round 2) or moving to ce-plan. Full breakdown of all 26 findings in docs/sessions/Session_2026-05-15.md.",
-      "due": "next session",
-      "estimate": "15-30 min",
+      "status": "done",
+      "completion_percent": 100,
+      "completed_date": "2026-05-16",
+      "description": "Three findings from the 2026-05-15 autonomous ce-doc-review run applied to docs/brainstorms/2026-05-15-content-framework-requirements.md. R9 MVP carve-out, R14 DRAFT_MARKER sync note (expanded to 14 files during ce-plan Phase 1 research), R14 hands-on disclaimer removal note. Committed as part of b3c212d (pre-MVP cleanup commit).",
       "subtasks": [
-        { "id": "cff1", "title": "R9/R14 contradiction — add MVP carve-out to R9 ('except piece #1 per R14')", "done": false },
-        { "id": "cff2", "title": "DRAFT_MARKER sync — note the 7-file sync requirement (templates + 5 forked sites) in R14", "done": false },
-        { "id": "cff3", "title": "Buyer's-guide template hands-on disclaimer — note in R14 that MVP scope deletes the existing 'we haven't tested this product ourselves' lines from templates/buyers-guide.md.tmpl", "done": false }
+        { "id": "cff1", "title": "R9/R14 contradiction — add MVP carve-out to R9", "done": true },
+        { "id": "cff2", "title": "DRAFT_MARKER sync — note the file-sync requirement in R14", "done": true },
+        { "id": "cff3", "title": "Buyer's-guide template hands-on disclaimer note in R14", "done": true }
       ],
-      "notes": "After these land, decide: re-run ce-doc-review (Round 2 carries primer forward) OR jump to ce-plan and let the plan address remaining findings (8 P1 decisions, 9 P2 decisions, 7 FYI) at the unit level."
+      "notes": "Shipped 2026-05-16."
     },
     {
       "id": "content-framework-plan",
       "title": "Plan the content framework MVP via ce-plan",
-      "status": "todo",
-      "completion_percent": 0,
-      "description": "Move requirements doc (docs/brainstorms/2026-05-15-content-framework-requirements.md) through ce-plan to produce unit-by-unit implementation plan. MVP-first split: minimum changes for piece #1 (section rename, anatomy revision, voice doctrine v1, mywildlifecam About-page methodology, AI prompt wiring) vs full-framework grown across pieces 2-5 (per-site product database, playbook rewrite, About-page rollout to other sites).",
-      "due": "next session",
-      "estimate": "1-2 hr ce-plan output + review",
+      "status": "done",
+      "completion_percent": 100,
+      "completed_date": "2026-05-16",
+      "description": "ce-plan ran end-to-end. Output: docs/plans/2026-05-16-001-feat-comparison-fit-content-framework-mvp-plan.md (Deep tier, 9 implementation units, ~26 files). Phase 1 research surfaced 3 critical findings the brainstorm missed (14-file sync surface vs 7, reviewSchema fabricated 5-star bug, About-page hands-on claims across 5 sites). Committed as 1a63522.",
       "subtasks": [
-        { "id": "cfp1", "title": "Run ce-plan against the (revised) requirements doc", "done": false },
-        { "id": "cfp2", "title": "Review the plan output; address Outstanding Questions deferred to planning", "done": false },
-        { "id": "cfp3", "title": "Lock the implementation units before ce-work execution", "done": false }
+        { "id": "cfp1", "title": "Run ce-plan against revised requirements doc", "done": true },
+        { "id": "cfp2", "title": "Address outstanding-questions resolved during planning", "done": true },
+        { "id": "cfp3", "title": "Lock implementation units before ce-work execution", "done": true }
       ],
-      "notes": "Blocked by content-framework-fixes (don't plan against a known-contradictory doc). Same end-to-end CE pattern that shipped content-production readiness on 2026-05-14."
+      "notes": "Shipped 2026-05-16."
     },
     {
       "id": "content-framework-mvp",
       "title": "Execute MVP framework changes via ce-work",
-      "status": "todo",
-      "completion_percent": 0,
-      "description": "MVP minimum-change set per R14: section rename (## My Take → ## Bottom Line + add ## Who This Is For), anatomy revision (Bottom Line at top, answer-first principle), voice doctrine v1 doc (docs/CONTENT_VOICE.md), AI prompt wiring in scaffolding scripts to consume voice doctrine, mywildlifecam About-page methodology block (positive-framed, no explicit 'we don't test' disclaimer), DRAFT_MARKER sync across template + 5 forked Astro sites, buyer's-guide template disclaimer removal. Goal: piece #1 ready to scaffold under new framework.",
-      "due": "this week",
-      "estimate": "3-6 hr Claude work + Ray review per unit",
+      "status": "done",
+      "completion_percent": 100,
+      "completed_date": "2026-05-16",
+      "description": "All 9 units committed to main. Tests green (26+6+16); all 5 sites build clean; zero grep residuals of `## My Take` / `Waiting for the human` / `Editor's Note: Why this guide` / `first-hand` / `We test products` across template + 5 sites. Voice doctrine + per-site config + scaffolders + lint script + About-page sweep + section renames all shipped.",
       "subtasks": [
-        { "id": "cfm1", "title": "Rename ## My Take → ## Bottom Line + add ## Who This Is For across templates + 5 site forks", "done": false },
-        { "id": "cfm2", "title": "Anatomy revision: Bottom Line at top, answer-first structure", "done": false },
-        { "id": "cfm3", "title": "Write docs/CONTENT_VOICE.md with v1 forbidden/preferred lists", "done": false },
-        { "id": "cfm4", "title": "Wire scaffolding scripts to construct AI prompt from voice doctrine", "done": false },
-        { "id": "cfm5", "title": "Sync DRAFT_MARKER constant across templates + 5 forked sites + update placeholder strings", "done": false },
-        { "id": "cfm6", "title": "Write mywildlifecam About-page methodology block (positive-framed)", "done": false },
-        { "id": "cfm7", "title": "Delete existing 'we haven't tested this product' lines from templates/buyers-guide.md.tmpl", "done": false }
+        { "id": "cfm1", "title": "U3 — Review-piece anatomy: section rename + DRAFT marker harmonization", "done": true },
+        { "id": "cfm2", "title": "U4 — Buyers-guide-piece anatomy + hands-on disclaimer removal", "done": true },
+        { "id": "cfm3", "title": "U1 — Voice doctrine v1 document", "done": true },
+        { "id": "cfm4", "title": "U6 — Scaffolders emit sibling prompt file", "done": true },
+        { "id": "cfm5", "title": "U2 — Drop reviewSchema emission (close JSON-LD fabrication gap)", "done": true },
+        { "id": "cfm6", "title": "U8 — About-page sweep across 5 sites + full block on mywildlifecam", "done": true },
+        { "id": "cfm7", "title": "U7 — lint-voice.ps1 forbidden-phrase back-stop", "done": true },
+        { "id": "cfm8", "title": "U5 — Per-site config (mywildlifecam)", "done": true },
+        { "id": "cfm9", "title": "U9 — CLAUDE.md content rules + PLAYBOOK transitional banner", "done": true }
       ],
-      "notes": "Blocked by content-framework-plan. Full framework (per-site product database, playbook rewrite, satellite About-pages) deferred to pieces 2-5 per MVP-first decision."
+      "notes": "Shipped 2026-05-16. Commits f35e0da → 725c6ae. Full plan at docs/plans/2026-05-16-001-feat-comparison-fit-content-framework-mvp-plan.md."
     },
     {
       "id": "first-review",
-      "title": "Ship piece #1 on mywildlifecam under new framework",
+      "title": "Scaffold + ship piece #1 on mywildlifecam under new framework",
       "status": "todo",
       "completion_percent": 0,
-      "description": "Use the (post-MVP) scaffolding script to produce piece #1 on mywildlifecam — a single-product piece or buying-guide written in the comparison-and-fit voice doctrine. Ray fills the ## Bottom Line section in his own voice; AI drafts everything else. Proves the framework end-to-end.",
-      "due": "this week",
+      "description": "TOP-OF-QUEUE. Use the new scaffolders + voice doctrine + lint stack to produce piece #1 — a single-product or buying-guide piece in comparison-and-fit voice. Ray writes the ## Bottom Line section. Proves the framework end-to-end on real content.",
+      "due": "next session",
       "estimate": "2-3 hr for first piece (learning curve); ~60-75 min for subsequent pieces",
       "subtasks": [
-        { "id": "rv1", "title": "Pick first product or buying-guide topic (target: homeowners/property owners/first-timers, NOT hunters)", "done": false },
-        { "id": "rv2", "title": "Run scaffolding script (scripts/new-review.ps1 or scripts/buyers-guide.ps1) under new framework", "done": false },
-        { "id": "rv3", "title": "Verify specs from frontmatter sources (MVP uses frontmatter-only; data/products.json starts at piece #2)", "done": false },
-        { "id": "rv4", "title": "Review AI draft for voice-doctrine compliance, edit as needed", "done": false },
-        { "id": "rv5", "title": "Write ## Bottom Line in Ray's own voice (hard DRAFT/noindex gate)", "done": false },
-        { "id": "rv6", "title": "Preview locally, verify JSON-LD productSchema renders, verify DRAFT banner gone", "done": false },
-        { "id": "rv7", "title": "Deploy via git push, verify HTTP 200 + canonical URL on live site", "done": false }
+        { "id": "rv1", "title": "Pick first product or buying-guide topic — target: homeowners / property owners / first-timer / gift buyer; NOT hunters", "done": false },
+        { "id": "rv2", "title": "Run `pwsh scripts/new-review.ps1 -Site mywildlifecam -Slug <slug> -ProductName \"...\" -Brand \"...\" -AmazonUrl \"https://amzn.to/...\"`", "done": false },
+        { "id": "rv3", "title": "Open the generated `<slug>.prompt.md`, paste into Claude, ask Claude to draft the body (everything except ## Bottom Line)", "done": false },
+        { "id": "rv4", "title": "Review AI draft for voice-doctrine compliance; edit as needed", "done": false },
+        { "id": "rv5", "title": "Write ## Bottom Line in Ray's own voice (the hard DRAFT/noindex gate)", "done": false },
+        { "id": "rv6", "title": "Run `pwsh scripts/lint-voice.ps1 sites/mywildlifecam/src/content/reviews/<slug>.md` before commit", "done": false },
+        { "id": "rv7", "title": "Preview locally with `pnpm --filter mywildlifecam dev`; verify productSchema JSON-LD renders; verify DRAFT banner gone after Bottom Line filled", "done": false },
+        { "id": "rv8", "title": "Commit + push; verify HTTP 200 + canonical URL on the deployed site", "done": false }
       ],
-      "notes": "Blocked by content-framework-mvp. Strategy locked: comparison-and-fit content with dance-around voice doctrine, never claim hands-on use. See docs/brainstorms/2026-05-15-content-framework-requirements.md."
+      "notes": "Scaffolder + voice doctrine + lint all live as of 2026-05-16. Frontmatter-only specs for piece #1 (MVP carve-out per R9); product database lands when piece #2 or #3 hits the trigger boundary."
+    },
+    {
+      "id": "askbigchew-strategy",
+      "title": "Brainstorm askbigchew integration strategy (migrate vs stay-separate)",
+      "status": "todo",
+      "completion_percent": 0,
+      "description": "Strategic question surfaced 2026-05-16 mid-MVP execution: askbigchew is a real affiliate site, Ray actually owns a bulldog and would USE Big Chew products. The 2026-05-15 voice doctrine assumes 'no hands-on' — but askbigchew is the one site where Ray IS hands-on. Open questions: (1) Should askbigchew migrate from its Next.js+MDX repo into this Astro monorepo as site #6 properly? (2) Does askbigchew get a different voice doctrine that allows hands-on claims since Ray actually owns the products? (3) Hero/satellite tier reshuffle — is bulldog the new hero now that Ray has actual product experience? (4) Does the universal anatomy still hold or does askbigchew need a variant?",
+      "due": "before piece #1 on askbigchew",
+      "estimate": "1-2 hr ce-brainstorm + decision",
+      "subtasks": [
+        { "id": "ab1", "title": "Run ce-brainstorm against the 4 strategic questions above", "done": false },
+        { "id": "ab2", "title": "Decide: migrate to Astro monorepo, or stay separate?", "done": false },
+        { "id": "ab3", "title": "If migrate: plan the Next.js → Astro content migration; if stay-separate: lock the operational pattern (shared link-cloaker + DNS, separate templates + content frameworks)", "done": false },
+        { "id": "ab4", "title": "Decide voice-doctrine variant for askbigchew (hands-on allowed?) and document the decision", "done": false },
+        { "id": "ab5", "title": "Decide hero/satellite tiering (is bulldog the new hero?)", "done": false }
+      ],
+      "notes": "NOT a blocker for piece #1 on mywildlifecam. Surface for a future session when there's headspace for product-strategy thinking. Current state: askbigchew documented in CLAUDE.md + README as site #6 with separate-repo + separate-stack pattern."
     },
     {
       "id": "amazon01",
       "title": "Apply for Amazon Associates under mywildlifecam.com",
       "status": "blocked",
       "completion_percent": 0,
-      "description": "Submit Amazon Associates application using mywildlifecam.com as the apex. DEFERRED per 2026-05-15 brainstorm Key Decision: apply AFTER 2-3 pieces are published on mywildlifecam, not before. Reason: the 180-day-3-sales clock starts at approval, so don't burn it on an empty site. Apply when piece #3 is queued.",
+      "description": "Submit Amazon Associates application using mywildlifecam.com as the apex. DEFERRED per 2026-05-15 brainstorm Key Decision: apply AFTER 2-3 pieces are published on mywildlifecam, not before. The 180-day-3-sales clock starts at approval, so don't burn it on an empty site.",
       "due": "after first 2-3 pieces ship",
       "estimate": "10 min + 1-3 day wait",
       "subtasks": [
@@ -84,23 +101,23 @@
         { "id": "a5", "title": "Create per-site tracking tags in Associates dashboard (mywildlifecam-20, detailerpicks-20, etc.)", "done": false },
         { "id": "a6", "title": "Backfill tags into existing KV entries", "done": false }
       ],
-      "notes": "Blocked-by content-framework-mvp + first-review (need pieces published before applying). Strategic decision locked 2026-05-15."
+      "notes": "Blocked by first-review (need 2-3 pieces live before applying). Strategic decision locked 2026-05-15."
     },
     {
-      "id": "askbigchew",
+      "id": "askbigchew-migration",
       "title": "Migrate askbigchew DNS to Cloudflare",
       "status": "todo",
       "completion_percent": 0,
-      "description": "Walk-through doc exists at docs/askbigchew-cloudflare-migration.html (untracked in working tree as of 2026-05-15). 6th sister site that needs to come under the same Cloudflare umbrella as the other 5.",
+      "description": "Walk-through doc at docs/askbigchew-cloudflare-migration.html. Brings the 6th sister site under the same Cloudflare umbrella as the other 5 (Pages + link-cloaker Worker).",
       "due": "this week",
       "estimate": "20-30 min",
       "subtasks": [
-        { "id": "ab1", "title": "Open docs/askbigchew-cloudflare-migration.html and follow the click-by-click", "done": false },
-        { "id": "ab2", "title": "Add askbigchew to CF Pages", "done": false },
-        { "id": "ab3", "title": "Update apex DNS at current registrar to CF", "done": false },
-        { "id": "ab4", "title": "Verify HTTP 200 + SSL", "done": false }
+        { "id": "abm1", "title": "Open docs/askbigchew-cloudflare-migration.html and follow the click-by-click", "done": false },
+        { "id": "abm2", "title": "Add askbigchew to CF Pages", "done": false },
+        { "id": "abm3", "title": "Update apex DNS at Namecheap to CF nameservers", "done": false },
+        { "id": "abm4", "title": "Verify HTTP 200 + SSL", "done": false }
       ],
-      "notes": "Standalone task — not blocked by content framework work; not blocking it either. askbigchew uses Next.js + MDX (different stack) so it doesn't share the content framework directly per CLAUDE.md, but it does share the link-cloaker Worker once on Cloudflare DNS."
+      "notes": "Standalone task — independent of the content-framework strategy question (askbigchew-strategy). DNS migration can happen regardless of whether askbigchew eventually migrates into this monorepo or stays separate."
     },
     {
       "id": "r2-paapi",
@@ -115,7 +132,7 @@
         { "id": "r2", "title": "Wait until 3 Associates sales accumulated", "done": false },
         { "id": "r3", "title": "Apply for PA-API at Associates console", "done": false }
       ],
-      "notes": "MVP workaround per 2026-05-15 brainstorm R13: hotlink Amazon listing images directly into piece frontmatter; refresh quarterly. From RAY_QUEUE.md task #4."
+      "notes": "MVP workaround per 2026-05-15 brainstorm R13: hotlink Amazon listing images directly into piece frontmatter; refresh quarterly."
     }
   ]
 }
