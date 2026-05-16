@@ -15,8 +15,7 @@ last_milestone_date: 2026-05-14
 - `docs/PROJECT_STATE.md` — running wins ledger
 - `docs/RAY_QUEUE.md` — canonical "what to do next" file (covers cross-project tasks too)
 - `docs/PLAYBOOK.md` — per-review workflow
-- `docs/launch-playbook.html` — brand-launch click-by-click (Starwatch + Semper Fi)
-- `docs/semperfistudios-launch-checklist.md` — Semper Fi handle/domain tracking
+- `docs/launch-playbook.html` — brand-launch click-by-click (Starwatch + Semper Fi; shared resource)
 
 ## What "70% complete" means
 Phase 1 (toolkit) + Phase 2a (content-production capability) done. Phase 2b (actual reviews shipping with monetized affiliate links) is the remaining stretch. Amazon Associates application is the immediate gate; R2 + PA-API are blockers for review imagery; first real review-via-new-review.ps1 is the proof-of-concept that closes Phase 2b.
