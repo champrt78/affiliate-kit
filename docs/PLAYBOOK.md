@@ -1,5 +1,9 @@
 # Affiliate Kit Playbook
 
+> **Status (2026-05-16): SUPERSEDED in spirit.** This playbook describes the pre-2026-05-15 "AI scaffolds the draft, you fill in `## My Take` from real ownership" model. That model was retired by the comparison-and-fit content framework (locked 2026-05-15). Full requirements at `docs/brainstorms/2026-05-15-content-framework-requirements.md`; voice doctrine at `docs/voice-doctrine.md`; current implementation plan at `docs/plans/2026-05-16-001-feat-comparison-fit-content-framework-mvp-plan.md`. Full playbook rewrite is queued post-MVP per R15.
+>
+> Most operational guidance below (cycle cadence, hero/satellite tiering, refresh sweep mechanics, KV affiliate-link operations) remains accurate. Only the per-piece content rules ("AI scaffolds, you fill in `## My Take`", "own it → review, don't own it → buyer's-guide") are stale. Treat everything content-rule-related in this doc as historical until the rewrite lands.
+
 > The single-page reference for writing reviews and running quarterly cycles. Read this at the start of every cycle. 5 minutes, then go.
 
 ---

@@ -17,8 +17,10 @@ This file teaches Claude the conventions for working inside this monorepo. Read 
 - `askbigchew` lives in its own repo (`champrt78/askbigchew`, locally `bc/`) and uses Next.js + MDX instead of the Astro template. Don't try to bootstrap it via `/aff-bootstrap`; it follows a different deploy path documented in `docs/askbigchew-cloudflare-migration.html`. Once on Cloudflare DNS, it shares the same link-cloaker Worker as the others.
 
 ## Content rules
-- AI scaffolds the draft. Human fills in `## My Take`. Never publish with My Take empty.
-- Products the human doesn't own → frame as buyer's guide, not review.
+- **Comparison-and-fit content framework** (locked 2026-05-15; full requirements at `docs/brainstorms/2026-05-15-content-framework-requirements.md`). Never claim hands-on product use; voice doctrine at `docs/voice-doctrine.md` is the single source of truth for forbidden phrases + preferred framings + direct-question responses.
+- AI scaffolds the draft. Human fills in `## Bottom Line` (located at the TOP of every piece — anti-recipe-page design principle, and the hard DRAFT/noindex gate). Never publish with `## Bottom Line` empty.
+- Both piece types (single-product and buying-guide) use the same universal anatomy with `## Bottom Line` at the top, followed by `## Who This Is For` (AI-drafted, not gated), then supporting spec/comparison/user-reports sections.
+- After AI drafting, run `pwsh scripts/lint-voice.ps1 <piece>.md` to grep for forbidden phrases as a back-stop before commit.
 - AI-generated product images are banned. AI for scene/context only. Product hero shots come from Amazon PA-API or the brand's affiliate media kit.
 
 ## Style
