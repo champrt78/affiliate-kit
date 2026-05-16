@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>askbigchew.com — Cloudflare Migration Guide</title>
+<style>
+  :root {
+    --bg: #0b0d10;
+    --bg-elev: #14181d;
+    --bg-elev-2: #1c2129;
+    --border: #2a313b;
+    --border-strong: #3a4350;
+    --text: #e6e8eb;
+    --text-dim: #9aa3ad;
+    --text-faint: #6c7480;
+    --accent: #e11d48;
+    --accent-soft: rgba(225, 29, 72, 0.12);
+    --gold: #f5b942;
+    --green: #4ade80;
+    --yellow: #facc15;
+    --mono: ui-monospace, "Cascadia Code", "JetBrains Mono", "Fira Code", Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .shell {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 48px 32px 96px;
+  }
+  header.hero {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+  }
+  .eyebrow {
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 36px;
+    line-height: 1.15;
+    margin: 0 0 16px;
+    letter-spacing: -0.01em;
+  }
+  .lead {
+    color: var(--text-dim);
+    font-size: 18px;
+    margin: 0 0 24px;
+    max-width: 720px;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+    font-size: 13px;
+    font-family: var(--mono);
+    color: var(--text-faint);
+  }
+  .meta .chip {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+  .meta .chip strong { color: var(--text); font-weight: 600; }
+
+  h2 {
+    font-size: 26px;
+    margin: 64px 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: -0.005em;
+  }
+  h2 .partno {
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  h3 {
+    font-size: 19px;
+    margin: 32px 0 12px;
+    color: var(--text);
+  }
+  p { margin: 0 0 16px; }
+  a { color: var(--gold); }
+  a:hover { color: var(--accent); }
+
+  /* Pipeline diagram */
+  .pipeline {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: stretch;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 32px 0;
+  }
+  .pipeline .col { padding: 8px 4px; }
+  .pipeline .col h4 {
+    margin: 0 0 12px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-faint);
+    font-weight: 600;
+  }
+  .pipeline .col ul {
+    margin: 0; padding: 0; list-style: none;
+    font-family: var(--mono);
+    font-size: 14px;
+  }
+  .pipeline .col li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .pipeline .col li:last-child { border-bottom: none; }
+  .pipeline .col li .k { color: var(--text-dim); }
+  .pipeline .col li .v { color: var(--text); }
+  .pipeline .arrow {
+    color: var(--accent);
+    align-self: center;
+    font-size: 28px;
+    font-family: var(--mono);
+  }
+  .pipeline .before .v { color: var(--text-faint); }
+  .pipeline .after .v { color: var(--green); }
+
+  /* Step list */
+  .steps {
+    counter-reset: step;
+    list-style: none;
+    padding: 0;
+    margin: 24px 0;
+  }
+  .steps > li {
+    counter-increment: step;
+    position: relative;
+    padding: 20px 20px 20px 64px;
+    margin-bottom: 12px;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .steps > li::before {
+    content: counter(step);
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 28px;
+    height: 28px;
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .steps > li > :first-child { margin-top: 0; }
+  .steps > li > :last-child { margin-bottom: 0; }
+  .steps > li strong { color: var(--text); }
+
+  /* Code / commands */
+  pre, code {
+    font-family: var(--mono);
+    font-size: 14px;
+  }
+  code:not(pre code) {
+    background: var(--bg-elev-2);
+    border: 1px solid var(--border);
+    padding: 1px 6px;
+    border-radius: 4px;
+    color: var(--text);
+    font-size: 13px;
+  }
+  pre {
+    background: var(--bg-elev-2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 16px 0;
+    line-height: 1.5;
+  }
+  pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--text);
+  }
+  .lang {
+    display: block;
+    color: var(--text-faint);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+
+  /* Callouts */
+  .callout {
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 20px 0;
+    border: 1px solid;
+    font-size: 14.5px;
+  }
+  .callout strong { display: block; margin-bottom: 4px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .callout.warn { background: rgba(250, 204, 21, 0.06); border-color: rgba(250, 204, 21, 0.3); }
+  .callout.warn strong { color: var(--yellow); }
+  .callout.danger { background: var(--accent-soft); border-color: rgba(225, 29, 72, 0.4); }
+  .callout.danger strong { color: var(--accent); }
+  .callout.info { background: rgba(74, 222, 128, 0.06); border-color: rgba(74, 222, 128, 0.25); }
+  .callout.info strong { color: var(--green); }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    color: var(--text-faint);
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: var(--bg-elev);
+  }
+  td.mono { font-family: var(--mono); font-size: 13px; }
+
+  /* TOC */
+  nav.toc {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 24px 0 0;
+  }
+  nav.toc h4 {
+    margin: 0 0 10px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-faint);
+    font-weight: 600;
+  }
+  nav.toc ol {
+    margin: 0;
+    padding-left: 20px;
+    columns: 2;
+    column-gap: 32px;
+  }
+  nav.toc li {
+    margin: 4px 0;
+    break-inside: avoid;
+  }
+  nav.toc a { color: var(--text); text-decoration: none; }
+  nav.toc a:hover { color: var(--accent); }
+
+  /* Reference cards */
+  .ref-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .ref-card {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .ref-card h5 {
+    margin: 0 0 4px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-faint);
+    font-weight: 600;
+  }
+  .ref-card .val {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text);
+    word-break: break-all;
+  }
+
+  /* Checklist */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    padding: 6px 0 6px 28px;
+    position: relative;
+  }
+  .checklist li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid var(--border-strong);
+    border-radius: 4px;
+    background: var(--bg-elev);
+  }
+
+  footer {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 13px;
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    .shell { padding: 24px 16px 64px; }
+    h1 { font-size: 28px; }
+    h2 { font-size: 22px; }
+    .pipeline { grid-template-columns: 1fr; }
+    .pipeline .arrow { transform: rotate(90deg); }
+    nav.toc ol { columns: 1; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+<header class="hero">
+  <div class="eyebrow">Affiliate Kit · Migration Guide</div>
+  <h1>askbigchew.com — Namecheap → Cloudflare</h1>
+  <p class="lead">
+    Move the askbigchew.com domain from Namecheap to Cloudflare, deploy the Next.js site to Cloudflare Pages,
+    and wire it into the affiliate-kit link-cloaker so <code>/go/&lt;slug&gt;</code> redirects work just like the
+    other five sites.
+  </p>
+  <div class="meta">
+    <span class="chip">Domain: <strong>askbigchew.com</strong></span>
+    <span class="chip">Registrar: <strong>Namecheap</strong></span>
+    <span class="chip">Target host: <strong>Cloudflare Pages</strong></span>
+    <span class="chip">Repo: <strong>champrt78/askbigchew</strong></span>
+    <span class="chip">Tier: <strong>Satellite</strong></span>
+  </div>
+
+  <nav class="toc">
+    <h4>What you'll do</h4>
+    <ol>
+      <li><a href="#prep">Pre-flight check</a></li>
+      <li><a href="#part-1">Add zone in Cloudflare</a></li>
+      <li><a href="#part-2">Switch Namecheap nameservers</a></li>
+      <li><a href="#part-3">Wait for propagation</a></li>
+      <li><a href="#part-4">Prep bc/ for static export</a></li>
+      <li><a href="#part-5">Connect repo to CF Pages</a></li>
+      <li><a href="#part-6">Attach the custom domain</a></li>
+      <li><a href="#part-7">Wire up the link-cloaker</a></li>
+      <li><a href="#part-8">Smoke tests</a></li>
+      <li><a href="#troubleshooting">Troubleshooting</a></li>
+    </ol>
+  </nav>
+</header>
+
+<section id="overview">
+  <h2>State change at a glance</h2>
+  <p>This is what's moving where.</p>
+  <div class="pipeline">
+    <div class="col before">
+      <h4>Before</h4>
+      <ul>
+        <li><span class="k">DNS:</span> <span class="v">Namecheap</span></li>
+        <li><span class="k">Nameservers:</span> <span class="v">dns1/2.registrar-servers.com</span></li>
+        <li><span class="k">Hosting:</span> <span class="v">none — parked at 192.64.119.60</span></li>
+        <li><span class="k">SSL:</span> <span class="v">none</span></li>
+        <li><span class="k">/go/ redirects:</span> <span class="v">none</span></li>
+      </ul>
+    </div>
+    <div class="arrow">→</div>
+    <div class="col after">
+      <h4>After</h4>
+      <ul>
+        <li><span class="k">DNS:</span> <span class="v">Cloudflare (Free)</span></li>
+        <li><span class="k">Nameservers:</span> <span class="v">*.ns.cloudflare.com</span></li>
+        <li><span class="k">Hosting:</span> <span class="v">Cloudflare Pages</span></li>
+        <li><span class="k">SSL:</span> <span class="v">automatic (CF universal cert)</span></li>
+        <li><span class="k">/go/ redirects:</span> <span class="v">affkit-link-cloaker Worker</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="prep">
+  <h2><span class="partno">Part 0</span>Pre-flight check</h2>
+  <p>Before starting, confirm you have these. None of them are surprises if you've already worked through <code>BASEMENT_SETUP.md</code>.</p>
+
+  <ul class="checklist">
+    <li>A Cloudflare account (free is fine), logged in at <a href="https://dash.cloudflare.com" target="_blank">dash.cloudflare.com</a></li>
+    <li>The askbigchew.com login at <a href="https://www.namecheap.com/myaccount/login" target="_blank">namecheap.com</a></li>
+    <li>Push access to <code>champrt78/askbigchew</code> on GitHub</li>
+    <li><code>wrangler</code> CLI authenticated (<code>wrangler whoami</code> shows your email)</li>
+    <li>The affiliate-kit <code>link-cloaker</code> Worker already deployed — <em>see <a href="BASEMENT_SETUP.md">BASEMENT_SETUP.md</a> Part 8 if not. Skip Part 7 of this guide until that's done.</em></li>
+  </ul>
+
+  <div class="callout info">
+    <strong>Time budget</strong>
+    Active hands-on time: ~30–45 minutes. Total wall time: 1–24 hours, gated by Namecheap → Cloudflare nameserver propagation. You can do Parts 4–6 while propagation finishes.
+  </div>
+</section>
+
+<section id="part-1">
+  <h2><span class="partno">Part 1</span>Add askbigchew.com to Cloudflare</h2>
+
+  <ol class="steps">
+    <li>
+      <p>Log in to <a href="https://dash.cloudflare.com" target="_blank">dash.cloudflare.com</a>.</p>
+    </li>
+    <li>
+      <p>Top-right <strong>+ Add</strong> → <strong>Existing domain</strong> → type <code>askbigchew.com</code> → <strong>Continue</strong>.</p>
+    </li>
+    <li>
+      <p>Plan picker: choose <strong>Free</strong>. Confirm. Cloudflare scans existing DNS records (there are basically none right now — Namecheap parking).</p>
+    </li>
+    <li>
+      <p>You land on a "Nameservers" page that says something like:</p>
+      <pre><code>Replace your nameservers with:
+  alice.ns.cloudflare.com
+  bob.ns.cloudflare.com</code></pre>
+      <p>Your two nameservers will be different. <strong>Copy them — you need them in Part 2.</strong> Cloudflare also shows your <strong>Account ID</strong> in the right sidebar; that's already in <code>~/.claude/plugins/affiliate-kit/config.json</code> from your earlier setup, so no need to copy it again.</p>
+    </li>
+    <li>
+      <p>Leave this tab open. Don't click "Done, check nameservers" yet — we change Namecheap first.</p>
+    </li>
+  </ol>
+</section>
+
+<section id="part-2">
+  <h2><span class="partno">Part 2</span>Switch Namecheap nameservers</h2>
+
+  <ol class="steps">
+    <li>
+      <p>Open a new tab. Log in to Namecheap → <strong>Domain List</strong> → next to <code>askbigchew.com</code> click <strong>Manage</strong>.</p>
+    </li>
+    <li>
+      <p>On the <em>Domain</em> tab, scroll to the <strong>Nameservers</strong> section.</p>
+    </li>
+    <li>
+      <p>Dropdown is probably set to "Namecheap BasicDNS". Change it to <strong>Custom DNS</strong>.</p>
+    </li>
+    <li>
+      <p>Two text fields appear. Paste the two nameservers from Part 1 — one per field. Order doesn't matter.</p>
+    </li>
+    <li>
+      <p>Click the green checkmark to save. Namecheap shows "Nameservers were successfully changed." You'll get an email confirming the change.</p>
+    </li>
+  </ol>
+
+  <div class="callout warn">
+    <strong>Heads up</strong>
+    Namecheap may show a banner: <em>"It may take up to 48 hours for the change to take effect."</em> In practice it's usually 5–30 minutes for the major DNS resolvers to pick up the swap. Don't panic if it isn't instant.
+  </div>
+</section>
+
+<section id="part-3">
+  <h2><span class="partno">Part 3</span>Wait for propagation</h2>
+
+  <p>Back in the Cloudflare tab, click <strong>Done, check nameservers</strong>. Cloudflare starts probing.</p>
+
+  <p>To check manually from this PC:</p>
+  <pre><span class="lang">PowerShell</span><code>nslookup -type=NS askbigchew.com 1.1.1.1</code></pre>
+  <p>Once the answer comes back as your two <code>*.ns.cloudflare.com</code> entries (and not the old Namecheap ones), propagation is done.</p>
+
+  <p>Cloudflare will also email you "Cloudflare is now protecting askbigchew.com" — that's the green light.</p>
+
+  <div class="callout info">
+    <strong>While you wait</strong>
+    Move to Parts 4–6. They don't depend on DNS being fully on Cloudflare yet — they prep the site code and the CF Pages project. You only need DNS finished before attaching the custom domain in Part 6.
+  </div>
+</section>
+
+<section id="part-4">
+  <h2><span class="partno">Part 4</span>Prep bc/ for static export</h2>
+
+  <p>The site at <code>C:\Users\Ray\Documents\GitHub\bc</code> is Next.js 15 + MDX, filesystem-driven. It needs three small changes to build as a fully static site that Cloudflare Pages serves natively (no Workers/SSR runtime needed). All edits are in the <code>bc/</code> repo, not <code>affiliate-sites/</code>.</p>
+
+  <h3>4a — Enable static export</h3>
+  <p>Edit <code>bc/next.config.mjs</code>:</p>
+  <pre><span class="lang">bc/next.config.mjs</span><code>/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: "export",                  // ← add
+  trailingSlash: true,               // ← add (CF Pages likes /reviews/foo/ over /reviews/foo)
+  pageExtensions: ["ts", "tsx", "mdx"],
+  reactStrictMode: true,
+  images: {
+    unoptimized: true,               // ← add (Next image optimizer needs a server)
+    dangerouslyAllowSVG: true,
+    contentDispositionType: "attachment",
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    remotePatterns: [
+      { protocol: "https", hostname: "m.media-amazon.com" },
+      { protocol: "https", hostname: "images-na.ssl-images-amazon.com" },
+      { protocol: "https", hostname: "image.chewy.com" },
+    ],
+  },
+};</code></pre>
+
+  <h3>4b — Pre-render dynamic routes</h3>
+  <p>You have two dynamic routes: <code>app/category/[slug]/page.tsx</code> and <code>app/reviews/[slug]/page.tsx</code>. Static export needs each to declare its slugs at build time via <code>generateStaticParams</code>.</p>
+  <p>Reviews route — add this near the top of <code>app/reviews/[slug]/page.tsx</code>:</p>
+  <pre><span class="lang">app/reviews/[slug]/page.tsx</span><code>import { getAllReviewSlugs } from "@/lib/reviews";
+
+export async function generateStaticParams() {
+  return getAllReviewSlugs().map((slug) => ({ slug }));
+}</code></pre>
+  <p>Category route — same pattern, derived from the unique categories in <code>lib/categories.ts</code>:</p>
+  <pre><span class="lang">app/category/[slug]/page.tsx</span><code>import { categories } from "@/lib/categories";
+
+export async function generateStaticParams() {
+  return categories.map((c) => ({ slug: c.slug }));
+}</code></pre>
+  <p>The exact helper names (<code>getAllReviewSlugs</code>, <code>categories</code>) may need to be added to <code>lib/reviews.ts</code> / <code>lib/categories.ts</code> if they aren't exported yet. Quick sanity check:</p>
+  <pre><span class="lang">PowerShell</span><code>cd C:\Users\Ray\Documents\GitHub\bc
+Get-Content lib\reviews.ts | Select-String "export "
+Get-Content lib\categories.ts | Select-String "export "</code></pre>
+
+  <h3>4c — Verify it builds static</h3>
+  <pre><span class="lang">PowerShell</span><code>cd C:\Users\Ray\Documents\GitHub\bc
+npm run build</code></pre>
+  <p>Success looks like a final line "<code>Exported successfully</code>" and an <code>out/</code> directory containing <code>index.html</code>, <code>reviews/&lt;slug&gt;/index.html</code> for each review, etc. If the build complains about a route that needs a server, that page is using something incompatible with static export (cookies, dynamic params without <code>generateStaticParams</code>, server actions). Fix or remove before continuing.</p>
+
+  <h3>4d — Commit and push</h3>
+  <pre><span class="lang">PowerShell</span><code>cd C:\Users\Ray\Documents\GitHub\bc
+git add next.config.mjs app/reviews/[slug]/page.tsx app/category/[slug]/page.tsx lib/
+git commit -m "build: enable static export for Cloudflare Pages"
+git push</code></pre>
+</section>
+
+<section id="part-5">
+  <h2><span class="partno">Part 5</span>Connect bc/ to Cloudflare Pages</h2>
+
+  <ol class="steps">
+    <li>
+      <p>Cloudflare dashboard → <strong>Workers &amp; Pages</strong> → <strong>Create</strong> → <strong>Pages</strong> tab → <strong>Connect to Git</strong>.</p>
+    </li>
+    <li>
+      <p>Authorize the Cloudflare GitHub app if prompted. Restrict it to <code>champrt78/askbigchew</code> only — don't give it blanket access to your account.</p>
+    </li>
+    <li>
+      <p>Pick the <code>champrt78/askbigchew</code> repo → <strong>Begin setup</strong>.</p>
+    </li>
+    <li>
+      <p>Configuration:</p>
+      <table>
+        <tr><th>Field</th><th>Value</th></tr>
+        <tr><td>Project name</td><td class="mono">askbigchew</td></tr>
+        <tr><td>Production branch</td><td class="mono">main</td></tr>
+        <tr><td>Framework preset</td><td>Next.js (Static HTML Export)</td></tr>
+        <tr><td>Build command</td><td class="mono">npm run build</td></tr>
+        <tr><td>Build output directory</td><td class="mono">out</td></tr>
+        <tr><td>Root directory</td><td class="mono">/</td></tr>
+        <tr><td>Environment variables</td><td>(none for now)</td></tr>
+      </table>
+    </li>
+    <li>
+      <p><strong>Save and Deploy</strong>. First build takes 2–4 minutes. You'll get a temporary URL like <code>askbigchew.pages.dev</code> when it finishes. Open it — verify the homepage and a couple of review pages render correctly.</p>
+    </li>
+  </ol>
+
+  <div class="callout warn">
+    <strong>If the build fails</strong>
+    Most common cause is a route that wasn't covered by <code>generateStaticParams</code> in Part 4b. The build log lines out exactly which path failed. Add the slug, push, CF auto-rebuilds.
+  </div>
+</section>
+
+<section id="part-6">
+  <h2><span class="partno">Part 6</span>Attach askbigchew.com as the custom domain</h2>
+
+  <p><strong>Requires Part 3 to be done</strong> — the zone must be active in Cloudflare before you can attach the apex.</p>
+
+  <ol class="steps">
+    <li>
+      <p>In the <code>askbigchew</code> Pages project → <strong>Custom domains</strong> → <strong>Set up a custom domain</strong>.</p>
+    </li>
+    <li>
+      <p>Enter <code>askbigchew.com</code>. Cloudflare detects you own the zone and offers to create the DNS record automatically. <strong>Yes</strong>. It adds a CNAME (or a flat record on apex; CF handles the apex CNAME flattening for you).</p>
+    </li>
+    <li>
+      <p>Repeat for the www subdomain: <strong>Set up a custom domain</strong> again → <code>www.askbigchew.com</code>. CF will auto-redirect <code>www → apex</code> using a Bulk Redirect rule it sets up for you.</p>
+    </li>
+    <li>
+      <p>SSL certificate provisioning runs automatically in the background. Status shows "Pending certificate" then "Active" within 5–10 minutes. You don't have to do anything.</p>
+    </li>
+    <li>
+      <p>Visit <code>https://askbigchew.com</code>. Should serve the site over HTTPS with a green padlock.</p>
+    </li>
+  </ol>
+</section>
+
+<section id="part-7">
+  <h2><span class="partno">Part 7</span>Wire up the link-cloaker</h2>
+
+  <p>This part assumes the <code>affkit-link-cloaker</code> Worker is already deployed (per <code>BASEMENT_SETUP.md</code> Part 8). If not, do that first — come back here when <code>wrangler deployments list --name affkit-link-cloaker</code> shows a deployment.</p>
+
+  <h3>7a — Attach the route</h3>
+  <p>From the <code>affiliate-sites/workers/link-cloaker/</code> directory, add a route entry to <code>wrangler.toml</code>:</p>
+  <pre><span class="lang">workers/link-cloaker/wrangler.toml</span><code>routes = [
+  { pattern = "mywildlifecam.com/go/*", zone_name = "mywildlifecam.com" },
+  { pattern = "askbigchew.com/go/*",    zone_name = "askbigchew.com" },   # ← add
+]</code></pre>
+  <p>Then redeploy:</p>
+  <pre><span class="lang">PowerShell</span><code>cd C:\Users\Ray\Documents\GitHub\affiliate-sites\workers\link-cloaker
+wrangler deploy</code></pre>
+  <p>Wrangler will create the Worker Route on the <code>askbigchew.com</code> zone for you. Verify in CF dashboard → askbigchew.com → <strong>Workers Routes</strong>: should show <code>askbigchew.com/go/*</code> → <code>affkit-link-cloaker</code>.</p>
+
+  <h3>7b — Seed a test affiliate link</h3>
+  <p>Find your <code>AFFILIATE_LINKS</code> KV namespace id (in <code>workers/link-cloaker/wrangler.toml</code>) and add a test entry:</p>
+  <pre><span class="lang">PowerShell</span><code>$kvId = "&lt;your AFFILIATE_LINKS id&gt;"
+
+wrangler kv key put --remote --namespace-id=$kvId `
+  "askbigchew:big-chew-test" `
+  "https://www.amazon.com/dp/B07XYZ?tag=yourtag-20"</code></pre>
+
+  <h3>7c — Commit the wrangler.toml change</h3>
+  <pre><span class="lang">PowerShell</span><code>cd C:\Users\Ray\Documents\GitHub\affiliate-sites
+git add workers/link-cloaker/wrangler.toml
+git commit -m "feat(link-cloaker): add askbigchew.com/go/* route"
+git push</code></pre>
+</section>
+
+<section id="part-8">
+  <h2><span class="partno">Part 8</span>Smoke tests</h2>
+
+  <p>Three checks. All should pass before you call this done.</p>
+
+  <h3>8a — Site loads over HTTPS</h3>
+  <pre><span class="lang">PowerShell</span><code>curl.exe -I https://askbigchew.com</code></pre>
+  <p>Expected: <code>HTTP/2 200</code> with <code>server: cloudflare</code>.</p>
+
+  <h3>8b — Link cloaker redirects known slugs</h3>
+  <pre><span class="lang">PowerShell</span><code>curl.exe -I https://askbigchew.com/go/big-chew-test</code></pre>
+  <p>Expected: <code>HTTP/2 302</code> with <code>location: https://www.amazon.com/dp/B07XYZ?tag=yourtag-20</code>.</p>
+
+  <h3>8c — Link cloaker 404s unknown slugs</h3>
+  <pre><span class="lang">PowerShell</span><code>curl.exe -I https://askbigchew.com/go/does-not-exist</code></pre>
+  <p>Expected: <code>HTTP/2 404</code>.</p>
+
+  <h3>8d — Clean up the test entry</h3>
+  <pre><span class="lang">PowerShell</span><code>wrangler kv key delete --remote --namespace-id=$kvId "askbigchew:big-chew-test"</code></pre>
+
+  <div class="callout info">
+    <strong>You're done</strong>
+    askbigchew.com is on Cloudflare, the site is built statically on every push, the link-cloaker handles affiliate redirects, and everything matches the rest of the affiliate-kit family. Add an entry to <code>docs/PROJECT_STATE.md</code> in the bc/ repo so future-you remembers.
+  </div>
+</section>
+
+<section id="troubleshooting">
+  <h2><span class="partno">Reference</span>Troubleshooting</h2>
+
+  <h3>"This site can't be reached" after nameserver swap</h3>
+  <p>DNS hasn't fully propagated yet. Wait 15 minutes, then re-check with <code>nslookup -type=NS askbigchew.com 1.1.1.1</code>. If after 24 hours it's still pointing at Namecheap, the nameserver fields weren't saved correctly — go back to Part 2 step 5.</p>
+
+  <h3>Cloudflare Pages build fails: "Cannot find module..."</h3>
+  <p>Some path resolution differs between local Node and CF's build container. Usually fixed by setting <code>NODE_VERSION = 20</code> in the project's environment variables. CF Pages defaults to 18 if not specified.</p>
+
+  <h3>Cloudflare Pages build fails: "Page X is missing exports..."</h3>
+  <p>A dynamic route doesn't have <code>generateStaticParams</code>. Find the offending file in the build log, add the function (see Part 4b for the pattern), push.</p>
+
+  <h3>Custom domain shows "Verifying" forever</h3>
+  <p>CF can't validate the domain because the zone isn't fully active yet. Wait until you've gotten the "Cloudflare is now protecting askbigchew.com" email, then refresh.</p>
+
+  <h3>/go/&lt;slug&gt; returns the site's 404 page instead of the Worker's 404</h3>
+  <p>The route isn't attached to the zone. CF dashboard → askbigchew.com → <strong>Workers Routes</strong>. If empty, re-run <code>wrangler deploy</code> from <code>workers/link-cloaker/</code>. If the route is there but Pages is intercepting, make sure the Worker route pattern <code>askbigchew.com/go/*</code> is listed <em>above</em> any Pages domain routing — Pages routes are catch-all by default.</p>
+
+  <h3>HTTPS cert won't issue</h3>
+  <p>Either DNS still hasn't fully propagated, or there's a CAA record at Namecheap restricting issuers. Check <code>nslookup -type=CAA askbigchew.com</code>. If there's a CAA record that doesn't include <code>letsencrypt.org</code> / <code>pki.goog</code>, edit it (or remove it) in Cloudflare's DNS panel — CF re-attempts every few hours.</p>
+
+  <h3>Where the relevant config lives</h3>
+  <div class="ref-grid">
+    <div class="ref-card">
+      <h5>Plugin config</h5>
+      <div class="val">~/.claude/plugins/affiliate-kit/config.json</div>
+    </div>
+    <div class="ref-card">
+      <h5>Link-cloaker source</h5>
+      <div class="val">affiliate-sites/workers/link-cloaker/</div>
+    </div>
+    <div class="ref-card">
+      <h5>askbigchew code</h5>
+      <div class="val">C:\Users\Ray\Documents\GitHub\bc</div>
+    </div>
+    <div class="ref-card">
+      <h5>askbigchew GitHub</h5>
+      <div class="val">github.com/champrt78/askbigchew</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Last updated 2026-05-14 · affiliate-sites/docs/askbigchew-cloudflare-migration.html
+</footer>
+
+</div>
+</body>
+</html>

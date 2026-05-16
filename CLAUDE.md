@@ -12,8 +12,9 @@ This file teaches Claude the conventions for working inside this monorepo. Read 
 - `docs/` — spec + plans + retrospectives.
 
 ## Strategy
-- One hero site (`mywildlifecam`) gets the real effort. Four satellites (`detailerpicks`, `fussybean`, `starteraquarium`, `gameovergear`) get the playbook on a slower clock. Don't suggest equal effort across all 5.
+- One hero site (`mywildlifecam`) gets the real effort. Five satellites (`detailerpicks`, `fussybean`, `starteraquarium`, `gameovergear`, `askbigchew`) get the playbook on a slower clock. Don't suggest equal effort across all 6.
 - Quarterly cycle = 5 new reviews + refresh sweep, per site, every 90 days.
+- `askbigchew` lives in its own repo (`champrt78/askbigchew`, locally `bc/`) and uses Next.js + MDX instead of the Astro template. Don't try to bootstrap it via `/aff-bootstrap`; it follows a different deploy path documented in `docs/askbigchew-cloudflare-migration.html`. Once on Cloudflare DNS, it shares the same link-cloaker Worker as the others.
 
 ## Content rules
 - AI scaffolds the draft. Human fills in `## My Take`. Never publish with My Take empty.

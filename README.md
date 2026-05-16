@@ -1,6 +1,6 @@
 # affiliate-kit
 
-A Claude Code plugin and Astro monorepo for operating 5 affiliate sites with minimal active overhead.
+A Claude Code plugin and Astro monorepo for operating 6 affiliate sites with minimal active overhead.
 
 ## Status
 
@@ -16,19 +16,22 @@ A Claude Code plugin and Astro monorepo for operating 5 affiliate sites with min
 
 This repo lives at `~/source/repos/affiliate-sites/` on every machine. The plugin source under `plugin/` is copied to `~/.claude/plugins/affiliate-kit/` by `scripts/install-plugin.ps1`.
 
-## The 5 sites
+## The 6 sites
 
-| Slug | Niche | Tier |
-|---|---|---|
-| `mywildlifecam` | Trail cameras / wildlife cams | Hero |
-| `detailerpicks` | Car detailing | Satellite |
-| `fussybean` | Coffee / espresso | Satellite |
-| `starteraquarium` | Beginner aquariums | Satellite |
-| `gameovergear` | Retro gaming gear | Satellite (passion) |
+| Slug | Niche | Tier | Stack |
+|---|---|---|---|
+| `mywildlifecam` | Trail cameras / wildlife cams | Hero | Astro template |
+| `detailerpicks` | Car detailing | Satellite | Astro template |
+| `fussybean` | Coffee / espresso | Satellite | Astro template |
+| `starteraquarium` | Beginner aquariums | Satellite | Astro template |
+| `gameovergear` | Retro gaming gear | Satellite (passion) | Astro template |
+| `askbigchew` | English Bulldog products (Big Chew reviews) | Satellite | Next.js + MDX (own repo: `champrt78/askbigchew`) |
 
 ## Stack
 
 Astro static → Cloudflare Pages → Workers (link cloaking) + R2 (images) + Web Analytics. Domains on Porkbun, nameservers pointed at Cloudflare.
+
+`askbigchew` is structurally different — Next.js 15 + MDX in its own `bc/` repo, registered on Namecheap. Same Cloudflare DNS + link-cloaker Worker pattern applies. Migration walkthrough: [`docs/askbigchew-cloudflare-migration.html`](docs/askbigchew-cloudflare-migration.html).
 
 ## Quick commands (after install)
 

@@ -1,60 +1,97 @@
 {
   "tasks": [
     {
-      "id": "amazon01",
-      "title": "Apply for Amazon Associates under mywildlifecam.com",
+      "id": "content-framework-fixes",
+      "title": "Apply 3 quick-fix findings from 2026-05-15 ce-doc-review",
       "status": "todo",
       "completion_percent": 0,
-      "description": "Submit the Amazon Associates application using mywildlifecam.com as the apex. The site is HTTP 200, has Disclosure + Privacy + About pages — qualifies. Apply, wait 1-3 days for approval, then plug the tracking tag into scripts/add-link.ps1 calls. Application URL: https://affiliate-program.amazon.com/",
-      "due": "today",
-      "estimate": "10 min + 1-3 day wait",
+      "description": "Three findings from the 2026-05-15 autonomous ce-doc-review run have one clear correct answer and should be applied to docs/brainstorms/2026-05-15-content-framework-requirements.md before either re-running doc-review (Round 2) or moving to ce-plan. Full breakdown of all 26 findings in docs/sessions/Session_2026-05-15.md.",
+      "due": "next session",
+      "estimate": "15-30 min",
       "subtasks": [
-        { "id": "a1", "title": "Submit application at affiliate-program.amazon.com", "done": false },
-        { "id": "a2", "title": "Wait for approval email (1-3 days)", "done": false },
-        { "id": "a3", "title": "Add tracking tag to scripts/add-link.ps1 default calls", "done": false },
-        { "id": "a4", "title": "Backfill tag into existing KV entries", "done": false }
+        { "id": "cff1", "title": "R9/R14 contradiction — add MVP carve-out to R9 ('except piece #1 per R14')", "done": false },
+        { "id": "cff2", "title": "DRAFT_MARKER sync — note the 7-file sync requirement (templates + 5 forked sites) in R14", "done": false },
+        { "id": "cff3", "title": "Buyer's-guide template hands-on disclaimer — note in R14 that MVP scope deletes the existing 'we haven't tested this product ourselves' lines from templates/buyers-guide.md.tmpl", "done": false }
       ],
-      "notes": "Required before review #1 can earn revenue. Every Amazon link shipped without a tracking tag = unattributable click. From RAY_QUEUE.md task #2."
+      "notes": "After these land, decide: re-run ce-doc-review (Round 2 carries primer forward) OR jump to ce-plan and let the plan address remaining findings (8 P1 decisions, 9 P2 decisions, 7 FYI) at the unit level."
     },
     {
-      "id": "r2-paapi",
-      "title": "Enable Cloudflare R2 + apply for Amazon PA-API",
+      "id": "content-framework-plan",
+      "title": "Plan the content framework MVP via ce-plan",
       "status": "todo",
       "completion_percent": 0,
-      "description": "Two-step toward product images. (a) Enable R2 in the CF dashboard for hero image hosting. (b) Apply for PA-API (gated on 3 qualifying Associates sales in 180 days — chicken-and-egg with the Associates application).",
-      "due": "this week",
-      "estimate": "30s (R2) + 10min (PA-API when eligible)",
+      "description": "Move requirements doc (docs/brainstorms/2026-05-15-content-framework-requirements.md) through ce-plan to produce unit-by-unit implementation plan. MVP-first split: minimum changes for piece #1 (section rename, anatomy revision, voice doctrine v1, mywildlifecam About-page methodology, AI prompt wiring) vs full-framework grown across pieces 2-5 (per-site product database, playbook rewrite, About-page rollout to other sites).",
+      "due": "next session",
+      "estimate": "1-2 hr ce-plan output + review",
       "subtasks": [
-        { "id": "r1", "title": "Toggle R2 ON at dash.cloudflare.com → R2", "done": false },
-        { "id": "r2", "title": "Wait until 3 Associates sales accumulated", "done": false },
-        { "id": "r3", "title": "Apply for PA-API at Associates console", "done": false }
+        { "id": "cfp1", "title": "Run ce-plan against the (revised) requirements doc", "done": false },
+        { "id": "cfp2", "title": "Review the plan output; address Outstanding Questions deferred to planning", "done": false },
+        { "id": "cfp3", "title": "Lock the implementation units before ce-work execution", "done": false }
       ],
-      "notes": "Workaround until R2 lands: paste Amazon image URLs into review frontmatter (images.hero: 'https://m.media-amazon.com/...'). Not bulletproof. From RAY_QUEUE.md task #4."
+      "notes": "Blocked by content-framework-fixes (don't plan against a known-contradictory doc). Same end-to-end CE pattern that shipped content-production readiness on 2026-05-14."
+    },
+    {
+      "id": "content-framework-mvp",
+      "title": "Execute MVP framework changes via ce-work",
+      "status": "todo",
+      "completion_percent": 0,
+      "description": "MVP minimum-change set per R14: section rename (## My Take → ## Bottom Line + add ## Who This Is For), anatomy revision (Bottom Line at top, answer-first principle), voice doctrine v1 doc (docs/CONTENT_VOICE.md), AI prompt wiring in scaffolding scripts to consume voice doctrine, mywildlifecam About-page methodology block (positive-framed, no explicit 'we don't test' disclaimer), DRAFT_MARKER sync across template + 5 forked Astro sites, buyer's-guide template disclaimer removal. Goal: piece #1 ready to scaffold under new framework.",
+      "due": "this week",
+      "estimate": "3-6 hr Claude work + Ray review per unit",
+      "subtasks": [
+        { "id": "cfm1", "title": "Rename ## My Take → ## Bottom Line + add ## Who This Is For across templates + 5 site forks", "done": false },
+        { "id": "cfm2", "title": "Anatomy revision: Bottom Line at top, answer-first structure", "done": false },
+        { "id": "cfm3", "title": "Write docs/CONTENT_VOICE.md with v1 forbidden/preferred lists", "done": false },
+        { "id": "cfm4", "title": "Wire scaffolding scripts to construct AI prompt from voice doctrine", "done": false },
+        { "id": "cfm5", "title": "Sync DRAFT_MARKER constant across templates + 5 forked sites + update placeholder strings", "done": false },
+        { "id": "cfm6", "title": "Write mywildlifecam About-page methodology block (positive-framed)", "done": false },
+        { "id": "cfm7", "title": "Delete existing 'we haven't tested this product' lines from templates/buyers-guide.md.tmpl", "done": false }
+      ],
+      "notes": "Blocked by content-framework-plan. Full framework (per-site product database, playbook rewrite, satellite About-pages) deferred to pieces 2-5 per MVP-first decision."
     },
     {
       "id": "first-review",
-      "title": "Run first real review via scripts/new-review.ps1",
+      "title": "Ship piece #1 on mywildlifecam under new framework",
       "status": "todo",
       "completion_percent": 0,
-      "description": "Use the scaffolding script to scaffold and publish the first actual review on mywildlifecam (hero site). Proves the Phase 2 content pipeline end-to-end.",
+      "description": "Use the (post-MVP) scaffolding script to produce piece #1 on mywildlifecam — a single-product piece or buying-guide written in the comparison-and-fit voice doctrine. Ray fills the ## Bottom Line section in his own voice; AI drafts everything else. Proves the framework end-to-end.",
       "due": "this week",
-      "estimate": "60-90 min for a real review",
+      "estimate": "2-3 hr for first piece (learning curve); ~60-75 min for subsequent pieces",
       "subtasks": [
-        { "id": "rv1", "title": "Pick the first product to review", "done": false },
-        { "id": "rv2", "title": "Run pwsh scripts/new-review.ps1 -Site mywildlifecam -Slug <slug>", "done": false },
-        { "id": "rv3", "title": "Fill the ## My Take section (DRAFT guard catches empty)", "done": false },
-        { "id": "rv4", "title": "Wire affiliate links via scripts/add-link.ps1", "done": false },
-        { "id": "rv5", "title": "Verify JSON-LD productSchema renders + canonical URL is right", "done": false },
-        { "id": "rv6", "title": "Deploy and verify HTTP 200 on the new review URL", "done": false }
+        { "id": "rv1", "title": "Pick first product or buying-guide topic (target: homeowners/property owners/first-timers, NOT hunters)", "done": false },
+        { "id": "rv2", "title": "Run scaffolding script (scripts/new-review.ps1 or scripts/buyers-guide.ps1) under new framework", "done": false },
+        { "id": "rv3", "title": "Verify specs from frontmatter sources (MVP uses frontmatter-only; data/products.json starts at piece #2)", "done": false },
+        { "id": "rv4", "title": "Review AI draft for voice-doctrine compliance, edit as needed", "done": false },
+        { "id": "rv5", "title": "Write ## Bottom Line in Ray's own voice (hard DRAFT/noindex gate)", "done": false },
+        { "id": "rv6", "title": "Preview locally, verify JSON-LD productSchema renders, verify DRAFT banner gone", "done": false },
+        { "id": "rv7", "title": "Deploy via git push, verify HTTP 200 + canonical URL on live site", "done": false }
       ],
-      "notes": "Best done AFTER Amazon Associates approval so links earn from launch. Otherwise links cloak but earn nothing."
+      "notes": "Blocked by content-framework-mvp. Strategy locked: comparison-and-fit content with dance-around voice doctrine, never claim hands-on use. See docs/brainstorms/2026-05-15-content-framework-requirements.md."
+    },
+    {
+      "id": "amazon01",
+      "title": "Apply for Amazon Associates under mywildlifecam.com",
+      "status": "blocked",
+      "completion_percent": 0,
+      "description": "Submit Amazon Associates application using mywildlifecam.com as the apex. DEFERRED per 2026-05-15 brainstorm Key Decision: apply AFTER 2-3 pieces are published on mywildlifecam, not before. Reason: the 180-day-3-sales clock starts at approval, so don't burn it on an empty site. Apply when piece #3 is queued.",
+      "due": "after first 2-3 pieces ship",
+      "estimate": "10 min + 1-3 day wait",
+      "subtasks": [
+        { "id": "a1", "title": "Wait until 2-3 pieces are live on mywildlifecam", "done": false },
+        { "id": "a2", "title": "Submit application at affiliate-program.amazon.com (primary Store ID: mywildlifecam; list all 6 site URLs)", "done": false },
+        { "id": "a3", "title": "Wait for approval email (1-3 days)", "done": false },
+        { "id": "a4", "title": "Add tracking tag to scripts/add-link.ps1 default calls per site", "done": false },
+        { "id": "a5", "title": "Create per-site tracking tags in Associates dashboard (mywildlifecam-20, detailerpicks-20, etc.)", "done": false },
+        { "id": "a6", "title": "Backfill tags into existing KV entries", "done": false }
+      ],
+      "notes": "Blocked-by content-framework-mvp + first-review (need pieces published before applying). Strategic decision locked 2026-05-15."
     },
     {
       "id": "askbigchew",
       "title": "Migrate askbigchew DNS to Cloudflare",
       "status": "todo",
       "completion_percent": 0,
-      "description": "Walk-through doc exists at docs/askbigchew-cloudflare-migration.html. 6th sister site that needs to come under the same Cloudflare umbrella as the other 5.",
+      "description": "Walk-through doc exists at docs/askbigchew-cloudflare-migration.html (untracked in working tree as of 2026-05-15). 6th sister site that needs to come under the same Cloudflare umbrella as the other 5.",
       "due": "this week",
       "estimate": "20-30 min",
       "subtasks": [
@@ -63,7 +100,22 @@
         { "id": "ab3", "title": "Update apex DNS at current registrar to CF", "done": false },
         { "id": "ab4", "title": "Verify HTTP 200 + SSL", "done": false }
       ],
-      "notes": "Standalone task — not blocked by anything; not blocking anything."
+      "notes": "Standalone task — not blocked by content framework work; not blocking it either. askbigchew uses Next.js + MDX (different stack) so it doesn't share the content framework directly per CLAUDE.md, but it does share the link-cloaker Worker once on Cloudflare DNS."
+    },
+    {
+      "id": "r2-paapi",
+      "title": "Enable Cloudflare R2 + apply for Amazon PA-API",
+      "status": "todo",
+      "completion_percent": 0,
+      "description": "Two-step toward product images. (a) Enable R2 in the CF dashboard for hero image hosting. (b) Apply for PA-API (gated on 3 qualifying Associates sales in 180 days — chicken-and-egg with the Associates application).",
+      "due": "this week (R2); when eligible (PA-API)",
+      "estimate": "30s (R2) + 10min (PA-API when eligible)",
+      "subtasks": [
+        { "id": "r1", "title": "Toggle R2 ON at dash.cloudflare.com → R2", "done": false },
+        { "id": "r2", "title": "Wait until 3 Associates sales accumulated", "done": false },
+        { "id": "r3", "title": "Apply for PA-API at Associates console", "done": false }
+      ],
+      "notes": "MVP workaround per 2026-05-15 brainstorm R13: hotlink Amazon listing images directly into piece frontmatter; refresh quarterly. From RAY_QUEUE.md task #4."
     }
   ]
 }
