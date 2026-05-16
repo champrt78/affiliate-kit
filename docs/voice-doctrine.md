@@ -73,6 +73,10 @@ Concrete phrases the AI must not produce and the lint must catch. Each bullet st
 
 (These are forbidden when stated without a citation. When citing real aggregated data from a verified source — Amazon review counts, manufacturer-published survey results — the citation must accompany the claim.)
 
+**Style tells (AI fingerprints)** — formatting and word choices that read as machine-generated and erode trust:
+
+- `—` — em dashes scream AI. Use period, semicolon, comma, colon, or parenthetical. Hard ban in published content. (This rule applies to content body; voice-doctrine.md itself uses em dashes for internal structural readability.)
+
 ---
 
 ## Preferred framings
