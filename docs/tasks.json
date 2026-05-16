@@ -70,21 +70,60 @@
     {
       "id": "second-piece",
       "title": "Scaffold + ship piece #2 on mywildlifecam",
+      "status": "done",
+      "completion_percent": 100,
+      "completed_date": "2026-05-16",
+      "description": "DONE 2026-05-16 evening. Shipped as single-product review of the Spypoint Flex-M (the cellular pick from piece #1's buying guide). Ray's Bottom Line: 'Buy it if you want convenience, skip it if you want gallery-quality photos.' Tests the review piece type. Spec-verification via WebFetch was clean first try (no fictional products). Voice review caught 'on my property' in an FAQ question (first-person possessive); fixed by swapping to second-person. Lessons folded into future scaffolding.",
+      "subtasks": [
+        { "id": "p2a", "title": "Pick topic + product (Spypoint Flex-M review)", "done": true },
+        { "id": "p2b", "title": "Run new-review.ps1", "done": true },
+        { "id": "p2c", "title": "AI-draft body inline", "done": true },
+        { "id": "p2d", "title": "Spec-verify via parallel WebFetch", "done": true },
+        { "id": "p2e", "title": "Voice-doctrine compliance review (caught FAQ first-person possessive; fixed)", "done": true },
+        { "id": "p2f", "title": "Ray wrote Bottom Line", "done": true },
+        { "id": "p2g", "title": "Lint + build + commit + push", "done": true }
+      ],
+      "notes": "Shipped as commit 87793f1. Live at mywildlifecam.com/reviews/spypoint-flex-m-review."
+    },
+    {
+      "id": "third-piece",
+      "title": "Scaffold + ship piece #3 on mywildlifecam",
+      "status": "done",
+      "completion_percent": 100,
+      "completed_date": "2026-05-16",
+      "description": "DONE 2026-05-16 evening. Shipped as single-product review of the Stealth Cam DS4K Ultimate (the image-quality pick from piece #1's buying guide). Ray's Bottom Line: 'If photo quality is your goal, this is the move. Buy once, cry once. The trade-off is twelve AA batteries and a walk to swap the SD card.' Completes the buying-guide-to-deep-review cross-link pattern for two of three picks in piece #1's lineup. Hits the Amazon Associates application threshold.",
+      "subtasks": [
+        { "id": "p3a", "title": "Pick topic (Stealth Cam DS4K Ultimate review)", "done": true },
+        { "id": "p3b", "title": "Run new-review.ps1", "done": true },
+        { "id": "p3c", "title": "AI-draft body inline", "done": true },
+        { "id": "p3d", "title": "Spec-verify via parallel WebFetch (Stealth Cam + Trailcampro + Digital Camera World)", "done": true },
+        { "id": "p3e", "title": "Voice-doctrine compliance review (clean first try)", "done": true },
+        { "id": "p3f", "title": "Ray wrote Bottom Line", "done": true },
+        { "id": "p3g", "title": "Lint + build + commit + push", "done": true }
+      ],
+      "notes": "Shipped as commit 728d2fe. Live at mywildlifecam.com/reviews/stealth-cam-ds4k-ultimate-review."
+    },
+    {
+      "id": "cf-pages-github-autodeploy",
+      "title": "Wire up CF Pages GitHub auto-deploy (5 sites)",
       "status": "todo",
       "completion_percent": 0,
-      "description": "TOP-OF-QUEUE. Builds toward the 2-3-piece threshold required before the Amazon Associates application. Also exercises the framework against either a different piece type (single-product review vs piece #1's buying guide) or a different topic / use case. Natural candidates: (a) single-product review of Spypoint Flex-M (the top recommendation from piece #1, creates cross-link), (b) single-product review of Stealth Cam DS4K Ultimate, (c) a tighter buyer's guide ('Best Trail Cameras Under $100', 'Best Trail Cams for Apartment Balconies'), (d) topic-led piece ('What Trail Cam Photos Reveal About Your Backyard').",
+      "description": "NEW TOP-OF-QUEUE 2026-05-16. The 2026-05-12 bootstrap created the 5 CF Pages projects via direct wrangler upload and never connected them to GitHub. Pushes to main don't auto-deploy. Silent failure mode caught during piece-#3 verification: pieces 'ship to git' but stay invisible on live sites. Immediate fix landed: scripts/deploy.ps1 wraps build+deploy. Permanent fix: connect each of 5 projects to GitHub via CF dashboard so main pushes auto-build+deploy. Walkthrough at docs/cf-pages-github-setup.md with exact build config.",
       "due": "this week",
-      "estimate": "60-90 min (spec-verification ~15-20, Bottom Line ~5-10, rest mechanical)",
+      "estimate": "30-60 min total dashboard work (5 sites × 5-10 min each)",
       "subtasks": [
-        { "id": "p2a", "title": "Pick topic + product (lock with Ray)", "done": false },
-        { "id": "p2b", "title": "Run scaffolder (new-review.ps1 or buyers-guide.ps1)", "done": false },
-        { "id": "p2c", "title": "AI-draft body via prompt file", "done": false },
-        { "id": "p2d", "title": "Spec-verify against current Amazon/manufacturer listings (REQUIRED — piece #1 caught a fictional product, this step is non-negotiable)", "done": false },
-        { "id": "p2e", "title": "Voice-doctrine compliance review (lint catches em dashes; manual check for defensive exclusions)", "done": false },
-        { "id": "p2f", "title": "Ray writes ## Bottom Line", "done": false },
-        { "id": "p2g", "title": "Lint + build + commit + push", "done": false }
+        { "id": "cf1", "title": "Open dash.cloudflare.com → Pages → affkit-mywildlifecam → Settings → Builds & deployments", "done": false },
+        { "id": "cf2", "title": "Connect to Git (or fall back to 'create new project from Git' per walkthrough's Option 2b if retrofit isn't supported)", "done": false },
+        { "id": "cf3", "title": "Paste build config: command='pnpm install && pnpm --filter mywildlifecam build', output='sites/mywildlifecam/dist', NODE_VERSION=20, NPM_FLAGS=--version", "done": false },
+        { "id": "cf4", "title": "Verify first build succeeds in CF dashboard", "done": false },
+        { "id": "cf5", "title": "Test trigger: make trivial commit, push, watch CF auto-deploy fire", "done": false },
+        { "id": "cf6", "title": "Repeat for affkit-detailerpicks", "done": false },
+        { "id": "cf7", "title": "Repeat for affkit-fussybean", "done": false },
+        { "id": "cf8", "title": "Repeat for affkit-starteraquarium", "done": false },
+        { "id": "cf9", "title": "Repeat for affkit-gameovergear", "done": false },
+        { "id": "cfA", "title": "Verify via wrangler pages project list — all 5 should show Git Provider: GitHub", "done": false }
       ],
-      "notes": "Subsequent-piece flow (F2) per requirements doc. Frontmatter-only specs still per R9 carve-out — product database lands when a product repeats across pieces (the F2 trigger boundary)."
+      "notes": "Critical because: every future piece silently fails to go live until manually deployed via scripts/deploy.ps1. Walkthrough at docs/cf-pages-github-setup.md handles the pnpm-monorepo config + the fallback path if direct-upload projects can't be retrofitted with Git. After completion, scripts/deploy.ps1 stays useful for hotfixes."
     },
     {
       "id": "askbigchew-strategy",
@@ -106,10 +145,10 @@
     {
       "id": "amazon01",
       "title": "Apply for Amazon Associates under mywildlifecam.com",
-      "status": "blocked",
+      "status": "todo",
       "completion_percent": 0,
-      "description": "Submit Amazon Associates application using mywildlifecam.com as the apex. DEFERRED per 2026-05-15 brainstorm Key Decision: apply AFTER 2-3 pieces are published on mywildlifecam, not before. The 180-day-3-sales clock starts at approval, so don't burn it on an empty site.",
-      "due": "after first 2-3 pieces ship",
+      "description": "UNBLOCKED 2026-05-16. Submit Amazon Associates application using mywildlifecam.com as the apex. The 2026-05-15 brainstorm deferred this until 2-3 pieces were live to avoid burning the 180-day-3-sales clock on an empty site. 3 pieces are now live on mywildlifecam. Time to apply.",
+      "due": "this week",
       "estimate": "10 min + 1-3 day wait",
       "subtasks": [
         { "id": "a1", "title": "Wait until 2-3 pieces are live on mywildlifecam", "done": false },

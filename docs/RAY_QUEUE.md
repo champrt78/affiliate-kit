@@ -2,42 +2,28 @@
 
 > Your open tasks across both repos. This is an index — the actual walkthroughs live in the linked docs. Read this when you sit down and forget where you left off.
 
-Last refreshed: **2026-05-16 (evening)** — comparison-and-fit framework MVP shipped + piece #1 LIVE on mywildlifecam. Piece #2 is the new top item.
+Last refreshed: **2026-05-16 (late evening)** — 3 pieces LIVE on mywildlifecam; Associates threshold hit; CF Pages auto-deploy wiring is the new top priority.
 
 ---
 
-## 1. Scaffold piece #2 on mywildlifecam
+## 1. Wire up CF Pages GitHub auto-deploy (5 sites)
 
-**What:** Piece #1 ("Best Trail Cameras for Backyard Wildlife") shipped 2026-05-16 evening. The framework is proven end-to-end on real content. Piece #2 builds toward the 2-3-pieces-live threshold needed before applying for Amazon Associates (task #4). It also exercises the framework against a new product or topic to surface any edge cases the first piece didn't hit.
+**What:** During the post-piece-#3 live-URL verification on 2026-05-16, caught a real silent failure mode: the 2026-05-12 bootstrap created the 5 CF Pages projects via direct `wrangler pages deploy` upload and never connected them to GitHub. Pushes to `origin/main` go to GitHub but do NOT trigger CF Pages rebuilds. Every future piece will silently fail to go live unless manually deployed.
 
-**Topic candidates for piece #2:**
-- A single-product review (different shape from piece #1's buying-guide). Real example: a deep review of the Stealth Cam DS4K Ultimate (the piece #1 image-quality pick) — "review" piece type tests the other half of the framework.
-- A buying-guide for a tighter use case: "Best Trail Cameras Under $100" or "Best Trail Cameras for Apartment Balconies" (urban wildlife angle).
-- A topic-led piece: "What Trail Cam Photos Reveal About Your Backyard" (informational, drives traffic, can link to piece #1).
+Immediate fix landed 2026-05-16 evening: `scripts/deploy.ps1` wraps `pnpm --filter <site> build` + `wrangler pages deploy`. All 5 sites manually redeployed (verified via curl: zero hands-on claims on any About page across all 5; Bottom Line text live on all 3 pieces on mywildlifecam).
 
-**Walk through:**
+Permanent fix (this task): connect each of the 5 CF Pages projects to GitHub via the CF dashboard so pushes to `main` auto-deploy.
 
-```pwsh
-# Single-product piece
-pwsh scripts/new-review.ps1 -Site mywildlifecam -Slug <slug> -ProductName "..." -Brand "..." -AmazonUrl "https://amzn.to/..."
+**Walk through:** `docs/cf-pages-github-setup.md` is the click-by-click with exact build config to paste in. 5 sites, ~5-10 min each. Do `affkit-mywildlifecam` first as the test (it's the hero with live content); verify the auto-deploy fires on a test commit; then replicate to the other 4.
 
-# Buyer's guide piece
-pwsh scripts/buyers-guide.ps1 -Site mywildlifecam -Slug <slug> -ProductName "..." -Brand "..." -AmazonUrl "https://amzn.to/..."
-```
+**Effort:** 30-60 min total. Real interrupt-y dashboard work, but one-time.
 
-Then: paste `<slug>.prompt.md` into Claude, AI drafts body, you spec-verify (REQUIRED — piece #1's review caught a fictional "Wosports H7" before publish), you write the Bottom Line, lint, build, push.
+**Blocks:** Until this lands, every future piece needs a manual `pwsh scripts/deploy.ps1 -Site <slug>` after `git push`. Trivially easy to forget; expensive when forgotten (piece is "shipped to git" but invisible to the live site).
 
-**Effort:** ~60-90 min now that you've shipped one. Spec-verification eats 15-20 min; Bottom Line 5-10 min; rest is mechanical.
-
-**Blocks:** Amazon Associates app (#4) needs 2-3 pieces live. Cellular R2 image hosting (#7) would be nicer-to-have than required.
-
-**Reference docs:** Same as before. `docs/voice-doctrine.md` is the live source of truth; lint backstop catches forbidden phrases including em dashes. `sites/mywildlifecam/src/data/site-config.json` has the reader segments.
-
----
-
-## 1a. (DONE 2026-05-16) Piece #1 — "Best Trail Cameras for Backyard Wildlife"
-
-Live at `mywildlifecam.com/buyers-guides/best-trail-cameras-for-backyard-wildlife`. 3 picks (Spypoint Flex-M, Stealth Cam DS4K Ultimate, Wosports H-41). Validates the comparison-and-fit framework end-to-end. Lessons learned (em dashes banned, defensive exclusions banned) folded into voice doctrine.
+**Reference docs:**
+- `docs/cf-pages-github-setup.md` — the walkthrough
+- `scripts/deploy.ps1` — manual-deploy script (stays useful as hotfix tool even after Phase B is wired)
+- `CLAUDE.md` "Deploy" section — documents both interim + steady states
 
 ---
 
@@ -53,7 +39,21 @@ Live at `mywildlifecam.com/buyers-guides/best-trail-cameras-for-backyard-wildlif
 
 ---
 
-## 3. Brainstorm askbigchew integration strategy (`ce-brainstorm`)
+## 3. Apply for Amazon Associates under `mywildlifecam.com`
+
+**What:** Submit the Amazon Associates application using `mywildlifecam.com` as the apex, with all 6 site URLs listed under one account.
+
+**UNBLOCKED 2026-05-16.** The 2026-05-15 brainstorm deferred this until 2-3 pieces were live to avoid burning the 180-day-3-sales clock on an empty site. 3 pieces are now live on mywildlifecam. Time to apply.
+
+**Walk through:** Application at `https://affiliate-program.amazon.com/`. Primary Store ID at signup = `mywildlifecam` (becomes `mywildlifecam-20`); after approval create per-site tracking tags in the Associates dashboard.
+
+**Effort:** 10 minutes to apply. 1-3 days to approve.
+
+**Blocks:** Required before pieces earn revenue at scale. The 3 pieces live today will start earning commissions only once tags are added retroactively to the cloaked links (post-approval).
+
+---
+
+## 4. Brainstorm askbigchew integration strategy (`ce-brainstorm`)
 
 **What:** Surfaced 2026-05-16 mid-MVP — askbigchew is the one affiliate site where you actually own the products (you have a bulldog). The new voice doctrine assumes no hands-on. Open questions:
 
@@ -62,29 +62,31 @@ Live at `mywildlifecam.com/buyers-guides/best-trail-cameras-for-backyard-wildlif
 3. Hero/satellite reshuffle — is bulldog the new hero now that you have actual experience?
 4. Universal anatomy holds, or askbigchew gets its own variant?
 
-**Walk through:** Run `ce-brainstorm` in this repo. Reference `CLAUDE.md` (askbigchew section), the current migration walkthrough at `docs/askbigchew-cloudflare-migration.html`, and the content framework at `docs/brainstorms/2026-05-15-content-framework-requirements.md`.
+**Walk through:** Run `ce-brainstorm` in this repo. Reference `CLAUDE.md` (askbigchew section), `docs/askbigchew-cloudflare-migration.html`, and `docs/brainstorms/2026-05-15-content-framework-requirements.md`.
 
-**Effort:** 1-2 hr brainstorm + decision. Could be slotted in alongside piece #1 work or as its own session.
+**Effort:** 1-2 hr brainstorm + decision.
 
-**Blocks:** Nothing — askbigchew is operating fine on its current (separate) repo + stack. This is a strategic question, not an outage.
-
----
-
-## 4. Apply for Amazon Associates under `mywildlifecam.com` (DEFERRED)
-
-**What:** Submit the Amazon Associates application using `mywildlifecam.com` as the apex, with all 6 site URLs listed under one account.
-
-**DEFERRED per 2026-05-15 brainstorm Key Decision.** The 180-day-3-sales clock starts at approval; applying with zero published pieces burns the clock. Apply AFTER 2-3 pieces are live on mywildlifecam.
-
-**Walk through:** Application at `https://affiliate-program.amazon.com/`. Primary Store ID at signup = `mywildlifecam` (becomes `mywildlifecam-20`); after approval create per-site tracking tags in the Associates dashboard.
-
-**Effort:** 10 minutes to apply. 1-3 days to approve.
-
-**Blocks:** Required before pieces #3+ earn revenue at scale. Pieces #1-2 will ship without working Amazon affiliate tags; links cloak fine via the Worker but zero commission until tags are added retroactively.
+**Blocks:** Nothing — askbigchew is operating fine on its current (separate) repo + stack. Strategic question, not an outage.
 
 ---
 
-## 5. Phase 12 on Starwatch — interactive s01e01 round-trip
+## 5. Scaffold piece #4 on mywildlifecam (optional, momentum)
+
+**What:** 3 pieces are live. The Associates threshold is hit, so this is no longer gating revenue. But more pieces = more inbound traffic and more chances to validate the framework on different angles. Natural candidates:
+
+- A buying guide for a tighter use case ("Best Trail Cameras Under $100", "Best Cellular Trail Cameras")
+- A topic piece ("What Trail Cam Photos Reveal About Your Backyard")
+- A Wosports H-41 single-product review (completes the buying guide → 3-reviews architecture for piece #1's full lineup)
+
+**Walk through:** Same workflow as pieces #1-#3. Scaffolder → AI-drafted body via prompt file → spec-verify → write Bottom Line → lint → build → deploy.
+
+**Effort:** ~25-30 min now that the pattern is locked.
+
+**Blocks:** Nothing. Optional cycle continuation.
+
+---
+
+## 6. Phase 12 on Starwatch — interactive s01e01 round-trip
 
 **What:** Validate the renamed plugin end-to-end by writing the first episode interactively. Tests the full `/show-arc-bootstrap` → `/show-arc-plan-season` → `/show-new-episode` → `/show-episode-edits` → `/show-episode-finalize` chain. After s01e01 finalizes cleanly, merge `phase-1-implementation` → `main` and Arc A is officially done.
 
@@ -99,9 +101,9 @@ Live at `mywildlifecam.com/buyers-guides/best-trail-cameras-for-backyard-wildlif
 
 ---
 
-## 6. Migrate askbigchew DNS to Cloudflare
+## 7. Migrate askbigchew DNS to Cloudflare
 
-**What:** Bring askbigchew under the same Cloudflare umbrella as the other 5 sites (CF Pages + shared link-cloaker Worker). Independent of the askbigchew strategic question (#3) — DNS migration can land regardless of whether askbigchew eventually migrates into this monorepo or stays separate.
+**What:** Bring askbigchew under the same Cloudflare umbrella as the other 5 sites (CF Pages + shared link-cloaker Worker). Independent of the askbigchew strategic question (#4) — DNS migration can land regardless of whether askbigchew eventually migrates into this monorepo or stays separate.
 
 **Walk through:** `docs/askbigchew-cloudflare-migration.html` — open in browser, follow the click-by-click.
 
@@ -111,7 +113,7 @@ Live at `mywildlifecam.com/buyers-guides/best-trail-cameras-for-backyard-wildlif
 
 ---
 
-## 7. Enable Cloudflare R2 + apply for Amazon PA-API
+## 8. Enable Cloudflare R2 + apply for Amazon PA-API
 
 **What:** Two-step toward product images. (a) Enable R2 in the CF dashboard for hero image hosting. (b) Apply for PA-API (gated on 3 qualifying Associates sales in 180 days).
 
@@ -119,23 +121,33 @@ Live at `mywildlifecam.com/buyers-guides/best-trail-cameras-for-backyard-wildlif
 
 **Effort:** 30 seconds (R2) + 10 minutes (PA-API when eligible).
 
-**Workaround until PA-API:** Per `docs/brainstorms/2026-05-15-content-framework-requirements.md` R13, paste Amazon listing image URLs directly into review frontmatter. Not bulletproof (Amazon can rotate URLs) but unblocks the first few pieces.
+**Workaround until PA-API:** Per `docs/brainstorms/2026-05-15-content-framework-requirements.md` R13, paste Amazon listing image URLs directly into piece frontmatter. Not bulletproof (Amazon can rotate URLs) but unblocks the first several pieces.
+
+---
+
+## Done 2026-05-16 (kept for reference)
+
+- **Comparison-and-fit content framework MVP shipped** (9 implementation units, U1-U9). Voice doctrine v1, per-site config, scaffolders with sibling prompt files, lint backstop, About-page sweep across 5 sites. See `docs/plans/2026-05-16-001-feat-comparison-fit-content-framework-mvp-plan.md`.
+- **Piece #1 LIVE:** `mywildlifecam.com/buyers-guides/best-trail-cameras-for-backyard-wildlife` — 3-product buying guide, Ray's "Don't overthink it" Bottom Line.
+- **Piece #2 LIVE:** `mywildlifecam.com/reviews/spypoint-flex-m-review` — cellular pick deep review, Ray's "Buy it if you want convenience" Bottom Line.
+- **Piece #3 LIVE:** `mywildlifecam.com/reviews/stealth-cam-ds4k-ultimate-review` — image-quality pick deep review, Ray's "If photo quality is your goal, this is the move. Buy once, cry once." Bottom Line.
 
 ---
 
 ## Quick-glance cheat sheet
 
-| # | Task | Effort | Blocks |
+| # | Task | Effort | Status |
 |---|---|---|---|
-| 1 | **Scaffold piece #2 on mywildlifecam** | 60-90 min | Amazon Associates threshold (need 2-3 live). **Top of queue.** |
-| 2 | Starwatch handles + `.space` | 30-60min | Brand cohesion; window closes when someone notices |
-| 3 | askbigchew strategy brainstorm | 1-2hrs ce-brainstorm | Piece #1 on askbigchew (not piece #1 on mywildlifecam) |
-| 4 | Amazon Associates app (deferred) | 10min + 1-3d wait | Pieces #3+ revenue; gated on 2-3 pieces live |
-| 5 | Starwatch Phase 12 (s01e01) | 2-3hrs | Starwatch Arc A → main merge |
-| 6 | askbigchew DNS migration | 20-30min | Brings askbigchew under CF umbrella |
-| 7 | R2 + PA-API | 30s + later | Piece imagery (workaround = Amazon hotlinks) |
+| 1 | **Wire up CF Pages GitHub auto-deploy** (5 sites) | 30-60min dashboard | **Top of queue.** Walkthrough at `docs/cf-pages-github-setup.md` |
+| 2 | Starwatch handles + `.space` | 30-60min | Time-sensitive (rename window) |
+| 3 | Amazon Associates app | 10min + 1-3d wait | Unblocked 2026-05-16 (3 pieces live) |
+| 4 | askbigchew strategy brainstorm | 1-2hrs ce-brainstorm | Strategic, not blocking |
+| 5 | Piece #4 on mywildlifecam | 25-30min | Optional momentum |
+| 6 | Starwatch Phase 12 (s01e01) | 2-3hrs | Own session |
+| 7 | askbigchew DNS migration | 20-30min | Standalone |
+| 8 | R2 + PA-API | 30s + later | Imagery |
 
-**Suggested order:** #1 keeps the content cycle alive (piece #2 → #3 → trigger Amazon Associates app). #2 is time-sensitive. #3 slots alongside any session. #4 unlocks after #1 hits 2-3 pieces. #5 is its own session.
+**Suggested order:** #1 first (closes the silent-deploy gap; needed before any future piece reliably ships). #2 is time-sensitive. #3 is now-or-never (the Associates application can be filed any time but waiting longer leaves money on the table). #4 settles a real strategic fork.
 
 ---
 
@@ -144,8 +156,12 @@ Live at `mywildlifecam.com/buyers-guides/best-trail-cameras-for-backyard-wildlif
 - This file (`docs/RAY_QUEUE.md`) — start here when you forget what's next
 - `docs/PROJECT_STATE.md` — running history of what's been done (most recent on top)
 - `docs/sessions/Session_*.md` — narrative context from a specific day
-- `docs/voice-doctrine.md` — the live source of truth for content tone (read this before drafting)
+- `docs/voice-doctrine.md` — the live source of truth for content tone
+- `docs/cf-pages-github-setup.md` — CF Pages auto-deploy walkthrough (top-of-queue task)
 - `docs/brainstorms/2026-05-15-content-framework-requirements.md` — the locked content strategy
 - `docs/plans/2026-05-16-001-feat-comparison-fit-content-framework-mvp-plan.md` — architectural decisions from the MVP build
 - `docs/launch-playbook.html` — brand-launch click-by-click (Starwatch + Semper Fi handles)
 - `docs/PLAYBOOK.md` — operational cadence (90-day cycles, refresh sweeps, KV ops); per-piece content rules stale post-2026-05-15 framework
+- `scripts/deploy.ps1` — manual CF Pages deploy (one command per site; needed until task #1 lands)
+- `scripts/lint-voice.ps1` — pre-commit voice-doctrine backstop
+- `scripts/new-review.ps1` / `scripts/buyers-guide.ps1` — content scaffolders
