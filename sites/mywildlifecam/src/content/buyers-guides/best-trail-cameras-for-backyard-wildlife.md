@@ -8,9 +8,9 @@ products:
   - name: "Stealth Cam DS4K Ultimate"
     brand: "Stealth Cam"
     affiliateUrl: "https://amzn.to/example-stealthcam-ds4k"
-  - name: "Wosports Trail Camera (H7)"
+  - name: "Wosports H-41"
     brand: "Wosports"
-    affiliateUrl: "https://amzn.to/example-wosports-h7"
+    affiliateUrl: "https://amzn.to/example-wosports-h41"
 pubDate: 2026-05-16
 lastUpdated: 2026-05-16
 ---
@@ -50,7 +50,7 @@ Nothing here claims first-hand testing. The trade-offs called out are the ones t
 |---|---|---|---|
 | **Spypoint Flex-M** | Cellular | Property monitoring without retrieval trips | Free tier available |
 | **Stealth Cam DS4K Ultimate** | SD card | Maximum image quality without monthly fees | None |
-| **Wosports Trail Camera (H7)** | SD card | Gift buyer / under-$80 entry point | None |
+| **Wosports H-41** | SD card | Gift buyer / under-$80 entry point | None |
 
 ## How They Compare
 
@@ -70,13 +70,13 @@ Verified-buyer reviews consistently flag the image quality as the standout featu
 
 **Pick the DS4K Ultimate when:** image quality is the primary axis and the SD-card retrieval trip isn't a dealbreaker for your deployment location.
 
-### Wosports Trail Camera (H7) — the gift-buyer entry point
+### Wosports H-41 — the gift-buyer entry point
 
-The H7 is the budget pick — typically the cheapest credible trail camera available on Amazon at any given time. The Wosports listing emphasizes a no-frills SD-card setup with night-vision LEDs and motion detection. It's not trying to compete with cellular or 4K options; it's trying to be the camera that doesn't get returned by a first-time buyer.
+The H-41 is the budget pick — Wosports's H-series sits at the cheapest credible end of the trail-camera category. The listing emphasizes a no-frills SD-card setup with IR night-vision LEDs, motion detection, and IP66 weatherproofing. It's not trying to compete with cellular or 4K options; it's trying to be the camera that doesn't get returned by a first-time buyer.
 
-Owner-review patterns: buyers who'd never owned a trail camera before consistently report the H7 as easy to set up and "good enough" for casual backyard use. Recurring critical themes: night-shot quality is noticeably below the higher-tier picks (the IR LEDs are less powerful, range is shorter); battery life under heavy trigger volume is shorter than the marketing claims; build quality is described as "fine but plasticky."
+Owner-review patterns on Amazon: buyers who'd never owned a trail camera before consistently report the H-41 as easy to set up and "good enough" for casual backyard use; the included strap and basic setup get repeatedly praised as friction-free. Recurring critical themes: night-shot quality is noticeably below the higher-tier picks (the IR LEDs are less powerful, ~65ft detection range vs the DS4K Ultimate's ~100ft); battery life under heavy trigger volume is shorter than the marketing claims; build quality is described as "fine but plasticky."
 
-**Pick the H7 when:** you're buying as a gift, testing whether trail cameras are even your thing, or replacing a camera in a high-loss-risk location where you'd rather not spend $150+.
+**Pick the H-41 when:** you're buying as a gift, testing whether trail cameras are even your thing, or replacing a camera in a high-loss-risk location where you'd rather not spend $150+.
 
 ## Who Should Skip
 
@@ -93,6 +93,6 @@ A: Cellular wins when the camera is far enough from the house that walking to it
 A: No. SD-card models need nothing but batteries. Cellular models use cell networks, not wifi — which is why they work in places without home internet (the back of a property, a remote woodlot). The carrier handshake happens through the camera's built-in modem.
 
 **Q: What about night photos — will I see anything?**
-A: All three picks have IR night-vision LEDs. Range and clarity vary — the DS4K Ultimate's listing claims the longest night-vision range of the three; the Wosports H7 is the shortest. For backyard distances (under ~40 feet to where animals typically pass), all three will produce usable images. For longer distances, the cheaper pick degrades noticeably.
+A: All three picks have IR night-vision LEDs. Range and clarity vary — the DS4K Ultimate's listing claims the longest night-vision range of the three (~100ft); the Wosports H-41 is the shortest (~65ft). For backyard distances (under ~40 feet to where animals typically pass), all three will produce usable images. For longer distances, the cheaper pick degrades noticeably.
 
 <!-- HUMAN: fill in the Bottom Line section before publishing. The build will block (DRAFT banner + noindex) until the placeholder line is replaced. -->
