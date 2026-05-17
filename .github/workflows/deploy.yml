@@ -1,0 +1,72 @@
+name: Deploy sites to Cloudflare Pages
+
+# Triggers:
+# - Push to main: production deploy for every site
+# - Manual: workflow_dispatch for ad-hoc redeploys without a commit
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# Don't cancel an in-flight production deploy if a new push lands; let both
+# finish (last-write-wins for the same project, which is fine for static sites).
+# Use a concurrency group only to deduplicate THIS workflow's runs.
+concurrency:
+  group: deploy-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy ${{ matrix.site }}
+    runs-on: ubuntu-latest
+
+    # Matrix entries pair the site slug with its current CF Pages project name.
+    # mywildlifecam migrated on 2026-05-16 to a Git-wired `mywildlifecam` project;
+    # the 4 satellites still own the `affkit-<slug>` direct-upload projects with
+    # their custom domains attached. When a satellite migrates, update its
+    # `project` value here AND update scripts/deploy.ps1's projectNameMap.
+    strategy:
+      fail-fast: false   # don't abort other sites if one fails
+      matrix:
+        include:
+          - site: mywildlifecam
+            project: mywildlifecam
+          - site: detailerpicks
+            project: affkit-detailerpicks
+          - site: fussybean
+            project: affkit-fussybean
+          - site: starteraquarium
+            project: affkit-starteraquarium
+          - site: gameovergear
+            project: affkit-gameovergear
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build ${{ matrix.site }}
+        run: pnpm --filter ${{ matrix.site }} build
+
+      - name: Deploy ${{ matrix.site }} to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy sites/${{ matrix.site }}/dist --project-name=${{ matrix.project }} --branch=main
+          packageManager: pnpm
