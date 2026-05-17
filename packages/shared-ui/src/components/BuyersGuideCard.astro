@@ -72,8 +72,9 @@ const heroImage = (data.products?.[0] as any)?.image ?? data.images?.hero ?? nul
   .guide-card__media img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    padding: var(--space-6);
+    /* cover (not contain) because guide hero is a full photograph, not a
+       product PNG — let it bleed to the edges */
+    object-fit: cover;
     transition: transform var(--duration-slow) var(--ease-out);
   }
   .guide-card:hover .guide-card__media img { transform: scale(1.04); }
