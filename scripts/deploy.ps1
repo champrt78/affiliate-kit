@@ -56,7 +56,25 @@ if (-not (Test-Path $siteRoot -PathType Container)) {
 	exit 2
 }
 
-$projectName = "affkit-$Site"
+# Per-site CF Pages project name. Originally all 5 sites used the
+# `affkit-<slug>` convention from the 2026-05-12 bootstrap. mywildlifecam
+# migrated to a new `mywildlifecam` Pages project on 2026-05-16 (custom
+# domain detached from affkit-mywildlifecam and re-attached to the new
+# Git-wired project). Other 4 sites still on the affkit-prefix convention
+# until they migrate too. If/when a satellite migrates, update its entry
+# here.
+$projectNameMap = @{
+	"mywildlifecam"   = "mywildlifecam"
+	"detailerpicks"   = "affkit-detailerpicks"
+	"fussybean"       = "affkit-fussybean"
+	"starteraquarium" = "affkit-starteraquarium"
+	"gameovergear"    = "affkit-gameovergear"
+}
+$projectName = $projectNameMap[$Site]
+if (-not $projectName) {
+	Write-Error "[err] No CF Pages project name known for site '$Site'. Update the projectNameMap in scripts/deploy.ps1."
+	exit 2
+}
 
 # -----------------------------------------------------------------------------
 # Build (unless skipped)
