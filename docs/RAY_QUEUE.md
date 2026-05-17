@@ -2,23 +2,13 @@
 
 > Your open tasks across both repos. This is an index — the actual walkthroughs live in the linked docs. Read this when you sit down and forget where you left off.
 
-Last refreshed: **2026-05-17 (just past midnight)** — GH Actions auto-deploy LIVE on all 5 sites; UI polish is the new top priority.
+Last refreshed: **2026-05-17 (early hours)** — UI overhaul LIVE on mywildlifecam.com. Amazon Associates application is now the highest-leverage open task.
 
 ---
 
-## 1. UI polish via ce-brainstorm → ce-frontend-design
+## 1a. (DONE 2026-05-17) UI overhaul via ce-brainstorm → ce-frontend-design
 
-**What:** Live site looks 5% done. White text on black, no product cards, text-wrapping issues, hero images present but unstyled. Voice-doctrine compliant content + working auto-deploy + working cloaker, but visual identity is bare. Needs a real design pass.
-
-Flow per Ray's earlier framing: brainstorm shape first, then ce-frontend-design implements the mock.
-
-**Walk through:** Invoke `ce-brainstorm` in this repo with context about the affiliate-site shape (mywildlifecam.com hero; voice doctrine never-claim-hands-on; snarky-but-friendly tone; reader profile = homeowners/property/first-time/gift; no hunters; affiliate revenue is the goal; conversion via /go/* cloaker; em dashes banned). Output: a design-direction doc that ce-frontend-design can implement.
-
-Then invoke `ce-frontend-design` to mock + implement against the brainstorm output.
-
-**Effort:** brainstorm ~30-60 min interactive; frontend-design ~1-3 hr depending on scope.
-
-**Blocks:** Nothing in code, but the site keeps looking 5% done until this lands. Conversion rate will be near-zero with the current bare aesthetic.
+Direction locked at `docs/brainstorms/2026-05-17-ui-overhaul-requirements.md` (24 R-IDs, elevated-nature-publication register). Implementation shipped in commit `23628dd`: new design-token system (forest/cream/brass palette + Fraunces+Inter Tight), sticky header with backdrop-blur, ProductCard component, editorial layouts for home/reviews/buying-guides. Buyers-guide bug fixed ("only 2 cams showing" → all 3 now render). Live on https://mywildlifecam.com/ — verified clean via smoke-test grep of served HTML. 4 satellites inherit tokens automatically; per-site brand differentiation via `sites/<slug>/src/data/site-config.json` deferred until their cycle turns.
 
 ---
 
