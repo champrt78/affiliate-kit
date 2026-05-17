@@ -22,8 +22,8 @@ products:
     tagline: "Under-$80 entry point that doesn't get returned by first-time buyers."
     bestFor: "Gift / first camera"
 images:
-  hero: "https://images.unsplash.com/photo-1551717743-49959800b1f6?auto=format&fit=crop&w=2000&q=80"
-  heroCaption: "Wildlife at the forest edge. Photo: Unsplash."
+  hero: "https://images.unsplash.com/photo-1474511320723-9a56873867b5?auto=format&fit=crop&w=2000&q=80"
+  heroCaption: "Red fox at the edge of cover. Photo: Unsplash."
 pubDate: 2026-05-16
 lastUpdated: 2026-05-17
 bottomLine:
