@@ -20,11 +20,22 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { data, body } = entry;
+const { data } = entry;
 const { Content } = await entry.render();
 
-const DRAFT_MARKER = "_The Bottom Line is being written._";
-const isDraft = typeof body === "string" && body.includes(DRAFT_MARKER);
+const BOTTOMLINE_PLACEHOLDER = "_The Bottom Line is being written._";
+const isDraft = !data.bottomLine
+  || !data.bottomLine.verdict
+  || data.bottomLine.verdict.trim() === ""
+  || data.bottomLine.verdict.includes(BOTTOMLINE_PLACEHOLDER);
+
+const heroImage = data.images?.hero
+  ?? (data.products?.[0] as any)?.image
+  ?? "";
+const heroCaption = data.images?.heroCaption ?? "";
+
+const rubric = data.rubric ?? `Trail Cameras · Buying Guide`;
+const deck = data.deck ?? data.description;
 
 const productLds = data.products.map((p) =>
   productSchema({
@@ -37,15 +48,23 @@ const productLds = data.products.map((p) =>
   })
 );
 
+const faqLd = data.faq && data.faq.length > 0
+  ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": data.faq.map((item) => ({
+        "@type": "Question",
+        "name": item.question,
+        "acceptedAnswer": { "@type": "Answer", "text": item.answer },
+      })),
+    }
+  : null;
+
 const topPickHref = data.products[0]?.affiliateUrl
   ? cloakedLink({ slug: (data.products[0] as any).cloakedSlug ?? entry.slug })
   : cloakedLink({ slug: entry.slug });
 
 const robotsContent = isDraft ? "noindex, nofollow" : "index, follow";
-
-const heroImage = data.images?.hero
-  ?? (data.products?.[0] as any)?.image
-  ?? "";
 
 const formattedUpdated = data.lastUpdated instanceof Date
   ? data.lastUpdated.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
@@ -66,6 +85,7 @@ const productCount = data.products?.length ?? 0;
   {productLds.map((ld) => (
     <script type="application/ld+json" set:html={JSON.stringify(ld)} />
   ))}
+  {faqLd && <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />}
 
   {isDraft && (
     <aside class="draft-banner" role="alert">
@@ -74,35 +94,73 @@ const productCount = data.products?.length ?? 0;
     </aside>
   )}
 
-  <article class="guide">
-    <header class="guide-hero">
-      <div class="guide-hero__inner">
-        <a href="/buyers-guides/" class="guide-hero__crumb">← All buying guides</a>
-        <span class="guide-hero__kicker">Buying guide · {productCount} pick{productCount === 1 ? "" : "s"}</span>
-        <h1 class="guide-hero__title">{data.title}</h1>
-        <p class="guide-hero__deck">{data.description}</p>
+  <article class="article">
 
-        <div class="byline" aria-label="Article byline">
-          <span class="byline__avatar" aria-hidden="true">M</span>
-          <div class="byline__who">
-            <span class="byline__name">The MyWildlifeCam editorial team</span>
-            <span class="byline__cred">{productCount} pick{productCount === 1 ? "" : "s"} compared · spec analysis &amp; use-case framing, verified against current manufacturer listings and Amazon reports</span>
-          </div>
-          <div class="byline__when">
-            <span class="byline__label">Last updated</span>
-            <time class="byline__date" datetime={isoUpdated}>{formattedUpdated}</time>
-          </div>
+    <header class="article-header">
+      <a href="/buyers-guides/" class="article-crumb">← All buying guides</a>
+      <span class="rubric">{rubric}</span>
+      <h1 class="article-title">{data.title}</h1>
+      <p class="article-deck">{deck}</p>
+
+      <div class="byline" aria-label="Article byline">
+        <span class="byline__avatar" aria-hidden="true">M</span>
+        <div class="byline__who">
+          <span class="byline__name">The MyWildlifeCam editorial team</span>
+          <span class="byline__cred">{productCount} pick{productCount === 1 ? "" : "s"} compared · spec analysis &amp; use-case framing, verified against current manufacturer listings and Amazon reports</span>
+        </div>
+        <div class="byline__when">
+          <span class="byline__label">Last updated</span>
+          <time class="byline__date" datetime={isoUpdated}>{formattedUpdated}</time>
         </div>
       </div>
     </header>
 
-    <section class="picks">
-      <div class="picks__inner">
+    {heroImage && (
+      <figure class="article-hero article-hero--cover">
+        <img src={heroImage} alt={data.title} loading="eager" decoding="async" />
+        {heroCaption && <figcaption class="article-hero__caption">{heroCaption}</figcaption>}
+      </figure>
+    )}
+
+    <div class="article-body">
+
+      {/* Bottom Line callout */}
+      {data.bottomLine && !isDraft && (
+        <section class="bottom-line" aria-label="Bottom Line">
+          <span class="bottom-line__label">Bottom Line</span>
+          <p class="bottom-line__verdict">{data.bottomLine.verdict}</p>
+          {data.bottomLine.supporting && (
+            <p class="bottom-line__supporting">{data.bottomLine.supporting}</p>
+          )}
+        </section>
+      )}
+
+      {/* Buy-if for the category */}
+      {data.buyIf && (
+        <section class="buyif" aria-label="Buy it if / Don't buy it if">
+          <div class="buyif__card buyif__card--buy">
+            <h3 class="buyif__heading">This guide is for you if</h3>
+            <ul>
+              {data.buyIf.buy.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+          <div class="buyif__card buyif__card--skip">
+            <h3 class="buyif__heading">Skip this guide if</h3>
+            <ul>
+              {data.buyIf.skip.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      <AffiliateDisclosure siteName="MyWildlifeCam" variant="inline" />
+
+      {/* Picks list */}
+      <section class="picks">
         <header class="picks__head">
           <span class="picks__kicker">At a glance</span>
-          <h2>The picks, ranked</h2>
+          <h2 class="picks__title">The picks, ranked</h2>
         </header>
-
         <ol class="picks__list">
           {data.products.map((product: any, idx: number) => (
             <li>
@@ -121,34 +179,48 @@ const productCount = data.products?.length ?? 0;
             </li>
           ))}
         </ol>
-      </div>
-    </section>
+      </section>
 
-    <section class="guide-body">
-      <div class="guide-body__inner">
-        <AffiliateDisclosure siteName="MyWildlifeCam" variant="inline" />
-        <div class="prose">
-          <Content />
-        </div>
-
-        <aside class="bottomline-cta">
-          <h3>Still on the fence?</h3>
-          <p>
-            Pick number one is the default for most people reading this. The full
-            comparison up top is for the cases where number one isn't quite right.
-          </p>
-          <CTA href={topPickHref} variant="primary" size="lg" rel="sponsored noopener" target="_blank">
-            See the top pick on Amazon
-          </CTA>
-        </aside>
+      {/* Markdown body — How They Compare, Who Should Skip, etc. */}
+      <div class="prose">
+        <Content />
       </div>
-    </section>
+
+      {/* FAQ */}
+      {data.faq && data.faq.length > 0 && (
+        <section class="faq" aria-label="Frequently asked questions">
+          <h2 class="faq__title">FAQ</h2>
+          {data.faq.map((item) => (
+            <details class="faq__item">
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </section>
+      )}
+
+      <aside class="bottomline-cta">
+        <h3>Still on the fence?</h3>
+        <p>
+          Pick number one is the default for most people reading this. The full
+          comparison up top is for the cases where number one isn't quite right.
+        </p>
+        <CTA href={topPickHref} variant="primary" size="lg" rel="sponsored noopener" target="_blank">
+          See the top pick on Amazon
+        </CTA>
+      </aside>
+
+      <footer class="article-footer">
+        <a href="/how-we-evaluate/" class="methodology-link">How we evaluate trail cameras</a>
+      </footer>
+
+    </div>
   </article>
 </MainLayout>
 
 <style>
   .draft-banner {
-    max-width: var(--container-max);
+    max-width: 920px;
     margin: var(--space-6) auto;
     padding: var(--space-4) var(--space-6);
     background: var(--color-brass-soft);
@@ -157,19 +229,17 @@ const productCount = data.products?.length ?? 0;
     font-size: var(--text-sm);
   }
 
-  .guide { background: var(--color-bg); }
-
-  /* Hero */
-  .guide-hero {
-    background: var(--color-paper-muted);
-    padding: var(--space-12) var(--space-6) var(--space-10);
-    border-bottom: 1px solid var(--color-border);
-  }
-  .guide-hero__inner {
-    max-width: var(--content-wide);
+  .article {
+    max-width: 920px;
     margin: 0 auto;
+    padding: var(--space-12) var(--space-8) var(--space-20);
+    background: var(--color-paper);
+    color: var(--color-paper-ink);
   }
-  .guide-hero__crumb {
+
+  /* Header */
+  .article-header { margin-bottom: var(--space-10); }
+  .article-crumb {
     display: inline-block;
     font-family: var(--font-sans);
     font-size: var(--text-xs);
@@ -179,36 +249,54 @@ const productCount = data.products?.length ?? 0;
     text-decoration: none;
     margin-bottom: var(--space-6);
   }
-  .guide-hero__crumb:hover { color: var(--color-brass); }
-  .guide-hero__kicker {
+  .article-crumb:hover { color: var(--color-brass); }
+
+  .rubric {
     display: inline-block;
     font-family: var(--font-sans);
-    font-size: var(--text-xs);
+    font-size: 11px;
     font-weight: var(--weight-semibold);
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    letter-spacing: var(--tracking-wide);
     color: var(--color-brass);
     margin-bottom: var(--space-4);
   }
-  .guide-hero__title {
+  .rubric::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--color-brass);
+    vertical-align: middle;
+    margin-right: 10px;
+    transform: translateY(-2px);
+  }
+
+  .article-title {
     font-family: var(--font-serif);
-    font-size: clamp(2rem, 4vw, 3.25rem);
-    line-height: 1.1;
+    font-size: clamp(2.25rem, 4.5vw, 3.4rem);
+    line-height: 1.05;
     letter-spacing: var(--tracking-display);
     color: var(--color-forest);
-    margin: 0 0 var(--space-5);
+    margin: 0 0 var(--space-4);
+    font-weight: var(--weight-semibold);
+    font-variation-settings: "opsz" 120;
     max-width: 24ch;
   }
-  .guide-hero__deck {
+
+  .article-deck {
     font-family: var(--font-serif);
     font-style: italic;
     font-size: clamp(1.125rem, 1.6vw, 1.375rem);
-    line-height: var(--leading-snug);
+    line-height: 1.4;
     color: var(--color-muted);
+    font-variation-settings: "opsz" 30;
     margin: 0 0 var(--space-8);
-    max-width: 50ch;
+    max-width: 62ch;
+    font-weight: var(--weight-regular);
   }
-  /* Named byline strip (steal from Wirecutter / Strategist / AAB) */
+
+  /* Byline strip */
   .byline {
     display: flex;
     align-items: center;
@@ -235,28 +323,24 @@ const productCount = data.products?.length ?? 0;
   .byline__who { flex: 1; display: flex; flex-direction: column; gap: 2px; line-height: 1.4; }
   .byline__name {
     font-family: var(--font-sans);
-    font-size: var(--text-sm);
+    font-size: 13px;
     font-weight: var(--weight-semibold);
     color: var(--color-forest);
   }
   .byline__cred {
     font-family: var(--font-sans);
-    font-size: var(--text-xs);
+    font-size: 11.5px;
     color: var(--color-muted);
-    max-width: 52ch;
+    max-width: 56ch;
   }
-  .byline__when {
-    margin-left: auto;
-    text-align: right;
-    flex-shrink: 0;
-  }
+  .byline__when { margin-left: auto; text-align: right; flex-shrink: 0; }
   .byline__label {
     display: block;
     font-family: var(--font-sans);
-    font-size: var(--text-xs);
+    font-size: 10.5px;
     font-weight: var(--weight-semibold);
     text-transform: uppercase;
-    letter-spacing: var(--tracking-wide);
+    letter-spacing: 0.12em;
     color: var(--color-brass);
     margin-bottom: 2px;
   }
@@ -265,67 +349,137 @@ const productCount = data.products?.length ?? 0;
     font-size: var(--text-base);
     color: var(--color-forest);
   }
-  @media (max-width: 600px) {
+  @media (max-width: 640px) {
     .byline { flex-wrap: wrap; }
     .byline__when { margin-left: 0; text-align: left; padding-left: calc(44px + var(--space-4)); }
   }
 
-  /* Picks list */
-  .picks {
-    background: var(--color-bg);
-    padding: var(--space-12) var(--space-6);
+  /* Hero */
+  .article-hero { margin: 0 0 var(--space-10); }
+  .article-hero--cover img {
+    width: 100%;
+    aspect-ratio: 21/9;
+    object-fit: cover;
+    border-radius: var(--radius-md);
   }
-  .picks__inner {
-    max-width: var(--content-wide);
-    margin: 0 auto;
+  .article-hero__caption {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    color: var(--color-muted);
+    font-style: italic;
+    margin-top: var(--space-3);
+    padding-left: var(--space-2);
   }
-  .picks__head { margin-bottom: var(--space-8); }
+
+  /* Bottom Line callout */
+  .bottom-line {
+    background: var(--color-cream);
+    border-left: 3px solid var(--color-brass);
+    padding: var(--space-6) var(--space-8);
+    margin: 0 0 var(--space-10);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  }
+  .bottom-line__label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-brass);
+    margin-bottom: var(--space-3);
+  }
+  .bottom-line__verdict {
+    font-family: var(--font-serif);
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    line-height: 1.45;
+    color: var(--color-forest);
+    margin: 0;
+    font-weight: var(--weight-semibold);
+    font-variation-settings: "opsz" 30;
+  }
+  .bottom-line__supporting {
+    margin: var(--space-4) 0 0;
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    color: var(--color-paper-ink);
+    font-weight: var(--weight-regular);
+  }
+
+  /* Buy-if */
+  .buyif {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-5);
+    margin: 0 0 var(--space-10);
+  }
+  .buyif__card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-5) var(--space-6);
+    background: var(--color-paper);
+  }
+  .buyif__card--buy { border-left: 3px solid var(--color-forest); }
+  .buyif__card--skip { border-left: 3px solid #8a4a3a; }
+  .buyif__heading {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-brass);
+    margin: 0 0 var(--space-3);
+    padding: 0;
+    border: 0;
+  }
+  .buyif__card--skip .buyif__heading { color: #8a4a3a; }
+  .buyif__card ul {
+    margin: 0;
+    padding-left: var(--space-5);
+    font-size: var(--text-sm);
+    line-height: 1.55;
+  }
+  .buyif__card li { margin-bottom: var(--space-2); color: var(--color-paper-ink); }
+  .buyif__card li:last-child { margin-bottom: 0; }
+  @media (max-width: 700px) {
+    .buyif { grid-template-columns: 1fr; }
+  }
+
+  /* Picks */
+  .picks { margin: var(--space-12) 0; }
+  .picks__head { margin-bottom: var(--space-6); }
   .picks__kicker {
     display: block;
     font-family: var(--font-sans);
-    font-size: var(--text-xs);
+    font-size: 11px;
     font-weight: var(--weight-semibold);
-    letter-spacing: var(--tracking-wide);
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--color-brass);
     margin-bottom: var(--space-2);
   }
-  .picks__head h2 {
+  .picks__title {
     font-family: var(--font-serif);
     font-size: clamp(1.75rem, 3vw, 2.25rem);
     color: var(--color-forest);
     margin: 0;
-  }
-  .picks__list {
-    list-style: none;
-    margin: 0;
+    font-weight: var(--weight-semibold);
+    border: 0;
     padding: 0;
   }
+  .picks__list { list-style: none; margin: 0; padding: 0; }
   .picks__list li { margin: 0; }
 
-  /* Body prose */
-  .guide-body {
-    background: var(--color-paper-muted);
-    padding: var(--space-12) var(--space-6) var(--space-16);
-    border-top: 1px solid var(--color-border);
-  }
-  .guide-body__inner {
-    max-width: var(--content-max);
-    margin: 0 auto;
-  }
+  /* Prose */
   .prose {
     font-family: var(--font-sans);
     font-size: var(--text-base);
     line-height: var(--leading-normal);
     color: var(--color-paper-ink);
+    margin-top: var(--space-8);
   }
   .prose :global(p) { margin: 0 0 var(--space-5); }
-  .prose :global(p:first-of-type) {
-    font-family: var(--font-serif);
-    font-size: var(--text-lg);
-    line-height: var(--leading-snug);
-    color: var(--color-forest);
-  }
   .prose :global(h2) {
     font-family: var(--font-serif);
     font-size: var(--text-2xl);
@@ -333,46 +487,15 @@ const productCount = data.products?.length ?? 0;
     margin: var(--space-10) 0 var(--space-4);
     padding-top: var(--space-2);
     border-top: 1px solid var(--color-border);
-  }
-  /* Bottom Line callout — first h2 in prose becomes eyebrow, first blockquote becomes verdict box */
-  .prose :global(h2):first-child {
-    font-family: var(--font-sans);
-    font-size: var(--text-xs);
     font-weight: var(--weight-semibold);
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-wide);
-    color: var(--color-brass);
-    border-top: 0;
-    padding-top: 0;
-    margin: 0 0 var(--space-3);
   }
-  .prose :global(h2):first-child + blockquote {
-    margin: 0 0 var(--space-10);
-    padding: var(--space-6) var(--space-8);
-    background: var(--color-cream, var(--color-paper-muted));
-    border-left: 3px solid var(--color-brass);
-    border-radius: 0 var(--radius-md) var(--radius-md) 0;
-    font-family: var(--font-serif);
-    font-style: normal;
-    font-size: var(--text-xl);
-    font-weight: var(--weight-medium);
-    color: var(--color-forest);
-    line-height: 1.45;
-  }
-  .prose :global(h2):first-child + blockquote :global(p) { margin: 0; }
-  .prose :global(h2):first-child + blockquote :global(p + p) {
-    margin-top: var(--space-4);
-    font-size: var(--text-base);
-    font-weight: var(--weight-regular);
-    color: var(--color-paper-ink);
-    line-height: var(--leading-normal);
-    font-family: var(--font-sans);
-  }
+  .prose :global(h2):first-child { border-top: 0; padding-top: 0; margin-top: 0; }
   .prose :global(h3) {
     font-family: var(--font-serif);
     font-size: var(--text-xl);
     color: var(--color-forest);
     margin: var(--space-8) 0 var(--space-3);
+    font-weight: var(--weight-semibold);
   }
   .prose :global(ul), .prose :global(ol) {
     padding-left: var(--space-6);
@@ -381,16 +504,6 @@ const productCount = data.products?.length ?? 0;
   .prose :global(li) { margin-bottom: var(--space-2); }
   .prose :global(strong) { color: var(--color-forest); font-weight: var(--weight-semibold); }
   .prose :global(table) { margin: var(--space-6) 0; }
-  .prose :global(blockquote) {
-    margin: var(--space-6) 0;
-    padding: var(--space-4) var(--space-6);
-    background: var(--color-surface-alt);
-    border-left: 3px solid var(--color-brass);
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: var(--text-lg);
-    color: var(--color-forest);
-  }
   .prose :global(a) {
     color: var(--color-forest);
     font-weight: var(--weight-medium);
@@ -398,6 +511,50 @@ const productCount = data.products?.length ?? 0;
   }
   .prose :global(a:hover) { color: var(--color-brass); }
 
+  /* FAQ */
+  .faq { margin: var(--space-10) 0; }
+  .faq__title {
+    font-family: var(--font-serif);
+    font-size: var(--text-2xl);
+    color: var(--color-forest);
+    margin: 0 0 var(--space-5);
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--color-border);
+    font-weight: var(--weight-semibold);
+  }
+  .faq__item {
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-4) 0;
+  }
+  .faq__item summary {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+    color: var(--color-forest);
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    padding-right: var(--space-6);
+  }
+  .faq__item summary::-webkit-details-marker { display: none; }
+  .faq__item summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: var(--color-brass);
+    font-size: var(--text-xl);
+    line-height: 1;
+  }
+  .faq__item[open] summary::after { content: "−"; }
+  .faq__item p {
+    margin: var(--space-3) 0 0;
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+    color: var(--color-paper-ink);
+  }
+
+  /* Bottom CTA */
   .bottomline-cta {
     margin-top: var(--space-12);
     padding: var(--space-8);
@@ -411,21 +568,44 @@ const productCount = data.products?.length ?? 0;
     font-size: var(--text-2xl);
     color: var(--color-paper);
     margin: 0 0 var(--space-3);
+    border: 0;
+    padding: 0;
   }
   .bottomline-cta p {
     font-size: var(--text-sm);
     color: var(--color-paper);
     opacity: 0.85;
-    margin: 0 0 var(--space-6);
+    margin: 0 auto var(--space-6);
     max-width: 44ch;
-    margin-left: auto;
-    margin-right: auto;
   }
 
+  /* Methodology footer */
+  .article-footer {
+    margin-top: var(--space-10);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border);
+  }
+  .methodology-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--color-brass);
+    text-decoration: none;
+  }
+  .methodology-link::before {
+    content: "";
+    width: 18px;
+    height: 1px;
+    background: var(--color-brass);
+  }
+  .methodology-link:hover { color: var(--color-brass-hover); }
+
   @media (max-width: 760px) {
-    .guide-hero { padding: var(--space-10) var(--space-4) var(--space-8); }
-    .picks { padding: var(--space-8) var(--space-4); }
-    .guide-body { padding: var(--space-10) var(--space-4) var(--space-12); }
+    .article { padding: var(--space-8) var(--space-4) var(--space-12); }
+    .bottom-line { padding: var(--space-5) var(--space-6); }
     .bottomline-cta { padding: var(--space-6); }
   }
 </style>

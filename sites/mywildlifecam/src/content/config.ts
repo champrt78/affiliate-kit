@@ -1,10 +1,44 @@
 import { defineCollection, z } from "astro:content";
 
+/* Polish-pattern additions (2026-05-17, per docs/competitive-recon-2026-05-17.md).
+   All new fields are optional — pieces without them render with graceful fallback. */
+
+const bottomLineSchema = z.object({
+  verdict: z.string(),
+  supporting: z.string().optional(),
+}).optional();
+
+const scorecardSchema = z.object({
+  axes: z.array(z.object({
+    name: z.string(),
+    weight: z.number().min(0).max(100),
+    score: z.number().min(0).max(10),
+  })).min(2).max(8),
+  note: z.string().optional(),
+}).optional();
+
+const buyIfSchema = z.object({
+  buy: z.array(z.string()).min(1),
+  skip: z.array(z.string()).min(1),
+}).optional();
+
+const flawsSchema = z.array(z.object({
+  title: z.string(),
+  body: z.string(),
+})).optional();
+
+const faqSchema = z.array(z.object({
+  question: z.string(),
+  answer: z.string(),
+})).optional();
+
 const reviews = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
     description: z.string().max(160),
+    rubric: z.string().optional(),
+    deck: z.string().optional(),
     product: z.object({
       name: z.string(),
       brand: z.string(),
@@ -22,9 +56,15 @@ const reviews = defineCollection({
     lastUpdated: z.date(),
     images: z.object({
       hero: z.string().optional(),
+      heroCaption: z.string().optional(),
       context: z.string().optional(),
       comparison: z.string().optional(),
     }).optional(),
+    bottomLine: bottomLineSchema,
+    scorecard: scorecardSchema,
+    buyIf: buyIfSchema,
+    flaws: flawsSchema,
+    faq: faqSchema,
   }),
 });
 
@@ -33,6 +73,8 @@ const buyersGuides = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string().max(160),
+    rubric: z.string().optional(),
+    deck: z.string().optional(),
     products: z.array(z.object({
       name: z.string(),
       brand: z.string(),
@@ -47,7 +89,11 @@ const buyersGuides = defineCollection({
     lastUpdated: z.date(),
     images: z.object({
       hero: z.string().optional(),
+      heroCaption: z.string().optional(),
     }).optional(),
+    bottomLine: bottomLineSchema,
+    buyIf: buyIfSchema,
+    faq: faqSchema,
   }),
 });
 

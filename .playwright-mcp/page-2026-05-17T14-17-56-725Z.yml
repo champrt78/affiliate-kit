@@ -1,0 +1,177 @@
+- generic [ref=e2]:
+  - complementary [ref=e3]:
+    - heading "Polish Playground" [level=1] [ref=e4]
+    - paragraph [ref=e5]: Toggle each pattern to see what mywildlifecam reviews would look like with the recon's recommendations applied. Default state shows Tier 1 + Tier 2 active.
+    - generic [ref=e6]:
+      - heading "Presets" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - button "Current state" [ref=e9] [cursor=pointer]
+        - button "Tier 1 + 2" [ref=e10] [cursor=pointer]
+        - button "Tier 1 only" [ref=e11] [cursor=pointer]
+        - button "Full upgrade" [ref=e12] [cursor=pointer]
+    - generic [ref=e13]:
+      - heading "Tier 1 — Editorial Chrome" [level=2] [ref=e14]
+      - generic [ref=e15]:
+        - generic [ref=e16] [cursor=pointer]: Rubric eyebrow above H1
+        - checkbox "Rubric eyebrow above H1" [checked] [ref=e18] [cursor=pointer]
+      - generic [ref=e19]:
+        - generic [ref=e20] [cursor=pointer]: Deck (subhead under H1)
+        - checkbox "Deck (subhead under H1)" [checked] [ref=e22] [cursor=pointer]
+      - generic [ref=e23]:
+        - generic [ref=e24] [cursor=pointer]: Named byline + credential + date
+        - checkbox "Named byline + credential + date" [checked] [ref=e26] [cursor=pointer]
+      - generic [ref=e27]:
+        - generic [ref=e28] [cursor=pointer]: Image attribution caption
+        - checkbox "Image attribution caption" [checked] [ref=e30] [cursor=pointer]
+      - generic [ref=e31]:
+        - generic [ref=e32] [cursor=pointer]: "\"How we evaluate\" footer link"
+        - checkbox "\"How we evaluate\" footer link" [checked] [ref=e34] [cursor=pointer]
+    - generic [ref=e35]:
+      - heading "Tier 2 — Decision Aids" [level=2] [ref=e36]
+      - generic [ref=e37]:
+        - generic [ref=e38] [cursor=pointer]: Weighted scorecard
+        - checkbox "Weighted scorecard" [checked] [ref=e40] [cursor=pointer]
+      - generic [ref=e41]:
+        - generic [ref=e42] [cursor=pointer]: "\"Buy it if / Don't buy it if\" block"
+        - checkbox "\"Buy it if / Don't buy it if\" block" [checked] [ref=e44] [cursor=pointer]
+      - generic [ref=e45]:
+        - generic [ref=e46] [cursor=pointer]: "\"Flaws but not deal-breakers\" section"
+        - checkbox "\"Flaws but not deal-breakers\" section" [checked] [ref=e48] [cursor=pointer]
+      - generic [ref=e49]:
+        - generic [ref=e50] [cursor=pointer]: FAQ section
+        - checkbox "FAQ section" [checked] [ref=e52] [cursor=pointer]
+    - generic [ref=e53]:
+      - heading "Tier 3 — Typography Polish" [level=2] [ref=e54]
+      - generic [ref=e55]:
+        - generic [ref=e56] [cursor=pointer]: Narrow body column (68ch)
+        - checkbox "Narrow body column (68ch)" [ref=e58] [cursor=pointer]
+      - generic [ref=e59]:
+        - generic [ref=e60] [cursor=pointer]: 18px / 1.65 body type
+        - checkbox "18px / 1.65 body type" [ref=e62] [cursor=pointer]
+      - generic [ref=e63]:
+        - generic [ref=e64] [cursor=pointer]: Title Case Headings
+        - checkbox "Title Case Headings" [ref=e66] [cursor=pointer]
+  - main [ref=e67]:
+    - article [ref=e68]:
+      - generic [ref=e69]: Trail Cameras · Review
+      - heading "Spypoint Flex-M Review" [level=1] [ref=e70]
+      - paragraph [ref=e71]: The cellular pick for backyard wildlife watchers who'd rather see photos arrive on their phone than walk out to swap an SD card.
+      - generic [ref=e72]:
+        - generic [ref=e73]: M
+        - generic [ref=e74]:
+          - strong [ref=e75]: The mywildlifecam editorial team
+          - text: Spec analysis & use-case framing · verified against current manufacturer listings & Amazon reports
+        - generic [ref=e76]:
+          - strong [ref=e77]: Last updated
+          - text: May 17, 2026
+      - 'figure "Spypoint Flex-M cellular trail camera. Photo: Spypoint manufacturer media kit." [ref=e78]':
+        - generic [ref=e79]: trail camera hero
+        - generic [ref=e80]: "Spypoint Flex-M cellular trail camera. Photo: Spypoint manufacturer media kit."
+      - generic [ref=e81]:
+        - generic [ref=e82]:
+          - generic [ref=e83]: Bottom Line
+          - paragraph [ref=e84]: Buy it if you want convenience, skip it if you want gallery-quality photos.
+          - paragraph [ref=e85]: The Flex-M is the smart starting point if you want cellular trail-cam photos without committing to a monthly bill. The dual-SIM auto-carrier-detection solves the most common cellular failure mode, and the free 100-photo plan covers casual backyard use indefinitely. The caveat is image quality under motion, which is just-okay rather than great.
+        - generic [ref=e86]:
+          - generic [ref=e87]:
+            - heading "Editorial Scorecard" [level=3] [ref=e88]
+            - generic [ref=e89]: 7.5/10
+          - generic [ref=e90]:
+            - generic [ref=e91]:
+              - generic [ref=e92]: Cellular Performance · 25%
+              - generic [ref=e95]: "9.0"
+            - generic [ref=e96]:
+              - generic [ref=e97]: Detection Range · 20%
+              - generic [ref=e100]: "8.0"
+            - generic [ref=e101]:
+              - generic [ref=e102]: Image Quality · 25%
+              - generic [ref=e105]: "6.0"
+            - generic [ref=e106]:
+              - generic [ref=e107]: Battery Life · 20%
+              - generic [ref=e110]: "7.0"
+            - generic [ref=e111]:
+              - generic [ref=e112]: Ease of Setup · 10%
+              - generic [ref=e115]: "8.0"
+          - paragraph [ref=e116]: Editorial score derived from manufacturer specs cross-referenced with verified-buyer reports on Amazon and independent reviews. Not lab-measured.
+        - heading "Who This Is For" [level=2] [ref=e117]
+        - paragraph [ref=e118]: Homeowners and casual wildlife watchers who want the cellular convenience of photos delivered to a phone, are willing to accept just-okay image quality in exchange, and prefer a camera that runs on a free or low-cost data plan rather than a recurring monthly subscription.
+        - generic [ref=e119]:
+          - generic [ref=e120]:
+            - heading "Buy it if" [level=4] [ref=e121]
+            - list [ref=e122]:
+              - listitem [ref=e123]: You want photos delivered to your phone without walking to the camera
+              - listitem [ref=e124]: Your property has decent cell coverage on either AT&T or Verizon
+              - listitem [ref=e125]: A free 100-photo monthly plan covers your expected backyard volume
+              - listitem [ref=e126]: You'd rather pay once for the camera than commit to a monthly subscription
+          - generic [ref=e127]:
+            - heading "Don't buy it if" [level=4] [ref=e128]
+            - list [ref=e129]:
+              - listitem [ref=e130]: You want gallery-quality stills you'd be proud to print
+              - listitem [ref=e131]: Your property has no cellular coverage on either carrier
+              - listitem [ref=e132]: You want a non-cellular SD-card cam with the best image quality possible
+              - listitem [ref=e133]: You don't want any recurring data plan, even a free tier
+        - heading "At a Glance" [level=2] [ref=e134]
+        - generic [ref=e135]:
+          - generic [ref=e136]:
+            - term [ref=e137]: Resolution
+            - definition [ref=e138]: 28 MP stills, 720p video
+          - generic [ref=e139]:
+            - term [ref=e140]: Cellular
+            - definition [ref=e141]: Dual-SIM auto-carrier (AT&T / Verizon)
+          - generic [ref=e142]:
+            - term [ref=e143]: Detection range
+            - definition [ref=e144]: ~90 ft (manufacturer-stated)
+          - generic [ref=e145]:
+            - term [ref=e146]: Trigger speed
+            - definition [ref=e147]: ~0.5 s
+          - generic [ref=e148]:
+            - term [ref=e149]: Battery life
+            - definition [ref=e150]: 8 AA batteries; ~5-month projected at moderate volume
+          - generic [ref=e151]:
+            - term [ref=e152]: Free plan
+            - definition [ref=e153]: 100 photos/month, no card required
+        - heading "What It Does Well" [level=2] [ref=e154]
+        - paragraph [ref=e155]: The dual-SIM auto-carrier-detection is the standout feature. Most cellular trail cameras force you to pick a carrier at setup and stick with it; the Flex-M scans both networks and picks the stronger signal automatically. For properties on the edge of coverage, this is the difference between a working camera and an expensive paperweight.
+        - paragraph [ref=e156]: The free 100-photo plan covers genuine backyard use without ever paying Spypoint a dime in recurring fees. For users who set up a single camera and check it occasionally, that's the right price for the right volume.
+        - heading "Where It Falls Short" [level=2] [ref=e157]
+        - paragraph [ref=e158]: Daytime image quality is acceptable. Motion-blur tolerance is not. Verified-buyer reports consistently flag ghosting on fast-moving animals — squirrels, birds in flight, anything moving at speed. If your target species is slow-moving (deer, raccoons, opossums), this is a non-issue. If you're hoping to catch a hawk strike or a coyote chase, look elsewhere.
+        - generic [ref=e159]:
+          - heading "Flaws but not deal-breakers" [level=3] [ref=e160]
+          - paragraph [ref=e161]:
+            - strong [ref=e162]: 720p video, not 1080p.
+            - text: A spec compromise that keeps the camera cheap and the cellular data costs low. For a phone-notification trail cam, video clarity is a secondary concern — the still photo is the primary alert.
+          - paragraph [ref=e163]:
+            - strong [ref=e164]: Spypoint app interface is dated.
+            - text: Functional, occasionally clunky. You're checking it for "what showed up overnight?" not browsing photo galleries — the friction is real but minor.
+          - paragraph [ref=e165]:
+            - strong [ref=e166]: AA batteries, not lithium pack.
+            - text: Eight AAs at a time gets expensive over years; rechargeable lithium would be cleaner. The trade-off is universal AA availability and no proprietary charger.
+        - heading "How It Compares" [level=2] [ref=e167]
+        - paragraph [ref=e168]:
+          - text: Versus the
+          - strong [ref=e169]: Stealth Cam DS4K Ultimate
+          - text: "(our SD-card image-quality pick): the Stealth Cam is dramatically sharper but requires you to physically retrieve the SD card. Flex-M wins on convenience; DS4K wins on every image-quality axis."
+        - paragraph [ref=e170]:
+          - text: Versus the
+          - strong [ref=e171]: Bushnell CelluCORE 20
+          - text: ": similar price point, but the CelluCORE is locked to a single carrier at setup. If you don't know your property's cell coverage yet, Flex-M's auto-detect removes the gamble."
+        - generic [ref=e172]:
+          - heading "FAQ" [level=2] [ref=e173]
+          - generic [ref=e174]:
+            - heading "Does the Flex-M work without a paid plan?" [level=4] [ref=e175]
+            - paragraph [ref=e176]: Yes. The free tier sends 100 photos per month with no card required. For occasional backyard use, that's enough indefinitely. Plans only become necessary at higher volumes or for video transfer.
+          - generic [ref=e177]:
+            - heading "Will it work on a property with weak cell signal?" [level=4] [ref=e178]
+            - paragraph [ref=e179]: Better than most. The dual-SIM auto-carrier-detection means it'll try both AT&T and Verizon and pick whichever is stronger. If neither carrier has any signal at your install location, no cellular trail cam will work — that's a connectivity problem, not a camera problem.
+          - generic [ref=e180]:
+            - heading "How does it compare to a non-cellular trail cam?" [level=4] [ref=e181]
+            - paragraph [ref=e182]: Non-cellular cams generally win on image quality at the same price tier (no cellular hardware to budget for) and require zero monthly considerations. The trade-off is you have to walk to the camera to see what it caught. If you're choosing convenience over image clarity, cellular is the call.
+      - generic [ref=e183]:
+        - link "How we evaluate trail cameras" [ref=e184] [cursor=pointer]:
+          - /url: "#"
+        - paragraph [ref=e185]:
+          - strong [ref=e186]: Affiliate disclosure.
+          - text: mywildlifecam earns a commission from qualifying Amazon purchases made through links on this page. We don't claim hands-on use of every product we cover; our recommendations come from spec analysis and verified-buyer reports. Editorial decisions are independent of commission rates.
+  - contentinfo [ref=e187]:
+    - generic [ref=e188]: "Polish-pattern build plan for mywildlifecam review templates. Apply these changes to the single-product review template at `packages/shared-ui/src/components/...` and the buying-guide renderer, propagating to all 5 sites via the shared template: Editorial chrome: · a small-caps rubric eyebrow above every H1 (brass, tracked wide, with a leading rule, ~11px) · a one-sentence deck (italic Fraunces subhead, ~22px) directly under the H1 — sets the framing for the piece · a named byline strip above the fold with an avatar mark, \"by [editorial team / contributor]\", a one-line credential/methodology statement, and \"Last updated [date]\" right-aligned · an italic attribution caption beneath every hero image (e.g. \"Photo: manufacturer media kit\") · a \"How we evaluate\" link in every piece footer pointing to /how-we-evaluate (standalone methodology page surfacing our spec-driven, no-hands-on framing) Decision aids: · a weighted Editorial Scorecard component with 4-5 axes (each with explicit weight + per-axis score bar + composite /10), and a note disclosing the score is derived from spec analysis + verified-buyer reports, NOT lab testing · a two-card \"Buy it if / Don't buy it if\" decision block with bulleted conditions per side (forest border on the buy side, muted-red on the no side) · a \"Flaws but not deal-breakers\" named callout section after Where It Falls Short — preempts the \"why didn't they mention X\" objection while keeping the verdict intact · an FAQ section with 3-5 reader-voice questions + concise answers, marked up with FAQPage schema Constraints: stay inside the locked design system (forest #1F3D2F + cream #F5F0E6 + brass #A07C3A, Fraunces + Inter Tight). Voice doctrine still applies — no hands-on claims anywhere in new chrome copy. Add a frontmatter field per template for any new content surfaces (rubric, deck, byline credit) and surface graceful defaults if the field is omitted."
+    - button "Copy prompt" [ref=e189] [cursor=pointer]
