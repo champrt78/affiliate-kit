@@ -23,7 +23,7 @@ scorecard:
     - { name: "Image Quality", weight: 25, score: 5.5 }
     - { name: "Battery Life", weight: 20, score: 7.0 }
     - { name: "Ease of Setup", weight: 10, score: 8.0 }
-  note: "Editorial score with weights tuned for general backyard use including cellular convenience. The Vikeri is a sub-$80 SD-card camera with no cellular by design, so it scores zero on that axis. For budget buyers who don't need cellular, the effective score is meaningfully higher — the camera does its job at the price it's at. Score derived from spec analysis and verified-buyer Amazon reports."
+  note: "Editorial score with weights tuned for general backyard use including cellular convenience. The Vikeri is a sub-$80 SD-card camera with no cellular by design, so it scores zero on that axis. For budget buyers who don't need cellular, the effective score is meaningfully higher; the camera does its job at the price it's at. Score derived from spec analysis and verified-buyer Amazon reports."
 buyIf:
   buy:
     - "You want to find out if trail-cam photography is something you'd keep doing"
