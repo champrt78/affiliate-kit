@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>mywildlifecam — home lead variation playground</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1F3D2F;
+    --forest-deep: #14291f;
+    --cream: #FAF7EF;
+    --cream-card: #F2EBDC;
+    --cream-accent: #F5F0E6;
+    --brass: #A07C3A;
+    --brass-light: #C99A52;
+    --ink: #1A1A1A;
+    --ink-soft: #4A4A4A;
+    --rule: #D9D2C2;
+    --shell-bg: #0d0e10;
+    --shell-card: #161719;
+    --shell-text: #d6d6d6;
+    --shell-muted: #888;
+    --shell-rule: #2a2c30;
+    --shell-accent: #C99A52;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0;height:100%}
+  body{
+    background:var(--shell-bg);
+    color:var(--shell-text);
+    font:14px/1.5 ui-sans-serif,system-ui,-apple-system,sans-serif;
+    overflow:hidden;
+  }
+  .shell{
+    display:grid;
+    grid-template-columns:300px 1fr;
+    grid-template-rows:1fr auto;
+    height:100vh;
+  }
+  /* Controls */
+  .controls{
+    background:var(--shell-card);
+    border-right:1px solid var(--shell-rule);
+    padding:20px;
+    overflow-y:auto;
+  }
+  .controls h1{
+    font-size:14px;font-weight:600;margin:0 0 4px;
+    letter-spacing:.04em;text-transform:uppercase;color:var(--shell-accent);
+  }
+  .controls .sub{font-size:12px;color:var(--shell-muted);margin:0 0 24px;line-height:1.5;}
+  .group{border-top:1px solid var(--shell-rule);padding:16px 0;}
+  .group:first-of-type{border-top:none;padding-top:0}
+  .group h2{
+    font-size:11px;font-weight:600;margin:0 0 12px;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--shell-muted);
+  }
+  .row{display:flex;align-items:center;justify-content:space-between;padding:7px 0;gap:12px;}
+  .row label{font-size:13px;color:var(--shell-text);cursor:pointer;flex:1;}
+  .toggle{position:relative;width:36px;height:20px;flex-shrink:0;cursor:pointer;}
+  .toggle input{position:absolute;opacity:0;width:100%;height:100%;cursor:pointer;margin:0;z-index:2;}
+  .toggle .track{position:absolute;inset:0;background:#3a3c40;border-radius:10px;transition:background .15s;pointer-events:none;}
+  .toggle .knob{position:absolute;top:2px;left:2px;width:16px;height:16px;background:#ccc;border-radius:50%;transition:transform .15s;pointer-events:none;}
+  .toggle input:checked + .track{background:var(--shell-accent)}
+  .toggle input:checked + .track + .knob{transform:translateX(16px);background:#fff}
+  .variations{display:flex;flex-direction:column;gap:6px;}
+  .variation-btn{
+    background:transparent;color:var(--shell-text);
+    border:1px solid var(--shell-rule);border-radius:4px;
+    padding:10px 12px;font:500 12px/1.3 ui-sans-serif,system-ui,sans-serif;
+    text-align:left;cursor:pointer;transition:all .15s;
+  }
+  .variation-btn:hover{border-color:var(--shell-accent);color:var(--shell-accent)}
+  .variation-btn.active{border-color:var(--shell-accent);background:rgba(201,154,82,.08);color:var(--shell-accent);}
+  .variation-btn small{display:block;color:var(--shell-muted);font-weight:400;margin-top:2px;font-size:11px;}
+  .variation-btn.active small{color:var(--shell-accent);opacity:0.75}
+
+  /* Preview */
+  .preview-wrap{background:#1a1b1d;overflow-y:auto;}
+  .preview-frame{background:var(--cream);color:var(--ink);min-height:100%;font-family:'Inter Tight',ui-sans-serif,system-ui,-apple-system,sans-serif;}
+
+  /* Faux hero so we see context */
+  .faux-hero{
+    height:200px;
+    background:linear-gradient(135deg,#0e1f17,#1F3D2F 50%,#3a5d4a);
+    position:relative;
+    display:grid;
+    place-items:center;
+    color:rgba(245,240,230,0.7);
+    font:italic 13px 'Fraunces',serif;
+    letter-spacing:.1em;
+  }
+  .faux-hero::before{content:"[ hero ]"}
+
+  /* === Lead section variations === */
+  .lead-section{
+    background:var(--cream);
+    transition:padding 220ms ease;
+  }
+
+  /* Variation 1: CURRENT (baseline — what Ray complains about) */
+  .lead-section.is-current{
+    padding:64px 24px 48px;
+  }
+  .lead-section.is-current .lead-inner{
+    max-width:640px;
+    margin:0 auto;
+  }
+  .lead-section.is-current .lead-text{
+    font-family:'Fraunces',serif;
+    font-size:clamp(1.25rem,2vw,1.625rem);
+    line-height:1.45;
+    color:var(--forest);
+    margin:0;
+    font-weight:400;
+    letter-spacing:-0.005em;
+  }
+  .lead-section.is-current .ornament{display:flex}
+
+  /* Variation 2: WIDER + SMALLER (tightened) */
+  .lead-section.is-tight{
+    padding:48px 24px 36px;
+  }
+  .lead-section.is-tight .lead-inner{
+    max-width:780px;
+    margin:0 auto;
+  }
+  .lead-section.is-tight .lead-text{
+    font-family:'Inter Tight',sans-serif;
+    font-size:18px;
+    line-height:1.6;
+    color:var(--ink);
+    margin:0;
+    font-weight:400;
+  }
+  .lead-section.is-tight .ornament{display:flex;margin-top:32px}
+
+  /* Variation 3: ASIDE (small italic kicker on left, paragraph on right) */
+  .lead-section.is-aside{
+    padding:48px 24px 36px;
+  }
+  .lead-section.is-aside .lead-inner{
+    max-width:1100px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:160px 1fr;
+    gap:48px;
+    align-items:baseline;
+  }
+  .lead-section.is-aside .lead-kicker{
+    font-family:'Inter Tight',sans-serif;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--brass);
+    line-height:1.4;
+  }
+  .lead-section.is-aside .lead-kicker::before{
+    content:"";
+    display:inline-block;
+    width:18px;height:1px;
+    background:var(--brass);
+    vertical-align:middle;
+    margin-right:8px;
+    transform:translateY(-2px);
+  }
+  .lead-section.is-aside .lead-text{
+    font-family:'Fraunces',serif;
+    font-size:20px;
+    line-height:1.5;
+    color:var(--forest);
+    margin:0;
+    max-width:62ch;
+    font-weight:400;
+  }
+  .lead-section.is-aside .ornament{display:none}
+
+  /* Variation 4: DROP-CAP MAGAZINE (single column, drop cap, smaller text) */
+  .lead-section.is-dropcap{
+    padding:56px 24px 40px;
+  }
+  .lead-section.is-dropcap .lead-inner{
+    max-width:680px;
+    margin:0 auto;
+  }
+  .lead-section.is-dropcap .lead-text{
+    font-family:'Inter Tight',sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    color:var(--ink);
+    margin:0;
+  }
+  .lead-section.is-dropcap .lead-text::first-letter{
+    font-family:'Fraunces',serif;
+    font-size:64px;
+    font-weight:600;
+    color:var(--forest);
+    float:left;
+    line-height:0.9;
+    margin:6px 10px 0 0;
+    font-variation-settings:"opsz" 144;
+  }
+  .lead-section.is-dropcap .ornament{display:flex;margin-top:24px}
+
+  /* Variation 5: TWO-COLUMN (intro split into two columns of body text) */
+  .lead-section.is-twocol{
+    padding:48px 24px 36px;
+  }
+  .lead-section.is-twocol .lead-inner{
+    max-width:1080px;
+    margin:0 auto;
+  }
+  .lead-section.is-twocol .lead-text{
+    font-family:'Inter Tight',sans-serif;
+    font-size:16.5px;
+    line-height:1.6;
+    color:var(--ink);
+    margin:0;
+    column-count:2;
+    column-gap:40px;
+    column-rule:1px solid var(--rule);
+  }
+  .lead-section.is-twocol .ornament{display:none}
+
+  /* Variation 6: TAGLINE BAR (just a tight one-line italic statement) */
+  .lead-section.is-tagline{
+    padding:36px 24px 32px;
+    border-bottom:1px solid var(--rule);
+  }
+  .lead-section.is-tagline .lead-inner{
+    max-width:920px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .lead-section.is-tagline .lead-text{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:clamp(1rem,1.4vw,1.25rem);
+    line-height:1.5;
+    color:var(--forest);
+    margin:0;
+    max-width:80ch;
+    margin-left:auto;margin-right:auto;
+    font-variation-settings:"opsz" 30;
+    font-weight:400;
+  }
+  .lead-section.is-tagline .ornament{display:none}
+
+  /* Ornament (used in some variants) */
+  .ornament{
+    display:none;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    margin:32px auto 0;
+    max-width:200px;
+    opacity:0.7;
+  }
+  .ornament__rule{
+    flex:1;height:1px;background:var(--brass);
+  }
+  .ornament__dot{
+    width:5px;height:5px;border-radius:50%;background:var(--brass);flex-shrink:0;
+  }
+
+  /* Hidden lead-kicker by default; shown in aside variation */
+  .lead-kicker{display:none}
+  .lead-section.is-aside .lead-kicker{display:inline-block}
+
+  /* Show what comes after — a faux "Start here" section to see context */
+  .faux-after{
+    background:var(--cream);
+    border-top:1px solid var(--rule);
+    padding:48px 24px;
+    text-align:center;
+    color:var(--ink-soft);
+    font:italic 13px 'Fraunces',serif;
+    letter-spacing:.1em;
+  }
+  .faux-after::before{content:"[ next section: Start Here featured card ]"}
+
+  /* Prompt bar */
+  .prompt-bar{
+    grid-column:1 / -1;background:#1a1b1d;border-top:1px solid var(--shell-rule);
+    padding:14px 24px;display:grid;grid-template-columns:1fr auto;gap:16px;
+    align-items:center;max-height:200px;overflow-y:auto;
+  }
+  .prompt-text{
+    margin:0;font-family:ui-monospace,SF Mono,Menlo,monospace;
+    font-size:12.5px;line-height:1.55;color:#cfcfcf;white-space:pre-wrap;
+  }
+  .copy-btn{
+    background:var(--shell-accent);color:#1a1b1d;border:none;
+    padding:9px 16px;border-radius:4px;font:600 12px/1 ui-sans-serif,system-ui,sans-serif;
+    cursor:pointer;letter-spacing:.02em;transition:all .15s;align-self:start;flex-shrink:0;
+  }
+  .copy-btn:hover{background:#d4a55e}
+  .copy-btn.copied{background:#7a9870;color:#fff}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="controls">
+    <h1>Home Lead Variations</h1>
+    <p class="sub">Pick a treatment for the home-page intro paragraph (lives between the hero and the "Start here" featured card). Optional toggles refine the choice. Copy the prompt when you settle.</p>
+
+    <div class="group">
+      <h2>Variation</h2>
+      <div class="variations">
+        <button class="variation-btn active" data-variation="current">Current<small>Big serif, narrow center column, brass ornament — what's live now (Ray's complaint)</small></button>
+        <button class="variation-btn" data-variation="tight">Tightened<small>Wider container, sans body type at 18px, less vertical padding</small></button>
+        <button class="variation-btn" data-variation="aside">Kicker + Body<small>Small brass kicker on the left, paragraph on the right — magazine intro pattern</small></button>
+        <button class="variation-btn" data-variation="dropcap">Drop-cap Editorial<small>Magazine drop cap (Fraunces), smaller sans body, single column</small></button>
+        <button class="variation-btn" data-variation="twocol">Two-Column Body<small>Body splits into two columns with a thin rule — newspaper register</small></button>
+        <button class="variation-btn" data-variation="tagline">Tagline Bar<small>Just a tight italic one-liner — minimum vertical real estate</small></button>
+      </div>
+    </div>
+
+    <div class="group">
+      <h2>Content</h2>
+      <div class="row"><label for="t_short">Use shorter copy</label><span class="toggle"><input type="checkbox" id="t_short"><span class="track"></span><span class="knob"></span></span></div>
+    </div>
+  </aside>
+
+  <main class="preview-wrap">
+    <div class="preview-frame">
+      <div class="faux-hero"></div>
+      <section class="lead-section is-current" id="lead">
+        <div class="lead-inner">
+          <span class="lead-kicker">From the editors</span>
+          <p class="lead-text" id="leadText">Trail cameras have outgrown the deer-stand. They live on garden sheds, across koi ponds, above backyard bird feeders, on cabin porches. We sift the catalog so the right pick is obvious for the use case you actually have, by the spec and fit signals that matter.</p>
+          <div class="ornament" aria-hidden="true">
+            <span class="ornament__rule"></span>
+            <span class="ornament__dot"></span>
+            <span class="ornament__rule"></span>
+          </div>
+        </div>
+      </section>
+      <div class="faux-after"></div>
+    </div>
+  </main>
+
+  <footer class="prompt-bar">
+    <pre class="prompt-text" id="prompt"></pre>
+    <button class="copy-btn" id="copy">Copy prompt</button>
+  </footer>
+</div>
+
+<script>
+const VARIATION_DESC = {
+  current: 'Big serif paragraph in a 640px center column with a brass-rule ornament below — what is live now',
+  tight: 'Wider 780px container, sans body type at 18px / 1.6 line-height, smaller padding, ornament kept',
+  aside: 'Small brass "From the editors" kicker in a left column with the paragraph in serif on the right. Two-column grid, no ornament. Magazine intro pattern.',
+  dropcap: 'Magazine drop-cap pattern. First letter is a 64px Fraunces drop cap. Body is sans 17px, single column, narrow.',
+  twocol: 'Newspaper-style two-column body with a thin rule between columns. No ornament.',
+  tagline: 'Reduced to a single tight italic one-liner centered with a bottom rule. Minimum vertical space.',
+};
+
+const LONG_COPY = 'Trail cameras have outgrown the deer-stand. They live on garden sheds, across koi ponds, above backyard bird feeders, on cabin porches. We sift the catalog so the right pick is obvious for the use case you actually have, by the spec and fit signals that matter.';
+const SHORT_COPY = 'Trail cameras for the backyard naturalist. We sift the catalog so the right pick is obvious for the use case you actually have.';
+
+const state = { variation: 'current', short: false };
+const lead = document.getElementById('lead');
+const leadText = document.getElementById('leadText');
+
+function applyState() {
+  lead.className = 'lead-section is-' + state.variation;
+  leadText.textContent = state.short ? SHORT_COPY : LONG_COPY;
+  document.querySelectorAll('.variation-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.variation === state.variation);
+  });
+  updatePrompt();
+}
+
+function updatePrompt() {
+  const parts = [];
+  parts.push(`Apply the "${state.variation}" lead-section treatment to sites/mywildlifecam/src/pages/index.astro (the .lead section between the Hero and the "Start here" featured card).`);
+  parts.push('');
+  parts.push(`Description: ${VARIATION_DESC[state.variation]}.`);
+  parts.push('');
+  if (state.short) {
+    parts.push('Use the shorter copy: "Trail cameras for the backyard naturalist. We sift the catalog so the right pick is obvious for the use case you actually have."');
+    parts.push('');
+  }
+  parts.push('Constraints: stay in the locked design system (forest #1F3D2F + cream #FAF7EF + brass #A07C3A, Fraunces + Inter Tight). Keep this change contained to the .lead section CSS in sites/mywildlifecam/src/pages/index.astro.');
+  document.getElementById('prompt').textContent = parts.join('\n');
+}
+
+document.querySelectorAll('.variation-btn').forEach(btn => {
+  btn.addEventListener('click', () => { state.variation = btn.dataset.variation; applyState(); });
+});
+document.getElementById('t_short').addEventListener('change', e => { state.short = e.target.checked; applyState(); });
+
+document.getElementById('copy').addEventListener('click', async () => {
+  const btn = document.getElementById('copy');
+  try {
+    await navigator.clipboard.writeText(document.getElementById('prompt').textContent);
+    btn.textContent = 'Copied';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('copied'); }, 1400);
+  } catch (e) { btn.textContent = 'Press Ctrl+C'; }
+});
+
+applyState();
+</script>
+</body>
+</html>
