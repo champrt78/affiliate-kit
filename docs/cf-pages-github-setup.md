@@ -1,7 +1,36 @@
 # Cloudflare Pages → GitHub Auto-Deploy Setup
 
-**Last updated:** 2026-05-16
+**Last updated:** 2026-05-16 (revised after live walkthrough)
 **Status:** Walkthrough for Ray to connect each of 5 affiliate-sites CF Pages projects to the GitHub repo so pushes to `main` auto-deploy.
+
+---
+
+## Friction points caught during the live walkthrough (2026-05-16)
+
+First end-to-end attempt on `mywildlifecam` hit six distinct friction points before the Workers project + Pages project + token were all aligned. Documenting them so subsequent sites (and future-you) don't re-discover from scratch. Manual `pwsh scripts/deploy.ps1 -Site <slug>` remains the always-working fallback if Git auto-deploy is ever flaky.
+
+The 6 friction points, in the order they bit:
+
+**1. CF Pages does NOT support retrofitting Git onto direct-upload projects.** Confirmed via CF's own docs: *"If you deploy using the Git integration, you cannot switch to Direct Upload later"* (one-way restriction). The only path is the fallback: create a NEW project from Git, move the custom domain over, delete the old direct-upload project. Phase B starts by creating new projects, not by retrofitting old ones.
+
+**2. CF's "Create application → Connect to Git" flow creates a WORKERS project by default, not a Pages project.** Even when you intend a Pages project, the unified UI puts you in a Workers configuration. The form shows fields like "Deploy command" (Workers concept) and the default is `npx wrangler deploy` (which looks for `wrangler.toml` and fails on a static Pages site). Workaround: leave it as a Workers project but change the Deploy command to use `wrangler pages deploy` explicitly — the Workers project becomes a "build orchestrator" that publishes static output to a separate Pages project on each push.
+
+**3. The default Build command (`pnpm run build`) ran a recursive `pnpm -r build` which surfaced two pre-existing bugs in `tools/bootstrap`:** a tsconfig rootDir vs include mismatch, and NodeNext requiring explicit `.js` extensions on relative imports. Both fixed in commit `e6e6c07` (2026-05-16). If you're walking through this AFTER that commit, you should be clean. If you're walking through it BEFORE, you'll hit `tsc` errors on the bootstrap build step.
+
+**4. The "API token" field in CF's project settings does NOT inject `CLOUDFLARE_API_TOKEN` into the deploy command's environment with sufficient permissions.** Symptom: `wrangler pages deploy` fails with `Authentication error [code: 10000]` even though the dashboard shows an API token is configured. The auto-injected token (or whatever CF does with that field) lacks Pages:Edit permission. Workaround: create an API token explicitly with `Account → Cloudflare Pages → Edit` permission, then add it to the project's **Variables and secrets** section (NOT the "API token" field) as a Secret named `CLOUDFLARE_API_TOKEN`. Also: if you generate a token from a "Workers" template, it gets every Workers-related permission (Workers Scripts, R2, KV, D1, etc.) EXCEPT Cloudflare Pages — Pages is a separate permission you have to add explicitly.
+
+**5. `wrangler pages deploy` does NOT auto-create the target Pages project.** Symptom: `Project not found. The specified project name does not match any of your existing projects. [code: 8000007]`. You must create the empty Pages project once before the Workers build can deploy to it. Best done via local terminal: `npx wrangler pages project create <slug> --production-branch=main`. The interactive prompt during creation may not honor the `--production-branch=main` flag and may ask you to enter the branch name; just type `main` at the prompt.
+
+**6. The Non-production branch deploy command field is NOT optional in CF's UI.** You can't leave it blank — CF requires a value. Use the same `wrangler pages deploy` command minus the `--branch=main` flag (creates preview deploys on non-main branches), or set it to `echo "skip"` if you genuinely never want non-main pushes to deploy.
+
+**After clearing all 6 friction points, the `mywildlifecam` setup is:**
+- Workers project (Git-connected): `mywildlifecam`, runs `pnpm --filter mywildlifecam build` then `npx wrangler pages deploy sites/mywildlifecam/dist --project-name=mywildlifecam --branch=main`
+- Pages project (deploy target, created manually via wrangler): `mywildlifecam`
+- API token: `Cloudflare Pages: Edit` permission, set as a Variables/Secrets entry named `CLOUDFLARE_API_TOKEN` (or via the "API token" field if that works — both routes exist)
+
+**Then to actually serve the apex domain from the new project:** detach `mywildlifecam.com` from `affkit-mywildlifecam` and re-attach to the new `mywildlifecam` Pages project. This is a separate dashboard step after the new project has a successful deployment.
+
+**For the 4 satellite sites (after mywildlifecam works):** the same 6-friction-point setup applies. Build command + deploy command + project-name flag all change to the satellite's slug. The empty Pages project for each must be pre-created via `npx wrangler pages project create <slug> --production-branch=main`. Domain migration from `affkit-<slug>` to `<slug>` follows the same pattern.
 
 ---
 
@@ -27,38 +56,37 @@ You'll need:
 
 ## The exact build configuration (paste this into each project)
 
-For each of the 5 CF Pages projects, when you reach the "Build settings" screen, paste these values:
+CF's unified UI creates these as Workers projects with Pages-style static publishing. Use these exact values per site (the Build command and Deploy command both need to be set explicitly):
 
 | Field | Value (replace `<site>` with the actual slug) |
 |---|---|
-| **Framework preset** | None (or "Astro" if offered — but we're using a custom command, so None is safer) |
-| **Build command** | `pnpm install && pnpm --filter <site> build` |
-| **Build output directory** | `sites/<site>/dist` |
-| **Root directory** | (leave empty — defaults to repo root, which is what we want) |
-| **Production branch** | `main` |
+| **Build command** | `pnpm --filter <site> build` *(no `pnpm install` prefix — CF auto-installs)* |
+| **Deploy command** | `npx wrangler pages deploy sites/<site>/dist --project-name=<site> --branch=main` |
+| **Non-production branch deploy command** | (leave empty — we don't use preview branches) |
+| **Path** | `/` |
+| **Production branch** | `main` *(set during project creation)* |
 
-Environment variables to add (under "Environment variables" / "Production"):
+Important quirks:
 
-| Variable | Value | Why |
-|---|---|---|
-| `NODE_VERSION` | `20` | CF Pages defaults to an older Node; pin to 20 to match our `engines` |
-| `NPM_FLAGS` | `--version` | Skips CF's default npm install (we use pnpm) |
+- **Don't use `npx wrangler deploy`** (the default CF puts in this field). That's the Workers command and fails on Pages sites with "The Wrangler application detection logic has been run in the root of a workspace instead of targeting a specific project." Use `wrangler pages deploy` explicitly.
+- **The `--project-name=<site>` flag creates a separate CF Pages project** on first deploy if it doesn't already exist. That new project is where your custom domain attaches. The Workers project from "Connect to Git" stays as the build orchestrator.
+- **Don't set `pnpm install &&` prefix** in the Build command. CF auto-runs `pnpm install --frozen-lockfile` before your build command (detected via `packageManager: pnpm@9.0.0` in root `package.json`).
 
-That's it. CF auto-detects pnpm via the root `package.json`'s `packageManager: pnpm@9.0.0` field.
+Environment variables — CF detects pnpm via `packageManager`, Node 20 via `engines.node`, so usually no env vars are required. If you hit Node version issues during build, add `NODE_VERSION=20` as a production environment variable.
 
 ---
 
-## The 5 sites + their build commands
+## The 5 sites + their per-site values
 
-| Site (slug) | Project name in CF | Build command to paste |
-|---|---|---|
-| `mywildlifecam` | `affkit-mywildlifecam` | `pnpm install && pnpm --filter mywildlifecam build` |
-| `detailerpicks` | `affkit-detailerpicks` | `pnpm install && pnpm --filter detailerpicks build` |
-| `fussybean` | `affkit-fussybean` | `pnpm install && pnpm --filter fussybean build` |
-| `starteraquarium` | `affkit-starteraquarium` | `pnpm install && pnpm --filter starteraquarium build` |
-| `gameovergear` | `affkit-gameovergear` | `pnpm install && pnpm --filter gameovergear build` |
+When you create each Git-connected Workers project, name it the same as the site slug (no `affkit-` prefix — the old direct-upload projects still own those names until you delete them at cleanup). Each site has its own Build + Deploy command pair:
 
-Output directory for each: `sites/<slug>/dist`.
+| Site (slug) | New Workers project name | Build command | Deploy command |
+|---|---|---|---|
+| `mywildlifecam` | `mywildlifecam` | `pnpm --filter mywildlifecam build` | `npx wrangler pages deploy sites/mywildlifecam/dist --project-name=mywildlifecam --branch=main` |
+| `detailerpicks` | `detailerpicks` | `pnpm --filter detailerpicks build` | `npx wrangler pages deploy sites/detailerpicks/dist --project-name=detailerpicks --branch=main` |
+| `fussybean` | `fussybean` | `pnpm --filter fussybean build` | `npx wrangler pages deploy sites/fussybean/dist --project-name=fussybean --branch=main` |
+| `starteraquarium` | `starteraquarium` | `pnpm --filter starteraquarium build` | `npx wrangler pages deploy sites/starteraquarium/dist --project-name=starteraquarium --branch=main` |
+| `gameovergear` | `gameovergear` | `pnpm --filter gameovergear build` | `npx wrangler pages deploy sites/gameovergear/dist --project-name=gameovergear --branch=main` |
 
 ---
 

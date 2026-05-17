@@ -6,12 +6,12 @@ product:
   brand: "Spypoint"
   currency: "USD"
   affiliate:
-    amazon: "https://amzn.to/example-spypoint-flex-m"
+    amazon: "https://www.amazon.com/dp/B0DKRHHQ5P"
 classification: "review"
 pubDate: 2026-05-16
 lastUpdated: 2026-05-16
 images:
-  hero: ""
+  hero: "https://www.spypoint.com/on/demandware.static/-/Sites-physical_product_m_catalog/default/dw5517eccf/images/large/flex-m-main-1.png"
   context: ""
   comparison: ""
 ---

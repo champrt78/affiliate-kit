@@ -6,12 +6,12 @@ product:
   brand: "Stealth Cam"
   currency: "USD"
   affiliate:
-    amazon: "https://amzn.to/example-stealthcam-ds4k"
+    amazon: "https://www.amazon.com/dp/B09QBV2GP8"
 classification: "review"
 pubDate: 2026-05-16
 lastUpdated: 2026-05-16
 images:
-  hero: ""
+  hero: "https://www.trailcampro.com/cdn/shop/files/stealthcam_ds4k_ultimate_F_420_400x_146caf9a-0f6c-4dda-9c4c-31ae68d5693d_1024x.png?v=1687056663"
   context: ""
   comparison: ""
 ---
