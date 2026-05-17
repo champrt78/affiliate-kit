@@ -16,7 +16,10 @@ const formattedDate = data.pubDate instanceof Date
   ? data.pubDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
   : pubDate;
 const productCount = data.products?.length ?? 0;
-const heroImage = (data.products?.[0] as any)?.image ?? data.images?.hero ?? null;
+// Prefer the buying-guide hero (typically a photographic Unsplash/brand-kit
+// image suitable for cover-fit) over the first product's image (typically a
+// transparent product PNG that doesn't render well with object-fit: cover).
+const heroImage = data.images?.hero ?? (data.products?.[0] as any)?.image ?? null;
 ---
 <article class:list={["guide-card", featured && "guide-card--featured"]}>
   <a href={href} class="guide-card__link">

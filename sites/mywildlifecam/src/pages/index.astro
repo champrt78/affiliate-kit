@@ -265,9 +265,12 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
   }
   .reviews__grid {
     display: grid;
-    /* auto-fit (vs auto-fill) collapses empty tracks so 2 cards stretch to
-       fill the row instead of leaving a phantom 3rd slot */
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    /* auto-fit + max 420px so cards stay proportional regardless of how
+       many we have. With 2 cards: ~840px row, centered. With 3+ cards:
+       cards shrink to fit. Prevents the "two giant cards with too-tall
+       media area" failure mode. */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 420px));
+    justify-content: center;
     gap: var(--space-6);
   }
   .empty {
