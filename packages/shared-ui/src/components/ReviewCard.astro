@@ -10,6 +10,7 @@ const { entry, featured = false } = Astro.props;
 const { data, slug } = entry;
 const href = `/reviews/${slug}/`;
 const hero = data.images?.hero && data.images.hero.length > 0 ? data.images.hero : null;
+const imageScale = (data.images as any)?.imageScale;
 const pubDate = data.pubDate instanceof Date
   ? data.pubDate.toISOString().slice(0, 10)
   : String(data.pubDate);
@@ -22,7 +23,13 @@ const formattedDate = data.pubDate instanceof Date
   <a href={href} class="review-card__link">
     <div class="review-card__media">
       {hero ? (
-        <img src={hero} alt={data.product.name} loading="lazy" decoding="async" />
+        <img
+          src={hero}
+          alt={data.product.name}
+          loading="lazy"
+          decoding="async"
+          style={imageScale ? `transform: scale(${imageScale}); transform-origin: center;` : undefined}
+        />
       ) : (
         <div class="review-card__placeholder" aria-hidden="true">
           <span>{data.product.brand}</span>

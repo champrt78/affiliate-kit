@@ -8,6 +8,7 @@ products:
     brand: "Spypoint"
     affiliateUrl: "https://www.amazon.com/dp/B0DKRHHQ5P"
     image: "https://www.spypoint.com/on/demandware.static/-/Sites-physical_product_m_catalog/default/dw5517eccf/images/large/flex-m-main-1.png"
+    imageScale: 1.8
     tagline: "Photos delivered to your phone, no monthly bill required for casual use."
     bestFor: "Cellular convenience"
   - name: "Stealth Cam DS4K Ultimate"
@@ -28,7 +29,10 @@ pubDate: 2026-05-16
 lastUpdated: 2026-05-17
 bottomLine:
   verdict: "Don't overthink it. It shakes out like this:"
-  supporting: "Pick the Spypoint Flex-M if you want photos delivered to your phone without thinking about it. Pick the Stealth Cam DS4K Ultimate if you want the sharpest image and don't mind walking out for the SD card. Pick the Vikeri Trail Camera if you want to find out if this is something you care about for less than eighty bucks."
+  supporting:
+    - "Pick the Spypoint Flex-M if you want photos delivered to your phone without thinking about it."
+    - "Pick the Stealth Cam DS4K Ultimate if you want the sharpest image and don't mind walking out for the SD card."
+    - "Pick the Vikeri Trail Camera if you want to find out if this is something you care about for less than eighty bucks."
 buyIf:
   buy:
     - "You own a house with a backyard, a few acres, or a stretch of woods worth keeping an eye on"

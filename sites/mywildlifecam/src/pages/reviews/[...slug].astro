@@ -129,7 +129,15 @@ const composite = data.scorecard
 
     {heroImage && (
       <figure class="article-hero">
-        <img src={heroImage} alt={data.product.name} loading="eager" decoding="async" />
+        <div class="article-hero__frame">
+          <img
+            src={heroImage}
+            alt={data.product.name}
+            loading="eager"
+            decoding="async"
+            style={data.images?.imageScale ? `transform: scale(${data.images.imageScale}); transform-origin: center;` : undefined}
+          />
+        </div>
         {heroCaption && <figcaption class="article-hero__caption">{heroCaption}</figcaption>}
       </figure>
     )}
@@ -141,9 +149,13 @@ const composite = data.scorecard
         <section class="bottom-line" aria-label="Bottom Line">
           <span class="bottom-line__label">Bottom Line</span>
           <p class="bottom-line__verdict">{data.bottomLine.verdict}</p>
-          {data.bottomLine.supporting && (
+          {data.bottomLine.supporting && Array.isArray(data.bottomLine.supporting) ? (
+            <ul class="bottom-line__list">
+              {data.bottomLine.supporting.map((item) => <li>{item}</li>)}
+            </ul>
+          ) : data.bottomLine.supporting ? (
             <p class="bottom-line__supporting">{data.bottomLine.supporting}</p>
-          )}
+          ) : null}
         </section>
       )}
 
@@ -315,6 +327,7 @@ const composite = data.scorecard
     font-weight: var(--weight-semibold);
     font-variation-settings: "opsz" 120;
     max-width: 22ch;
+    text-transform: capitalize;
   }
 
   .article-deck {
@@ -395,13 +408,23 @@ const composite = data.scorecard
   .article-hero {
     margin: 0 0 var(--space-10);
   }
-  .article-hero img {
-    width: 100%;
-    max-height: 480px;
-    object-fit: contain;
-    border-radius: var(--radius-md);
+  .article-hero__frame {
     background: var(--color-paper-muted);
+    border-radius: var(--radius-md);
     padding: var(--space-6);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+  }
+  .article-hero img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    transition: transform var(--duration-slow) var(--ease-out);
   }
   .article-hero__caption {
     font-family: var(--font-sans);
@@ -410,10 +433,14 @@ const composite = data.scorecard
     font-style: italic;
     margin-top: var(--space-3);
     padding-left: var(--space-2);
+    font-style: italic;
   }
 
-  /* ==== Article body (single column) ==== */
-  .article-body {}
+  /* ==== Article body — capped to editorial reading width (68ch) ==== */
+  .article-body {
+    max-width: 68ch;
+    margin: 0 auto;
+  }
 
   /* Bottom Line callout — steal from mockup */
   .bottom-line {
@@ -449,6 +476,23 @@ const composite = data.scorecard
     line-height: var(--leading-normal);
     color: var(--color-paper-ink);
     font-weight: var(--weight-regular);
+  }
+  .bottom-line__list {
+    margin: var(--space-4) 0 0;
+    padding-left: var(--space-5);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    color: var(--color-paper-ink);
+  }
+  .bottom-line__list li {
+    margin-bottom: var(--space-2);
+  }
+  .bottom-line__list li:last-child {
+    margin-bottom: 0;
+  }
+  .bottom-line__list li::marker {
+    color: var(--color-brass);
   }
 
   /* Scorecard */
@@ -586,8 +630,9 @@ const composite = data.scorecard
   /* ==== Prose (markdown body) ==== */
   .prose {
     font-family: var(--font-sans);
-    font-size: var(--text-base);
-    line-height: var(--leading-normal);
+    /* 18px / 1.65 — the AAB / Wirecutter publication-body standard */
+    font-size: 1.125rem;
+    line-height: 1.65;
     color: var(--color-paper-ink);
     margin-top: var(--space-8);
   }
@@ -600,6 +645,7 @@ const composite = data.scorecard
     padding-top: var(--space-2);
     border-top: 1px solid var(--color-border);
     font-weight: var(--weight-semibold);
+    text-transform: capitalize;
   }
   .prose :global(h2):first-child { border-top: 0; padding-top: 0; margin-top: 0; }
   .prose :global(h3) {
@@ -608,6 +654,14 @@ const composite = data.scorecard
     color: var(--color-forest);
     margin: var(--space-8) 0 var(--space-3);
     font-weight: var(--weight-semibold);
+    text-transform: capitalize;
+  }
+  .flaws__title,
+  .faq__title {
+    text-transform: capitalize;
+  }
+  .flaws__heading {
+    text-transform: capitalize;
   }
   .prose :global(ul), .prose :global(ol) {
     padding-left: var(--space-6);

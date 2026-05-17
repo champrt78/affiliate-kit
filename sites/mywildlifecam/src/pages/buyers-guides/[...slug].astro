@@ -129,9 +129,13 @@ const productCount = data.products?.length ?? 0;
         <section class="bottom-line" aria-label="Bottom Line">
           <span class="bottom-line__label">Bottom Line</span>
           <p class="bottom-line__verdict">{data.bottomLine.verdict}</p>
-          {data.bottomLine.supporting && (
+          {data.bottomLine.supporting && Array.isArray(data.bottomLine.supporting) ? (
+            <ul class="bottom-line__list">
+              {data.bottomLine.supporting.map((item) => <li>{item}</li>)}
+            </ul>
+          ) : data.bottomLine.supporting ? (
             <p class="bottom-line__supporting">{data.bottomLine.supporting}</p>
-          )}
+          ) : null}
         </section>
       )}
 
@@ -169,6 +173,7 @@ const productCount = data.products?.length ?? 0;
                 name={product.name}
                 brand={product.brand}
                 image={product.image}
+                imageScale={product.imageScale}
                 tagline={product.tagline}
                 bestFor={product.bestFor}
                 priceFrom={product.priceFrom}
@@ -282,6 +287,7 @@ const productCount = data.products?.length ?? 0;
     font-weight: var(--weight-semibold);
     font-variation-settings: "opsz" 120;
     max-width: 24ch;
+    text-transform: capitalize;
   }
 
   .article-deck {
@@ -406,6 +412,17 @@ const productCount = data.products?.length ?? 0;
     color: var(--color-paper-ink);
     font-weight: var(--weight-regular);
   }
+  .bottom-line__list {
+    margin: var(--space-4) 0 0;
+    padding-left: var(--space-5);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    color: var(--color-paper-ink);
+  }
+  .bottom-line__list li { margin-bottom: var(--space-2); }
+  .bottom-line__list li:last-child { margin-bottom: 0; }
+  .bottom-line__list li::marker { color: var(--color-brass); }
 
   /* Buy-if */
   .buyif {
@@ -474,8 +491,9 @@ const productCount = data.products?.length ?? 0;
   /* Prose */
   .prose {
     font-family: var(--font-sans);
-    font-size: var(--text-base);
-    line-height: var(--leading-normal);
+    /* 18px / 1.65 — AAB / Wirecutter publication body standard */
+    font-size: 1.125rem;
+    line-height: 1.65;
     color: var(--color-paper-ink);
     margin-top: var(--space-8);
   }
@@ -488,6 +506,7 @@ const productCount = data.products?.length ?? 0;
     padding-top: var(--space-2);
     border-top: 1px solid var(--color-border);
     font-weight: var(--weight-semibold);
+    text-transform: capitalize;
   }
   .prose :global(h2):first-child { border-top: 0; padding-top: 0; margin-top: 0; }
   .prose :global(h3) {
@@ -496,7 +515,9 @@ const productCount = data.products?.length ?? 0;
     color: var(--color-forest);
     margin: var(--space-8) 0 var(--space-3);
     font-weight: var(--weight-semibold);
+    text-transform: capitalize;
   }
+  .faq__title { text-transform: capitalize; }
   .prose :global(ul), .prose :global(ol) {
     padding-left: var(--space-6);
     margin: 0 0 var(--space-5);
