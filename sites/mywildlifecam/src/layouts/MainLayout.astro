@@ -181,10 +181,7 @@ const currentPath = Astro.url.pathname;
     border-bottom-color: var(--color-sage-light);
     box-shadow: var(--shadow-sm);
   }
-  @media (prefers-color-scheme: dark) {
-    .site-header { background: rgba(26, 24, 21, 0.78); }
-    .site-header.is-scrolled { background: rgba(26, 24, 21, 0.94); }
-  }
+  /* Dark-mode header overrides removed — see tokens.css comment. */
 
   .site-header__inner {
     max-width: var(--container-max);

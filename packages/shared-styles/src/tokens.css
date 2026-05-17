@@ -155,29 +155,10 @@
   --duration-slow:   400ms;
 }
 
-/* Dark mode — inverted but still warm; not pure black */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-paper:        #1A1815;  /* deep warm charcoal — main background */
-    --color-paper-muted:  #25221C;  /* slightly lighter — card surfaces */
-    --color-paper-ink:    #F0EAD8;  /* warm cream — body text */
-
-    --color-bg:           var(--color-paper);
-    --color-fg:           var(--color-paper-ink);
-    --color-muted:        #B5AE9B;
-    --color-muted-soft:   #8A8475;
-    --color-border:       #3A362C;
-    --color-border-strong: #4F4A3D;
-    --color-surface:      var(--color-paper-muted);
-    --color-surface-alt:  #1F1D17;
-
-    --color-brand:        #6B9E80;  /* lighter forest in dark mode */
-    --color-brand-fg:     var(--color-paper);
-    --color-accent:       #C7A65E;  /* lighter brass in dark mode */
-    --color-link:         var(--color-paper-ink);
-    --color-link-hover:   var(--color-accent);
-  }
-}
+/* Dark-mode auto-flip removed 2026-05-17 per Ray's feedback after seeing
+   the live site against the mockup: the elevated-nature-publication palette
+   is core to the brand and doesn't translate cleanly to dark backgrounds.
+   The site stays in the warm-paper register regardless of OS theme. */
 
 /* =============================================================================
    Base element styles — editorial foundation
@@ -189,6 +170,7 @@ html {
   font-family: var(--font-sans);
   color: var(--color-fg);
   background: var(--color-bg);
+  color-scheme: light;  /* opt out of browser dark-mode form-input styling */
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
