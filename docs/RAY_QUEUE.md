@@ -2,28 +2,29 @@
 
 > Your open tasks across both repos. This is an index — the actual walkthroughs live in the linked docs. Read this when you sit down and forget where you left off.
 
-Last refreshed: **2026-05-16 (late evening)** — 3 pieces LIVE on mywildlifecam; Associates threshold hit; CF Pages auto-deploy wiring is the new top priority.
+Last refreshed: **2026-05-17 (just past midnight)** — GH Actions auto-deploy LIVE on all 5 sites; UI polish is the new top priority.
 
 ---
 
-## 1. Wire up CF Pages GitHub auto-deploy (5 sites)
+## 1. UI polish via ce-brainstorm → ce-frontend-design
 
-**What:** During the post-piece-#3 live-URL verification on 2026-05-16, caught a real silent failure mode: the 2026-05-12 bootstrap created the 5 CF Pages projects via direct `wrangler pages deploy` upload and never connected them to GitHub. Pushes to `origin/main` go to GitHub but do NOT trigger CF Pages rebuilds. Every future piece will silently fail to go live unless manually deployed.
+**What:** Live site looks 5% done. White text on black, no product cards, text-wrapping issues, hero images present but unstyled. Voice-doctrine compliant content + working auto-deploy + working cloaker, but visual identity is bare. Needs a real design pass.
 
-Immediate fix landed 2026-05-16 evening: `scripts/deploy.ps1` wraps `pnpm --filter <site> build` + `wrangler pages deploy`. All 5 sites manually redeployed (verified via curl: zero hands-on claims on any About page across all 5; Bottom Line text live on all 3 pieces on mywildlifecam).
+Flow per Ray's earlier framing: brainstorm shape first, then ce-frontend-design implements the mock.
 
-Permanent fix (this task): connect each of the 5 CF Pages projects to GitHub via the CF dashboard so pushes to `main` auto-deploy.
+**Walk through:** Invoke `ce-brainstorm` in this repo with context about the affiliate-site shape (mywildlifecam.com hero; voice doctrine never-claim-hands-on; snarky-but-friendly tone; reader profile = homeowners/property/first-time/gift; no hunters; affiliate revenue is the goal; conversion via /go/* cloaker; em dashes banned). Output: a design-direction doc that ce-frontend-design can implement.
 
-**Walk through:** `docs/cf-pages-github-setup.md` is the click-by-click with exact build config to paste in. 5 sites, ~5-10 min each. Do `affkit-mywildlifecam` first as the test (it's the hero with live content); verify the auto-deploy fires on a test commit; then replicate to the other 4.
+Then invoke `ce-frontend-design` to mock + implement against the brainstorm output.
 
-**Effort:** 30-60 min total. Real interrupt-y dashboard work, but one-time.
+**Effort:** brainstorm ~30-60 min interactive; frontend-design ~1-3 hr depending on scope.
 
-**Blocks:** Until this lands, every future piece needs a manual `pwsh scripts/deploy.ps1 -Site <slug>` after `git push`. Trivially easy to forget; expensive when forgotten (piece is "shipped to git" but invisible to the live site).
+**Blocks:** Nothing in code, but the site keeps looking 5% done until this lands. Conversion rate will be near-zero with the current bare aesthetic.
 
-**Reference docs:**
-- `docs/cf-pages-github-setup.md` — the walkthrough
-- `scripts/deploy.ps1` — manual-deploy script (stays useful as hotfix tool even after Phase B is wired)
-- `CLAUDE.md` "Deploy" section — documents both interim + steady states
+---
+
+## 1a. (DONE 2026-05-17) GitHub Actions auto-deploy for all 5 sites
+
+`.github/workflows/deploy.yml` matrix builds + deploys all 5 sites in parallel on every push to main. ~3 min total. Replaces both manual `scripts/deploy.ps1` runs AND the short-lived Workers-orchestrator approach. Workers-orchestrator deleted to avoid double-deploys. Workflow secrets: `CLOUDFLARE_API_TOKEN` (Pages:Edit) + `CLOUDFLARE_ACCOUNT_ID`. `scripts/deploy.ps1` stays as a manual hotfix override (also handles the mixed mywildlifecam-vs-affkit-prefix project naming via `$projectNameMap`).
 
 ---
 
