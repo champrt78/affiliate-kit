@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>mywildlifecam — polish-pattern playground</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1F3D2F;
+    --forest-deep: #14291f;
+    --cream: #F5F0E6;
+    --cream-pale: #FAF7EF;
+    --brass: #A07C3A;
+    --brass-light: #C99A52;
+    --ink: #1A1A1A;
+    --ink-soft: #4A4A4A;
+    --rule: #D9D2C2;
+    --shell-bg: #0d0e10;
+    --shell-card: #161719;
+    --shell-text: #d6d6d6;
+    --shell-muted: #888;
+    --shell-rule: #2a2c30;
+    --shell-accent: #C99A52;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0;height:100%}
+  body{
+    background:var(--shell-bg);
+    color:var(--shell-text);
+    font:14px/1.5 ui-sans-serif,system-ui,-apple-system,sans-serif;
+    overflow:hidden;
+  }
+  .shell{
+    display:grid;
+    grid-template-columns:340px 1fr;
+    grid-template-rows:1fr auto;
+    height:100vh;
+  }
+  /* ===== Controls panel ===== */
+  .controls{
+    background:var(--shell-card);
+    border-right:1px solid var(--shell-rule);
+    padding:20px;
+    overflow-y:auto;
+  }
+  .controls h1{
+    font-size:14px;
+    font-weight:600;
+    margin:0 0 4px;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:var(--shell-accent);
+  }
+  .controls .sub{
+    font-size:12px;
+    color:var(--shell-muted);
+    margin:0 0 24px;
+    line-height:1.5;
+  }
+  .group{
+    border-top:1px solid var(--shell-rule);
+    padding:16px 0;
+  }
+  .group:first-of-type{border-top:none;padding-top:0}
+  .group h2{
+    font-size:11px;
+    font-weight:600;
+    margin:0 0 12px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--shell-muted);
+  }
+  .row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:7px 0;
+    gap:12px;
+  }
+  .row label{
+    font-size:13px;
+    color:var(--shell-text);
+    cursor:pointer;
+    flex:1;
+  }
+  .row .hint{
+    display:block;
+    font-size:11px;
+    color:var(--shell-muted);
+    margin-top:2px;
+  }
+  /* Toggle switch */
+  .toggle{
+    position:relative;
+    width:36px;height:20px;
+    flex-shrink:0;
+    cursor:pointer;
+  }
+  .toggle input{
+    position:absolute;
+    opacity:0;
+    width:100%;height:100%;
+    cursor:pointer;
+    margin:0;
+  }
+  .toggle .track{
+    position:absolute;inset:0;
+    background:#3a3c40;
+    border-radius:10px;
+    transition:background .15s;
+  }
+  .toggle .knob{
+    position:absolute;
+    top:2px;left:2px;
+    width:16px;height:16px;
+    background:#ccc;
+    border-radius:50%;
+    transition:transform .15s;
+  }
+  .toggle input:checked + .track{background:var(--shell-accent)}
+  .toggle input:checked + .track + .knob{transform:translateX(16px);background:#fff}
+  /* Preset buttons */
+  .presets{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6px;
+  }
+  .preset{
+    background:transparent;
+    color:var(--shell-text);
+    border:1px solid var(--shell-rule);
+    border-radius:4px;
+    padding:7px 8px;
+    font:500 11px/1.2 ui-sans-serif,system-ui,sans-serif;
+    text-align:left;
+    cursor:pointer;
+    transition:all .15s;
+  }
+  .preset:hover{border-color:var(--shell-accent);color:var(--shell-accent)}
+  .preset.active{border-color:var(--shell-accent);background:rgba(201,154,82,.08);color:var(--shell-accent)}
+  /* ===== Preview pane ===== */
+  .preview-wrap{
+    background:#1a1b1d;
+    overflow-y:auto;
+    padding:32px;
+  }
+  .preview{
+    background:var(--cream-pale);
+    color:var(--ink);
+    max-width:920px;
+    margin:0 auto;
+    padding:64px 80px 80px;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    border-radius:2px;
+    font-family:'Inter Tight',ui-sans-serif,system-ui,-apple-system,sans-serif;
+    font-feature-settings:"ss01","cv11";
+  }
+  .preview[data-col="narrow"] .body-col{max-width:68ch;margin-left:auto;margin-right:auto}
+  .preview[data-col="wide"] .body-col{max-width:none}
+  .preview[data-size="large"] .body-col p,
+  .preview[data-size="large"] .body-col li{font-size:18px;line-height:1.65}
+  .preview[data-size="standard"] .body-col p,
+  .preview[data-size="standard"] .body-col li{font-size:16px;line-height:1.55}
+  .preview[data-titlecase="off"] h1,
+  .preview[data-titlecase="off"] h2,
+  .preview[data-titlecase="off"] h3{text-transform:none}
+
+  /* Preview typography */
+  .preview h1,.preview h2,.preview h3{
+    font-family:'Fraunces',Georgia,'Times New Roman',serif;
+    color:var(--forest);
+    font-weight:500;
+    letter-spacing:-.01em;
+  }
+  .preview h1{
+    font-size:54px;
+    line-height:1.05;
+    margin:0 0 14px;
+    font-weight:600;
+    font-variation-settings:"opsz" 120;
+  }
+  .preview h2{
+    font-size:32px;
+    line-height:1.15;
+    margin:48px 0 16px;
+    font-variation-settings:"opsz" 60;
+  }
+  .preview h3{
+    font-size:21px;
+    line-height:1.25;
+    margin:32px 0 10px;
+    font-variation-settings:"opsz" 30;
+    font-weight:600;
+  }
+  .preview p{margin:0 0 16px;color:var(--ink)}
+  .preview ul{margin:0 0 16px;padding-left:22px;color:var(--ink)}
+  .preview li{margin-bottom:6px}
+  .preview a{color:var(--brass);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+  .preview strong{font-weight:600;color:var(--forest)}
+
+  /* Rubric eyebrow */
+  .rubric{
+    display:inline-block;
+    font-family:'Inter Tight',sans-serif;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--brass);
+    margin-bottom:14px;
+  }
+  .rubric::before{content:"";display:inline-block;width:24px;height:1px;background:var(--brass);vertical-align:middle;margin-right:10px;transform:translateY(-2px)}
+
+  /* Deck */
+  .deck{
+    font-family:'Fraunces',serif;
+    font-size:22px;
+    line-height:1.4;
+    color:var(--ink-soft);
+    font-weight:400;
+    font-style:italic;
+    font-variation-settings:"opsz" 30;
+    margin:0 0 28px;
+    max-width:62ch;
+  }
+
+  /* Byline */
+  .byline{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:18px 0;
+    margin-bottom:36px;
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .byline-avatar{
+    width:42px;height:42px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--forest),var(--forest-deep));
+    color:var(--cream);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:18px;
+    flex-shrink:0;
+  }
+  .byline-text{line-height:1.45}
+  .byline-text strong{display:block;font-size:13px;font-weight:600;color:var(--forest);margin-bottom:1px}
+  .byline-text span{font-size:11.5px;letter-spacing:.02em}
+  .byline-meta{margin-left:auto;text-align:right;font-size:11.5px;color:var(--ink-soft)}
+  .byline-meta strong{display:block;font-size:10.5px;font-weight:600;color:var(--brass);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px}
+
+  /* Bottom Line callout */
+  .bottom-line{
+    background:var(--cream);
+    border-left:3px solid var(--brass);
+    padding:24px 28px;
+    margin:0 0 40px;
+    border-radius:0 4px 4px 0;
+  }
+  .bottom-line-label{
+    font-family:'Inter Tight',sans-serif;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--brass);
+    margin-bottom:8px;
+  }
+  .bottom-line p{
+    font-family:'Fraunces',serif;
+    font-size:20px;
+    line-height:1.5;
+    color:var(--forest);
+    margin:0;
+    font-weight:500;
+    font-variation-settings:"opsz" 30;
+  }
+  .bottom-line p + p{margin-top:12px;font-size:17px;font-weight:400;color:var(--ink)}
+
+  /* Hero image */
+  .hero-image{
+    margin:0 0 36px;
+  }
+  .hero-image .img{
+    width:100%;
+    aspect-ratio:16/9;
+    background:linear-gradient(135deg,#2a4a3a,#4a6a5a 60%,#6a8a7a);
+    border-radius:3px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-image .img::after{
+    content:"";
+    position:absolute;inset:0;
+    background:radial-gradient(circle at 30% 40%,rgba(255,255,255,.12),transparent 50%);
+  }
+  .hero-image .img::before{
+    content:"trail camera hero";
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    color:rgba(245,240,230,.5);
+    font:italic 14px 'Fraunces',serif;
+    letter-spacing:.1em;
+  }
+  .hero-image .caption{
+    font-size:12px;
+    color:var(--ink-soft);
+    font-style:italic;
+    margin-top:8px;
+    padding-left:2px;
+  }
+
+  /* Scorecard */
+  .scorecard{
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:24px 28px;
+    margin:0 0 40px;
+    background:var(--cream-pale);
+  }
+  .scorecard-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:24px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--rule);
+    margin-bottom:18px;
+  }
+  .scorecard-head h3{
+    margin:0;
+    font-family:'Fraunces',serif;
+    font-size:18px;
+    color:var(--forest);
+    font-weight:600;
+  }
+  .scorecard-composite{
+    font-family:'Fraunces',serif;
+    font-size:38px;
+    line-height:1;
+    color:var(--brass);
+    font-weight:600;
+    font-variation-settings:"opsz" 60;
+  }
+  .scorecard-composite small{font-size:18px;color:var(--ink-soft);font-weight:400}
+  .scorecard-axes{display:grid;grid-template-columns:1fr;gap:9px}
+  .axis{display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:center;font-size:14px}
+  .axis-name{color:var(--forest);font-weight:500}
+  .axis-name small{color:var(--ink-soft);font-weight:400;font-size:11.5px;margin-left:6px}
+  .axis-bar{
+    width:100%;
+    height:6px;
+    background:var(--rule);
+    border-radius:3px;
+    overflow:hidden;
+    min-width:120px;
+  }
+  .axis-bar-fill{
+    height:100%;
+    background:linear-gradient(90deg,var(--brass),var(--brass-light));
+    border-radius:3px;
+  }
+  .axis-score{font-variant-numeric:tabular-nums;color:var(--forest);font-weight:600;min-width:42px;text-align:right}
+  .scorecard-note{
+    margin-top:18px;
+    padding-top:14px;
+    border-top:1px solid var(--rule);
+    font-size:12px;
+    color:var(--ink-soft);
+    line-height:1.5;
+    font-style:italic;
+  }
+
+  /* Buy if / Don't buy if block */
+  .buyif{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    margin:0 0 40px;
+  }
+  .buyif-card{
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:22px 24px;
+    background:var(--cream-pale);
+  }
+  .buyif-card.no{border-color:#c2a8a0}
+  .buyif-card h4{
+    font-family:'Inter Tight',sans-serif;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--brass);
+    margin:0 0 12px;
+  }
+  .buyif-card.no h4{color:#8a4a3a}
+  .buyif-card ul{margin:0;padding-left:18px;font-size:14px;line-height:1.55}
+  .buyif-card li{margin-bottom:6px;color:var(--ink)}
+  .buyif-card li:last-child{margin-bottom:0}
+
+  /* Flaws but not deal-breakers */
+  .flaws{
+    background:rgba(160,124,58,.07);
+    border-left:3px solid var(--brass-light);
+    padding:20px 24px;
+    margin:32px 0 40px;
+    border-radius:0 4px 4px 0;
+  }
+  .flaws h3{
+    margin:0 0 8px;
+    font-size:17px;
+    color:var(--forest);
+  }
+  .flaws p{font-size:14.5px;color:var(--ink);margin-bottom:10px}
+  .flaws p:last-child{margin-bottom:0}
+
+  /* FAQ */
+  .faq{margin:32px 0 40px}
+  .faq-item{
+    padding:18px 0;
+    border-bottom:1px solid var(--rule);
+  }
+  .faq-item:first-child{border-top:1px solid var(--rule)}
+  .faq-item h4{
+    font-family:'Fraunces',serif;
+    font-size:17px;
+    color:var(--forest);
+    margin:0 0 8px;
+    font-weight:600;
+  }
+  .faq-item p{font-size:14.5px;color:var(--ink);margin:0;line-height:1.6}
+
+  /* Footer */
+  .preview-footer{
+    margin-top:56px;
+    padding-top:24px;
+    border-top:1px solid var(--rule);
+    font-size:12.5px;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+  .preview-footer a{color:var(--brass)}
+  .methodology-link{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:var(--brass);
+    font-weight:500;
+    font-size:13px;
+    margin-bottom:10px;
+  }
+  .methodology-link::before{
+    content:"";
+    width:18px;height:1px;
+    background:var(--brass);
+  }
+
+  /* Section labels */
+  .section-tag{
+    display:inline-block;
+    font-family:'Inter Tight',sans-serif;
+    font-size:10.5px;
+    font-weight:600;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--brass);
+    margin-bottom:6px;
+  }
+
+  /* Spec table */
+  .spec-table{
+    border-top:1px solid var(--rule);
+    margin:8px 0 24px;
+    font-size:14px;
+  }
+  .spec-row{
+    display:grid;grid-template-columns:170px 1fr;
+    padding:9px 0;
+    border-bottom:1px solid var(--rule);
+    align-items:baseline;
+  }
+  .spec-row dt{color:var(--ink-soft);font-size:13px}
+  .spec-row dd{margin:0;color:var(--ink);font-weight:500}
+
+  /* Hidden sections */
+  .hidden{display:none !important}
+
+  /* ===== Prompt bar ===== */
+  .prompt-bar{
+    grid-column:1 / -1;
+    background:#1a1b1d;
+    border-top:1px solid var(--shell-rule);
+    padding:14px 24px;
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:16px;
+    align-items:center;
+    max-height:180px;
+    overflow-y:auto;
+  }
+  .prompt-text{
+    margin:0;
+    font-family:ui-monospace,SF Mono,Menlo,monospace;
+    font-size:12.5px;
+    line-height:1.55;
+    color:#cfcfcf;
+    white-space:pre-wrap;
+  }
+  .copy-btn{
+    background:var(--shell-accent);
+    color:#1a1b1d;
+    border:none;
+    padding:9px 16px;
+    border-radius:4px;
+    font:600 12px/1 ui-sans-serif,system-ui,sans-serif;
+    cursor:pointer;
+    letter-spacing:.02em;
+    transition:all .15s;
+    align-self:start;
+    flex-shrink:0;
+  }
+  .copy-btn:hover{background:#d4a55e}
+  .copy-btn.copied{background:#7a9870;color:#fff}
+
+  /* Smaller screens */
+  @media (max-width:1000px){
+    .shell{grid-template-columns:280px 1fr}
+    .preview{padding:40px 32px 56px}
+    .preview h1{font-size:38px}
+    .buyif{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- ============== CONTROLS ============== -->
+  <aside class="controls" id="controls">
+    <h1>Polish Playground</h1>
+    <p class="sub">Toggle each pattern to see what mywildlifecam reviews would look like with the recon's recommendations applied. Default state shows Tier 1 + Tier 2 active.</p>
+
+    <div class="group">
+      <h2>Presets</h2>
+      <div class="presets">
+        <button class="preset" data-preset="current">Current state</button>
+        <button class="preset active" data-preset="tier12">Tier 1 + 2</button>
+        <button class="preset" data-preset="tier1">Tier 1 only</button>
+        <button class="preset" data-preset="full">Full upgrade</button>
+      </div>
+    </div>
+
+    <div class="group">
+      <h2>Tier 1 — Editorial Chrome</h2>
+      <div class="row"><label for="t_rubric">Rubric eyebrow above H1</label><span class="toggle"><input type="checkbox" id="t_rubric" checked><span class="track"></span><span class="knob"></span></span></div>
+      <div class="row"><label for="t_deck">Deck (subhead under H1)</label><span class="toggle"><input type="checkbox" id="t_deck" checked><span class="track"></span><span class="knob"></span></span></div>
+      <div class="row"><label for="t_byline">Named byline + credential + date</label><span class="toggle"><input type="checkbox" id="t_byline" checked><span class="track"></span><span class="knob"></span></span></div>
+      <div class="row"><label for="t_caption">Image attribution caption</label><span class="toggle"><input type="checkbox" id="t_caption" checked><span class="track"></span><span class="knob"></span></span></div>
+      <div class="row"><label for="t_methodology">"How we evaluate" footer link</label><span class="toggle"><input type="checkbox" id="t_methodology" checked><span class="track"></span><span class="knob"></span></span></div>
+    </div>
+
+    <div class="group">
+      <h2>Tier 2 — Decision Aids</h2>
+      <div class="row"><label for="t_scorecard">Weighted scorecard</label><span class="toggle"><input type="checkbox" id="t_scorecard" checked><span class="track"></span><span class="knob"></span></span></div>
+      <div class="row"><label for="t_buyif">"Buy it if / Don't buy it if" block</label><span class="toggle"><input type="checkbox" id="t_buyif" checked><span class="track"></span><span class="knob"></span></span></div>
+      <div class="row"><label for="t_flaws">"Flaws but not deal-breakers" section</label><span class="toggle"><input type="checkbox" id="t_flaws" checked><span class="track"></span><span class="knob"></span></span></div>
+      <div class="row"><label for="t_faq">FAQ section</label><span class="toggle"><input type="checkbox" id="t_faq" checked><span class="track"></span><span class="knob"></span></span></div>
+    </div>
+
+    <div class="group">
+      <h2>Tier 3 — Typography Polish</h2>
+      <div class="row"><label for="t_narrow">Narrow body column (68ch)</label><span class="toggle"><input type="checkbox" id="t_narrow"><span class="track"></span><span class="knob"></span></span></div>
+      <div class="row"><label for="t_large">18px / 1.65 body type</label><span class="toggle"><input type="checkbox" id="t_large"><span class="track"></span><span class="knob"></span></span></div>
+      <div class="row"><label for="t_titlecase">Title Case Headings</label><span class="toggle"><input type="checkbox" id="t_titlecase"><span class="track"></span><span class="knob"></span></span></div>
+    </div>
+  </aside>
+
+  <!-- ============== PREVIEW ============== -->
+  <main class="preview-wrap">
+    <article class="preview" id="preview" data-col="wide" data-size="standard" data-titlecase="off">
+
+      <!-- Rubric -->
+      <span class="rubric" id="el-rubric">Trail Cameras · Review</span>
+
+      <!-- H1 -->
+      <h1 id="el-h1">Spypoint Flex-M Review</h1>
+
+      <!-- Deck -->
+      <p class="deck" id="el-deck">The cellular pick for backyard wildlife watchers who'd rather see photos arrive on their phone than walk out to swap an SD card.</p>
+
+      <!-- Byline -->
+      <div class="byline" id="el-byline">
+        <div class="byline-avatar">M</div>
+        <div class="byline-text">
+          <strong>The mywildlifecam editorial team</strong>
+          <span>Spec analysis &amp; use-case framing · verified against current manufacturer listings &amp; Amazon reports</span>
+        </div>
+        <div class="byline-meta">
+          <strong>Last updated</strong>
+          May 17, 2026
+        </div>
+      </div>
+
+      <!-- Hero image -->
+      <figure class="hero-image" id="el-hero">
+        <div class="img"></div>
+        <figcaption class="caption" id="el-caption">Spypoint Flex-M cellular trail camera. Photo: Spypoint manufacturer media kit.</figcaption>
+      </figure>
+
+      <div class="body-col">
+
+      <!-- Bottom Line (always shown — part of locked framework) -->
+      <div class="bottom-line">
+        <div class="bottom-line-label">Bottom Line</div>
+        <p>Buy it if you want convenience, skip it if you want gallery-quality photos.</p>
+        <p>The Flex-M is the smart starting point if you want cellular trail-cam photos without committing to a monthly bill. The dual-SIM auto-carrier-detection solves the most common cellular failure mode, and the free 100-photo plan covers casual backyard use indefinitely. The caveat is image quality under motion, which is just-okay rather than great.</p>
+      </div>
+
+      <!-- Scorecard -->
+      <div class="scorecard" id="el-scorecard">
+        <div class="scorecard-head">
+          <h3>Editorial Scorecard</h3>
+          <div class="scorecard-composite">7.5<small>/10</small></div>
+        </div>
+        <div class="scorecard-axes">
+          <div class="axis"><div class="axis-name">Cellular Performance <small>· 25%</small></div><div class="axis-bar"><div class="axis-bar-fill" style="width:90%"></div></div><div class="axis-score">9.0</div></div>
+          <div class="axis"><div class="axis-name">Detection Range <small>· 20%</small></div><div class="axis-bar"><div class="axis-bar-fill" style="width:80%"></div></div><div class="axis-score">8.0</div></div>
+          <div class="axis"><div class="axis-name">Image Quality <small>· 25%</small></div><div class="axis-bar"><div class="axis-bar-fill" style="width:60%"></div></div><div class="axis-score">6.0</div></div>
+          <div class="axis"><div class="axis-name">Battery Life <small>· 20%</small></div><div class="axis-bar"><div class="axis-bar-fill" style="width:70%"></div></div><div class="axis-score">7.0</div></div>
+          <div class="axis"><div class="axis-name">Ease of Setup <small>· 10%</small></div><div class="axis-bar"><div class="axis-bar-fill" style="width:80%"></div></div><div class="axis-score">8.0</div></div>
+        </div>
+        <p class="scorecard-note">Editorial score derived from manufacturer specs cross-referenced with verified-buyer reports on Amazon and independent reviews. Not lab-measured.</p>
+      </div>
+
+      <!-- Who This Is For -->
+      <h2>Who This Is For</h2>
+      <p>Homeowners and casual wildlife watchers who want the cellular convenience of photos delivered to a phone, are willing to accept just-okay image quality in exchange, and prefer a camera that runs on a free or low-cost data plan rather than a recurring monthly subscription.</p>
+
+      <!-- Buy if / Don't buy if -->
+      <div class="buyif" id="el-buyif">
+        <div class="buyif-card">
+          <h4>Buy it if</h4>
+          <ul>
+            <li>You want photos delivered to your phone without walking to the camera</li>
+            <li>Your property has decent cell coverage on either AT&amp;T or Verizon</li>
+            <li>A free 100-photo monthly plan covers your expected backyard volume</li>
+            <li>You'd rather pay once for the camera than commit to a monthly subscription</li>
+          </ul>
+        </div>
+        <div class="buyif-card no">
+          <h4>Don't buy it if</h4>
+          <ul>
+            <li>You want gallery-quality stills you'd be proud to print</li>
+            <li>Your property has no cellular coverage on either carrier</li>
+            <li>You want a non-cellular SD-card cam with the best image quality possible</li>
+            <li>You don't want any recurring data plan, even a free tier</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- At a Glance -->
+      <h2>At a Glance</h2>
+      <dl class="spec-table">
+        <div class="spec-row"><dt>Resolution</dt><dd>28 MP stills, 720p video</dd></div>
+        <div class="spec-row"><dt>Cellular</dt><dd>Dual-SIM auto-carrier (AT&amp;T / Verizon)</dd></div>
+        <div class="spec-row"><dt>Detection range</dt><dd>~90 ft (manufacturer-stated)</dd></div>
+        <div class="spec-row"><dt>Trigger speed</dt><dd>~0.5 s</dd></div>
+        <div class="spec-row"><dt>Battery life</dt><dd>8 AA batteries; ~5-month projected at moderate volume</dd></div>
+        <div class="spec-row"><dt>Free plan</dt><dd>100 photos/month, no card required</dd></div>
+      </dl>
+
+      <!-- What It Does Well -->
+      <h2>What It Does Well</h2>
+      <p>The dual-SIM auto-carrier-detection is the standout feature. Most cellular trail cameras force you to pick a carrier at setup and stick with it; the Flex-M scans both networks and picks the stronger signal automatically. For properties on the edge of coverage, this is the difference between a working camera and an expensive paperweight.</p>
+      <p>The free 100-photo plan covers genuine backyard use without ever paying Spypoint a dime in recurring fees. For users who set up a single camera and check it occasionally, that's the right price for the right volume.</p>
+
+      <!-- Where It Falls Short -->
+      <h2>Where It Falls Short</h2>
+      <p>Daytime image quality is acceptable. Motion-blur tolerance is not. Verified-buyer reports consistently flag ghosting on fast-moving animals — squirrels, birds in flight, anything moving at speed. If your target species is slow-moving (deer, raccoons, opossums), this is a non-issue. If you're hoping to catch a hawk strike or a coyote chase, look elsewhere.</p>
+
+      <!-- Flaws but not deal-breakers -->
+      <div class="flaws" id="el-flaws">
+        <h3>Flaws but not deal-breakers</h3>
+        <p><strong>720p video, not 1080p.</strong> A spec compromise that keeps the camera cheap and the cellular data costs low. For a phone-notification trail cam, video clarity is a secondary concern — the still photo is the primary alert.</p>
+        <p><strong>Spypoint app interface is dated.</strong> Functional, occasionally clunky. You're checking it for "what showed up overnight?" not browsing photo galleries — the friction is real but minor.</p>
+        <p><strong>AA batteries, not lithium pack.</strong> Eight AAs at a time gets expensive over years; rechargeable lithium would be cleaner. The trade-off is universal AA availability and no proprietary charger.</p>
+      </div>
+
+      <!-- How It Compares -->
+      <h2>How It Compares</h2>
+      <p>Versus the <strong>Stealth Cam DS4K Ultimate</strong> (our SD-card image-quality pick): the Stealth Cam is dramatically sharper but requires you to physically retrieve the SD card. Flex-M wins on convenience; DS4K wins on every image-quality axis.</p>
+      <p>Versus the <strong>Bushnell CelluCORE 20</strong>: similar price point, but the CelluCORE is locked to a single carrier at setup. If you don't know your property's cell coverage yet, Flex-M's auto-detect removes the gamble.</p>
+
+      <!-- FAQ -->
+      <div class="faq" id="el-faq">
+        <h2>FAQ</h2>
+        <div class="faq-item">
+          <h4>Does the Flex-M work without a paid plan?</h4>
+          <p>Yes. The free tier sends 100 photos per month with no card required. For occasional backyard use, that's enough indefinitely. Plans only become necessary at higher volumes or for video transfer.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Will it work on a property with weak cell signal?</h4>
+          <p>Better than most. The dual-SIM auto-carrier-detection means it'll try both AT&amp;T and Verizon and pick whichever is stronger. If neither carrier has any signal at your install location, no cellular trail cam will work — that's a connectivity problem, not a camera problem.</p>
+        </div>
+        <div class="faq-item">
+          <h4>How does it compare to a non-cellular trail cam?</h4>
+          <p>Non-cellular cams generally win on image quality at the same price tier (no cellular hardware to budget for) and require zero monthly considerations. The trade-off is you have to walk to the camera to see what it caught. If you're choosing convenience over image clarity, cellular is the call.</p>
+        </div>
+      </div>
+
+      </div><!-- /.body-col -->
+
+      <!-- Footer -->
+      <footer class="preview-footer">
+        <a href="#" class="methodology-link" id="el-methodology">How we evaluate trail cameras</a>
+        <p><strong>Affiliate disclosure.</strong> mywildlifecam earns a commission from qualifying Amazon purchases made through links on this page. We don't claim hands-on use of every product we cover; our recommendations come from spec analysis and verified-buyer reports. Editorial decisions are independent of commission rates.</p>
+      </footer>
+
+    </article>
+  </main>
+
+  <!-- ============== PROMPT BAR ============== -->
+  <footer class="prompt-bar">
+    <pre class="prompt-text" id="prompt"></pre>
+    <button class="copy-btn" id="copy">Copy prompt</button>
+  </footer>
+
+</div>
+
+<script>
+const TOGGLES = {
+  rubric:'t_rubric', deck:'t_deck', byline:'t_byline', caption:'t_caption', methodology:'t_methodology',
+  scorecard:'t_scorecard', buyif:'t_buyif', flaws:'t_flaws', faq:'t_faq',
+  narrow:'t_narrow', large:'t_large', titlecase:'t_titlecase',
+};
+
+const PRESETS = {
+  current: { rubric:0, deck:0, byline:0, caption:0, methodology:0, scorecard:0, buyif:0, flaws:0, faq:0, narrow:0, large:0, titlecase:0 },
+  tier1:   { rubric:1, deck:1, byline:1, caption:1, methodology:1, scorecard:0, buyif:0, flaws:0, faq:0, narrow:0, large:0, titlecase:0 },
+  tier12:  { rubric:1, deck:1, byline:1, caption:1, methodology:1, scorecard:1, buyif:1, flaws:1, faq:1, narrow:0, large:0, titlecase:0 },
+  full:    { rubric:1, deck:1, byline:1, caption:1, methodology:1, scorecard:1, buyif:1, flaws:1, faq:1, narrow:1, large:1, titlecase:1 },
+};
+
+const ELEMENTS = {
+  rubric:'el-rubric', deck:'el-deck', byline:'el-byline', caption:'el-caption', methodology:'el-methodology',
+  scorecard:'el-scorecard', buyif:'el-buyif', flaws:'el-flaws', faq:'el-faq',
+};
+
+const PROMPT_FRAGMENTS = {
+  rubric:    'a small-caps rubric eyebrow above every H1 (brass, tracked wide, with a leading rule, ~11px)',
+  deck:      'a one-sentence deck (italic Fraunces subhead, ~22px) directly under the H1 — sets the framing for the piece',
+  byline:    'a named byline strip above the fold with an avatar mark, "by [editorial team / contributor]", a one-line credential/methodology statement, and "Last updated [date]" right-aligned',
+  caption:   'an italic attribution caption beneath every hero image (e.g. "Photo: manufacturer media kit")',
+  methodology: 'a "How we evaluate" link in every piece footer pointing to /how-we-evaluate (standalone methodology page surfacing our spec-driven, no-hands-on framing)',
+  scorecard: 'a weighted Editorial Scorecard component with 4-5 axes (each with explicit weight + per-axis score bar + composite /10), and a note disclosing the score is derived from spec analysis + verified-buyer reports, NOT lab testing',
+  buyif:     'a two-card "Buy it if / Don\'t buy it if" decision block with bulleted conditions per side (forest border on the buy side, muted-red on the no side)',
+  flaws:     'a "Flaws but not deal-breakers" named callout section after Where It Falls Short — preempts the "why didn\'t they mention X" objection while keeping the verdict intact',
+  faq:       'an FAQ section with 3-5 reader-voice questions + concise answers, marked up with FAQPage schema',
+  narrow:    'cap the body column at 68ch (centered within the article) for the editorial reading rhythm',
+  large:     'bump body type to 18px / 1.65 line-height (the AAB/Wirecutter standard)',
+  titlecase: 'title-case all H1/H2/H3 headings throughout (warmer than sentence case)',
+};
+
+const state = {};
+
+function readState() {
+  for (const k in TOGGLES) state[k] = document.getElementById(TOGGLES[k]).checked;
+}
+
+function applyState() {
+  const preview = document.getElementById('preview');
+  // Show/hide elements
+  document.getElementById('el-rubric').classList.toggle('hidden', !state.rubric);
+  document.getElementById('el-deck').classList.toggle('hidden', !state.deck);
+  document.getElementById('el-byline').classList.toggle('hidden', !state.byline);
+  document.getElementById('el-caption').classList.toggle('hidden', !state.caption);
+  document.getElementById('el-methodology').classList.toggle('hidden', !state.methodology);
+  document.getElementById('el-scorecard').classList.toggle('hidden', !state.scorecard);
+  document.getElementById('el-buyif').classList.toggle('hidden', !state.buyif);
+  document.getElementById('el-flaws').classList.toggle('hidden', !state.flaws);
+  document.getElementById('el-faq').classList.toggle('hidden', !state.faq);
+  // Apply typography
+  preview.dataset.col = state.narrow ? 'narrow' : 'wide';
+  preview.dataset.size = state.large ? 'large' : 'standard';
+  preview.dataset.titlecase = state.titlecase ? 'on' : 'off';
+  // Title case via CSS variable approach is tricky — use text-transform via attribute
+  if (state.titlecase) {
+    document.querySelectorAll('#preview h1,#preview h2,#preview h3').forEach(h=>h.style.textTransform='capitalize');
+  } else {
+    document.querySelectorAll('#preview h1,#preview h2,#preview h3').forEach(h=>h.style.textTransform='none');
+  }
+}
+
+function detectPreset() {
+  for (const name in PRESETS) {
+    const p = PRESETS[name];
+    let match = true;
+    for (const k in p) {
+      if (!!p[k] !== !!state[k]) { match = false; break; }
+    }
+    if (match) return name;
+  }
+  return null;
+}
+
+function updatePresetButtons() {
+  const active = detectPreset();
+  document.querySelectorAll('.preset').forEach(btn=>{
+    btn.classList.toggle('active', btn.dataset.preset === active);
+  });
+}
+
+function updatePrompt() {
+  const onKeys = Object.keys(state).filter(k => state[k]);
+  if (onKeys.length === 0) {
+    document.getElementById('prompt').textContent = 'Current state — no polish patterns applied. (Toggle any control to start a build prompt.)';
+    return;
+  }
+  const t1 = ['rubric','deck','byline','caption','methodology'].filter(k=>state[k]);
+  const t2 = ['scorecard','buyif','flaws','faq'].filter(k=>state[k]);
+  const t3 = ['narrow','large','titlecase'].filter(k=>state[k]);
+  const lines = ['Polish-pattern build plan for mywildlifecam review templates.','','Apply these changes to the single-product review template at `packages/shared-ui/src/components/...` and the buying-guide renderer, propagating to all 5 sites via the shared template:',''];
+  if (t1.length) {
+    lines.push('Editorial chrome:');
+    t1.forEach(k => lines.push('  · ' + PROMPT_FRAGMENTS[k]));
+    lines.push('');
+  }
+  if (t2.length) {
+    lines.push('Decision aids:');
+    t2.forEach(k => lines.push('  · ' + PROMPT_FRAGMENTS[k]));
+    lines.push('');
+  }
+  if (t3.length) {
+    lines.push('Typography polish:');
+    t3.forEach(k => lines.push('  · ' + PROMPT_FRAGMENTS[k]));
+    lines.push('');
+  }
+  lines.push('Constraints: stay inside the locked design system (forest #1F3D2F + cream #F5F0E6 + brass #A07C3A, Fraunces + Inter Tight). Voice doctrine still applies — no hands-on claims anywhere in new chrome copy. Add a frontmatter field per template for any new content surfaces (rubric, deck, byline credit) and surface graceful defaults if the field is omitted.');
+  document.getElementById('prompt').textContent = lines.join('\n');
+}
+
+function updateAll() {
+  readState();
+  applyState();
+  updatePresetButtons();
+  updatePrompt();
+}
+
+function applyPreset(name) {
+  const p = PRESETS[name];
+  for (const k in p) document.getElementById(TOGGLES[k]).checked = !!p[k];
+  updateAll();
+}
+
+document.querySelectorAll('.preset').forEach(btn => {
+  btn.addEventListener('click', () => applyPreset(btn.dataset.preset));
+});
+document.querySelectorAll('#controls input[type="checkbox"]').forEach(cb => {
+  cb.addEventListener('change', updateAll);
+});
+
+document.getElementById('copy').addEventListener('click', async () => {
+  const btn = document.getElementById('copy');
+  try {
+    await navigator.clipboard.writeText(document.getElementById('prompt').textContent);
+    btn.textContent = 'Copied';
+    btn.classList.add('copied');
+    setTimeout(()=>{ btn.textContent='Copy prompt'; btn.classList.remove('copied'); }, 1400);
+  } catch(e) {
+    btn.textContent = 'Press Ctrl+C';
+  }
+});
+
+// init
+updateAll();
+</script>
+</body>
+</html>
