@@ -265,13 +265,17 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
   }
   .reviews__grid {
     display: grid;
-    /* auto-fit + max 420px so cards stay proportional regardless of how
-       many we have. With 2 cards: ~840px row, centered. With 3+ cards:
-       cards shrink to fit. Prevents the "two giant cards with too-tall
-       media area" failure mode. */
-    grid-template-columns: repeat(auto-fit, minmax(320px, 420px));
-    justify-content: center;
+    /* Forced 3-up on desktop (we have 3 reviews; the auto-fit version
+       was collapsing to 2-up at narrower viewports). Falls to 2-up at
+       tablet, 1-up at mobile via media queries below. */
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-6);
+  }
+  @media (max-width: 960px) {
+    .reviews__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .reviews__grid { grid-template-columns: 1fr; }
   }
   .empty {
     color: var(--color-muted);
