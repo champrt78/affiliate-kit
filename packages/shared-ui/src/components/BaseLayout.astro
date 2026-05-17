@@ -22,7 +22,7 @@ const {
   ogType,
   ogImage,
 } = Astro.props;
-const fullTitle = title.includes(siteName) ? title : `${title} — ${siteName}`;
+const fullTitle = title.includes(siteName) ? title : `${title} · ${siteName}`;
 const canonicalHref = canonical ?? Astro.url.href;
 const defaultOgImage = `${Astro.site ?? ""}og-default.png`;
 const resolvedOgImage = ogImage ?? defaultOgImage;

@@ -26,12 +26,12 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
 ---
 <MainLayout
   title="MyWildlifeCam"
-  description="Trail cameras for the backyard naturalist — buying guides and single-product reviews from a buyer's perspective."
+  description="Trail cameras for the backyard naturalist. Buying guides and single-product reviews from a buyer's perspective."
 >
   <Hero
     title="The backyard, on camera."
     kicker="Trail cams · buyer's-eye reviews"
-    tagline="We compare trail cameras the way a careful first-time buyer would — by spec, fit, and use case. No fluff. No fake field tests."
+    tagline="We compare trail cameras the way a careful first-time buyer would. Spec, fit, and use case. The pick you'd actually live with."
     image={heroImage}
     imageAlt="Light through a misty pine forest"
     size="full"
@@ -52,10 +52,15 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
     <div class="lead__inner">
       <p>
         Trail cameras have outgrown the deer-stand. They live on garden sheds,
-        across koi ponds, above backyard bird feeders, on cabin porches.
-        We sift the catalog so the right pick is obvious — for the use case
-        you actually have, not the one a hunting magazine assumed.
+        across koi ponds, above backyard bird feeders, on cabin porches. We
+        sift the catalog so the right pick is obvious for the use case you
+        actually have, by the spec and fit signals that matter.
       </p>
+    </div>
+    <div class="ornament" aria-hidden="true">
+      <span class="ornament__rule"></span>
+      <span class="ornament__dot"></span>
+      <span class="ornament__rule"></span>
     </div>
   </section>
 
@@ -154,11 +159,10 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
     color: var(--color-forest);
   }
 
-  /* Lead paragraph — magazine-style intro */
+  /* Lead paragraph - magazine-style intro */
   .lead {
     background: var(--color-bg);
     padding: var(--space-16) var(--space-6) var(--space-12);
-    border-bottom: 1px solid var(--color-border);
   }
   .lead__inner {
     max-width: var(--content-max);
@@ -172,6 +176,29 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
     margin: 0;
     font-weight: var(--weight-regular);
     letter-spacing: -0.005em;
+  }
+
+  /* Section ornament — brass hairline with center dot */
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    margin: var(--space-12) auto 0;
+    max-width: 200px;
+    opacity: 0.7;
+  }
+  .ornament__rule {
+    flex: 1;
+    height: 1px;
+    background: var(--color-brass);
+  }
+  .ornament__dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--color-brass);
+    flex-shrink: 0;
   }
 
   /* Section heads — shared */
@@ -238,7 +265,7 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
   }
   .reviews__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: var(--space-6);
   }
   .empty {
@@ -258,7 +285,7 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
   }
   .more-guides__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: var(--space-6);
   }
 
