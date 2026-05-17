@@ -50,7 +50,6 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
 
   <section class="lead">
     <div class="lead__inner">
-      <span class="lead__kicker">From the editors</span>
       <p>
         Trail cameras have outgrown the deer-stand. They live on garden sheds,
         across koi ponds, above backyard bird feeders, on cabin porches. We
@@ -155,47 +154,34 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
     color: var(--color-forest);
   }
 
-  /* Lead paragraph — magazine intro, kicker + body, tighter than the old big-serif block */
+  /* Lead — Tightened + Drop Cap (Ray's pick from lead-mockup playground).
+     Single column, sans 18px body at 1.6, Fraunces drop cap on first letter. */
   .lead {
     background: var(--color-bg);
-    padding: var(--space-12) var(--space-6) var(--space-10);
+    padding: var(--space-10) var(--space-6) var(--space-8);
   }
   .lead__inner {
-    max-width: 1100px;
+    max-width: 720px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 160px minmax(0, 1fr);
-    column-gap: var(--space-12);
-    align-items: baseline;
-  }
-  .lead__kicker {
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: var(--weight-semibold);
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--color-brass);
-    line-height: 1.4;
-  }
-  .lead__kicker::before {
-    content: "";
-    display: inline-block;
-    width: 18px;
-    height: 1px;
-    background: var(--color-brass);
-    vertical-align: middle;
-    margin-right: 8px;
-    transform: translateY(-2px);
   }
   .lead p {
-    font-family: var(--font-serif);
-    font-size: clamp(1.0625rem, 1.45vw, 1.25rem);
-    line-height: 1.5;
-    color: var(--color-forest);
+    font-family: var(--font-sans);
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--color-paper-ink);
     margin: 0;
-    max-width: 62ch;
     font-weight: var(--weight-regular);
-    letter-spacing: -0.005em;
+    letter-spacing: 0;
+  }
+  .lead p::first-letter {
+    font-family: var(--font-serif);
+    font-size: 64px;
+    font-weight: var(--weight-semibold);
+    color: var(--color-forest);
+    float: left;
+    line-height: 0.9;
+    margin: 6px 12px 0 0;
+    font-variation-settings: "opsz" 144;
   }
 
   /* Section heads — shared */
@@ -262,16 +248,13 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
   }
   .reviews__grid {
     display: grid;
-    /* Forced 3-up on desktop (we have 3 reviews; the auto-fit version
-       was collapsing to 2-up at narrower viewports). Falls to 2-up at
-       tablet, 1-up at mobile via media queries below. */
-    grid-template-columns: repeat(3, 1fr);
+    /* 3-up forced on desktop (we have 3 reviews and Ray wants them
+       on one row at typical desktop widths). The 960px collapse-to-2
+       was kicking in too early on his viewport. Hold 3-up to 720px. */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-6);
   }
-  @media (max-width: 960px) {
-    .reviews__grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 640px) {
+  @media (max-width: 720px) {
     .reviews__grid { grid-template-columns: 1fr; }
   }
   .empty {
