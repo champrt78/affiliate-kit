@@ -36,6 +36,11 @@ const heroCaption = data.images?.heroCaption
 
 const rubric = data.rubric ?? `Trail Cameras · Review`;
 const deck = data.deck ?? data.description;
+// Short display title for the H1 — keeps the page heading tight even when
+// data.title is the longer SEO form. Falls back to data.title if product is missing.
+const displayTitle = data.product?.name
+  ? `${data.product.name} Review`
+  : data.title;
 
 const offerUrl = data.product.affiliate?.amazon
   ?? data.product.affiliate?.direct
@@ -106,7 +111,7 @@ const composite = data.scorecard
     <header class="article-header">
       <a href="/reviews/" class="article-crumb">← All reviews</a>
       <span class="rubric">{rubric}</span>
-      <h1 class="article-title">{data.title}</h1>
+      <h1 class="article-title">{displayTitle}</h1>
       <p class="article-deck">{deck}</p>
 
       <div class="byline" aria-label="Article byline">
