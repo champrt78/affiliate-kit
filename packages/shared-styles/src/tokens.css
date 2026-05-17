@@ -18,9 +18,14 @@
      brass is the accent for CTAs and emphasis; sage is a secondary muted accent.
      --------------------------------------------------------------------------- */
 
-  /* Surfaces — paper-inspired, warm */
-  --color-paper:        #F5F0E6;  /* warm cream — main background */
-  --color-paper-muted:  #ECE4D2;  /* slightly deeper cream — card surfaces */
+  /* Surfaces — paper-inspired, warm.
+     Shifted one step lighter 2026-05-17 to match the polish-mockup palette
+     (mockup body was #FAF7EF; old --color-paper #F5F0E6 felt too saturated
+     against the design system). The old "paper" tone is preserved as
+     --color-cream for callout/accent surfaces. */
+  --color-paper:        #FAF7EF;  /* pale warm white — main reading surface */
+  --color-paper-muted:  #F2EBDC;  /* warm cream — hero + card surfaces */
+  --color-cream:        #F5F0E6;  /* the original cream — callouts, accents */
   --color-paper-ink:    #1C1C1A;  /* near-black ink — body text */
 
   /* Forest — primary brand */
@@ -45,7 +50,7 @@
   --color-border:       var(--color-sage-light);
   --color-border-strong: var(--color-sage);
   --color-surface:      var(--color-paper-muted);
-  --color-surface-alt:  #FAF6EC;  /* lightest paper — alt surfaces */
+  --color-surface-alt:  #FFFCF4;  /* lightest paper — alt surfaces, highlights */
 
   --color-brand:        var(--color-forest);
   --color-brand-fg:     var(--color-paper);
