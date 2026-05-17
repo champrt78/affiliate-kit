@@ -77,15 +77,17 @@ export default {
 
     const parts = url.pathname.split("/").filter(Boolean);
 
-    if (parts[0] !== "go") {
+    if (parts[0] !== "go" || !parts[1]) {
       return new Response("not found", { status: 404 });
     }
-    // Post-U9: exactly /go/<slug> (2 segments). A cross-tenant-style URL
-    // /go/<otherSite>/<slug> (3 segments) refuses to parse and 404s.
-    if (parts.length !== 2) {
-      return new Response("bad request", { status: 400 });
-    }
-
+    // Slug is parts[1]; ignore anything past it. CF Pages may rewrite
+    // /go/<slug> to /go/<slug>/index.html or similar after the domain
+    // migration from direct-upload to Git-connected projects. The original
+    // U9 strict-length check (parts.length !== 2 → 400) was too rigid and
+    // bit us after the 2026-05-16 mywildlifecam Pages migration.
+    // Cross-tenant attempts (e.g. /go/<otherSite>/<slug>) end up looking up
+    // a slug that won't exist in this site's KV namespace, so the 404 from
+    // the KV miss below still closes the cross-tenant leak.
     const slug = parts[1];
     const source = url.searchParams.get("src") ?? "";
     const referer = req.headers.get("Referer") ?? "";

@@ -4,6 +4,20 @@ compatibility_date = "2026-05-01"
 compatibility_flags = ["nodejs_compat"]
 workers_dev = false
 
+# Worker routes — one per site's /go/* path.
+# These were originally attached by the 2026-05-12 bootstrap CLI but got
+# orphaned during the 2026-05-16 mywildlifecam Pages migration (custom
+# domain reattached to a new Pages project removed the Worker route binding
+# at the same time). Adding back as config-as-code so future redeploys
+# don't drop them again.
+routes = [
+  { pattern = "mywildlifecam.com/go/*", zone_name = "mywildlifecam.com" },
+  { pattern = "fussybean.com/go/*", zone_name = "fussybean.com" },
+  { pattern = "detailerpicks.com/go/*", zone_name = "detailerpicks.com" },
+  { pattern = "starteraquarium.com/go/*", zone_name = "starteraquarium.com" },
+  { pattern = "gameovergear.games/go/*", zone_name = "gameovergear.games" },
+]
+
 # KV namespace for slug → affiliate URL mappings.
 # Replace the id on the basement PC after running:
 #   wrangler kv namespace create AFFILIATE_LINKS
