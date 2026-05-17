@@ -26,3 +26,10 @@ gsc-key.json
 .vscode/
 .idea/
 Thumbs.db
+
+# Test / agent artifacts
+.playwright-mcp/
+/live-*.png
+/live-*.jpg
+/mockup-*.png
+/mockup-*.jpg
