@@ -50,17 +50,13 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
 
   <section class="lead">
     <div class="lead__inner">
+      <span class="lead__kicker">From the editors</span>
       <p>
         Trail cameras have outgrown the deer-stand. They live on garden sheds,
         across koi ponds, above backyard bird feeders, on cabin porches. We
         sift the catalog so the right pick is obvious for the use case you
         actually have, by the spec and fit signals that matter.
       </p>
-    </div>
-    <div class="ornament" aria-hidden="true">
-      <span class="ornament__rule"></span>
-      <span class="ornament__dot"></span>
-      <span class="ornament__rule"></span>
     </div>
   </section>
 
@@ -159,46 +155,47 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
     color: var(--color-forest);
   }
 
-  /* Lead paragraph - magazine-style intro */
+  /* Lead paragraph — magazine intro, kicker + body, tighter than the old big-serif block */
   .lead {
     background: var(--color-bg);
-    padding: var(--space-16) var(--space-6) var(--space-12);
+    padding: var(--space-12) var(--space-6) var(--space-10);
   }
   .lead__inner {
-    max-width: var(--content-max);
+    max-width: 1100px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: 160px minmax(0, 1fr);
+    column-gap: var(--space-12);
+    align-items: baseline;
+  }
+  .lead__kicker {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-brass);
+    line-height: 1.4;
+  }
+  .lead__kicker::before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 1px;
+    background: var(--color-brass);
+    vertical-align: middle;
+    margin-right: 8px;
+    transform: translateY(-2px);
   }
   .lead p {
     font-family: var(--font-serif);
-    font-size: clamp(1.25rem, 2vw, 1.625rem);
-    line-height: 1.45;
+    font-size: clamp(1.0625rem, 1.45vw, 1.25rem);
+    line-height: 1.5;
     color: var(--color-forest);
     margin: 0;
+    max-width: 62ch;
     font-weight: var(--weight-regular);
     letter-spacing: -0.005em;
-  }
-
-  /* Section ornament — brass hairline with center dot */
-  .ornament {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-3);
-    margin: var(--space-12) auto 0;
-    max-width: 200px;
-    opacity: 0.7;
-  }
-  .ornament__rule {
-    flex: 1;
-    height: 1px;
-    background: var(--color-brass);
-  }
-  .ornament__dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--color-brass);
-    flex-shrink: 0;
   }
 
   /* Section heads — shared */
@@ -302,7 +299,7 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
   .manifesto {
     background:
       linear-gradient(180deg, var(--color-bg) 0%, var(--color-surface-alt) 100%);
-    padding: var(--space-20) var(--space-6);
+    padding: var(--space-16) var(--space-6);
     border-top: 1px solid var(--color-border);
   }
   .manifesto__inner {
@@ -317,18 +314,18 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
     letter-spacing: var(--tracking-wide);
     text-transform: uppercase;
     color: var(--color-brass);
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-3);
     display: inline-block;
   }
   .manifesto__title {
     font-family: var(--font-serif);
-    font-size: clamp(1.75rem, 3vw, 2.5rem);
-    margin: 0 0 var(--space-6);
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    margin: 0 0 var(--space-5);
     color: var(--color-forest);
   }
   .manifesto p {
     font-family: var(--font-serif);
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
     line-height: var(--leading-normal);
     color: var(--color-paper-ink);
     margin: 0 0 var(--space-4);
@@ -337,15 +334,16 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
     display: inline-flex;
     gap: var(--space-3);
     justify-content: center;
-    margin-top: var(--space-6);
+    margin-top: var(--space-5);
     flex-wrap: wrap;
   }
 
   @media (max-width: 760px) {
-    .lead { padding: var(--space-12) var(--space-4) var(--space-10); }
+    .lead { padding: var(--space-10) var(--space-4) var(--space-8); }
+    .lead__inner { grid-template-columns: 1fr; row-gap: var(--space-3); }
     .featured,
     .reviews,
     .more-guides { padding: var(--space-12) var(--space-4); }
-    .manifesto { padding: var(--space-16) var(--space-4); }
+    .manifesto { padding: var(--space-12) var(--space-4); }
   }
 </style>
