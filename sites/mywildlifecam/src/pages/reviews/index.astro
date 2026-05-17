@@ -11,31 +11,92 @@ const sorted = entries.sort((a, b) => {
 });
 ---
 <MainLayout
-  title="Reviews"
-  description="Hands-on product reviews — what works, what doesn't, and what we'd actually buy."
+  title="Single-product reviews"
+  description="Spec-driven single-product reviews of trail cameras. What it does well, what it does badly, who should consider it."
 >
   <header class="page-header">
-    <h1>Reviews</h1>
-    <p class="lede">Hands-on product reviews. What works, what doesn't, and what we'd buy with our own money.</p>
+    <div class="page-header__inner">
+      <span class="page-header__kicker">Reviews</span>
+      <h1 class="page-header__title">Single-product reviews</h1>
+      <p class="page-header__lede">
+        We read the spec sheets, owner reviews, and independent teardowns,
+        then we ask: who is this actually the right camera for? Each piece
+        is one product, one verdict.
+      </p>
+    </div>
   </header>
 
-  {sorted.length === 0 ? (
-    <p class="empty">No reviews yet — check back soon.</p>
-  ) : (
-    <div class="grid">
-      {sorted.map((entry) => <ReviewCard entry={entry} />)}
+  <section class="grid-section">
+    <div class="grid-section__inner">
+      {sorted.length === 0 ? (
+        <p class="empty">No reviews yet. New ones land every quarter.</p>
+      ) : (
+        <div class="grid">
+          {sorted.map((entry) => <ReviewCard entry={entry} />)}
+        </div>
+      )}
     </div>
-  )}
+  </section>
 </MainLayout>
 
 <style>
-  .page-header { margin-bottom: var(--space-8); }
-  .page-header h1 { font-size: var(--text-3xl); margin: 0 0 var(--space-3); }
-  .lede { font-size: var(--text-lg); color: var(--color-muted); margin: 0; }
-  .empty { color: var(--color-muted); }
+  .page-header {
+    background: var(--color-paper-muted);
+    padding: var(--space-16) var(--space-6) var(--space-12);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .page-header__inner {
+    max-width: var(--content-wide);
+    margin: 0 auto;
+  }
+  .page-header__kicker {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--color-brass);
+    margin-bottom: var(--space-3);
+  }
+  .page-header__title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+    color: var(--color-forest);
+    letter-spacing: var(--tracking-display);
+    margin: 0 0 var(--space-5);
+  }
+  .page-header__lede {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+    line-height: var(--leading-snug);
+    color: var(--color-muted);
+    margin: 0;
+    max-width: 52ch;
+  }
+
+  .grid-section {
+    padding: var(--space-12) var(--space-6) var(--space-20);
+    background: var(--color-bg);
+  }
+  .grid-section__inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: var(--space-6);
+  }
+  .empty {
+    color: var(--color-muted);
+    font-family: var(--font-serif);
+    font-style: italic;
+  }
+
+  @media (max-width: 760px) {
+    .page-header { padding: var(--space-12) var(--space-4) var(--space-10); }
+    .grid-section { padding: var(--space-10) var(--space-4) var(--space-16); }
   }
 </style>

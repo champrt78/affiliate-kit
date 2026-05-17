@@ -1,70 +1,316 @@
+/* =============================================================================
+   affkit design tokens — elevated nature publication
+   ============================================================================
+   Direction locked 2026-05-17 in docs/brainstorms/2026-05-17-ui-overhaul-requirements.md
+   Aesthetic register: refined-outdoors (Land Rover, not Jeep). Palette anchored
+   on deep forest green + warm cream + brass accent. Avoids ochre/terracotta.
+
+   Per-site theming layer overrides these variables via
+   sites/<slug>/src/styles/site.css or sites/<slug>/src/data/site-config.json
+   (the latter wired up when satellites cycle in). Defaults here describe
+   mywildlifecam — the 4 satellites inherit them until they theme their own.
+   ============================================================================= */
+
 :root {
-  /* Color — neutrals */
-  --color-bg: #ffffff;
-  --color-fg: #1a1a1a;
-  --color-muted: #6b7280;
-  --color-border: #e5e7eb;
-  --color-surface: #f9fafb;
+  /* ---------------------------------------------------------------------------
+     Color — refined outdoors palette
+     Forest green is the dominant brand color; warm cream is the background;
+     brass is the accent for CTAs and emphasis; sage is a secondary muted accent.
+     --------------------------------------------------------------------------- */
 
-  /* Color — brand (override per site) */
-  --color-brand: #2563eb;
-  --color-brand-fg: #ffffff;
-  --color-brand-muted: #93c5fd;
+  /* Surfaces — paper-inspired, warm */
+  --color-paper:        #F5F0E6;  /* warm cream — main background */
+  --color-paper-muted:  #ECE4D2;  /* slightly deeper cream — card surfaces */
+  --color-paper-ink:    #1C1C1A;  /* near-black ink — body text */
 
-  /* Color — semantic */
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
-  --color-danger: #ef4444;
+  /* Forest — primary brand */
+  --color-forest:       #1F3D2F;  /* deep forest — headlines, branding */
+  --color-forest-mid:   #2D5A45;  /* mid forest — hovers */
+  --color-forest-light: #4A7C5F;  /* light forest — secondary accent */
 
-  /* Typography */
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-serif: ui-serif, Georgia, "Times New Roman", serif;
-  --font-mono: ui-monospace, "Cascadia Code", "Source Code Pro", monospace;
+  /* Brass — refined accent */
+  --color-brass:        #A07C3A;  /* warm brass — primary CTA */
+  --color-brass-hover:  #8B6A30;  /* deeper brass — hover state */
+  --color-brass-soft:   #D9C29B;  /* soft brass — backgrounds, tags */
 
-  /* Type scale */
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 1.875rem;
-  --text-4xl: 2.25rem;
+  /* Sage — secondary accent */
+  --color-sage:         #8A9A8B;  /* muted sage — meta text, borders */
+  --color-sage-light:   #C8D0C5;  /* light sage — subtle borders */
 
-  /* Spacing */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-12: 3rem;
-  --space-16: 4rem;
+  /* Semantic mapping — these are what components consume */
+  --color-bg:           var(--color-paper);
+  --color-fg:           var(--color-paper-ink);
+  --color-muted:        #5C5A4F;  /* warm gray — secondary text */
+  --color-muted-soft:   #8B8775;  /* lighter warm gray — tertiary text */
+  --color-border:       var(--color-sage-light);
+  --color-border-strong: var(--color-sage);
+  --color-surface:      var(--color-paper-muted);
+  --color-surface-alt:  #FAF6EC;  /* lightest paper — alt surfaces */
 
-  /* Layout */
-  --container-max: 72rem;
-  --content-max: 42rem;
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
+  --color-brand:        var(--color-forest);
+  --color-brand-fg:     var(--color-paper);
+  --color-accent:       var(--color-brass);
+  --color-accent-fg:    var(--color-paper);
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --color-link:         var(--color-forest);
+  --color-link-hover:   var(--color-brass);
+
+  /* ---------------------------------------------------------------------------
+     Typography
+     Fraunces — modern-classical serif, optically-sized, refined headlines.
+     Inter Tight — crisp workhorse sans, condensed-leaning, modern body.
+     Loaded via Google Fonts @import in BaseLayout.astro.
+     --------------------------------------------------------------------------- */
+
+  --font-serif: "Fraunces", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --font-sans:  "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+  --font-mono:  "JetBrains Mono", ui-monospace, "Cascadia Code", Menlo, monospace;
+
+  /* Editorial type scale — generous, magazine-paced */
+  --text-xs:    0.75rem;     /* 12px — captions, meta */
+  --text-sm:    0.875rem;    /* 14px — small body, footnotes */
+  --text-base:  1.0625rem;   /* 17px — body, slightly larger than default */
+  --text-lg:    1.1875rem;   /* 19px — lead paragraphs */
+  --text-xl:    1.375rem;    /* 22px — H4 / sub-section */
+  --text-2xl:   1.75rem;     /* 28px — H3 */
+  --text-3xl:   2.25rem;     /* 36px — H2 */
+  --text-4xl:   3rem;        /* 48px — H1 (interior) */
+  --text-5xl:   4rem;        /* 64px — Hero H1 */
+  --text-6xl:   5rem;        /* 80px — Hero display */
+
+  /* Line heights — looser for editorial reads */
+  --leading-tight:  1.15;
+  --leading-snug:   1.35;
+  --leading-normal: 1.65;    /* body default */
+  --leading-loose:  1.85;
+
+  /* Letter spacing — restraint */
+  --tracking-tight:  -0.02em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.04em;
+  --tracking-display: -0.025em;  /* tighten large serif headlines */
+
+  /* Font weight tokens */
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semibold: 600;
+  --weight-bold:    700;
+  --weight-black:   900;
+
+  /* ---------------------------------------------------------------------------
+     Spacing — editorial whitespace
+     --------------------------------------------------------------------------- */
+
+  --space-1:   0.25rem;
+  --space-2:   0.5rem;
+  --space-3:   0.75rem;
+  --space-4:   1rem;
+  --space-5:   1.25rem;
+  --space-6:   1.5rem;
+  --space-8:   2rem;
+  --space-10:  2.5rem;
+  --space-12:  3rem;
+  --space-16:  4rem;
+  --space-20:  5rem;
+  --space-24:  6rem;
+  --space-32:  8rem;
+
+  /* ---------------------------------------------------------------------------
+     Layout
+     --------------------------------------------------------------------------- */
+
+  --container-max:    72rem;   /* 1152px — wide pages */
+  --content-max:      40rem;   /* 640px — article body, optimal read width */
+  --content-wide:     52rem;   /* 832px — wider content, comparison cards */
+  --header-height:    4.5rem;  /* sticky header height */
+
+  --radius-sm:        4px;
+  --radius-md:        6px;
+  --radius-lg:        10px;
+  --radius-xl:        16px;
+  --radius-full:      999px;
+
+  /* ---------------------------------------------------------------------------
+     Shadows — restrained, paper-like
+     --------------------------------------------------------------------------- */
+
+  --shadow-sm:  0 1px 2px rgba(31, 61, 47, 0.06);
+  --shadow-md:  0 2px 8px rgba(31, 61, 47, 0.08), 0 1px 2px rgba(31, 61, 47, 0.04);
+  --shadow-lg:  0 8px 24px rgba(31, 61, 47, 0.10), 0 2px 4px rgba(31, 61, 47, 0.04);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+
+  /* ---------------------------------------------------------------------------
+     Motion — restrained, editorial
+     --------------------------------------------------------------------------- */
+
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast:   140ms;
+  --duration-base:   220ms;
+  --duration-slow:   400ms;
 }
 
+/* Dark mode — inverted but still warm; not pure black */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #0a0a0a;
-    --color-fg: #f5f5f5;
-    --color-muted: #9ca3af;
-    --color-border: #262626;
-    --color-surface: #171717;
+    --color-paper:        #1A1815;  /* deep warm charcoal — main background */
+    --color-paper-muted:  #25221C;  /* slightly lighter — card surfaces */
+    --color-paper-ink:    #F0EAD8;  /* warm cream — body text */
+
+    --color-bg:           var(--color-paper);
+    --color-fg:           var(--color-paper-ink);
+    --color-muted:        #B5AE9B;
+    --color-muted-soft:   #8A8475;
+    --color-border:       #3A362C;
+    --color-border-strong: #4F4A3D;
+    --color-surface:      var(--color-paper-muted);
+    --color-surface-alt:  #1F1D17;
+
+    --color-brand:        #6B9E80;  /* lighter forest in dark mode */
+    --color-brand-fg:     var(--color-paper);
+    --color-accent:       #C7A65E;  /* lighter brass in dark mode */
+    --color-link:         var(--color-paper-ink);
+    --color-link-hover:   var(--color-accent);
   }
 }
 
-* { box-sizing: border-box; }
-html { font-family: var(--font-sans); color: var(--color-fg); background: var(--color-bg); }
-body { margin: 0; line-height: 1.6; }
-img, picture, video { max-width: 100%; display: block; }
+/* =============================================================================
+   Base element styles — editorial foundation
+   ============================================================================= */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font-family: var(--font-sans);
+  color: var(--color-fg);
+  background: var(--color-bg);
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  font-feature-settings: "ss01", "ss02", "kern";  /* Inter Tight stylistic alternates */
+}
+
+/* Display typography — Fraunces serif */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-display);
+  color: var(--color-forest);
+  margin: 0;
+  font-variation-settings: "opsz" 96, "SOFT" 50, "WONK" 0;
+}
+
+h1 { font-size: var(--text-4xl); }
+h2 { font-size: var(--text-3xl); letter-spacing: var(--tracking-display); }
+h3 { font-size: var(--text-2xl); letter-spacing: -0.018em; }
+h4 { font-size: var(--text-xl); letter-spacing: -0.012em; }
+h5 { font-size: var(--text-lg); }
+h6 { font-size: var(--text-base); }
+
+p { margin: 0 0 var(--space-4); }
+
+a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: var(--color-brass-soft);
+  transition: color var(--duration-fast) var(--ease-out),
+              text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+a:hover {
+  color: var(--color-link-hover);
+  text-decoration-color: var(--color-brass);
+}
+
+img, picture, video {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+/* Editorial blockquote */
+blockquote {
+  margin: var(--space-6) 0;
+  padding: var(--space-4) var(--space-6);
+  border-left: 3px solid var(--color-brass);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+  color: var(--color-forest);
+  background: var(--color-surface-alt);
+}
+
+blockquote > *:last-child { margin-bottom: 0; }
+
+/* Editorial tables — used when ComparisonTable component renders fallbacks */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+}
+
+th, td {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+th {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  background: var(--color-surface-alt);
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: var(--color-surface);
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-sm);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--color-border);
+  margin: var(--space-8) 0;
+}
+
+/* Focus states — visible, on-brand */
+:focus-visible {
+  outline: 2px solid var(--color-brass);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Selection color — brass-tinted */
+::selection {
+  background: var(--color-brass-soft);
+  color: var(--color-forest);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

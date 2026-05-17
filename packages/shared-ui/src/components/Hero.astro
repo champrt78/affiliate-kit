@@ -2,27 +2,162 @@
 interface Props {
   title: string;
   tagline?: string;
+  kicker?: string;
+  image?: string;
+  imageAlt?: string;
+  size?: "full" | "compact";
+  align?: "left" | "center";
 }
-const { title, tagline } = Astro.props;
+const {
+  title,
+  tagline,
+  kicker,
+  image,
+  imageAlt = "",
+  size = "full",
+  align = "left",
+} = Astro.props;
+const hasImage = Boolean(image);
 ---
-<section class="hero">
-  <h1>{title}</h1>
-  {tagline && <p class="tagline">{tagline}</p>}
+<section
+  class:list={[
+    "hero",
+    `hero--${size}`,
+    `hero--${align}`,
+    hasImage ? "hero--with-image" : "hero--plain",
+  ]}
+>
+  {hasImage && (
+    <div class="hero__media" aria-hidden="true">
+      <img src={image} alt={imageAlt} loading="eager" decoding="async" />
+      <div class="hero__veil"></div>
+    </div>
+  )}
+
+  <div class="hero__inner">
+    {kicker && <span class="hero__kicker">{kicker}</span>}
+    <h1 class="hero__title">{title}</h1>
+    {tagline && <p class="hero__tagline">{tagline}</p>}
+    <slot />
+  </div>
 </section>
 
 <style>
   .hero {
-    padding: var(--space-12) 0 var(--space-8);
-    text-align: center;
+    position: relative;
+    overflow: hidden;
+    color: var(--color-fg);
   }
-  .hero h1 {
-    font-size: var(--text-4xl);
-    margin: 0 0 var(--space-4);
-    line-height: 1.1;
+
+  /* Plain (no image) — paper background, generous whitespace */
+  .hero--plain {
+    background: var(--color-bg);
+    padding: var(--space-20) var(--space-6) var(--space-16);
+    border-bottom: 1px solid var(--color-border);
   }
-  .tagline {
-    color: var(--color-muted);
-    font-size: var(--text-lg);
-    margin: 0;
+
+  /* Image-backed — full-bleed, dark veil for legibility */
+  .hero--with-image.hero--full {
+    min-height: 72vh;
+    display: flex;
+    align-items: flex-end;
+    color: var(--color-paper);
+  }
+  .hero--with-image.hero--compact {
+    min-height: 44vh;
+    display: flex;
+    align-items: flex-end;
+    color: var(--color-paper);
+  }
+
+  .hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .hero__veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(15, 26, 21, 0.85) 0%,
+      rgba(15, 26, 21, 0.55) 40%,
+      rgba(15, 26, 21, 0.25) 75%,
+      rgba(15, 26, 21, 0.05) 100%
+    );
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: var(--space-12) var(--space-6);
+    width: 100%;
+  }
+  .hero--center .hero__inner { text-align: center; }
+  .hero--center .hero__title,
+  .hero--center .hero__tagline { margin-left: auto; margin-right: auto; }
+  .hero--with-image .hero__inner { padding: var(--space-20) var(--space-6) var(--space-16); }
+
+  .hero__kicker {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid currentColor;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-5);
+    opacity: 0.85;
+  }
+  .hero--plain .hero__kicker {
+    color: var(--color-brass);
+    border-color: var(--color-brass);
+    background: transparent;
+  }
+
+  .hero__title {
+    font-family: var(--font-serif);
+    font-weight: var(--weight-semibold);
+    font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: var(--tracking-display);
+    margin: 0 0 var(--space-5);
+    max-width: 22ch;
+    color: inherit;
+  }
+  .hero--with-image .hero__title {
+    color: var(--color-paper);
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+  }
+  .hero--plain .hero__title {
+    color: var(--color-forest);
+  }
+
+  .hero__tagline {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: var(--weight-regular);
+    font-size: clamp(1.125rem, 1.6vw, 1.4rem);
+    line-height: var(--leading-snug);
+    max-width: 44ch;
+    margin: 0 0 var(--space-6);
+    color: inherit;
+    opacity: 0.92;
+  }
+
+  @media (max-width: 760px) {
+    .hero--plain { padding: var(--space-12) var(--space-4) var(--space-10); }
+    .hero--with-image .hero__inner { padding: var(--space-12) var(--space-4) var(--space-10); }
+    .hero--with-image.hero--full { min-height: 60vh; }
   }
 </style>

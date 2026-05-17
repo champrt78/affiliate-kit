@@ -5,12 +5,22 @@ products:
   - name: "Spypoint Flex-M"
     brand: "Spypoint"
     affiliateUrl: "https://www.amazon.com/dp/B0DKRHHQ5P"
+    image: "https://www.spypoint.com/on/demandware.static/-/Sites-spypoint-master-catalog/default/dwc83d2c01/products/Flex-M/flex-m-main-1.png"
+    tagline: "Photos delivered to your phone, no monthly bill required for casual use."
+    bestFor: "Cellular convenience"
   - name: "Stealth Cam DS4K Ultimate"
     brand: "Stealth Cam"
     affiliateUrl: "https://www.amazon.com/dp/B09QBV2GP8"
+    image: "https://www.trailcampro.com/cdn/shop/files/stealthcam_ds4k_ultimate_F_420_400x_146caf9a-0f6c-4dda-9c4c-31ae68d5693d_1024x.png"
+    tagline: "Sharpest image in the lineup. No app, no monthly fees, just walk out for the SD card."
+    bestFor: "Image quality"
   - name: "Vikeri Trail Camera"
     brand: "Vikeri"
     affiliateUrl: "https://www.amazon.com/dp/B09J546BBY"
+    tagline: "Under-$80 entry point that doesn't get returned by first-time buyers."
+    bestFor: "Gift / first camera"
+images:
+  hero: "https://images.unsplash.com/photo-1551717743-49959800b1f6?auto=format&fit=crop&w=2000&q=80"
 pubDate: 2026-05-16
 lastUpdated: 2026-05-16
 ---

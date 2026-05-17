@@ -37,9 +37,17 @@ const buyersGuides = defineCollection({
       name: z.string(),
       brand: z.string(),
       affiliateUrl: z.string(),
+      image: z.string().optional(),
+      tagline: z.string().optional(),
+      cloakedSlug: z.string().optional(),
+      bestFor: z.string().optional(),
+      priceFrom: z.number().optional(),
     })),
     pubDate: z.date(),
     lastUpdated: z.date(),
+    images: z.object({
+      hero: z.string().optional(),
+    }).optional(),
   }),
 });
 

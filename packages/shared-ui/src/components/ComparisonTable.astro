@@ -13,55 +13,112 @@ interface Props {
 const { headers, rows } = Astro.props;
 const showCtaCol = rows.some((r) => r.ctaHref);
 ---
-<div class="table-wrapper">
-  <table>
-    <thead>
-      <tr>
-        {headers.map((h) => <th>{h}</th>)}
-        {showCtaCol && <th>Buy</th>}
-      </tr>
-    </thead>
-    <tbody>
-      {rows.map((row) => (
+<div class="comparison">
+  <div class="comparison__scroll">
+    <table class="comparison__table">
+      <thead>
         <tr>
-          <td class="product">{row.product}</td>
-          {row.values.map((v) => <td>{v}</td>)}
-          {showCtaCol && (
-            <td>
-              {row.ctaHref ? (
-                <a href={row.ctaHref} rel="nofollow sponsored noopener" target="_blank">
-                  Check price
-                </a>
-              ) : (
-                <span class="muted">—</span>
-              )}
-            </td>
-          )}
+          <th class="comparison__th comparison__th--product">Product</th>
+          {headers.map((h) => <th class="comparison__th">{h}</th>)}
+          {showCtaCol && <th class="comparison__th comparison__th--cta">Where to buy</th>}
         </tr>
-      ))}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {rows.map((row) => (
+          <tr class="comparison__row">
+            <td class="comparison__cell comparison__cell--product">{row.product}</td>
+            {row.values.map((v) => <td class="comparison__cell">{v}</td>)}
+            {showCtaCol && (
+              <td class="comparison__cell comparison__cell--cta">
+                {row.ctaHref ? (
+                  <a
+                    href={row.ctaHref}
+                    class="comparison__cta"
+                    rel="nofollow sponsored noopener"
+                    target="_blank"
+                  >
+                    Check price
+                  </a>
+                ) : (
+                  <span class="comparison__dash">—</span>
+                )}
+              </td>
+            )}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <style>
-  .table-wrapper {
+  .comparison {
+    margin: var(--space-8) 0;
+    background: var(--color-surface-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .comparison__scroll {
     overflow-x: auto;
-    margin: var(--space-6) 0;
+    -webkit-overflow-scrolling: touch;
   }
-  table {
-    border-collapse: collapse;
+  .comparison__table {
     width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-sans);
     font-size: var(--text-sm);
+    min-width: 36rem;
   }
-  th, td {
-    padding: var(--space-2) var(--space-3);
-    border-bottom: 1px solid var(--color-border);
+  .comparison__th {
+    background: var(--color-forest);
+    color: var(--color-paper);
+    font-family: var(--font-sans);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    font-size: var(--text-xs);
+    padding: var(--space-4) var(--space-4);
     text-align: left;
+    white-space: nowrap;
   }
-  th {
-    background: var(--color-surface);
-    font-weight: 600;
+  .comparison__th--product { min-width: 12rem; }
+  .comparison__row:nth-child(even) { background: var(--color-paper-muted); }
+  .comparison__cell {
+    padding: var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: middle;
+    color: var(--color-paper-ink);
+    line-height: var(--leading-snug);
   }
-  .product { font-weight: 600; }
-  .muted { color: var(--color-muted); }
+  .comparison__row:last-child .comparison__cell { border-bottom: 0; }
+  .comparison__cell--product {
+    font-family: var(--font-serif);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-base);
+    color: var(--color-forest);
+    letter-spacing: -0.01em;
+  }
+  .comparison__cta {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-brass);
+    color: var(--color-paper);
+    border-radius: var(--radius-md);
+    font-weight: var(--weight-semibold);
+    text-decoration: none;
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    transition: background var(--duration-base) var(--ease-out);
+    white-space: nowrap;
+  }
+  .comparison__cta:hover {
+    background: var(--color-brass-hover);
+    color: var(--color-paper);
+  }
+  .comparison__dash {
+    color: var(--color-muted);
+  }
 </style>

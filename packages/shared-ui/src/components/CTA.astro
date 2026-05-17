@@ -1,42 +1,104 @@
 ---
 interface Props {
   href: string;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "ghost";
+  size?: "md" | "lg";
   external?: boolean;
   rel?: string;
   target?: string;
 }
 
-const { href, variant = "primary", external = true, rel, target } = Astro.props;
+const {
+  href,
+  variant = "primary",
+  size = "md",
+  external = true,
+  rel,
+  target,
+} = Astro.props;
 const resolvedRel = rel ?? (external ? "nofollow sponsored noopener" : undefined);
 const resolvedTarget = target ?? (external ? "_blank" : undefined);
 ---
 <a
   href={href}
-  class:list={["cta", variant]}
+  class:list={["cta", `cta--${variant}`, `cta--${size}`]}
   rel={resolvedRel}
   target={resolvedTarget}
 >
-  <slot />
+  <span class="cta__label"><slot /></span>
+  {external && (
+    <svg class="cta__arrow" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+      <path d="M3 8h9.5M9 4.5l3.5 3.5L9 11.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  )}
 </a>
 
 <style>
   .cta {
-    display: inline-block;
-    padding: var(--space-3) var(--space-6);
-    border-radius: var(--radius-md);
-    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-sans);
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.01em;
     text-decoration: none;
-    transition: filter 150ms ease;
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    transition: background var(--duration-base) var(--ease-out),
+                color var(--duration-base) var(--ease-out),
+                border-color var(--duration-base) var(--ease-out),
+                transform var(--duration-fast) var(--ease-out),
+                box-shadow var(--duration-base) var(--ease-out);
+    white-space: nowrap;
   }
-  .cta:hover { filter: brightness(0.9); }
-  .primary {
-    background: var(--color-brand);
-    color: var(--color-brand-fg);
+  .cta:hover { transform: translateY(-1px); }
+  .cta:active { transform: translateY(0); }
+  .cta__arrow {
+    transition: transform var(--duration-base) var(--ease-out);
+    flex-shrink: 0;
   }
-  .secondary {
-    background: var(--color-surface);
-    color: var(--color-fg);
-    border: 1px solid var(--color-border);
+  .cta:hover .cta__arrow { transform: translateX(3px); }
+
+  /* Sizes */
+  .cta--md {
+    padding: var(--space-3) var(--space-5);
+    font-size: var(--text-sm);
+  }
+  .cta--lg {
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--text-base);
+  }
+
+  /* Primary — brass button on cream */
+  .cta--primary {
+    background: var(--color-brass);
+    color: var(--color-paper);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.15);
+  }
+  .cta--primary:hover {
+    background: var(--color-brass-hover);
+    color: var(--color-paper);
+    box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255,255,255,0.18);
+  }
+
+  /* Secondary — forest button */
+  .cta--secondary {
+    background: var(--color-forest);
+    color: var(--color-paper);
+  }
+  .cta--secondary:hover {
+    background: var(--color-forest-mid);
+    color: var(--color-paper);
+  }
+
+  /* Ghost — outline */
+  .cta--ghost {
+    background: transparent;
+    color: var(--color-forest);
+    border-color: var(--color-forest);
+  }
+  .cta--ghost:hover {
+    background: var(--color-forest);
+    color: var(--color-paper);
   }
 </style>

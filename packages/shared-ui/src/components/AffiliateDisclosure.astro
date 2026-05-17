@@ -1,24 +1,96 @@
 ---
 interface Props {
   siteName: string;
+  variant?: "inline" | "footer" | "compact";
 }
-const { siteName } = Astro.props;
+const { siteName, variant = "inline" } = Astro.props;
 ---
-<aside class="disclosure">
-  <strong>Affiliate disclosure:</strong> {siteName} is a participant in affiliate
-  programs, including the Amazon Services LLC Associates Program. We may earn a
-  commission from qualifying purchases made through links on this site, at no
-  additional cost to you.
+<aside class:list={["disclosure", `disclosure--${variant}`]}>
+  {variant === "footer" ? (
+    <p>
+      <strong>Affiliate disclosure</strong> — {siteName} participates in affiliate
+      programs including the Amazon Services LLC Associates Program. We earn from
+      qualifying purchases. We never claim hands-on testing of a product unless
+      we say so explicitly. See our <a href="/disclosure/">full disclosure</a>.
+    </p>
+  ) : variant === "compact" ? (
+    <p>
+      <strong>Heads up:</strong> Some links go to Amazon. We earn a small
+      commission if you buy through them. Price stays the same for you.
+      <a href="/disclosure/">Read more</a>.
+    </p>
+  ) : (
+    <p>
+      <strong>Affiliate disclosure:</strong> {siteName} is a participant in
+      affiliate programs, including the Amazon Services LLC Associates Program.
+      We may earn a commission from qualifying purchases made through links on
+      this site, at no additional cost to you.
+    </p>
+  )}
 </aside>
 
 <style>
   .disclosure {
-    background: var(--color-surface);
-    border-left: 3px solid var(--color-muted);
-    padding: var(--space-3) var(--space-4);
-    margin: var(--space-6) 0;
+    font-family: var(--font-sans);
     font-size: var(--text-sm);
+    line-height: var(--leading-snug);
+  }
+  .disclosure p { margin: 0; }
+  .disclosure strong {
+    font-family: var(--font-sans);
+    font-weight: var(--weight-semibold);
+    color: var(--color-forest);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    font-size: var(--text-xs);
+    display: inline-block;
+    margin-right: var(--space-2);
+  }
+  .disclosure a {
+    color: inherit;
+    text-decoration-color: currentColor;
+  }
+
+  /* Inline — on top of article body */
+  .disclosure--inline {
+    background: var(--color-surface-alt);
+    border-left: 3px solid var(--color-brass);
+    padding: var(--space-4) var(--space-5);
+    margin: var(--space-6) 0;
     color: var(--color-muted);
-    border-radius: var(--radius-sm);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+
+  /* Compact — page-top thin note */
+  .disclosure--compact {
+    background: transparent;
+    color: var(--color-muted);
+    font-size: var(--text-xs);
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--color-border);
+    text-align: center;
+    margin: 0;
+  }
+  .disclosure--compact strong {
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--color-forest);
+  }
+
+  /* Footer — on forest-green base, light text */
+  .disclosure--footer {
+    color: var(--color-paper);
+    opacity: 0.7;
+    font-size: var(--text-xs);
+    max-width: 60ch;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .disclosure--footer strong {
+    color: var(--color-brass-soft);
+  }
+  .disclosure--footer a {
+    color: var(--color-brass-soft);
+    text-decoration-color: var(--color-brass-soft);
   }
 </style>

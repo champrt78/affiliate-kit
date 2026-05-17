@@ -34,11 +34,19 @@ const resolvedOgImage = ogImage ?? defaultOgImage;
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
   <meta name="robots" content={robotsContent ?? "index, follow"} />
-  <meta name="theme-color" content={themeColor ?? "#000000"} />
+  <meta name="theme-color" content={themeColor ?? "#1F3D2F"} />
   <link rel="canonical" href={canonicalHref} />
   <title>{fullTitle}</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter+Tight:wght@400;500;600;700&display=swap"
+  />
+
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={Astro.url.href} />
@@ -51,11 +59,3 @@ const resolvedOgImage = ogImage ?? defaultOgImage;
   <slot />
 </body>
 </html>
-
-<style>
-  body {
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: var(--space-4);
-  }
-</style>
