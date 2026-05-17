@@ -1,0 +1,123 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "MyWildlifeCam Trail cameras for the backyard" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e11]:
+          - generic [ref=e12]: MyWildlifeCam
+          - generic [ref=e13]: Trail cameras for the backyard
+      - navigation "Primary" [ref=e14]:
+        - link "Home" [ref=e15] [cursor=pointer]:
+          - /url: /
+        - link "Guides" [ref=e16] [cursor=pointer]:
+          - /url: /buyers-guides/
+        - link "Reviews" [ref=e17] [cursor=pointer]:
+          - /url: /reviews/
+        - link "About" [ref=e18] [cursor=pointer]:
+          - /url: /about/
+  - main [ref=e19]:
+    - generic [ref=e20]:
+      - img [ref=e22]
+      - generic [ref=e24]:
+        - generic [ref=e25]: Trail cams · buyer's-eye reviews
+        - heading "The backyard, on camera." [level=1] [ref=e26]
+        - paragraph [ref=e27]: We compare trail cameras the way a careful first-time buyer would. Spec, fit, and use case. The pick you'd actually live with.
+        - generic [ref=e28]:
+          - link "Start with the buying guide" [ref=e29] [cursor=pointer]:
+            - /url: /buyers-guides/best-trail-cameras-for-backyard-wildlife/
+            - generic [ref=e30]: Start with the buying guide
+          - link "Browse single-product reviews" [ref=e31] [cursor=pointer]:
+            - /url: /reviews/
+            - generic [ref=e32]: Browse single-product reviews
+    - paragraph [ref=e35]: Trail cameras have outgrown the deer-stand. They live on garden sheds, across koi ponds, above backyard bird feeders, on cabin porches. We sift the catalog so the right pick is obvious for the use case you actually have, by the spec and fit signals that matter.
+    - generic [ref=e41]:
+      - generic [ref=e42]:
+        - generic [ref=e43]:
+          - generic [ref=e44]: This month's pick
+          - heading "Start here" [level=2] [ref=e45]
+        - link "All buying guides" [ref=e46] [cursor=pointer]:
+          - /url: /buyers-guides/
+      - article [ref=e48]:
+        - 'link "Best Trail Cameras for Backyard Wildlife (2026): Spec-Based Picks Buying Guide Best Trail Cameras for Backyard Wildlife (2026): Spec-Based Picks Comparison-and-fit picks for homeowners and property owners. Cellular vs SD-card, three cameras matched to three buyer types. No monthly-fee panic. 3 picks compared May 16, 2026" [ref=e49] [cursor=pointer]':
+          - /url: /buyers-guides/best-trail-cameras-for-backyard-wildlife/
+          - 'img "Best Trail Cameras for Backyard Wildlife (2026): Spec-Based Picks" [ref=e51]'
+          - generic [ref=e52]:
+            - generic [ref=e53]: Buying Guide
+            - 'heading "Best Trail Cameras for Backyard Wildlife (2026): Spec-Based Picks" [level=3] [ref=e54]'
+            - paragraph [ref=e55]: Comparison-and-fit picks for homeowners and property owners. Cellular vs SD-card, three cameras matched to three buyer types. No monthly-fee panic.
+            - generic [ref=e56]:
+              - generic [ref=e57]: 3 picks compared
+              - time [ref=e58]: May 16, 2026
+    - generic [ref=e60]:
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - generic [ref=e63]: Single-product deep dives
+          - heading "Latest reviews" [level=2] [ref=e64]
+        - link "All reviews" [ref=e65] [cursor=pointer]:
+          - /url: /reviews/
+      - generic [ref=e66]:
+        - article [ref=e67]:
+          - 'link "Spypoint Flex-M Review · Spypoint Spypoint Flex-M Review (2026): Cellular Without the Subscription Panic Spec-based review of the Spypoint Flex-M cellular trail camera. Dual-SIM, 100 free photos a month, what owner reviews and independent testing actually say. May 16, 2026" [ref=e68] [cursor=pointer]':
+            - /url: /reviews/spypoint-flex-m-review/
+            - img "Spypoint Flex-M" [ref=e70]
+            - generic [ref=e71]:
+              - generic [ref=e72]: Review · Spypoint
+              - 'heading "Spypoint Flex-M Review (2026): Cellular Without the Subscription Panic" [level=3] [ref=e73]'
+              - paragraph [ref=e74]: Spec-based review of the Spypoint Flex-M cellular trail camera. Dual-SIM, 100 free photos a month, what owner reviews and independent testing actually say.
+              - time [ref=e76]: May 16, 2026
+        - article [ref=e77]:
+          - 'link "Stealth Cam DS4K Ultimate Review · Stealth Cam Stealth Cam DS4K Ultimate Review (2026): The Image-Quality Pick Spec-based review of the Stealth Cam DS4K Ultimate. 32MP, 4K video, NO-GLO IR, 14-month battery, and zero monthly subscription. The trade-offs that matter. May 16, 2026" [ref=e78] [cursor=pointer]':
+            - /url: /reviews/stealth-cam-ds4k-ultimate-review/
+            - img "Stealth Cam DS4K Ultimate" [ref=e80]
+            - generic [ref=e81]:
+              - generic [ref=e82]: Review · Stealth Cam
+              - 'heading "Stealth Cam DS4K Ultimate Review (2026): The Image-Quality Pick" [level=3] [ref=e83]'
+              - paragraph [ref=e84]: Spec-based review of the Stealth Cam DS4K Ultimate. 32MP, 4K video, NO-GLO IR, 14-month battery, and zero monthly subscription. The trade-offs that matter.
+              - time [ref=e86]: May 16, 2026
+    - generic [ref=e88]:
+      - generic [ref=e89]: How we work
+      - heading "A buyer's-eye view, not a field test." [level=2] [ref=e90]
+      - paragraph [ref=e91]: "We don't claim to have field-tested every camera. We read manufacturer spec sheets, owner reviews, and independent teardowns, then we ask: for the person reading this, is this the right tool? When we do own a camera, we say so plainly and tell you what we learned."
+      - paragraph [ref=e92]: Every "buy" link goes through our own redirect so we can swap retailers without breaking older posts. We earn a commission on Amazon purchases at no extra cost to you.
+      - generic [ref=e93]:
+        - link "How we choose picks" [ref=e94] [cursor=pointer]:
+          - /url: /about/
+          - generic [ref=e95]: How we choose picks
+        - link "Affiliate disclosure" [ref=e96] [cursor=pointer]:
+          - /url: /disclosure/
+          - generic [ref=e97]: Affiliate disclosure
+  - contentinfo [ref=e98]:
+    - generic [ref=e99]:
+      - generic [ref=e100]:
+        - generic [ref=e101]: MyWildlifeCam
+        - paragraph [ref=e102]: A buyer's-eye look at trail cameras for backyards, properties, and curious neighbors. We compare specs, frame fit, and link out to where you can actually buy them.
+      - generic [ref=e103]:
+        - heading "Explore" [level=4] [ref=e104]
+        - link "Buying guides" [ref=e105] [cursor=pointer]:
+          - /url: /buyers-guides/
+        - link "Single-product reviews" [ref=e106] [cursor=pointer]:
+          - /url: /reviews/
+        - link "How we evaluate" [ref=e107] [cursor=pointer]:
+          - /url: /how-we-evaluate/
+        - link "About this site" [ref=e108] [cursor=pointer]:
+          - /url: /about/
+      - generic [ref=e109]:
+        - heading "Fine print" [level=4] [ref=e110]
+        - link "Affiliate disclosure" [ref=e111] [cursor=pointer]:
+          - /url: /disclosure/
+        - link "Privacy" [ref=e112] [cursor=pointer]:
+          - /url: /privacy/
+        - link "Contact" [ref=e113] [cursor=pointer]:
+          - /url: /contact/
+    - generic [ref=e114]:
+      - complementary [ref=e115]:
+        - paragraph [ref=e116]:
+          - strong [ref=e117]: Affiliate disclosure.
+          - text: MyWildlifeCam participates in affiliate programs including the Amazon Services LLC Associates Program. We earn from qualifying purchases. We never claim hands-on testing of a product unless we say so explicitly. See our
+          - link "full disclosure" [ref=e118] [cursor=pointer]:
+            - /url: /disclosure/
+          - text: .
+      - paragraph [ref=e119]: © 2026 MyWildlifeCam. All rights reserved.

@@ -7,7 +7,7 @@ products:
   - name: "Spypoint Flex-M"
     brand: "Spypoint"
     affiliateUrl: "https://www.amazon.com/dp/B0DKRHHQ5P"
-    image: "https://www.spypoint.com/on/demandware.static/-/Sites-spypoint-master-catalog/default/dwc83d2c01/products/Flex-M/flex-m-main-1.png"
+    image: "https://www.spypoint.com/on/demandware.static/-/Sites-physical_product_m_catalog/default/dw5517eccf/images/large/flex-m-main-1.png"
     tagline: "Photos delivered to your phone, no monthly bill required for casual use."
     bestFor: "Cellular convenience"
   - name: "Stealth Cam DS4K Ultimate"
