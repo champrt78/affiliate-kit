@@ -1,0 +1,165 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+
+const pageTitle = "How We Evaluate";
+const pageDescription = "How MyWildlifeCam picks, ranks, and writes about trail cameras — the method behind our recommendations.";
+---
+<MainLayout
+  title={pageTitle}
+  description={pageDescription}
+  robotsContent="index, follow"
+  ogType="article"
+>
+  <article class="method">
+    <header class="method-hero">
+      <div class="method-hero__inner">
+        <a href="/" class="method-hero__crumb">← Home</a>
+        <span class="method-hero__kicker">Editorial method · MyWildlifeCam</span>
+        <h1 class="method-hero__title">How We Evaluate Trail Cameras</h1>
+        <p class="method-hero__deck">
+          A short, honest description of the work behind every recommendation on this site — what we do, what we don't claim, and how we keep picks current.
+        </p>
+      </div>
+    </header>
+
+    <section class="method-body">
+      <div class="method-body__inner prose">
+
+        <h2>The short version</h2>
+        <p>
+          We pick the trail cameras most likely to fit specific real-world use cases like backyard wildlife watching, property monitoring, and gift buying, then explain who each one is right for. We do this from current manufacturer specs, verified-buyer reports on Amazon, and independent third-party reviews. We don't claim to have used every product ourselves, and we don't pretend the recommendation is universal. Every piece is built around fit, not a single "best."
+        </p>
+
+        <h2>What goes into a pick</h2>
+        <ul>
+          <li><strong>Spec verification.</strong> Every spec on a product page is checked against the current manufacturer listing on the day the piece is published, then re-checked on any update. Manufacturer marketing drifts; we don't carry stale claims forward.</li>
+          <li><strong>Verified-buyer report aggregation.</strong> We read the most recent verified-purchase Amazon reviews and look for repeated patterns — the same praise or the same complaint from many independent buyers. One review is anecdote; thirty saying the same thing is signal.</li>
+          <li><strong>Independent third-party context.</strong> Where independent testing exists (Trailcampro, owner forums, niche publications), we cite specific numbers and link the source. Where we lean on a manufacturer's own number, we say so.</li>
+          <li><strong>Use-case framing.</strong> We don't write "best trail camera." We write "best trail camera for backyard wildlife watching" — and then say honestly who should pick a different one.</li>
+        </ul>
+
+        <h2>What we don't claim</h2>
+        <p>
+          We don't claim hands-on testing of every product we cover. Trail cameras live outdoors for months and produce data across seasons; honest field-testing of dozens of cameras side by side is a multi-year, multi-property research operation. We're not pretending to run one.
+        </p>
+        <p>
+          What we do is read the published evidence carefully, weight it against the use case, and write the recommendation we'd give a neighbor asking. When the answer is "this one isn't right for you, here's the one that is," we say that. When the answer is "skip this category entirely, here's a different category," we say that too.
+        </p>
+
+        <h2>How we score</h2>
+        <p>
+          When we publish a scored breakdown, the score reflects editorial judgment derived from spec analysis and user-report synthesis, not a lab measurement. We disclose the weights we use ("Detection Range 25%, Image Quality 25%, Battery Life 20%, Cellular Performance 20%, Ease of Setup 10%") so you can decide whether our weighting matches your priorities. If you weight image quality higher than we do, our top pick may not be your top pick. That's the right outcome of a transparent scoring system.
+        </p>
+
+        <h2>How we make money</h2>
+        <p>
+          We earn an affiliate commission on qualifying Amazon purchases made through links on this site. We don't accept manufacturer samples, sponsored placements, or paid recommendations. The commission doesn't change the recommendation. If a product is wrong for you, we say it's wrong for you — there's no version of this work where misleading a reader pays off long-term.
+        </p>
+
+        <h2>How we keep picks current</h2>
+        <p>
+          Every piece carries a "last updated" date. We re-check picks on a quarterly cadence: refresh specs against current manufacturer listings, re-read the most recent verified-buyer reports, and either confirm the existing recommendation or update it. When a product is discontinued, replaced, or pulled from Amazon, the piece is rewritten, not buried.
+        </p>
+
+        <h2>If you find something wrong</h2>
+        <p>
+          If a spec on this site is wrong, a recommendation feels off, or a product has changed in a way we missed, tell us. The <a href="/contact/">contact form</a> goes to a real inbox. Trail cameras evolve fast; the readers checking our work are how we stay honest.
+        </p>
+
+      </div>
+    </section>
+  </article>
+</MainLayout>
+
+<style>
+  .method { background: var(--color-bg); }
+
+  .method-hero {
+    background: var(--color-paper-muted);
+    padding: var(--space-12) var(--space-6) var(--space-10);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .method-hero__inner {
+    max-width: var(--content-wide);
+    margin: 0 auto;
+  }
+  .method-hero__crumb {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    color: var(--color-muted);
+    text-decoration: none;
+    margin-bottom: var(--space-6);
+  }
+  .method-hero__crumb:hover { color: var(--color-brass); }
+  .method-hero__kicker {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    color: var(--color-brass);
+    margin-bottom: var(--space-4);
+  }
+  .method-hero__title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 1.1;
+    letter-spacing: var(--tracking-display);
+    color: var(--color-forest);
+    margin: 0 0 var(--space-5);
+    max-width: 22ch;
+  }
+  .method-hero__deck {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+    line-height: var(--leading-snug);
+    color: var(--color-muted);
+    margin: 0;
+    max-width: 56ch;
+  }
+
+  .method-body {
+    background: var(--color-paper-muted);
+    padding: var(--space-12) var(--space-6) var(--space-16);
+  }
+  .method-body__inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+
+  .prose {
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    color: var(--color-paper-ink);
+  }
+  .prose p { margin: 0 0 var(--space-5); }
+  .prose h2 {
+    font-family: var(--font-serif);
+    font-size: var(--text-2xl);
+    color: var(--color-forest);
+    margin: var(--space-10) 0 var(--space-4);
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--color-border);
+  }
+  .prose h2:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+  .prose ul { padding-left: var(--space-6); margin: 0 0 var(--space-5); }
+  .prose li { margin-bottom: var(--space-2); }
+  .prose strong { color: var(--color-forest); font-weight: var(--weight-semibold); }
+  .prose a {
+    color: var(--color-forest);
+    font-weight: var(--weight-medium);
+    text-decoration-color: var(--color-brass);
+  }
+  .prose a:hover { color: var(--color-brass); }
+
+  @media (max-width: 760px) {
+    .method-hero { padding: var(--space-10) var(--space-4) var(--space-8); }
+    .method-body { padding: var(--space-10) var(--space-4) var(--space-12); }
+  }
+</style>
