@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>mywildlifecam — header variation playground</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1F3D2F;
+    --forest-deep: #14291f;
+    --cream: #FAF7EF;
+    --cream-card: #F2EBDC;
+    --cream-accent: #F5F0E6;
+    --brass: #A07C3A;
+    --brass-light: #C99A52;
+    --ink: #1A1A1A;
+    --ink-soft: #4A4A4A;
+    --rule: #D9D2C2;
+    --shell-bg: #0d0e10;
+    --shell-card: #161719;
+    --shell-text: #d6d6d6;
+    --shell-muted: #888;
+    --shell-rule: #2a2c30;
+    --shell-accent: #C99A52;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0;height:100%}
+  body{
+    background:var(--shell-bg);
+    color:var(--shell-text);
+    font:14px/1.5 ui-sans-serif,system-ui,-apple-system,sans-serif;
+    overflow:hidden;
+  }
+  .shell{
+    display:grid;
+    grid-template-columns:320px 1fr;
+    grid-template-rows:1fr auto;
+    height:100vh;
+  }
+  /* ============== Controls panel ============== */
+  .controls{
+    background:var(--shell-card);
+    border-right:1px solid var(--shell-rule);
+    padding:20px;
+    overflow-y:auto;
+  }
+  .controls h1{
+    font-size:14px;
+    font-weight:600;
+    margin:0 0 4px;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:var(--shell-accent);
+  }
+  .controls .sub{
+    font-size:12px;
+    color:var(--shell-muted);
+    margin:0 0 24px;
+    line-height:1.5;
+  }
+  .group{
+    border-top:1px solid var(--shell-rule);
+    padding:16px 0;
+  }
+  .group:first-of-type{border-top:none;padding-top:0}
+  .group h2{
+    font-size:11px;
+    font-weight:600;
+    margin:0 0 12px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--shell-muted);
+  }
+  .row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:7px 0;
+    gap:12px;
+  }
+  .row label{
+    font-size:13px;
+    color:var(--shell-text);
+    cursor:pointer;
+    flex:1;
+  }
+  /* Toggle */
+  .toggle{
+    position:relative;
+    width:36px;height:20px;
+    flex-shrink:0;
+    cursor:pointer;
+  }
+  .toggle input{
+    position:absolute;
+    opacity:0;
+    width:100%;height:100%;
+    cursor:pointer;
+    margin:0;
+    z-index:2;
+  }
+  .toggle .track{
+    position:absolute;inset:0;
+    background:#3a3c40;
+    border-radius:10px;
+    transition:background .15s;
+    pointer-events:none;
+  }
+  .toggle .knob{
+    position:absolute;
+    top:2px;left:2px;
+    width:16px;height:16px;
+    background:#ccc;
+    border-radius:50%;
+    transition:transform .15s;
+    pointer-events:none;
+  }
+  .toggle input:checked + .track{background:var(--shell-accent)}
+  .toggle input:checked + .track + .knob{transform:translateX(16px);background:#fff}
+  /* Variations panel */
+  .variations{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+  .variation-btn{
+    background:transparent;
+    color:var(--shell-text);
+    border:1px solid var(--shell-rule);
+    border-radius:4px;
+    padding:10px 12px;
+    font:500 12px/1.3 ui-sans-serif,system-ui,sans-serif;
+    text-align:left;
+    cursor:pointer;
+    transition:all .15s;
+  }
+  .variation-btn:hover{border-color:var(--shell-accent);color:var(--shell-accent)}
+  .variation-btn.active{
+    border-color:var(--shell-accent);
+    background:rgba(201,154,82,.08);
+    color:var(--shell-accent);
+  }
+  .variation-btn small{
+    display:block;
+    color:var(--shell-muted);
+    font-weight:400;
+    margin-top:2px;
+    font-size:11px;
+  }
+  .variation-btn.active small{color:var(--shell-accent);opacity:0.75}
+  /* ============== Preview pane ============== */
+  .preview-wrap{
+    background:#1a1b1d;
+    overflow-y:auto;
+  }
+  .preview-frame{
+    background:var(--cream);
+    color:var(--ink);
+    min-height:100%;
+    font-family:'Inter Tight',ui-sans-serif,system-ui,-apple-system,sans-serif;
+  }
+  .stage{
+    padding:0 0 200px;
+    position:relative;
+  }
+  /* Page body underneath the header (so we can see how it looks against content) */
+  .page-body{
+    max-width:920px;
+    margin:0 auto;
+    padding:64px 80px 80px;
+  }
+  .demo-rubric{
+    display:inline-block;
+    font-family:'Inter Tight',sans-serif;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--brass);
+    margin-bottom:14px;
+  }
+  .demo-rubric::before{
+    content:"";
+    display:inline-block;
+    width:24px;height:1px;
+    background:var(--brass);
+    vertical-align:middle;
+    margin-right:10px;
+    transform:translateY(-2px);
+  }
+  .demo-title{
+    font-family:'Fraunces',Georgia,serif;
+    font-size:54px;
+    line-height:1.05;
+    color:var(--forest);
+    margin:0 0 14px;
+    font-weight:600;
+    font-variation-settings:"opsz" 120;
+  }
+  .demo-deck{
+    font-family:'Fraunces',serif;
+    font-size:22px;
+    line-height:1.4;
+    color:var(--ink-soft);
+    font-style:italic;
+    margin:0 0 32px;
+    max-width:62ch;
+  }
+  .demo-paragraph{
+    font-size:18px;
+    line-height:1.65;
+    color:var(--ink);
+    margin:0 0 24px;
+    max-width:68ch;
+  }
+
+  /* ===================== Header variations ===================== */
+  /* All headers share these */
+  .site-header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    transition:background 220ms ease,
+               border-color 220ms ease,
+               box-shadow 220ms ease,
+               padding 220ms ease;
+  }
+  .site-header[data-sticky="off"]{position:relative}
+  .site-header[data-scrolled="true"]{
+    background:rgba(250,247,239,0.96);
+    box-shadow:0 1px 2px rgba(31,61,47,0.06);
+  }
+  .site-header[data-blur="on"][data-scrolled="true"]{
+    backdrop-filter:saturate(180%) blur(14px);
+    -webkit-backdrop-filter:saturate(180%) blur(14px);
+  }
+  .site-header[data-border="thin"][data-scrolled="true"]{border-bottom:1px solid var(--rule)}
+  .site-header[data-border="brass"][data-scrolled="true"]{border-bottom:1px solid var(--brass)}
+  .site-header[data-border="none"]{border-bottom:1px solid transparent}
+
+  .header-inner{
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 var(--padX, 32px);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+  }
+  .site-header[data-height="tight"] .header-inner{height:60px}
+  .site-header[data-height="normal"] .header-inner{height:72px}
+  .site-header[data-height="airy"] .header-inner{height:88px}
+
+  /* Brand mark + type */
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+    color:var(--forest);
+  }
+  .brand:hover{color:var(--brass)}
+  .brand__mark{
+    display:grid;
+    place-items:center;
+    width:38px;
+    height:38px;
+    border-radius:999px;
+    background:var(--forest);
+    color:var(--cream);
+    flex-shrink:0;
+  }
+  .site-header[data-mark="off"] .brand__mark{display:none}
+  .brand__mark svg{width:22px;height:22px}
+  .brand__type{
+    display:flex;
+    flex-direction:column;
+    line-height:1;
+  }
+  .brand__name{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:22px;
+    letter-spacing:-0.012em;
+  }
+  .brand__tag{
+    font-family:'Inter Tight',sans-serif;
+    font-size:10.5px;
+    color:#5C5A4F;
+    margin-top:3px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    font-weight:500;
+  }
+  .site-header[data-tag="off"] .brand__tag{display:none}
+
+  /* Nav */
+  .nav{
+    display:flex;
+    align-items:center;
+    gap:28px;
+  }
+  .nav a{
+    font-family:'Inter Tight',sans-serif;
+    font-size:14px;
+    font-weight:500;
+    color:var(--ink);
+    text-decoration:none;
+    position:relative;
+    padding:6px 0;
+    transition:color 140ms ease;
+  }
+  .nav a:hover{color:var(--forest)}
+  .nav a.active{color:var(--forest)}
+  /* Underline styles */
+  .site-header[data-nav="underline-active"] .nav a.active::after,
+  .site-header[data-nav="underline-hover"] .nav a:hover::after,
+  .site-header[data-nav="underline-both"] .nav a.active::after,
+  .site-header[data-nav="underline-both"] .nav a:hover::after{
+    content:"";
+    position:absolute;
+    left:0;right:0;bottom:0;
+    height:2px;
+    background:var(--brass);
+  }
+
+  /* Search / CTA / extras */
+  .header-extras{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .icon-btn{
+    width:36px;height:36px;
+    display:grid;
+    place-items:center;
+    border-radius:999px;
+    color:var(--forest);
+    background:transparent;
+    border:none;
+    cursor:pointer;
+    transition:background 140ms ease;
+  }
+  .icon-btn:hover{background:rgba(31,61,47,0.06)}
+  .icon-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}
+  .cta-btn{
+    background:var(--brass);
+    color:var(--cream);
+    border:none;
+    padding:9px 18px;
+    border-radius:999px;
+    font:600 13px/1 'Inter Tight',sans-serif;
+    cursor:pointer;
+    letter-spacing:.02em;
+    transition:background 140ms ease;
+  }
+  .cta-btn:hover{background:#8B6A30}
+  .site-header[data-extras="off"] .header-extras{display:none}
+
+  /* ============ Variation: CENTERED ============ */
+  .site-header.is-centered .header-inner{
+    flex-direction:column;
+    height:auto !important;
+    padding-top:18px;
+    padding-bottom:14px;
+    gap:14px;
+  }
+  .site-header.is-centered .brand{
+    flex-direction:column;
+    text-align:center;
+    gap:8px;
+  }
+  .site-header.is-centered .brand__type{align-items:center}
+  .site-header.is-centered .brand__name{font-size:28px}
+  .site-header.is-centered .brand__tag{font-size:11px}
+  .site-header.is-centered .nav{
+    gap:32px;
+    padding-top:8px;
+    border-top:1px solid var(--rule);
+    width:100%;
+    justify-content:center;
+  }
+  .site-header.is-centered .header-extras{position:absolute;right:32px;top:18px}
+
+  /* ============ Variation: MAGAZINE ============ */
+  .site-header.is-magazine{
+    background:var(--cream);
+    border-bottom:1px solid var(--rule);
+    text-align:center;
+  }
+  .site-header.is-magazine .header-inner{
+    flex-direction:column;
+    height:auto !important;
+    padding-top:24px;
+    padding-bottom:12px;
+    gap:6px;
+  }
+  .site-header.is-magazine .brand{
+    flex-direction:row;
+    gap:14px;
+    justify-content:center;
+  }
+  .site-header.is-magazine .brand__mark{
+    width:48px;height:48px;
+  }
+  .site-header.is-magazine .brand__name{
+    font-size:36px;
+    letter-spacing:-0.018em;
+    font-variation-settings:"opsz" 96;
+  }
+  .site-header.is-magazine .brand__tag{
+    display:none !important;
+  }
+  .site-header.is-magazine .meta-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    padding:6px 0 0;
+    font-family:'Inter Tight',sans-serif;
+    font-size:10.5px;
+    color:#5C5A4F;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+  }
+  .site-header.is-magazine .meta-row span{display:inline}
+  .site-header.is-magazine .meta-divider{
+    width:3px;height:3px;
+    border-radius:50%;
+    background:var(--brass);
+  }
+  .site-header.is-magazine .nav{
+    gap:24px;
+    padding:14px 0 4px;
+    border-top:1px solid var(--rule);
+    margin-top:14px;
+    width:100%;
+    justify-content:center;
+  }
+  .site-header.is-magazine .header-extras{position:absolute;right:32px;top:24px}
+
+  /* ============ Variation: MINIMAL ============ */
+  .site-header.is-minimal .brand__tag{display:none}
+  .site-header.is-minimal .brand__name{font-size:18px;font-weight:600}
+  .site-header.is-minimal .brand__mark{width:32px;height:32px}
+  .site-header.is-minimal .brand__mark svg{width:18px;height:18px}
+  .site-header.is-minimal .header-inner{height:56px}
+  .site-header.is-minimal .nav{gap:24px}
+  .site-header.is-minimal .nav a{font-size:13.5px}
+
+  /* ============ Variation: BORDERED ============ */
+  .site-header.is-bordered{
+    border-top:3px solid var(--brass);
+  }
+  .site-header.is-bordered[data-scrolled="true"]{
+    border-top:3px solid var(--brass);
+    box-shadow:0 1px 0 var(--rule);
+  }
+
+  /* hide variation-specific elements when wrong variation active */
+  .magazine-only{display:none}
+  .site-header.is-magazine .magazine-only{display:flex}
+
+  /* ===================== Prompt bar ===================== */
+  .prompt-bar{
+    grid-column:1 / -1;
+    background:#1a1b1d;
+    border-top:1px solid var(--shell-rule);
+    padding:14px 24px;
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:16px;
+    align-items:center;
+    max-height:200px;
+    overflow-y:auto;
+  }
+  .prompt-text{
+    margin:0;
+    font-family:ui-monospace,SF Mono,Menlo,monospace;
+    font-size:12.5px;
+    line-height:1.55;
+    color:#cfcfcf;
+    white-space:pre-wrap;
+  }
+  .copy-btn{
+    background:var(--shell-accent);
+    color:#1a1b1d;
+    border:none;
+    padding:9px 16px;
+    border-radius:4px;
+    font:600 12px/1 ui-sans-serif,system-ui,sans-serif;
+    cursor:pointer;
+    letter-spacing:.02em;
+    transition:all .15s;
+    align-self:start;
+    flex-shrink:0;
+  }
+  .copy-btn:hover{background:#d4a55e}
+  .copy-btn.copied{background:#7a9870;color:#fff}
+
+  /* scroll hint instruction */
+  .scroll-hint{
+    position:fixed;
+    right:24px;
+    bottom:220px;
+    background:var(--shell-card);
+    color:var(--shell-text);
+    padding:10px 14px;
+    border-radius:6px;
+    font:500 11px/1.4 ui-sans-serif,system-ui,sans-serif;
+    border:1px solid var(--shell-rule);
+    opacity:0.8;
+    pointer-events:none;
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- ============== CONTROLS ============== -->
+  <aside class="controls" id="controls">
+    <h1>Header Variations</h1>
+    <p class="sub">Pick a variation, then refine with the toggles. Scroll the preview to see the scrolled-state behavior. Copy the prompt at the bottom when you settle on one.</p>
+
+    <div class="group">
+      <h2>Variation</h2>
+      <div class="variations">
+        <button class="variation-btn active" data-variation="current">Current<small>What's live now — sticky, brand+tag, nav-right</small></button>
+        <button class="variation-btn" data-variation="minimal">Tightened Minimal<small>Lower height, no tag, smaller brand — cleaner feel</small></button>
+        <button class="variation-btn" data-variation="centered">Centered Editorial<small>Brand centered, nav below — Strategist-style</small></button>
+        <button class="variation-btn" data-variation="magazine">Magazine Masthead<small>Big display brand + meta row + centered nav</small></button>
+        <button class="variation-btn" data-variation="bordered">Brass Bordered<small>Thin brass top stripe, otherwise current</small></button>
+      </div>
+    </div>
+
+    <div class="group">
+      <h2>Header Behavior</h2>
+      <div class="row"><label for="t_sticky">Sticky on scroll</label><span class="toggle"><input type="checkbox" id="t_sticky" checked><span class="track"></span><span class="knob"></span></span></div>
+      <div class="row"><label for="t_blur">Backdrop blur on scroll</label><span class="toggle"><input type="checkbox" id="t_blur" checked><span class="track"></span><span class="knob"></span></span></div>
+    </div>
+
+    <div class="group">
+      <h2>Brand</h2>
+      <div class="row"><label for="t_mark">Show brand mark icon</label><span class="toggle"><input type="checkbox" id="t_mark" checked><span class="track"></span><span class="knob"></span></span></div>
+      <div class="row"><label for="t_tag">Show tagline</label><span class="toggle"><input type="checkbox" id="t_tag" checked><span class="track"></span><span class="knob"></span></span></div>
+    </div>
+
+    <div class="group">
+      <h2>Nav</h2>
+      <div class="row"><label for="sel_nav" style="flex:1">Nav underline style</label></div>
+      <select id="sel_nav" style="width:100%;padding:7px 10px;background:#0d0e10;color:var(--shell-text);border:1px solid var(--shell-rule);border-radius:4px;font:13px ui-sans-serif,system-ui,sans-serif;cursor:pointer;">
+        <option value="underline-hover">Underline on hover only</option>
+        <option value="underline-active" selected>Underline on active only</option>
+        <option value="underline-both">Underline on both</option>
+        <option value="none">No underline</option>
+      </select>
+    </div>
+
+    <div class="group">
+      <h2>Height + Border</h2>
+      <div class="row"><label for="sel_height" style="flex:1">Header height</label></div>
+      <select id="sel_height" style="width:100%;padding:7px 10px;background:#0d0e10;color:var(--shell-text);border:1px solid var(--shell-rule);border-radius:4px;font:13px ui-sans-serif,system-ui,sans-serif;cursor:pointer;">
+        <option value="tight">Tight (60px)</option>
+        <option value="normal" selected>Normal (72px)</option>
+        <option value="airy">Airy (88px)</option>
+      </select>
+      <div class="row" style="margin-top:8px"><label for="sel_border" style="flex:1">Scroll border style</label></div>
+      <select id="sel_border" style="width:100%;padding:7px 10px;background:#0d0e10;color:var(--shell-text);border:1px solid var(--shell-rule);border-radius:4px;font:13px ui-sans-serif,system-ui,sans-serif;cursor:pointer;">
+        <option value="thin" selected>Thin sage rule</option>
+        <option value="brass">Brass rule</option>
+        <option value="none">None (shadow only)</option>
+      </select>
+    </div>
+
+    <div class="group">
+      <h2>Extras</h2>
+      <div class="row"><label for="t_extras">Show right-side extras (search + CTA)</label><span class="toggle"><input type="checkbox" id="t_extras"><span class="track"></span><span class="knob"></span></span></div>
+    </div>
+  </aside>
+
+  <!-- ============== PREVIEW ============== -->
+  <main class="preview-wrap" id="previewWrap">
+    <div class="preview-frame">
+      <header
+        class="site-header is-current"
+        id="header"
+        data-sticky="on"
+        data-blur="on"
+        data-mark="on"
+        data-tag="on"
+        data-nav="underline-active"
+        data-height="normal"
+        data-border="thin"
+        data-extras="off"
+        data-scrolled="false"
+      >
+        <div class="header-inner">
+          <a href="#" class="brand">
+            <span class="brand__mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 18c2-1 4-1 6 0s4 1 6 0 4-1 6 0" />
+                <path d="M3 13c2-1 4-1 6 0s4 1 6 0 4-1 6 0" />
+                <path d="M12 4c1.5 2 3.5 4 3.5 6.5S13.5 14 12 14s-3.5-1-3.5-3.5S10.5 6 12 4z" />
+              </svg>
+            </span>
+            <span class="brand__type">
+              <span class="brand__name">MyWildlifeCam</span>
+              <span class="brand__tag">Trail cameras for the backyard</span>
+            </span>
+          </a>
+
+          <!-- Magazine-only meta row, hidden in other variants -->
+          <div class="meta-row magazine-only">
+            <span>Buying Guides</span>
+            <span class="meta-divider"></span>
+            <span>Reviews</span>
+            <span class="meta-divider"></span>
+            <span>Methodology</span>
+          </div>
+
+          <nav class="nav">
+            <a href="#" class="active">Home</a>
+            <a href="#">Guides</a>
+            <a href="#">Reviews</a>
+            <a href="#">About</a>
+          </nav>
+
+          <div class="header-extras">
+            <button class="icon-btn" aria-label="Search">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
+            </button>
+            <button class="cta-btn">Subscribe</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="stage">
+        <div class="page-body">
+          <span class="demo-rubric">Trail Cameras · Review</span>
+          <h1 class="demo-title">Spypoint Flex-M Review</h1>
+          <p class="demo-deck">The cellular pick for backyard wildlife watchers who'd rather see photos arrive on their phone than walk out to swap an SD card.</p>
+          <p class="demo-paragraph">Scroll down to see how the header behaves when content moves past it. The scrolled state activates background, blur, and border depending on what you've toggled. Try each variation against the preview to see which lands best for mywildlifecam's elevated-nature-publication register.</p>
+          <p class="demo-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+          <p class="demo-paragraph">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+          <p class="demo-paragraph">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+          <p class="demo-paragraph">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+          <p class="demo-paragraph">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">↓ Scroll the preview to see scroll-state behavior</div>
+  </main>
+
+  <!-- ============== PROMPT BAR ============== -->
+  <footer class="prompt-bar">
+    <pre class="prompt-text" id="prompt"></pre>
+    <button class="copy-btn" id="copy">Copy prompt</button>
+  </footer>
+</div>
+
+<script>
+const state = {
+  variation: 'current',
+  sticky: true,
+  blur: true,
+  mark: true,
+  tag: true,
+  nav: 'underline-active',
+  height: 'normal',
+  border: 'thin',
+  extras: false,
+};
+
+const VARIATION_DESC = {
+  current: 'Current header layout — sticky cream background with brand mark + tag + right-aligned nav',
+  minimal: 'Tightened minimal — lower height (60px), no tag, smaller brand mark, condensed nav',
+  centered: 'Centered editorial — brand stacked + centered, nav row below with separator',
+  magazine: 'Magazine masthead — big display brand, meta row (categories), centered nav below — Strategist/Sunday-paper register',
+  bordered: 'Brass-bordered — current layout with a 3px brass top stripe for stronger brand presence',
+};
+
+const header = document.getElementById('header');
+
+function applyState() {
+  // Apply variation class
+  header.className = 'site-header is-' + state.variation;
+  // Apply data attrs
+  header.dataset.sticky = state.sticky ? 'on' : 'off';
+  header.dataset.blur = state.blur ? 'on' : 'off';
+  header.dataset.mark = state.mark ? 'on' : 'off';
+  header.dataset.tag = state.tag ? 'on' : 'off';
+  header.dataset.nav = state.nav;
+  header.dataset.height = state.height;
+  header.dataset.border = state.border;
+  header.dataset.extras = state.extras ? 'on' : 'off';
+  // Update variation buttons
+  document.querySelectorAll('.variation-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.variation === state.variation);
+  });
+  updatePrompt();
+}
+
+function updatePrompt() {
+  const parts = [];
+  parts.push(`Apply the "${state.variation}" header treatment to mywildlifecam (and propagate to /templates/site-template/).`);
+  parts.push('');
+  parts.push(`Description: ${VARIATION_DESC[state.variation]}.`);
+  parts.push('');
+  const tweaks = [];
+  if (!state.sticky) tweaks.push('non-sticky (scrolls away normally)');
+  if (state.sticky && !state.blur) tweaks.push('sticky without backdrop blur on scroll');
+  if (!state.mark) tweaks.push('no brand mark icon (wordmark only)');
+  if (!state.tag) tweaks.push('no tagline under the brand name');
+  if (state.nav !== 'underline-active') tweaks.push(`nav underline style: ${state.nav}`);
+  if (state.height !== 'normal') tweaks.push(`header height: ${state.height} (${state.height === 'tight' ? '60px' : '88px'})`);
+  if (state.border !== 'thin') tweaks.push(`scroll-state border: ${state.border}`);
+  if (state.extras) tweaks.push('right-side extras visible (search icon + brass Subscribe CTA pill)');
+  if (tweaks.length) {
+    parts.push('Tweaks from base variation:');
+    tweaks.forEach(t => parts.push('  · ' + t));
+    parts.push('');
+  }
+  parts.push('Constraints: stay in the locked design system (forest #1F3D2F + cream #FAF7EF + brass #A07C3A, Fraunces + Inter Tight). Apply changes to sites/mywildlifecam/src/layouts/MainLayout.astro + propagate to templates/site-template/.');
+  document.getElementById('prompt').textContent = parts.join('\n');
+}
+
+// Wire up controls
+document.querySelectorAll('.variation-btn').forEach(btn => {
+  btn.addEventListener('click', () => { state.variation = btn.dataset.variation; applyState(); });
+});
+document.getElementById('t_sticky').addEventListener('change', e => { state.sticky = e.target.checked; applyState(); });
+document.getElementById('t_blur').addEventListener('change', e => { state.blur = e.target.checked; applyState(); });
+document.getElementById('t_mark').addEventListener('change', e => { state.mark = e.target.checked; applyState(); });
+document.getElementById('t_tag').addEventListener('change', e => { state.tag = e.target.checked; applyState(); });
+document.getElementById('t_extras').addEventListener('change', e => { state.extras = e.target.checked; applyState(); });
+document.getElementById('sel_nav').addEventListener('change', e => { state.nav = e.target.value; applyState(); });
+document.getElementById('sel_height').addEventListener('change', e => { state.height = e.target.value; applyState(); });
+document.getElementById('sel_border').addEventListener('change', e => { state.border = e.target.value; applyState(); });
+
+// Scroll behavior
+const previewWrap = document.getElementById('previewWrap');
+previewWrap.addEventListener('scroll', () => {
+  header.dataset.scrolled = previewWrap.scrollTop > 8 ? 'true' : 'false';
+});
+
+// Copy
+document.getElementById('copy').addEventListener('click', async () => {
+  const btn = document.getElementById('copy');
+  try {
+    await navigator.clipboard.writeText(document.getElementById('prompt').textContent);
+    btn.textContent = 'Copied';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('copied'); }, 1400);
+  } catch (e) { btn.textContent = 'Press Ctrl+C'; }
+});
+
+applyState();
+</script>
+</body>
+</html>
