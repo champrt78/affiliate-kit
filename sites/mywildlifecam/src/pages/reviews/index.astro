@@ -40,14 +40,19 @@ const sorted = entries.sort((a, b) => {
 </MainLayout>
 
 <style>
+  /* Compact section-header row — title left, kicker + lede stack, no big brown panel */
   .page-header {
-    background: var(--color-paper-muted);
-    padding: var(--space-10) var(--space-6) var(--space-8);
+    background: var(--color-bg);
+    padding: var(--space-10) var(--space-6) var(--space-6);
     border-bottom: 1px solid var(--color-border);
   }
   .page-header__inner {
-    max-width: 920px;
+    max-width: var(--container-max);
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: var(--space-10);
+    align-items: end;
   }
   .page-header__kicker {
     display: inline-block;
@@ -57,7 +62,7 @@ const sorted = entries.sort((a, b) => {
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--color-brass);
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-2);
   }
   .page-header__kicker::before {
     content: "";
@@ -71,12 +76,11 @@ const sorted = entries.sort((a, b) => {
   }
   .page-header__title {
     font-family: var(--font-serif);
-    /* Section-heading size — not a hero. ~28-40px range. */
-    font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+    font-size: clamp(1.625rem, 2.6vw, 2.125rem);
     line-height: 1.1;
     color: var(--color-forest);
     letter-spacing: var(--tracking-display);
-    margin: 0 0 var(--space-3);
+    margin: 0;
     font-weight: var(--weight-semibold);
     font-variation-settings: "opsz" 60;
     text-transform: capitalize;
@@ -84,12 +88,14 @@ const sorted = entries.sort((a, b) => {
   .page-header__lede {
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: clamp(1rem, 1.3vw, 1.125rem);
+    font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
     line-height: 1.5;
     color: var(--color-muted);
     margin: 0;
     max-width: 56ch;
     font-variation-settings: "opsz" 30;
+    align-self: end;
+    padding-bottom: 4px;
   }
 
   .grid-section {
@@ -100,10 +106,10 @@ const sorted = entries.sort((a, b) => {
     max-width: var(--container-max);
     margin: 0 auto;
   }
+  /* Use the full container — fill rows of 3, not orphaned center column */
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 380px));
-    justify-content: center;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-6);
   }
   .empty {
@@ -112,8 +118,16 @@ const sorted = entries.sort((a, b) => {
     font-style: italic;
   }
 
+  @media (max-width: 960px) {
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
   @media (max-width: 760px) {
-    .page-header { padding: var(--space-12) var(--space-4) var(--space-10); }
+    .page-header { padding: var(--space-10) var(--space-4) var(--space-5); }
+    .page-header__inner { grid-template-columns: 1fr; row-gap: var(--space-3); }
+    .page-header__lede { padding-bottom: 0; }
     .grid-section { padding: var(--space-10) var(--space-4) var(--space-16); }
+  }
+  @media (max-width: 640px) {
+    .grid { grid-template-columns: 1fr; }
   }
 </style>
