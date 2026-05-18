@@ -300,7 +300,52 @@ Three reader-segment picks (need competitor research — see "What we still need
 
 **Honest disclosure for the piece:** all three top picks are from the same brand (The Rag Company). The category is brand-dominated — Rag Company makes the most-cited towels. If we want a competitor for cross-brand comparison, candidates: Autofiber (rival, similar weight class), Microfiber Madness (premium European brand), Adam's Polishes Great White / Big Softie.
 
-## What we still need for Topics 4-5
+## Topic 6: Best Wash Mitt / Pad for Home Detailers (research 2026-05-18)
+
+Two complementary reviewer perspectives. Different conclusions, both credible.
+
+### Forensic Detailing's Top 5 Wash Mitts/Pads 2025
+
+UK detailing reviewer's tier list of 5 wash mitts/pads. Final-position winners (from transcript tail — full top-5 lineup needs deeper transcript read):
+
+- **Top pick: an "incred pad"** at £12.50 (~$15 USD) — "cheapest of all of these, should last me years"
+- **Dooka** (wool option) — "would be amazing if it was 7x9"
+- **Korean microfiber** Shaggy-soft on both sides cuffless — reviewer's wished-for ideal format
+- Microfiber pads in general are cheaper than wool/synthetic alternatives in this tier
+- Safety conclusion: "It's more down to how you use them — all these products are kind of safe"
+
+**Source:** [FORENSIC TOP 5 Wash Mitts/Pads for Car Detailing in 2025](https://www.youtube.com/watch?v=TrCgDtWW71M)
+
+### Microfiber Madness Delimitt — single-product deep review
+
+- **Price:** £14 (~$17 USD) — "reasonably priced... in line with other premium wash-mitt products"
+- **Available as both mitt (M) and pad versions** — reviewer prefers the pad
+- **Reviewer's pad preference rationale:** "Less likely to drop, better pressure control, easier to hold. Where you put your hand on them there's no big overlap of stuff where you're not putting pressure — so you've got a bit more control."
+- **Large pad recommended for large vehicles**
+- **Synthetic-fiber-on-soft-paint warning:** "Synthetic fiber mitts or pads for me on soft paint can be a little bit more risky in my opinion — but that's based on one test."
+- Cross-reference: Microfiber Madness "crazy pile" towels at £10 each (~$13 USD) are among the most expensive edgeless split-pile cloths on the market but "very good."
+
+**Source:** [NEW Best Quality Wash Mitt on the Market | Microfiber Madness Delimitt Review](https://www.youtube.com/watch?v=hCaZH53N_nU)
+
+### Synthesis for the piece (preliminary)
+
+Three reader-segment picks emerge:
+
+| Pick | For who | Price tier |
+|---|---|---|
+| **Microfiber Madness Delimitt (pad version)** | Owners who want premium quality + a pad-not-mitt format for control | ~$17 (£14) |
+| **Rag Company Cyclone Ultra (wash mitt) or Pluffle (pad)** | US-availability default; well-stocked at Amazon + Detailed Image + Autogeek | TBD — needs Firecrawl spec verification |
+| **Adam's Polishes Wash Mitt** | Budget-friendly US default | TBD — needs Firecrawl spec verification |
+
+**Need more research before drafting:**
+- Full top-5 from Forensic Detailing's tier list (need transcript middle section)
+- Rag Company Cyclone Ultra Wash Mitt vs Pluffle comparison (Rag has multiple wash mitt models)
+- Adam's Polishes wash mitt pricing/specs
+- US-availability check for Microfiber Madness Delimitt (UK brand; US shipping cost may shift the value calculation)
+
+**Open question:** is the wash-mitt category a "1 pick for everyone" or genuinely segmented like soap (Dr. Beasley's vs Rag Co. doctrine)? Forensic Detailing's "all these products are kind of safe, technique matters more" suggests less segmentation than soap. May not need 3-5 picks — may be a shorter "here's the default, here's why" piece.
+
+## What we still need for Topics 4-6
 
 - **Pressure washer:** Firecrawl Kranzle product page for verified specs + pricing. Currently have specs for Greenworks 2300, Active 2.0, AR Blue Clean AR630 from search snippets; Kranzle needs deeper verification.
 - **Drying towel:** competitor brand /watch passes — Autofiber, Microfiber Madness, Adam's Polishes Great White. Today's drying-towel research is heavily Rag-Company-skewed and the buying guide needs cross-brand honesty.

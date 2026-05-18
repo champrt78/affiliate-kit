@@ -266,6 +266,47 @@ After a FULL season of ownership (and owning TWO of them), Jake Salesman from Bl
 
 **Source:** [why i would NOT buy a bushnell cellucore 20 cell camera (Jake Salesman, Blue Collar Outdoors)](https://www.youtube.com/watch?v=tLZWJZUgJ0k)
 
+## Spypoint Flex G36 deep dive (research 2026-05-18)
+
+Two independent reviewer perspectives. The Flex G36 was the "best image quality cellular pick" candidate in the cellular buying guide outline.
+
+### "8 Months With the SpyPoint Flex G36 | Harsh Weather, Bear Attacks & More"
+
+Full-season owner verdict after 8 months of deployment including harsh weather + a bear attack:
+
+- **Price range:** $90-$120
+- **App:** simplistic, "very easy to use" ("even my dad can do it")
+- **External SD card** option for manual photo pull (switch off cellular function, pull card)
+- **Dual SIM technology** — automatically uses strongest cell signal
+- **Free transmission plan** included
+- **Verdict:** "I wholeheartedly would endorse these products"
+
+**Pluses called out vs competitors:** "Other cameras tend to have durability issues, function issues, reliability issues, and just kind of a clunkier app system. It's very rare that you find them with dual SIM technology where they're just going to find the strongest cell signal."
+
+**Source:** [8 Months With the SpyPoint Flex G36](https://www.youtube.com/watch?v=-unkAQI01HA)
+
+### "Spypoint Flex G36 COMPLETE REVIEW! (AND a Warning!)"
+
+Multi-camera reviewer with experience across the Spypoint lineup:
+
+- **Testimonials & reviews score:** 4.1/5
+- **Should you buy this thing:** 4/5
+- **The "warning":** Some Spypoint cameras (NOT specifically the G36) have failed SD card issues. Owners have switched out SD cards, formatted them, and the problem persisted. Anecdotally G36 itself hasn't had this in their testing, but the broader Spypoint lineup has the SD card track record.
+- **Spypoint customer service is GOOD:** willing to troubleshoot, sometimes replaces, "pretty quick to send that replacement." Trade-off: troubleshoot calls "take a while" — be prepared with time and the camera in front of you.
+- **Spypoint Flex M and Flex Plus** are newer models also in this reviewer's testing — "so far so good, we haven't had any issues."
+
+**Source:** [Spypoint Flex G36 COMPLETE REVIEW! (AND a Warning!)](https://www.youtube.com/watch?v=G6rPyTfyvvw)
+
+### Synthesis update for the cellular buying guide
+
+The Spypoint Flex G36's framing in the cellular buying guide outline ("best dual-SIM auto-carrier-detection") holds up well. Updated honest disclosures to add:
+
+- **The Spypoint SD-card history** — broader lineup has had failures; G36 specifically hasn't in independent testing, but worth disclosing as a "track record caveat."
+- **Customer service is positive** — Spypoint owners report being supported when issues arise, distinguishing it from Bushnell's customer-service deal-breaker.
+- **Multi-year owner endorsement** — 8-month bear-attack + harsh-weather field test landed positively.
+
+The Spypoint vs Bushnell comparison row in the buying guide should now read: both have excellent app and image quality; Spypoint has better customer service, Bushnell has slightly richer per-photo metadata. Buyer chooses based on which risk they prefer.
+
 ## Visualping watchlist (set up 2026-05-18)
 
 Five active jobs (free tier limit) monitoring weekly:
