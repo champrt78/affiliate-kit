@@ -17,7 +17,7 @@ images:
   heroCaption: "Tactacam Reveal X 3.0 cellular trail camera. Photo: Tactacam manufacturer media."
   imageScale: 1.2
 bottomLine:
-  verdict: "_The Bottom Line is being written._"
+  verdict: "Buy it if you want reliable cellular under $150 that holds up across seasons. Skip it if you need video alerts on your phone or absolute-stealth no-glow flash."
 scorecard:
   axes:
     - { name: "Cellular Performance", weight: 25, score: 8.5 }
