@@ -530,11 +530,11 @@ $html = @"
     --ink-soft:   #C2C9D3;
     --muted:      #8B98A8;
     --muted-deep: #5E6976;
-    --steel:      #4A8FD4;
-    --steel-deep: #2C5E8C;
-    --green:      #5FB37C;
-    --amber:      #E8B86A;
-    --red:        #E07B7B;
+    --steel:      #0070F3;
+    --steel-deep: #0050A0;
+    --green:      #00DC82;
+    --amber:      #FFAA00;
+    --red:        #FF4444;
     --highlight:  #F7E9C8;
     --accent:     #C5E812;
     --font-serif: "Instrument Serif", Georgia, serif;
@@ -664,9 +664,9 @@ $html = @"
     padding: 2px 6px;
     border-radius: 2px;
   }
-  .topbar__pace.pace-green { background: rgba(95,179,124,0.15); color: var(--green); }
-  .topbar__pace.pace-amber { background: rgba(232,184,106,0.15); color: var(--amber); }
-  .topbar__pace.pace-red   { background: rgba(224,123,123,0.15); color: var(--red); }
+  .topbar__pace.pace-green { background: rgba(0,220,130,0.12); color: var(--green); }
+  .topbar__pace.pace-amber { background: rgba(255,170,0,0.12); color: var(--amber); }
+  .topbar__pace.pace-red   { background: rgba(255,68,68,0.14); color: var(--red); }
 
   /* ========================================
      "DO THIS NEXT" — priority-aware
@@ -744,8 +744,8 @@ $html = @"
     font-size: 12px;
     font-weight: 500;
     color: var(--steel);
-    background: rgba(74, 143, 212, 0.08);
-    border: 1px solid rgba(74, 143, 212, 0.25);
+    background: rgba(0, 112, 243, 0.08);
+    border: 1px solid rgba(0, 112, 243, 0.30);
     padding: 6px 12px;
     border-radius: 3px;
     letter-spacing: 0.01em;
@@ -810,7 +810,7 @@ $html = @"
   }
   .nav-list a:hover { background: var(--surface-3); color: var(--ink); }
   .nav-list a.is-active {
-    background: rgba(74, 143, 212, 0.10);
+    background: rgba(0, 112, 243, 0.10);
     color: var(--ink);
   }
   .nav-list a.is-active .nav-slug { color: var(--steel); font-weight: 500; }
@@ -995,9 +995,9 @@ $html = @"
     color: var(--muted);
     flex-shrink: 0;
   }
-  .health-green { background: rgba(95, 179, 124, 0.15); color: var(--green); }
-  .health-amber { background: rgba(232, 184, 106, 0.15); color: var(--amber); }
-  .health-red   { background: rgba(224, 123, 123, 0.15); color: var(--red); }
+  .health-green { background: rgba(0, 220, 130, 0.12); color: var(--green); }
+  .health-amber { background: rgba(255, 170, 0, 0.12); color: var(--amber); }
+  .health-red   { background: rgba(255, 68, 68, 0.14); color: var(--red); }
 
   /* Panels */
   .panel {
@@ -1058,6 +1058,12 @@ $html = @"
     .panel-grid { grid-template-columns: 1fr; }
   }
   .panel-grid .panel { margin-bottom: 0; }
+  /* The bottom three panels lose their internal borders — gaps + bg-depth do the dividing work */
+  .flex-fill { gap: 14px; }
+  .flex-fill > .panel {
+    border: 0;
+    background: var(--surface);
+  }
 
   /* Lists */
   .bare-list {
@@ -1194,9 +1200,9 @@ $html = @"
     padding: 4px 10px;
     border-radius: 2px;
   }
-  .pace-green { background: rgba(95,179,124,0.12); color: var(--green); }
-  .pace-amber { background: rgba(232,184,106,0.12); color: var(--amber); }
-  .pace-red   { background: rgba(224,123,123,0.12); color: var(--red); }
+  .pace-green { background: rgba(0,220,130,0.10); color: var(--green); }
+  .pace-amber { background: rgba(255,170,0,0.10); color: var(--amber); }
+  .pace-red   { background: rgba(255,68,68,0.12); color: var(--red); }
 
   .goal-total {
     margin-bottom: 18px;
@@ -1259,9 +1265,9 @@ $html = @"
     position: absolute;
     inset: 0 auto 0 0;
   }
-  .goal-fill.fill-low  { background: linear-gradient(90deg, #1F4060 0%, #4A8FD4 100%); }
-  .goal-fill.fill-mid  { background: linear-gradient(90deg, #2C5E8C 0%, #5FB37C 100%); }
-  .goal-fill.fill-done { background: linear-gradient(90deg, #2C8F4F 0%, #5FB37C 100%); }
+  .goal-fill.fill-low  { background: linear-gradient(90deg, #0050A0 0%, #0070F3 100%); }
+  .goal-fill.fill-mid  { background: linear-gradient(90deg, #0070F3 0%, #00DC82 100%); }
+  .goal-fill.fill-done { background: linear-gradient(90deg, #008F55 0%, #00DC82 100%); }
   .goal-fill.fill-dormant { background: transparent; }
   .goal-value {
     position: absolute;
