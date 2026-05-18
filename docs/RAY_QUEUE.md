@@ -116,6 +116,23 @@ Direction locked at `docs/brainstorms/2026-05-17-ui-overhaul-requirements.md` (2
 
 ---
 
+## Small follow-ups (added 2026-05-17 late-late)
+
+- **`run-scheduled.bat` hard-codes `C:\Python314\python.exe`.** If Python ever moves (uninstall, venv switch, version upgrade), the nightly `AIOS-AffiliateLinkHealth` job will silently exit with whatever the new interpreter does. Replace with a `where python` lookup or a stable interpreter pin if/when the Python install changes.
+- **Dashboard execution history shows the 2 early dev-iteration failures** (`'issues'` KeyError + set-not-serializable). The workflow is now stable (multiple consecutive 18/18-healthy runs), but the early failures sit in `recent_executions` with cryptic error strings. Either leave alone (history is honest) or manually `DELETE FROM executions WHERE error_message IN (...)` if they bother you.
+- **`lint-voice.ps1` doesn't skip CSS / JS / TS comments.** 10 of today's 14 lint hits were em-dashes inside `.astro` `<style>` comments — dev-only, not user-visible. Worth a comment-aware pass eventually (block-skip on `/* ... */` regions) so future lint runs don't surface false positives.
+- **Groq + ScrapeCreators API keys gate the AIOS research workflow.** The `/last30days` skill works zero-config (Reddit threads + HN + Polymarket) but lacks the high-signal sources without keys. When/if you add them: Groq is free (`console.groq.com/keys`), ScrapeCreators gives 100 free Reddit-comment scrapes (`scrapecreators.com`). Drop them into `~/.config/last30days/.env` once.
+
+---
+
+## Done 2026-05-17 (kept for reference)
+
+- **First AIOS workflow shipped** (`affiliate_link_health`). Walks the monorepo, HEAD-requests every cloaker + image URL, writes report. Wired into the dashboard. Scheduled nightly at 03:00 via `AIOS-AffiliateLinkHealth` Windows task. First run caught + we fixed a real `/go/vikeri-trail-camera-review` 404 (KV slug never registered).
+- **`lint-voice.ps1` extended to `.astro` / directories / globs.** Caught 4 user-visible em-dashes on `/how-we-evaluate`; fixed.
+- **Detailerpicks polish-layer content schemas mirrored** from mywildlifecam. Foundation ready for piece #1.
+
+---
+
 ## Done 2026-05-16 (kept for reference)
 
 - **Comparison-and-fit content framework MVP shipped** (9 implementation units, U1-U9). Voice doctrine v1, per-site config, scaffolders with sibling prompt files, lint backstop, About-page sweep across 5 sites. See `docs/plans/2026-05-16-001-feat-comparison-fit-content-framework-mvp-plan.md`.
