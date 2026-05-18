@@ -3,71 +3,311 @@ import { getCollection } from "astro:content";
 import MainLayout from "../layouts/MainLayout.astro";
 import Hero from "@affkit/shared-ui/Hero.astro";
 import ReviewCard from "@affkit/shared-ui/ReviewCard.astro";
+import BuyersGuideCard from "@affkit/shared-ui/BuyersGuideCard.astro";
+import CTA from "@affkit/shared-ui/CTA.astro";
 
-const allReviews = await getCollection("reviews");
-const latest = allReviews
-  .sort((a, b) => {
+function sortByDateDesc<T extends { data: { pubDate: Date | string } }>(arr: T[]) {
+  return [...arr].sort((a, b) => {
     const aTime = a.data.pubDate instanceof Date ? a.data.pubDate.getTime() : new Date(a.data.pubDate).getTime();
     const bTime = b.data.pubDate instanceof Date ? b.data.pubDate.getTime() : new Date(b.data.pubDate).getTime();
     return bTime - aTime;
-  })
-  .slice(0, 6);
+  });
+}
+
+const allReviews = await getCollection("reviews");
+const allGuides = await getCollection("buyers-guides");
+
+const latestReviews = sortByDateDesc(allReviews).slice(0, 6);
+const latestGuides = sortByDateDesc(allGuides);
+const featuredGuide = latestGuides[0];
+
+const heroImage = "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2400&q=80";
 ---
 <MainLayout
   title="DetailerPicks"
-  description="DetailerPicks — honest, hands-on reviews and buyer's guides for car detailing."
+  description="Cross-brand car-detailing picks for home detailers. Spec-driven buying guides and single-product reviews, by use case."
 >
   <Hero
-    title="DetailerPicks"
-    tagline="Detailing gear, tested and ranked by an obsessive."
-  />
-
-  <section>
-    <div class="section-head">
-      <h2>Latest reviews</h2>
-      {latest.length > 0 && <a href="/reviews/" class="see-all">See all reviews →</a>}
+    title="The paint, protected."
+    kicker="Car detailing · cross-brand picks"
+    tagline="We line up the major brands by use case so the right pick is obvious. Spec, fit, and paint safety. The one you'd actually use this weekend."
+    image={heroImage}
+    imageAlt="Reflections on gloss-black paint"
+    size="full"
+  >
+    <div class="hero-actions">
+      {featuredGuide && (
+        <CTA href={`/buyers-guides/${featuredGuide.slug}/`} variant="primary" size="lg" external={false}>
+          Start with the buying guide
+        </CTA>
+      )}
+      <CTA href="/reviews/" variant="ghost" size="lg" external={false}>
+        Browse single-product reviews
+      </CTA>
     </div>
-    {latest.length === 0 ? (
-      <p class="muted">No reviews published yet. New content lands every quarter.</p>
-    ) : (
-      <div class="grid">
-        {latest.map((entry) => <ReviewCard entry={entry} />)}
-      </div>
-    )}
+  </Hero>
+
+  <section class="lead">
+    <div class="lead__inner">
+      <p>
+        Most car-detailing content is either a retailer pitching its own brand
+        or a major publisher rehashing a generic Top 10. We do the boring work
+        of comparing across brands by use case, naming the trade-offs, and
+        saying honestly when the cheaper option is the right one.
+      </p>
+    </div>
   </section>
 
-  <section>
-    <div class="section-head">
-      <h2>Buyer's guides</h2>
-      <a href="/buyers-guides/" class="see-all">Browse guides →</a>
+  {featuredGuide ? (
+    <section class="featured">
+      <div class="featured__inner">
+        <header class="section-head">
+          <div>
+            <span class="section-head__kicker">This month's pick</span>
+            <h2 class="section-head__title">Start here</h2>
+          </div>
+          <a href="/buyers-guides/" class="section-head__link">All buying guides</a>
+        </header>
+        <div class="featured__card">
+          <BuyersGuideCard entry={featuredGuide} featured />
+        </div>
+      </div>
+    </section>
+  ) : (
+    <section class="featured featured--coming-soon">
+      <div class="featured__inner">
+        <header class="section-head">
+          <div>
+            <span class="section-head__kicker">First buying guide</span>
+            <h2 class="section-head__title">Coming soon</h2>
+          </div>
+        </header>
+        <p class="muted">
+          We're drafting the first cross-brand guide — Best Car Wash Soap for the
+          Backyard Detailer. Comparing Chemical Guys, Adam's, Griot's, Meguiar's,
+          and Mothers on paint safety, foam-cannon compatibility, and ceramic-coating
+          friendliness. Live in the next week or two.
+        </p>
+      </div>
+    </section>
+  )}
+
+  <section class="reviews">
+    <div class="reviews__inner">
+      <header class="section-head">
+        <div>
+          <span class="section-head__kicker">Single-product deep dives</span>
+          <h2 class="section-head__title">Latest reviews</h2>
+        </div>
+        {latestReviews.length > 0 && (
+          <a href="/reviews/" class="section-head__link">All reviews</a>
+        )}
+      </header>
+
+      {latestReviews.length === 0 ? (
+        <p class="muted">
+          First single-product reviews are being scaffolded. Each piece compares
+          a product against the best alternatives in its category, names the
+          trade-offs, and points to who it's right for.
+        </p>
+      ) : (
+        <div class="reviews__grid">
+          {latestReviews.map((entry) => <ReviewCard entry={entry} />)}
+        </div>
+      )}
     </div>
-    <p class="muted">Comparative roundups of products we've researched but don't own.</p>
+  </section>
+
+  <section class="manifesto">
+    <div class="manifesto__inner">
+      <span class="manifesto__kicker">How we work</span>
+      <h2 class="manifesto__title">Cross-brand and honest, by design.</h2>
+      <p>
+        We don't sell detailing products and we don't own a workshop. We read
+        manufacturer specs, aggregate verified-buyer reports, watch independent
+        reviewer testing, and ask: for the person reading this, which product
+        actually fits? When the cheaper option is the right answer, we say so.
+      </p>
+      <p>
+        Every "buy" link goes through our own redirect so we can swap retailers
+        without breaking older posts. We earn a commission on Amazon purchases
+        at no extra cost to you.
+      </p>
+      <div class="manifesto__actions">
+        <CTA href="/about/" variant="ghost" external={false}>How we choose picks</CTA>
+        <CTA href="/disclosure/" variant="ghost" external={false}>Affiliate disclosure</CTA>
+      </div>
+    </div>
   </section>
 </MainLayout>
 
 <style>
-  section { margin: var(--space-12) 0; }
+  .hero-actions {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    margin-top: var(--space-3);
+  }
+  :global(.hero--with-image) .hero-actions :global(.cta--ghost) {
+    color: var(--color-paper-ink);
+    border-color: var(--color-paper-ink);
+  }
+  :global(.hero--with-image) .hero-actions :global(.cta--ghost:hover) {
+    background: var(--color-paper-ink);
+    color: var(--color-paper);
+  }
+
+  /* Lead — single column, sans body with Fraunces-equivalent drop cap (Space Grotesk display) */
+  .lead {
+    background: var(--color-bg);
+    padding: var(--space-10) var(--space-6) var(--space-8);
+  }
+  .lead__inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .lead p {
+    font-family: var(--font-sans);
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--color-paper-ink);
+    margin: 0;
+    font-weight: 400;
+  }
+  .lead p::first-letter {
+    font-family: var(--font-serif);
+    font-size: 64px;
+    font-weight: 600;
+    color: var(--color-forest);
+    float: left;
+    line-height: 0.9;
+    margin: 6px 12px 0 0;
+  }
+
   .section-head {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: var(--space-4);
+    align-items: flex-end;
+    margin-bottom: var(--space-10);
+    flex-wrap: wrap;
+    gap: var(--space-4);
   }
-  h2 {
-    font-size: var(--text-2xl);
+  .section-head__kicker {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--color-brass);
+    display: block;
+    margin-bottom: var(--space-2);
+  }
+  .section-head__title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.875rem, 3.2vw, 2.5rem);
     margin: 0;
+    color: var(--color-paper-ink);
+    letter-spacing: -0.012em;
   }
-  .see-all {
-    color: var(--color-brand);
-    text-decoration: none;
+  .section-head__link {
+    font-family: var(--font-sans);
     font-size: var(--text-sm);
-    font-weight: 600;
+    font-weight: var(--weight-semibold);
+    color: var(--color-forest-light);
+    text-decoration: none;
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--color-brass);
   }
-  .see-all:hover { text-decoration: underline; }
-  .muted { color: var(--color-muted); }
-  .grid {
+  .section-head__link:hover { color: var(--color-brass); }
+
+  .featured {
+    background: var(--color-bg);
+    padding: var(--space-16) var(--space-6);
+  }
+  .featured__inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+  .featured__card {
+    max-width: var(--content-wide);
+    margin: 0 auto;
+  }
+  .featured--coming-soon .muted {
+    max-width: 60ch;
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--color-muted);
+  }
+
+  .reviews {
+    background: var(--color-paper-muted);
+    padding: var(--space-16) var(--space-6);
+  }
+  .reviews__inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+  .reviews__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-6);
+  }
+  @media (max-width: 720px) {
+    .reviews__grid { grid-template-columns: 1fr; }
+  }
+  .muted {
+    color: var(--color-muted);
+    font-family: var(--font-serif);
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  .manifesto {
+    background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-paper-muted) 100%);
+    padding: var(--space-20) var(--space-6);
+    border-top: 1px solid var(--color-sage-light);
+  }
+  .manifesto__inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    text-align: center;
+  }
+  .manifesto__kicker {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--color-brass);
+    margin-bottom: var(--space-4);
+    display: inline-block;
+  }
+  .manifesto__title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    margin: 0 0 var(--space-6);
+    color: var(--color-paper-ink);
+    letter-spacing: -0.012em;
+  }
+  .manifesto p {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    line-height: var(--leading-normal);
+    color: var(--color-paper-ink);
+    margin: 0 0 var(--space-4);
+  }
+  .manifesto__actions {
+    display: inline-flex;
+    gap: var(--space-3);
+    justify-content: center;
+    margin-top: var(--space-6);
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 760px) {
+    .lead { padding: var(--space-8) var(--space-4) var(--space-6); }
+    .featured,
+    .reviews { padding: var(--space-12) var(--space-4); }
+    .manifesto { padding: var(--space-16) var(--space-4); }
   }
 </style>
