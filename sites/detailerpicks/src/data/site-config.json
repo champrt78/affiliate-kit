@@ -1,0 +1,72 @@
+{
+  "site": {
+    "slug": "detailerpicks",
+    "name": "DetailerPicks",
+    "tagline": "Car detailing, by use case.",
+    "apex": "detailerpicks.com"
+  },
+  "niche": {
+    "vertical": "car-detailing",
+    "subcategory": "home-detailer + weekend-enthusiast"
+  },
+  "voice": {
+    "register": "enthusiast-pro",
+    "tone": "honest, technical when it matters, casual when it doesn't",
+    "core_anxiety": "paint safety / swirl risk",
+    "framings": [
+      "Pro-vs-DIY: 80% of pro results at 10% of the cost",
+      "Cross-brand honest comparison (Adam's vs Chemical Guys vs Griot's vs Meguiar's)",
+      "Climate sensitivity (UV, freeze-thaw, garage-vs-driveway)",
+      "Two-bucket method assumed knowledge, not explained from scratch"
+    ]
+  },
+  "readerSegments": {
+    "primary": [
+      "weekend-enthusiast",
+      "daily-driver-owner",
+      "show-car-owner",
+      "ceramic-coated-car-owner",
+      "dark-paint-owner"
+    ],
+    "secondary": [
+      "first-time-detailer",
+      "gift-buyer"
+    ],
+    "excluded": [
+      "professional-detailers (different audience, different price tiers)",
+      "race-car / track applications (we cover street, not motorsport)"
+    ]
+  },
+  "featureAxes": {
+    "default": [
+      { "name": "Paint Safety", "weight": 25, "description": "pH-neutral, lubricity, swirl-risk minimization" },
+      { "name": "Cleaning Power", "weight": 20, "description": "Foam, encapsulation, grime removal" },
+      { "name": "Value", "weight": 20, "description": "Performance per dollar, concentration ratio" },
+      { "name": "Versatility", "weight": 15, "description": "Coatings-safe? Wheel-safe? Trim-safe?" },
+      { "name": "Ease of Use", "weight": 20, "description": "Foam cannon compatible, dilution clarity, rinse-ability" }
+    ]
+  },
+  "categoryPillars": [
+    "wash-soaps",
+    "ceramic-coatings",
+    "waxes-sealants",
+    "polishes-compounds",
+    "interior-cleaners",
+    "wheel-tire-care",
+    "glass-care",
+    "applicators-tools"
+  ],
+  "brandsCovered": [
+    "Chemical Guys",
+    "Adam's Polishes",
+    "Meguiar's",
+    "Griot's Garage",
+    "Mothers",
+    "Turtle Wax",
+    "P&S",
+    "Gyeon",
+    "CarPro",
+    "Sonax"
+  ],
+  "doctrineNotes": "Same comparison-and-fit framework as mywildlifecam. Never claim hands-on product use. Cite manufacturer specs, verified-buyer reports, and independent testing (e.g., Pan The Organizer, Larry Kosilla / Ammo NYC) as third-party evidence. No em dashes. No defensive audience exclusions ('this isn't for X')."
+}
