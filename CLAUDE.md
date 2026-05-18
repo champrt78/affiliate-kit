@@ -28,21 +28,25 @@ This file teaches Claude the conventions for working inside this monorepo. Read 
 
 Full rule with audiences and rationale lives in `~/.claude/CLAUDE.md` "Session Documentation." Project rule mirrors it; this section makes the bar visible in-repo.
 
+## The big picture
+
+**Start at `docs/SYSTEM.md` — that's the architecture doc.** It shows how this repo fits with Cloudflare, AIOS, Second Brain, and external SaaS. If anything below conflicts with `docs/SYSTEM.md`, SYSTEM.md wins.
+
 ## Deploy
 
 - 5 sites live on Cloudflare Pages. Apexes: `mywildlifecam.com`, `detailerpicks.com`, `fussybean.com`, `starteraquarium.com`, `gameovergear.games`.
-- **Steady state (post-Phase-B):** pushes to `main` auto-deploy via CF Pages GitHub integration. Walkthrough at `docs/cf-pages-github-setup.md`.
-- **Interim state (until Phase B is wired):** no auto-deploy. Manual deploy required per site after every push: `pwsh scripts/deploy.ps1 -Site <slug>`. Check `wrangler pages project list` — if any project shows `Git Provider: No`, that site needs the GitHub-connection walkthrough before pushes will auto-deploy it.
-- `scripts/deploy.ps1` is always useful as a manual override (hotfixes, force redeploy without committing). Wraps `pnpm --filter <site> build` + `wrangler pages deploy`.
+- **`git push origin main` auto-deploys all 5 sites in parallel via `.github/workflows/deploy.yml` matrix.** ~3 min from push to live.
+- `scripts/deploy.ps1` is the manual override for hotfixes / force redeploy without committing. Wraps `pnpm --filter <site> build` + `wrangler pages deploy`.
 
 ## Layout
 - `packages/` — shared code (utils, UI components, styles). Published as workspace packages.
-- `templates/` — source templates used by `/aff-bootstrap`. Do not edit a site directly; if you need to change something across sites, change it in `templates/site-template/` and re-run the bootstrap or manually sync.
-- `sites/<slug>/` — generated per-site Astro projects. Each site is independent and can diverge from the template once spawned.
+- `templates/site-template/` — Astro skeleton copied per site at bootstrap. Edit here to change something across sites; manually sync to the 5 `sites/<slug>/` after.
+- `sites/<slug>/` — per-site Astro projects. Each site is independent and can diverge from the template once spawned.
 - `workers/` — Cloudflare Workers (one per Worker, currently just `link-cloaker`).
-- `tools/` — internal CLIs and helpers. Used by the `/aff-bootstrap` command.
-- `plugin/` — Claude Code plugin source. Installed to `~/.claude/plugins/affiliate-kit/` via `scripts/install-plugin.ps1`.
-- `docs/` — spec + plans + retrospectives.
+- `tools/` — internal CLIs and helpers (the original bootstrap CLI; retired now that all 5 sites exist).
+- `plugin/` — Affiliate Kit slash command sources. `scripts/install-plugin.ps1` copies `plugin/commands/*.md` into `~/.claude/commands/`. See `plugin/README.md`.
+- `scripts/` — PowerShell helpers (`new-review`, `buyers-guide`, `add-link`, `lint-voice`, `deploy`, `install-plugin`).
+- `docs/` — knowledge base. Map at `docs/SYSTEM.md`. Stale plan docs live in `docs/archive/`.
 
 ## Strategy
 - One hero site (`mywildlifecam`) gets the real effort. Five satellites (`detailerpicks`, `fussybean`, `starteraquarium`, `gameovergear`, `askbigchew`) get the playbook on a slower clock. Don't suggest equal effort across all 6.
@@ -64,9 +68,16 @@ Full rule with audiences and rationale lives in `~/.claude/CLAUDE.md` "Session D
 
 ## Tone of generated output
 - Tone is currently fixed at snarky-but-friendly. Configurable tone is deferred until a concrete consumer exists.
-- Every command's output ends with a `Next:` block telling the user what to do next.
+
+## Slash commands provided by the Kit (source: `plugin/commands/`)
+- `/capture <idea>` — file a sidetrack into Second Brain `ideas/` inbox without breaking the active conversation
+- `/research-product <topic>` — parallel research (Firecrawl + last30days + /watch + Canopy) → `docs/research/<date>-<slug>.md`
+- `/scaffold-piece <args>` — scaffolder + cloaker KV + voice lint + build, stops at DRAFT
+- `/bottom-line-helper <slug>` — drafts 3 verdict options + supporting paragraph from a piece's frontmatter, never writes to file
 
 ## When in doubt
-- Check the spec at `docs/2026-05-12-affiliate-kit-design.md`.
-- Check the active plan at `docs/2026-05-12-affiliate-kit-plan-phase-1.md`.
-- Check the basement setup at `docs/BASEMENT_SETUP.md` for what's deferred.
+- Architecture / how everything connects → `docs/SYSTEM.md`
+- What's open right now → `docs/TODO.md`
+- Voice / forbidden phrases → `docs/voice-doctrine.md`
+- Per-piece workflow → `docs/PLAYBOOK.md`
+- Historical plan docs (original design, phase-1 plan, content-readiness plan) → `docs/archive/`

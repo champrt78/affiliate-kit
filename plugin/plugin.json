@@ -1,6 +1,12 @@
 {
   "name": "affiliate-kit",
-  "version": "0.1.0",
-  "description": "Operate 5 affiliate sites with one bootstrap command and a quarterly content cycle.",
-  "author": "champrt78"
+  "version": "0.2.0",
+  "description": "Slash commands and conventions for operating a portfolio of affiliate sites: capture sidetracks, multi-source product research, scaffold pieces with cloaker + lint + build, and draft Bottom Line candidates.",
+  "author": "champrt78",
+  "commands": [
+    "/capture",
+    "/research-product",
+    "/scaffold-piece",
+    "/bottom-line-helper"
+  ]
 }

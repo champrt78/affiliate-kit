@@ -1,42 +1,42 @@
-# affiliate-kit plugin
+# Affiliate Kit — plugin source
 
-Source for the Claude Code plugin. To install:
+The `plugin/` folder is the source of truth for the Affiliate Kit's slash commands and config. `scripts/install-plugin.ps1` reads this folder and installs commands into `~/.claude/commands/` so Claude Code can invoke them by bare name.
+
+## Install
 
 ```powershell
 pnpm install-plugin
 ```
 
-This copies `plugin/` to `~/.claude/plugins/affiliate-kit/`.
+Run again any time after `git pull` to refresh commands. Idempotent — preserves existing `config.json`.
 
-## First-time setup
+## Slash commands provided
 
-After installing, create `~/.claude/plugins/affiliate-kit/config.json` (gitignored, never committed) with:
+| Command | Purpose |
+|---|---|
+| `/capture <idea>` | File a sidetrack idea into the Second Brain `ideas/` inbox without breaking the current conversation. Detects project from cwd. |
+| `/research-product <topic>` | Multi-source research pipeline. Parallel-fires Firecrawl search, `/last30days`, `/watch` on top YouTube reviewer, and Canopy ASIN verify. Output: `docs/research/<date>-<slug>.md`. |
+| `/scaffold-piece <args>` | Wraps `scripts/new-review.ps1` or `scripts/buyers-guide.ps1` + KV cloaker registration + voice lint + astro build. Stops short of commit so the DRAFT gate stays Ray's call. |
+| `/bottom-line-helper <slug>` | Reads a DRAFT-gated piece's frontmatter (scorecard, buyIf, flaws) + prior shipped Bottom Lines on the same site for voice anchor, drafts 3 verdict options + a supporting paragraph. Never writes to the file. |
 
-```json
-{
-  "monorepo_path": "C:/Users/<you>/source/repos/affiliate-sites",
-  "tokens": {
-    "cloudflare_api": "<your CF API token>",
-    "cloudflare_account_id": "<your CF account id>"
-  }
-}
-```
+## What lives in `plugin/`
 
-See `docs/BASEMENT_SETUP.md` in the monorepo root for the full first-time setup walkthrough.
+- `commands/` — slash command sources (markdown with YAML frontmatter)
+- `plugin.json` — kit metadata (name, version, description)
+- `README.md` — this file
 
-## Available commands (Phase 1)
+## What does NOT live here
 
-Only these commands exist as files in `plugin/commands/` today:
+- **API keys / Cloudflare token** → `~/.claude/plugins/affiliate-kit/config.json` (gitignored, never committed)
+- **External-service API keys** → `~/.config/last30days/.env` (Canopy, Firecrawl, ScrapeCreators, Groq, etc.)
+- **The actual Astro sites** → `sites/<slug>/` in the monorepo root
+- **The link-cloaker Worker** → `workers/link-cloaker/`
+- **The Phase-1 toolkit scripts** → `scripts/` in the monorepo root
 
-- `/aff-bootstrap <slug>` — scaffold a new affiliate site and deploy it to Cloudflare Pages.
-- `/aff-help` — auto-derived cheatsheet that lists every installed plugin command by reading the `commands/` directory at runtime.
+## Architecture
 
-## Roadmap (NOT YET — Phase 2)
+See `docs/SYSTEM.md` in the monorepo root for the full stack picture (this repo + AIOS + Second Brain + Cloudflare + external SaaS) with data flows between them.
 
-Designed but not implemented. See `COMMANDS.md` and the design doc for the spec.
+## What changed from the original design
 
-- `/aff-next` — the smart router (NOT YET — Phase 2)
-- `/aff-status [site]` — portfolio state (NOT YET — Phase 2)
-- `/aff-cycle <site>` — quarterly cycle orchestrator (NOT YET — Phase 2)
-- `/aff-new-review <site> <product>` — review writer (NOT YET — Phase 2)
-- `/aff-refresh <site> [page]` — content refresher (NOT YET — Phase 2)
+The original `docs/2026-05-12-affiliate-kit-design.md` envisioned a `/aff-next`, `/aff-status`, `/aff-cycle`, `/aff-refresh` slash-command suite. Those were never built — replaced by `docs/TODO.md` as the canonical "what's next" list and by Visualping as the cheap-version refresh sweep. Archived plan docs at `docs/archive/`.
