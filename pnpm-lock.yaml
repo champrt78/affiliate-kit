@@ -19,6 +19,9 @@ importers:
       '@affkit/shared-styles':
         specifier: workspace:*
         version: link:../shared-styles
+      '@affkit/shared-utils':
+        specifier: workspace:*
+        version: link:../shared-utils
     devDependencies:
       astro:
         specifier: ^4.16.0

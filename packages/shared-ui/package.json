@@ -11,10 +11,12 @@
     "./AffiliateDisclosure.astro": "./src/components/AffiliateDisclosure.astro",
     "./ReviewCard.astro": "./src/components/ReviewCard.astro",
     "./BuyersGuideCard.astro": "./src/components/BuyersGuideCard.astro",
-    "./ProductCard.astro": "./src/components/ProductCard.astro"
+    "./ProductCard.astro": "./src/components/ProductCard.astro",
+    "./ReviewArticle.astro": "./src/components/ReviewArticle.astro"
   },
   "dependencies": {
-    "@affkit/shared-styles": "workspace:*"
+    "@affkit/shared-styles": "workspace:*",
+    "@affkit/shared-utils": "workspace:*"
   },
   "peerDependencies": {
     "astro": "^4.0.0"
