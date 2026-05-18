@@ -28,7 +28,8 @@ images:
   hero: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2400&q=80"
   heroCaption: "Foam application before contact wash. Photo: Unsplash."
 bottomLine:
-  verdict: "_The Bottom Line is being written._"
+  verdict: "All seven premium foam cannons foam roughly the same. Buy MTM PF22 for build, Carbon Collective HD for weight, MJJC Pro V3.0 for spare parts. Skip if you don't already have a pressure washer worth pairing it with."
+  supporting: "A seven-cannon head-to-head comparison found foam production roughly equal across all premium picks at 1:20 dilution. What actually differentiates this tier is build quality (MTM PF22's reinforced fan blades and nickel-plated brass head), weight (Carbon Collective HD is 314 grams vs 600-669 grams for competitors), and what ships in the box (MJJC Pro V3.0 includes a spare filter, O-rings, and 1.1mm + 1.35mm orifices in addition to the stock 1.25mm). All three live in the $50-$110 range for the core unit; pick by the attribute that matters most for your use."
 buyIf:
   buy:
     - "You have a real pressure washer (1.8 GPM minimum, 2.1+ GPM ideal); foam cannons do not work on garden hoses"
