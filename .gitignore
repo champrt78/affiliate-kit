@@ -8,6 +8,9 @@ dist/
 build/
 .output/
 
+# Generated ops dashboard (regenerate with pwsh scripts/ops.ps1)
+docs/ops.html
+
 # Astro
 .cache/
 
