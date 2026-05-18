@@ -300,7 +300,7 @@ function HtmlEscape {
 }
 
 function Format-RecentPieces {
-    param([array]$Pieces, [int]$Limit = 3)
+    param([array]$Pieces, [int]$Limit = 20)
     $live = $Pieces | Where-Object { -not $_.IsDraft } | Sort-Object -Property PubDate -Descending | Select-Object -First $Limit
     if ($live.Count -eq 0) { return "<p class='empty'>No pieces yet.</p>" }
     $items = ""
@@ -423,21 +423,20 @@ function Build-SiteDrillDown {
 
 $draftHtml
 
-    <div class="panel-grid">
+    <div class="panel-grid panel-grid--3col flex-fill">
       <section class="panel">
         <h3>Recent pieces</h3>
         $recentHtml
       </section>
       <section class="panel">
-        <h3>Research notes for this site</h3>
+        <h3>Research notes</h3>
         $researchHtml
       </section>
+      <section class="panel">
+        <h3>Refresh sweep ($($siteRefresh.Count))</h3>
+        $refreshHtml
+      </section>
     </div>
-
-    <section class="panel">
-      <h3>Refresh sweep candidates ($($siteRefresh.Count))</h3>
-      $refreshHtml
-    </section>
   </section>
 "@
 }
@@ -472,24 +471,23 @@ foreach ($slug in $allSites) {
 }
 
 $commitItemsHtml = ""
-foreach ($c in ($recentCommits | Select-Object -First 4)) {
+foreach ($c in $recentCommits) {
     $subj = HtmlEscape $c.Subject
     if ($subj.Length -gt 70) { $subj = $subj.Substring(0, 67) + "..." }
     $commitItemsHtml += "<li><span class='commit-hash'>$($c.Hash)</span> <span class='muted'>$($c.Date)</span> $subj</li>"
 }
 
 $researchAllItemsHtml = ""
-foreach ($r in ($researchNotes | Select-Object -First 3)) {
+foreach ($r in $researchNotes) {
     $title = HtmlEscape $r.Title
     $researchAllItemsHtml += "<li><div class='piece-meta'><span class='piece-age'>$($r.Age)d</span><span class='piece-type'>research</span></div><div class='piece-title'>$title</div></li>"
 }
 
-# === Build TODO sidebar items ===
+# === Build TODO list items ===
 $todoSidebarHtml = ""
 if ($todoNow.Count -gt 0) {
-    foreach ($t in ($todoNow | Select-Object -First 4)) {
+    foreach ($t in $todoNow) {
         $clean = HtmlEscape ($t -replace '\*\*([^*]+)\*\*', '$1' -replace '`([^`]+)`', '$1')
-        if ($clean.Length -gt 90) { $clean = $clean.Substring(0, 87) + "..." }
         $todoSidebarHtml += "<li>$clean</li>"
     }
 }
@@ -902,22 +900,37 @@ $html = @"
   .drill:target { display: flex; }
   .drill:target ~ .drill--default { display: none; }
 
-  /* Make the bottom panel-grid absorb remaining height + clip overflow */
-  .drill > .panel-grid:last-child {
+  /* The flexible bottom row of the drill — absorbs remaining viewport height */
+  .flex-fill {
     flex: 1;
     min-height: 0;
   }
-  .drill > .panel-grid:last-child > .panel {
+  .flex-fill > .panel {
     min-height: 0;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    margin-bottom: 0;
   }
-  .drill > .panel-grid:last-child > .panel > ul {
+  /* Sticky panel header — title stays put, list scrolls below */
+  .flex-fill > .panel > h3 {
+    flex-shrink: 0;
+    margin: 0 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .flex-fill > .panel > ul,
+  .flex-fill > .panel > .scroll-area {
     flex: 1;
     min-height: 0;
-    overflow: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
+  /* Thin dark-mode scrollbar inside panels */
+  .flex-fill > .panel > ul::-webkit-scrollbar { width: 6px; }
+  .flex-fill > .panel > ul::-webkit-scrollbar-track { background: var(--surface-2); border-radius: 3px; }
+  .flex-fill > .panel > ul::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 3px; }
+  .flex-fill > .panel > ul::-webkit-scrollbar-thumb:hover { background: var(--muted-deep); }
 
   .drill__head {
     display: flex;
@@ -1343,7 +1356,7 @@ $goalRowsHtml
         </div>
       </section>
 
-      <div class="panel-grid panel-grid--3col">
+      <div class="panel-grid panel-grid--3col flex-fill">
         <section class="panel">
           <h3>TODO Now ($($todoNow.Count))</h3>
           $( if ($todoSidebarHtml) { "<ul class='bare-list'>$todoSidebarHtml</ul>" } else { "<p class='empty'>Nothing in TODO Now.</p>" } )
