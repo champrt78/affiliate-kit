@@ -80,12 +80,57 @@ Three reader-segment-specific picks emerge naturally from Pan's coverage:
 - You're doing decontamination / heavy-grime / pre-wax-strip (need alkaline, not pH-neutral)
 - Your priority is paint correction prep (use a true stripper, e.g., CarPro Reset)
 
-## Topic 2: Foam cannon (deferred — incomplete research)
+## Topic 2: Best Foam Cannon for Home Detailers
 
-Foam cannon research returned mostly keyword-bleed noise (IEM headphones, etc.) from `/last30days`. Need a dedicated `/watch` pass on foam-cannon comparisons before drafting. Candidates worth watching:
-- "Best Foam Cannon for Home Detailers" comparisons
-- MTM Hydro PF22 reviews (industry standard)
-- Cyclone Mintor / DUSY / Adam's Foam Cannon comparisons
+### Ultimate Foam Cannon Comparison — 7 high-end cannons (Dec 2025)
+
+Direct head-to-head testing of premium foam cannons. Reviewer's framing: "if you are in the market for a new one, hopefully this will help you decide."
+
+**Cannons tested:** MJJC Pro V2, MJJC Pro V3, MJJC SV3, MTM PF22.3, Active Foam Cannon, CarGuys Foam Zooka Pro, Carbon Collective HD Foam Cannon.
+
+**Foam production verdict at 1:20 dilution:** "Not a huge difference" between the 5 actively compared (used MJJC Pro V3 as reference for V2 and SV3 since prior testing showed identical performance). On thin snow foam, MJJC Pro V3 "drops off the panel a little bit faster" than the others. **CarGuys produced thicker foam that stuck on the panel longer.**
+
+**Build quality differences (load-bearing for paint-safety angle):**
+
+| Cannon | Head material | Weight | Reinforced fan? |
+|---|---|---|---|
+| MJJC Pro V2 | Brass (tarnishes) | ~600-669g | No — reviewer bent fan blades cranking it |
+| MJJC SV3 | Mostly stainless, brass at gun adapter + orifice | ~600-669g | No |
+| MJJC Pro V3 | (See V2) | ~600-669g | No |
+| **MTM PF22.3** | **Nickel-plated brass (no tarnishing)** | ~600-669g | **Yes — reinforced plastic around the fan, prevents bent blades** |
+| Active Foam Cannon | Full stainless steel | ~600-669g | No |
+| CarGuys Foam Zooka Pro | Full stainless steel | ~600-669g | No |
+| **Carbon Collective HD** | Aluminum (lightweight) | **314g (about half the weight of others)** | No |
+
+**Spare parts (what's in the box):**
+- **No spares:** Carbon Collective HD, CarGuys Foam Zooka, MTM PF22 (the most-recommended cannon ships bare — buyer beware)
+- **MJJC Pro V2 + SV3:** spare 1.1mm orifice
+- **MJJC Pro V3:** spare filter + extra O-rings + 1.1mm + 1.35mm orifices (best parts kit at this tier)
+- **Active Foam Lance:** lots of spare O-rings + 1.1mm + 1.35mm + 1.45mm orifices (no spare filter)
+
+**Reviewer's overall pattern (paraphrased from full transcript):** Build quality + reinforcement matters more than foam-production differences. MTM PF22.3 is the most reinforced/durable. Carbon Collective HD is the lightweight pick. MJJC Pro V3 ships with the best spare-parts kit.
+
+**Source:** [Ultimate Foam Cannon Comparison | Best Foam Cannons Tested](https://www.youtube.com/watch?v=wBZrUUZm9yM)
+
+### Synthesis for piece (Best Foam Cannon for Home Detailers)
+
+- **Best overall pick (build + reinforcement):** MTM PF22.3 (nickel-plated brass head, reinforced fan blades, industry-standard)
+- **Best lightweight pick (long sessions, easy hand fatigue):** Carbon Collective HD (314g vs 600-669g for the rest)
+- **Best spare-parts kit (DIY tinkerers, replacement-orifice tweakers):** MJJC Pro V3 (spare filter + O-rings + 1.1mm + 1.35mm orifices in box)
+- **Best foam thickness/dwell:** CarGuys Foam Zooka Pro
+- **Skip this guide if:** you don't have a real pressure washer (need 1.2 GPM minimum, 2.1+ GPM ideal per Pan's pH-education breakdown); foam cannons don't work on garden hoses
+
+## Topic 3: Best Ceramic Spray Sealant (LOW-SIGNAL SOURCE — RE-RESEARCH NEEDED)
+
+The "Best Ceramic Spray Sealant 2026 Top 5" video returned **AI-narrated marketing copy** that reads like product-listing summaries, not real reviews. Phrases like "from the moment you unbox, the packaging communicates a craft-minded approach" and "exceptional durability, rapid curing, and effortless spray nozzle control that minimizes streaks" are obvious tells. The #1 pick (Elene's 264112) is described as a sealant for "wood, glass, metal, and ceramic" — that's a generic surface sealant, NOT a car-specific ceramic spray.
+
+**Salvageable data:**
+- #5: Cerakote ceramic paint sealant spray — claimed 250°F heat resistance, hydrophobic ceramic matrix, "stronger beading and longer-lasting gloss" than Meguiar's Hybrid Ceramic in head-to-head
+- #3: Meguiar's Hybrid Ceramic All Surface Sealant — spray-on/wipe-off, bonds to paint/glass/rubber/trim, "weeks of beading"
+
+**Action item:** Re-research this category with a credible source. Pan The Organizer has multiple Clean by Pan ceramic spray review videos (but he's biased since it's his own product). ESOTERIC Detail and Larry Kosilla (Ammo NYC) would be better sources. ScrapeCreators for r/AutoDetailing comments would also help triangulate.
+
+**Source (flagged low-signal):** [Best Ceramic Spray Sealant 2026 - Top 5 Ceramic Spray Sealants Review](https://www.youtube.com/watch?v=Ghf9RcJoQB4)
 
 ## What we still need (gated on more research)
 

@@ -66,9 +66,35 @@ Zero-config Reddit search returned only irrelevant noise (a gameshow plagiarism 
 
 This is the comparison-and-fit framework working as designed: every recommendation has a "for who," every skip has a "for who," and the doctrine on hands-on claims stays clean.
 
+## Tactacam Reveal lineup — full comparison (Peak Outdoors reviewer)
+
+Direct head-to-head of the full Tactacam Reveal cellular lineup. Reviewer claims "5 years and hundreds of thousands of pictures" of personal experience. This is the data we need to write a credible single-product piece on Reveal X 3.0 vs the rest of the lineup.
+
+| Model | IR flash | Burst | Notable features |
+|---|---|---|---|
+| **Reveal X 3.0** | Low glow only | 3-shot | Entry of the lineup |
+| **Reveal Pro 3.0** | No glow only | 5-shot | No-glow recommended where animals are close or security matters |
+| **Reveal Ultra** (newest) | **Selectable low OR no glow** | 9-shot | **Active GPS** (sends position every 6 hours for 72 hours after the camera is turned off, costs ~10% of internal battery; auto-alert if camera moves 0.5mi+); **Live View** ($6/mo or $72/yr, 640x380 resolution, 2-minute video chunks with 10s cooldown, "you get four-minute chunks") |
+| **Defend** (home-security line) | Low glow | — | Designed for home security; reviewer says it **works BETTER in the woods** than Reveal cameras for wildlife — larger detection area, motion-based detection across the full frame instead of the "red line detection trigger" in the Reveal line which is hunting-optimized (only detects within central red line). "This one picked up elk that this one didn't pick up." |
+
+**Reviewer's high-value insight (textbook fit-content):**
+- **No-glow vs low-glow tradeoff:** "After doing this for five years and hundreds of thousands of pictures, [people who think red flash scares animals] are probably right, especially when the camera is closer to the animal." But low-glow has a "brighter, wider, longer distance flash" — needed for a big-meadow setup where no-glow produces "a very dark picture, you couldn't really see much."
+- **Selectable flash on Ultra is more useful than expected.** Use cases: public-trail-close-to-animals = no glow; big-meadow-long-distance = low glow. Same camera, different setup.
+- **Defend cameras detect better for wildlife** than Reveal cameras, despite being "home security" products. The Reveal line uses a heat-trigger optimized for centered-target hunting; Defend uses standard motion detection that covers the full frame.
+
+**Source:** [Tactacam Reveal X 3.0 vs Pro vs Ultra vs Defend Comparison Review (Peak Outdoors)](https://www.youtube.com/watch?v=h8nyafdIeYg)
+
+**Synthesis for buying-guide tiers:**
+- **Best for backyard wildlife (NOT hunting):** Defend (counterintuitive — but full-frame motion detection > Reveal's hunting-optimized heat trigger for general wildlife)
+- **Best feature-complete cellular pick:** Reveal Ultra (active GPS + selectable flash + live view + 9-shot burst)
+- **Best budget cellular pick:** Reveal X 3.0 (low glow, 3-shot, lowest price in the Tactacam lineup)
+- **Best no-glow stealth pick:** Reveal Pro 3.0 (no glow, 5-shot, no Ultra features)
+
+This validates the multi-pick architecture for the cellular buying guide — every Tactacam model has a defensible "best for X" angle.
+
 ## What we still need
 
-- `/watch` a dedicated Tactacam Reveal X full review for the single-product piece
-- `/watch` a dedicated Moultrie Mobile Edge 2 Pro real-world long-term review (not the launch hype)
+- `/watch` a Moultrie Mobile Edge 2 Pro real-world long-term review (not the launch hype) — the "got burned" caveat needs context
 - ScrapeCreators for Reddit owner-report signal (multi-year data, not first-impression)
 - Spypoint plan price-hike thread context (mywildlifecam piece #2 mentioned this; X cookies would surface it)
+- A Browning Strike Force Elite HP5 full review video before drafting that single-product piece
