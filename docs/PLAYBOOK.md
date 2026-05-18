@@ -1,180 +1,253 @@
 # Affiliate Kit Playbook
 
-> **Status (2026-05-16): SUPERSEDED in spirit.** This playbook describes the pre-2026-05-15 "AI scaffolds the draft, you fill in `## My Take` from real ownership" model. That model was retired by the comparison-and-fit content framework (locked 2026-05-15). Full requirements at `docs/brainstorms/2026-05-15-content-framework-requirements.md`; voice doctrine at `docs/voice-doctrine.md`; current implementation plan at `docs/plans/2026-05-16-001-feat-comparison-fit-content-framework-mvp-plan.md`. Full playbook rewrite is queued post-MVP per R15.
->
-> Most operational guidance below (cycle cadence, hero/satellite tiering, refresh sweep mechanics, KV affiliate-link operations) remains accurate. Only the per-piece content rules ("AI scaffolds, you fill in `## My Take`", "own it → review, don't own it → buyer's-guide") are stale. Treat everything content-rule-related in this doc as historical until the rewrite lands.
+**The Ray-facing operating guide.** What commands exist, how to use them, the workflow for shipping a piece, and how often to do what.
 
-> The single-page reference for writing reviews and running quarterly cycles. Read this at the start of every cycle. 5 minutes, then go.
+**For the engineering / architecture picture, see `docs/SYSTEM.md`.** This doc is the user manual; SYSTEM.md is the wiring diagram.
 
----
-
-## Quick orientation
-
-This kit runs five Astro sites on Cloudflare Pages with a shared link-cloaker Worker. One **hero** site (`mywildlifecam.com`) gets the real effort; four **satellites** (`fussybean.com`, `detailerpicks.com`, `starteraquarium.com`, `gameovergear.games`) get the same playbook on a slower clock. The non-negotiable content rule: **AI scaffolds the draft, you fill in `## My Take`**. Pages that still have the `_Waiting for the human._` placeholder render a DRAFT banner and get `noindex` — they cannot ship by accident.
+**Last refreshed:** 2026-05-18
 
 ---
 
-## Before review #1 (one-time prerequisites)
+## The Kit at a glance
 
-Do these once, in order, before you scaffold your first review on a site.
+You have 5 affiliate sites on Cloudflare Pages. One hero (`mywildlifecam.com`) gets real attention; four satellites (`detailerpicks`, `fussybean`, `starteraquarium`, `gameovergear`) get the same playbook on a slower clock. Content framework is **comparison-and-fit**: never claim hands-on use, drive value through spec verification + reader-segment fit + reviewer attribution. Voice doctrine at `docs/voice-doctrine.md` is the single source of truth for forbidden phrases.
 
-1. **Enroll in Amazon Associates under the hero apex.** Sign up at `affiliate-program.amazon.com` using `mywildlifecam.com` as the listed property. Why: every Amazon link in the kit applies a `?tag=...` at the Worker. Without the Associates tag, clicks pay nothing. How: apply → wait for approval email → copy your tracking ID (e.g. `mywildlifecam-20`).
-2. **Eyeball niche programs.** For trail cams: Spypoint, Moultrie, Bushnell direct affiliate programs sometimes pay more than Amazon. Note tracking tags as you get them. Not built yet: `docs/AFFILIATE_PROGRAMS.md` is queued — for now keep a Notes file.
-3. **Pick the 5-product roster for cycle 1.** Five products you can actually order, photograph, and use. If you don't own a product and won't, that's a buyer's-guide slot, not a review slot.
-4. **Confirm local clone is in good state.** From the repo root: `pnpm install`, then `pnpm test` in `packages/shared-utils`, `tools/bootstrap`, and `workers/link-cloaker`. All green. If they're not, fix that first — don't paper over.
-5. **Confirm `wrangler` is logged in.** Run `wrangler whoami`. If it doesn't print your account, `wrangler login`. The KV scripts will fail without it.
+The hard rule that makes this work, not slop: **the Bottom Line is human, written by you, never AI.** The scaffolder leaves `## Bottom Line` empty; an empty Bottom Line auto-flips the page to `noindex` so a draft can't leak. You write it. That's the moat.
 
 ---
 
-## Per-review workflow (~1-2 hours, once warmed up)
+## The 4 slash commands
 
-Steps for ONE review on ONE site. Repeat per product.
+All installed via `pnpm install-plugin`. All version-controlled in `plugin/commands/`.
 
-### 1. Pick a specific product
+### `/capture <idea>`
 
-**What:** A real product with a real SKU. Not a category, not "a trail cam under $200."
-**Done when:** You can name the brand, model, and (ideally) the Amazon ASIN.
+**When:** A sidetrack idea hits mid-conversation. "Oh we should also add X." "Try Y next time." "Remember to look at Z."
+**What it does:** Files the idea into `~/documents/github/second-brain/ideas/` with a timestamp, the project tag, and status `inbox`. Brad's hook auto-commits to second-brain. Returns one line — does NOT start working on the idea.
+**Why it exists:** So you don't have to choose between "lose the idea" and "break the current thread." File it, keep going.
+**Example:** `/capture a dashboard that tells me what to do next for each site`
 
-### 2. Decide: review or buyer's-guide?
+### `/research-product <topic>`
 
-**What:** If you own it and have used it → **review**. If you don't own it → **buyer's-guide**. The content rule is load-bearing — buyer's-guides cannot claim personal experience.
-**Done when:** You know which script you're about to run (`new-review.ps1` vs `buyers-guide.ps1`).
+**When:** You want to write about a product or category and need source-attributed data before scaffolding.
+**What it does:** Parallel-fires four research jobs:
+- **Firecrawl search** → product spec pages
+- **`/last30days`** → Reddit threads + comments, owner-report patterns
+- **`/watch`** → top YouTube reviewer's transcript (verbatim quote-ready)
+- **Canopy API** → ASIN verification + current pricing
 
-### 3. Get the Amazon URL with your tracking tag
+Synthesizes findings into `docs/research/<date>-<slug>.md` with verified specs, community signal, reviewer transcript highlights, and a recommendation on piece type (single-product review vs buying guide).
 
-**What:** The product page on Amazon. The Worker re-applies your tag at request time, so paste the plain product URL (e.g. `https://www.amazon.com/dp/B0XXXXXXXX`) — no `?tag=` needed in what you save. If you're using a non-Amazon affiliate program, paste the program's tagged URL directly; the Worker passes it through as-is when `merchant != "amazon"`.
-**Done when:** URL is in your clipboard.
+**Why it exists:** This is the 30-60 min per piece you used to spend manually researching. Now it runs while you do other stuff. Quality of synthesis > speed.
+**Example:** `/research-product Browning Strike Force Elite HP5`
 
-### 4. Run the scaffolding script
+### `/scaffold-piece <args>`
 
-**What:** This copies the template, fills frontmatter, writes the KV entry. One command.
+**When:** Research is done (or skipped — your call), you know the product, the slug, the Amazon URL. Ready to create the file.
+**What it does:** Wraps `scripts/new-review.ps1` (or `scripts/buyers-guide.ps1`) + `scripts/add-link.ps1` (cloaker KV) + `scripts/lint-voice.ps1` + `pnpm --filter <site> build` in one command. STOPS at the DRAFT gate — won't commit or push because the Bottom Line is empty.
+**Why it exists:** The 5-step shell ritual collapses to one line, and the build verifies before you touch anything.
+**Example:** `/scaffold-piece site=mywildlifecam type=review slug=moultrie-edge-2-pro product="Moultrie Edge 2 Pro" brand=Moultrie amazon_url="https://amazon.com/.../dp/XXX?tag=mywildlifecam-20"`
 
-For a review:
+### `/bottom-line-helper <slug>`
 
-```powershell
-pwsh scripts/new-review.ps1 `
-  -Site mywildlifecam `
-  -Slug spypoint-flex-m `
-  -ProductName "Spypoint Flex-M" `
-  -Brand "Spypoint" `
-  -Sku "FLEX-M" `
-  -AmazonUrl "https://www.amazon.com/dp/B0XXXXXXXX" `
-  -Tag "mywildlifecam-20"
+**When:** You scaffolded a piece, the body is drafted, and you're sitting at the empty `## Bottom Line` slot trying to write the verdict.
+**What it does:** Reads the piece's frontmatter (scorecard, buyIf, flaws data) and 2-3 prior shipped Bottom Lines on the same site for voice anchor. Drafts 3 verdict options (Option A = Buy/Skip, B = doctrine angle, C = specific picks) + a supporting paragraph. Outputs to chat. **Never writes to the file.** You pick one, edit it in your voice, paste it in.
+**Why it exists:** The hard part of the Bottom Line isn't writing 20 words — it's picking the framing. This shortcuts that.
+**Example:** `/bottom-line-helper best-pressure-washer-for-home-detailers`
+
+---
+
+## The piece workflow (end-to-end)
+
+From "I want to write about X" to "live on the site." Roughly 60-90 min of your time per piece, of which ~20 min is the Bottom Line.
+
+```
+1. PICK            You decide the product or category
+2. RESEARCH        /research-product <topic>           ← runs in background, 5-10 min
+3. REVIEW NOTES    Read docs/research/<date>-<slug>.md  ← decide review vs guide, sanity-check framing
+4. SCAFFOLD        /scaffold-piece <args>               ← scaffolder + cloaker + lint + build
+5. DRAFT BODY      AI fills the body from research      ← I do this from the research notes
+6. BOTTOM LINE     /bottom-line-helper <slug>           ← 3 options drafted
+7. YOU WRITE       You write the actual Bottom Line     ← the human moat, never automate
+8. LINT            pwsh scripts/lint-voice.ps1 <path>   ← back-stop for forbidden phrases
+9. COMMIT + PUSH   git add + commit + push to main      ← GH Actions deploys all 5 sites
+10. VERIFY         Hit the live URL, click the CTA      ← 302 → Amazon with your tag
 ```
 
-For a buyer's guide:
+### Step-by-step in PowerShell
 
-```powershell
-pwsh scripts/buyers-guide.ps1 `
-  -Site mywildlifecam `
-  -Slug best-trail-cam-under-200 `
-  -ProductName "Spypoint Flex-M" `
-  -Brand "Spypoint" `
-  -AmazonUrl "https://www.amazon.com/dp/B0XXXXXXXX"
+**Pick + research:**
+```
+/research-product best pressure washer for home detailers
 ```
 
-**Gotcha:** `-Slug` becomes the URL segment AND the KV key suffix. Lowercase, hyphens, no spaces. Once it's live and indexed, renaming is painful.
-**Done when:** The script prints `[ok] Wrote ...` and `[ok] Wrote <site>:<slug> to KV`.
-
-### 5. Fill in `## My Take` (or `## Editor's Note` for guides)
-
-**What:** Open the new file at `sites/<site>/src/content/reviews/<slug>.md` (or `buyers-guides/<slug>.md`). Find `## My Take` and replace `> _Waiting for the human._` with your actual experience — what you tested, what worked, what didn't, who it's for.
-**Gotcha:** Leave that placeholder in and the page ships with DRAFT banner + `noindex`. By design — but don't rely on it as a process, just fill it in.
-**Done when:** The placeholder string is gone and your prose is in.
-
-### 6. Add product images
-
-**What:** Set `images.hero` (and any additional images) in the frontmatter.
-**Not built yet:** Cloudflare R2 + PA-API helper. For now: paste Amazon product image URLs directly into frontmatter (right-click the hero image on the product page → Copy image address). It's not ideal — Amazon image URLs can rotate — but it works until R2 lands in Phase 2.
-**Done when:** Frontmatter has a hero image URL that loads in a browser.
-
-### 7. Preview locally
-
-```powershell
-pnpm --filter @affkit/mywildlifecam dev
+**Scaffold (after reading research):**
+```
+/scaffold-piece site=detailerpicks type=buyers-guide slug=best-pressure-washer-for-home-detailers product="MTM Hydro PF22" brand="MTM Hydro" amazon_url="https://www.amazon.com/dp/XXXXX?tag=mywildlifecam-20" description="Cross-brand pressure washer guide for home detailers."
 ```
 
-Open `http://localhost:4321/reviews/<slug>` (or `/buyers-guides/<slug>`). Check the hero, the CTA button, the rendered prose.
-**Done when:** Page renders, no DRAFT banner (because you filled in My Take), CTA button shows.
+**Draft body** — happens in-conversation; I write from the research notes.
 
-### 8. Spot-check JSON-LD
+**Bottom Line:**
+```
+/bottom-line-helper best-pressure-washer-for-home-detailers
+```
 
-**What:** The page emits `Review` + `Product` structured data. Validate it.
-**How:** Open `https://search.google.com/test/rich-results` in a browser, paste your local URL (or wait until deploy and paste the live URL). Look for `Review` and `Product` items with no errors.
-**Done when:** Rich Results Test shows green for both schema types.
+You pick a draft, edit in your voice, paste into the piece's `bottomLine.verdict` frontmatter field.
 
-### 9. Commit and push
-
+**Lint + commit + push:**
 ```powershell
-git add sites/<site>/src/content/reviews/<slug>.md
-git commit -m "feat(<site>): add <slug> review"
+pwsh scripts/lint-voice.ps1 sites/detailerpicks/src/content/buyers-guides/best-pressure-washer-for-home-detailers.md
+git add sites/detailerpicks/src/content/buyers-guides/best-pressure-washer-for-home-detailers.md
+git commit -m "feat(detailerpicks): pressure washer buying guide live with Bottom Line"
 git push
 ```
 
-Cloudflare Pages auto-deploys on push to `main`. ~60-90 seconds to live.
-**Done when:** Pages dashboard shows the new deployment as "Success."
+GH Actions matrix runs ~3 min, all 5 sites redeploy in parallel. Verify at `https://detailerpicks.com/buyers-guides/best-pressure-washer-for-home-detailers/`.
 
-### 10. Smoke-test the cloaked link
+### Step-by-step in PowerShell — single-product review
+
+Same shape, swap `type=review` and the script picks `scripts/new-review.ps1` instead of `buyers-guide.ps1`. Single-product pieces use the same Bottom Line discipline.
+
+---
+
+## Cadence — how often to do what
+
+### Per site
+
+| Activity | Hero (mywildlifecam) | Satellites (detailerpicks, fussybean, starteraquarium, gameovergear) |
+|---|---|---|
+| New piece | Roughly 1 per week | Roughly 1 per 2-3 weeks |
+| Quarterly cycle (5 new + refresh sweep) | Every 90 days | Every 180 days |
+| Refresh sweep (price/spec/link health) | Weeks 10-11 of each cycle | Once per cycle |
+| Visualping check (product page drift) | Auto, weekly per job | Same |
+
+### Portfolio-wide
+
+| Check | Cadence | Where |
+|---|---|---|
+| `affiliate_link_health` nightly run | Nightly (AIOS) | Manual trigger today; cron-scheduled when AIOS dashboard is ready |
+| Google Search Console crawl + ranking check | Weekly skim | search.google.com/search-console |
+| Bing Webmaster check | Monthly | bing.com/webmasters |
+| Amazon Associates dashboard (clicks, sales) | Weekly skim | affiliate-program.amazon.com |
+| Awin / AvantLink / brand-direct programs | Check approvals, then monthly | Per platform |
+| Visualping watchlist | Auto-alerts (5 jobs) | visualping.io |
+| Second Brain `ideas/` inbox triage | Weekly | `~/documents/github/second-brain/ideas/` |
+
+### What "ranking check" actually looks like
+
+GSC → Performance report → filter by site → look for:
+- Any query bringing >5 impressions/day with click-through-rate below 2% → Bottom Line probably weak or title needs work
+- Any page at position 8-15 → on the edge of page 2; small content improvements push it to page 1
+- Any new query you didn't expect to rank for → opportunity for a tighter follow-up piece
+
+---
+
+## The DRAFT gate (why it works)
+
+Every piece's `## Bottom Line` starts empty. The Astro renderer detects an empty Bottom Line and:
+1. Emits `<meta name="robots" content="noindex, nofollow">` on the page
+2. Renders a visible DRAFT banner at the top
+
+So a piece can sit in the repo, deployed, with `noindex` until you finish the Bottom Line. The moment you fill it in and push, the page goes live (no separate "publish" step needed).
+
+**This is the moat against being AI slop.** Google's March 2026 update hit affiliate sites with zero hands-on signal at 71% negative impact. We don't claim hands-on (legally + ethically correct since you don't own these products), but the Bottom Line being human-written, in your voice, with editorial judgment, is what makes the piece worth ranking. Without it, you're indistinguishable from autogenerated comparison spam.
+
+**Never automate the Bottom Line.** `/bottom-line-helper` drafts options. You write the real one. That's the line.
+
+---
+
+## Second Brain triage workflow
+
+`/capture` files ideas into `~/documents/github/second-brain/ideas/<date>-<slug>.md` with project tag + status `inbox`. Weekly, walk the inbox and triage:
 
 ```powershell
-curl -I https://mywildlifecam.com/go/spypoint-flex-m
+# List recent captures
+ls ~/documents/github/second-brain/ideas/ | tail -20
 ```
 
-Expected: `HTTP/2 302` with a `Location:` header pointing at Amazon. Or click the CTA on the live page and watch the browser bar — it should bounce through `/go/<slug>` and land on Amazon with your `?tag=` applied.
-**Done when:** 302 returned, tag visible in the redirect URL.
+For each idea:
+
+- **Actionable + affiliate-sites scope** → add to `docs/TODO.md` Now/Next/Later in the affiliate-sites repo, then delete or move to `~/documents/github/second-brain/done/`
+- **Actionable + other project** → move to that project's TODO or relevant file
+- **Speculative, not now** → leave in `ideas/`; if it's still relevant in 30 days, promote
+- **Not actionable** → delete
+
+The point of `/capture` is to never break the active thread. The point of triage is to make sure ideas don't rot in the inbox.
 
 ---
 
-## The 90-day cycle (per site)
+## When to write what kind of piece
 
-5 reviews + refresh sweep, once per quarter. Roughly:
-
-| Weeks | What you're doing | What NOT to do |
-|-------|-------------------|----------------|
-| 1-2   | Plan + roster. Commit to 5 products. Confirm affiliate programs. Order anything you don't have. | Don't start writing yet — half-baked rosters waste reviews. |
-| 3-9   | Write 5 reviews/guides. One every ~10 days. Mix review (own it) and buyer's-guide (don't) as the roster dictates. | Don't batch all 5 in week 9 — quality cratering is real. |
-| 10-11 | Refresh sweep on this site's older content. See checklist below. | Don't refresh content from sites you're not currently cycling. |
-| 12    | Buffer. Catch up on whatever slipped. Pick the next quarter's roster. | Don't start cycle N+1 inside this week — the buffer is the buffer. |
-
-If a week slips, slip the buffer first, then the refresh sweep, then a review. Never sacrifice My Take quality to hit a date.
+| Signal | What to write |
+|---|---|
+| Single product with strong opinions + spec story | **Review** (single-product, 1500-2500 words) |
+| Category where 3-5 products map to distinct reader segments | **Buying guide** (5-7 picks with use-case framing) |
+| Same product from a different angle (e.g. "for cellular vs SD-card") | **Cross-link from existing review** — don't write a separate piece unless the angle truly differs |
+| Niche term with search volume but no commercial intent | **Skip** — non-affiliate content is a different game |
+| Brand-new product without owner reports | **Wait 30-60 days** for community signal, then `/research-product` and decide |
 
 ---
 
-## Refresh sweep checklist
+## Health checks before publishing
 
-Run during weeks 10-11 on the site currently in-cycle. The point: catch dead products, stale prices, and broken affiliate links before Google does.
+Before you push a piece to `main`, run through this checklist:
 
-- **Enumerate live links.** `pwsh scripts/list-links.ps1 -Site mywildlifecam`. Note the count.
-- **Test each cloaked link.** For each key, `curl -I https://<apex>/go/<slug>` should return 302. Anything returning 404 means the KV entry is gone but the markdown file still links to it — fix the KV or remove the link from the post.
-- **Flag retired products.** Click through to the merchant. If the product is "currently unavailable" with no restock, mark it retired. Not built yet: the structured KV envelope supports `status: "retired"` → 410 and `replaced_by` → 301 chains, but there's no script wrapper for flipping them — for now, re-run `scripts/add-link.ps1` with the same key (overwrites). Worker handles the rest.
-- **Successor product?** If you have one, set `replaced_by: "<new-slug>"` on the retired entry. Visitors get a 301 to the new review.
-- **Bump `lastUpdated` in frontmatter** on any review where you changed body copy.
-- **Search-and-replace stale phrases.** Grep the site's `src/content/reviews/` for "as of 2026", "released last year", any year reference, any price reference. Replace or remove. Stale dates erode trust faster than anything else.
-- **Ping IndexNow.** Not built yet: there's no `/aff-refresh` slash command and no CLI wrapper. The `submitToIndexNow()` helper exists in `packages/shared-utils/` but isn't wired to a script. For now: manually POST to `https://www.bing.com/indexnow` with your changed URLs, or skip — Google will re-crawl on its own clock.
+- [ ] Bottom Line is yours, not the helper's draft verbatim
+- [ ] `pwsh scripts/lint-voice.ps1 <path>` returns 0 findings
+- [ ] `pnpm --filter <site> build` succeeds
+- [ ] Frontmatter `images.hero` URL loads in a browser
+- [ ] Frontmatter `affiliateUrl` points at the canonical product page (not a Smile or bundle URL by accident — Canopy can verify the ASIN if you're not sure)
+- [ ] Voice scan in your head: no em dashes, no "I tested," no "this isn't for X," no first-person possessives
+- [ ] Scorecard adds to 100% weight
+- [ ] FAQ uses second-person ("How do you...")
+
+After push:
+
+- [ ] GH Actions matrix run succeeded
+- [ ] Live URL renders without DRAFT banner
+- [ ] Cloaked link `/go/<slug>` returns 302 to Amazon with `?tag=mywildlifecam-20`
 
 ---
 
-## Hero vs satellite cadence
+## Fresh-machine setup
 
-The hero (`mywildlifecam.com`) gets a full 90-day cycle every quarter — 5 reviews, refresh sweep, the works. The four satellites (`fussybean.com`, `detailerpicks.com`, `starteraquarium.com`, `gameovergear.games`) each get **one cycle every TWO quarters** until the hero proves the model with organic traffic and affiliate revenue. Do not try to write 5 reviews on 5 sites every quarter — that's 25 reviews per quarter, you will burn out, the hero will starve for attention, and none of the sites will get the focus they need. When the hero shows traction (real affiliate dollars, sustained organic traffic), promote one satellite to hero-tier cadence and demote the hero to maintenance. Re-evaluate every two quarters.
+Full architecture + dependencies are in `docs/SYSTEM.md`. Short version for a fresh laptop:
 
----
+```powershell
+git clone https://github.com/champrt78/affiliate-kit.git affiliate-sites
+cd affiliate-sites
+pnpm install
+pnpm install-plugin     # installs the 4 slash commands + prints account/key checklist
+# fill in ~/.claude/plugins/affiliate-kit/config.json with Cloudflare token
+# fill in ~/.config/last30days/.env with Canopy, Firecrawl, ScrapeCreators, Groq keys
+# clone second-brain repo so /capture has somewhere to write
+```
 
-## What this playbook does NOT cover
-
-- **Amazon Associates application and niche-program enrollment.** Your action, not code. The pattern from `docs/launch-playbook.html` (apply, wait, log the tracking tag) is the same.
-- **PA-API integration for product hero images.** PA-API access is gated on 3 qualifying sales within 180 days of Associates approval. Chicken-and-egg. For now, paste Amazon image URLs into frontmatter manually.
-- **Cloudflare R2 image hosting.** Not enabled. Phase 2. For now, hotlink Amazon URLs and accept they may rotate.
-- **The `/aff-cycle`, `/aff-refresh`, `/aff-status`, `/aff-next` slash commands.** Phase 2/3. For now the workflow above is manual; `/aff-help` (auto-derived from `plugin/commands/`) lists the real commands that exist.
-- **Season-finale or special-product handling.** No special path. Treat seasonal products like any other product — write the review when you have it in hand, retire it via the refresh sweep when it's gone.
-- **Cross-site product reuse.** KV keys are namespaced as `<site>:<slug>` so the same slug on two sites is two separate entries. Don't share a review file across sites — copy and rewrite.
+`pnpm install-plugin` prints the full external-account checklist (GSC, Bing, Amazon Associates, Awin, AvantLink, Visualping).
 
 ---
 
 ## When you get stuck
 
-- **Original design intent:** `docs/2026-05-12-affiliate-kit-design.md`. Read when something feels arbitrary — it's probably not.
-- **What the team did recently:** `docs/sessions/Session_YYYY-MM-DD.md`. The session logs are the running narrative.
-- **Repo conventions and content rules:** `CLAUDE.md` at the repo root. Strategy + content rules + style.
-- **This plan:** `docs/2026-05-14-affiliate-kit-content-readiness-plan.md`. Every decision in this playbook ties back to a unit in that plan.
-- **Basement setup (one-time per machine):** `docs/BASEMENT_SETUP.md`. Re-read if you're starting fresh on a new PC.
+| Need | Go here |
+|---|---|
+| How does X connect to Y? | `docs/SYSTEM.md` (the architecture doc) |
+| What's open right now? | `docs/TODO.md` (the canonical work list) |
+| Voice / forbidden phrases | `docs/voice-doctrine.md` |
+| What did we ship recently? | `docs/PROJECT_STATE.md` (milestones) |
+| What happened yesterday/last week? | `docs/sessions/Session_*.md` |
+| Content framework decisions | `docs/brainstorms/2026-05-15-content-framework-requirements.md` |
+| Historical (pre-pivot) plans | `docs/archive/` |
+| Past research per product | `docs/research/<date>-<slug>.md` |
+| Design exploration history | `docs/playgrounds/` |
+
+---
+
+## What this playbook does NOT cover
+
+- **Amazon Associates application + niche-program enrollment.** Your action, not code. Approval clocks are in the program TOS.
+- **Cloudflare R2 image hosting.** Not enabled. Currently hotlinking Amazon CDN + manufacturer CDN URLs. R2 is a future enhancement when image rot becomes painful.
+- **Click-tracking analytics queries.** Worker writes click events to Cloudflare Analytics Engine; query bundle is deferred until there's enough traffic to learn from.
+- **The deferred `/aff-cycle`, `/aff-refresh`, `/aff-status`, `/aff-next` commands** from the original 2026-05-12 design. Replaced by `docs/TODO.md` for what's-next and Visualping for refresh-sweep automation. Archived design at `docs/archive/2026-05-12-affiliate-kit-design.md`.
+- **Cross-site product reuse.** KV keys are `<site>:<slug>` — same slug on two sites = two separate entries. Don't share content files across sites; write per-site.
