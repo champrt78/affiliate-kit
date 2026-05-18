@@ -6,7 +6,7 @@ deck: "Five soaps across the pH scale, two genuinely opposed doctrines on what t
 products:
   - name: "Q²M Bathe"
     brand: "Gyeon"
-    affiliateUrl: "https://gyeonusa.com/products/q2m-bathe"
+    affiliateUrl: "https://www.amazon.com/GYEON-quartz-Cloth-Shampoo-1000ml/dp/B00OORQWSY"
     tagline: "Highly lubricated, swirl-free, ceramic-coating-friendly weekly maintenance"
     bestFor: "Coated daily drivers when the owner follows the Rag Company school"
     priceFrom: 15.99
@@ -24,7 +24,7 @@ products:
     priceFrom: 18.99
   - name: "Apex Auto Wash 3.0"
     brand: "Phoenix E.O.D."
-    affiliateUrl: "https://phoenixeod.com/products/apex-auto-wash-3-0"
+    affiliateUrl: "https://www.amazon.com/Phoenix-D-Apex-Auto/dp/B0B2YGKKZB"
     tagline: "Veteran-owned, no dyes or fragrances or optical additives, pH neutral"
     bestFor: "Budget-minded buyers who want the no-additives doctrine at half the price of Labocosmetica"
     priceFrom: 17.99

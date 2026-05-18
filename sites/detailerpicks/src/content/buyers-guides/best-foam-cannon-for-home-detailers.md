@@ -18,7 +18,7 @@ products:
     priceFrom: 0
   - name: "Foam Cannon Pro V3.0"
     brand: "MJJC"
-    affiliateUrl: "https://mjjc.com/collections/spare-parts-for-pro-v3-0"
+    affiliateUrl: "https://www.amazon.com/MJJC-Ultimate-Cannon-Pressure-Washers/dp/B0FL17VGJF"
     tagline: "Spare filter, extra O-rings, 1.1mm + 1.35mm orifices in the box: best parts kit at the tier"
     bestFor: "DIY tinkerers and owners with multiple pressure washers at different GPMs"
     priceFrom: 0
