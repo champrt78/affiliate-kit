@@ -37,8 +37,8 @@ products:
 pubDate: 2026-05-17
 lastUpdated: 2026-05-17
 images:
-  hero: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2400&q=80"
-  heroCaption: "Detailing in the home garage. Photo: Unsplash."
+  hero: "https://images.unsplash.com/photo-1761934657948-708146148588?auto=format&fit=crop&w=2400&q=80"
+  heroCaption: "A microfiber drag down the hood, the moment after the final rinse. Photo: Unsplash."
 bottomLine:
   verdict: "Two top picks for ceramic-coated cars, two budget alternatives, and one acidic shampoo for hard-water reset. Pick based on what your paint actually needs, not on hype."
   supporting: "The car wash soap category has two opposed schools of thought on ceramic-coated paint: Dr. Beasley's says use a pure cleaner with no additives; The Rag Company says use a ceramic-infused protective soap to actively maintain the coating. Both schools agree on what to skip: alkaline strippers and 'wax-added' shampoos. Five spec-verified picks here cover both schools plus a hard-water-region acidic shampoo for the every-few-months reset."

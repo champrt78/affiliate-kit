@@ -21,7 +21,7 @@ const latestReviews = sortByDateDesc(allReviews).slice(0, 6);
 const latestGuides = sortByDateDesc(allGuides);
 const featuredGuide = latestGuides[0];
 
-const heroImage = "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2400&q=80";
+const heroImage = "https://images.unsplash.com/photo-1605164598708-25701594473e?auto=format&fit=crop&w=2400&q=80";
 ---
 <MainLayout
   title="DetailerPicks"
@@ -32,7 +32,7 @@ const heroImage = "https://images.unsplash.com/photo-1503376780353-7e6692767b70?
     kicker="Car detailing · cross-brand picks"
     tagline="We line up the major brands by use case so the right pick is obvious. Spec, fit, and paint safety. The one you'd actually use this weekend."
     image={heroImage}
-    imageAlt="Reflections on gloss-black paint"
+    imageAlt="Foam over chrome, the moment before the rinse"
     size="full"
   >
     <div class="hero-actions">
@@ -240,7 +240,7 @@ const heroImage = "https://images.unsplash.com/photo-1503376780353-7e6692767b70?
   }
 
   .reviews {
-    background: var(--color-paper-muted);
+    background: var(--color-paper-mid);
     padding: var(--space-16) var(--space-6);
   }
   .reviews__inner {
@@ -262,10 +262,11 @@ const heroImage = "https://images.unsplash.com/photo-1503376780353-7e6692767b70?
     line-height: 1.6;
   }
 
+  /* Manifesto — ink-dark contrast band: the page's one inversion. */
   .manifesto {
-    background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-paper-muted) 100%);
+    background: #14181C;
     padding: var(--space-20) var(--space-6);
-    border-top: 1px solid var(--color-sage-light);
+    border-top: 1px solid #2A2F35;
   }
   .manifesto__inner {
     max-width: var(--content-max);
@@ -278,23 +279,33 @@ const heroImage = "https://images.unsplash.com/photo-1503376780353-7e6692767b70?
     font-weight: var(--weight-semibold);
     letter-spacing: var(--tracking-wide);
     text-transform: uppercase;
-    color: var(--color-brass);
+    color: var(--color-highlight);
     margin-bottom: var(--space-4);
     display: inline-block;
   }
   .manifesto__title {
     font-family: var(--font-serif);
-    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-size: clamp(2rem, 3.4vw, 2.75rem);
     margin: 0 0 var(--space-6);
-    color: var(--color-paper-ink);
-    letter-spacing: -0.012em;
+    color: #FBFAF7;
+    letter-spacing: -0.018em;
+    font-weight: 400;
   }
   .manifesto p {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     font-size: var(--text-lg);
     line-height: var(--leading-normal);
-    color: var(--color-paper-ink);
+    color: #BFC5CC;
     margin: 0 0 var(--space-4);
+  }
+  .manifesto :global(.cta--ghost) {
+    color: var(--color-highlight);
+    border-color: rgba(247, 233, 200, 0.4);
+  }
+  .manifesto :global(.cta--ghost:hover) {
+    background: var(--color-highlight);
+    color: #14181C;
+    border-color: var(--color-highlight);
   }
   .manifesto__actions {
     display: inline-flex;

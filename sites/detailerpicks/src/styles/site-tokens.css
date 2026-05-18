@@ -1,54 +1,59 @@
 /* ================================================================
-   detailerpicks — site-specific design tokens
-   Overrides the shared @affkit/shared-styles tokens with the
-   "premium garage / workshop-craft" register locked in
-   docs/competitive-recon-detailerpicks-2026-05-17.md
+   detailerpicks — site-specific design tokens (v2: Chrome & Suds)
+   Replaces the v1 charcoal+electric-blue+amber register with the
+   "Chrome & Suds" merged-mockup direction locked 2026-05-18:
+   off-cream paper + steel-blue brand + chrome accents + warm
+   highlight, Instrument Serif headlines, Inter Tight body.
+   Old tokens preserved at site-tokens.charcoal.bak.css for revert.
    ================================================================ */
 
 :root {
-  /* === Palette overrides === */
+  /* === Palette === */
 
-  /* Surfaces — graphite/charcoal instead of cream */
-  --color-paper:        #1A1D21;  /* primary surface: matte charcoal */
-  --color-paper-muted:  #14171A;  /* deeper section bg */
-  --color-cream:        #232830;  /* accent surface for callouts */
-  --color-paper-ink:    #E8ECEF;  /* light text on dark surfaces */
+  /* Surfaces — off-cream and bright cream */
+  --color-paper:        #F4F2EE;  /* primary surface: off-cream */
+  --color-paper-muted:  #ECEAE4;  /* deeper section bg (mid cream) */
+  --color-cream:        #FBFAF7;  /* brightest cream: header, callouts */
+  --color-paper-ink:    #14181C;  /* near-black text on cream */
+  --color-paper-mid:    #E1DED5;  /* deepest cream tint */
 
-  /* Brand — electric blue replaces forest */
-  --color-forest:       #3D7BD9;  /* primary brand: electric blue */
-  --color-forest-mid:   #5494E8;  /* mid blue — hovers */
-  --color-forest-light: #7CB1F0;  /* light blue — secondary */
+  /* Brand — steel blue replaces electric blue */
+  --color-forest:       #2C5E8C;  /* primary brand: steel blue */
+  --color-forest-mid:   #1E456A;  /* deep steel — hover/active */
+  --color-forest-light: #7BA0C5;  /* light steel — secondary */
 
-  /* Accent — brass becomes a warm "shop" accent, more amber-leaning */
-  --color-brass:        #C9A24E;  /* warm amber — CTAs */
-  --color-brass-hover:  #B58E3A;
-  --color-brass-soft:   #3D3424;  /* dim amber tag bg on dark */
+  /* Accent — warm highlight (tags, callouts on dark sections) */
+  --color-brass:        #2C5E8C;  /* re-aliased to steel; brass legacy removed */
+  --color-brass-hover:  #1E456A;
+  --color-brass-soft:   #F7E9C8;  /* warm cream tint for tag backgrounds */
+  --color-highlight:    #F7E9C8;  /* warm highlight — readable on ink-dark sections */
 
-  /* Sage — secondary muted, gunmetal */
-  --color-sage:         #7C8693;  /* steel/gunmetal */
-  --color-sage-light:   #2A3038;  /* dark sage for subtle borders */
+  /* Sage — secondary muted, chrome silver */
+  --color-sage:         #BCBFC2;  /* chrome silver */
+  --color-sage-light:   #D6D2C8;  /* soft cream-tinted divider */
 
   /* Semantic remap — components consume these */
   --color-bg:           var(--color-paper);
   --color-fg:           var(--color-paper-ink);
-  --color-muted:        #98A4B5;
-  --color-muted-soft:   #6B7785;
-  --color-border:       var(--color-sage-light);
-  --color-border-strong: #3A4250;
-  --color-surface:      var(--color-paper-muted);
-  --color-surface-alt:  #20252C;
+  --color-muted:        #6A7079;
+  --color-muted-soft:   #8A8F95;
+  --color-border:       #D6D2C8;
+  --color-border-strong: #BCBFC2;
+  --color-surface:      var(--color-cream);
+  --color-surface-alt:  var(--color-paper-muted);
 
   --color-brand:        var(--color-forest);
   --color-brand-fg:     #FFFFFF;
-  --color-accent:       var(--color-brass);
+  --color-accent:       var(--color-forest);
   --color-accent-fg:    var(--color-paper);
 
   --color-link:         var(--color-forest);
-  --color-link-hover:   var(--color-brass);
+  --color-link-hover:   var(--color-forest-mid);
 
-  /* === Typography overrides ===
-     Space Grotesk for display (geometric, technical-precision feel),
-     Inter for body. Loaded via Google Fonts in BaseLayout. */
-  --font-serif: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
-  --font-sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /* === Typography ===
+     Instrument Serif for editorial display (italic-leaning, magazine
+     register), Inter Tight for body. Loaded via Google Fonts in
+     MainLayout. */
+  --font-serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-sans:  "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
