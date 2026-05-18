@@ -13,7 +13,9 @@ classification: "review"
 pubDate: 2026-05-17
 lastUpdated: 2026-05-17
 images:
-  hero: ""
+  hero: "https://www.tactacam.com/media/catalog/product/x/_/x_3.0_1_1.png?quality=80&fit=bounds&height=772&width=772&canvas=772:772"
+  heroCaption: "Tactacam Reveal X 3.0 cellular trail camera. Photo: Tactacam manufacturer media."
+  imageScale: 1.2
 bottomLine:
   verdict: "_The Bottom Line is being written._"
 scorecard:

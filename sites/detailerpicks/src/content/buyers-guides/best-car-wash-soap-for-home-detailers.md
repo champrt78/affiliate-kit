@@ -37,7 +37,8 @@ products:
 pubDate: 2026-05-17
 lastUpdated: 2026-05-17
 images:
-  hero: ""
+  hero: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2400&q=80"
+  heroCaption: "Detailing in the home garage. Photo: Unsplash."
 bottomLine:
   verdict: "_The Bottom Line is being written._"
 buyIf:
