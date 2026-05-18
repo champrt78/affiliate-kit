@@ -6,7 +6,7 @@ deck: "When seven cannons foam roughly the same, the differentiators are build q
 products:
   - name: "Hydro PF22"
     brand: "MTM Hydro"
-    affiliateUrl: "https://www.amazon.com/Hydro-Foam-Cannon-Wand-Bottle/dp/B083QTGTBM"
+    affiliateUrl: "https://www.amazon.com/Hydro-Foam-Cannon-Wand-Bottle/dp/B083QTGTBM?tag=mywildlifecam-20"
     tagline: "Nickel-plated brass head, reinforced fan blades, industry-standard durability"
     bestFor: "Buyers prioritizing long-term durability and corrosion resistance"
     priceFrom: 80
@@ -18,7 +18,7 @@ products:
     priceFrom: 0
   - name: "Foam Cannon Pro V3.0"
     brand: "MJJC"
-    affiliateUrl: "https://www.amazon.com/MJJC-Ultimate-Cannon-Pressure-Washers/dp/B0FL17VGJF"
+    affiliateUrl: "https://www.amazon.com/MJJC-Ultimate-Cannon-Pressure-Washers/dp/B0FL17VGJF?tag=mywildlifecam-20"
     tagline: "Spare filter, extra O-rings, 1.1mm + 1.35mm orifices in the box: best parts kit at the tier"
     bestFor: "DIY tinkerers and owners with multiple pressure washers at different GPMs"
     priceFrom: 0
