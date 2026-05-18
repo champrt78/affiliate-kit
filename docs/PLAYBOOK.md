@@ -16,7 +16,7 @@ The hard rule that makes this work, not slop: **the Bottom Line is human, writte
 
 ---
 
-## The 4 slash commands
+## The 5 slash commands (the Kit)
 
 All installed via `pnpm install-plugin`. All version-controlled in `plugin/commands/`.
 
@@ -27,9 +27,20 @@ All installed via `pnpm install-plugin`. All version-controlled in `plugin/comma
 **Why it exists:** So you don't have to choose between "lose the idea" and "break the current thread." File it, keep going.
 **Example:** `/capture a dashboard that tells me what to do next for each site`
 
+### `/scout-topics [--<seed>]`
+
+**When:** You don't know what to write next, or you want to dig into a category before researching a specific product.
+**What it does:**
+- **No flags:** scans existing content gaps + `docs/TODO.md` + `docs/research/` + hero-vs-satellite cadence, surfaces 5-10 candidate topics ranked by readiness (high / medium / speculative).
+- **With seed flag** (e.g. `--wheel-cleaning`, `--cellular-trail-cam`, `--espresso-grinder`): maps seed to site, fires parallel Firecrawl + `/last30days` + optional Canopy lookup, returns 3-5 candidate angles for that category with reader-segment framing.
+
+Output ends with a `Next:` line recommending the top candidate.
+**Why it exists:** Discovery layer that sits BEFORE `/research-product`. Surfaces what to research; `/research-product` is the deep-dive once you've picked.
+**Example:** `/scout-topics --wheel-cleaning` or just `/scout-topics`
+
 ### `/research-product <topic>`
 
-**When:** You want to write about a product or category and need source-attributed data before scaffolding.
+**When:** You know what you want to write about and need source-attributed data before scaffolding.
 **What it does:** Parallel-fires four research jobs:
 - **Firecrawl search** → product spec pages
 - **`/last30days`** → Reddit threads + comments, owner-report patterns
@@ -38,7 +49,7 @@ All installed via `pnpm install-plugin`. All version-controlled in `plugin/comma
 
 Synthesizes findings into `docs/research/<date>-<slug>.md` with verified specs, community signal, reviewer transcript highlights, and a recommendation on piece type (single-product review vs buying guide).
 
-**Why it exists:** This is the 30-60 min per piece you used to spend manually researching. Now it runs while you do other stuff. Quality of synthesis > speed.
+**Why it exists:** This is the 30-60 min per piece you used to spend manually researching. Now it runs while you do other stuff.
 **Example:** `/research-product Browning Strike Force Elite HP5`
 
 ### `/scaffold-piece <args>`
@@ -54,6 +65,78 @@ Synthesizes findings into `docs/research/<date>-<slug>.md` with verified specs, 
 **What it does:** Reads the piece's frontmatter (scorecard, buyIf, flaws data) and 2-3 prior shipped Bottom Lines on the same site for voice anchor. Drafts 3 verdict options (Option A = Buy/Skip, B = doctrine angle, C = specific picks) + a supporting paragraph. Outputs to chat. **Never writes to the file.** You pick one, edit it in your voice, paste it in.
 **Why it exists:** The hard part of the Bottom Line isn't writing 20 words — it's picking the framing. This shortcuts that.
 **Example:** `/bottom-line-helper best-pressure-washer-for-home-detailers`
+
+---
+
+## Other Claude Code skills the workflow uses
+
+The Kit's slash commands call into these under the hood. You CAN invoke them directly when useful, but usually `/research-product` or `/scout-topics` does it for you.
+
+| Skill | What it does | Direct-use example |
+|---|---|---|
+| `/last30days <topic>` | Deep research across Reddit, X, YouTube, TikTok, Instagram, Hacker News, Polymarket, web. 10+ sources, synthesized into a cited report. Saves to `~/Documents/Last30Days/`. | `/last30days mywildlifecam detailerpicks 2026 ranking` |
+| `/watch <url>` | Downloads a video (YouTube, Vimeo, etc.) via yt-dlp, extracts frames + timestamped transcript (native captions or Whisper API fallback), gives Claude everything it needs to answer questions about the video. | `/watch https://youtube.com/watch?v=XXX what's the verdict?` |
+| `/brief` | Session-start catch-up. Reads last 5 session logs + PROJECT_STATE + MEMORY + recent git activity, produces a structured "where we are" briefing in chat. Read-only. | `/brief` |
+| `/wrap` | End-of-session safety net. Reads current `Session_YYYY-MM-DD.md`, identifies gaps between inline writes and conversation context, appends what's missing. Also bumps PROJECT_STATE on milestones. | `/wrap` |
+| `/remember` | Save persistent memory file — preferences, conventions, decisions that should carry across sessions. | Auto-invoked when the model says "I'll remember that." |
+
+There's also a long list of cross-project skills (compound-engineering's `ce-brainstorm`, `ce-plan`, `ce-work`, `ce-code-review`, `ce-frontend-design`, etc.) that activate when relevant. Ask Claude what skills are available if you want to see the full list mid-session.
+
+---
+
+## Repo scripts (PowerShell)
+
+In `scripts/`. Used by the slash commands above, but you can invoke them directly too.
+
+| Script | Purpose | Example |
+|---|---|---|
+| `install-plugin.ps1` | Installs the Kit's slash commands into `~/.claude/commands/` and prints the fresh-machine setup checklist. Re-run after `git pull` to refresh commands. | `pnpm install-plugin` |
+| `new-review.ps1` | Scaffolds a single-product review markdown file from `templates/review.md.tmpl`. | `pwsh scripts/new-review.ps1 -Site mywildlifecam -Slug ... -ProductName ...` |
+| `buyers-guide.ps1` | Scaffolds a buying-guide markdown file from `templates/buyers-guide.md.tmpl`. | `pwsh scripts/buyers-guide.ps1 -Site detailerpicks -Slug ...` |
+| `add-link.ps1` | Writes a cloaker KV entry: `<site>:<slug>` → `{ url, tag, merchant, status }`. Called by `/scaffold-piece`. | `pwsh scripts/add-link.ps1 -Site detailerpicks -Slug X -Url ...` |
+| `list-links.ps1` | Lists all KV entries, optionally filtered by site. | `pwsh scripts/list-links.ps1 -Site mywildlifecam` |
+| `remove-link.ps1` | Deletes a KV entry after confirmation. | `pwsh scripts/remove-link.ps1 -Slug X` |
+| `lint-voice.ps1` | Greps a markdown file for forbidden phrases per `docs/voice-doctrine.md`. Returns 0 findings = clean. | `pwsh scripts/lint-voice.ps1 sites/detailerpicks/src/content/buyers-guides/X.md` |
+| `deploy.ps1` | Manual override for deploying one site. Wraps `pnpm --filter <site> build` + `wrangler pages deploy`. Useful for hotfixes or force-redeploys without committing. | `pwsh scripts/deploy.ps1 -Site mywildlifecam` |
+
+---
+
+## APIs the system hits
+
+| API | What it gives us | Where the key lives | Cost |
+|---|---|---|---|
+| **Canopy API** | Amazon product data via GraphQL — verified ASINs, current prices, MCP-compatible. Used to spot-check ASINs before they go into a piece. | `~/.config/last30days/.env` → `CANOPY_API_KEY` | Free tier |
+| **Firecrawl** | Scrape JS-rendered SPAs cleanly, search the web with citations, return LLM-optimized markdown. Used heavily by `/research-product`. | `~/.config/last30days/.env` → `FIRECRAWL_API_KEY` | Free tier |
+| **ScrapeCreators** | Reddit comments + TikTok + Instagram captions. The single biggest unlock for owner-report depth. | `~/.config/last30days/.env` → `SCRAPECREATORS_API_KEY` | 100 free calls to start |
+| **Groq Whisper** | Fast Whisper API for transcribing YouTube videos when native captions are missing. `/watch` uses this. | `~/.config/last30days/.env` → `GROQ_API_KEY` | Free tier (generous) |
+| **OpenAI Whisper** | Same as Groq, used as fallback. | `~/.config/last30days/.env` → `OPENAI_API_KEY` | Paid per minute |
+| **Brave Search** | Privacy-respecting web search backend. Alternative to Bing. | `~/.config/last30days/.env` → `BRAVE_API_KEY` | Free tier |
+| **Exa** | Semantic web search (vector-based, finds related content). | `~/.config/last30days/.env` → `EXA_API_KEY` | 1K free/month |
+| **xAI Grok** | X/Twitter search via Grok API. Currently no credits — would need $5 minimum spend to unlock the $150/mo data-sharing tier. | `~/.config/last30days/.env` → `XAI_API_KEY` | Paid (deferred) |
+| **Cloudflare API** | Programmatic control of Pages projects, Workers, KV, DNS. Used by GH Actions deploy + KV scripts. | `~/.claude/plugins/affiliate-kit/config.json` (`tokens.cloudflare_api`) + GH secret `CLOUDFLARE_API_TOKEN` | Free |
+| **Cloudflare Analytics Engine** | Worker writes one event per cloaked-link click. Query bundle deferred until traffic justifies. | (no key — auto via Worker binding) | Free up to 25M events/mo |
+| **Visualping API** | Auto-monitor product pages for price/spec drift. 5 jobs free. Notifications by email. | Web dashboard (no API key in repo) | Free up to 5 jobs |
+| **Google Search Console** | Indexing status, sitemap submission, ranking + impression data per query. | Web dashboard (no API key wired yet — service-account API access deferred) | Free |
+| **Bing Webmaster Tools** | Bing's equivalent of GSC. Can import settings from GSC. | Web dashboard | Free |
+| **Amazon Associates** | The primary affiliate program. Each click through `/go/<slug>` is reconstructed with `?tag=mywildlifecam-20`. | Web dashboard; tracking ID `mywildlifecam-20` is baked into KV values | Free; 3-sale/180-day approval clock |
+| **Awin** | Network for direct brand programs (alternative when Amazon doesn't carry a product). | Web dashboard (application pending) | Free |
+| **AvantLink** | Outdoor-niche affiliate network (Tactacam, etc.). | Web dashboard (application pending) | Free |
+
+---
+
+## External accounts at a glance
+
+| Account | Purpose | Status |
+|---|---|---|
+| Cloudflare | Pages × 5, Worker, KV, DNS | Live |
+| GitHub | Repo + Actions deploy matrix | Live (`champrt78/affiliate-kit`) |
+| Google Search Console | Indexing | mywildlifecam + detailerpicks verified, sitemap submitted |
+| Bing Webmaster Tools | Bing indexing | Account active, sites being added |
+| Amazon Associates | Affiliate program | Approved, tax interview done, 3-sale clock not yet started |
+| Awin | Alternative affiliate network | Application submitted, pending |
+| AvantLink | Outdoor-niche network | Application submitted, pending |
+| Visualping | Product page change monitoring | Active, 5 jobs running weekly |
+| 8 API key services | Research pipeline | All verified in `.env`, see API table above |
 
 ---
 
