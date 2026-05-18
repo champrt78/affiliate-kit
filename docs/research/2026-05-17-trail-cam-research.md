@@ -92,9 +92,96 @@ Direct head-to-head of the full Tactacam Reveal cellular lineup. Reviewer claims
 
 This validates the multi-pick architecture for the cellular buying guide — every Tactacam model has a defensible "best for X" angle.
 
+## Tactacam Reveal X deep-dive (multi-reviewer cross-reference)
+
+ScrapeCreators-enabled `/last30days` run for "Tactacam Reveal X owner experience" pulled 3 inline YouTube transcripts and surfaced 6 deal-thread Reddit posts. Synthesizing across multiple credible reviewers:
+
+### Specs + design (cross-confirmed across multiple reviewers)
+
+| Spec | Detail | Source |
+|---|---|---|
+| **Price** | $99-$119 retail, "in line with $80-$150 cellular cam competitors" | Review This Thing, Jase Outdoors |
+| **Resolution** | 24 megapixel still | Jase Outdoors |
+| **Trigger speed** | 0.3 second; effective at ~30-35 yards verified, 96ft advertised | Review This Thing |
+| **Detection range** | 96 ft advertised | Review This Thing |
+| **Battery** | 12 AA batteries (lithium recommended for performance). Battery compartment is removable but Tactacam doesn't sell spare housings | Review This Thing |
+| **Battery life** | Months-and-months at "transmit twice a day" setting; cheap AAs still give 2000-2500 photos | Reveal by Tactacam, Review This Thing |
+| **SD card** | Standard size (not micro) — class 10 U3 REQUIRED. Other cards cause "half pictures or quarter pictures" | Review This Thing, Reveal by Tactacam |
+| **Cellular** | 4G required (not 3G). Choose Verizon OR AT&T per camera based on signal at the location, NOT your phone carrier | Reveal by Tactacam |
+| **Plans** | $5/mo per camera entry; up to $13/mo for unlimited. Discounts for multiple cameras + annual prepay. **Month-to-month with off-season suspend.** | Review This Thing |
+| **Antenna** | Pivots front-back, can tuck against tree, removable for transport | Review This Thing |
+| **Weight** | <2 lbs | Review This Thing |
+| **Weatherproofing** | Confirmed under summer heat + bad storms; no water intrusion | Review This Thing |
+| **Nighttime flash** | Low-glow LEDs (visible at very close range; box says no-glow which one reviewer pushed back on) | Jase Outdoors |
+
+### Honest cons — disclose in the piece
+
+- **Burst mode sends only the 2nd photo of 5.** "If I'm paying for the unlimited plan, I want all five pictures" — Jase Outdoors. The other 4 require pulling the card.
+- **Video doesn't transmit to phone.** Camera records video, but only photos go to your phone; must pull the SD card for video. **Means it's NOT a true "set-and-forget" cellular** — Review This Thing.
+- **HD photos cost extra.** $5 for 50 HD photos add-on; default phone transmission is low-quality for fast send.
+- **LCD screen on the inside.** Have to open the camera to see what the lens sees — "kind of a pain in the butt when you can't see what you're getting in the screen" especially when mounting high. Wi-Fi live preview helps but only at close range.
+- **App is "pretty flawed."** Can't rotate photos to full size; notifications don't arrive promptly; "feels like I have to mash this button like eight times" — Jase Outdoors.
+- **Sold out everywhere** at launch (and persistently low stock). Multiple reviewers had to call ahead or drive to specific retailers. Worth checking Walmart, Academy, Whitetails of America.
+
+### Reviewer verdicts (cross-reference)
+
+- **"Review This Thing" (2021, used Reveal X for 2 months):** 5/5 fit, 5/5 as-advertised, 5/5 construction-and-durability. "Should you buy this thing? I think it's pretty clear that we like it. So because of that, yes, 5 out of 5."
+- **Jase Outdoors (2020, field test):** "As a trail camera this thing is really good — fast trigger speed, image quality is super good, nighttime photos so good I was blown away." Critique: "the cellular benefits [are] limited" because you still have to pull the card for burst series + video. Verdict: "for the price, the image quality, you really can't beat it."
+- **Prior reviewer summary across "few hundred reviews":** Vast majority 5/5. Top 3 complaints: (1) can't find them in stock, (2) some feel signal is worse than Gen 1, (3) some say image quality not as good as Gen 1 — but Review This Thing's own experience didn't see those issues.
+
+### Tactacam Reveal X 3.0 — official spec sheet (Tactacam.zendesk help docs)
+
+Direct from Tactacam's own support docs. Spec-verification layer for the single-product piece. **Verbatim from manufacturer:**
+
+| Spec | Value |
+|---|---|
+| **Resolution (photo)** | 4K (UHD), 2.5K (WQHD) selectable |
+| **Resolution (video)** | 1080p |
+| **IR range** | 96+ feet |
+| **PIR detection angle** | 45° |
+| **Flash type** | Low-Glow IR — "dramatically reduces visible flash during nighttime operation while emitting a faint red glow" |
+| **Lens** | F=6mm, F/2.0 aperture |
+| **Field of View** | 60° |
+| **IR-Cut** | Auto IR-Cut-Remove (filter auto-removes at night) |
+| **Trigger speed** | **0.35 seconds** (Pan said 0.3s; near-identical) |
+| **Day/night mode** | Color (day), Black & White (night) |
+| **Storage** | 8GB internal + optional SD card (full-size; class 10, U3 rating, 16-32GB, **minimum 90 MB/sec write speed**) |
+| **Power** | 12 AA batteries (cartridge) OR external 12V (6.2-12V operation range; 12V-2A external DC; barrel plug 4x1.7mm) |
+| **External power options** | Tactacam-compatible 12V battery packs or solar panels |
+| **Cellular** | 4G LTE wireless, 1 antenna |
+| **Cellular features** | Thumbnail auto-send; **HD photo or video on request** via app; data charges apply |
+| **Upload frequency** | Instant / once daily / twice daily / four times daily |
+| **Waterproof rating** | **IP66** (dust-tight + protected against powerful water jets) |
+| **Operating temperature** | -25°C to 60°C (-13°F to 140°F) |
+| **Operating humidity** | 5% to 90% |
+| **Dimensions** | 3.86" x 3.1" x 5.9" |
+| **Weight** | ~1 lb |
+| **Certifications** | FCC, RoHs |
+
+**Source:** [Tactacam zendesk — REVEAL 3.0 Full Specifications & Features](https://tactacam.zendesk.com/hc/en-us/articles/37535662406811-REVEAL-3-0-Full-Specifications-Features)
+
+**Notable spec resolutions vs reviewer commentary:**
+- **Trigger speed 0.35s** matches Pan's reviewer claim of 0.3s closely (rounding).
+- **Class 10 U3 SD card requirement is OFFICIALLY confirmed** at 90 MB/sec write minimum. Review This Thing's "you need a class 10 U3 SD card" warning is verified manufacturer spec.
+- **8GB internal storage** is something the YouTube reviewers didn't mention but is meaningful — allows operation without an SD card for very-low-volume use.
+- **6.2-12V operating range** allows solar panel + external battery combinations even at lower voltages.
+
+### Synthesis for the Tactacam Reveal X single-product review
+
+**Lead with the buying-guide reality:** Tactacam Reveal X is the "cheapest reliable cellular trail cam" pick across multiple reviewer comparisons. It's NOT trying to be a Spypoint Flex or Moultrie Edge competitor on feature surface; it's trying to be the best entry-level cellular at a $100-$120 price point and it succeeds at that.
+
+**Bottom Line angle:**
+> Buy it if you want a reliable, weatherproof cellular trail cam for under $130 and you understand cellular tradeoffs: low-res phone previews, no transmitted video, and a class-10 SD card requirement. Skip it if you want true set-and-forget operation (the burst-photo-second-only and no-video-over-cellular limits mean you'll still pull the card sometimes), or if you want the highest image quality the cellular tier offers (Spypoint Flex G36 or Stealth Cam DS4K Transmit are the picks there).
+
+**Use cases (per the comparison-and-fit framework):**
+- **Best for:** Off-grid budget cellular, multi-camera setups (cheapest unlimited plan + multi-cam discounts), seasonal hunters who suspend service Jan-Sep
+- **Skip if:** You want true zero-touch operation, need transmitted video, or hate having to physically swap a class-10 SD card
+
+This is now a multi-reviewer-attributed single-product review ready to draft.
+
 ## What we still need
 
 - `/watch` a Moultrie Mobile Edge 2 Pro real-world long-term review (not the launch hype) — the "got burned" caveat needs context
-- ScrapeCreators for Reddit owner-report signal (multi-year data, not first-impression)
-- Spypoint plan price-hike thread context (mywildlifecam piece #2 mentioned this; X cookies would surface it)
-- A Browning Strike Force Elite HP5 full review video before drafting that single-product piece
+- Long-term Tactacam Reveal X review video ("Tactacam Reveal X's 4+ years later" by Arrow and Angler is in the discovery list — `/watch` that next for durability data beyond the 2-month and 5-month windows)
+- Spypoint plan price-hike thread context (mywildlifecam piece #2 mentioned this; X cookies or xAI key would surface it)
+- A Browning Strike Force Elite HP5 review (different product class — non-cellular value pick — but worth covering for the buying-guide breadth)

@@ -120,6 +120,74 @@ Direct head-to-head testing of premium foam cannons. Reviewer's framing: "if you
 - **Best foam thickness/dwell:** CarGuys Foam Zooka Pro
 - **Skip this guide if:** you don't have a real pressure washer (need 1.2 GPM minimum, 2.1+ GPM ideal per Pan's pH-education breakdown); foam cannons don't work on garden hoses
 
+## Ceramic-coating wash chemistry — doctrine split (load-bearing for piece-1)
+
+Two authority sources gave directly conflicting advice on what soap to use on a ceramic-coated car. **This split is the most useful content angle we have** — readers searching for "best ceramic-safe car wash soap" land on both sides of this debate and need a clear synthesis.
+
+### Position A: The Rag Company (Levi) — "Use a ceramic-infused protective soap"
+
+Full pH-scale framework presented across all categories:
+
+| pH range | Category | Use case |
+|---|---|---|
+| pH 1 | Acidic | Mineral/water-spot removers. Use gloves. Foam cannon or bucket. Closest analog: water-spot remover sprays |
+| pH 5.5-7 | **Protective soaps** (often ceramic-infused) | Maintain/revive existing ceramic coatings. Adds light protection on uncoated cars (not as long-lasting as real coating). May not foam as well because of "abundance of protective properties" |
+| ~pH 7 | pH-neutral daily soap | Weekly washes. "Won't remove wax/sealant, won't add wax/sealant, just clean" |
+| ~pH 7.5-8.5 | Slightly alkaline (still neutral-ish) | Has degreasers OR increased lubricity for safer wash. For dirtier vehicles |
+| pH >10 | True alkaline | Pre-wash, decontamination, heavy grime. **Strips wax/sealants** — bad for coated cars |
+
+Rag Co. position: a coating-maintaining soap that ACTIVELY adds ceramic chemistry to your wash is the right move for a ceramic-coated car.
+
+**Source:** [The Rag Company — What Car Wash Soap Is Best For YOU? | Wash & Foam Cannon Tips](https://www.youtube.com/watch?v=IbXbeTpDRMs)
+
+### Position B: Dr. Beasley's — "Use a pure soap, let the coating do the protection"
+
+Dr. Beasley's (ceramic-coating manufacturer) recommends the **opposite** — a "pure soap" with NO additives:
+
+- A pure soap is "one that all it's going to do is clean" — no carnauba, no SiO2, no silicons, no glossing agents
+- Reason: those additives "could bond to the paint" and interfere with the ceramic coating's chemistry over time
+- Must be **free-rinsing** — slimy/sticky soaps leave a film that reduces water beading and "makes the paint kind of dull looking"
+- Must be **premium quality** with real cleaning agents + lubrication — "there's zero benefit to using just water"
+
+Dr. Beasley's full ceramic-coated-car wash protocol (specific, actionable, worth carrying into the piece):
+1. **Visual + tactile inspection** of wash mitts and drying towels before every use (sharp debris embedded in fibers → swirls and scratches → wears off the ceramic coating)
+2. **Back-and-forth motions starting from center of the panel, working outward** — NOT circular motions. Circular motions loosen dirt then grind it back in.
+3. **Light passes only** — "surface dirt isn't going to want to stick to the paint" on ceramic — don't push hard or scrub
+4. **Divide large panels** (hood, roof, trunk lid) into smaller sections; wash + rinse one at a time to avoid soap drying on the car
+5. **Dry with compressed air / leaf blower first** to blow most water off, then microfiber drying towel for the rest
+6. Optional **drying aid** to create lubrication between towel and paint, avoid water marks
+
+**Source:** [Dr. Beasley's — Q: How Do I Wash a Ceramic Coated Car? | Decision Guides](https://www.youtube.com/watch?v=v95j8sCzK9w)
+
+### Verified product specs (Firecrawl scrapes — 2026-05-17)
+
+Direct from manufacturer + retailer product pages. **No spec is paraphrased; quotes are verbatim from the source.** This is the spec-verification layer the comparison-and-fit framework requires before publishing.
+
+| Product | Price | pH | Dilution | Sizes | Key claims (verbatim) | Source |
+|---|---|---|---|---|---|---|
+| **CLEAN. Shampoo by Pan The Organizer** | $18.99 (16oz) - $64.99 (gallon) | pH neutral | 1:500 to 1:256 (1-2 oz / 4 gal water) | 16oz, gallon | "Premium blend of cosmetic-grade surfactants; readily biodegradable; excellent lubrication & cleaning power; pH neutral; wetting agent" | [cleanbypan.com/products/clean-shampoo](https://cleanbypan.com/products/clean-shampoo) |
+| **Gyeon Q²M Bathe** | $15.99 (500ml) | pH neutral | Up to 500:1 | 500ml, 1000ml, 4000ml | "Highly lubricated ceramic coating wash soap... swirl-free... tons of cleaning power and suds... ideal for weekly or biweekly wash maintenance" | [gyeonusa.com/products/q2m-bathe](https://gyeonusa.com/products/q2m-bathe) |
+| **Labocosmetica SÈMPER** | $21.95 (500ml) | Neutral | 1:800 to 1:1200 | 500ml (16.9oz), 4.5L (1.18gal) | "Neutral, hyper-concentrated... free of waxes or gloss enhancers, ensuring a streak-free finish... safe on nano coatings, sealants, and natural waxes (including delicate carnauba-based layers)... 'Easy To Rinse' effect" | [labocosmetica.store/products/labocosmetica-semper](https://www.labocosmetica.store/products/labocosmetica-semper) |
+| **Phoenix E.O.D. Apex Auto Wash 3.0** | $17.99 (pint) | pH neutral | (not specified on page) | Pint, Gallon | "VETERAN OWNED AND OPERATED... contains no dyes, fragrances, or 'optical' additives... thick, highly lubricious suds" | [phoenixeod.com/products/apex-auto-wash-3-0](https://phoenixeod.com/products/apex-auto-wash-3-0) |
+| **Pan The Organizer Demineralizing Shampoo** (acidic pH 1 category — Rag Co.'s framework) | (via carsupplieswarehouse) | Acidic | 1:10 (foam cannon) | (various) | "Acidic pH formula... eliminates mineral buildup & water spots... restores hydrophobic performance by dissolving mineral contamination that clogs coating pores... ideal for hard water areas" | [carsupplieswarehouse.com — Pan Demineralizing](https://www.carsupplieswarehouse.com/products/clean-by-pan-the-organizer-demineralizing-shampoo-acidic-mineral-deposit-remover) |
+
+**Cross-reference notes:**
+- **Labocosmetica SÈMPER's "free of waxes or gloss enhancers" claim is the strongest match for Dr. Beasley's "pure soap" doctrine.** That's the single highest-confidence pick for "best ceramic-safe maintenance soap" if reader trusts the Dr. Beasley's school.
+- **Gyeon Q²M Bathe and CLEAN. Shampoo both claim "swirl-free" + "high lubrication"** but neither explicitly says "no wax or gloss enhancers." Both Pan-side products land in The Rag Company's "protective soap" school.
+- **Phoenix E.O.D. Apex Auto Wash 3.0** is veteran-owned, no dyes/fragrances/optical-additives — strongest "no additives, pure cleaner" claim of the bunch. Worth a top-tier callout for budget-minded readers wanting Labocosmetica's purity at half the price ($17.99 vs $21.95).
+- **Pan's Demineralizing Shampoo** is the right pick for the acidic-pH-1 "use case 4" slot in our buying guide (mineral deposits, hard water). Same brand as the maintenance Clean. Shampoo — both in one wash kit possible.
+
+## Our synthesis for piece-1
+
+Both positions are credible. The reconciliation worth carrying in the buying guide:
+
+- **If you trust your coating's manufacturer:** follow their guidance. Most premium coating brands (Gtechniq, Gyeon, CarPro) recommend pure/cleaning-only soaps, aligning with Dr. Beasley's position.
+- **If you bought a budget coating or DIY-applied one:** ceramic-infused protective soaps from Rag Co.'s framework can help reinforce a coating that's already wearing.
+- **Both camps agree** on what to AVOID: alkaline strippers (pH 10+), anything with "wax/sealant added," touchless-only chemistry on contact washes.
+- **The Rag Co.'s slightly-alkaline-with-degreaser category** is useful as a "halfway pre-wash" pick for cars that get heavily dirty (bird poop, tree sap, road tar) but where the owner doesn't want to step up to a full strip-wash.
+
+This split lets us write a real "fit" piece — different reader segments get genuinely different picks based on which manufacturer's protocol they trust, not "best for everyone."
+
 ## Topic 3: Best Ceramic Spray Sealant (LOW-SIGNAL SOURCE — RE-RESEARCH NEEDED)
 
 The "Best Ceramic Spray Sealant 2026 Top 5" video returned **AI-narrated marketing copy** that reads like product-listing summaries, not real reviews. Phrases like "from the moment you unbox, the packaging communicates a craft-minded approach" and "exceptional durability, rapid curing, and effortless spray nozzle control that minimizes streaks" are obvious tells. The #1 pick (Elene's 264112) is described as a sealant for "wood, glass, metal, and ceramic" — that's a generic surface sealant, NOT a car-specific ceramic spray.
