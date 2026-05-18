@@ -24,7 +24,13 @@ products:
     bestFor: "Gift / first camera"
 images:
   hero: "https://images.unsplash.com/photo-1474511320723-9a56873867b5?auto=format&fit=crop&w=2000&q=80"
-  heroCaption: "Red fox at the edge of cover. Photo: Unsplash."
+  heroCaption: "Wildlife at the edge of cover. Photos: Unsplash."
+  # Magazine 1+2 hero on the home page featured card — large fox feature
+  # with two stacked smaller wildlife shots on the right.
+  heroImages:
+    - "https://images.unsplash.com/photo-1474511320723-9a56873867b5?auto=format&fit=crop&w=1200&q=80"
+    - "https://images.unsplash.com/photo-1469125155630-7ed37e065743?auto=format&fit=crop&w=600&q=80"
+    - "https://images.unsplash.com/photo-1452570053594-1b985d6ea890?auto=format&fit=crop&w=600&q=80"
 pubDate: 2026-05-16
 lastUpdated: 2026-05-17
 bottomLine:

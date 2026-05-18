@@ -16,14 +16,22 @@ const formattedDate = data.pubDate instanceof Date
   ? data.pubDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
   : pubDate;
 const productCount = data.products?.length ?? 0;
-// Prefer the buying-guide hero (typically a photographic Unsplash/brand-kit
-// image suitable for cover-fit) over the first product's image (typically a
-// transparent product PNG that doesn't render well with object-fit: cover).
+// Hero images: prefer the multi-image array (mag 1+2 layout) when present,
+// fall back to single hero, then to the first product's image. Multi-image
+// triggers the magazine layout only on featured cards.
+const heroImages = (data.images as any)?.heroImages as string[] | undefined;
 const heroImage = data.images?.hero ?? (data.products?.[0] as any)?.image ?? null;
+const useMag = featured && heroImages && heroImages.length >= 3;
 ---
-<article class:list={["guide-card", featured && "guide-card--featured"]}>
+<article class:list={["guide-card", featured && "guide-card--featured", useMag && "guide-card--mag"]}>
   <a href={href} class="guide-card__link">
-    {heroImage && (
+    {useMag ? (
+      <div class="guide-card__media guide-card__media--mag">
+        <div class="mag-feature" style={`background-image:url('${heroImages![0]}')`}></div>
+        <div class="mag-small mag-small--1" style={`background-image:url('${heroImages![1]}')`}></div>
+        <div class="mag-small mag-small--2" style={`background-image:url('${heroImages![2]}')`}></div>
+      </div>
+    ) : heroImage && (
       <div class="guide-card__media">
         <img src={heroImage} alt={data.title} loading="lazy" decoding="async" />
       </div>
@@ -135,4 +143,25 @@ const heroImage = data.images?.hero ?? (data.products?.[0] as any)?.image ?? nul
   /* Featured */
   .guide-card--featured .guide-card__media { aspect-ratio: 21 / 9; }
   .guide-card--featured .guide-card__title { font-size: var(--text-2xl); }
+
+  /* Magazine 1+2 hero — large feature image on left, two stacked smaller on right.
+     Activates when featured AND heroImages[] has 3+ entries. */
+  .guide-card__media--mag {
+    aspect-ratio: 21 / 9;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 2px;
+    background: var(--color-paper);
+    overflow: hidden;
+  }
+  .guide-card__media--mag .mag-feature {
+    grid-row: 1 / span 2;
+    background-size: cover;
+    background-position: center;
+  }
+  .guide-card__media--mag .mag-small {
+    background-size: cover;
+    background-position: center;
+  }
 </style>

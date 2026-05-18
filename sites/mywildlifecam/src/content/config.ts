@@ -99,6 +99,10 @@ const buyersGuides = defineCollection({
     images: z.object({
       hero: z.string().optional(),
       heroCaption: z.string().optional(),
+      // Multi-image hero array — when present (with 3+ URLs) the featured
+      // BuyersGuideCard renders a magazine 1+2 layout (large left + 2 stacked right)
+      // instead of a single full-bleed image.
+      heroImages: z.array(z.string()).optional(),
     }).optional(),
     bottomLine: bottomLineSchema,
     buyIf: buyIfSchema,
