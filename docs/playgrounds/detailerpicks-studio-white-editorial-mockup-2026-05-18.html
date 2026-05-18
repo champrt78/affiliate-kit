@@ -1,0 +1,1026 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>detailerpicks · Studio White Editorial direction</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=GT+Sectra:wght@400;500&family=Inter+Tight:wght@400;500;600;700&family=Tiempos+Headline:wght@400;500&family=Newsreader:opsz,wght,ital@6..72,400,1;6..72,500;6..72,500,1;6..72,700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     detailerpicks — Direction 2: STUDIO WHITE / EDITORIAL
+     Aesthetic thesis: a print magazine moved to the web. Bone
+     white background, oxblood-leather accent, generous margins,
+     gallery-framed photography. Cereal Magazine x Wallpaper.
+     Less car-blog, more design-quarterly.
+     ============================================================ */
+  :root {
+    --bone:         #F7F4ED;  /* primary bone white */
+    --paper:        #FFFCF4;  /* lightest */
+    --tan:          #E8DFCC;  /* warm soft panel */
+    --cream:        #EFE9D9;  /* mid tonal */
+    --ink:          #1A1612;  /* deep warm black */
+    --ink-soft:     #3A312A;
+    --muted:        #7A6F60;
+    --line:         #D6CCB8;
+    --line-soft:    #E5DDC9;
+
+    --oxblood:      #6B2B2B;  /* oxblood-leather primary accent */
+    --oxblood-deep: #4E1F1F;
+    --terra:        #B8553A;  /* warm secondary */
+    --ochre:        #C4933A;
+
+    --font-display: "Newsreader", "Tiempos Headline", "Iowan Old Style", Georgia, serif;
+    --font-sans:    "Inter Tight", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --container:    1180px;
+    --read:         620px;
+    --ease:         cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { font-size: 16px; }
+  body {
+    margin: 0;
+    background: var(--bone);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  a { color: var(--oxblood); text-decoration: none; }
+  a:hover { color: var(--oxblood-deep); }
+
+  .variant-badge {
+    position: fixed; top: 14px; left: 14px; z-index: 50;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    background: var(--ink); color: var(--paper);
+    border-radius: 2px;
+  }
+
+  /* ============================================================
+     Site header — masthead style, two-line
+     ============================================================ */
+  .masthead {
+    background: var(--bone);
+    border-bottom: 1px solid var(--ink);
+    padding: 14px 32px 12px;
+  }
+  .masthead__top {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .masthead__bottom {
+    max-width: var(--container);
+    margin: 18px auto 0;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  .brand {
+    font-family: var(--font-display);
+    font-size: 44px;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    line-height: 1;
+    font-style: italic;
+  }
+  .brand::before {
+    content: 'detailer';
+    font-style: normal;
+    margin-right: 2px;
+  }
+  .masthead__nav {
+    display: flex; gap: 28px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding-bottom: 6px;
+  }
+  .masthead__nav a { color: var(--ink-soft); }
+  .masthead__nav a:hover { color: var(--oxblood); }
+
+  /* ============================================================
+     HERO — magazine cover. Image FRAMED with thick margin, copy
+     leads in print column on the left.
+     ============================================================ */
+  .hero {
+    background: var(--bone);
+    padding: 56px 32px 56px;
+  }
+  .hero__grid {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .hero__copy {}
+  .hero__issue {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 36px;
+    display: inline-block;
+    padding: 4px 10px;
+    border: 1px solid var(--oxblood);
+  }
+  .hero__h1 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(56px, 8vw, 104px);
+    line-height: 0.92;
+    letter-spacing: -0.028em;
+    color: var(--ink);
+    margin: 0 0 32px;
+  }
+  .hero__h1 em {
+    font-style: italic;
+    font-weight: 400;
+  }
+  .hero__deck {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0 0 40px;
+    max-width: 38ch;
+  }
+  .hero__byline {
+    display: flex; gap: 24px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .hero__byline strong { color: var(--ink); font-weight: 600; }
+
+  .hero__plate {
+    background: var(--paper);
+    padding: 24px 24px 18px;
+    border: 1px solid var(--line);
+  }
+  .hero__image {
+    aspect-ratio: 4 / 5;
+    background-image: url('https://images.unsplash.com/photo-1761934657948-708146148588?auto=format&fit=crop&w=1400&q=80');
+    background-size: cover;
+    background-position: center;
+  }
+  .hero__caption {
+    margin-top: 14px;
+    font-size: 12px;
+    font-style: italic;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .hero__caption strong { color: var(--ink-soft); font-style: normal; font-weight: 600; }
+
+  /* ============================================================
+     Lead — single column, left aligned, drop cap, print rule
+     ============================================================ */
+  .lead {
+    background: var(--bone);
+    padding: 96px 32px 80px;
+    border-top: 1px solid var(--line);
+  }
+  .lead__inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .lead__rubric {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 24px;
+  }
+  .lead__title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 4.6vw, 56px);
+    font-weight: 400;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 0 0 36px;
+    max-width: 18ch;
+  }
+  .lead__title em { font-style: italic; }
+  .lead p {
+    font-family: var(--font-display);
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0 0 20px;
+    max-width: 60ch;
+  }
+  .lead p:first-of-type::first-letter {
+    font-family: var(--font-display);
+    float: left;
+    font-size: 84px;
+    line-height: 0.8;
+    padding: 10px 14px 0 0;
+    color: var(--oxblood);
+    font-weight: 500;
+  }
+
+  /* ============================================================
+     Featured pick — gallery framing, soft cream panel
+     ============================================================ */
+  .featured {
+    background: var(--cream);
+    padding: 96px 32px 100px;
+  }
+  .featured__inner {
+    max-width: var(--container);
+    margin: 0 auto;
+  }
+  .sectionhead {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    margin-bottom: 56px;
+    gap: 32px;
+    flex-wrap: wrap;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  .sectionhead__num {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .sectionhead__title {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: -0.026em;
+    color: var(--ink);
+    margin: 0;
+  }
+  .sectionhead__title em { font-style: italic; }
+  .sectionhead__link {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--ink);
+    align-self: end;
+  }
+
+  .featurecard {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .featurecard__plate {
+    background: var(--paper);
+    padding: 28px 28px 22px;
+    border: 1px solid var(--line);
+  }
+  .featurecard__image {
+    aspect-ratio: 5 / 4;
+    background-image: url('https://images.unsplash.com/photo-1641870628012-dcd54b34ee58?auto=format&fit=crop&w=1400&q=80');
+    background-size: cover;
+    background-position: center;
+  }
+  .featurecard__caption {
+    margin-top: 14px;
+    font-size: 12px;
+    font-style: italic;
+    color: var(--muted);
+  }
+  .featurecard__body {}
+  .featurecard__num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--oxblood);
+    margin-bottom: 14px;
+  }
+  .featurecard__title {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 4vw, 48px);
+    font-weight: 400;
+    line-height: 1.02;
+    letter-spacing: -0.024em;
+    color: var(--ink);
+    margin: 0 0 22px;
+  }
+  .featurecard__title em { font-style: italic; }
+  .featurecard__desc {
+    font-family: var(--font-display);
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin: 0 0 28px;
+    max-width: 36ch;
+    font-style: italic;
+  }
+  .featurecard__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1.5px solid var(--ink);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .featurecard__cta:hover { color: var(--oxblood); border-color: var(--oxblood); }
+
+  /* ============================================================
+     Manifesto — left aligned, terra-cotta accent panel
+     ============================================================ */
+  .manifesto {
+    background: var(--oxblood);
+    color: var(--paper);
+    padding: 104px 32px;
+  }
+  .manifesto__inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 72px;
+    align-items: start;
+  }
+  .manifesto__label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ochre);
+  }
+  .manifesto__title {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 5vw, 60px);
+    font-weight: 400;
+    line-height: 1.02;
+    letter-spacing: -0.024em;
+    color: var(--paper);
+    margin: 18px 0 0;
+    max-width: 16ch;
+  }
+  .manifesto__title em { font-style: italic; }
+  .manifesto p {
+    font-family: var(--font-display);
+    font-size: 20px;
+    line-height: 1.6;
+    color: #E8DACA;
+    margin: 0 0 22px;
+    max-width: 56ch;
+  }
+  .manifesto__actions {
+    display: flex; gap: 0; flex-wrap: wrap;
+    margin-top: 28px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .manifesto__actions a {
+    color: var(--paper);
+    padding: 12px 22px 12px 0;
+    margin-right: 24px;
+    border-bottom: 1.5px solid var(--ochre);
+  }
+  .manifesto__actions a:hover {
+    border-color: var(--paper);
+  }
+
+  /* ============================================================
+     Divider section break
+     ============================================================ */
+  .divider {
+    background: var(--bone);
+    text-align: center;
+    padding: 32px 32px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-family: var(--font-display);
+    font-style: italic;
+  }
+  .divider span {
+    display: inline-block;
+    padding: 0 24px;
+    position: relative;
+  }
+  .divider span::before, .divider span::after {
+    content: '';
+    position: absolute; top: 50%;
+    width: 80px; height: 1px;
+    background: var(--line);
+  }
+  .divider span::before { right: 100%; }
+  .divider span::after { left: 100%; }
+
+  /* ============================================================
+     ARTICLE — buying guide as magazine feature
+     ============================================================ */
+  .article { background: var(--bone); padding-bottom: 80px; }
+  .article__top {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 24px 32px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    border-bottom: 1px solid var(--line);
+  }
+  .article__top span:last-child { color: var(--muted); }
+
+  .article__masthead {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 80px 32px 0;
+    text-align: left;
+  }
+  .article__title {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 6.5vw, 88px);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.028em;
+    color: var(--ink);
+    margin: 0 0 32px;
+  }
+  .article__title em { font-style: italic; }
+  .article__deck {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin: 0 0 40px;
+    max-width: 58ch;
+  }
+  .article__byline {
+    display: flex; gap: 28px;
+    padding: 18px 0;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .article__byline strong { color: var(--ink); font-weight: 600; }
+
+  /* Hero image AFTER head (editorial inversion) */
+  .article__plate {
+    max-width: var(--container);
+    margin: 56px auto 0;
+    padding: 0 32px;
+  }
+  .article__image {
+    aspect-ratio: 16 / 7;
+    background-image: url('https://images.unsplash.com/photo-1527581849771-416a9d62308e?auto=format&fit=crop&w=2400&q=80');
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--line);
+  }
+  .article__caption {
+    max-width: var(--container);
+    margin: 14px auto 0;
+    font-size: 12px;
+    font-style: italic;
+    color: var(--muted);
+    padding: 0 32px;
+  }
+  .article__caption strong { color: var(--ink-soft); font-style: normal; font-weight: 600; }
+
+  /* Bottom Line callout */
+  .bottomline {
+    max-width: 720px;
+    margin: 56px auto 0;
+    padding: 0 32px;
+  }
+  .bottomline__card {
+    background: var(--tan);
+    padding: 36px 40px;
+    text-align: center;
+    border-top: 4px solid var(--oxblood);
+    border-bottom: 4px solid var(--oxblood);
+  }
+  .bottomline__label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 14px;
+  }
+  .bottomline__verdict {
+    font-family: var(--font-display);
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink);
+    margin: 0;
+    font-style: italic;
+  }
+  .bottomline__verdict strong { font-style: normal; font-weight: 500; }
+
+  /* Body */
+  .article__body {
+    max-width: 700px;
+    margin: 64px auto 0;
+    padding: 0 32px;
+  }
+  .article__body h2 {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 56px 0 18px;
+  }
+  .article__body h2 em { font-style: italic; }
+  .article__body h2:first-child { margin-top: 0; }
+  .article__body p {
+    font-family: var(--font-display);
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0 0 18px;
+  }
+  .article__body p.lede {
+    font-size: 22px;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.5;
+    margin-bottom: 28px;
+  }
+
+  /* Picks — magazine list, numbered */
+  .picks {
+    background: var(--cream);
+    padding: 96px 32px;
+    margin-top: 96px;
+  }
+  .picks__inner { max-width: var(--container); margin: 0 auto; }
+  .picks__head {
+    max-width: 760px;
+    margin: 0 0 56px;
+  }
+  .picks__rubric {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 14px;
+  }
+  .picks__title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 4.5vw, 52px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.024em;
+    color: var(--ink);
+    margin: 0;
+  }
+  .picks__title em { font-style: italic; }
+
+  .pick {
+    display: grid;
+    grid-template-columns: 96px 1fr 200px;
+    gap: 36px;
+    padding: 40px 0;
+    border-top: 1px solid var(--line);
+    align-items: start;
+  }
+  .pick:last-child { border-bottom: 1px solid var(--line); }
+  .pick__rank {
+    font-family: var(--font-display);
+    font-size: 64px;
+    line-height: 0.9;
+    font-weight: 400;
+    color: var(--oxblood);
+    letter-spacing: -0.02em;
+    font-style: italic;
+  }
+  .pick__body {}
+  .pick__role {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 10px;
+  }
+  .pick__name {
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0 0 12px;
+  }
+  .pick__brand {
+    font-style: italic; color: var(--muted);
+    font-size: 0.7em;
+    margin-left: 8px;
+  }
+  .pick__desc {
+    font-family: var(--font-display);
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 56ch;
+  }
+  .pick__cta { text-align: right; padding-top: 8px; }
+  .pick__price {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 26px;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 14px;
+  }
+  .pick__btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 18px;
+    background: var(--oxblood);
+    color: var(--paper);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .pick__btn:hover { background: var(--oxblood-deep); color: var(--paper); }
+
+  /* FAQ */
+  .faq {
+    background: var(--bone);
+    padding: 96px 32px;
+  }
+  .faq__inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .faq__rubric {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 18px;
+  }
+  .faq__title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 4.5vw, 52px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.024em;
+    color: var(--ink);
+    margin: 0 0 56px;
+  }
+  .faq__title em { font-style: italic; }
+  .faq__item {
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 32px;
+  }
+  .faq__item:last-child { border-bottom: 1px solid var(--line); }
+  .faq__q {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+    margin: 0;
+    letter-spacing: -0.012em;
+    line-height: 1.2;
+  }
+  .faq__a {
+    font-family: var(--font-display);
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* Footer */
+  .sitefooter {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 32px 40px;
+  }
+  .sitefooter__inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+  }
+  .sitefooter__brand {
+    font-family: var(--font-display);
+    font-size: 36px;
+    letter-spacing: -0.02em;
+  }
+  .sitefooter__brand em { font-style: italic; }
+  .sitefooter__tag {
+    font-size: 14px;
+    color: #A89B82;
+    margin-top: 8px;
+    max-width: 34ch;
+  }
+  .sitefooter__col h4 {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin: 0 0 16px;
+  }
+  .sitefooter__col ul {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .sitefooter__col a { color: #D4C8B0; font-size: 14px; }
+  .sitefooter__col a:hover { color: var(--paper); }
+
+  @media (max-width: 880px) {
+    .hero__grid, .featurecard, .manifesto__inner,
+    .pick, .sitefooter__inner, .faq__item {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .pick__cta { text-align: left; }
+    .pick__rank { font-size: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<span class="variant-badge">Direction 2 · Studio White Editorial</span>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead__top">
+    <span>Issue 09 · May 2026</span>
+    <span>Detailing &middot; honest picks &middot; weekly</span>
+    <span>$0.00 &middot; web edition</span>
+  </div>
+  <div class="masthead__bottom">
+    <a href="#" class="brand">picks</a>
+    <nav class="masthead__nav">
+      <a href="#">Buying guides</a>
+      <a href="#">Reviews</a>
+      <a href="#">How we evaluate</a>
+      <a href="#">About</a>
+      <a href="#">Search</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__grid">
+    <div class="hero__copy">
+      <span class="hero__issue">Cover · Issue 09</span>
+      <h1 class="hero__h1">The paint, <em>protected.</em></h1>
+      <p class="hero__deck">Twelve brands lined up by use case, the trade-offs named in plain language, and the bottle you would actually use this weekend.</p>
+      <div class="hero__byline">
+        <span><strong>By the editorial team</strong></span>
+        <span>Updated 17 May 2026</span>
+      </div>
+    </div>
+    <figure class="hero__plate">
+      <div class="hero__image" aria-hidden="true"></div>
+      <figcaption class="hero__caption">
+        <strong>Above:</strong> A microfiber drag down the hood, the moment after the final rinse. Photo from Unsplash.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- LEAD -->
+<section class="lead">
+  <div class="lead__inner">
+    <div class="lead__rubric">From the editor</div>
+    <h2 class="lead__title">A clean wash, an <em>honest</em> recommendation.</h2>
+    <p>Most car-detailing content is a retailer pitching its own brand or a major publisher rehashing a generic Top 10. We do the boring work of comparing across brands by use case, naming the trade-offs, and saying honestly when the cheaper option is the right one.</p>
+    <p>Every recommendation in this issue is anchored to a real reader segment: daily driver, ceramic-coated, foam cannon, black paint. The picks change because the buyer changes. We do not pretend a single bottle solves every problem.</p>
+  </div>
+</section>
+
+<!-- Featured -->
+<section class="featured">
+  <div class="featured__inner">
+    <header class="sectionhead">
+      <div>
+        <div class="sectionhead__num">No. 01 &middot; This month&apos;s feature</div>
+        <h2 class="sectionhead__title">The buying <em>guide.</em></h2>
+      </div>
+      <a href="#" class="sectionhead__link">All buying guides &rarr;</a>
+    </header>
+    <article class="featurecard">
+      <figure class="featurecard__plate">
+        <div class="featurecard__image" aria-hidden="true"></div>
+        <figcaption class="featurecard__caption">Hood reflection on a black coupe, late afternoon. Unsplash.</figcaption>
+      </figure>
+      <div class="featurecard__body">
+        <div class="featurecard__num"><em>No. 01</em></div>
+        <h3 class="featurecard__title">Best <em>Car Wash Soap</em> for Home Detailers</h3>
+        <p class="featurecard__desc">Five soaps across the pH scale, two genuinely opposed doctrines on what to put on a coated car, and a clear pick for each reader segment.</p>
+        <a href="#" class="featurecard__cta">Read the guide &rarr;</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- Manifesto -->
+<section class="manifesto">
+  <div class="manifesto__inner">
+    <div>
+      <div class="manifesto__label">Editorial method</div>
+      <h2 class="manifesto__title">Cross-brand and <em>honest,</em> by design.</h2>
+    </div>
+    <div>
+      <p>We do not sell detailing products and we do not own a workshop. We read manufacturer specs, aggregate verified-buyer reports, watch independent reviewer testing, and ask the only question that matters: for the person reading this, which product actually fits.</p>
+      <p>When the cheaper option is the right answer, we say so. Every buy link routes through our own redirect, so we can swap retailers without breaking older posts. We earn a commission on Amazon purchases at no extra cost to you.</p>
+      <div class="manifesto__actions">
+        <a href="#">How we choose picks</a>
+        <a href="#">Affiliate disclosure</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><span>End of front matter</span></div>
+
+<!-- ARTICLE -->
+<article class="article">
+  <div class="article__top">
+    <span>Feature 01 &middot; Car wash soap</span>
+    <span>Page 24</span>
+  </div>
+
+  <header class="article__masthead">
+    <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--oxblood); margin-bottom: 22px;">Car wash soap &middot; Buying guide</div>
+    <h1 class="article__title">Best <em>Car Wash Soap</em> for Home Detailers</h1>
+    <p class="article__deck">Five soaps across the pH scale, two genuinely opposed doctrines on what to put on a coated car, and a clear pick for each reader segment.</p>
+    <div class="article__byline">
+      <span><strong>By the detailerpicks editorial team</strong></span>
+      <span>Updated 17 May 2026</span>
+      <span>12 min read</span>
+    </div>
+  </header>
+
+  <figure class="article__plate">
+    <div class="article__image" aria-hidden="true"></div>
+  </figure>
+  <p class="article__caption"><strong>Above:</strong> A microfiber drag across a white panel, end of detail. Unsplash.</p>
+
+  <div class="bottomline">
+    <div class="bottomline__card">
+      <div class="bottomline__label">The bottom line</div>
+      <p class="bottomline__verdict">For most coated daily drivers, <strong>Gyeon Q&sup2;M Bathe</strong> is the easiest pick. If you follow the pure-soap school, swap to Labocosmetica SEMPER. Hard-water region, add Pan&apos;s Demineralizing Shampoo every few months.</p>
+    </div>
+  </div>
+
+  <div class="article__body">
+    <h2>Who this is <em>for</em></h2>
+    <p class="lede">Three reader segments map cleanly onto the five picks in this guide, separated by the choice a coated-car owner makes about what touches the paint between detail jobs.</p>
+    <p>The coated-car owner who follows the Dr. Beasley&apos;s school wants a soap that only cleans, with no carnauba, SiO2, or glossing agents that might bond to the coating over time. Labocosmetica SEMPER is the strongest match on documented chemistry. Phoenix EOD Apex Auto Wash 3.0 is the budget alternative.</p>
+    <p>The coated-car owner who follows the Rag Company school wants a ceramic-infused protective shampoo that actively maintains the coating&apos;s hydrophobic behavior. Gyeon Q&sup2;M Bathe is the entry pick. CLEAN. Shampoo is the alternative with broader brand pairing.</p>
+    <p>The hard-water region owner of any coated car needs an acidic companion soap used every few months to restore beading. Pan The Organizer&apos;s Demineralizing Shampoo is the only pick in this guide that sits outside the pH-neutral window.</p>
+  </div>
+
+  <!-- Picks -->
+  <section class="picks">
+    <div class="picks__inner">
+      <div class="picks__head">
+        <div class="picks__rubric">The picks &middot; Ranked by reader-segment fit</div>
+        <h2 class="picks__title">Five soaps, five <em>reader segments.</em></h2>
+      </div>
+      <article class="pick">
+        <div class="pick__rank">i.</div>
+        <div class="pick__body">
+          <div class="pick__role">Best for the pure-soap school</div>
+          <h3 class="pick__name">Labocosmetica SEMPER<span class="pick__brand">by Labocosmetica</span></h3>
+          <p class="pick__desc">Hyper-concentrated, no waxes or gloss enhancers, 1:800 to 1:1200 dilution. The strongest match for Dr. Beasley&apos;s pure-soap recommendation on documented chemistry.</p>
+        </div>
+        <div class="pick__cta">
+          <span class="pick__price">$21.95</span>
+          <a href="#" class="pick__btn">Check price</a>
+        </div>
+      </article>
+      <article class="pick">
+        <div class="pick__rank">ii.</div>
+        <div class="pick__body">
+          <div class="pick__role">Best for the protective-soap school</div>
+          <h3 class="pick__name">Gyeon Q&sup2;M Bathe<span class="pick__brand">by Gyeon</span></h3>
+          <p class="pick__desc">Highly lubricated, swirl-free, ceramic-coating-friendly weekly maintenance. The lowest entry price in this guide at $15.99 for 500ml.</p>
+        </div>
+        <div class="pick__cta">
+          <span class="pick__price">$15.99</span>
+          <a href="#" class="pick__btn">Check price</a>
+        </div>
+      </article>
+      <article class="pick">
+        <div class="pick__rank">iii.</div>
+        <div class="pick__body">
+          <div class="pick__role">Best for one-bottle simplicity</div>
+          <h3 class="pick__name">CLEAN. Shampoo<span class="pick__brand">by Pan The Organizer</span></h3>
+          <p class="pick__desc">pH neutral cosmetic-grade surfactants, biodegradable, gallon size brings cost to about a dollar per wash. Handles coated and uncoated equally.</p>
+        </div>
+        <div class="pick__cta">
+          <span class="pick__price">$18.99</span>
+          <a href="#" class="pick__btn">Check price</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="faq__inner">
+      <div class="faq__rubric">Reader questions</div>
+      <h2 class="faq__title">Three questions readers <em>keep sending us.</em></h2>
+      <div class="faq__item">
+        <h3 class="faq__q">What does pH-neutral actually mean for car shampoo?</h3>
+        <p class="faq__a">The Rag Company defines the pH-neutral window for protective car shampoos as roughly 5.5 to 8.5. Soaps in this range clean without stripping wax, sealant, or ceramic coating.</p>
+      </div>
+      <div class="faq__item">
+        <h3 class="faq__q">Will any of these soaps damage my ceramic coating?</h3>
+        <p class="faq__a">None of the five picks should damage a properly cured coating. Two schools of thought exist on what is optimal. Both agree: avoid alkaline strippers and anything sold with wax or sealant added.</p>
+      </div>
+      <div class="faq__item">
+        <h3 class="faq__q">Do these soaps work in a foam cannon?</h3>
+        <p class="faq__a">Yes, all five work in a foam cannon. Foam output depends as much on pressure-washer GPM, foam-cannon orifice size, and dilution as on the soap itself.</p>
+      </div>
+    </div>
+  </section>
+</article>
+
+<footer class="sitefooter">
+  <div class="sitefooter__inner">
+    <div>
+      <div class="sitefooter__brand">detailer<em>picks</em></div>
+      <p class="sitefooter__tag">Cross-brand car-detailing picks for home detailers. Spec-driven, use-case-anchored, refreshed every 90 days.</p>
+    </div>
+    <div class="sitefooter__col">
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="#">Buying guides</a></li>
+        <li><a href="#">Reviews</a></li>
+        <li><a href="#">How we evaluate</a></li>
+      </ul>
+    </div>
+    <div class="sitefooter__col">
+      <h4>About</h4>
+      <ul>
+        <li><a href="#">Our methodology</a></li>
+        <li><a href="#">Affiliate disclosure</a></li>
+        <li><a href="#">Privacy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
