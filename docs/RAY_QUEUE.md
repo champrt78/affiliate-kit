@@ -116,6 +116,48 @@ Direction locked at `docs/brainstorms/2026-05-17-ui-overhaul-requirements.md` (2
 
 ---
 
+## Signups in flight + deferred (added 2026-05-18)
+
+**Active / submitted (waiting approval):**
+- ✅ **Amazon Associates** — APPROVED, `mywildlifecam-20` tag live, 1 click already recorded, 180-day-3-sales clock running. **Tax interview still pending** (Ray's call when to do it; doesn't block tracking but blocks payouts).
+- 🕓 **Awin** — application submitted under `Semper Fi Studios` business name + `mywildlifecam.com` site. Selected sectors: Content Editorial, Niche Content, Product Review, Buying Guide, Comparison Engine. 1-3 business day review.
+- 🕓 **AvantLink** — application submitted under same business name. Single signup opens Spypoint, Stealth Cam, Browning, Moultrie affiliate programs as individual opt-ins. 1-3 business day review.
+
+**Live + verified working:**
+- ✅ **Canopy API** — MCP-compatible Amazon product data, 36-char key in env, verified working (GraphQL query returned real Tactacam product data).
+- ✅ **Visualping** — 5-job watchlist live (free tier cap): Tactacam Reveal X 3.0, Spypoint Flex M, Spypoint Flex G36, Trailcampro reviews index, Stealth Cam cellular product line. Weekly cadence.
+- ✅ **Brave Search API** — 2K queries/month, in env.
+- ✅ **Exa Search** — 1K queries/month, in env.
+- ✅ **Groq Whisper** — unlocks /watch for uncaptioned videos, in env.
+- ✅ **ScrapeCreators** — Reddit comments + TikTok + Instagram, in env. ~80 of 100 free calls left.
+- ✅ **Firecrawl** — 36-char key in env, plugin installed, ~990 of 1,007 credits left.
+- ✅ **NotebookLM** — manual-use tool for multi-source YouTube synthesis (no API integration possible).
+- ✅ **Second Brain** — populated vault at github.com/champrt78/second-brain.
+
+**Skipped / not affiliate:**
+- ❌ **Tactacam TactaTeam** — actually ExpertVoice industry-pro discount platform. Not affiliate revenue. May email `marketing@tactacam.com` directly later.
+
+**Deferred (timing-dependent):**
+- 🕓 **Impact.com** — application held until detailerpicks pieces publish. Impact is more selective than Awin; submitting with 0 pieces live = high rejection risk.
+- 🕓 **xAI Grok key** — their auth backend hiccup on 2026-05-17. Retry tomorrow at `console.x.ai`. $150 free credit, closes X-data gap.
+- 🕓 **Direct brand emails** — Pan The Organizer (`marketing@cleanbypan.com`), Phoenix E.O.D. (`phoenixeod.com` contact form), Tactacam marketing — queued for outreach after pieces publish.
+
+## Detailerpicks piece pipeline (research ready)
+
+3 more topics with deep research notes done — ready to scaffold after Ray writes Bottom Lines on the 2 existing DRAFTs:
+
+1. **Best Pressure Washer for Home Detailers** (Topic 4 in research notes) — Greenworks 2300 / Active 2.0 / AR Blue Clean AR630 / Kranzle picks
+2. **Best Drying Towel for Car Detailing** (Topic 5) — Rag Company Gauntlet + GOAT 1800 + Liquidator; cross-brand research still queued
+3. **Best Wash Mitt for Home Detailers** (Topic 6, preliminary) — Microfiber Madness Delimitt + Rag Company Cyclone/Pluffle + Adam's Polishes; US-availability research pending
+
+## Mywildlifecam piece pipeline (research ready)
+
+3 more topics with deep research notes done:
+
+1. **Best Cellular Trail Camera by Use Case** (buying guide) — Tactacam Reveal X 3.0 (budget) + Moultrie EDGE (proven multi-year) + Spypoint Flex G36 (image quality + customer service) + Bushnell CelluCORE 20 (image quality, disclose customer service caveat)
+2. **Spypoint Flex G36 single-product review** — 8-month + bear-attack + harsh-weather owner data captured
+3. **Moultrie EDGE single-product review** — 1.5-year owner data, NOT the Edge 2 Pro (longevity not yet independently confirmed)
+
 ## Small follow-ups (added 2026-05-17 late-late)
 
 - **`run-scheduled.bat` hard-codes `C:\Python314\python.exe`.** If Python ever moves (uninstall, venv switch, version upgrade), the nightly `AIOS-AffiliateLinkHealth` job will silently exit with whatever the new interpreter does. Replace with a `where python` lookup or a stable interpreter pin if/when the Python install changes.
