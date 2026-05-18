@@ -300,7 +300,7 @@ function HtmlEscape {
 }
 
 function Format-RecentPieces {
-    param([array]$Pieces, [int]$Limit = 5)
+    param([array]$Pieces, [int]$Limit = 3)
     $live = $Pieces | Where-Object { -not $_.IsDraft } | Sort-Object -Property PubDate -Descending | Select-Object -First $Limit
     if ($live.Count -eq 0) { return "<p class='empty'>No pieces yet.</p>" }
     $items = ""
@@ -472,23 +472,24 @@ foreach ($slug in $allSites) {
 }
 
 $commitItemsHtml = ""
-foreach ($c in $recentCommits) {
+foreach ($c in ($recentCommits | Select-Object -First 4)) {
     $subj = HtmlEscape $c.Subject
+    if ($subj.Length -gt 70) { $subj = $subj.Substring(0, 67) + "..." }
     $commitItemsHtml += "<li><span class='commit-hash'>$($c.Hash)</span> <span class='muted'>$($c.Date)</span> $subj</li>"
 }
 
 $researchAllItemsHtml = ""
-foreach ($r in $researchNotes) {
+foreach ($r in ($researchNotes | Select-Object -First 3)) {
     $title = HtmlEscape $r.Title
-    $researchAllItemsHtml += "<li><div class='piece-meta'><span class='piece-age'>$($r.Age)d</span><span class='piece-type'>research</span></div><div class='piece-title'>$title</div><div class='piece-slug'>$($r.File)</div></li>"
+    $researchAllItemsHtml += "<li><div class='piece-meta'><span class='piece-age'>$($r.Age)d</span><span class='piece-type'>research</span></div><div class='piece-title'>$title</div></li>"
 }
 
 # === Build TODO sidebar items ===
 $todoSidebarHtml = ""
 if ($todoNow.Count -gt 0) {
-    foreach ($t in ($todoNow | Select-Object -First 6)) {
+    foreach ($t in ($todoNow | Select-Object -First 4)) {
         $clean = HtmlEscape ($t -replace '\*\*([^*]+)\*\*', '$1' -replace '`([^`]+)`', '$1')
-        if ($clean.Length -gt 120) { $clean = $clean.Substring(0, 117) + "..." }
+        if ($clean.Length -gt 90) { $clean = $clean.Substring(0, 87) + "..." }
         $todoSidebarHtml += "<li>$clean</li>"
     }
 }
@@ -562,52 +563,123 @@ $html = @"
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 24px;
+    padding: 10px 20px;
     border-bottom: 1px solid var(--line);
     background: var(--bg);
     flex-shrink: 0;
+    gap: 20px;
+  }
+  .topbar__left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-width: 0;
   }
   .topbar__brand {
     font-family: var(--font-serif);
     font-size: 18px;
     color: var(--ink);
     letter-spacing: -0.01em;
+    white-space: nowrap;
   }
   .topbar__brand em { font-style: italic; color: var(--steel); }
-  .topbar__brand-tag {
-    font-family: var(--font-sans);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-left: 14px;
-    padding-left: 14px;
-    border-left: 1px solid var(--line);
+
+  .site-select {
+    appearance: none;
+    background: var(--surface);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 6px 28px 6px 10px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.3;
+    cursor: pointer;
+    min-width: 220px;
+    background-image: linear-gradient(45deg, transparent 50%, var(--steel) 50%),
+                      linear-gradient(135deg, var(--steel) 50%, transparent 50%);
+    background-position: calc(100% - 14px) 50%, calc(100% - 9px) 50%;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+  }
+  .site-select:hover { border-color: var(--steel); }
+  .site-select:focus { outline: 1px solid var(--steel); outline-offset: 1px; }
+
+  .topbar__right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-shrink: 0;
   }
   .topbar__stamp {
     font-family: var(--font-mono);
     font-size: 10px;
     color: var(--muted);
     text-align: right;
-    line-height: 1.6;
+    line-height: 1.5;
+    white-space: nowrap;
   }
+  .topbar__goal {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 12px;
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    border-radius: 3px;
+  }
+  .topbar__goal-value {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .topbar__goal-value em { font-style: italic; color: var(--steel); }
+  .topbar__goal-track {
+    position: relative;
+    width: 80px;
+    height: 6px;
+    background: var(--surface-3);
+    border-radius: 1px;
+    overflow: hidden;
+  }
+  .topbar__goal-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    background: linear-gradient(90deg, var(--steel-deep), var(--steel));
+  }
+  .topbar__goal-marker {
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
+    width: 1px;
+    background: var(--highlight);
+  }
+  .topbar__pace {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 2px;
+  }
+  .topbar__pace.pace-green { background: rgba(95,179,124,0.15); color: var(--green); }
+  .topbar__pace.pace-amber { background: rgba(232,184,106,0.15); color: var(--amber); }
+  .topbar__pace.pace-red   { background: rgba(224,123,123,0.15); color: var(--red); }
 
   /* ========================================
      "DO THIS NEXT" — priority-aware
      ======================================== */
   .do-next-panel {
-    padding: 16px 20px;
+    padding: 14px 18px;
     border-radius: 4px;
     background: linear-gradient(135deg, #1A2030 0%, #0E1318 100%);
     border: 1px solid var(--line);
     border-left: 3px solid var(--highlight);
-    margin-bottom: 12px;
     position: relative;
+    flex-shrink: 0;
   }
-  .do-next-panel--high { padding: 22px 24px; border-left-width: 3px; }
-  .do-next-panel--ok   { padding: 12px 16px; border-left-color: var(--steel-deep); }
-  .do-next-panel--defer { padding: 10px 14px; border-left-color: var(--muted-deep); opacity: 0.75; }
+  .do-next-panel--high { padding: 18px 22px; border-left-width: 3px; }
+  .do-next-panel--ok   { padding: 10px 14px; border-left-color: var(--steel-deep); }
+  .do-next-panel--defer { padding: 8px 12px; border-left-color: var(--muted-deep); opacity: 0.75; }
 
   .do-next-panel__eyebrow {
     font-family: var(--font-sans);
@@ -687,34 +759,19 @@ $html = @"
   }
 
   /* ========================================
-     APP SHELL — sidebar + main pane (fixed viewport, no body scroll)
+     APP SHELL — single full-width pane
      ======================================== */
   .app {
-    display: grid;
-    grid-template-columns: 240px 1fr;
     flex: 1;
     min-height: 0;
     overflow: hidden;
-  }
-  @media (max-width: 880px) {
-    .app { grid-template-columns: 1fr; }
-  }
-
-  /* ===== Sidebar ===== */
-  .sidebar {
-    border-right: 1px solid var(--line);
-    background: var(--surface-2);
-    padding: 18px 0;
-    overflow-y: auto;
-    min-height: 0;
-  }
-  @media (max-width: 880px) {
-    .sidebar { border-right: 0; border-bottom: 1px solid var(--line); }
+    display: flex;
+    flex-direction: column;
   }
 
   .sidebar__section {
-    padding: 0 18px;
-    margin-bottom: 18px;
+    padding: 0;
+    margin: 0;
   }
   .sidebar__head {
     font-family: var(--font-sans);
@@ -824,27 +881,52 @@ $html = @"
   .sidebar-todo li:last-child { border-bottom: 0; }
 
   /* ========================================
-     MAIN — drill-down pane (no outer scroll; internal if needed)
+     MAIN — full-width pane (NO scroll anywhere)
      ======================================== */
   .main {
-    padding: 18px 24px;
-    overflow-y: auto;
+    padding: 14px 22px;
+    overflow: hidden;
+    min-height: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .drill {
+    display: none;
+    flex: 1;
+    min-height: 0;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .drill.drill--default { display: flex; }
+  .drill:target { display: flex; }
+  .drill:target ~ .drill--default { display: none; }
+
+  /* Make the bottom panel-grid absorb remaining height + clip overflow */
+  .drill > .panel-grid:last-child {
+    flex: 1;
     min-height: 0;
   }
-
-  .drill { display: none; }
-  .drill.drill--default { display: block; }
-  .drill:target { display: block; }
-  .drill:target ~ .drill--default { display: none; }
+  .drill > .panel-grid:last-child > .panel {
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .drill > .panel-grid:last-child > .panel > ul {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
 
   .drill__head {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 20px;
-    margin-bottom: 14px;
-    padding-bottom: 12px;
+    padding-bottom: 10px;
     border-bottom: 1px solid var(--line);
+    flex-shrink: 0;
   }
   .drill__eyebrow {
     font-size: 9px;
@@ -898,8 +980,9 @@ $html = @"
     background: var(--surface);
     border: 1px solid var(--line-soft);
     border-radius: 4px;
-    padding: 14px 16px;
-    margin-bottom: 12px;
+    padding: 12px 14px;
+    margin-bottom: 0;
+    flex-shrink: 0;
   }
   .panel h3 {
     font-family: var(--font-serif);
@@ -944,9 +1027,9 @@ $html = @"
   .panel-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 12px;
+    gap: 10px;
   }
+  .panel-grid--3col { grid-template-columns: 1fr 1fr 1fr; }
   @media (max-width: 760px) {
     .panel-grid { grid-template-columns: 1fr; }
   }
@@ -1031,7 +1114,7 @@ $html = @"
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-    margin-bottom: 12px;
+    flex-shrink: 0;
   }
   @media (max-width: 760px) {
     .overview-stats { grid-template-columns: repeat(2, 1fr); }
@@ -1063,8 +1146,8 @@ $html = @"
     background: var(--surface);
     border: 1px solid var(--line-soft);
     border-radius: 4px;
-    padding: 14px 16px;
-    margin-bottom: 12px;
+    padding: 12px 14px;
+    flex-shrink: 0;
   }
   .goal-section__head {
     display: flex;
@@ -1170,47 +1253,35 @@ $html = @"
 <body>
 
 <header class="topbar">
-  <div>
+  <div class="topbar__left">
     <span class="topbar__brand">Affiliate <em>Kit</em> · Ops</span>
-    <span class="topbar__brand-tag">What to do next</span>
+    <select id="site-select" class="site-select" onchange="window.location.hash = this.value">
+      <option value="all">All sites · portfolio view</option>
+$($allSites | ForEach-Object {
+  $s = $siteStates[$_]
+  $stats = "$($s.LiveCount) live"
+  if ($s.DraftCount -gt 0) { $stats += " · $($s.DraftCount) draft" }
+  $health = switch ($s.Health) { "green" {"●"}; "amber" {"●"}; "red" {"●"}; "cold" {"○"} }
+  "      <option value=`"site-$_`">$health $_ · $stats</option>"
+} | Out-String)
+    </select>
   </div>
-  <div class="topbar__stamp">
-    Day $daysIn / $commitmentDays · $daysPct% in<br>
-    $totalLive / $totalTarget pieces · refreshed $genTime
+  <div class="topbar__right">
+    <div class="topbar__goal" title="Total pieces toward $totalTarget by month 12">
+      <span class="topbar__goal-value"><em>$totalLive</em> / $totalTarget</span>
+      <div class="topbar__goal-track">
+        <div class="topbar__goal-fill" style="width: $totalPct%"></div>
+        <div class="topbar__goal-marker" style="left: $paceFractionPct%"></div>
+      </div>
+      <span class="topbar__pace pace-$paceColor">$paceLabel</span>
+    </div>
+    <div class="topbar__stamp">
+      Day $daysIn / $commitmentDays<br>refreshed $genTime
+    </div>
   </div>
 </header>
 
 <div class="app">
-
-  <aside class="sidebar">
-    <div class="sidebar__section">
-      <div class="sidebar__head">Sites</div>
-      <ul class="nav-list">
-        <li><a href="#all" data-site="all"><span class="nav-pill pill-cold" style="background: var(--steel)"></span><span class="nav-text"><span class="nav-slug">All sites</span><span class="nav-stats">portfolio view</span></span></a></li>
-$sidebarItems
-      </ul>
-    </div>
-
-    <div class="sidebar__section">
-      <div class="sidebar__head">Goal</div>
-      <div class="mini-goal__value"><em>$totalLive</em> / $totalTarget</div>
-      <div class="mini-goal__sub">$totalPct% · $paceLabel</div>
-      <div class="mini-track">
-        <div class="mini-fill" style="width: $totalPct%"></div>
-        <div class="mini-marker" style="left: $paceFractionPct%"></div>
-      </div>
-    </div>
-
-$( if ($todoSidebarHtml) { @"
-    <div class="sidebar__section">
-      <div class="sidebar__head">TODO Now ($($todoNow.Count))</div>
-      <ul class="sidebar-todo">
-$todoSidebarHtml
-      </ul>
-    </div>
-"@ })
-
-  </aside>
 
   <main class="main">
 
@@ -1272,7 +1343,11 @@ $goalRowsHtml
         </div>
       </section>
 
-      <div class="panel-grid">
+      <div class="panel-grid panel-grid--3col">
+        <section class="panel">
+          <h3>TODO Now ($($todoNow.Count))</h3>
+          $( if ($todoSidebarHtml) { "<ul class='bare-list'>$todoSidebarHtml</ul>" } else { "<p class='empty'>Nothing in TODO Now.</p>" } )
+        </section>
         <section class="panel">
           <h3>Research notes ($($researchNotes.Count))</h3>
           <ul class='piece-list'>$researchAllItemsHtml</ul>
@@ -1288,17 +1363,17 @@ $goalRowsHtml
 </div>
 
 <script>
-  // Sync active sidebar item with current hash
+  // Sync site dropdown with current hash + vice versa
   (function () {
-    function syncActive() {
-      var hash = window.location.hash || "#all";
-      document.querySelectorAll('.nav-list a').forEach(function (a) {
-        a.classList.toggle('is-active', a.getAttribute('href') === hash);
-      });
+    var sel = document.getElementById('site-select');
+    if (!sel) return;
+    function syncFromHash() {
+      var h = (window.location.hash || '#all').slice(1);
+      sel.value = h;
     }
-    window.addEventListener('hashchange', syncActive);
-    document.addEventListener('DOMContentLoaded', syncActive);
-    syncActive();
+    window.addEventListener('hashchange', syncFromHash);
+    document.addEventListener('DOMContentLoaded', syncFromHash);
+    syncFromHash();
   })();
 </script>
 
