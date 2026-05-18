@@ -10,6 +10,10 @@ interface Props {
   themeColor?: string;
   ogType?: string;
   ogImage?: string;
+  // Optional override for the Google Fonts stylesheet URL. Default loads
+  // Fraunces + Inter Tight (mywildlifecam's elevated-nature-publication
+  // register). Satellite sites can pass their own per their visual direction.
+  fontsHref?: string;
 }
 
 const {
@@ -21,7 +25,10 @@ const {
   themeColor,
   ogType,
   ogImage,
+  fontsHref,
 } = Astro.props;
+const resolvedFontsHref = fontsHref
+  ?? "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter+Tight:wght@400;500;600;700&display=swap";
 const fullTitle = title.includes(siteName) ? title : `${title} · ${siteName}`;
 const canonicalHref = canonical ?? Astro.url.href;
 const defaultOgImage = `${Astro.site ?? ""}og-default.png`;
@@ -42,10 +49,7 @@ const resolvedOgImage = ogImage ?? defaultOgImage;
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter+Tight:wght@400;500;600;700&display=swap"
-  />
+  <link rel="stylesheet" href={resolvedFontsHref} />
 
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />

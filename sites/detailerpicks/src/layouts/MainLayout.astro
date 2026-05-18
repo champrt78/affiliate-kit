@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "@affkit/shared-ui/BaseLayout.astro";
 import AffiliateDisclosure from "@affkit/shared-ui/AffiliateDisclosure.astro";
+// detailerpicks's palette overrides (charcoal + electric blue + amber)
+import "../styles/site-tokens.css";
 
 interface Props {
   title: string;
@@ -13,6 +15,8 @@ interface Props {
 
 const { title, description, canonical, robotsContent, ogType, ogImage } = Astro.props;
 const siteName = "DetailerPicks";
+// Premium-garage / workshop-craft font stack — Space Grotesk for display, Inter for body.
+const fontsHref = "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap";
 ---
 <BaseLayout
   title={title}
@@ -22,6 +26,8 @@ const siteName = "DetailerPicks";
   robotsContent={robotsContent}
   ogType={ogType}
   ogImage={ogImage}
+  themeColor="#1A1D21"
+  fontsHref={fontsHref}
 >
   <header class="site-header">
     <a href="/" class="brand">DetailerPicks</a>
