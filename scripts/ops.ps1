@@ -510,6 +510,9 @@ $html = @"
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>Affiliate Kit · Ops</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1401,6 +1404,10 @@ Write-Host "     $totalLive live pieces / $totalTarget target ($totalPct%, $pace
 Write-Host "     Top action: $($topActionData.Headline) [$topSite]"
 
 if ($Open) {
-    Start-Process $outPath
-    Write-Host "     Opened in default browser."
+    # Use the default browser via cmd /c start so we can attach a cache-buster query string
+    # (Start-Process won't take a query string on a local file path)
+    $cacheBust = [int][double]::Parse((Get-Date -UFormat %s))
+    $url = "file:///" + ($outPath -replace '\\', '/') + "?t=$cacheBust"
+    cmd /c start "" "$url" | Out-Null
+    Write-Host "     Opened in default browser (cache-busted)."
 }
