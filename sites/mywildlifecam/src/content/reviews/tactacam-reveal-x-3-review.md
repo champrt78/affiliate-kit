@@ -8,7 +8,7 @@ product:
   brand: "Tactacam"
   currency: "USD"
   affiliate:
-    amazon: "https://www.amazon.com/TACTACAM-Reveal-Cellular-Trail-Camera/dp/B0F7S5K8QF"
+    amazon: "https://www.amazon.com/TACTACAM-Cellular-Required-RV-TC-XGEN3-Surveillance/dp/B0D7FQNM38"
 classification: "review"
 pubDate: 2026-05-17
 lastUpdated: 2026-05-17
