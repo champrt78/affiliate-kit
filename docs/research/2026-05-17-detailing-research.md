@@ -138,6 +138,14 @@ Full pH-scale framework presented across all categories:
 
 Rag Co. position: a coating-maintaining soap that ACTIVELY adds ceramic chemistry to your wash is the right move for a ceramic-coated car.
 
+**Critical addition from the Rag Co. video's full transcript — frequency-of-use framework:**
+
+> "These [pH 1 and pH 12] soaps are designed to be used every 90 to 120 days. This is not a soap to be used every week. This stuff will start to strip every single bit of protection you have. Even a ceramic coating, after multiple frequent washes, high alkaline soap will start to deteriorate a coating. The same goes for an acidic low pH soap."
+
+The Rag Co. concedes that frequent use of either acidic OR alkaline shampoos will damage a ceramic coating over time. The pH-neutral middle is the only category safe for weekly use. **This validates the structure of our buying guide:** four pH-neutral picks for weekly maintenance, ONE acidic pick (Pan's Demineralizing Shampoo) for every-few-months reset. Reader who follows this guide should NOT pick up the acidic shampoo and use it weekly — that's an active-harm scenario the guide should warn against (and our FAQ already does).
+
+The Rag Co. also notes: "Some of these ceramic coatings will ask that you use either a low acid pH wash or a high alkali pH wash to clean and refresh the coating surface annually." Manufacturer protocol matters; check your coating's documentation before doing the 90-120-day reset.
+
 **Source:** [The Rag Company — What Car Wash Soap Is Best For YOU? | Wash & Foam Cannon Tips](https://www.youtube.com/watch?v=IbXbeTpDRMs)
 
 ### Position B: Dr. Beasley's — "Use a pure soap, let the coating do the protection"

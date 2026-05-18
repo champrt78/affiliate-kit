@@ -179,6 +179,23 @@ Direct from Tactacam's own support docs. Spec-verification layer for the single-
 
 This is now a multi-reviewer-attributed single-product review ready to draft.
 
+## Long-term durability — 4+ year owner report (Arrow and Angler channel)
+
+The most credible longevity signal we have on Tactacam Reveal X comes from a reviewer who has been running multiple Reveal cameras since 2020-2021 (4-5 years at filming time). His verbatim summary:
+
+> "Old cameras, do they still work? The answer is absolutely. I've been running these Tactic Cams since 2020 or 2021. So these cameras are between four and five years old at this point. And in all honesty, they still work just as good as the day that I bought them."
+
+Operational pattern he describes:
+- **Seasonal deployment, not year-round:** "I put them out mid to late summer, pull them in usually before turkey season, so February, March, I'll pull my cameras out of the woods."
+- **Plan flexibility valued:** "I like the Tactacam for all the different plan options... I have some cameras that don't get a ton of pictures on them, I don't need to pay for thousands and thousands of pictures."
+- **Price band confirmed:** "$100 to $150 range and you can find them on sale sometimes — Cabela's will sometimes do 10% off if you have their card."
+
+**Source:** [Tactacam Reveal X's 4+ years later... how are they holding up??? Long term cellular trail cam review (Arrow and Angler)](https://www.youtube.com/watch?v=t-b6p0mX9Ps)
+
+**What this validates:** Review This Thing's 2-month score of 5/5 construction-and-durability and Tactacam's claimed IP66 rating both check out over a 4+ year window. The "Buy it if..." for our single-product review can credibly claim multi-year durability based on attributed owner testimony, not speculation.
+
+**What this caveats:** The 4+ year window is for SEASONAL use (5-8 months deployed, 4-7 months indoor storage). For true year-round deployment (which most backyard wildlife use cases involve), we have shorter-window data (Review This Thing's 2 months including summer storms). Worth disclosing in the piece — durability is excellent under seasonal use; year-round performance over multi-year windows is less well documented in the public review corpus.
+
 ## What we still need
 
 - `/watch` a Moultrie Mobile Edge 2 Pro real-world long-term review (not the launch hype) — the "got burned" caveat needs context
