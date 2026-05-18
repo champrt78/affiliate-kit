@@ -536,6 +536,7 @@ $html = @"
     --amber:      #E8B86A;
     --red:        #E07B7B;
     --highlight:  #F7E9C8;
+    --accent:     #C5E812;
     --font-serif: "Instrument Serif", Georgia, serif;
     --font-sans:  "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     --font-mono:  "JetBrains Mono", ui-monospace, Consolas, monospace;
@@ -579,17 +580,17 @@ $html = @"
   .topbar__brand {
     font-family: var(--font-serif);
     font-size: 18px;
-    color: var(--ink);
+    color: var(--muted);
     letter-spacing: -0.01em;
     white-space: nowrap;
   }
-  .topbar__brand em { font-style: italic; color: var(--steel); }
+  .topbar__brand em { font-style: italic; color: var(--muted-deep); }
 
   .site-select {
     appearance: none;
     background: var(--surface);
-    color: var(--ink);
-    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    border: 1px solid var(--line-soft);
     border-radius: 3px;
     padding: 6px 28px 6px 10px;
     font-family: var(--font-mono);
@@ -597,14 +598,15 @@ $html = @"
     line-height: 1.3;
     cursor: pointer;
     min-width: 220px;
-    background-image: linear-gradient(45deg, transparent 50%, var(--steel) 50%),
-                      linear-gradient(135deg, var(--steel) 50%, transparent 50%);
+    background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+                      linear-gradient(135deg, var(--muted) 50%, transparent 50%);
     background-position: calc(100% - 14px) 50%, calc(100% - 9px) 50%;
     background-size: 5px 5px, 5px 5px;
     background-repeat: no-repeat;
+    transition: border-color 120ms ease, color 120ms ease;
   }
-  .site-select:hover { border-color: var(--steel); }
-  .site-select:focus { outline: 1px solid var(--steel); outline-offset: 1px; }
+  .site-select:hover { border-color: var(--line); color: var(--ink); }
+  .site-select:focus { outline: none; border-color: var(--accent); color: var(--ink); }
 
   .topbar__right {
     display: flex;
@@ -615,7 +617,7 @@ $html = @"
   .topbar__stamp {
     font-family: var(--font-mono);
     font-size: 10px;
-    color: var(--muted);
+    color: var(--muted-deep);
     text-align: right;
     line-height: 1.5;
     white-space: nowrap;
@@ -672,9 +674,9 @@ $html = @"
   .do-next-panel {
     padding: 14px 18px;
     border-radius: 4px;
-    background: linear-gradient(135deg, #1A2030 0%, #0E1318 100%);
-    border: 1px solid var(--line);
-    border-left: 3px solid var(--highlight);
+    background: hsl(220 14% 11%);
+    border: 1px solid var(--line-soft);
+    border-left: 3px solid var(--accent);
     position: relative;
     flex-shrink: 0;
   }
@@ -688,7 +690,7 @@ $html = @"
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--highlight);
+    color: var(--accent);
     display: flex;
     align-items: center;
     gap: 12px;
@@ -697,7 +699,7 @@ $html = @"
   .do-next-panel__eyebrow::before {
     content: '';
     width: 20px; height: 1px;
-    background: var(--highlight);
+    background: var(--accent);
   }
   .do-next-panel--ok .do-next-panel__eyebrow { color: var(--muted); margin-bottom: 6px; }
   .do-next-panel--ok .do-next-panel__eyebrow::before { background: var(--muted); }
@@ -720,8 +722,8 @@ $html = @"
     display: inline-block;
     font-family: var(--font-mono);
     font-size: 11px;
-    color: var(--highlight);
-    background: rgba(247, 233, 200, 0.08);
+    color: var(--ink-soft);
+    background: rgba(255, 255, 255, 0.05);
     padding: 3px 9px;
     border-radius: 2px;
     margin-bottom: 10px;
@@ -757,6 +759,12 @@ $html = @"
     margin-left: 8px;
     font-size: 11px;
     padding: 3px 8px;
+  }
+  /* Accent recolor scoped to the do-next-panel only (reserves accent for "do this now") */
+  .do-next-panel .cmd-pill {
+    color: var(--accent);
+    background: rgba(197, 232, 18, 0.08);
+    border-color: rgba(197, 232, 18, 0.30);
   }
 
   /* ========================================
