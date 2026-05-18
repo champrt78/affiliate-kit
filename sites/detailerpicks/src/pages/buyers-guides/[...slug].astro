@@ -58,6 +58,12 @@ const robotsContent = isDraft ? "noindex, nofollow" : "index, follow";
     </aside>
   )}
 
+  {data.images?.hero && (
+    <div class="guide-hero" style={`background-image: url('${data.images.hero}')`} role="img" aria-label={data.images.heroCaption || data.title}>
+      <div class="guide-hero__overlay"></div>
+    </div>
+  )}
+
   <article class="guide">
     <header class="guide-header">
       <p class="kicker">Buyer's Guide</p>
@@ -101,24 +107,62 @@ const robotsContent = isDraft ? "noindex, nofollow" : "index, follow";
     font-size: var(--text-sm);
   }
   .draft-banner strong { font-size: var(--text-base); }
-  .guide { max-width: var(--content-max); margin: 0 auto; }
-  .guide-header { margin-bottom: var(--space-8); }
+
+  /* Article hero — 5:2 wide editorial image with dark gradient anchor */
+  .guide-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 5 / 2;
+    background-size: cover;
+    background-position: center;
+    background-color: #14181C;
+    margin-bottom: var(--space-10);
+  }
+  .guide-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(20, 24, 28, 0.10) 0%, rgba(20, 24, 28, 0.45) 100%);
+  }
+  @media (max-width: 760px) {
+    .guide-hero { aspect-ratio: 4 / 3; margin-bottom: var(--space-6); }
+  }
+
+  .guide { max-width: var(--content-max); margin: 0 auto; padding: 0 var(--space-6); }
+  .guide-header { margin-bottom: var(--space-8); max-width: 720px; }
   .kicker {
     text-transform: uppercase;
-    font-size: var(--text-xs);
-    letter-spacing: 0.08em;
-    color: var(--color-muted);
-    margin: 0 0 var(--space-2);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: var(--color-forest);
+    margin: 0 0 var(--space-4);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .kicker::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--color-forest);
   }
   h1 {
-    font-size: var(--text-3xl);
-    line-height: 1.2;
-    margin: 0 0 var(--space-3);
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-5);
+    color: var(--color-paper-ink);
   }
   .description {
-    font-size: var(--text-lg);
+    font-family: var(--font-sans);
+    font-size: 1.1875rem;
+    line-height: 1.55;
     color: var(--color-muted);
     margin: 0 0 var(--space-6);
+    max-width: 36ch;
   }
   .cta-wrap { margin: var(--space-6) 0; }
   .prose { line-height: 1.7; }

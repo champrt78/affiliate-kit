@@ -8,7 +8,8 @@
 
 ## Now
 
-- [ ] **Land the merged detailerpicks mockup to production** (`sites/detailerpicks/src/`) — Ray approved 2026-05-18: "if that were to be live I think that looks pretty legit, I would probably stop and read it". Source: `docs/playgrounds/detailerpicks-merged-v1-2026-05-18.html` (Chrome & Suds palette + microfiber-drag-hood article hero + hand-polishing-hood featured card).
+- [ ] **Find proper foam-cannon-in-use Unsplash image** for `best-foam-cannon-for-home-detailers.md` article hero. Brief from Ray: foam cannon spraying water + foam, outside, nice sunny day, summer, conveys "nice day outside." Currently using `photo-1520340356584-f9917d1eea6f` as placeholder.
+- [ ] Verify detailerpicks design live + screenshot for session log (~3 min after push for GH Actions deploy)
 - [ ] Confirm Bing Webmaster Tools — detailerpicks property added + sitemap submitted
 
 ## Next
@@ -34,6 +35,9 @@
 
 ## Done
 
+- [x] 2026-05-18 — **Detailerpicks Chrome & Suds design LANDED to production** (commit `101e0a5`). Full palette swap charcoal→cream + steel-blue brand + Instrument Serif. Manifesto section inverted as the page's one dark band. Article heroes swapped on both buying-guide pieces. Old tokens preserved at `site-tokens.charcoal.bak.css` for revert. Build clean: 10 pages, 1.10s.
+- [x] 2026-05-18 — **PLAYBOOK rewritten as comprehensive operating guide** (commit `61d9e23` + `e597dde`) — 5 slash commands, other skills, repo scripts, every API the system hits with key locations, external accounts at-a-glance.
+- [x] 2026-05-18 — **`/scout-topics` command added** (commit `e597dde`) — discovery layer that sits before `/research-product`. No flags → 5-10 candidates from gaps + signal. Seed flag → 3-5 candidate angles for that category.
 - [x] 2026-05-18 — **Affiliate Kit consolidation:** 4 slash commands moved into repo (`plugin/commands/`), one-command install (`pnpm install-plugin`), single architecture doc (`docs/SYSTEM.md`), stale plan docs archived to `docs/archive/`. System no longer relies on memory.
 - [x] 2026-05-18 — **Detailerpicks design direction picked:** merged v1 (Chrome & Suds + #2 imagery) approved for production
 - [x] 2026-05-18 — **3 system skills built and registered:** `/scaffold-piece`, `/research-product`, `/bottom-line-helper` (all at `~/.claude/commands/`)
