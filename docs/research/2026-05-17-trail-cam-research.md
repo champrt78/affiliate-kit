@@ -196,6 +196,90 @@ Operational pattern he describes:
 
 **What this caveats:** The 4+ year window is for SEASONAL use (5-8 months deployed, 4-7 months indoor storage). For true year-round deployment (which most backyard wildlife use cases involve), we have shorter-window data (Review This Thing's 2 months including summer storms). Worth disclosing in the piece — durability is excellent under seasonal use; year-round performance over multi-year windows is less well documented in the public review corpus.
 
+## Moultrie Edge / Edge 2 Pro deep dive (research 2026-05-18)
+
+Two reviewer perspectives surface the Moultrie story in much more honest detail than the Cell Cam Clash's "I got burned" caveat suggested.
+
+### Moultrie EDGE (original Edge, NOT Edge 2 Pro) — 1.5 year owner field review
+
+A reviewer who owns TWO Moultrie EDGE cameras (the older Edge model), one of which has been deployed 1.5 years including a duck-swamp deployment through a harsh winter, reports:
+
+- **Internal storage means no SD card needed** — Moultrie Edge has built-in memory that uploads straight to mobile app. Major pro vs cameras that REQUIRE class-10 U3 SD cards.
+- **Battery flexibility**: runs on 8 OR 16 batteries. Owner runs cheap-alkaline AAs × 16 and gets **2 months between battery changes** — not lithium, just regular alkaline.
+- **No SD card formatting needed in field** — flip-to-on simplicity. Camera blinks orange while finding signal, turns green when connected.
+- **Connects to both AT&T and Verizon** networks per camera (selectable at deployment).
+- **2.5 years of Moultrie product use** total, owner is pleased with app interface — "easy-to-use, user-friendly."
+- "After a year and a half in the field I have no complaints. Battery life is much better than the Delta."
+
+**Verdict:** Moultrie's older EDGE (the model the "I got burned" Cell Cam Clash reviewer was implicitly NOT recommending in his previous-product-experience reference) actually has a strong 1.5+ year field record from this owner. The story isn't "Moultrie products are bad" — it's "Moultrie products improved meaningfully between Delta and Edge."
+
+**Source:** [Moultrie EDGE Cellular Camera 1 Year Field Review | I Bought TWO!](https://www.youtube.com/watch?v=K2yBxhWvoyc)
+
+### Moultrie Edge 2 Pro spec breakdown (DISCLOSED: reviewer received the camera free from Moultrie)
+
+A reviewer who received the Edge 2 Pro free from Moultrie (transparently disclosed in-video) walked through the spec sheet on-camera:
+
+| Spec | Value |
+|---|---|
+| **Cellular networks** | **Auto-connect to ALL 4 major US carriers** (vs competitor 2-network typical) |
+| **Storage** | Built-in memory, no SD card needed |
+| **Trigger speed** | 3 seconds (slower than Tactacam 0.35s — note this) |
+| **Flash** | No-glow IR |
+| **On-demand pull** | Request photos/videos via app whenever |
+| **Photo resolution** | 40 megapixel |
+| **Video resolution** | 1440p (between 1080p and 2K) |
+| **Detection range** | 100 ft |
+| **Batteries** | 8 OR 16 (owner's choice for runtime vs weight) |
+| **Setup** | Bluetooth live feed — position camera via phone in real-time |
+| **Verdict from reviewer** | "Pretty sweet camera... priced really reasonably" |
+
+**Important honest disclosure for our piece:** This reviewer was sponsored. His positive verdict is data, but it's NOT independent. Cross-reference against the longer-window EDGE-original review (1.5 years, owner-bought) before forming a buying recommendation.
+
+**Source:** [Moultrie Edge 2 Pro - HONEST Review](https://www.youtube.com/watch?v=9eCN45a52Xc)
+
+### Synthesis update for the cellular buying guide
+
+The Moultrie story now nets to: **EDGE original = proven over 1.5 years in field by independent owner; EDGE 2 Pro = strong on-paper specs but most reviews are sponsored.** That's a much more nuanced position than the Cell Cam Clash's "I got burned, wait and see."
+
+**Updated buying guide framing for Moultrie:** Recommend the **Moultrie EDGE (original, NOT necessarily Edge 2 Pro)** with confidence based on independent 1.5+ year owner data. Frame the Edge 2 Pro as "newer, more features, but field longevity not yet independently confirmed" — honest fit content.
+
+## Bushnell CelluCORE 20 critical owner review (research 2026-05-18)
+
+After a FULL season of ownership (and owning TWO of them), Jake Salesman from Blue Collar Outdoors does NOT recommend the CelluCORE 20. Verbatim verdict:
+
+> "Honest review, don't recommend it, sorry Bushnell you can do a lot better mainly in your customer service."
+
+### What the CelluCORE 20 does well (per the owner)
+
+- **Picture and video quality is exceptional.** "Extremely impressive" — the visual output is genuinely good.
+- **App is well-designed.** "Awesome, really simple to use, really easy to connect a camera."
+- **Rich per-photo metadata in app:** time sent, moon phase, temperature, wind direction, wind speed, barometric pressure. "Can help you pattern deer based on temperature wind all that stuff."
+- **In-app crop/edit** with intelligent zoom-on-subject.
+
+### Why he won't buy again
+
+- **Video doesn't transmit** (same as Tactacam, but worth noting in cross-camera comparison).
+- **App problems** — multiple unspecified issues during the season.
+- **CUSTOMER SERVICE IS THE DEAL-BREAKER.** Reviewer explicitly says "if you improve that maybe I'll test some other cell cams" — meaning Bushnell's customer support during his issues was the reason he won't buy again. Hardware is fine; the post-purchase support isn't.
+
+**For our buying guide:** the Bushnell CelluCORE 20 deserves a "good camera, but disclose the customer-service caveat" framing. Image quality is its sales pitch; customer service is its risk.
+
+**Source:** [why i would NOT buy a bushnell cellucore 20 cell camera (Jake Salesman, Blue Collar Outdoors)](https://www.youtube.com/watch?v=tLZWJZUgJ0k)
+
+## Visualping watchlist (set up 2026-05-18)
+
+Five active jobs (free tier limit) monitoring weekly:
+
+| Job ID | URL | Coverage |
+|---|---|---|
+| 8518073 | tactacam.com/reveal-x-3 | DRAFT piece subject |
+| 8518074 | spypoint.com/en/cameras/cellular/flex-m | Published piece subject |
+| 8518075 | spypoint.com/en/cameras/cellular/flex-g36 | Future piece candidate |
+| 8518076 | trailcampro.com/blogs/reviews | Industry authority reviews index |
+| 8518077 | stealthcam.com/product-category/cellular-cameras/ | Published piece subject |
+
+Alerts come weekly when any of these pages change. Detailing watchlist deferred until detailerpicks pieces publish (Visualping free tier caps at 5 active jobs).
+
 ## What we still need
 
 - `/watch` a Moultrie Mobile Edge 2 Pro real-world long-term review (not the launch hype) — the "got burned" caveat needs context

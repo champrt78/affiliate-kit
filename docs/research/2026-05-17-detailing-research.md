@@ -213,3 +213,95 @@ The "Best Ceramic Spray Sealant 2026 Top 5" video returned **AI-narrated marketi
 - **Reddit comments via ScrapeCreators** — to see what real owners say about each S/A-tier soap over time, not just Pan's testing-day verdict.
 - **More /watch passes on:** Ammo NYC (Larry Kosilla) car-wash technique videos; ESOTERIC Detail comparisons; ChannelOne car-wash long-term review videos.
 - **Spec verification** — pH, concentration ratio, surfactant type for each S/A tier product before publishing.
+
+## Topic 4: Best Pressure Washer for Home Detailers (research 2026-05-18)
+
+Critical companion piece to the foam cannon guide. The foam cannon piece is meaningless without a real pressure washer behind it.
+
+### Pan The Organizer + Josh collaboration (Pan's full tier-style rundown)
+
+Pan paired with another detailing YouTuber (Josh) for this comparison. Their final summary:
+
+**Budget pick (~$100):** Greenworks 2300 series. "Around-the-house multi-use... works on the house and your car. Fantastic choice." Spec-verified via Greenworks direct: GPW2300 = 2300 PSI, 2.3 GPM, 15-amp brushless motor, 25-foot kink-resistant hose, axial cam pump (residential use).
+
+**Mid-tier serious enthusiast (Active VE52 or 2.0):** "For around $150-$250 you can get fantastic professional-grade industrial-grade numbers." Active 2.0 specifically: 5-Piston Pump + Universal 9650 Motor. 2.0 GPM at 1800 PSI (Adam's Polishes co-branded version), or 2.0 GPM at 1000 PSI for the base model. "200-hour lifespan vs the 100-hour for VE52." Also sold under Adam's Polishes brand.
+
+**Pro tier (Kranzle or AR Blue Clean AR630):**
+- **Kranzle** — premium build quality, the "best built" pressure washer in the comparison
+- **AR Blue Clean AR630** — "significantly cheaper" than Kranzle but "actually got slightly better performance." Per Obsessed Garage product page: described as "middle ground solution between Karcher and Kranzle." 2.3 GPM, Total Stop System (TSS).
+
+### Synthesis for the piece
+
+Three reader-segment picks:
+
+| Pick | For who | Price tier |
+|---|---|---|
+| **Greenworks Pro 2300** | Casual / "I want clean cars without a $500 investment" | ~$200-$300 |
+| **Active 2.0** (or Adam's Active 2.0) | Serious enthusiast who plans to keep the unit 5+ years | ~$300-$500 |
+| **AR Blue Clean AR630** | Pro-tier value pick — slight performance edge over Kranzle at significantly lower cost | ~$700-$1000 |
+| **Kranzle** | Pro-tier build quality pick — best-built unit, longest-lasting | ~$1200-$2500 |
+
+**Sources:**
+- [Pan The Organizer + Josh — The best pressure washer? Kranzle, Active, AR Blue Clean, Ryobi, Craftsman, & Greenworks](https://www.youtube.com/watch?v=_UwK_0VDK0o)
+- [Obsessed Garage AR Blue Clean AR630 product page](https://www.obsessedgarage.com/collections/ar-blue-clean)
+- [Greenworks Pro 2300 product page](https://www.greenworkstools.com/products/pro-2300-psi-brushless-2-3-gpm-electric-pressure-washer)
+- [Active 2.0 Electric Pressure Washer (Active Products)](https://activeproducts.com/products/active%E2%84%A2-2-0-electric-pressure-washer-tool-only)
+- [Adam's Active 2.0 Pressure Washer (co-branded)](https://adamspolishes.com/products/adams-active-2-0-pressure-washer)
+
+## Topic 5: Best Drying Towels for Car Detailing (research 2026-05-18)
+
+### The Rag Company Gauntlet — verified specs
+
+The "default reference" drying towel cited across multiple reviewers:
+
+| Spec | Value |
+|---|---|
+| **GSM** | 900 GSM ("thick, super plush") |
+| **Material** | 70% polyester / 30% polyamide AA-Grade Korean split microfiber |
+| **Fibers per square inch** | 500,000+ |
+| **Size** | 20" × 30" |
+| **Price** | $28 retail (Walmart, Car Supplies Warehouse) |
+| **Available colors** | Ice Grey (most-cited), other variants |
+
+**Sources:**
+- [The Rag Company — The Gauntlet product page](https://theragcompany.com/products/the-gauntlet)
+- [Amazon Rag Company Gauntlet listing](https://www.amazon.com/Rag-Company-Gauntlet-Microfiber-Drying/dp/B083KQ8Q1D)
+- [Walmart Rag Company Gauntlet](https://www.walmart.com/ip/Rag-Company-Gauntlet-Drying-Towel-70-30-Blend-Korean-Microfiber...)
+- [Car Supplies Warehouse Rag Company Gauntlet](https://www.carsupplieswarehouse.com/products/the-rag-company-the-gauntlet-drying-towel-20x30-drying-towel)
+
+### Reviewer commentary on Rag Company's GOAT line (drying towel sub-brand)
+
+A separate /watch ("Stop Using The Wrong Drying Towel — Here's What Actually Works", April 2026) covered The Rag Company's GOAT line specifically:
+- **GOAT 2200 V2** — Original GOAT, described as "too big" for some use cases
+- **GOAT 1800** — Reviewer's clear favorite. Smaller than 2200 V2, more practical for the typical sedan/SUV size
+- **Liquidator** — Smaller wipe-up companion, available in different sizes
+- Cosmetic complaint: GOAT colors run "zombie pee green" and "super bright orange." Reviewer wants neutral blue/black colors instead.
+
+**Source:** [Stop Using The Wrong Drying Towel — Here's What Actually Works](https://www.youtube.com/watch?v=86rzKXJPAnQ)
+
+### Reviewer commentary on the broader drying ecosystem
+
+"The ULTIMATE Car Drying Towel Guide For 2025" (June 2025) covered:
+- **Drying aids matter** — silicone-based vs polymer-based. Polymer-based aids give towels more longevity (need fewer washes between uses) than silicone-based.
+- **Don't wash towels after every dry** — if a towel only wiped clean water (no soap, no protectant), hang and re-use. Saves towel lifespan.
+- **New towels need a 3-5 wash break-in period** before judging texture. Like bed sheets — crispy when new, soft once broken in.
+
+**Source:** [The ULTIMATE Car Drying Towel Guide For 2025](https://www.youtube.com/watch?v=8Hz_3xm9bI4)
+
+### Synthesis for the piece
+
+Three reader-segment picks (need competitor research — see "What we still need" below):
+
+| Pick | For who | Price tier |
+|---|---|---|
+| **Rag Company Gauntlet** | Default pick. 900 GSM is the well-tested premium tier; works for sedans, SUVs, trucks | ~$28 |
+| **Rag Company GOAT 1800** | Owners of typical sedans/SUVs who find the Gauntlet (or GOAT 2200) too large to handle | TBD |
+| **Rag Company Liquidator** | Companion wipe-up for after-drying tasks, glass, water marks | TBD |
+
+**Honest disclosure for the piece:** all three top picks are from the same brand (The Rag Company). The category is brand-dominated — Rag Company makes the most-cited towels. If we want a competitor for cross-brand comparison, candidates: Autofiber (rival, similar weight class), Microfiber Madness (premium European brand), Adam's Polishes Great White / Big Softie.
+
+## What we still need for Topics 4-5
+
+- **Pressure washer:** Firecrawl Kranzle product page for verified specs + pricing. Currently have specs for Greenworks 2300, Active 2.0, AR Blue Clean AR630 from search snippets; Kranzle needs deeper verification.
+- **Drying towel:** competitor brand /watch passes — Autofiber, Microfiber Madness, Adam's Polishes Great White. Today's drying-towel research is heavily Rag-Company-skewed and the buying guide needs cross-brand honesty.
+- **Wash mitt:** entirely missing — natural companion piece. Most-cited candidates: Rag Company Cyclone, Rag Company Pluffle, Adam's Wash Mitt, BlackFire Lambs Wool. Worth a separate research pass.
