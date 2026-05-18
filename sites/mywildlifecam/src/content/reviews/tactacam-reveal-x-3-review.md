@@ -18,6 +18,7 @@ images:
   imageScale: 1.2
 bottomLine:
   verdict: "Buy it if you want reliable cellular under $150. Skip it if you need video alerts on your phone or absolute-stealth no-glow flash."
+  supporting: "The Reveal X 3.0 is the cheapest cellular trail cam with multi-year durability backed by independent owner reports. Plan flexibility is the standout feature: $5 entry tier, cheapest unlimited at the top, and the ability to suspend month-to-month during off-season. The honest tradeoff is that some features stay on the SD card (the other four photos in a five-photo burst, all video) and the IR flash is low-glow not no-glow."
 scorecard:
   axes:
     - { name: "Cellular Performance", weight: 25, score: 8.5 }
