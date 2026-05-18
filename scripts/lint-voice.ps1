@@ -1,10 +1,15 @@
-# Lints a target markdown file against the voice doctrine's forbidden phrases.
+# Lints target files against the voice doctrine's forbidden phrases.
 # Run AFTER the AI expands the scaffold, BEFORE commit. This is the back-stop
 # layer when the AI drifts past the prompt-construction constraint (see U3/U4).
 #
 # Reads docs/voice-doctrine.md, extracts every literal in backticks from the
-# `## Forbidden phrases` section, and greps the target file for each one.
+# `## Forbidden phrases` section, and greps the target(s) for each one.
 # Case-insensitive, literal match (no regex interpretation of the literals).
+#
+# -Path accepts:
+#   - A single file (.md, .astro, .mdx, .html, anything textual)
+#   - A directory (recurses, scans .md + .astro + .mdx within)
+#   - A glob pattern resolved via Get-ChildItem
 #
 # Exit codes:
 #   0 — clean (no forbidden phrases found)
@@ -30,10 +35,34 @@ if (-not $DoctrinePath -or $DoctrinePath.Trim().Length -eq 0) {
 # --- validate inputs ---------------------------------------------------------
 
 if (-not (Test-Path $Path)) {
-    [Console]::Error.WriteLine("[err] Target file not found: $Path")
+    [Console]::Error.WriteLine("[err] Target path not found: $Path")
     Write-Host ""
     Write-Host "Next:"
     Write-Host "  - Fix the lint setup, then re-run."
+    exit 2
+}
+
+# Resolve $Path to a concrete list of files. Directory → recurse for content
+# extensions; single file → list-of-one; glob → expand via Get-ChildItem.
+$targetFiles = @()
+$item = Get-Item -LiteralPath $Path -ErrorAction SilentlyContinue
+if ($item -and $item.PSIsContainer) {
+    $targetFiles = Get-ChildItem -Path $Path -Recurse -File -Include *.md, *.astro, *.mdx |
+        ForEach-Object { $_.FullName }
+}
+elseif ($item) {
+    $targetFiles = @($item.FullName)
+}
+else {
+    # Glob — let Get-ChildItem expand it
+    $targetFiles = Get-ChildItem -Path $Path -File | ForEach-Object { $_.FullName }
+}
+
+if ($targetFiles.Count -eq 0) {
+    [Console]::Error.WriteLine("[err] No files to scan at: $Path")
+    Write-Host ""
+    Write-Host "Next:"
+    Write-Host "  - Pass a file, directory, or glob with at least one .md / .astro / .mdx target."
     exit 2
 }
 
@@ -106,7 +135,7 @@ foreach ($lit in $literals) {
 
 Write-Verbose "Loaded $($uniqueLiterals.Count) forbidden literals from $DoctrinePath"
 
-# --- grep the target ---------------------------------------------------------
+# --- grep the targets --------------------------------------------------------
 
 $findings = @()
 
@@ -114,11 +143,12 @@ foreach ($literal in $uniqueLiterals) {
     # -SimpleMatch makes this a literal substring search (regex metacharacters
     # in the literal are treated as plain text). Default -CaseSensitive:$false
     # is implicit; Select-String is case-insensitive by default.
-    $hits = Select-String -Path $Path -Pattern $literal -SimpleMatch
+    $hits = Select-String -Path $targetFiles -Pattern $literal -SimpleMatch
     if ($hits) {
         foreach ($hit in $hits) {
             $findings += [pscustomobject]@{
                 Literal    = $literal
+                FilePath   = $hit.Path
                 LineNumber = $hit.LineNumber
                 LineText   = $hit.Line
             }
@@ -128,8 +158,10 @@ foreach ($literal in $uniqueLiterals) {
 
 # --- report ------------------------------------------------------------------
 
+Write-Verbose "Scanned $($targetFiles.Count) file(s)."
+
 if ($findings.Count -eq 0) {
-    Write-Host "Voice doctrine: clean" -ForegroundColor Green
+    Write-Host "Voice doctrine: clean ($($targetFiles.Count) file(s) scanned)" -ForegroundColor Green
     Write-Host ""
     Write-Host "Next:"
     Write-Host "  - Voice doctrine clean. Proceed to ``astro build`` + preview, then commit."
@@ -137,15 +169,15 @@ if ($findings.Count -eq 0) {
 }
 
 foreach ($f in $findings) {
-    Write-Host "${Path}:$($f.LineNumber): matched forbidden phrase: `"$($f.Literal)`"" -ForegroundColor Red
+    Write-Host "$($f.FilePath):$($f.LineNumber): matched forbidden phrase: `"$($f.Literal)`"" -ForegroundColor Red
     if ($VerbosePreference -eq 'Continue') {
         Write-Host "    > $($f.LineText.Trim())" -ForegroundColor DarkGray
     }
 }
 
 Write-Host ""
-Write-Host "Summary: $($findings.Count) finding(s) across $($uniqueLiterals.Count) forbidden literals." -ForegroundColor Red
+Write-Host "Summary: $($findings.Count) finding(s) across $($targetFiles.Count) file(s) and $($uniqueLiterals.Count) forbidden literals." -ForegroundColor Red
 Write-Host ""
 Write-Host "Next:"
-Write-Host "  - $($findings.Count) findings — edit the piece to remove forbidden phrases, then re-run."
+Write-Host "  - $($findings.Count) findings — edit the file(s) to remove forbidden phrases, then re-run."
 exit 1
