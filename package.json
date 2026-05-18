@@ -12,7 +12,8 @@
     "test": "pnpm -r --if-present test",
     "typecheck": "pnpm -r --if-present typecheck",
     "lint": "pnpm -r --if-present lint",
-    "install-plugin": "pwsh ./scripts/install-plugin.ps1"
+    "install-plugin": "pwsh ./scripts/install-plugin.ps1",
+    "ops": "pwsh ./scripts/ops.ps1 -Open"
   },
   "devDependencies": {
     "typescript": "^5.4.0"

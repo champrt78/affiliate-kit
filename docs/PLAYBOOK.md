@@ -16,7 +16,7 @@ The hard rule that makes this work, not slop: **the Bottom Line is human, writte
 
 ---
 
-## The 5 slash commands (the Kit)
+## The 6 slash commands (the Kit)
 
 All installed via `pnpm install-plugin`. All version-controlled in `plugin/commands/`.
 
@@ -59,6 +59,15 @@ Synthesizes findings into `docs/research/<date>-<slug>.md` with verified specs, 
 **Why it exists:** The 5-step shell ritual collapses to one line, and the build verifies before you touch anything.
 **Example:** `/scaffold-piece site=mywildlifecam type=review slug=moultrie-edge-2-pro product="Moultrie Edge 2 Pro" brand=Moultrie amazon_url="https://amazon.com/.../dp/XXX?tag=mywildlifecam-20"`
 
+### `/ops`
+
+**When:** You sit down to a session and want to see "what's next" without scrolling through TODO.md. Or any time during a session when you want the portfolio dashboard.
+**What it does:** Regenerates `docs/ops.html` from real repo state (content files, research notes, TODO Now, git log) and opens it in your default browser. Single self-contained dark-mode HTML page. Shows: portfolio overview (5 sites with cadence health), DRAFT pieces waiting on Bottom Line, per-site next-action cards with the slash command to run, refresh sweep candidates, TODO Now, recent commits, research notes available.
+**Why it exists:** So you have a destination, not just a chat window. Open the page, see what to do, run the suggested command.
+**Example:** `/ops`
+
+Equivalent: `pnpm ops` from the repo root (or `pwsh scripts/ops.ps1 -Open` directly).
+
 ### `/bottom-line-helper <slug>`
 
 **When:** You scaffolded a piece, the body is drafted, and you're sitting at the empty `## Bottom Line` slot trying to write the verdict.
@@ -91,6 +100,7 @@ In `scripts/`. Used by the slash commands above, but you can invoke them directl
 | Script | Purpose | Example |
 |---|---|---|
 | `install-plugin.ps1` | Installs the Kit's slash commands into `~/.claude/commands/` and prints the fresh-machine setup checklist. Re-run after `git pull` to refresh commands. | `pnpm install-plugin` |
+| `ops.ps1` | Generates the operations dashboard at `docs/ops.html` from real repo state. Dark-mode editorial, shows what to do next per site. | `pnpm ops` or `pwsh scripts/ops.ps1 -Open` |
 | `new-review.ps1` | Scaffolds a single-product review markdown file from `templates/review.md.tmpl`. | `pwsh scripts/new-review.ps1 -Site mywildlifecam -Slug ... -ProductName ...` |
 | `buyers-guide.ps1` | Scaffolds a buying-guide markdown file from `templates/buyers-guide.md.tmpl`. | `pwsh scripts/buyers-guide.ps1 -Site detailerpicks -Slug ...` |
 | `add-link.ps1` | Writes a cloaker KV entry: `<site>:<slug>` → `{ url, tag, merchant, status }`. Called by `/scaffold-piece`. | `pwsh scripts/add-link.ps1 -Site detailerpicks -Slug X -Url ...` |
