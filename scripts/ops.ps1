@@ -2,13 +2,12 @@
 #
 # Reads real repo state (content files, research notes, TODO, git log) and
 # emits a single self-contained HTML page at docs/ops.html. Dark mode,
-# editorial register. Open in any browser to see "what's next."
+# editorial app shell: top "Do this next" strip + left sidebar of sites +
+# right drill-down pane.
 #
 # Usage:
 #   pwsh scripts/ops.ps1            # regenerate dashboard
 #   pwsh scripts/ops.ps1 -Open      # regenerate + open in default browser
-#
-# Idempotent. Safe to re-run. No side effects beyond writing docs/ops.html.
 
 param(
     [switch]$Open
@@ -16,25 +15,22 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-$repoRoot   = Split-Path -Parent $PSScriptRoot
-$sitesDir   = Join-Path $repoRoot "sites"
-$docsDir    = Join-Path $repoRoot "docs"
-$researchDir = Join-Path $docsDir "research"
-$todoPath   = Join-Path $docsDir "TODO.md"
-$outPath    = Join-Path $docsDir "ops.html"
+$repoRoot     = Split-Path -Parent $PSScriptRoot
+$sitesDir     = Join-Path $repoRoot "sites"
+$docsDir      = Join-Path $repoRoot "docs"
+$researchDir  = Join-Path $docsDir "research"
+$todoPath     = Join-Path $docsDir "TODO.md"
+$outPath      = Join-Path $docsDir "ops.html"
 
-# === Constants ===
+# === Commitment constants ===
 $commitmentStart = [datetime]"2026-05-18"
 $commitmentDays  = 365
 $heroSite        = "mywildlifecam"
 $satelliteCold   = @("fussybean", "starteraquarium", "gameovergear")
-$satelliteWarm   = @("detailerpicks")
 $today           = Get-Date
-$todayIso        = $today.ToString("yyyy-MM-dd")
 $daysIn          = [int]($today - $commitmentStart).TotalDays
 $daysRemaining   = $commitmentDays - $daysIn
 
-# Cadence targets (days between pieces)
 $cadenceTargets = @{
     "mywildlifecam"   = 7
     "detailerpicks"   = 18
@@ -43,36 +39,40 @@ $cadenceTargets = @{
     "gameovergear"    = 180
 }
 
-# 12-month piece targets per site — adds to 50 (the $100/mo math threshold)
 $pieceTargets = @{
-    "mywildlifecam"   = 30   # hero — 1/week pace, ships ~30 realistically out of 52 weeks
-    "detailerpicks"   = 15   # warm satellite — 1 per 2-3 weeks
-    "fussybean"       = 5    # cold, only if hero is ahead
-    "starteraquarium" = 0    # dormant until hero proves model
-    "gameovergear"    = 0    # dormant until hero proves model
+    "mywildlifecam"   = 30
+    "detailerpicks"   = 15
+    "fussybean"       = 5
+    "starteraquarium" = 0
+    "gameovergear"    = 0
 }
 $totalTarget = ($pieceTargets.Values | Measure-Object -Sum).Sum
 
-# === Helpers ===
+# Map a site to keyword tokens used to match research notes / topics
+$siteKeywords = @{
+    "mywildlifecam"   = @("trail-cam", "trail cam", "wildlife", "cellular", "tactacam", "spypoint", "moultrie", "stealth cam", "bushnell", "muddy", "browning")
+    "detailerpicks"   = @("detail", "wash", "foam", "soap", "ceramic", "polish", "wheel", "wax", "sealant", "mitt", "shampoo")
+    "fussybean"       = @("coffee", "espresso", "grinder", "pour-over", "decaf")
+    "starteraquarium" = @("aquarium", "fish", "tank", "filter", "heater", "planted")
+    "gameovergear"    = @("retro", "arcade", "crt", "controller", "emulator", "gaming")
+}
+
+# === Data extraction ===
 
 function Get-PieceState {
     param([string]$Path)
-
     $raw = Get-Content $Path -Raw -ErrorAction SilentlyContinue
     if (-not $raw) { return $null }
 
-    # Frontmatter is between the first pair of --- lines
     $fmMatch = [regex]::Match($raw, "(?s)^---\r?\n(.+?)\r?\n---")
     if (-not $fmMatch.Success) { return $null }
     $fm = $fmMatch.Groups[1].Value
 
-    # Parse fields with light regex
     $title       = [regex]::Match($fm, 'title:\s*"([^"]*)"').Groups[1].Value
     $pubDateStr  = [regex]::Match($fm, 'pubDate:\s*(\S+)').Groups[1].Value
     $lastUpdStr  = [regex]::Match($fm, 'lastUpdated:\s*(\S+)').Groups[1].Value
     $verdict     = [regex]::Match($fm, 'verdict:\s*"([^"]*)"').Groups[1].Value
 
-    # DRAFT detection — empty verdict OR body contains the placeholder
     $isDraft = ($verdict.Trim() -eq "") -or ($raw -match "_The Bottom Line is being written\._")
 
     $pubDate = $null
@@ -85,7 +85,6 @@ function Get-PieceState {
         Slug        = [System.IO.Path]::GetFileNameWithoutExtension($Path)
         Title       = $title
         PubDate     = $pubDate
-        LastUpdated = $lastUpdStr
         Verdict     = $verdict
         IsDraft     = $isDraft
         AgeDays     = if ($pubDate) { [int]($today - $pubDate).TotalDays } else { $null }
@@ -94,7 +93,6 @@ function Get-PieceState {
 
 function Get-SiteState {
     param([string]$SiteSlug)
-
     $contentDir = Join-Path $sitesDir "$SiteSlug/src/content"
     $pieces = @()
 
@@ -112,33 +110,29 @@ function Get-SiteState {
         }
     }
 
-    $live = $pieces | Where-Object { -not $_.IsDraft }
-    $drafts = $pieces | Where-Object { $_.IsDraft }
+    $live   = @($pieces | Where-Object { -not $_.IsDraft })
+    $drafts = @($pieces | Where-Object { $_.IsDraft })
 
     $lastShipped = $null
-    if ($live) {
+    if ($live.Count -gt 0) {
         $lastShipped = ($live | Sort-Object -Property PubDate -Descending | Select-Object -First 1).PubDate
     }
     $daysSinceLast = if ($lastShipped) { [int]($today - $lastShipped).TotalDays } else { $null }
 
     $target = $cadenceTargets[$SiteSlug]
     $health = "cold"
-    if ($live.Count -eq 0) {
-        $health = "cold"
-    } elseif ($daysSinceLast -le $target) {
-        $health = "green"
-    } elseif ($daysSinceLast -le ($target * 1.5)) {
-        $health = "amber"
-    } else {
-        $health = "red"
-    }
+    if ($live.Count -eq 0) { $health = "cold" }
+    elseif ($daysSinceLast -le $target) { $health = "green" }
+    elseif ($daysSinceLast -le ($target * 1.5)) { $health = "amber" }
+    else { $health = "red" }
 
     [pscustomobject]@{
         Slug          = $SiteSlug
         Pieces        = $pieces
+        Live          = $live
+        Drafts        = $drafts
         LiveCount     = $live.Count
         DraftCount    = $drafts.Count
-        Drafts        = $drafts
         LastShipped   = $lastShipped
         DaysSinceLast = $daysSinceLast
         CadenceTarget = $target
@@ -148,47 +142,48 @@ function Get-SiteState {
 
 function Get-NextActionForSite {
     param([pscustomobject]$Site)
-
     $slug = $Site.Slug
 
-    # Priority 1: any DRAFT piece waiting on Bottom Line
     if ($Site.DraftCount -gt 0) {
         $first = $Site.Drafts | Select-Object -First 1
         return [pscustomobject]@{
             Headline = "Write Bottom Line on $($first.Slug)"
-            Reason   = "Piece is scaffolded and noindex-gated. Highest leverage — already 90% shipped."
+            Reason   = "Already scaffolded and noindex-gated. Highest leverage — 90% shipped."
             Command  = "/bottom-line-helper $($first.Slug)"
-            Priority = "high"
+            Priority = 1
+            PriorityLabel = "high"
         }
     }
 
-    # Cold satellites: defer until hero proves the model
     if ($satelliteCold -contains $slug) {
+        $heroState = Get-SiteState $heroSite
         return [pscustomobject]@{
-            Headline = "Defer"
-            Reason   = "Hero-first phase. Revisit when mywildlifecam hits 15+ pieces (currently $((Get-SiteState $heroSite).LiveCount))."
+            Headline = "Defer — hero-first phase"
+            Reason   = "Revisit when mywildlifecam hits 15+ pieces (currently $($heroState.LiveCount))."
             Command  = ""
-            Priority = "defer"
+            Priority = 9
+            PriorityLabel = "defer"
         }
     }
 
-    # Priority 2: behind cadence
-    if ($Site.DaysSinceLast -gt $Site.CadenceTarget) {
+    if ($Site.LiveCount -eq 0 -or $Site.DaysSinceLast -gt $Site.CadenceTarget) {
+        $sinceLast = if ($Site.DaysSinceLast) { "$($Site.DaysSinceLast)d since last" } else { "no pieces yet" }
         return [pscustomobject]@{
-            Headline = "Behind cadence ($($Site.DaysSinceLast)d since last; target $($Site.CadenceTarget)d)"
-            Reason   = "Ship the next piece. Run /scout-topics to surface candidates, then /research-product + /scaffold-piece."
+            Headline = "Ship the next piece — behind cadence"
+            Reason   = "$sinceLast, target $($Site.CadenceTarget)d. Run /scout-topics for candidates."
             Command  = "/scout-topics"
-            Priority = "high"
+            Priority = 2
+            PriorityLabel = "high"
         }
     }
 
-    # Priority 3: on clock
     $daysToNext = $Site.CadenceTarget - $Site.DaysSinceLast
     return [pscustomobject]@{
         Headline = "On clock — next piece due in ~$daysToNext day(s)"
-        Reason   = "Cadence healthy. Use the time to scout topics or queue research for next piece."
+        Reason   = "Cadence healthy. Use the time to scout topics or queue research."
         Command  = "/scout-topics"
-        Priority = "ok"
+        Priority = 5
+        PriorityLabel = "ok"
     }
 }
 
@@ -222,6 +217,18 @@ function Get-ResearchNotes {
     }
 }
 
+function Get-ResearchForSite {
+    param([string]$SiteSlug, [array]$AllNotes)
+    $keywords = $siteKeywords[$SiteSlug]
+    if (-not $keywords) { return @() }
+    $AllNotes | Where-Object {
+        $name = $_.File.ToLower() + " " + $_.Title.ToLower()
+        $matched = $false
+        foreach ($k in $keywords) { if ($name -match [regex]::Escape($k)) { $matched = $true; break } }
+        $matched
+    }
+}
+
 function Get-RecentCommits {
     Push-Location $repoRoot
     try {
@@ -234,49 +241,215 @@ function Get-RecentCommits {
                 Subject = $parts[1]
                 Date    = $parts[2]
             }
-        } | Select-Object -First 10
+        } | Select-Object -First 12
     } finally {
         Pop-Location
     }
 }
 
-# === Compute all state ===
+# === Compute portfolio state ===
 
 $allSites = @("mywildlifecam", "detailerpicks", "fussybean", "starteraquarium", "gameovergear")
-$siteStates = @{}
-foreach ($s in $allSites) {
-    $siteStates[$s] = Get-SiteState -SiteSlug $s
-}
+$siteStates = [ordered]@{}
+foreach ($s in $allSites) { $siteStates[$s] = Get-SiteState -SiteSlug $s }
 
 $totalLive   = ($siteStates.Values | Measure-Object -Property LiveCount -Sum).Sum
 $totalDrafts = ($siteStates.Values | Measure-Object -Property DraftCount -Sum).Sum
-
 $todoNow      = Get-TodoNow
 $researchNotes = Get-ResearchNotes
 $recentCommits = Get-RecentCommits
 
-# Refresh sweep candidates — live pieces > 90 days old
+# Refresh sweep candidates (>90d live pieces)
 $refreshCandidates = @()
 foreach ($s in $siteStates.Values) {
     $refreshCandidates += $s.Pieces | Where-Object { -not $_.IsDraft -and $_.AgeDays -ne $null -and $_.AgeDays -gt 90 }
 }
 
-# Goal trajectory — pace projection
+# Per-site next actions
+$siteActions = @{}
+foreach ($s in $allSites) { $siteActions[$s] = Get-NextActionForSite -Site $siteStates[$s] }
+
+# Highest-priority single action across portfolio
+$rankedActions = $allSites | ForEach-Object {
+    $a = $siteActions[$_]
+    [pscustomobject]@{
+        Site = $_
+        Action = $a
+        Priority = $a.Priority
+    }
+} | Sort-Object Priority
+$topAction = $rankedActions | Select-Object -First 1
+
+# Goal trajectory math
 $paceFraction = if ($daysIn -gt 0) { $daysIn / $commitmentDays } else { 0 }
 $expectedByNow = [math]::Round($totalTarget * $paceFraction, 1)
 $paceDelta = $totalLive - $expectedByNow
-$piecesPerDayActual = if ($daysIn -gt 0) { $totalLive / $daysIn } else { 0 }
-$projectedYearEnd = [math]::Round($piecesPerDayActual * $commitmentDays, 0)
-
 $paceLabel = if ([math]::Abs($paceDelta) -lt 1) { "on pace" }
              elseif ($paceDelta -gt 0) { "$([math]::Round($paceDelta,1)) ahead" }
              else { "$([math]::Round([math]::Abs($paceDelta),1)) behind" }
-
 $paceColor = if ($paceDelta -ge 0) { "green" } elseif ($paceDelta -gt -3) { "amber" } else { "red" }
+$totalPct = if ($totalTarget -gt 0) { [math]::Round(($totalLive / $totalTarget) * 100, 1) } else { 0 }
+$paceFractionPct = [math]::Round($paceFraction * 100, 1)
 
-# === Render HTML ===
+# === Render helpers ===
 
-# Goal-progress bar chart rows (per-site)
+function HtmlEscape {
+    param([string]$Text)
+    if (-not $Text) { return "" }
+    return $Text.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;").Replace('"', "&quot;")
+}
+
+function Format-RecentPieces {
+    param([array]$Pieces, [int]$Limit = 5)
+    $live = $Pieces | Where-Object { -not $_.IsDraft } | Sort-Object -Property PubDate -Descending | Select-Object -First $Limit
+    if ($live.Count -eq 0) { return "<p class='empty'>No pieces yet.</p>" }
+    $items = ""
+    foreach ($p in $live) {
+        $age = if ($p.AgeDays -ne $null) { "$($p.AgeDays)d" } else { "?" }
+        $type = if ($p.Type -eq "reviews") { "review" } else { "guide" }
+        $title = HtmlEscape $p.Title
+        $items += "<li><div class='piece-meta'><span class='piece-age'>$age</span><span class='piece-type'>$type</span></div><div class='piece-title'>$title</div><div class='piece-slug'>$($p.Slug)</div></li>"
+    }
+    return "<ul class='piece-list'>$items</ul>"
+}
+
+# === Build sidebar site list ===
+
+$sidebarItems = ""
+foreach ($slug in $allSites) {
+    $s = $siteStates[$slug]
+    $pillClass = "pill-" + $s.Health
+    $pillLabel = switch ($s.Health) {
+        "green" { "•" }; "amber" { "•" }; "red" { "•" }; "cold" { "•" }
+    }
+    $stats = "$($s.LiveCount) live"
+    if ($s.DraftCount -gt 0) { $stats += " · $($s.DraftCount) draft" }
+    $sidebarItems += @"
+      <li><a href="#site-$slug" data-site="$slug">
+        <span class="nav-pill $pillClass"></span>
+        <span class="nav-text">
+          <span class="nav-slug">$slug</span>
+          <span class="nav-stats">$stats</span>
+        </span>
+      </a></li>
+"@
+}
+
+# === Build per-site drill-downs ===
+
+function Build-SiteDrillDown {
+    param([string]$SiteSlug, [pscustomobject]$Site, [pscustomobject]$Action, [array]$AllResearch)
+
+    $healthLabel = switch ($Site.Health) {
+        "green" { "ON CADENCE" }; "amber" { "BEHIND" }; "red" { "STALE" }; "cold" { "DORMANT" }
+    }
+    $lastStr = if ($Site.LastShipped) { "$($Site.DaysSinceLast)d ago ($($Site.LastShipped.ToString('yyyy-MM-dd')))" } else { "never" }
+    $target = $pieceTargets[$SiteSlug]
+    $progress = if ($target -gt 0) { "$($Site.LiveCount) / $target pieces toward 12-mo target" } else { "dormant (revisit when hero ships 15+)" }
+    $pct = if ($target -gt 0) { [math]::Min(100, [math]::Round(($Site.LiveCount / $target) * 100, 1)) } else { 0 }
+
+    $cmdHtml = if ($Action.Command) { "<code class=`"cmd-pill`">$($Action.Command)</code>" } else { "" }
+
+    # DRAFTs for this site
+    $draftHtml = ""
+    if ($Site.DraftCount -gt 0) {
+        $items = ""
+        foreach ($d in $Site.Drafts) {
+            $items += "<li><strong>$($d.Slug)</strong> · <code class='cmd-pill cmd-pill--inline'>/bottom-line-helper $($d.Slug)</code></li>"
+        }
+        $draftHtml = @"
+    <section class="panel panel--warning">
+      <h3>$($Site.DraftCount) waiting on Bottom Line</h3>
+      <ul class="bare-list">$items</ul>
+    </section>
+"@
+    }
+
+    # Recent pieces
+    $recentHtml = Format-RecentPieces -Pieces $Site.Pieces -Limit 5
+
+    # Research notes filtered by site
+    $relevant = Get-ResearchForSite -SiteSlug $SiteSlug -AllNotes $AllResearch
+    $researchHtml = ""
+    if ($relevant.Count -gt 0) {
+        $items = ""
+        foreach ($r in $relevant) {
+            $title = HtmlEscape $r.Title
+            $items += "<li><div class='piece-meta'><span class='piece-age'>$($r.Age)d</span><span class='piece-type'>research</span></div><div class='piece-title'>$title</div><div class='piece-slug'>$($r.File)</div></li>"
+        }
+        $researchHtml = "<ul class='piece-list'>$items</ul>"
+    } else {
+        $researchHtml = "<p class='empty'>No research notes filed for this site yet. Use <code class='inline'>/research-product</code> or <code class='inline'>/scout-topics --&lt;category&gt;</code>.</p>"
+    }
+
+    # Refresh candidates for this site
+    $siteRefresh = $Site.Pieces | Where-Object { -not $_.IsDraft -and $_.AgeDays -ne $null -and $_.AgeDays -gt 90 }
+    $refreshHtml = ""
+    if ($siteRefresh.Count -gt 0) {
+        $items = ""
+        foreach ($p in $siteRefresh) {
+            $items += "<li><strong>$($p.Slug)</strong> · $($p.AgeDays)d old</li>"
+        }
+        $refreshHtml = "<ul class='bare-list'>$items</ul>"
+    } else {
+        $refreshHtml = "<p class='empty'>No pieces past 90 days.</p>"
+    }
+
+    $panelClass = "do-next-panel do-next-panel--$($Action.PriorityLabel)"
+
+    return @"
+  <section id="site-$SiteSlug" class="drill drill--site">
+    <header class="drill__head">
+      <div>
+        <div class="drill__eyebrow">Site drill-down</div>
+        <h2 class="drill__title">$SiteSlug</h2>
+        <p class="drill__stats">$($Site.LiveCount) live · $($Site.DraftCount) draft · last shipped $lastStr</p>
+      </div>
+      <span class="health-pill health-$($Site.Health)">$healthLabel</span>
+    </header>
+
+    <section class="$panelClass">
+      <div class="do-next-panel__eyebrow">Do this next</div>
+      <h3 class="do-next-panel__title">$(HtmlEscape $Action.Headline)</h3>
+      <p class="do-next-panel__reason">$(HtmlEscape $Action.Reason)</p>
+      $cmdHtml
+    </section>
+
+    <section class="panel panel--progress">
+      <div class="panel__eyebrow">12-month progress</div>
+      <p class="progress-line">$progress</p>
+      <div class="mini-track"><div class="mini-fill" style="width: $pct%"></div></div>
+    </section>
+
+$draftHtml
+
+    <div class="panel-grid">
+      <section class="panel">
+        <h3>Recent pieces</h3>
+        $recentHtml
+      </section>
+      <section class="panel">
+        <h3>Research notes for this site</h3>
+        $researchHtml
+      </section>
+    </div>
+
+    <section class="panel">
+      <h3>Refresh sweep candidates ($($siteRefresh.Count))</h3>
+      $refreshHtml
+    </section>
+  </section>
+"@
+}
+
+$drillDownsHtml = ""
+foreach ($slug in $allSites) {
+    $drillDownsHtml += Build-SiteDrillDown -SiteSlug $slug -Site $siteStates[$slug] -Action $siteActions[$slug] -AllResearch $researchNotes
+}
+
+# === Build "all sites" default view ===
+
+# Goal per-site rows
 $goalRowsHtml = ""
 foreach ($slug in $allSites) {
     $s = $siteStates[$slug]
@@ -284,152 +457,53 @@ foreach ($slug in $allSites) {
     $actual = $s.LiveCount
     $pct = if ($target -gt 0) { [math]::Min(100, [math]::Round(($actual / $target) * 100, 1)) } else { 0 }
     $isDormant = ($target -eq 0)
-
     $fillClass = if ($isDormant) { "fill-dormant" } elseif ($pct -ge 100) { "fill-done" } elseif ($pct -ge 50) { "fill-mid" } else { "fill-low" }
     $targetLabel = if ($isDormant) { "dormant" } else { "$actual / $target" }
     $widthStyle = if ($isDormant) { "width: 0%" } else { "width: $pct%" }
-
     $goalRowsHtml += @"
-    <div class="goal-row">
-      <div class="goal-label">$slug</div>
-      <div class="goal-track">
-        <div class="goal-fill $fillClass" style="$widthStyle"></div>
-        <div class="goal-value">$targetLabel</div>
+      <div class="goal-row">
+        <div class="goal-label">$slug</div>
+        <div class="goal-track">
+          <div class="goal-fill $fillClass" style="$widthStyle"></div>
+          <div class="goal-value">$targetLabel</div>
+        </div>
       </div>
-    </div>
 "@
 }
 
-# Total progress bar
-$totalPct = if ($totalTarget -gt 0) { [math]::Round(($totalLive / $totalTarget) * 100, 1) } else { 0 }
-$paceFractionPct = [math]::Round($paceFraction * 100, 1)
-
-$siteCardsHtml = ""
-foreach ($slug in $allSites) {
-    $s = $siteStates[$slug]
-    $next = Get-NextActionForSite -Site $s
-
-    $healthClass = "h-$($s.Health)"
-    $healthLabel = switch ($s.Health) {
-        "green" { "ON CADENCE" }
-        "amber" { "BEHIND" }
-        "red"   { "STALE" }
-        "cold"  { "DORMANT" }
-    }
-    $lastStr = if ($s.LastShipped) { "$($s.DaysSinceLast)d ago" } else { "never" }
-    $cmdHtml = if ($next.Command) { "<code class=`"cmd`">$($next.Command)</code>" } else { "" }
-    $priorityClass = "p-$($next.Priority)"
-
-    $siteCardsHtml += @"
-  <article class="site-card $healthClass $priorityClass">
-    <header class="site-card__head">
-      <div>
-        <div class="site-card__slug">$slug</div>
-        <div class="site-card__stats">$($s.LiveCount) live · $($s.DraftCount) draft · last $lastStr</div>
-      </div>
-      <span class="health-pill">$healthLabel</span>
-    </header>
-    <div class="site-card__action">
-      <div class="action-headline">$($next.Headline)</div>
-      <p class="action-reason">$($next.Reason)</p>
-      $cmdHtml
-    </div>
-  </article>
-"@
+$commitItemsHtml = ""
+foreach ($c in $recentCommits) {
+    $subj = HtmlEscape $c.Subject
+    $commitItemsHtml += "<li><span class='commit-hash'>$($c.Hash)</span> <span class='muted'>$($c.Date)</span> $subj</li>"
 }
 
-# DRAFT high-leverage band
-$draftsHtml = ""
-$allDrafts = @()
-foreach ($s in $siteStates.Values) { $allDrafts += $s.Drafts }
-if ($allDrafts.Count -gt 0) {
-    $items = ""
-    foreach ($d in $allDrafts) {
-        $items += "<li><strong>$($d.Site)</strong> · <span class=`"slug-mono`">$($d.Slug)</span> <code class=`"cmd`">/bottom-line-helper $($d.Slug)</code></li>"
-    }
-    $draftsHtml = @"
-  <section class="band band--warning">
-    <h2>$($allDrafts.Count) piece(s) waiting on Bottom Line</h2>
-    <p class="band__sub">Highest leverage — scaffolded, lint-clean, sitting at noindex until you write the verdict.</p>
-    <ul class="draft-list">$items</ul>
-  </section>
-"@
+$researchAllItemsHtml = ""
+foreach ($r in $researchNotes) {
+    $title = HtmlEscape $r.Title
+    $researchAllItemsHtml += "<li><div class='piece-meta'><span class='piece-age'>$($r.Age)d</span><span class='piece-type'>research</span></div><div class='piece-title'>$title</div><div class='piece-slug'>$($r.File)</div></li>"
 }
 
-# Refresh sweep
-$refreshHtml = ""
-if ($refreshCandidates.Count -gt 0) {
-    $items = ""
-    foreach ($p in $refreshCandidates) {
-        $items += "<li><strong>$($p.Site)</strong> · <span class=`"slug-mono`">$($p.Slug)</span> <span class=`"muted`">($($p.AgeDays)d old)</span></li>"
-    }
-    $refreshHtml = @"
-  <section class="card-section">
-    <h2>Refresh sweep candidates ($($refreshCandidates.Count))</h2>
-    <p class="muted-sub">Pieces past 90 days. Re-check prices, links, stale year mentions.</p>
-    <ul class="plain-list">$items</ul>
-  </section>
-"@
-} else {
-    $refreshHtml = @"
-  <section class="card-section">
-    <h2>Refresh sweep candidates</h2>
-    <p class="muted-sub">No pieces past 90 days yet (system is still young — first ones won't age in until ~2026-08).</p>
-  </section>
-"@
-}
-
-# TODO Now items
-$todoHtml = ""
+# === Build TODO sidebar items ===
+$todoSidebarHtml = ""
 if ($todoNow.Count -gt 0) {
-    $items = ""
-    foreach ($t in $todoNow) {
-        $items += "<li>$t</li>"
+    foreach ($t in ($todoNow | Select-Object -First 6)) {
+        $clean = HtmlEscape ($t -replace '\*\*([^*]+)\*\*', '$1' -replace '`([^`]+)`', '$1')
+        if ($clean.Length -gt 120) { $clean = $clean.Substring(0, 117) + "..." }
+        $todoSidebarHtml += "<li>$clean</li>"
     }
-    $todoHtml = @"
-  <section class="card-section">
-    <h2>TODO · Now</h2>
-    <p class="muted-sub">From <code>docs/TODO.md</code>. $($todoNow.Count) open.</p>
-    <ul class="plain-list">$items</ul>
-  </section>
-"@
 }
 
-# Research notes
-$researchHtml = ""
-if ($researchNotes.Count -gt 0) {
-    $items = ""
-    foreach ($r in $researchNotes) {
-        $items += "<li><span class=`"slug-mono`">$($r.File)</span> <span class=`"muted`">($($r.Age)d old)</span><br><span class=`"research-title`">$($r.Title)</span></li>"
-    }
-    $researchHtml = @"
-  <section class="card-section">
-    <h2>Research notes available ($($researchNotes.Count))</h2>
-    <p class="muted-sub">Material ready to mine for the next piece. Use with <code>/scaffold-piece</code>.</p>
-    <ul class="plain-list">$items</ul>
-  </section>
-"@
-}
+# === Render top "Do this next" strip ===
 
-# Recent commits
-$commitsHtml = ""
-if ($recentCommits.Count -gt 0) {
-    $items = ""
-    foreach ($c in $recentCommits) {
-        $items += "<li><span class=`"commit-hash`">$($c.Hash)</span> <span class=`"muted`">$($c.Date)</span> $($c.Subject)</li>"
-    }
-    $commitsHtml = @"
-  <section class="card-section">
-    <h2>Recent commits (last 14 days)</h2>
-    <ul class="plain-list compact">$items</ul>
-  </section>
-"@
-}
+$topSite = $topAction.Site
+$topActionData = $topAction.Action
+$topCmd = if ($topActionData.Command) { "<code class=`"cmd-pill cmd-pill--xl`">$($topActionData.Command)</code>" } else { "" }
 
 # === Final HTML ===
 
 $genTime = $today.ToString("yyyy-MM-dd HH:mm")
 $daysPct = [math]::Round(($daysIn / $commitmentDays) * 100, 1)
+$weekCommits = ($recentCommits | Where-Object { $_.Subject -match 'feat\(.+?\):.*piece|review|guide|Bottom Line' }).Count
 
 $html = @"
 <!doctype html>
@@ -466,139 +540,575 @@ $html = @"
   }
 
   *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
   html { font-size: 16px; }
   body {
-    margin: 0;
     background: var(--bg);
     color: var(--ink);
     font-family: var(--font-sans);
-    font-size: 15px;
-    line-height: 1.55;
+    font-size: 13px;
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
   }
 
-  .wrap {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 56px 32px 80px;
-  }
-
-  /* ===== Header ===== */
-  header.top {
+  /* ========================================
+     TOP BAR
+     ======================================== */
+  .topbar {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    gap: 32px;
-    padding-bottom: 28px;
-    margin-bottom: 40px;
+    align-items: center;
+    padding: 10px 24px;
     border-bottom: 1px solid var(--line);
+    background: var(--bg);
+    flex-shrink: 0;
   }
-  .brand {
+  .topbar__brand {
     font-family: var(--font-serif);
-    font-size: 38px;
-    line-height: 1.05;
+    font-size: 18px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .topbar__brand em { font-style: italic; color: var(--steel); }
+  .topbar__brand-tag {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-left: 14px;
+    padding-left: 14px;
+    border-left: 1px solid var(--line);
+  }
+  .topbar__stamp {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted);
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  /* ========================================
+     "DO THIS NEXT" — priority-aware
+     ======================================== */
+  .do-next-panel {
+    padding: 16px 20px;
+    border-radius: 4px;
+    background: linear-gradient(135deg, #1A2030 0%, #0E1318 100%);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--highlight);
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .do-next-panel--high { padding: 22px 24px; border-left-width: 3px; }
+  .do-next-panel--ok   { padding: 12px 16px; border-left-color: var(--steel-deep); }
+  .do-next-panel--defer { padding: 10px 14px; border-left-color: var(--muted-deep); opacity: 0.75; }
+
+  .do-next-panel__eyebrow {
+    font-family: var(--font-sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--highlight);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .do-next-panel__eyebrow::before {
+    content: '';
+    width: 20px; height: 1px;
+    background: var(--highlight);
+  }
+  .do-next-panel--ok .do-next-panel__eyebrow { color: var(--muted); margin-bottom: 6px; }
+  .do-next-panel--ok .do-next-panel__eyebrow::before { background: var(--muted); }
+  .do-next-panel--defer .do-next-panel__eyebrow { color: var(--muted-deep); margin-bottom: 4px; }
+
+  .do-next-panel__title {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    line-height: 1.1;
     letter-spacing: -0.012em;
     color: var(--ink);
+    margin: 0 0 6px;
+  }
+  .do-next-panel--high .do-next-panel__title { font-size: 28px; margin-bottom: 8px; }
+  .do-next-panel--ok .do-next-panel__title { font-size: 16px; font-family: var(--font-sans); font-weight: 500; margin-bottom: 4px; letter-spacing: 0; }
+  .do-next-panel--defer .do-next-panel__title { font-size: 14px; font-family: var(--font-sans); font-weight: 500; margin: 0; color: var(--ink-soft); }
+
+  .do-next-panel__title em { font-style: italic; color: var(--steel); }
+  .do-next-panel__site {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--highlight);
+    background: rgba(247, 233, 200, 0.08);
+    padding: 3px 9px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+  }
+  .do-next-panel__reason {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin: 0 0 12px;
+    max-width: 620px;
+    line-height: 1.5;
+  }
+  .do-next-panel--ok .do-next-panel__reason { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+  .do-next-panel--defer .do-next-panel__reason { display: none; }
+
+  .cmd-pill {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--steel);
+    background: rgba(74, 143, 212, 0.08);
+    border: 1px solid rgba(74, 143, 212, 0.25);
+    padding: 6px 12px;
+    border-radius: 3px;
+    letter-spacing: 0.01em;
+    user-select: all;
+  }
+  .cmd-pill--xl {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+  .cmd-pill--inline {
+    margin-left: 8px;
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+
+  /* ========================================
+     APP SHELL — sidebar + main pane (fixed viewport, no body scroll)
+     ======================================== */
+  .app {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+  @media (max-width: 880px) {
+    .app { grid-template-columns: 1fr; }
+  }
+
+  /* ===== Sidebar ===== */
+  .sidebar {
+    border-right: 1px solid var(--line);
+    background: var(--surface-2);
+    padding: 18px 0;
+    overflow-y: auto;
+    min-height: 0;
+  }
+  @media (max-width: 880px) {
+    .sidebar { border-right: 0; border-bottom: 1px solid var(--line); }
+  }
+
+  .sidebar__section {
+    padding: 0 18px;
+    margin-bottom: 18px;
+  }
+  .sidebar__head {
+    font-family: var(--font-sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-deep);
+    margin: 0 0 10px;
+  }
+
+  .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-list a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 10px;
+    margin: 0 -10px 1px;
+    border-radius: 3px;
+    text-decoration: none;
+    color: var(--ink-soft);
+    transition: background 120ms ease, color 120ms ease;
+  }
+  .nav-list a:hover { background: var(--surface-3); color: var(--ink); }
+  .nav-list a.is-active {
+    background: rgba(74, 143, 212, 0.10);
+    color: var(--ink);
+  }
+  .nav-list a.is-active .nav-slug { color: var(--steel); font-weight: 500; }
+
+  .nav-pill {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--muted-deep);
+    flex-shrink: 0;
+  }
+  .nav-pill.pill-green { background: var(--green); }
+  .nav-pill.pill-amber { background: var(--amber); }
+  .nav-pill.pill-red   { background: var(--red); }
+  .nav-pill.pill-cold  { background: var(--muted-deep); }
+  .nav-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    font-size: 12px;
+  }
+  .nav-slug { color: inherit; }
+  .nav-stats {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+
+  /* Mini goal in sidebar */
+  .mini-goal__value {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .mini-goal__value em { font-style: italic; color: var(--steel); }
+  .mini-goal__sub {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .mini-track {
+    position: relative;
+    height: 8px;
+    background: var(--surface-3);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .mini-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    background: linear-gradient(90deg, var(--steel-deep) 0%, var(--steel) 100%);
+  }
+  .mini-marker {
+    position: absolute;
+    top: -2px;
+    bottom: -2px;
+    width: 2px;
+    background: var(--highlight);
+  }
+
+  /* TODO sidebar list */
+  .sidebar-todo {
+    list-style: none;
+    padding: 0;
     margin: 0;
   }
-  .brand em { font-style: italic; color: var(--steel); }
-  .brand__sub {
-    font-family: var(--font-sans);
+  .sidebar-todo li {
     font-size: 11px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .sidebar-todo li:last-child { border-bottom: 0; }
+
+  /* ========================================
+     MAIN — drill-down pane (no outer scroll; internal if needed)
+     ======================================== */
+  .main {
+    padding: 18px 24px;
+    overflow-y: auto;
+    min-height: 0;
+  }
+
+  .drill { display: none; }
+  .drill.drill--default { display: block; }
+  .drill:target { display: block; }
+  .drill:target ~ .drill--default { display: none; }
+
+  .drill__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .drill__eyebrow {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--steel);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .drill__eyebrow::before {
+    content: '';
+    width: 20px; height: 1px;
+    background: var(--steel);
+  }
+  .drill__title {
+    font-family: var(--font-serif);
+    font-size: 26px;
+    line-height: 1.05;
+    letter-spacing: -0.018em;
+    color: var(--ink);
+    margin: 0 0 3px;
+  }
+  .drill__stats {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    margin: 0;
+    letter-spacing: 0.02em;
+  }
+  .health-pill {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    padding: 5px 10px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    background: var(--surface-3);
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .health-green { background: rgba(95, 179, 124, 0.15); color: var(--green); }
+  .health-amber { background: rgba(232, 184, 106, 0.15); color: var(--amber); }
+  .health-red   { background: rgba(224, 123, 123, 0.15); color: var(--red); }
+
+  /* Panels */
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    border-radius: 4px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .panel h3 {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    line-height: 1.1;
+    margin: 0 0 8px;
+    color: var(--ink);
+  }
+  .panel p { margin: 0 0 8px; color: var(--ink-soft); font-size: 12px; }
+  .panel p:last-child { margin-bottom: 0; }
+
+  .panel--action {
+    border-left: 3px solid var(--steel);
+  }
+  .panel--action h3 { font-size: 22px; }
+  .panel--warning {
+    background: linear-gradient(135deg, #2D2218 0%, #1F1810 100%);
+    border-color: #553F22;
+    border-left: 3px solid var(--amber);
+  }
+  .panel--warning h3 { color: var(--highlight); }
+  .panel--progress {
+    border-left: 3px solid var(--green);
+  }
+
+  .panel__eyebrow {
+    font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--muted);
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
+    margin-bottom: 8px;
   }
-  .brand__sub::before {
-    content: '';
-    display: inline-block;
-    width: 28px; height: 1px;
-    background: var(--steel);
-  }
-  .stamp {
-    text-align: right;
+
+  .progress-line {
     font-family: var(--font-mono);
     font-size: 12px;
-    color: var(--muted);
-    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0 0 10px;
   }
-  .stamp .stamp__line { display: block; }
 
-  /* ===== Goal trajectory section ===== */
-  .goal {
+  .panel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  @media (max-width: 760px) {
+    .panel-grid { grid-template-columns: 1fr; }
+  }
+  .panel-grid .panel { margin-bottom: 0; }
+
+  /* Lists */
+  .bare-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .bare-list li {
+    padding: 5px 0;
+    font-size: 12px;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .bare-list li:last-child { border-bottom: 0; }
+
+  .piece-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .piece-list li {
+    padding: 6px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .piece-list li:last-child { border-bottom: 0; }
+  .piece-meta {
+    display: flex;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted);
+    margin-bottom: 3px;
+    letter-spacing: 0.02em;
+  }
+  .piece-age {
+    color: var(--steel);
+  }
+  .piece-type {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .piece-title {
+    font-size: 12px;
+    color: var(--ink);
+    line-height: 1.35;
+    margin-bottom: 1px;
+  }
+  .piece-slug {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--muted-deep);
+  }
+
+  .empty {
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+    margin: 0;
+  }
+  code.inline {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    background: var(--surface-3);
+    padding: 1px 5px;
+    border-radius: 2px;
+    color: var(--steel);
+  }
+  .muted { color: var(--muted); font-size: 11px; font-family: var(--font-mono); }
+  .commit-hash {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--steel);
+    margin-right: 6px;
+  }
+
+  /* ===== Default "All sites" view ===== */
+  .overview-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  @media (max-width: 760px) {
+    .overview-stats { grid-template-columns: repeat(2, 1fr); }
+  }
+  .stat-box {
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    padding: 10px 12px;
+    border-radius: 4px;
+  }
+  .stat-box__label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .stat-box__value {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .stat-box__value em { font-style: italic; color: var(--steel); }
+
+  /* Goal big bar */
+  .goal-section {
     background: var(--surface);
     border: 1px solid var(--line-soft);
     border-radius: 4px;
-    padding: 28px 32px;
-    margin-bottom: 40px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
   }
-  .goal__head {
+  .goal-section__head {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 4px;
-    gap: 16px;
+    margin-bottom: 10px;
+    gap: 12px;
     flex-wrap: wrap;
   }
-  .goal h2 {
+  .goal-section h3 {
     font-family: var(--font-serif);
-    font-size: 28px;
-    line-height: 1.1;
+    font-size: 17px;
     margin: 0;
     color: var(--ink);
   }
-  .goal h2 em { font-style: italic; color: var(--steel); }
-  .goal__pace {
+  .goal-section h3 em { font-style: italic; color: var(--steel); }
+  .goal-pace {
     font-family: var(--font-mono);
-    font-size: 12px;
+    font-size: 11px;
     padding: 4px 10px;
     border-radius: 2px;
-    letter-spacing: 0.02em;
   }
-  .goal__pace.pace-green { background: rgba(95,179,124,0.12); color: var(--green); }
-  .goal__pace.pace-amber { background: rgba(232,184,106,0.12); color: var(--amber); }
-  .goal__pace.pace-red   { background: rgba(224,123,123,0.12); color: var(--red); }
-  .goal__sub {
-    font-size: 13px;
-    color: var(--muted);
-    margin: 0 0 22px;
-  }
+  .pace-green { background: rgba(95,179,124,0.12); color: var(--green); }
+  .pace-amber { background: rgba(232,184,106,0.12); color: var(--amber); }
+  .pace-red   { background: rgba(224,123,123,0.12); color: var(--red); }
 
-  /* Total progress bar — bigger and at top */
   .goal-total {
-    margin-bottom: 28px;
-    padding-bottom: 24px;
+    margin-bottom: 18px;
+    padding-bottom: 18px;
     border-bottom: 1px solid var(--line-soft);
   }
   .goal-total__head {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 10px;
-  }
-  .goal-total__label {
-    font-family: var(--font-sans);
+    margin-bottom: 8px;
+    font-family: var(--font-mono);
     font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted);
   }
-  .goal-total__value {
-    font-family: var(--font-serif);
-    font-size: 22px;
-    color: var(--ink);
-  }
-  .goal-total__value em { font-style: italic; color: var(--steel); }
+  .goal-total__head .label { color: var(--muted); }
+  .goal-total__head .value { color: var(--ink); }
+  .goal-total__head .value em { color: var(--steel); font-style: italic; }
   .goal-total__track {
     position: relative;
-    height: 14px;
+    height: 12px;
     background: var(--surface-3);
     border-radius: 2px;
     overflow: hidden;
@@ -607,50 +1117,33 @@ $html = @"
     position: absolute;
     inset: 0 auto 0 0;
     background: linear-gradient(90deg, var(--steel-deep) 0%, var(--steel) 100%);
-    transition: width 400ms ease;
   }
-  /* Time marker on the total bar */
   .goal-total__marker {
     position: absolute;
     top: -3px;
     bottom: -3px;
     width: 2px;
     background: var(--highlight);
-    opacity: 0.85;
   }
-  .goal-total__marker::after {
-    content: 'day ' attr(data-day);
-    position: absolute;
-    top: -18px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--highlight);
-    white-space: nowrap;
-  }
-
-  /* Per-site rows */
   .goal-rows {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 10px;
   }
   .goal-row {
     display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 16px;
+    grid-template-columns: 120px 1fr;
+    gap: 12px;
     align-items: center;
   }
   .goal-label {
     font-family: var(--font-mono);
-    font-size: 12px;
+    font-size: 11px;
     color: var(--ink-soft);
-    letter-spacing: 0.02em;
   }
   .goal-track {
     position: relative;
-    height: 22px;
+    height: 16px;
     background: var(--surface-3);
     border-radius: 2px;
     overflow: hidden;
@@ -658,7 +1151,6 @@ $html = @"
   .goal-fill {
     position: absolute;
     inset: 0 auto 0 0;
-    transition: width 400ms ease;
   }
   .goal-fill.fill-low  { background: linear-gradient(90deg, #1F4060 0%, #4A8FD4 100%); }
   .goal-fill.fill-mid  { background: linear-gradient(90deg, #2C5E8C 0%, #5FB37C 100%); }
@@ -666,396 +1158,161 @@ $html = @"
   .goal-fill.fill-dormant { background: transparent; }
   .goal-value {
     position: absolute;
-    right: 10px;
+    right: 8px;
     top: 50%;
     transform: translateY(-50%);
     font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--ink);
-    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
-    letter-spacing: 0.02em;
-  }
-  @media (max-width: 600px) {
-    .goal-row { grid-template-columns: 1fr; gap: 4px; }
-    .goal-label { font-size: 11px; }
-  }
-
-  /* ===== Overview row ===== */
-  .overview {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 40px;
-  }
-  .stat {
-    background: var(--surface);
-    border: 1px solid var(--line-soft);
-    padding: 18px 20px;
-    border-radius: 4px;
-  }
-  .stat__label {
     font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 8px;
-  }
-  .stat__value {
-    font-family: var(--font-serif);
-    font-size: 32px;
-    line-height: 1;
     color: var(--ink);
-  }
-  .stat__value em { font-style: italic; color: var(--steel); }
-  .stat__sub {
-    font-size: 12px;
-    color: var(--muted-deep);
-    margin-top: 6px;
-  }
-  @media (max-width: 760px) {
-    .overview { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  /* ===== High-leverage band (drafts waiting) ===== */
-  .band {
-    background: linear-gradient(135deg, #2D2218 0%, #1F1810 100%);
-    border: 1px solid #553F22;
-    border-left: 3px solid var(--amber);
-    border-radius: 4px;
-    padding: 24px 28px;
-    margin-bottom: 32px;
-  }
-  .band h2 {
-    font-family: var(--font-serif);
-    font-size: 26px;
-    line-height: 1.1;
-    margin: 0 0 6px;
-    color: var(--highlight);
-  }
-  .band__sub {
-    color: var(--ink-soft);
-    margin: 0 0 16px;
-    font-size: 14px;
-  }
-  .draft-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .draft-list li {
-    padding: 10px 14px;
-    background: rgba(0,0,0,0.25);
-    border-radius: 3px;
-    font-size: 14px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 12px;
-  }
-
-  /* ===== Section heads ===== */
-  h2.section-h {
-    font-family: var(--font-serif);
-    font-size: 28px;
-    line-height: 1.1;
-    letter-spacing: -0.012em;
-    color: var(--ink);
-    margin: 0 0 8px;
-  }
-  .section-eyebrow {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--steel);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .section-eyebrow::before {
-    content: '';
-    display: inline-block;
-    width: 28px; height: 1px;
-    background: var(--steel);
-  }
-
-  /* ===== Site grid ===== */
-  .site-grid-wrap { margin-bottom: 48px; }
-  .site-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-  }
-  @media (max-width: 760px) {
-    .site-grid { grid-template-columns: 1fr; }
-  }
-  .site-card {
-    background: var(--surface);
-    border: 1px solid var(--line-soft);
-    border-left: 3px solid var(--muted-deep);
-    border-radius: 4px;
-    padding: 22px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    transition: border-color 200ms ease;
-  }
-  .site-card.h-green  { border-left-color: var(--green); }
-  .site-card.h-amber  { border-left-color: var(--amber); }
-  .site-card.h-red    { border-left-color: var(--red); }
-  .site-card.h-cold   { border-left-color: var(--muted-deep); opacity: 0.7; }
-  .site-card.p-high   { border-color: rgba(232, 184, 106, 0.3); }
-  .site-card__head {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 12px;
-  }
-  .site-card__slug {
-    font-family: var(--font-serif);
-    font-size: 22px;
-    line-height: 1.1;
-    letter-spacing: -0.008em;
-    color: var(--ink);
-  }
-  .site-card__stats {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 4px;
-    letter-spacing: 0.02em;
-  }
-  .health-pill {
-    font-family: var(--font-sans);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    padding: 4px 8px;
-    border-radius: 2px;
-    text-transform: uppercase;
-    background: var(--surface-3);
-    color: var(--muted);
-    flex-shrink: 0;
-  }
-  .h-green .health-pill { background: rgba(95, 179, 124, 0.15); color: var(--green); }
-  .h-amber .health-pill { background: rgba(232, 184, 106, 0.15); color: var(--amber); }
-  .h-red   .health-pill { background: rgba(224, 123, 123, 0.15); color: var(--red); }
-
-  .action-headline {
-    font-family: var(--font-sans);
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 6px;
-    line-height: 1.4;
-  }
-  .action-reason {
-    font-size: 13px;
-    color: var(--muted);
-    margin: 0 0 14px;
-    line-height: 1.55;
-  }
-  code.cmd {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--steel);
-    background: rgba(74, 143, 212, 0.08);
-    border: 1px solid rgba(74, 143, 212, 0.2);
-    padding: 6px 10px;
-    border-radius: 3px;
-    letter-spacing: 0.01em;
-    user-select: all;
-  }
-
-  /* ===== Card sections (below the fold) ===== */
-  .section-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-bottom: 40px;
-  }
-  @media (max-width: 760px) {
-    .section-row { grid-template-columns: 1fr; }
-  }
-  .card-section {
-    background: var(--surface);
-    border: 1px solid var(--line-soft);
-    border-radius: 4px;
-    padding: 24px 26px;
-  }
-  .card-section h2 {
-    font-family: var(--font-serif);
-    font-size: 22px;
-    line-height: 1.1;
-    margin: 0 0 4px;
-    color: var(--ink);
-  }
-  .muted-sub {
-    font-size: 13px;
-    color: var(--muted);
-    margin: 0 0 16px;
-  }
-  .plain-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .plain-list.compact { gap: 6px; }
-  .plain-list li {
-    font-size: 13px;
-    line-height: 1.5;
-    padding: 8px 0;
-    border-bottom: 1px solid var(--line-soft);
-    color: var(--ink-soft);
-  }
-  .plain-list li:last-child { border-bottom: 0; }
-  .slug-mono {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--ink-soft);
-  }
-  .commit-hash {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--steel);
-    margin-right: 6px;
-  }
-  .research-title {
-    font-size: 12px;
-    color: var(--muted);
-    font-style: italic;
-  }
-  .muted { color: var(--muted-deep); font-size: 11px; }
-
-  /* ===== Footer ===== */
-  .foot {
-    margin-top: 56px;
-    padding-top: 24px;
-    border-top: 1px solid var(--line);
-    text-align: center;
-    color: var(--muted-deep);
-    font-size: 12px;
-    line-height: 1.7;
-  }
-  .foot code {
-    font-family: var(--font-mono);
-    background: var(--surface-2);
-    padding: 2px 6px;
-    border-radius: 2px;
-    color: var(--ink-soft);
   }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <header class="top">
-    <div>
-      <h1 class="brand">Affiliate <em>Kit</em> · Ops</h1>
-      <div class="brand__sub">What to do next</div>
-    </div>
-    <div class="stamp">
-      <span class="stamp__line">Generated $genTime</span>
-      <span class="stamp__line">Day $daysIn / $commitmentDays · $daysPct% in</span>
-      <span class="stamp__line">Target: \$100/mo by month 12</span>
-    </div>
-  </header>
+<header class="topbar">
+  <div>
+    <span class="topbar__brand">Affiliate <em>Kit</em> · Ops</span>
+    <span class="topbar__brand-tag">What to do next</span>
+  </div>
+  <div class="topbar__stamp">
+    Day $daysIn / $commitmentDays · $daysPct% in<br>
+    $totalLive / $totalTarget pieces · refreshed $genTime
+  </div>
+</header>
 
-  <section class="overview">
-    <div class="stat">
-      <div class="stat__label">Total live pieces</div>
-      <div class="stat__value">$totalLive</div>
-      <div class="stat__sub">across 5 sites</div>
-    </div>
-    <div class="stat">
-      <div class="stat__label">DRAFT (waiting on Bottom Line)</div>
-      <div class="stat__value">$totalDrafts</div>
-      <div class="stat__sub">noindex-gated</div>
-    </div>
-    <div class="stat">
-      <div class="stat__label">Days into 12-month run</div>
-      <div class="stat__value">$daysIn</div>
-      <div class="stat__sub">$daysRemaining remaining</div>
-    </div>
-    <div class="stat">
-      <div class="stat__label">Pieces this week</div>
-      <div class="stat__value">$(($recentCommits | Where-Object { $_.Subject -match 'feat\(.+?\):.*piece|review|guide|Bottom Line' }).Count)</div>
-      <div class="stat__sub">target: 1 hero/week</div>
-    </div>
-  </section>
+<div class="app">
 
-  <section class="goal">
-    <div class="goal__head">
-      <h2>Goal · <em>$totalTarget pieces</em> by month 12</h2>
-      <span class="goal__pace pace-$paceColor">$paceLabel</span>
+  <aside class="sidebar">
+    <div class="sidebar__section">
+      <div class="sidebar__head">Sites</div>
+      <ul class="nav-list">
+        <li><a href="#all" data-site="all"><span class="nav-pill pill-cold" style="background: var(--steel)"></span><span class="nav-text"><span class="nav-slug">All sites</span><span class="nav-stats">portfolio view</span></span></a></li>
+$sidebarItems
+      </ul>
     </div>
-    <p class="goal__sub">Target maps to the `$100/mo` realized-revenue line — affiliate-site math typically needs ~50 pieces before meaningful traffic compounds. Time marker shows where today sits on the 365-day track.</p>
 
-    <div class="goal-total">
-      <div class="goal-total__head">
-        <span class="goal-total__label">Total progress</span>
-        <span class="goal-total__value"><em>$totalLive</em> / $totalTarget · $totalPct%</span>
-      </div>
-      <div class="goal-total__track">
-        <div class="goal-total__fill" style="width: $totalPct%"></div>
-        <div class="goal-total__marker" data-day="$daysIn" style="left: $paceFractionPct%"></div>
+    <div class="sidebar__section">
+      <div class="sidebar__head">Goal</div>
+      <div class="mini-goal__value"><em>$totalLive</em> / $totalTarget</div>
+      <div class="mini-goal__sub">$totalPct% · $paceLabel</div>
+      <div class="mini-track">
+        <div class="mini-fill" style="width: $totalPct%"></div>
+        <div class="mini-marker" style="left: $paceFractionPct%"></div>
       </div>
     </div>
 
-    <div class="goal-rows">
+$( if ($todoSidebarHtml) { @"
+    <div class="sidebar__section">
+      <div class="sidebar__head">TODO Now ($($todoNow.Count))</div>
+      <ul class="sidebar-todo">
+$todoSidebarHtml
+      </ul>
+    </div>
+"@ })
+
+  </aside>
+
+  <main class="main">
+
+$drillDownsHtml
+
+    <section id="all" class="drill drill--default">
+      <header class="drill__head">
+        <div>
+          <div class="drill__eyebrow">Portfolio overview</div>
+          <h2 class="drill__title">All sites</h2>
+          <p class="drill__stats">$totalLive live · $totalDrafts draft · $weekCommits piece commits in last 14d</p>
+        </div>
+      </header>
+
+      <section class="do-next-panel do-next-panel--$($topActionData.PriorityLabel)">
+        <div class="do-next-panel__eyebrow">Do this next · highest priority</div>
+        <div class="do-next-panel__site">$topSite</div>
+        <h3 class="do-next-panel__title">$(HtmlEscape $topActionData.Headline)</h3>
+        <p class="do-next-panel__reason">$(HtmlEscape $topActionData.Reason)</p>
+        $topCmd
+      </section>
+
+      <div class="overview-stats">
+        <div class="stat-box">
+          <div class="stat-box__label">Total live</div>
+          <div class="stat-box__value">$totalLive</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box__label">DRAFT waiting</div>
+          <div class="stat-box__value">$totalDrafts</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box__label">Day of 365</div>
+          <div class="stat-box__value">$daysIn</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box__label">Pieces this week</div>
+          <div class="stat-box__value">$weekCommits</div>
+        </div>
+      </div>
+
+      <section class="goal-section">
+        <div class="goal-section__head">
+          <h3>Goal · <em>$totalTarget pieces</em> by month 12</h3>
+          <span class="goal-pace pace-$paceColor">$paceLabel</span>
+        </div>
+        <div class="goal-total">
+          <div class="goal-total__head">
+            <span class="label">Total progress</span>
+            <span class="value"><em>$totalLive</em> / $totalTarget · $totalPct%</span>
+          </div>
+          <div class="goal-total__track">
+            <div class="goal-total__fill" style="width: $totalPct%"></div>
+            <div class="goal-total__marker" style="left: $paceFractionPct%"></div>
+          </div>
+        </div>
+        <div class="goal-rows">
 $goalRowsHtml
-    </div>
-  </section>
+        </div>
+      </section>
 
-$draftsHtml
+      <div class="panel-grid">
+        <section class="panel">
+          <h3>Research notes ($($researchNotes.Count))</h3>
+          <ul class='piece-list'>$researchAllItemsHtml</ul>
+        </section>
+        <section class="panel">
+          <h3>Recent commits (14d)</h3>
+          <ul class='bare-list'>$commitItemsHtml</ul>
+        </section>
+      </div>
+    </section>
 
-  <div class="site-grid-wrap">
-    <div class="section-eyebrow">Per-site next action</div>
-    <h2 class="section-h" style="margin-bottom: 22px;">Where to point the work</h2>
-    <div class="site-grid">
-$siteCardsHtml
-    </div>
-  </div>
-
-  <div class="section-row">
-$todoHtml
-$refreshHtml
-  </div>
-
-  <div class="section-row">
-$researchHtml
-$commitsHtml
-  </div>
-
-  <footer class="foot">
-    Generated from real repo state by <code>pwsh scripts/ops.ps1</code>. Re-run any time to refresh.<br>
-    Sources: <code>sites/&lt;slug&gt;/src/content/</code>, <code>docs/research/</code>, <code>docs/TODO.md</code>, <code>git log</code>.
-  </footer>
-
+  </main>
 </div>
+
+<script>
+  // Sync active sidebar item with current hash
+  (function () {
+    function syncActive() {
+      var hash = window.location.hash || "#all";
+      document.querySelectorAll('.nav-list a').forEach(function (a) {
+        a.classList.toggle('is-active', a.getAttribute('href') === hash);
+      });
+    }
+    window.addEventListener('hashchange', syncActive);
+    document.addEventListener('DOMContentLoaded', syncActive);
+    syncActive();
+  })();
+</script>
+
 </body>
 </html>
 "@
 
-# Write the file
 $html | Out-File -FilePath $outPath -Encoding UTF8 -NoNewline
 
 Write-Host "[ok] Generated $outPath"
-Write-Host "     $totalLive live pieces · $totalDrafts drafts · $($recentCommits.Count) commits in last 14d"
+Write-Host "     $totalLive live pieces / $totalTarget target ($totalPct%, $paceLabel)"
+Write-Host "     Top action: $($topActionData.Headline) [$topSite]"
 
 if ($Open) {
     Start-Process $outPath
     Write-Host "     Opened in default browser."
-} else {
-    Write-Host "     Open with: start $outPath"
 }
