@@ -13,7 +13,8 @@
     "typecheck": "pnpm -r --if-present typecheck",
     "lint": "pnpm -r --if-present lint",
     "install-plugin": "pwsh ./scripts/install-plugin.ps1",
-    "ops": "pwsh ./scripts/ops.ps1 -Open"
+    "ops": "pwsh ./scripts/ops.ps1 -Open",
+    "install-desktop-shortcut": "pwsh ./scripts/install-desktop-shortcut.ps1"
   },
   "devDependencies": {
     "typescript": "^5.4.0"

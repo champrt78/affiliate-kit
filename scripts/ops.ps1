@@ -43,6 +43,16 @@ $cadenceTargets = @{
     "gameovergear"    = 180
 }
 
+# 12-month piece targets per site — adds to 50 (the $100/mo math threshold)
+$pieceTargets = @{
+    "mywildlifecam"   = 30   # hero — 1/week pace, ships ~30 realistically out of 52 weeks
+    "detailerpicks"   = 15   # warm satellite — 1 per 2-3 weeks
+    "fussybean"       = 5    # cold, only if hero is ahead
+    "starteraquarium" = 0    # dormant until hero proves model
+    "gameovergear"    = 0    # dormant until hero proves model
+}
+$totalTarget = ($pieceTargets.Values | Measure-Object -Sum).Sum
+
 # === Helpers ===
 
 function Get-PieceState {
@@ -251,7 +261,48 @@ foreach ($s in $siteStates.Values) {
     $refreshCandidates += $s.Pieces | Where-Object { -not $_.IsDraft -and $_.AgeDays -ne $null -and $_.AgeDays -gt 90 }
 }
 
+# Goal trajectory — pace projection
+$paceFraction = if ($daysIn -gt 0) { $daysIn / $commitmentDays } else { 0 }
+$expectedByNow = [math]::Round($totalTarget * $paceFraction, 1)
+$paceDelta = $totalLive - $expectedByNow
+$piecesPerDayActual = if ($daysIn -gt 0) { $totalLive / $daysIn } else { 0 }
+$projectedYearEnd = [math]::Round($piecesPerDayActual * $commitmentDays, 0)
+
+$paceLabel = if ([math]::Abs($paceDelta) -lt 1) { "on pace" }
+             elseif ($paceDelta -gt 0) { "$([math]::Round($paceDelta,1)) ahead" }
+             else { "$([math]::Round([math]::Abs($paceDelta),1)) behind" }
+
+$paceColor = if ($paceDelta -ge 0) { "green" } elseif ($paceDelta -gt -3) { "amber" } else { "red" }
+
 # === Render HTML ===
+
+# Goal-progress bar chart rows (per-site)
+$goalRowsHtml = ""
+foreach ($slug in $allSites) {
+    $s = $siteStates[$slug]
+    $target = $pieceTargets[$slug]
+    $actual = $s.LiveCount
+    $pct = if ($target -gt 0) { [math]::Min(100, [math]::Round(($actual / $target) * 100, 1)) } else { 0 }
+    $isDormant = ($target -eq 0)
+
+    $fillClass = if ($isDormant) { "fill-dormant" } elseif ($pct -ge 100) { "fill-done" } elseif ($pct -ge 50) { "fill-mid" } else { "fill-low" }
+    $targetLabel = if ($isDormant) { "dormant" } else { "$actual / $target" }
+    $widthStyle = if ($isDormant) { "width: 0%" } else { "width: $pct%" }
+
+    $goalRowsHtml += @"
+    <div class="goal-row">
+      <div class="goal-label">$slug</div>
+      <div class="goal-track">
+        <div class="goal-fill $fillClass" style="$widthStyle"></div>
+        <div class="goal-value">$targetLabel</div>
+      </div>
+    </div>
+"@
+}
+
+# Total progress bar
+$totalPct = if ($totalTarget -gt 0) { [math]::Round(($totalLive / $totalTarget) * 100, 1) } else { 0 }
+$paceFractionPct = [math]::Round($paceFraction * 100, 1)
 
 $siteCardsHtml = ""
 foreach ($slug in $allSites) {
@@ -478,6 +529,156 @@ $html = @"
     line-height: 1.7;
   }
   .stamp .stamp__line { display: block; }
+
+  /* ===== Goal trajectory section ===== */
+  .goal {
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    border-radius: 4px;
+    padding: 28px 32px;
+    margin-bottom: 40px;
+  }
+  .goal__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .goal h2 {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    line-height: 1.1;
+    margin: 0;
+    color: var(--ink);
+  }
+  .goal h2 em { font-style: italic; color: var(--steel); }
+  .goal__pace {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 2px;
+    letter-spacing: 0.02em;
+  }
+  .goal__pace.pace-green { background: rgba(95,179,124,0.12); color: var(--green); }
+  .goal__pace.pace-amber { background: rgba(232,184,106,0.12); color: var(--amber); }
+  .goal__pace.pace-red   { background: rgba(224,123,123,0.12); color: var(--red); }
+  .goal__sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 22px;
+  }
+
+  /* Total progress bar — bigger and at top */
+  .goal-total {
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .goal-total__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+  }
+  .goal-total__label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .goal-total__value {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    color: var(--ink);
+  }
+  .goal-total__value em { font-style: italic; color: var(--steel); }
+  .goal-total__track {
+    position: relative;
+    height: 14px;
+    background: var(--surface-3);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .goal-total__fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    background: linear-gradient(90deg, var(--steel-deep) 0%, var(--steel) 100%);
+    transition: width 400ms ease;
+  }
+  /* Time marker on the total bar */
+  .goal-total__marker {
+    position: absolute;
+    top: -3px;
+    bottom: -3px;
+    width: 2px;
+    background: var(--highlight);
+    opacity: 0.85;
+  }
+  .goal-total__marker::after {
+    content: 'day ' attr(data-day);
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--highlight);
+    white-space: nowrap;
+  }
+
+  /* Per-site rows */
+  .goal-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .goal-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 16px;
+    align-items: center;
+  }
+  .goal-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+  }
+  .goal-track {
+    position: relative;
+    height: 22px;
+    background: var(--surface-3);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .goal-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    transition: width 400ms ease;
+  }
+  .goal-fill.fill-low  { background: linear-gradient(90deg, #1F4060 0%, #4A8FD4 100%); }
+  .goal-fill.fill-mid  { background: linear-gradient(90deg, #2C5E8C 0%, #5FB37C 100%); }
+  .goal-fill.fill-done { background: linear-gradient(90deg, #2C8F4F 0%, #5FB37C 100%); }
+  .goal-fill.fill-dormant { background: transparent; }
+  .goal-value {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    letter-spacing: 0.02em;
+  }
+  @media (max-width: 600px) {
+    .goal-row { grid-template-columns: 1fr; gap: 4px; }
+    .goal-label { font-size: 11px; }
+  }
 
   /* ===== Overview row ===== */
   .overview {
@@ -790,6 +991,29 @@ $html = @"
       <div class="stat__label">Pieces this week</div>
       <div class="stat__value">$(($recentCommits | Where-Object { $_.Subject -match 'feat\(.+?\):.*piece|review|guide|Bottom Line' }).Count)</div>
       <div class="stat__sub">target: 1 hero/week</div>
+    </div>
+  </section>
+
+  <section class="goal">
+    <div class="goal__head">
+      <h2>Goal · <em>$totalTarget pieces</em> by month 12</h2>
+      <span class="goal__pace pace-$paceColor">$paceLabel</span>
+    </div>
+    <p class="goal__sub">Target maps to the `$100/mo` realized-revenue line — affiliate-site math typically needs ~50 pieces before meaningful traffic compounds. Time marker shows where today sits on the 365-day track.</p>
+
+    <div class="goal-total">
+      <div class="goal-total__head">
+        <span class="goal-total__label">Total progress</span>
+        <span class="goal-total__value"><em>$totalLive</em> / $totalTarget · $totalPct%</span>
+      </div>
+      <div class="goal-total__track">
+        <div class="goal-total__fill" style="width: $totalPct%"></div>
+        <div class="goal-total__marker" data-day="$daysIn" style="left: $paceFractionPct%"></div>
+      </div>
+    </div>
+
+    <div class="goal-rows">
+$goalRowsHtml
     </div>
   </section>
 

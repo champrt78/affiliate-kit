@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Affiliate Kit · Ops</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:         #0B0E13;
+    --surface:    #161B22;
+    --surface-2:  #1C2128;
+    --surface-3:  #232A33;
+    --line:       #2A3038;
+    --line-soft:  #1F252C;
+    --ink:        #E6EAEF;
+    --ink-soft:   #C2C9D3;
+    --muted:      #8B98A8;
+    --muted-deep: #5E6976;
+    --steel:      #4A8FD4;
+    --steel-deep: #2C5E8C;
+    --green:      #5FB37C;
+    --amber:      #E8B86A;
+    --red:        #E07B7B;
+    --highlight:  #F7E9C8;
+    --font-serif: "Instrument Serif", Georgia, serif;
+    --font-sans:  "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-mono:  "JetBrains Mono", ui-monospace, Consolas, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { font-size: 16px; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 56px 32px 80px;
+  }
+
+  /* ===== Header ===== */
+  header.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 32px;
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--line);
+  }
+  .brand {
+    font-family: var(--font-serif);
+    font-size: 38px;
+    line-height: 1.05;
+    letter-spacing: -0.012em;
+    color: var(--ink);
+    margin: 0;
+  }
+  .brand em { font-style: italic; color: var(--steel); }
+  .brand__sub {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .brand__sub::before {
+    content: '';
+    display: inline-block;
+    width: 28px; height: 1px;
+    background: var(--steel);
+  }
+  .stamp {
+    text-align: right;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .stamp .stamp__line { display: block; }
+
+  /* ===== Goal trajectory section ===== */
+  .goal {
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    border-radius: 4px;
+    padding: 28px 32px;
+    margin-bottom: 40px;
+  }
+  .goal__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .goal h2 {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    line-height: 1.1;
+    margin: 0;
+    color: var(--ink);
+  }
+  .goal h2 em { font-style: italic; color: var(--steel); }
+  .goal__pace {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 2px;
+    letter-spacing: 0.02em;
+  }
+  .goal__pace.pace-green { background: rgba(95,179,124,0.12); color: var(--green); }
+  .goal__pace.pace-amber { background: rgba(232,184,106,0.12); color: var(--amber); }
+  .goal__pace.pace-red   { background: rgba(224,123,123,0.12); color: var(--red); }
+  .goal__sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 22px;
+  }
+
+  /* Total progress bar — bigger and at top */
+  .goal-total {
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .goal-total__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+  }
+  .goal-total__label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .goal-total__value {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    color: var(--ink);
+  }
+  .goal-total__value em { font-style: italic; color: var(--steel); }
+  .goal-total__track {
+    position: relative;
+    height: 14px;
+    background: var(--surface-3);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .goal-total__fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    background: linear-gradient(90deg, var(--steel-deep) 0%, var(--steel) 100%);
+    transition: width 400ms ease;
+  }
+  /* Time marker on the total bar */
+  .goal-total__marker {
+    position: absolute;
+    top: -3px;
+    bottom: -3px;
+    width: 2px;
+    background: var(--highlight);
+    opacity: 0.85;
+  }
+  .goal-total__marker::after {
+    content: 'day ' attr(data-day);
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--highlight);
+    white-space: nowrap;
+  }
+
+  /* Per-site rows */
+  .goal-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .goal-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 16px;
+    align-items: center;
+  }
+  .goal-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+  }
+  .goal-track {
+    position: relative;
+    height: 22px;
+    background: var(--surface-3);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .goal-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    transition: width 400ms ease;
+  }
+  .goal-fill.fill-low  { background: linear-gradient(90deg, #1F4060 0%, #4A8FD4 100%); }
+  .goal-fill.fill-mid  { background: linear-gradient(90deg, #2C5E8C 0%, #5FB37C 100%); }
+  .goal-fill.fill-done { background: linear-gradient(90deg, #2C8F4F 0%, #5FB37C 100%); }
+  .goal-fill.fill-dormant { background: transparent; }
+  .goal-value {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    letter-spacing: 0.02em;
+  }
+  @media (max-width: 600px) {
+    .goal-row { grid-template-columns: 1fr; gap: 4px; }
+    .goal-label { font-size: 11px; }
+  }
+
+  /* ===== Overview row ===== */
+  .overview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    padding: 18px 20px;
+    border-radius: 4px;
+  }
+  .stat__label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .stat__value {
+    font-family: var(--font-serif);
+    font-size: 32px;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .stat__value em { font-style: italic; color: var(--steel); }
+  .stat__sub {
+    font-size: 12px;
+    color: var(--muted-deep);
+    margin-top: 6px;
+  }
+  @media (max-width: 760px) {
+    .overview { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ===== High-leverage band (drafts waiting) ===== */
+  .band {
+    background: linear-gradient(135deg, #2D2218 0%, #1F1810 100%);
+    border: 1px solid #553F22;
+    border-left: 3px solid var(--amber);
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin-bottom: 32px;
+  }
+  .band h2 {
+    font-family: var(--font-serif);
+    font-size: 26px;
+    line-height: 1.1;
+    margin: 0 0 6px;
+    color: var(--highlight);
+  }
+  .band__sub {
+    color: var(--ink-soft);
+    margin: 0 0 16px;
+    font-size: 14px;
+  }
+  .draft-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .draft-list li {
+    padding: 10px 14px;
+    background: rgba(0,0,0,0.25);
+    border-radius: 3px;
+    font-size: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* ===== Section heads ===== */
+  h2.section-h {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    line-height: 1.1;
+    letter-spacing: -0.012em;
+    color: var(--ink);
+    margin: 0 0 8px;
+  }
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--steel);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .section-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 28px; height: 1px;
+    background: var(--steel);
+  }
+
+  /* ===== Site grid ===== */
+  .site-grid-wrap { margin-bottom: 48px; }
+  .site-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 760px) {
+    .site-grid { grid-template-columns: 1fr; }
+  }
+  .site-card {
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    border-left: 3px solid var(--muted-deep);
+    border-radius: 4px;
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: border-color 200ms ease;
+  }
+  .site-card.h-green  { border-left-color: var(--green); }
+  .site-card.h-amber  { border-left-color: var(--amber); }
+  .site-card.h-red    { border-left-color: var(--red); }
+  .site-card.h-cold   { border-left-color: var(--muted-deep); opacity: 0.7; }
+  .site-card.p-high   { border-color: rgba(232, 184, 106, 0.3); }
+  .site-card__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .site-card__slug {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    line-height: 1.1;
+    letter-spacing: -0.008em;
+    color: var(--ink);
+  }
+  .site-card__stats {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    letter-spacing: 0.02em;
+  }
+  .health-pill {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    padding: 4px 8px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    background: var(--surface-3);
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .h-green .health-pill { background: rgba(95, 179, 124, 0.15); color: var(--green); }
+  .h-amber .health-pill { background: rgba(232, 184, 106, 0.15); color: var(--amber); }
+  .h-red   .health-pill { background: rgba(224, 123, 123, 0.15); color: var(--red); }
+
+  .action-headline {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .action-reason {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 14px;
+    line-height: 1.55;
+  }
+  code.cmd {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--steel);
+    background: rgba(74, 143, 212, 0.08);
+    border: 1px solid rgba(74, 143, 212, 0.2);
+    padding: 6px 10px;
+    border-radius: 3px;
+    letter-spacing: 0.01em;
+    user-select: all;
+  }
+
+  /* ===== Card sections (below the fold) ===== */
+  .section-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  @media (max-width: 760px) {
+    .section-row { grid-template-columns: 1fr; }
+  }
+  .card-section {
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    border-radius: 4px;
+    padding: 24px 26px;
+  }
+  .card-section h2 {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    line-height: 1.1;
+    margin: 0 0 4px;
+    color: var(--ink);
+  }
+  .muted-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 16px;
+  }
+  .plain-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .plain-list.compact { gap: 6px; }
+  .plain-list li {
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line-soft);
+    color: var(--ink-soft);
+  }
+  .plain-list li:last-child { border-bottom: 0; }
+  .slug-mono {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .commit-hash {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--steel);
+    margin-right: 6px;
+  }
+  .research-title {
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .muted { color: var(--muted-deep); font-size: 11px; }
+
+  /* ===== Footer ===== */
+  .foot {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    text-align: center;
+    color: var(--muted-deep);
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  .foot code {
+    font-family: var(--font-mono);
+    background: var(--surface-2);
+    padding: 2px 6px;
+    border-radius: 2px;
+    color: var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div>
+      <h1 class="brand">Affiliate <em>Kit</em> · Ops</h1>
+      <div class="brand__sub">What to do next</div>
+    </div>
+    <div class="stamp">
+      <span class="stamp__line">Generated 2026-05-18 18:55</span>
+      <span class="stamp__line">Day 1 / 365 · 0.3% in</span>
+      <span class="stamp__line">Target: \/mo by month 12</span>
+    </div>
+  </header>
+
+  <section class="overview">
+    <div class="stat">
+      <div class="stat__label">Total live pieces</div>
+      <div class="stat__value">7</div>
+      <div class="stat__sub">across 5 sites</div>
+    </div>
+    <div class="stat">
+      <div class="stat__label">DRAFT (waiting on Bottom Line)</div>
+      <div class="stat__value">0</div>
+      <div class="stat__sub">noindex-gated</div>
+    </div>
+    <div class="stat">
+      <div class="stat__label">Days into 12-month run</div>
+      <div class="stat__value">1</div>
+      <div class="stat__sub">364 remaining</div>
+    </div>
+    <div class="stat">
+      <div class="stat__label">Pieces this week</div>
+      <div class="stat__value">2</div>
+      <div class="stat__sub">target: 1 hero/week</div>
+    </div>
+  </section>
+
+  <section class="goal">
+    <div class="goal__head">
+      <h2>Goal · <em>50 pieces</em> by month 12</h2>
+      <span class="goal__pace pace-green">6.9 ahead</span>
+    </div>
+    <p class="goal__sub">Target maps to the $100/mo realized-revenue line — affiliate-site math typically needs ~50 pieces before meaningful traffic compounds. Time marker shows where today sits on the 365-day track.</p>
+
+    <div class="goal-total">
+      <div class="goal-total__head">
+        <span class="goal-total__label">Total progress</span>
+        <span class="goal-total__value"><em>7</em> / 50 · 14%</span>
+      </div>
+      <div class="goal-total__track">
+        <div class="goal-total__fill" style="width: 14%"></div>
+        <div class="goal-total__marker" data-day="1" style="left: 0.3%"></div>
+      </div>
+    </div>
+
+    <div class="goal-rows">
+    <div class="goal-row">
+      <div class="goal-label">mywildlifecam</div>
+      <div class="goal-track">
+        <div class="goal-fill fill-low" style="width: 17%"></div>
+        <div class="goal-value">5 / 30</div>
+      </div>
+    </div>    <div class="goal-row">
+      <div class="goal-label">detailerpicks</div>
+      <div class="goal-track">
+        <div class="goal-fill fill-low" style="width: 13%"></div>
+        <div class="goal-value">2 / 15</div>
+      </div>
+    </div>    <div class="goal-row">
+      <div class="goal-label">fussybean</div>
+      <div class="goal-track">
+        <div class="goal-fill fill-low" style="width: 0%"></div>
+        <div class="goal-value">0 / 5</div>
+      </div>
+    </div>    <div class="goal-row">
+      <div class="goal-label">starteraquarium</div>
+      <div class="goal-track">
+        <div class="goal-fill fill-dormant" style="width: 0%"></div>
+        <div class="goal-value">dormant</div>
+      </div>
+    </div>    <div class="goal-row">
+      <div class="goal-label">gameovergear</div>
+      <div class="goal-track">
+        <div class="goal-fill fill-dormant" style="width: 0%"></div>
+        <div class="goal-value">dormant</div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+
+
+  <div class="site-grid-wrap">
+    <div class="section-eyebrow">Per-site next action</div>
+    <h2 class="section-h" style="margin-bottom: 22px;">Where to point the work</h2>
+    <div class="site-grid">
+  <article class="site-card h-green p-ok">
+    <header class="site-card__head">
+      <div>
+        <div class="site-card__slug">mywildlifecam</div>
+        <div class="site-card__stats">5 live · 0 draft · last 2d ago</div>
+      </div>
+      <span class="health-pill">ON CADENCE</span>
+    </header>
+    <div class="site-card__action">
+      <div class="action-headline">On clock — next piece due in ~5 day(s)</div>
+      <p class="action-reason">Cadence healthy. Use the time to scout topics or queue research for next piece.</p>
+      <code class="cmd">/scout-topics</code>
+    </div>
+  </article>  <article class="site-card h-green p-ok">
+    <header class="site-card__head">
+      <div>
+        <div class="site-card__slug">detailerpicks</div>
+        <div class="site-card__stats">2 live · 0 draft · last 2d ago</div>
+      </div>
+      <span class="health-pill">ON CADENCE</span>
+    </header>
+    <div class="site-card__action">
+      <div class="action-headline">On clock — next piece due in ~16 day(s)</div>
+      <p class="action-reason">Cadence healthy. Use the time to scout topics or queue research for next piece.</p>
+      <code class="cmd">/scout-topics</code>
+    </div>
+  </article>  <article class="site-card h-cold p-defer">
+    <header class="site-card__head">
+      <div>
+        <div class="site-card__slug">fussybean</div>
+        <div class="site-card__stats">0 live · 0 draft · last never</div>
+      </div>
+      <span class="health-pill">DORMANT</span>
+    </header>
+    <div class="site-card__action">
+      <div class="action-headline">Defer</div>
+      <p class="action-reason">Hero-first phase. Revisit when mywildlifecam hits 15+ pieces (currently 5).</p>
+      
+    </div>
+  </article>  <article class="site-card h-cold p-defer">
+    <header class="site-card__head">
+      <div>
+        <div class="site-card__slug">starteraquarium</div>
+        <div class="site-card__stats">0 live · 0 draft · last never</div>
+      </div>
+      <span class="health-pill">DORMANT</span>
+    </header>
+    <div class="site-card__action">
+      <div class="action-headline">Defer</div>
+      <p class="action-reason">Hero-first phase. Revisit when mywildlifecam hits 15+ pieces (currently 5).</p>
+      
+    </div>
+  </article>  <article class="site-card h-cold p-defer">
+    <header class="site-card__head">
+      <div>
+        <div class="site-card__slug">gameovergear</div>
+        <div class="site-card__stats">0 live · 0 draft · last never</div>
+      </div>
+      <span class="health-pill">DORMANT</span>
+    </header>
+    <div class="site-card__action">
+      <div class="action-headline">Defer</div>
+      <p class="action-reason">Hero-first phase. Revisit when mywildlifecam hits 15+ pieces (currently 5).</p>
+      
+    </div>
+  </article>
+    </div>
+  </div>
+
+  <div class="section-row">
+  <section class="card-section">
+    <h2>TODO · Now</h2>
+    <p class="muted-sub">From <code>docs/TODO.md</code>. 3 open.</p>
+    <ul class="plain-list"><li>**Find proper foam-cannon-in-use Unsplash image** for `best-foam-cannon-for-home-detailers.md` article hero. Brief from Ray: foam cannon spraying water + foam, outside, nice sunny day, summer, conveys "nice day outside." Currently using `photo-1520340356584-f9917d1eea6f` as placeholder.</li><li>Verify detailerpicks design live + screenshot for session log (~3 min after push for GH Actions deploy)</li><li>Confirm Bing Webmaster Tools — detailerpicks property added + sitemap submitted</li></ul>
+  </section>
+  <section class="card-section">
+    <h2>Refresh sweep candidates</h2>
+    <p class="muted-sub">No pieces past 90 days yet (system is still young — first ones won't age in until ~2026-08).</p>
+  </section>
+  </div>
+
+  <div class="section-row">
+  <section class="card-section">
+    <h2>Research notes available (2)</h2>
+    <p class="muted-sub">Material ready to mine for the next piece. Use with <code>/scaffold-piece</code>.</p>
+    <ul class="plain-list"><li><span class="slug-mono">2026-05-17-detailing-research.md</span> <span class="muted">(0d old)</span><br><span class="research-title">Detailing research notes — 2026-05-17</span></li><li><span class="slug-mono">2026-05-17-trail-cam-research.md</span> <span class="muted">(0d old)</span><br><span class="research-title">Trail-cam research notes — 2026-05-17</span></li></ul>
+  </section>
+  <section class="card-section">
+    <h2>Recent commits (last 14 days)</h2>
+    <ul class="plain-list compact"><li><span class="commit-hash">a152def</span> <span class="muted">2026-05-18</span> chore: untrack docs/ops.html (generated file, gitignored)</li><li><span class="commit-hash">1417117</span> <span class="muted">2026-05-18</span> feat(kit): add /ops operations dashboard ΓÇö single page for "what to do next"</li><li><span class="commit-hash">902c4c6</span> <span class="muted">2026-05-18</span> feat(detailerpicks): buying-guide article hero block + editorial typography</li><li><span class="commit-hash">101e0a5</span> <span class="muted">2026-05-18</span> feat(detailerpicks): land Chrome & Suds design to production</li><li><span class="commit-hash">e597dde</span> <span class="muted">2026-05-18</span> feat(kit): add /scout-topics + expand PLAYBOOK with full system surface</li><li><span class="commit-hash">61d9e23</span> <span class="muted">2026-05-18</span> docs(playbook): rewrite as the current operating guide</li><li><span class="commit-hash">4b6ac04</span> <span class="muted">2026-05-18</span> refactor(kit): consolidate Affiliate Kit into one cohesive system</li><li><span class="commit-hash">45d193f</span> <span class="muted">2026-05-18</span> docs(playgrounds): detailerpicks merged mockup v1 (Chrome & Suds + #2 imagery)</li><li><span class="commit-hash">5c5368e</span> <span class="muted">2026-05-18</span> docs: TODO.md (renamed from RAY_NOW.md) + detailerpicks design mockups</li><li><span class="commit-hash">24e9a08</span> <span class="muted">2026-05-18</span> docs: add RAY_NOW.md ΓÇö tight 'what's open right now' file</li></ul>
+  </section>
+  </div>
+
+  <footer class="foot">
+    Generated from real repo state by <code>pwsh scripts/ops.ps1</code>. Re-run any time to refresh.<br>
+    Sources: <code>sites/&lt;slug&gt;/src/content/</code>, <code>docs/research/</code>, <code>docs/TODO.md</code>, <code>git log</code>.
+  </footer>
+
+</div>
+</body>
+</html>
