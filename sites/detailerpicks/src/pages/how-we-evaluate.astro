@@ -1,0 +1,176 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+
+const pageTitle = "How We Evaluate";
+const pageDescription = "How DetailerPicks picks, ranks, and writes about car detailing products: the method behind our recommendations.";
+---
+<MainLayout
+  title={pageTitle}
+  description={pageDescription}
+  robotsContent="index, follow"
+  ogType="article"
+>
+  <article class="method">
+    <header class="page-header">
+      <div class="page-header__inner">
+        <div class="page-header__left">
+          <span class="page-header__kicker">Editorial method</span>
+          <h1 class="page-header__title">How We Evaluate Detailing Products</h1>
+        </div>
+        <p class="page-header__lede">
+          A short, honest description of the work behind every recommendation on this site: what we do, what we don't claim, and how we keep picks current.
+        </p>
+      </div>
+    </header>
+
+    <section class="method-body">
+      <div class="method-body__inner prose">
+
+        <h2>The short version</h2>
+        <p>
+          We pick the car detailing products most likely to fit specific real-world use cases (weekend washes, ceramic-coated paint care, swirl-prone dark colors, garage versus driveway constraints), then explain who each one is right for. We do this from current manufacturer specs, verified-buyer reports on Amazon, and independent third-party testing from sources like Pan The Organizer and Ammo NYC. We don't claim to have used every product ourselves, and we don't pretend the recommendation is universal. Every piece is built around fit, not a single "best."
+        </p>
+
+        <h2>What goes into a pick</h2>
+        <ul>
+          <li><strong>Spec verification.</strong> Every spec (pH, concentration ratio, surfactant type, ceramic compatibility, intended dilution) is checked against the current manufacturer listing on the day the piece is published, then re-checked on any update. Marketing copy drifts; we don't carry stale claims forward.</li>
+          <li><strong>Verified-buyer report aggregation.</strong> We read the most recent verified-purchase Amazon reviews and look for repeated patterns: the same praise or the same complaint from many independent buyers. One review is anecdote; thirty saying the same thing is signal.</li>
+          <li><strong>Independent third-party context.</strong> Where independent comparison testing exists (Pan The Organizer's controlled rinse tests, Ammo NYC technique videos, ChemicalGuys versus Adam's owner-forum threads), we cite specific outcomes and link the source. Where we lean on a manufacturer's own number, we say so.</li>
+          <li><strong>Use-case framing.</strong> We don't write "best car wash soap." We write "best car wash soap for ceramic-coated daily drivers," or "for dark paint that shows every swirl," and then say honestly who should pick a different one.</li>
+        </ul>
+
+        <h2>What we don't claim</h2>
+        <p>
+          We don't claim hands-on testing of every product we cover. Detailing products behave differently across paint types, climates, water hardness, and application techniques; honest side-by-side testing of dozens of soaps and coatings across multiple cars over multiple seasons is a multi-year research operation. We're not pretending to run one.
+        </p>
+        <p>
+          What we do is read the published evidence carefully, weight it against the use case, and write the recommendation we'd give a friend who just got a new car and asked which soap won't ruin the paint. When the answer is "this one isn't right for you, here's the one that is," we say that. When the answer is "skip this category, here's a different approach," we say that too.
+        </p>
+
+        <h2>How we score</h2>
+        <p>
+          When we publish a scored breakdown, the score reflects editorial judgment derived from spec analysis and user-report synthesis, not a lab measurement. The default weights for product comparisons on this site are <strong>Paint Safety 25%, Cleaning Power 20%, Value 20%, Versatility 15%, Ease of Use 20%</strong>. Paint Safety carries the heaviest weight on purpose: a soap that cleans aggressively but strips wax, or a polish that finishes glossy but introduces micro-marring, is a bad recommendation regardless of how well it scores everywhere else. If your priorities differ (say, you weight value higher than paint safety because you drive a beater) our top pick may not be your top pick. That's the right outcome of a transparent scoring system.
+        </p>
+
+        <h2>How we make money</h2>
+        <p>
+          We earn an affiliate commission on qualifying Amazon purchases made through links on this site. We don't accept manufacturer samples, sponsored placements, or paid recommendations. The commission doesn't change the recommendation. If a product is wrong for you, we say it's wrong for you; there's no version of this work where misleading a reader pays off long-term.
+        </p>
+
+        <h2>How we keep picks current</h2>
+        <p>
+          Every piece carries a "last updated" date. We re-check picks on a quarterly cadence: refresh specs against current manufacturer listings, re-read the most recent verified-buyer reports, and either confirm the existing recommendation or update it. When a product is discontinued, reformulated, or pulled from Amazon, the piece is rewritten, not buried.
+        </p>
+
+        <h2>If you find something wrong</h2>
+        <p>
+          If a spec on this site is wrong, a recommendation feels off, or a product has changed in a way we missed, tell us. The <a href="/contact/">contact form</a> goes to a real inbox. Detailing chemistry evolves fast; the readers checking our work are how we stay honest.
+        </p>
+
+      </div>
+    </section>
+  </article>
+</MainLayout>
+
+<style>
+  .method { background: var(--color-bg); }
+
+  .page-header {
+    background: var(--color-bg);
+    padding: var(--space-10) var(--space-6) var(--space-6);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .page-header__inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: var(--space-10);
+    align-items: end;
+  }
+  .page-header__kicker {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-brass);
+    margin-bottom: var(--space-2);
+  }
+  .page-header__kicker::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--color-brass);
+    vertical-align: middle;
+    margin-right: 10px;
+    transform: translateY(-2px);
+  }
+  .page-header__title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.625rem, 2.6vw, 2.125rem);
+    line-height: 1.1;
+    color: var(--color-forest);
+    letter-spacing: var(--tracking-display);
+    margin: 0;
+    font-weight: var(--weight-semibold);
+    font-variation-settings: "opsz" 60;
+    text-transform: capitalize;
+  }
+  .page-header__lede {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+    line-height: 1.5;
+    color: var(--color-muted);
+    margin: 0;
+    max-width: 56ch;
+    font-variation-settings: "opsz" 30;
+    align-self: end;
+    padding-bottom: 4px;
+  }
+
+  .method-body {
+    background: var(--color-paper-muted);
+    padding: var(--space-12) var(--space-6) var(--space-16);
+  }
+  .method-body__inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+
+  .prose {
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    color: var(--color-paper-ink);
+  }
+  .prose p { margin: 0 0 var(--space-5); }
+  .prose h2 {
+    font-family: var(--font-serif);
+    font-size: var(--text-2xl);
+    color: var(--color-forest);
+    margin: var(--space-10) 0 var(--space-4);
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--color-border);
+  }
+  .prose h2:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+  .prose ul { padding-left: var(--space-6); margin: 0 0 var(--space-5); }
+  .prose li { margin-bottom: var(--space-2); }
+  .prose strong { color: var(--color-forest); font-weight: var(--weight-semibold); }
+  .prose a {
+    color: var(--color-forest);
+    font-weight: var(--weight-medium);
+    text-decoration-color: var(--color-brass);
+  }
+  .prose a:hover { color: var(--color-brass); }
+
+  @media (max-width: 760px) {
+    .page-header { padding: var(--space-10) var(--space-4) var(--space-5); }
+    .page-header__inner { grid-template-columns: 1fr; row-gap: var(--space-3); }
+    .page-header__lede { padding-bottom: 0; }
+    .method-body { padding: var(--space-10) var(--space-4) var(--space-12); }
+  }
+</style>
