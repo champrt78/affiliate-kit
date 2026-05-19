@@ -70,6 +70,7 @@ products:
   - name: "Pan The Organizer Demineralizing Shampoo"
     brand: "Pan The Organizer"
     affiliateUrl: "https://www.carsupplieswarehouse.com/products/clean-by-pan-the-organizer-demineralizing-shampoo-acidic-mineral-deposit-remover"
+    image: "https://thehouseofrags.com/cdn/shop/files/Demineralizing_Shampoo.png?v=1741273846&width=1445"
     bestFor: "Best for hard-water regions, every few months"
     priceFrom: 0
     hook: "Acidic-pH companion wash. Dissolves mineral deposits, water spots, restores coating hydrophobic performance every few months."
