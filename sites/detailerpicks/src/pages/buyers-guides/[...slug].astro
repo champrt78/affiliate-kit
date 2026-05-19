@@ -98,24 +98,26 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
       <div class="quick-grid">
         {data.products.map((p, i) => {
           const price = fmtPrice(p.priceFrom);
-          const link = (p as any).cloakedSlug
+          const buyHref = (p as any).cloakedSlug
             ? cloakedLink({ slug: (p as any).cloakedSlug })
             : p.affiliateUrl;
           return (
-            <a href={`#pick-${i + 1}`} class="qcard">
-              <div class="qcard__img">
+            <article class="qcard">
+              <a href={buyHref} class="qcard__img" rel="sponsored noopener" target="_blank" aria-label={`Check current price for ${p.name}`}>
                 {(p as any).image && <img src={(p as any).image} alt={p.name} loading="lazy" decoding="async" />}
                 {price && <div class="qcard__img__price">{price}</div>}
-              </div>
+              </a>
               <div class="qcard__body">
                 <div class="qcard__persona">{p.bestFor || p.brand}</div>
-                <div class="qcard__product">{p.name} <span aria-hidden="true">&rarr;</span></div>
+                <a href={buyHref} class="qcard__product" rel="sponsored noopener" target="_blank">
+                  {p.name} <span aria-hidden="true">&rarr;</span>
+                </a>
                 {(p as any).hook && <p class="qcard__hook">{(p as any).hook}</p>}
-                <div class="qcard__cta">
+                <a href={`#pick-${i + 1}`} class="qcard__cta">
                   Read the full review <span class="qcard__cta__arrow" aria-hidden="true">&rarr;</span>
-                </div>
+                </a>
               </div>
-            </a>
+            </article>
           );
         })}
       </div>
@@ -353,10 +355,9 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     border-radius: 6px;
     overflow: hidden;
     display: flex; flex-direction: column;
-    color: inherit;
-    text-decoration: none;
     transition: border-color 200ms ease, transform 200ms ease;
   }
+  .qcard a { text-decoration: none; }
   .qcard:hover {
     border-color: var(--color-brass-soft, #D4B966);
     transform: translateY(-2px);
@@ -368,7 +369,10 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     display: grid; place-items: center;
     overflow: hidden;
     position: relative;
+    cursor: pointer;
   }
+  .qcard__img:hover img { transform: scale(1.03); }
+  .qcard__img img { transition: transform 220ms ease; }
   .qcard__img img {
     max-width: 62%;
     max-height: 76%;
