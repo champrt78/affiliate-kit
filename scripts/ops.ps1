@@ -398,26 +398,26 @@ function Build-SiteDrillDown {
     $panelClass = "do-next-panel do-next-panel--$($Action.PriorityLabel)"
 
     $daysToNext = if ($Site.DaysSinceLast -ne $null) { [math]::Max(0, $Site.CadenceTarget - $Site.DaysSinceLast) } else { $Site.CadenceTarget }
-    $progressRowHtml = if ($target -gt 0) { @"
-      <div class="drill__progress">
+    $progressMidHtml = if ($target -gt 0) { @"
+      <div class="drill__head-mid">
         <div class="drill__progress-track"><div class="drill__progress-fill" style="width: $pct%"></div></div>
         <div class="drill__progress-label"><em>$($Site.LiveCount) / $target</em> pieces · $pct% toward 12-mo target</div>
       </div>
-"@ } else { "" }
+"@ } else { '<div class="drill__head-mid"></div>' }
 
     return @"
   <section id="site-$SiteSlug" class="drill drill--site">
     <header class="drill__head">
-      <div>
-        <div class="drill__eyebrow">Site drill-down</div>
+      <div class="drill__eyebrow">Site drill-down</div>
+      <div class="drill__head-body">
         <h2 class="drill__title">$SiteSlug</h2>
         <p class="drill__stats">$($Site.LiveCount) live · $($Site.DraftCount) draft · last shipped $lastStr</p>
       </div>
+$progressMidHtml
       <div class="drill__head-right">
         <span class="drill__meta">target $($Site.CadenceTarget)d · next in $($daysToNext)d</span>
         <span class="health-pill health-$($Site.Health)">$healthLabel</span>
       </div>
-$progressRowHtml
     </header>
 
     <section class="$panelClass">
@@ -693,15 +693,8 @@ $html = @"
   .do-next-panel--ok   { padding: 10px 14px; border-left-color: var(--steel-deep); }
   .do-next-panel--defer { padding: 8px 12px; border-left-color: var(--muted-deep); opacity: 0.75; }
 
-  /* Drill header progress strip — progress bar as the bottom row of the header */
-  .drill__progress {
-    grid-column: 1 / -1;
-    margin-top: 8px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 14px;
-    align-items: center;
-  }
+  /* Drill header inline progress — sits in the middle column of drill__head */
+  .drill__head-mid { display: flex; flex-direction: column; gap: 4px; padding: 0 4px; }
   .drill__progress-track {
     position: relative;
     height: 6px;
@@ -720,7 +713,6 @@ $html = @"
     font-size: 11px;
     color: var(--muted);
     letter-spacing: 0.02em;
-    white-space: nowrap;
   }
   .drill__progress-label em {
     font-style: normal;
@@ -990,14 +982,20 @@ $html = @"
 
   .drill__head {
     display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: flex-start;
-    gap: 20px 24px;
+    grid-template-columns: minmax(280px, auto) 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 6px 24px;
     padding-bottom: 10px;
     border-bottom: 1px solid var(--line);
     flex-shrink: 0;
+    align-items: center;
   }
+  .drill__eyebrow { grid-column: 1; grid-row: 1; align-self: end; }
+  .drill__head-body { grid-column: 1; grid-row: 2; }
+  .drill__head-mid  { grid-column: 2; grid-row: 1 / span 2; align-self: center; min-width: 0; }
   .drill__head-right {
+    grid-column: 3;
+    grid-row: 1 / span 2;
     display: flex;
     align-items: center;
     gap: 14px;
