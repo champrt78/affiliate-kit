@@ -27,8 +27,8 @@ products:
     priceFrom: 12.99
   - name: "Quik Interior Detailer (D157)"
     brand: "Meguiar's"
-    affiliateUrl: "https://www.amazon.com/s?k=meguiar%27s+quik+interior+detailer&tag=mywildlifecam-20"
-    image: "https://m.media-amazon.com/images/I/41xJgI2-WdL._AC_SL500_.jpg"
+    affiliateUrl: "https://www.amazon.com/dp/B0GTWQ19PM?tag=mywildlifecam-20"
+    image: "https://images-na.ssl-images-amazon.com/images/P/B0GTWQ19PM.01.LZZZZZZZ.jpg"
     tagline: "Under $10 at AutoZone, Walmart, Amazon. OEM matte finish, screen-safe. The default 'what should I buy today' answer."
     bestFor: "First-time interior detailer or someone needing a product immediately from a mass-retail shelf"
     priceFrom: 8.00
@@ -139,14 +139,14 @@ The trade-off: AutoGeek and AdamsForums threads note Adam's interior line is reg
 </div>
 
 <div class="pick-card">
-<div class="pick-card__img"><img src="https://m.media-amazon.com/images/I/41xJgI2-WdL._AC_SL500_.jpg" alt="Meguiar's Quik Interior Detailer D157" loading="lazy" onerror="this.style.display='none'" /></div>
+<div class="pick-card__img"><img src="https://images-na.ssl-images-amazon.com/images/P/B0GTWQ19PM.01.LZZZZZZZ.jpg" alt="Meguiar's Quik Interior Detailer D157" loading="lazy" onerror="this.style.display='none'" /></div>
 <div class="pick-card__body">
 
-### <a class="pick-card__link" href="https://www.amazon.com/s?k=meguiar%27s+quik+interior+detailer&tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">The first-time interior detailer who needs a product today: Meguiar's Quik Interior Detailer (D157) →</a>
+### <a class="pick-card__link" href="https://www.amazon.com/dp/B0GTWQ19PM?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">The first-time interior detailer who needs a product today: Meguiar's Quik Interior Detailer (D157) →</a>
 
-[Meguiar's Quik Interior Detailer](https://www.amazon.com/s?k=meguiar%27s+quik+interior+detailer&tag=mywildlifecam-20) is the under-$10 mass-retail accessibility leader. Surface compatibility per Meguiar's product documentation: interior plastics, vinyl, leather, rubber, metal, audio-video equipment, LCD screens, navigation screens, gauges, and carbon fiber trim. Confirmed safe on non-tinted glass.
+[Meguiar's Quik Interior Detailer](https://www.amazon.com/dp/B0GTWQ19PM?tag=mywildlifecam-20) is the under-$10 mass-retail accessibility leader. Surface compatibility per Meguiar's product documentation: interior plastics, vinyl, leather, rubber, metal, audio-video equipment, LCD screens, navigation screens, gauges, and carbon fiber trim. Confirmed safe on non-tinted glass.
 
-Todd Cooperider (Detailed Image Ask a Pro) specifically distinguishes [D157](https://www.amazon.com/s?k=meguiar%27s+quik+interior+detailer&tag=mywildlifecam-20) from competitor products that produce "overly shiny, dressed appearances," calling out its natural, non-glossy matte OEM finish as a key reason it remains the default mass-retail recommendation. The product includes sunblocking and sunscreening agents per Meguiar's product page, though no SPF figure or duration is specified (unlike [303 Aerospace](https://www.amazon.com/AMRS-303-30340-125-303-Aerospace-Protectant-16oz/dp/B019X2BJSM?tag=mywildlifecam-20), which documents SPF 40 explicitly).
+Todd Cooperider (Detailed Image Ask a Pro) specifically distinguishes [D157](https://www.amazon.com/dp/B0GTWQ19PM?tag=mywildlifecam-20) from competitor products that produce "overly shiny, dressed appearances," calling out its natural, non-glossy matte OEM finish as a key reason it remains the default mass-retail recommendation. The product includes sunblocking and sunscreening agents per Meguiar's product page, though no SPF figure or duration is specified (unlike [303 Aerospace](https://www.amazon.com/AMRS-303-30340-125-303-Aerospace-Protectant-16oz/dp/B019X2BJSM?tag=mywildlifecam-20), which documents SPF 40 explicitly).
 
 Available everywhere from AutoZone to Walmart to Amazon at roughly $8 for a 16 oz trigger spray. The fit: someone needs a product TODAY and does not want to wait for an Amazon shipment. The trade-off: the combo cleaner-and-protectant claim is less specialized than premium alternatives. For everyday cleaning, the gap rarely matters.
 
@@ -163,7 +163,7 @@ Available everywhere from AutoZone to Walmart to Amazon at roughly $8 for a 16 o
 
 The claim worth attention: "up to 3 months protection per application" per manufacturer documentation. This is dramatically longer than the implied weekly or biweekly reapplication window for quick-detailer combo products. The mechanism is a hydrophobic film that bonds to porous surfaces (leather pores, vinyl texturing) and persists through casual contact.
 
-AutoGeek forum threads recommend [PERL](https://www.amazon.com/CarPro-PERL-Plastic-Rubber-Protectant/dp/B004UM9V5Y?tag=mywildlifecam-20) for "superior water repellency" on interior surfaces alongside Gyeon's interior coatings. The dilution requirement and concentrate format position it as a more technical pick than spray-and-wipe options like [InnerClean](https://www.amazon.com/Chemical-Guys-SPI_663_16-InnerClean-Protectant/dp/B008LPEZ6Q?tag=mywildlifecam-20) or [Meguiar's D157](https://www.amazon.com/s?k=meguiar%27s+quik+interior+detailer&tag=mywildlifecam-20). Surface compatibility per CarPro documentation: interior vinyl, plastics, finished leather. Note: not for unfinished leathers (suede or nubuck).
+AutoGeek forum threads recommend [PERL](https://www.amazon.com/CarPro-PERL-Plastic-Rubber-Protectant/dp/B004UM9V5Y?tag=mywildlifecam-20) for "superior water repellency" on interior surfaces alongside Gyeon's interior coatings. The dilution requirement and concentrate format position it as a more technical pick than spray-and-wipe options like [InnerClean](https://www.amazon.com/Chemical-Guys-SPI_663_16-InnerClean-Protectant/dp/B008LPEZ6Q?tag=mywildlifecam-20) or [Meguiar's D157](https://www.amazon.com/dp/B0GTWQ19PM?tag=mywildlifecam-20). Surface compatibility per CarPro documentation: interior vinyl, plastics, finished leather. Note: not for unfinished leathers (suede or nubuck).
 
 </div>
 </div>
