@@ -131,10 +131,10 @@ const productCount = data.products?.length ?? 0;
           <p class="bottom-line__verdict">{data.bottomLine.verdict}</p>
           {data.bottomLine.supporting && Array.isArray(data.bottomLine.supporting) ? (
             <ul class="bottom-line__list">
-              {data.bottomLine.supporting.map((item) => <li>{item}</li>)}
+              {data.bottomLine.supporting.map((item) => <li set:html={item}></li>)}
             </ul>
           ) : data.bottomLine.supporting ? (
-            <p class="bottom-line__supporting">{data.bottomLine.supporting}</p>
+            <p class="bottom-line__supporting" set:html={data.bottomLine.supporting}></p>
           ) : null}
         </section>
       )}

@@ -36,9 +36,9 @@ lastUpdated: 2026-05-17
 bottomLine:
   verdict: "Don't overthink it. It shakes out like this:"
   supporting:
-    - "Pick the Spypoint Flex-M if you want photos delivered to your phone without thinking about it."
-    - "Pick the Stealth Cam DS4K Ultimate if you want the sharpest image and don't mind walking out for the SD card."
-    - "Pick the Vikeri Trail Camera if you want to find out if this is something you care about for less than eighty bucks."
+    - "Pick the <a href='/go/spypoint-flex-m-review' rel='sponsored noopener' target='_blank'><strong>Spypoint Flex-M</strong></a> if you want photos delivered to your phone without thinking about it."
+    - "Pick the <a href='/go/stealth-cam-ds4k-ultimate-review' rel='sponsored noopener' target='_blank'><strong>Stealth Cam DS4K Ultimate</strong></a> if you want the sharpest image and don't mind walking out for the SD card."
+    - "Pick the <a href='/go/vikeri-trail-camera-review' rel='sponsored noopener' target='_blank'><strong>Vikeri Trail Camera</strong></a> if you want to find out if this is something you care about for less than eighty bucks."
 buyIf:
   buy:
     - "You own a house with a backyard, a few acres, or a stretch of woods worth keeping an eye on"
