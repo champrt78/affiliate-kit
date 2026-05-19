@@ -655,12 +655,8 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     font-weight: 500;
     color: var(--color-paper-ink);
   }
-  /* Paragraphs stay at a comfortable reading width even though the section is wide.
-     Use a 78ch cap (slightly wider than the prose column elsewhere) so the body
-     reads well but doesn't shrink to nothing in the visual rhythm of the wider page. */
   .editorial .prose :global(p) {
     margin: 0 0 18px;
-    max-width: 78ch;
   }
   /* Tables go full width — they have to, to lay out cleanly. */
   .editorial .prose :global(table) {
@@ -705,7 +701,6 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     background: var(--color-paper-muted);
     border-left: 3px solid var(--color-forest);
     border-radius: 0 6px 6px 0;
-    max-width: 90ch;
   }
   .editorial .prose :global(ul > li > strong:first-child) {
     display: block;
