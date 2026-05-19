@@ -933,9 +933,9 @@ $html = @"
   }
   .ref-link:hover { border-color: var(--steel); color: var(--steel); }
   .ref-programs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
   }
   .ref-chip {
     font-family: var(--font-mono);
@@ -945,11 +945,13 @@ $html = @"
     letter-spacing: 0.02em;
     display: inline-flex;
     align-items: center;
-    gap: 5px;
+    gap: 6px;
+    min-width: 0;
   }
   .ref-chip::before {
     content: '';
-    width: 6px; height: 6px; border-radius: 50%;
+    width: 5px; height: 5px; border-radius: 50%;
+    flex-shrink: 0;
   }
   .ref-chip.status-approved {
     background: rgba(0, 220, 130, 0.10);
@@ -1276,7 +1278,7 @@ $html = @"
   }
   .drill__eyebrow { grid-column: 1; grid-row: 1; align-self: end; }
   .drill__head-body { grid-column: 1; grid-row: 2; }
-  .drill__head-mid  { grid-column: 2; grid-row: 1 / span 2; align-self: center; min-width: 0; }
+  .drill__head-mid  { grid-column: 2; grid-row: 2; align-self: center; min-width: 0; }
   .drill__head-right {
     grid-column: 3;
     grid-row: 1 / span 2;
