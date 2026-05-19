@@ -932,19 +932,19 @@ $html = @"
   }
   .ref-link:hover { border-color: var(--steel); color: var(--steel); }
   .ref-programs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: 5px;
   }
   .ref-chip {
     font-family: var(--font-mono);
     font-size: 10px;
-    padding: 3px 8px;
+    padding: 3px 7px;
     border-radius: 2px;
     letter-spacing: 0.02em;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
     min-width: 0;
   }
   .ref-chip::before {
