@@ -37,8 +37,8 @@ products:
 pubDate: 2026-05-19
 lastUpdated: 2026-05-19
 images:
-  hero: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2400&q=80"
-  heroCaption: "Wheel cleaning on a coated daily driver. Photo: Unsplash."
+  hero: "https://images.unsplash.com/photo-1761942943505-f134f851e88e?auto=format&fit=crop&w=2400&q=80"
+  heroCaption: "Alloy wheel and brake caliper close-up. Photo: Unsplash."
 bottomLine:
   verdict: ""
   supporting: ""

@@ -7,44 +7,50 @@ products:
   - name: "InnerClean Interior Quick Detailer and Protectant"
     brand: "Chemical Guys"
     affiliateUrl: "https://www.amazon.com/Chemical-Guys-SPI_663_16-InnerClean-Protectant/dp/B008LPEZ6Q?tag=mywildlifecam-20"
+    image: "https://images-na.ssl-images-amazon.com/images/P/B008LPEZ6Q.01.LZZZZZZZ.jpg"
     tagline: "All-surface combo cleaner plus UV protectant. Matte OEM finish, anti-static, 4.7-star Amazon rating across 6,000-plus reviews."
     bestFor: "The weekend enthusiast wanting one bottle for every interior surface in a single workflow"
     priceFrom: 11.99
   - name: "Aerospace Protectant"
     brand: "303 Products"
     affiliateUrl: "https://www.amazon.com/AMRS-303-30340-125-303-Aerospace-Protectant-16oz/dp/B019X2BJSM?tag=mywildlifecam-20"
+    image: "https://images-na.ssl-images-amazon.com/images/P/B019X2BJSM.01.LZZZZZZZ.jpg"
     tagline: "SPF 40, blocks up to 98% of UV. The category UV-protection benchmark. Use as a follow-up to a cleaner, not a standalone."
     bestFor: "Dark-dashboard daily drivers in high-sun regions where UV degradation is the priority"
     priceFrom: 15.99
   - name: "Total Interior Cleaner and Protectant"
     brand: "Adam's Polishes"
     affiliateUrl: "https://www.amazon.com/Adams-Total-Interior-Cleaner-Protectant/dp/B0923BDFH5?tag=mywildlifecam-20"
+    image: "https://m.media-amazon.com/images/I/311ow8X1kcL._AC_SL500_.jpg"
     tagline: "Self-crosslinking polymer plus SiO2 ceramic technology. Matte across hard surfaces, foaming action on textiles."
     bestFor: "Show-car owners who want a polymer protection layer with broad surface coverage and no carnauba sheen"
     priceFrom: 12.99
   - name: "Quik Interior Detailer (D157)"
     brand: "Meguiar's"
     affiliateUrl: "https://www.amazon.com/s?k=meguiar%27s+quik+interior+detailer&tag=mywildlifecam-20"
+    image: "https://m.media-amazon.com/images/I/41xJgI2-WdL._AC_SL500_.jpg"
     tagline: "Under $10 at AutoZone, Walmart, Amazon. OEM matte finish, screen-safe. The default 'what should I buy today' answer."
     bestFor: "First-time interior detailer or someone needing a product immediately from a mass-retail shelf"
     priceFrom: 8.00
   - name: "PERL Coat"
     brand: "CarPro"
     affiliateUrl: "https://www.amazon.com/CarPro-PERL-Plastic-Rubber-Protectant/dp/B004UM9V5Y?tag=mywildlifecam-20"
+    image: "https://m.media-amazon.com/images/I/21AN8GQGn4L._AC_SL500_.jpg"
     tagline: "Concentrate that dilutes 1:5 for interior leather and vinyl. Satin show-worthy finish, 3-month protection claim per application."
     bestFor: "Leather-seat owners willing to mix dilutions for stronger protection per ounce"
     priceFrom: 17.59
   - name: "Xpress Interior Cleaner"
     brand: "P&S Detail Products"
     affiliateUrl: "https://www.amazon.com/Detailing-Products-Xpress-Interior-Cleaner/dp/B07WRS7HT6?tag=mywildlifecam-20"
+    image: "https://m.media-amazon.com/images/I/315+oIBqNdL._AC_SL500_.jpg"
     tagline: "Pro-detailer pure cleaner, no protectant. Dilutes 1:1, gallon-priced for frequent cleaning. Part of Renny Doyle's Double Black Collection."
     bestFor: "Kid and pet daily-drivers cleaning frequently where bulk economy matters and protectant is added as a separate step"
     priceFrom: 10.28
 pubDate: 2026-05-19
 lastUpdated: 2026-05-19
 images:
-  hero: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2400&q=80"
-  heroCaption: "Interior detailing on a daily driver. Photo: Unsplash."
+  hero: "https://images.unsplash.com/photo-1771402689232-14d4d1c1c685?auto=format&fit=crop&w=2400&q=80"
+  heroCaption: "Vintage cognac-leather interior. Photo: Unsplash."
 bottomLine:
   verdict: ""
   supporting: ""
@@ -87,53 +93,95 @@ A sixth picks fills the high-frequency cleaning slot: **P&S Xpress Interior Clea
 
 The "ranking" in this guide is not about which product cleans best in absolute terms (most premium interior detailers clean adequately for weekly maintenance). The ranking reflects which reader segment each product fits best, based on documented chemistry and credible third-party reviewer commentary.
 
-### 1. Chemical Guys InnerClean: best for the all-surface weekend enthusiast
+<div class="pick-card">
+<div class="pick-card__img"><img src="https://images-na.ssl-images-amazon.com/images/P/B008LPEZ6Q.01.LZZZZZZZ.jpg" alt="Chemical Guys InnerClean" loading="lazy" onerror="this.style.display='none'" /></div>
+<div class="pick-card__body">
 
-Chemical Guys' product page lists InnerClean as compatible with leather, plastic, vinyl, cloth, chrome, glass, carpet, metal, upholstery, rubber, and LCD screens. The combination of broad surface compatibility, matte OEM finish (no greasy sheen), and one-step cleaner-plus-protectant chemistry makes it the strongest single-product match for the reader who wants a workflow that fits in one bottle.
+### <a class="pick-card__link" href="https://www.amazon.com/Chemical-Guys-SPI_663_16-InnerClean-Protectant/dp/B008LPEZ6Q?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">The all-surface weekend enthusiast: Chemical Guys InnerClean →</a>
 
-The Autopia forum thread comparing InnerClean to 303 noted it leaves "no residue like 303," meaning users perceive it as drier on the surface, which the matte-finish community tends to prefer over dressed-looking competitors. The 4.7-star Amazon rating across over 6,000 reviews on the 16 oz variant and over 8,400 reviews on the gallon variant is the strongest social proof in this lineup.
+Chemical Guys' product page lists [InnerClean](https://www.amazon.com/Chemical-Guys-SPI_663_16-InnerClean-Protectant/dp/B008LPEZ6Q?tag=mywildlifecam-20) as compatible with leather, plastic, vinyl, cloth, chrome, glass, carpet, metal, upholstery, rubber, and LCD screens. The combination of broad surface compatibility, matte OEM finish (no greasy sheen), and one-step cleaner-plus-protectant chemistry makes it the strongest single-product match for the reader who wants a workflow that fits in one bottle.
+
+The Autopia forum thread comparing [InnerClean](https://www.amazon.com/Chemical-Guys-SPI_663_16-InnerClean-Protectant/dp/B008LPEZ6Q?tag=mywildlifecam-20) to 303 noted it leaves "no residue like 303," meaning users perceive it as drier on the surface, which the matte-finish community tends to prefer over dressed-looking competitors. The 4.7-star Amazon rating across over 6,000 reviews on the 16 oz variant and over 8,400 reviews on the gallon variant is the strongest social proof in this lineup.
 
 Available in 16 oz at $11.99 and gallon at $59.99 (chemicalguys.com pricing). Pineapple and Baby Powder scent options. Anti-static behavior is part of the claimed feature set per the product page.
 
-### 2. 303 Aerospace Protectant: best for the dark-dashboard daily driver
+</div>
+</div>
 
-303 Aerospace is the category UV-protection benchmark. Gold Eagle (the manufacturer) documents SPF 40 and up to 98% UV block, claiming the highest UV protection of any surface protectant in the category. Larry Kosilla (AMMO NYC) and the AutoGeek detailing community consistently reference 303 as the dedicated protectant standard.
+<div class="pick-card">
+<div class="pick-card__img"><img src="https://images-na.ssl-images-amazon.com/images/P/B019X2BJSM.01.LZZZZZZZ.jpg" alt="303 Aerospace Protectant" loading="lazy" onerror="this.style.display='none'" /></div>
+<div class="pick-card__body">
 
-Important framing: 303 is a protectant, not a cleaner. It is applied to a clean surface, not to a dirty one. Detailed Image reviewer Todd Cooperider distinguishes it from combo products: "303 suits vinyl and leather when a dressed look is desired" versus cleaner-protectant combos for hard surfaces. Reapplication every 3 to 5 weeks is recommended per Gold Eagle's product page.
+### <a class="pick-card__link" href="https://www.amazon.com/AMRS-303-30340-125-303-Aerospace-Protectant-16oz/dp/B019X2BJSM?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">The dark-dashboard daily driver in high-sun regions: 303 Aerospace Protectant →</a>
 
-Surface limitations matter: 303 explicitly excludes unfinished leathers (suede), fabrics and canvas, clear plastics, gauge panels, and headlights. Use it on vinyl, plastic, synthetic and natural rubber, PVC, and finished leather. Pair with Chemical Guys InnerClean (or another combo cleaner) for the cleaning step, then apply 303 to the dashboard and door cards for the UV-protection step.
+[303 Aerospace](https://www.amazon.com/AMRS-303-30340-125-303-Aerospace-Protectant-16oz/dp/B019X2BJSM?tag=mywildlifecam-20) is the category UV-protection benchmark. Gold Eagle (the manufacturer) documents SPF 40 and up to 98% UV block, claiming the highest UV protection of any surface protectant in the category. Larry Kosilla (AMMO NYC) and the AutoGeek detailing community consistently reference 303 as the dedicated protectant standard.
 
-### 3. Adam's Total Interior Cleaner and Protectant: best for the show-car owner
+Important framing: [303](https://www.amazon.com/AMRS-303-30340-125-303-Aerospace-Protectant-16oz/dp/B019X2BJSM?tag=mywildlifecam-20) is a protectant, not a cleaner. It is applied to a clean surface, not to a dirty one. Detailed Image reviewer Todd Cooperider distinguishes it from combo products: "303 suits vinyl and leather when a dressed look is desired" versus cleaner-protectant combos for hard surfaces. Reapplication every 3 to 5 weeks is recommended per Gold Eagle's product page.
 
-Adam's Total Interior is the technical differentiator in this lineup. The Amazon listing title explicitly calls out SiO2 ceramic-infused technology, and the product page describes a "self-crosslinking polymer" that cures into a coating-like film rather than evaporating like a typical silicone protectant. The result: matte finish on hard non-porous surfaces, foaming action on textiles.
+Surface limitations matter: 303 explicitly excludes unfinished leathers (suede), fabrics and canvas, clear plastics, gauge panels, and headlights. Use it on vinyl, plastic, synthetic and natural rubber, PVC, and finished leather. Pair with [Chemical Guys InnerClean](https://www.amazon.com/Chemical-Guys-SPI_663_16-InnerClean-Protectant/dp/B008LPEZ6Q?tag=mywildlifecam-20) (or another combo cleaner) for the cleaning step, then apply 303 to the dashboard and door cards for the UV-protection step.
 
-Available in 16 oz at $12.99 (sale pricing on adamspolishes.com), with a gallon size also available. Scent options include Blueberry, Vanilla Spice, and Mint and Lime. Surface compatibility per product documentation: dashes, door panels, glass, navigation screens, vinyl, plastics, carpet, leather, and upholstery. The broadest stated compatibility in this lineup after Chemical Guys InnerClean.
+</div>
+</div>
 
-The trade-off: AutoGeek and AdamsForums threads note Adam's interior line is regarded as well-engineered but premium-priced compared to Meguiar's for equivalent surface cleaning. The polymer-coating angle is the reason to pick Adam's over InnerClean; if that differentiator does not matter to the reader, InnerClean is the better value pick at a similar price point.
+<div class="pick-card">
+<div class="pick-card__img"><img src="https://m.media-amazon.com/images/I/311ow8X1kcL._AC_SL500_.jpg" alt="Adam's Total Interior Cleaner and Protectant" loading="lazy" onerror="this.style.display='none'" /></div>
+<div class="pick-card__body">
 
-### 4. Meguiar's Quik Interior Detailer (D157): best for the first-time detailer
+### <a class="pick-card__link" href="https://www.amazon.com/Adams-Total-Interior-Cleaner-Protectant/dp/B0923BDFH5?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">The show-car owner who wants a polymer protection layer: Adam's Total Interior →</a>
 
-Meguiar's Quik Interior Detailer is the under-$10 mass-retail accessibility leader. Surface compatibility per Meguiar's product documentation: interior plastics, vinyl, leather, rubber, metal, audio-video equipment, LCD screens, navigation screens, gauges, and carbon fiber trim. Confirmed safe on non-tinted glass.
+[Adam's Total Interior](https://www.amazon.com/Adams-Total-Interior-Cleaner-Protectant/dp/B0923BDFH5?tag=mywildlifecam-20) is the technical differentiator in this lineup. The Amazon listing title explicitly calls out SiO2 ceramic-infused technology, and the product page describes a "self-crosslinking polymer" that cures into a coating-like film rather than evaporating like a typical silicone protectant. The result: matte finish on hard non-porous surfaces, foaming action on textiles.
 
-Todd Cooperider (Detailed Image Ask a Pro) specifically distinguishes D157 from competitor products that produce "overly shiny, dressed appearances," calling out its natural, non-glossy matte OEM finish as a key reason it remains the default mass-retail recommendation. The product includes sunblocking and sunscreening agents per Meguiar's product page, though no SPF figure or duration is specified (unlike 303 Aerospace, which documents SPF 40 explicitly).
+Available in 16 oz at $12.99 (sale pricing on adamspolishes.com), with a gallon size also available. Scent options include Blueberry, Vanilla Spice, and Mint and Lime. Surface compatibility per product documentation: dashes, door panels, glass, navigation screens, vinyl, plastics, carpet, leather, and upholstery. The broadest stated compatibility in this lineup after [Chemical Guys InnerClean](https://www.amazon.com/Chemical-Guys-SPI_663_16-InnerClean-Protectant/dp/B008LPEZ6Q?tag=mywildlifecam-20).
+
+The trade-off: AutoGeek and AdamsForums threads note Adam's interior line is regarded as well-engineered but premium-priced compared to Meguiar's for equivalent surface cleaning. The polymer-coating angle is the reason to pick [Adam's](https://www.amazon.com/Adams-Total-Interior-Cleaner-Protectant/dp/B0923BDFH5?tag=mywildlifecam-20) over InnerClean; if that differentiator does not matter to the reader, InnerClean is the better value pick at a similar price point.
+
+</div>
+</div>
+
+<div class="pick-card">
+<div class="pick-card__img"><img src="https://m.media-amazon.com/images/I/41xJgI2-WdL._AC_SL500_.jpg" alt="Meguiar's Quik Interior Detailer D157" loading="lazy" onerror="this.style.display='none'" /></div>
+<div class="pick-card__body">
+
+### <a class="pick-card__link" href="https://www.amazon.com/s?k=meguiar%27s+quik+interior+detailer&tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">The first-time interior detailer who needs a product today: Meguiar's Quik Interior Detailer (D157) →</a>
+
+[Meguiar's Quik Interior Detailer](https://www.amazon.com/s?k=meguiar%27s+quik+interior+detailer&tag=mywildlifecam-20) is the under-$10 mass-retail accessibility leader. Surface compatibility per Meguiar's product documentation: interior plastics, vinyl, leather, rubber, metal, audio-video equipment, LCD screens, navigation screens, gauges, and carbon fiber trim. Confirmed safe on non-tinted glass.
+
+Todd Cooperider (Detailed Image Ask a Pro) specifically distinguishes [D157](https://www.amazon.com/s?k=meguiar%27s+quik+interior+detailer&tag=mywildlifecam-20) from competitor products that produce "overly shiny, dressed appearances," calling out its natural, non-glossy matte OEM finish as a key reason it remains the default mass-retail recommendation. The product includes sunblocking and sunscreening agents per Meguiar's product page, though no SPF figure or duration is specified (unlike [303 Aerospace](https://www.amazon.com/AMRS-303-30340-125-303-Aerospace-Protectant-16oz/dp/B019X2BJSM?tag=mywildlifecam-20), which documents SPF 40 explicitly).
 
 Available everywhere from AutoZone to Walmart to Amazon at roughly $8 for a 16 oz trigger spray. The fit: someone needs a product TODAY and does not want to wait for an Amazon shipment. The trade-off: the combo cleaner-and-protectant claim is less specialized than premium alternatives. For everyday cleaning, the gap rarely matters.
 
-### 5. CarPro PERL Coat: best for the leather-seat concentrate fan
+</div>
+</div>
 
-CarPro PERL is the pro-detailer concentrate pick. Manufacturer documentation specifies dilution ratios by use case: 1:5 for interior rubber, dashboard, leather, and vinyl; undiluted to 1:1 for tires. A 500 ml bottle at $17.59 (carpro-us.com) yields roughly 3 liters of usable interior product at 1:5 dilution. That works out to the lowest per-ounce-of-usable-product cost in this lineup.
+<div class="pick-card">
+<div class="pick-card__img"><img src="https://m.media-amazon.com/images/I/21AN8GQGn4L._AC_SL500_.jpg" alt="CarPro PERL Coat" loading="lazy" onerror="this.style.display='none'" /></div>
+<div class="pick-card__body">
+
+### <a class="pick-card__link" href="https://www.amazon.com/CarPro-PERL-Plastic-Rubber-Protectant/dp/B004UM9V5Y?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">The leather-seat owner willing to mix dilutions: CarPro PERL Coat →</a>
+
+[CarPro PERL](https://www.amazon.com/CarPro-PERL-Plastic-Rubber-Protectant/dp/B004UM9V5Y?tag=mywildlifecam-20) is the pro-detailer concentrate pick. Manufacturer documentation specifies dilution ratios by use case: 1:5 for interior rubber, dashboard, leather, and vinyl; undiluted to 1:1 for tires. A 500 ml bottle at $17.59 (carpro-us.com) yields roughly 3 liters of usable interior product at 1:5 dilution. That works out to the lowest per-ounce-of-usable-product cost in this lineup.
 
 The claim worth attention: "up to 3 months protection per application" per manufacturer documentation. This is dramatically longer than the implied weekly or biweekly reapplication window for quick-detailer combo products. The mechanism is a hydrophobic film that bonds to porous surfaces (leather pores, vinyl texturing) and persists through casual contact.
 
-AutoGeek forum threads recommend PERL for "superior water repellency" on interior surfaces alongside Gyeon's interior coatings. The dilution requirement and concentrate format position it as a more technical pick than spray-and-wipe options like InnerClean or Meguiar's D157. Surface compatibility per CarPro documentation: interior vinyl, plastics, finished leather. Note: not for unfinished leathers (suede or nubuck).
+AutoGeek forum threads recommend [PERL](https://www.amazon.com/CarPro-PERL-Plastic-Rubber-Protectant/dp/B004UM9V5Y?tag=mywildlifecam-20) for "superior water repellency" on interior surfaces alongside Gyeon's interior coatings. The dilution requirement and concentrate format position it as a more technical pick than spray-and-wipe options like [InnerClean](https://www.amazon.com/Chemical-Guys-SPI_663_16-InnerClean-Protectant/dp/B008LPEZ6Q?tag=mywildlifecam-20) or [Meguiar's D157](https://www.amazon.com/s?k=meguiar%27s+quik+interior+detailer&tag=mywildlifecam-20). Surface compatibility per CarPro documentation: interior vinyl, plastics, finished leather. Note: not for unfinished leathers (suede or nubuck).
 
-### 6. P&S Xpress Interior Cleaner: best for kid and pet daily-driver bulk cleaning
+</div>
+</div>
 
-P&S Xpress is the cleaner-only outlier in this lineup. No protectant claim, no UV-block figure, no anti-static behavior. The pitch is pure cleaning chemistry plus gallon-volume economy.
+<div class="pick-card">
+<div class="pick-card__img"><img src="https://m.media-amazon.com/images/I/315+oIBqNdL._AC_SL500_.jpg" alt="P&S Xpress Interior Cleaner" loading="lazy" onerror="this.style.display='none'" /></div>
+<div class="pick-card__body">
+
+### <a class="pick-card__link" href="https://www.amazon.com/Detailing-Products-Xpress-Interior-Cleaner/dp/B07WRS7HT6?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">The kid-and-pet daily driver where cleaning happens 3-4 times a week: P&S Xpress Interior Cleaner →</a>
+
+[P&S Xpress](https://www.amazon.com/Detailing-Products-Xpress-Interior-Cleaner/dp/B07WRS7HT6?tag=mywildlifecam-20) is the cleaner-only outlier in this lineup. No protectant claim, no UV-block figure, no anti-static behavior. The pitch is pure cleaning chemistry plus gallon-volume economy.
 
 P&S Detail Products is the brand behind Renny Doyle's Double Black Collection, a pro-detailer credibility play (Doyle owns Detail in Progress, a high-end auto restoration shop in Big Bear, California). The Amazon listing for the 1 gallon size (ASIN B07WRS7HT6) is the volume play; pint sizes are available through Detailed Image, The Rag Company, and Car Supplies Warehouse for around $10.28.
 
-Clear Reflection Detailing's April 2025 review noted the cleaning performance is strong without drying, discoloring, or damaging surfaces. The community signal from AutoGeek and forum threads is that Xpress is the pro-shop default when bulk-buying matters more than combo-product convenience. The natural pairing: Xpress for cleaning frequency, 303 Aerospace applied separately to the dashboard for UV protection.
+Clear Reflection Detailing's April 2025 review noted the cleaning performance is strong without drying, discoloring, or damaging surfaces. The community signal from AutoGeek and forum threads is that [Xpress](https://www.amazon.com/Detailing-Products-Xpress-Interior-Cleaner/dp/B07WRS7HT6?tag=mywildlifecam-20) is the pro-shop default when bulk-buying matters more than combo-product convenience. The natural pairing: Xpress for cleaning frequency, [303 Aerospace](https://www.amazon.com/AMRS-303-30340-125-303-Aerospace-Protectant-16oz/dp/B019X2BJSM?tag=mywildlifecam-20) applied separately to the dashboard for UV protection.
+
+</div>
+</div>
 
 ## Verified product specs at a glance
 

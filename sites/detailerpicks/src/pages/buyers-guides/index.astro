@@ -35,7 +35,10 @@ const sorted = entries.sort((a, b) => {
   .empty { color: var(--color-muted); }
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: var(--space-6);
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: var(--space-5);
   }
+  .grid :global(.guide-card__title) { font-size: 1.0625rem; }
+  .grid :global(.guide-card__desc) { font-size: 0.8125rem; }
+  .grid :global(.guide-card__body) { padding: var(--space-4); }
 </style>
