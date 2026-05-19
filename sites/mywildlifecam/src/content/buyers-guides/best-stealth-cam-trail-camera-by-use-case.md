@@ -7,6 +7,7 @@ products:
   - name: "Stealth Cam DS4K Ultimate"
     brand: "Stealth Cam"
     affiliateUrl: "https://www.amazon.com/Stealth-Photo-Trigger-Hunting-Camera/dp/B09QBV2GP8?tag=mywildlifecam-20"
+    image: "https://m.media-amazon.com/images/I/315kWjiO0EL._AC_.jpg"
     tagline: "Non-cellular 4K flagship. 32MP, 4K at 30 FPS, 0.2s trigger, 100 ft detection. No app, no monthly bill, walk out for the SD card."
     bestFor: "The image-quality buyer who does not want a cellular subscription"
     priceFrom: 249.99
