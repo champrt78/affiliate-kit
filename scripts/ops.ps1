@@ -446,6 +446,33 @@ function Build-SiteDrillDown {
       </div>
 "@ } else { '<div class="drill__head-mid"></div>' }
 
+    # Build cadence sparkline (middle column of do-next-panel)
+    $sparkBoxes = ""
+    $weekTarget = [math]::Round(30 / $Site.CadenceTarget, 1)
+    for ($i = 29; $i -ge 0; $i--) {
+        $d = $today.AddDays(-$i).Date
+        $count = ($Site.Live | Where-Object { $_.PubDate -and $_.PubDate.Date -eq $d }).Count
+        $cls = "spark-day"
+        if ($count -gt 0) { $cls += " spark-day--filled" }
+        if ($i -eq 0) { $cls += " spark-day--today" }
+        $sparkBoxes += "<span class='$cls' title='$($d.ToString('yyyy-MM-dd')): $count piece(s)'></span>"
+    }
+    $monthShipped = ($Site.Live | Where-Object { $_.PubDate -and $_.PubDate -gt $today.AddDays(-30) }).Count
+
+    # Queue preview — research notes filtered for this site (top 3)
+    $relevantNotes = Get-ResearchForSite -SiteSlug $SiteSlug -AllNotes $AllResearch
+    $queueHtml = ""
+    if ($relevantNotes.Count -gt 0) {
+        $items = ""
+        foreach ($r in ($relevantNotes | Select-Object -First 3)) {
+            $title = HtmlEscape $r.Title
+            $items += "<li>$title<span class='queue-meta'>research · $($r.Age)d old</span></li>"
+        }
+        $queueHtml = "<ul class='queue-list'>$items</ul>"
+    } else {
+        $queueHtml = "<div class='side-stat__sub'>Empty queue. Run <code class='zero-cmd'>/scout-topics</code> to surface candidates.</div>"
+    }
+
     # Build reference panel (right side of do-next-panel)
     $info = $siteInfo[$SiteSlug]
     $linksHtml = ""
@@ -484,6 +511,17 @@ $progressMidHtml
         <h3 class="do-next-panel__title">$(HtmlEscape $Action.Headline)</h3>
         <p class="do-next-panel__reason">$(HtmlEscape $Action.Reason)</p>
         $cmdHtml
+      </div>
+      <div class="do-next-panel__pulse">
+        <div class="ref-group">
+          <div class="ref-label">Last 30 days</div>
+          <div class="sparkline">$sparkBoxes</div>
+          <div class="side-stat__sub">$monthShipped shipped · ~$weekTarget/30d target</div>
+        </div>
+        <div class="ref-group">
+          <div class="ref-label">In the queue ($($relevantNotes.Count))</div>
+          $queueHtml
+        </div>
       </div>
       <div class="do-next-panel__ref">
         <div class="ref-group">
@@ -760,7 +798,7 @@ $html = @"
     position: relative;
     flex-shrink: 0;
     display: grid;
-    grid-template-columns: 1fr 340px;
+    grid-template-columns: minmax(260px, 1fr) minmax(220px, 1fr) 280px;
     gap: 22px;
     align-items: stretch;
   }
@@ -768,6 +806,14 @@ $html = @"
   .do-next-panel--ok   { padding: 10px 14px; border-left-color: var(--steel-deep); }
   .do-next-panel--defer { padding: 8px 12px; border-left-color: var(--muted-deep); opacity: 0.75; grid-template-columns: 1fr; }
   .do-next-panel__main { min-width: 0; }
+  .do-next-panel__pulse {
+    padding-left: 20px;
+    border-left: 1px solid var(--line-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+  }
   .do-next-panel__ref {
     padding-left: 20px;
     border-left: 1px solid var(--line-soft);
@@ -775,6 +821,53 @@ $html = @"
     flex-direction: column;
     gap: 12px;
     min-width: 0;
+  }
+
+  /* 30-day cadence sparkline */
+  .sparkline {
+    display: grid;
+    grid-template-columns: repeat(30, 1fr);
+    gap: 2px;
+    height: 12px;
+  }
+  .spark-day {
+    background: var(--surface-3);
+    border-radius: 1px;
+  }
+  .spark-day--filled {
+    background: var(--green);
+  }
+  .spark-day--today {
+    outline: 1px solid var(--accent);
+    outline-offset: 1px;
+  }
+
+  /* Queue preview list */
+  .queue-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .queue-list li {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-soft);
+    line-height: 1.35;
+    padding: 4px 8px;
+    background: var(--surface-2);
+    border-left: 2px solid var(--steel-deep);
+    border-radius: 0 2px 2px 0;
+  }
+  .queue-list li .queue-meta {
+    font-size: 9px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-top: 1px;
   }
   .ref-group { display: flex; flex-direction: column; gap: 5px; }
   .ref-label {
