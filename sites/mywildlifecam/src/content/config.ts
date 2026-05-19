@@ -86,13 +86,21 @@ const buyersGuides = defineCollection({
       brand: z.string(),
       affiliateUrl: z.string(),
       image: z.string().optional(),
-      // CSS transform: scale() to normalize product image disparity. See
-      // images.imageScale comment in the reviews schema for context.
+      // CSS transform: scale() to normalize product image disparity.
       imageScale: z.number().optional(),
       tagline: z.string().optional(),
       cloakedSlug: z.string().optional(),
       bestFor: z.string().optional(),
       priceFrom: z.number().optional(),
+      priceUnit: z.string().optional(),
+      /* hook = 1-sentence at-a-glance summary on the quick card */
+      hook: z.string().optional(),
+      /* reason = the italic deep-card heading lead-in, e.g. "The cellular default" */
+      reason: z.string().optional(),
+      /* facts = right-rail mini-table on the deep card (label -> value) */
+      facts: z.record(z.string(), z.string()).optional(),
+      /* body = HTML string with the per-pick prose, rendered into the deep card */
+      body: z.string().optional(),
     })),
     pubDate: z.date(),
     lastUpdated: z.date(),

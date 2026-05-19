@@ -12,8 +12,7 @@ Google these. Drop URLs (Amazon product page works, right-click the main pic →
 6. ~~Stealth Cam DS4K Ultimate~~ ✅
 7. Stealth Cam DS4K Transmit
 8. ~~Stealth Cam Deceptor MAX 2.0~~ ✅
-9. Stealth Cam Revolver Pro 2.0 360
-   _(was Vikeri — discontinued on Amazon; needs product swap before we hunt the image)_
+9. ~~Stealth Cam Revolver Pro 2.0 360~~ ✅
 10. Stealth Cam Fusion MAX 2.0
 11. Stealth Cam QS24
 12. Stealth Cam GMAX32
