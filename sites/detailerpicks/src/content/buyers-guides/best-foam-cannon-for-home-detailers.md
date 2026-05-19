@@ -1,29 +1,64 @@
 ---
 title: "Best Foam Cannon for Home Detailers"
-description: "Three spec-verified picks mapped to three buyer profiles: most durable build, lightest in hand, and best spare-parts kit. With reviewer-attributed data."
+description: "Three foam cannons across the spec spectrum. MTM for build, Carbon Collective for weight, MJJC for the parts kit."
 rubric: "Foam Cannon · Buying Guide"
-deck: "When seven cannons foam roughly the same, the differentiators are build quality, weight, and what's in the box. Three picks across the spectrum."
+deck: "When seven cannons foam roughly the same, the differentiators are build quality, weight, and what's in the box."
 products:
-  - name: "Hydro PF22"
+  - name: "MTM Hydro PF22"
     brand: "MTM Hydro"
     affiliateUrl: "https://www.amazon.com/Hydro-Foam-Cannon-Wand-Bottle/dp/B083QTGTBM?tag=mywildlifecam-20"
-    tagline: "Nickel-plated brass head, reinforced fan blades, industry-standard durability"
-    bestFor: "Buyers prioritizing long-term durability and corrosion resistance"
+    image: "https://m.media-amazon.com/images/I/61Laubtx4TL._AC_SL500_.jpg"
+    bestFor: "Best for long-term durability"
     priceFrom: 80
-  - name: "HD Snow Foam Cannon"
+    priceUnit: "unit"
+    hook: "Nickel-plated brass head, reinforced fan blades. Industry-standard pick. Pressure range 1,100-5,000 PSI."
+    reason: "The decade-of-use build:"
+    facts:
+      Material: "Nickel-plated brass (single cast)"
+      Weight: "~600-669g"
+      In box: "None (orifices sold separately)"
+      Pressure: "1,100-5,000 PSI, 1.8-5.3 GPM"
+    body: |
+      <p>The <a href="https://www.amazon.com/Hydro-Foam-Cannon-Wand-Bottle/dp/B083QTGTBM?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">MTM PF22</a> (current version PF22.2 / PF22.3 depending on retailer revision) is positioned as "the new standard in the foaming industry" by Car Candy's product listing.</p>
+      <p>The head is a single-cast nickel-plated brass design, which resists the tarnishing that gradually dulls solid brass cannons over time. The fan-blade reinforcement is structural plastic around the fan area at the cannon tip; one reviewer reported bending the fan blades on a competitor cannon by cranking the adjustment too hard, which is mechanically not possible on the PF22 due to that reinforcement.</p>
+      <p>Pressure-washer compatibility runs the full premium range: 1,100-5,000 PSI and 1.8-5.3 GPM, with a 140°F maximum temperature rating. Standard 1/4" stainless steel quick-connect fitting. Two-way adjustable spray pattern with adjustable fan blades from jet to wide. Bottle is a 1-litre wide-mouth top design for easy refill.</p>
+      <p>Trade-off worth disclosing: MTM PF22 ships with no spare parts in the box. If you need a different orifice size for your specific pressure-washer GPM, that is an additional MJJC or MTM aftermarket purchase. For a cannon expected to last a decade, this is acceptable to most owners but not all. Available standalone (~$80-100 USD) or as part of the Magnum 28 Kit (~$210) with the SGS28 spray gun and SS quick-connect bundled.</p>
+  - name: "Carbon Collective HD Snow Foam Cannon"
     brand: "Carbon Collective"
     affiliateUrl: "https://www.carboncollective.com/hd-snow-foam-cannon/"
-    tagline: "Aluminum construction at 314 grams, roughly half the weight of competitors"
-    bestFor: "Buyers who do long sessions, struggle with hand fatigue, or want the easiest cannon to swap between vehicles"
+    image: "https://www.carboncollective.com/wp-content/uploads/2024/11/Ultimate-Snow-Foam-Lance-600x600.png"
+    bestFor: "Best for hand-fatigue relief on long sessions"
     priceFrom: 0
-  - name: "Foam Cannon Pro V3.0"
+    hook: "Aluminum construction at 314 grams. Roughly half the weight of competitors. UK-based brand."
+    reason: "The lightest cannon in the lineup:"
+    facts:
+      Material: "Aluminum"
+      Weight: "314g (vs 600-669g competitors)"
+      In box: "None"
+      Pressure: "Standard pressure-washer ranges"
+    body: |
+      <p>Carbon Collective's product page explicitly markets the weight advantage on the <a href="https://www.carboncollective.com/hd-snow-foam-cannon/" rel="sponsored noopener" target="_blank">HD Snow Foam Cannon</a>: "Aluminium construction reduces the weight dramatically, weighing in at 314 grams total, that's a saving of 341 grams over our original lance (655 grams)." That ratio puts the HD at roughly half the weight of competitor premium cannons in the 600-669g range.</p>
+      <p>Other listed features: 8 foam-thickness settings (more granular than most competitors' continuous-adjustment design), stainless-steel weighted pick-up tube for stable suction in the bottle, large 46mm bottle opening for easy refill.</p>
+      <p>Trade-offs: aluminum body is more vulnerable to dents from drops or impacts than brass or stainless steel. The Carbon Collective is also a UK-based brand; US availability runs through their direct shop and selected retailers (Detail Division, Northampton Motorsport). Shipping and warranty support may take longer than for US-based brands.</p>
+  - name: "MJJC Foam Cannon Pro V3.0"
     brand: "MJJC"
     affiliateUrl: "https://www.amazon.com/MJJC-Ultimate-Cannon-Pressure-Washers/dp/B0FL17VGJF?tag=mywildlifecam-20"
-    tagline: "Spare filter, extra O-rings, 1.1mm + 1.35mm orifices in the box: best parts kit at the tier"
-    bestFor: "DIY tinkerers and owners with multiple pressure washers at different GPMs"
+    image: "https://m.media-amazon.com/images/I/61hpV8lNfEL._AC_SL500_.jpg"
+    bestFor: "Best for tinkerers and multi-pressure-washer setups"
     priceFrom: 0
+    hook: "Spare filter, extra O-rings, 1.1mm + 1.35mm orifices in the box. Deepest parts kit at this tier."
+    reason: "The best out-of-box parts depth:"
+    facts:
+      Material: "Brass (Pro V2/V3) or stainless (S V3)"
+      Weight: "~600-669g"
+      In box: "Filter + O-rings + 1.1mm + 1.35mm orifices"
+      Pressure: "Standard pressure-washer ranges"
+    body: |
+      <p>MJJC Foam Inc. ships the <a href="https://www.amazon.com/MJJC-Ultimate-Cannon-Pressure-Washers/dp/B0FL17VGJF?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">Pro V3.0</a> with the deepest spare-parts inventory in the lineup: spare filter, multiple O-rings, plus 1.1mm and 1.35mm orifice nozzles alongside the stock 1.25mm. For owners who want to tune their cannon for different pressure-washer GPMs or who are replacing parts on their existing MJJC cannon, this is the most cost-effective pick.</p>
+      <p>MJJC also sells every individual spare separately on their site (mjjc.com): spare bottles, individual orifice nozzles, O-ring kits, white-rubber gasket kits. If you plan to keep a cannon for many years and want first-party replacement parts to remain available, MJJC's parts catalog depth is best-in-class for this segment.</p>
+      <p>Trade-off: the Pro V3.0 bottle is V3.0-specific and is NOT cross-compatible with the older Pro V2.0 or the S V3.0 bottles. If you have multiple MJJC cannons in your inventory, expect to keep parts separate. This is a small issue for most home detailers (single cannon) but matters for shops with mixed inventory.</p>
 pubDate: 2026-05-17
-lastUpdated: 2026-05-17
+lastUpdated: 2026-05-19
 images:
   hero: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=2400&q=80"
   heroCaption: "Foam application before contact wash. Photo: Unsplash."
@@ -53,50 +88,12 @@ faq:
     answer: "Depends on what you already own. The Magnum 28 Kit at around $210 includes the PF22 foam cannon, SGS28 spray gun, and stainless steel quick connect. If you already have a quality spray gun and quick-connect fittings, get the PF22 standalone (~$80-100). If you are starting from a bare pressure washer or upgrading from a cheap factory wand, the kit is worth the bundle savings."
 ---
 
-## Who This Is For
-
-Three reader profiles map cleanly onto the three picks:
-
-- **The durability-first buyer.** You want a foam cannon that lasts a decade of weekly use without corroding or breaking. **MTM Hydro PF22** has the strongest build quality verdict across reviewers: nickel-plated brass head (no tarnishing), reinforced fan blades that prevent the cranking-too-hard damage that bends competitor cannons. Industry-standard pick.
-- **The ergonomics-first buyer.** You do long sessions (multiple vehicles, full-day details, or you wash a single vehicle very thoroughly), and you have noticed hand fatigue with heavier cannons. **Carbon Collective HD** weighs 314 grams. Other premium cannons in the same comparison weighed 600-669g. The difference is real over a 30-minute foam-application session.
-- **The DIY tinkerer.** You like having spare orifices to tune for different pressure washers, expect O-rings to wear out and want them in the box, and appreciate a manufacturer that ships a real parts kit. **MJJC Pro V3.0** ships with spare filter, extra O-rings, plus 1.1mm and 1.35mm orifices (alongside the stock 1.25mm). Best out-of-box parts depth.
-
-If none of these three priorities are top-of-mind for you, the MTM PF22 is the safe default. It is what most professional detailers reach for when they replace a cannon.
-
-## The picks, ranked by reader-segment fit
-
-### 1. MTM Hydro PF22: best for durability
-
-The MTM PF22 (current version PF22.2 / PF22.3 depending on retailer revision) is positioned as "the new standard in the foaming industry" by Car Candy's product listing. The head is a single-cast nickel-plated brass design, which resists the tarnishing that gradually dulls solid brass cannons over time. The fan-blade reinforcement is structural plastic around the fan area at the cannon tip; one reviewer reported bending the fan blades on a competitor cannon by cranking the adjustment too hard, which is mechanically not possible on the PF22 due to that reinforcement.
-
-Pressure-washer compatibility runs the full premium range: 1,100-5,000 PSI and 1.8-5.3 GPM, with a 140°F maximum temperature rating. Standard 1/4" stainless steel quick-connect fitting. Two-way adjustable spray pattern with adjustable fan blades from jet to wide. Bottle is a 1-litre wide-mouth top design for easy refill.
-
-Trade-off worth disclosing: **MTM PF22 ships with no spare parts in the box.** If you need a different orifice size for your specific pressure-washer GPM, that is an additional MJJC or MTM aftermarket purchase. For a cannon expected to last a decade, this is acceptable to most owners but not all.
-
-Available standalone (~$80-100 USD depending on retailer) or as part of the Magnum 28 Kit (~$210) with the SGS28 spray gun and SS quick-connect bundled.
-
-### 2. Carbon Collective HD Snow Foam Cannon: best for weight
-
-Carbon Collective's product page explicitly markets the weight advantage: "Aluminium construction reduces the weight dramatically, weighing in at 314 grams total, that's a saving of 341 grams over our original lance (655 grams)." That ratio puts the HD at roughly half the weight of competitor premium cannons in the 600-669g range.
-
-Other listed features: 8 foam-thickness settings (more granular than most competitors' continuous-adjustment design), stainless-steel weighted pick-up tube for stable suction in the bottle, large 46mm bottle opening for easy refill.
-
-Trade-offs: aluminum body is more vulnerable to dents from drops or impacts than brass or stainless steel. The Carbon Collective is also a UK-based brand; US availability runs through their direct shop and selected retailers (Detail Division, Northampton Motorsport). Shipping and warranty support may take longer than for US-based brands.
-
-### 3. MJJC Foam Cannon Pro V3.0: best parts kit
-
-MJJC Foam Inc. ships the Pro V3.0 with the deepest spare-parts inventory in the lineup: spare filter, multiple O-rings, plus 1.1mm and 1.35mm orifice nozzles alongside the stock 1.25mm. For owners who want to tune their cannon for different pressure-washer GPMs or who are replacing parts on their existing MJJC cannon, this is the most cost-effective pick.
-
-MJJC also sells every individual spare separately on their site (mjjc.com): spare bottles, individual orifice nozzles, O-ring kits, white-rubber gasket kits. If you plan to keep a cannon for many years and want first-party replacement parts to remain available, MJJC's parts catalog depth is best-in-class for this segment.
-
-Trade-off: the Pro V3.0 bottle is V3.0-specific and is NOT cross-compatible with the older Pro V2.0 or the S V3.0 bottles. If you have multiple MJJC cannons in your inventory, expect to keep parts separate. This is a small issue for most home detailers (single cannon) but matters for shops with mixed inventory.
-
 ## Verified product specs at a glance
 
 | Cannon | Material | Weight | Spare parts in box | Pressure range |
 |---|---|---|---|---|
 | MTM Hydro PF22 | Nickel-plated brass (single cast) | ~600-669g | None | 1,100-5,000 PSI, 1.8-5.3 GPM |
-| Carbon Collective HD | Aluminum | 314g | None | (Compatible with standard pressure-washer ranges; not explicitly specified) |
+| Carbon Collective HD | Aluminum | 314g | None | (Standard pressure-washer ranges) |
 | MJJC Pro V3.0 | Brass (Pro V2/V3) or stainless (S V3) | ~600-669g | Filter + O-rings + 1.1mm + 1.35mm orifices | (Standard pressure-washer ranges) |
 
 All specs verified directly from manufacturer or authorized-retailer product pages on 2026-05-17.
@@ -107,9 +104,9 @@ The base research for this guide is a head-to-head comparison of seven high-end 
 
 Key findings paraphrased from the full transcript:
 
-- **Foam production:** "Not a huge difference" between the five actively compared at 1:20 dilution. On thin snow foam, MJJC Pro V3 dropped off the panel faster than the others. CarGuys produced thicker foam that stuck on the panel longer.
-- **Build quality:** MTM PF22 is the most reinforced (nickel-plated brass head, reinforced fan blades). Carbon Collective HD is the lightweight outlier at 314g vs 600-669g for the rest. Brass-bodied cannons tarnish over time but still perform; stainless and nickel-plated brass resist tarnishing.
-- **Spare parts (in box):** MJJC Pro V3.0 leads with spare filter + O-rings + 1.1mm + 1.35mm orifices. Active Foam Cannon includes O-rings + 1.1mm + 1.35mm + 1.45mm orifices but no spare filter. Carbon Collective HD, CarGuys, MTM PF22 all ship bare with no spares.
+- **Foam production.** "Not a huge difference" between the five actively compared at 1:20 dilution. On thin snow foam, MJJC Pro V3 dropped off the panel faster than the others. CarGuys produced thicker foam that stuck on the panel longer.
+- **Build quality.** MTM PF22 is the most reinforced (nickel-plated brass head, reinforced fan blades). Carbon Collective HD is the lightweight outlier at 314g vs 600-669g for the rest. Brass-bodied cannons tarnish over time but still perform; stainless and nickel-plated brass resist tarnishing.
+- **Spare parts in box.** MJJC Pro V3.0 leads with spare filter + O-rings + 1.1mm + 1.35mm orifices. Active Foam Cannon includes O-rings + 1.1mm + 1.35mm + 1.45mm orifices but no spare filter. Carbon Collective HD, CarGuys, MTM PF22 all ship bare with no spares.
 
 The reviewer's full transcript is linked in the research notes; this guide synthesizes the buying-relevant conclusions. Foam-output ranking matters less than build-quality differentiation for most home-detailing buyers, which is why the three picks here are segmented by build attribute rather than by foam-test results.
 

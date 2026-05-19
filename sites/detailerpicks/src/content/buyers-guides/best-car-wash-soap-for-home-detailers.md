@@ -1,44 +1,91 @@
 ---
 title: "Best Car Wash Soap for Home Detailers"
-description: "Five spec-verified picks across the doctrine split, one for each reader segment: coated daily driver, hard-water region, budget pure cleaner."
+description: "Five soaps across the pH scale. SÈMPER for pure-soap school, Q²M Bathe for protective school, plus three more for budget + hard-water cases."
 rubric: "Car Wash Soap · Buying Guide"
-deck: "Five soaps across the pH scale, two genuinely opposed doctrines on what to put on a coated car, and a clear pick for each reader segment."
+deck: "Two genuinely opposed doctrines on what to put on a coated car. Five spec-verified picks across both schools and one acidic reset shampoo."
 products:
-  - name: "Q²M Bathe"
-    brand: "Gyeon"
-    affiliateUrl: "https://www.amazon.com/GYEON-quartz-Cloth-Shampoo-1000ml/dp/B00OORQWSY?tag=mywildlifecam-20"
-    tagline: "Highly lubricated, swirl-free, ceramic-coating-friendly weekly maintenance"
-    bestFor: "Coated daily drivers when the owner follows the Rag Company school"
-    priceFrom: 15.99
-  - name: "SÈMPER"
+  - name: "Labocosmetica SÈMPER"
     brand: "Labocosmetica"
     affiliateUrl: "https://www.labocosmetica.store/products/labocosmetica-semper"
-    tagline: "Hyper-concentrated, no waxes or gloss enhancers, 1:800-1:1200 dilution"
-    bestFor: "Coated daily drivers when the owner follows the Dr. Beasley's pure-soap school"
+    bestFor: "Best for the Dr. Beasley's pure-soap school"
     priceFrom: 21.95
-  - name: "CLEAN. Shampoo"
+    priceUnit: "500ml"
+    hook: "Hyper-concentrated pure cleaner. No waxes, no gloss enhancers. Dilutes 1:800 to 1:1200. Most washes per ounce in this lineup."
+    reason: "The pure-soap, no-additive pick:"
+    facts:
+      pH: "Neutral"
+      Dilution: "1:800 to 1:1200"
+      Sizes: "500ml, 4.5L"
+    body: |
+      <p>Labocosmetica's product page explicitly states <a href="https://www.labocosmetica.store/products/labocosmetica-semper" rel="sponsored noopener" target="_blank">SÈMPER</a> is "free of waxes or gloss enhancers, ensuring a streak-free finish." That single claim is the strongest match in this lineup for Dr. Beasley's recommendation to use a "pure soap" that only cleans.</p>
+      <p>Dilution ratio runs from 1:800 to 1:1200, the highest concentration ratio in this lineup. The 500ml bottle ($21.95) yields more washes per ounce than competing options at similar price points. For owners who follow the Dr. Beasley's coating-care protocol of avoiding additive buildup on ceramic-coated paint, SÈMPER is the cleanest commercial pick currently sold in the US market.</p>
+  - name: "Gyeon Q²M Bathe"
+    brand: "Gyeon"
+    affiliateUrl: "https://www.amazon.com/GYEON-quartz-Cloth-Shampoo-1000ml/dp/B00OORQWSY?tag=mywildlifecam-20"
+    bestFor: "Best for the Rag Company protective-soap school"
+    priceFrom: 15.99
+    priceUnit: "500ml"
+    hook: "Highly lubricated, ceramic-coating-friendly weekly maintenance. Lowest entry price for the protective-soap school."
+    reason: "The protective-soap pick:"
+    facts:
+      pH: "Neutral"
+      Dilution: "Up to 500:1"
+      Sizes: "500ml, 1L, 4L"
+    body: |
+      <p>Gyeon's product page describes <a href="https://www.amazon.com/GYEON-quartz-Cloth-Shampoo-1000ml/dp/B00OORQWSY?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">Q²M Bathe</a> as "the best car soap designed specifically for maintaining a polished paint finish... highly lubricated ceramic coating wash soap." This puts it on the opposite side of the doctrine split from SÈMPER: instead of a pure cleaner, Q²M Bathe is positioned as a maintenance product for ceramic-coated cars.</p>
+      <p>At $15.99 for 500ml, it is the lowest entry-price pick in this guide. Pan The Organizer ranked it B-tier in a recent tier-list video, noting it works better in the bucket than in a foam cannon. For weekly maintenance on a coated daily driver where the owner trusts coating-safe protective additives, Q²M Bathe is the easiest entry pick.</p>
+  - name: "CLEAN. Shampoo by Pan The Organizer"
     brand: "Pan The Organizer"
     affiliateUrl: "https://cleanbypan.com/products/clean-shampoo"
-    tagline: "pH neutral, cosmetic-grade surfactants, biodegradable, gallon size brings cost to about a dollar per wash"
-    bestFor: "Owners who want one bottle that handles coated and uncoated cars"
+    image: "https://cleanbypan.com/cdn/shop/files/Shampoo_gal_2025.png?v=1778098725&width=800"
+    bestFor: "Best for one-bottle simplicity across coated and uncoated cars"
     priceFrom: 18.99
-  - name: "Apex Auto Wash 3.0"
+    priceUnit: "16oz"
+    hook: "pH-neutral cosmetic-grade surfactants, biodegradable, gallon size brings cost to about a dollar per wash."
+    reason: "The one-bottle compromise pick:"
+    facts:
+      pH: "Neutral"
+      Dilution: "1:500 to 1:256 (1-2 oz / 4 gal water)"
+      Sizes: "16oz, gallon"
+    body: |
+      <p>Pan The Organizer's own shampoo lands at the intersection of both doctrines. <a href="https://cleanbypan.com/products/clean-shampoo" rel="sponsored noopener" target="_blank">CLEAN. Shampoo</a>'s product page lists pH neutral, "premium blend of cosmetic-grade surfactants," readily biodegradable, "excellent lubrication and cleaning power," and a wetting agent.</p>
+      <p>Pan demonstrates in his comparison videos that the formula does not strip wax during use. At $18.99 for 16 oz and $64.99 for a gallon (about $1 per wash at the gallon size), it is the volume pick for owners who want one bottle that handles coated and uncoated cars equivalently. The brand pairing with Pan's companion ceramic spray sealant and ceramic coating products is the system-integration play for owners already in his ecosystem.</p>
+  - name: "Phoenix E.O.D. Apex Auto Wash 3.0"
     brand: "Phoenix E.O.D."
     affiliateUrl: "https://www.amazon.com/Phoenix-D-Apex-Auto/dp/B0B2YGKKZB?tag=mywildlifecam-20"
-    tagline: "Veteran-owned, no dyes or fragrances or optical additives, pH neutral"
-    bestFor: "Budget-minded buyers who want the no-additives doctrine at half the price of Labocosmetica"
+    image: "https://phoenixeod.com/cdn/shop/files/9.jpg?v=1757537221&width=800"
+    bestFor: "Best budget alternative to the pure-soap school"
     priceFrom: 17.99
-  - name: "Demineralizing Shampoo"
+    priceUnit: "pint"
+    hook: "Veteran-owned brand. No dyes, fragrances, or optical additives. Pan The Organizer S-tier."
+    reason: "The no-additives budget pick:"
+    facts:
+      pH: "Neutral"
+      Dilution: "(not specified on page)"
+      Sizes: "Pint, Gallon"
+    body: |
+      <p>Phoenix E.O.D. is a veteran-owned brand. The product page lists <a href="https://www.amazon.com/Phoenix-D-Apex-Auto/dp/B0B2YGKKZB?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">Apex Auto Wash</a> as "pH neutral... contains no dyes, fragrances, or 'optical' additives... thick, highly lubricious suds."</p>
+      <p>The no-additives positioning matches Dr. Beasley's pure-soap school at a lower price point ($17.99 for a pint vs SÈMPER's $21.95 for 500ml). Pan The Organizer ranked it S-tier in a recent tier-list video, noting it is also available on Amazon. For owners who follow the pure-soap doctrine but want the under-$20 entry price, Apex is the strongest commercial match.</p>
+  - name: "Pan The Organizer Demineralizing Shampoo"
     brand: "Pan The Organizer"
     affiliateUrl: "https://www.carsupplieswarehouse.com/products/clean-by-pan-the-organizer-demineralizing-shampoo-acidic-mineral-deposit-remover"
-    tagline: "Acidic-pH companion wash for mineral deposits, water spots, and hard-water staining"
-    bestFor: "Coated cars in hard-water regions; used every few months alongside a pH-neutral daily soap"
+    bestFor: "Best for hard-water regions, every few months"
     priceFrom: 0
+    hook: "Acidic-pH companion wash. Dissolves mineral deposits, water spots, restores coating hydrophobic performance every few months."
+    reason: "The hard-water reset:"
+    facts:
+      pH: "Acidic"
+      Dilution: "1:10 (foam cannon)"
+      Sizes: "(various via reseller)"
+    body: |
+      <p>Distinct from the other four (which are pH-neutral maintenance soaps), <a href="https://www.carsupplieswarehouse.com/products/clean-by-pan-the-organizer-demineralizing-shampoo-acidic-mineral-deposit-remover" rel="sponsored noopener" target="_blank">Pan's Demineralizing Shampoo</a> is an acidic-pH product designed for occasional use.</p>
+      <p>The product page describes it as "acidic pH automotive shampoo designed to dissolve mineral deposits, water spots, and limescale while reviving ceramic coating hydrophobic properties." Foam-cannon dilution is 1:10. Recommended use is "every few months on coated vehicles to restore optimal hydrophobic performance."</p>
+      <p>Pair with one of the pH-neutral picks above for weekly washes; this product fills the "every-few-months reset" slot in the rotation. For owners in hard-water regions where mineral contamination is the main coating-degradation pathway, the Demineralizing Shampoo is the missing piece in a full ceramic-coat-care workflow.</p>
 pubDate: 2026-05-17
-lastUpdated: 2026-05-17
+lastUpdated: 2026-05-19
 images:
-  hero: "https://images.unsplash.com/photo-1761934657948-708146148588?auto=format&fit=crop&w=2400&q=80"
-  heroCaption: "A microfiber drag down the hood, the moment after the final rinse. Photo: Unsplash."
+  hero: "https://images.unsplash.com/photo-1769641156620-48f014424c4f?auto=format&fit=crop&w=2400&q=80"
+  heroCaption: "Foam-covered car under contact wash. Photo: Unsplash."
 bottomLine:
   verdict: "Two top picks for ceramic-coated cars, two budget alternatives, and one acidic shampoo for hard-water reset. Pick based on what your paint actually needs, not on hype."
   supporting: "The car wash soap category has two opposed schools of thought on ceramic-coated paint: Dr. Beasley's says use a pure cleaner with no additives; The Rag Company says use a ceramic-infused protective soap to actively maintain the coating. Both schools agree on what to skip: alkaline strippers and 'wax-added' shampoos. Five spec-verified picks here cover both schools plus a hard-water-region acidic shampoo for the every-few-months reset."
@@ -51,7 +98,7 @@ buyIf:
   skip:
     - "You only do touchless washes (different chemistry, different products)"
     - "Your priority is heavy-grime decontamination or pre-correction wax stripping (need an alkaline pre-wash, not a pH-neutral maintenance soap)"
-    - "You want the cheapest possible wash regardless of additives (most $5-$10 supermarket soaps will clean fine if you accept the lubricity and coating-safety tradeoffs)"
+    - "You want the cheapest possible wash regardless of additives"
 faq:
   - question: "What does 'pH neutral' actually mean for car shampoo?"
     answer: "The Rag Company defines the pH-neutral window for protective car shampoos as roughly pH 5.5 to 8.5. Soaps in this range clean without stripping wax, sealant, or ceramic coating. Anything below 5.5 (acidic) is designed to remove mineral deposits or water spots; anything above 10 (alkaline) is designed for decontamination or wax stripping. Use a pH-neutral soap for weekly maintenance; reserve the others for specific use cases."
@@ -64,40 +111,6 @@ faq:
   - question: "Do these soaps work in a foam cannon?"
     answer: "Yes, all five work in a foam cannon. Foam output depends as much on pressure-washer GPM, foam-cannon orifice size, and dilution as on the soap itself. Pan The Organizer's testing notes that a 2.1 GPM pressure washer produces strong foam with most pH-neutral soaps, while weaker washers (1.2-1.3 GPM) may need a smaller orifice (1.1mm instead of the standard 1.25mm) to get equivalent foam thickness."
 ---
-
-## Who This Is For
-
-Three reader segments map cleanly onto the five picks in this guide:
-
-- **The coated-car owner who follows the Dr. Beasley's school.** You want a soap that only cleans, with no carnauba, SiO2, silicons, or glossing agents that might bond to your coating over time. **Labocosmetica SÈMPER** is the strongest match on documented chemistry; **Phoenix E.O.D. Apex Auto Wash 3.0** is the budget alternative at $17.99 vs $21.95.
-- **The coated-car owner who follows the Rag Company school.** You want a ceramic-infused protective shampoo that actively maintains the coating's hydrophobic behavior. **Gyeon Q²M Bathe** is the entry pick at $15.99; **CLEAN. Shampoo by Pan The Organizer** is the alternative with broader brand pairing (companion ceramic spray sealant and ceramic coating sold by the same brand).
-- **The hard-water-region owner of any coated car.** Mineral deposits and water spots clog coating pores over time, reducing beading. **Pan The Organizer's Demineralizing Shampoo** is an acidic-pH companion product used every few months to restore the coating's hydrophobic performance. Pair with any pH-neutral pick from above for weekly washes.
-
-If you do not have a ceramic coating, any of the four pH-neutral picks will work for weekly maintenance. The doctrine split matters less when there is no coating chemistry to preserve.
-
-## The picks, ranked by reader-segment fit
-
-The "ranking" in this guide is not about which soap cleans best in absolute terms (most premium pH-neutral shampoos clean adequately for weekly maintenance). The ranking reflects which reader segment each product fits best, based on documented chemistry and credible third-party reviewer commentary.
-
-### 1. Labocosmetica SÈMPER: best for Dr. Beasley's pure-soap school
-
-Labocosmetica's product page explicitly states SÈMPER is "free of waxes or gloss enhancers, ensuring a streak-free finish." That single claim is the strongest match in this lineup for Dr. Beasley's recommendation to use a "pure soap" that only cleans. Dilution ratio runs from 1:800 to 1:1200, the highest concentration ratio in this lineup. The 500ml bottle ($21.95) yields more washes per ounce than competing options at similar price points.
-
-### 2. Gyeon Q²M Bathe: best for the Rag Company protective-soap school
-
-Gyeon's product page describes Q²M Bathe as "the best car soap designed specifically for maintaining a polished paint finish... highly lubricated ceramic coating wash soap." This puts it on the opposite side of the doctrine split from SÈMPER: instead of a pure cleaner, Q²M Bathe is positioned as a maintenance product for ceramic-coated cars. At $15.99 for 500ml, it is the lowest entry-price pick in this guide. Pan The Organizer ranked it B-tier in a recent tier-list video, noting it works better in the bucket than in a foam cannon.
-
-### 3. CLEAN. Shampoo by Pan The Organizer: best for one-bottle simplicity
-
-Pan The Organizer's own shampoo lands at the intersection of both doctrines. The product page lists pH neutral, "premium blend of cosmetic-grade surfactants," readily biodegradable, "excellent lubrication & cleaning power," and a wetting agent. Pan demonstrates in his comparison videos that the formula does not strip wax during use. At $18.99 for 16 oz and $64.99 for a gallon (about $1 per wash at the gallon size), it is the volume pick for owners who want one bottle that handles coated and uncoated cars equivalently.
-
-### 4. Phoenix E.O.D. Apex Auto Wash 3.0: best budget alternative to Labocosmetica
-
-Phoenix E.O.D. is a veteran-owned brand. The product page lists Apex Auto Wash as "pH neutral... contains no dyes, fragrances, or 'optical' additives... thick, highly lubricious suds." The no-additives positioning matches Dr. Beasley's pure-soap school at a lower price point ($17.99 for a pint vs SÈMPER's $21.95 for 500ml). Pan The Organizer ranked it S-tier in a recent tier-list video, noting it is also available on Amazon.
-
-### 5. Pan The Organizer Demineralizing Shampoo: the acidic-pH companion
-
-Distinct from the other four (which are pH-neutral maintenance soaps), this is an acidic-pH product designed for occasional use. The product page describes it as "acidic pH automotive shampoo designed to dissolve mineral deposits, water spots, and limescale while reviving ceramic coating hydrophobic properties." Foam-cannon dilution is 1:10. Recommended use is "every few months on coated vehicles to restore optimal hydrophobic performance." Pair with one of the pH-neutral picks above for weekly washes; this product fills the "every-few-months reset" slot in the rotation.
 
 ## Verified product specs at a glance
 

@@ -252,7 +252,7 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.18em;
-    color: var(--color-forest);
+    color: var(--color-paper-ink);
     margin: 0 0 var(--space-4);
     display: flex; align-items: center; gap: 14px;
   }
@@ -261,7 +261,7 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     display: inline-block;
     width: 28px;
     height: 1px;
-    background: var(--color-forest);
+    background: var(--color-paper-ink);
   }
   .guide-title {
     font-family: var(--font-serif);
@@ -395,6 +395,8 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     margin-bottom: 10px;
     font-weight: 600;
   }
+  /* qcard__product IS the product link (whole card is wrapped in <a>) — keep the
+     forest accent color so it reads as a link. */
   .qcard__product {
     font-family: var(--font-serif);
     font-size: 17px; line-height: 1.25;
@@ -423,7 +425,7 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     font-family: var(--font-sans);
     font-size: 11px; font-weight: 600;
     text-transform: uppercase; letter-spacing: 0.08em;
-    color: var(--color-forest);
+    color: var(--color-paper-ink);
     padding: 10px 0 0;
     border-top: 1px solid var(--color-sage-light);
     display: flex; align-items: center; gap: 8px;
@@ -478,7 +480,7 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     color: var(--color-muted);
   }
   .deep-card__rank span {
-    color: var(--color-forest);
+    color: var(--color-paper-ink);
     font-family: var(--font-serif);
     font-size: 22px;
     margin-right: 6px;
@@ -624,9 +626,11 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
   }
   .deep-card__rail__facts dd:last-child { margin-bottom: 0; }
 
-  /* ════ EDITORIAL BODY (markdown content after the picks) ════ */
+  /* ════ EDITORIAL BODY (markdown content after the picks) ════
+     Uses the full page width — H2 dividers, tables, and chunked-bullet panels
+     all run the full container. Paragraph max-width is per-element so prose
+     stays readable while tables and bullet panels get the room they need. */
   .editorial .prose {
-    max-width: 680px;
     line-height: 1.7;
     font-size: 16px;
     color: var(--color-paper-ink);
@@ -636,10 +640,10 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     font-size: 28px;
     line-height: 1.15;
     letter-spacing: -0.02em;
-    margin: var(--space-10) 0 var(--space-4);
+    margin: var(--space-10) 0 var(--space-5);
     font-weight: 500;
     color: var(--color-paper-ink);
-    padding-bottom: 10px;
+    padding-bottom: 12px;
     border-bottom: 1px solid var(--color-paper-ink);
   }
   .editorial .prose :global(h3) {
@@ -649,29 +653,44 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     font-weight: 500;
     color: var(--color-paper-ink);
   }
-  .editorial .prose :global(p) { margin: 0 0 18px; }
+  /* Paragraphs stay at a comfortable reading width even though the section is wide.
+     Use a 78ch cap (slightly wider than the prose column elsewhere) so the body
+     reads well but doesn't shrink to nothing in the visual rhythm of the wider page. */
+  .editorial .prose :global(p) {
+    margin: 0 0 18px;
+    max-width: 78ch;
+  }
+  /* Tables go full width — they have to, to lay out cleanly. */
   .editorial .prose :global(table) {
     width: 100%;
     border-collapse: collapse;
-    margin: var(--space-6) 0;
-    font-size: 14px;
+    margin: var(--space-6) 0 var(--space-8);
+    font-size: 15px;
+    background: var(--color-paper-bright, #FBFAF7);
+    border: 1px solid var(--color-sage-light);
+    border-radius: 6px;
+    overflow: hidden;
   }
   .editorial .prose :global(th),
   .editorial .prose :global(td) {
-    padding: 10px 12px;
+    padding: 12px 16px;
     border-bottom: 1px solid var(--color-sage-light);
     text-align: left;
     vertical-align: top;
+    line-height: 1.45;
   }
+  .editorial .prose :global(tr:last-child td) { border-bottom: 0; }
   .editorial .prose :global(th) {
     font-family: var(--font-sans);
     font-size: 11px;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     color: var(--color-muted);
-    border-bottom-color: var(--color-paper-ink);
+    background: var(--color-paper-muted);
+    border-bottom: 2px solid var(--color-paper-ink);
   }
-  /* Bullet lists inside the editorial body — chunked panel style */
+  /* Bullet lists inside the editorial body — chunked panel style, full width */
   .editorial .prose :global(ul) {
     list-style: none;
     padding-left: 0;
@@ -679,17 +698,18 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
   }
   .editorial .prose :global(ul > li) {
     position: relative;
-    padding: 14px 18px 14px 22px;
-    margin: 0 0 12px;
+    padding: 16px 22px 16px 24px;
+    margin: 0 0 14px;
     background: var(--color-paper-muted);
     border-left: 3px solid var(--color-forest);
     border-radius: 0 6px 6px 0;
+    max-width: 90ch;
   }
   .editorial .prose :global(ul > li > strong:first-child) {
     display: block;
     font-family: var(--font-serif);
     font-weight: 500;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.35;
     color: var(--color-paper-ink);
     margin-bottom: 6px;
