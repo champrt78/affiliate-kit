@@ -20,6 +20,7 @@ products:
   - name: "Stealth Cam Deceptor MAX 2.0"
     brand: "Stealth Cam"
     affiliateUrl: "https://www.amazon.com/Stealth-Cam-Deceptor-Cellular-Camera/dp/B0DVVS7LP4?tag=mywildlifecam-20"
+    image: "https://m.media-amazon.com/images/I/81WpkoJk4vL._AC_SL1500_.jpg"
     tagline: "True 940nm no-glow cellular. 40MP, 1440P video, 0.22s trigger, 8.4-month battery in photo mode per TrailCamPro. 89/100 score."
     bestFor: "The covert-deployment cellular buyer who wants invisible night flash"
     priceFrom: 89.99
