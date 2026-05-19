@@ -875,8 +875,7 @@ $html = @"
     background: var(--green);
   }
   .spark-day--today {
-    outline: 1px solid var(--accent);
-    outline-offset: 1px;
+    box-shadow: inset 0 0 0 1px var(--accent);
   }
 
   /* Queue preview list */
@@ -1529,17 +1528,17 @@ $html = @"
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--muted-deep);
+    color: var(--muted);
   }
   .zero-cmd {
     display: inline-block;
     font-family: var(--font-mono);
     font-size: 11px;
     color: var(--ink-soft);
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--surface-2);
+    border: 1px solid var(--line-soft);
     padding: 4px 9px;
     border-radius: 3px;
-    opacity: 0.7;
     user-select: all;
     align-self: flex-start;
   }
