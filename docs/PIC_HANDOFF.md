@@ -5,7 +5,7 @@ Google these. Drop URLs (Amazon product page works, right-click the main pic →
 ## Products
 
 1. ~~P&S Brake Buster Total Wheel Cleaner~~ ✅
-2. CarPro Iron X (the 500ml spray, red cap)
+2. ~~CarPro Iron X~~ ✅
 3. Gyeon Q²M Bathe — the **shampoo bottle**, not Gyeon Foam (they look similar)
 4. Labocosmetica SÈMPER
 5. Pan The Organizer Demineralizing Shampoo
