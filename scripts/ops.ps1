@@ -48,6 +48,47 @@ $pieceTargets = @{
 }
 $totalTarget = ($pieceTargets.Values | Measure-Object -Sum).Sum
 
+# Per-site reference info — surfaced in the do-next-panel right side
+$siteInfo = @{
+    "mywildlifecam" = @{
+        Url       = "https://mywildlifecam.com/"
+        Gsc       = "https://search.google.com/search-console?resource_id=sc-domain%3Amywildlifecam.com"
+        Bing      = "https://www.bing.com/webmasters/home"
+        Amazon    = "mywildlifecam-20"
+        Cf        = "https://dash.cloudflare.com/?to=/:account/pages/view/mywildlifecam"
+        Programs  = @(
+            @{ Name="Amazon"; Status="approved" }
+            @{ Name="Awin"; Status="pending" }
+            @{ Name="AvantLink"; Status="pending" }
+            @{ Name="Tactacam"; Status="planned" }
+        )
+    }
+    "detailerpicks" = @{
+        Url       = "https://detailerpicks.com/"
+        Gsc       = "https://search.google.com/search-console?resource_id=sc-domain%3Adetailerpicks.com"
+        Bing      = "https://www.bing.com/webmasters/home"
+        Amazon    = "mywildlifecam-20"
+        Cf        = "https://dash.cloudflare.com/?to=/:account/pages/view/affkit-detailerpicks"
+        Programs  = @(
+            @{ Name="Amazon"; Status="approved" }
+            @{ Name="Awin"; Status="pending" }
+            @{ Name="Brand direct"; Status="planned" }
+        )
+    }
+    "fussybean" = @{
+        Url      = "https://fussybean.com/"
+        Programs = @(@{ Name="Amazon"; Status="approved" })
+    }
+    "starteraquarium" = @{
+        Url      = "https://starteraquarium.com/"
+        Programs = @(@{ Name="Amazon"; Status="approved" })
+    }
+    "gameovergear" = @{
+        Url      = "https://gameovergear.games/"
+        Programs = @(@{ Name="Amazon"; Status="approved" }, @{ Name="eBay EPN"; Status="planned" })
+    }
+}
+
 # Map a site to keyword tokens used to match research notes / topics
 $siteKeywords = @{
     "mywildlifecam"   = @("trail-cam", "trail cam", "wildlife", "cellular", "tactacam", "spypoint", "moultrie", "stealth cam", "bushnell", "muddy", "browning")
@@ -405,6 +446,23 @@ function Build-SiteDrillDown {
       </div>
 "@ } else { '<div class="drill__head-mid"></div>' }
 
+    # Build reference panel (right side of do-next-panel)
+    $info = $siteInfo[$SiteSlug]
+    $linksHtml = ""
+    if ($info) {
+        if ($info.Url)  { $linksHtml += "<a class='ref-link' href='$($info.Url)' target='_blank' rel='noopener'>live</a>" }
+        if ($info.Gsc)  { $linksHtml += "<a class='ref-link' href='$($info.Gsc)' target='_blank' rel='noopener'>GSC</a>" }
+        if ($info.Bing) { $linksHtml += "<a class='ref-link' href='$($info.Bing)' target='_blank' rel='noopener'>Bing WMT</a>" }
+        if ($info.Cf)   { $linksHtml += "<a class='ref-link' href='$($info.Cf)' target='_blank' rel='noopener'>Cloudflare</a>" }
+    }
+    $programsHtml = ""
+    if ($info -and $info.Programs) {
+        foreach ($p in $info.Programs) {
+            $programsHtml += "<span class='ref-chip status-$($p.Status)'>$($p.Name)</span>"
+        }
+    }
+    $amazonTagHtml = if ($info -and $info.Amazon) { "<div class='side-stat__sub' style='margin-top: 2px'>tag <code style='font-family: var(--font-mono); color: var(--ink-soft)'>$($info.Amazon)</code></div>" } else { "" }
+
     return @"
   <section id="site-$SiteSlug" class="drill drill--site">
     <header class="drill__head">
@@ -421,10 +479,23 @@ $progressMidHtml
     </header>
 
     <section class="$panelClass">
-      <div class="do-next-panel__eyebrow">Do this next</div>
-      <h3 class="do-next-panel__title">$(HtmlEscape $Action.Headline)</h3>
-      <p class="do-next-panel__reason">$(HtmlEscape $Action.Reason)</p>
-      $cmdHtml
+      <div class="do-next-panel__main">
+        <div class="do-next-panel__eyebrow">Do this next</div>
+        <h3 class="do-next-panel__title">$(HtmlEscape $Action.Headline)</h3>
+        <p class="do-next-panel__reason">$(HtmlEscape $Action.Reason)</p>
+        $cmdHtml
+      </div>
+      <div class="do-next-panel__ref">
+        <div class="ref-group">
+          <div class="ref-label">Quick links</div>
+          <div class="ref-links">$linksHtml</div>
+        </div>
+        <div class="ref-group">
+          <div class="ref-label">Affiliate programs</div>
+          <div class="ref-programs">$programsHtml</div>
+          $amazonTagHtml
+        </div>
+      </div>
     </section>
 
 $draftHtml
@@ -688,10 +759,93 @@ $html = @"
     border-left: 3px solid var(--accent);
     position: relative;
     flex-shrink: 0;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 22px;
+    align-items: stretch;
   }
   .do-next-panel--high { padding: 18px 22px; border-left-width: 3px; }
   .do-next-panel--ok   { padding: 10px 14px; border-left-color: var(--steel-deep); }
-  .do-next-panel--defer { padding: 8px 12px; border-left-color: var(--muted-deep); opacity: 0.75; }
+  .do-next-panel--defer { padding: 8px 12px; border-left-color: var(--muted-deep); opacity: 0.75; grid-template-columns: 1fr; }
+  .do-next-panel__main { min-width: 0; }
+  .do-next-panel__ref {
+    padding-left: 20px;
+    border-left: 1px solid var(--line-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+  }
+  .ref-group { display: flex; flex-direction: column; gap: 5px; }
+  .ref-label {
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .ref-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .ref-link {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-soft);
+    background: var(--surface-2);
+    border: 1px solid var(--line-soft);
+    padding: 4px 9px;
+    border-radius: 2px;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: border-color 120ms ease, color 120ms ease;
+  }
+  .ref-link:hover { border-color: var(--steel); color: var(--steel); }
+  .ref-programs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .ref-chip {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .ref-chip::before {
+    content: '';
+    width: 6px; height: 6px; border-radius: 50%;
+  }
+  .ref-chip.status-approved {
+    background: rgba(0, 220, 130, 0.10);
+    color: var(--green);
+  }
+  .ref-chip.status-approved::before { background: var(--green); }
+  .ref-chip.status-pending {
+    background: rgba(255, 170, 0, 0.10);
+    color: var(--amber);
+  }
+  .ref-chip.status-pending::before { background: var(--amber); }
+  .ref-chip.status-planned {
+    background: var(--surface-2);
+    color: var(--muted);
+  }
+  .ref-chip.status-planned::before { background: var(--muted-deep); }
+
+  @media (max-width: 880px) {
+    .do-next-panel { grid-template-columns: 1fr; }
+    .do-next-panel__ref {
+      border-left: 0;
+      padding-left: 0;
+      border-top: 1px solid var(--line-soft);
+      padding-top: 12px;
+    }
+  }
 
   /* Drill header inline progress — sits in the middle column of drill__head */
   .drill__head-mid { display: flex; flex-direction: column; gap: 4px; padding: 0 4px; }
