@@ -397,6 +397,14 @@ function Build-SiteDrillDown {
 
     $panelClass = "do-next-panel do-next-panel--$($Action.PriorityLabel)"
 
+    $daysToNext = if ($Site.DaysSinceLast -ne $null) { [math]::Max(0, $Site.CadenceTarget - $Site.DaysSinceLast) } else { $Site.CadenceTarget }
+    $progressRowHtml = if ($target -gt 0) { @"
+      <div class="drill__progress">
+        <div class="drill__progress-track"><div class="drill__progress-fill" style="width: $pct%"></div></div>
+        <div class="drill__progress-label"><em>$($Site.LiveCount) / $target</em> pieces · $pct% toward 12-mo target</div>
+      </div>
+"@ } else { "" }
+
     return @"
   <section id="site-$SiteSlug" class="drill drill--site">
     <header class="drill__head">
@@ -405,7 +413,11 @@ function Build-SiteDrillDown {
         <h2 class="drill__title">$SiteSlug</h2>
         <p class="drill__stats">$($Site.LiveCount) live · $($Site.DraftCount) draft · last shipped $lastStr</p>
       </div>
-      <span class="health-pill health-$($Site.Health)">$healthLabel</span>
+      <div class="drill__head-right">
+        <span class="drill__meta">target $($Site.CadenceTarget)d · next in $($daysToNext)d</span>
+        <span class="health-pill health-$($Site.Health)">$healthLabel</span>
+      </div>
+$progressRowHtml
     </header>
 
     <section class="$panelClass">
@@ -413,12 +425,6 @@ function Build-SiteDrillDown {
       <h3 class="do-next-panel__title">$(HtmlEscape $Action.Headline)</h3>
       <p class="do-next-panel__reason">$(HtmlEscape $Action.Reason)</p>
       $cmdHtml
-    </section>
-
-    <section class="panel panel--progress">
-      <div class="panel__eyebrow">12-month progress</div>
-      <p class="progress-line">$progress</p>
-      <div class="mini-track"><div class="mini-fill" style="width: $pct%"></div></div>
     </section>
 
 $draftHtml
@@ -687,6 +693,40 @@ $html = @"
   .do-next-panel--ok   { padding: 10px 14px; border-left-color: var(--steel-deep); }
   .do-next-panel--defer { padding: 8px 12px; border-left-color: var(--muted-deep); opacity: 0.75; }
 
+  /* Drill header progress strip — progress bar as the bottom row of the header */
+  .drill__progress {
+    grid-column: 1 / -1;
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 14px;
+    align-items: center;
+  }
+  .drill__progress-track {
+    position: relative;
+    height: 6px;
+    background: var(--surface-3);
+    border-radius: 1px;
+    overflow: hidden;
+  }
+  .drill__progress-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    background: linear-gradient(90deg, var(--steel-deep), var(--steel));
+  }
+  .drill__progress-label {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  .drill__progress-label em {
+    font-style: normal;
+    color: var(--ink);
+  }
+
   .do-next-panel__eyebrow {
     font-family: var(--font-sans);
     font-size: 9px;
@@ -949,13 +989,26 @@ $html = @"
   .flex-fill > .panel > ul::-webkit-scrollbar-thumb:hover { background: var(--muted-deep); }
 
   .drill__head {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto;
     align-items: flex-start;
-    gap: 20px;
+    gap: 20px 24px;
     padding-bottom: 10px;
     border-bottom: 1px solid var(--line);
     flex-shrink: 0;
+  }
+  .drill__head-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+  .drill__meta {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
   }
   .drill__eyebrow {
     font-size: 9px;
@@ -1377,7 +1430,7 @@ $drillDownsHtml
         $topCmd
       </section>
 
-      <div class="overview-stats">
+      <div class="overview-stats" style="display: none">
         <div class="stat-box">
           <div class="stat-box__label">Total live</div>
           <div class="stat-box__value">$totalLive</div>
