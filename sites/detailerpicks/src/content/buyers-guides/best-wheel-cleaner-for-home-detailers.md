@@ -24,6 +24,7 @@ products:
   - name: "P&S Brake Buster Total Wheel Cleaner"
     brand: "P&S Detail Products"
     affiliateUrl: "https://www.amazon.com/PROFESSIONAL-DETAIL-PRODUCTS-Buster-Cleaner/dp/B07RTZBGWX?tag=mywildlifecam-20"
+    image: "https://m.media-amazon.com/images/I/51OzhmMa3lL._AC_SL1000_.jpg"
     bestFor: "Best for pro-shop economy and corrosion protection"
     priceFrom: 11.66
     priceUnit: "pint"

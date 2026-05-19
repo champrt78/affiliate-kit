@@ -8,7 +8,7 @@ Format and dropoff instructions are at the bottom.
 
 | # | Product | What I need | Where it goes |
 |---|---|---|---|
-| 1 | **P&S Brake Buster Total Wheel Cleaner** | Bottle shot, any size (gallon ideal). Clean background. | `sites/detailerpicks/src/content/buyers-guides/best-wheel-cleaner-for-home-detailers.md` → products[1].image |
+| 1 | ~~**P&S Brake Buster Total Wheel Cleaner**~~ ✅ **DONE** | ~~Bottle shot, any size (gallon ideal). Clean background.~~ Wired in 2026-05-19. | `sites/detailerpicks/src/content/buyers-guides/best-wheel-cleaner-for-home-detailers.md` → products[1].image |
 | 2 | **CarPro Iron X** | 500ml red-cap spray bottle. Clean background. | same file → products[4].image |
 | 3 | **Gyeon Q²M Bathe** | 500ml or 1L bottle (the **shampoo**, NOT Gyeon Foam — they look similar). | `sites/detailerpicks/src/content/buyers-guides/best-car-wash-soap-for-home-detailers.md` → products[1].image |
 | 4 | **Labocosmetica SÈMPER** | 500ml bottle. Their branding is usually black + minimal. | same file → products[0].image |
