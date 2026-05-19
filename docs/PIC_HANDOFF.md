@@ -13,10 +13,11 @@ Google these. Drop URLs (Amazon product page works, right-click the main pic →
 7. Stealth Cam DS4K Transmit
 8. ~~Stealth Cam Deceptor MAX 2.0~~ ✅
 9. Stealth Cam Revolver Pro 2.0 360
+   _(was Vikeri — discontinued on Amazon; needs product swap before we hunt the image)_
 10. Stealth Cam Fusion MAX 2.0
 11. Stealth Cam QS24
 12. Stealth Cam GMAX32
-13. Vikeri Trail Camera
+13. ~~Vikeri Trail Camera~~ — **discontinued, needs replacement product chosen first**
 
 ## MyWildlifeCam article heroes (wildlife/trail-cam scenes, NOT the fox we already use)
 
