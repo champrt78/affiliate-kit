@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quick Picks · Mockup G: Tip-card photo options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:        #F4F2EE;
+    --paper-bright: #FBFAF7;
+    --paper-soft:   #ECEAE4;
+    --ink:          #14181C;
+    --ink-soft:     #3A4148;
+    --muted:        #6A7079;
+    --line-soft:    #E7E4DC;
+    --highlight:    #F7E9C8;
+    --font-display: "Instrument Serif", Georgia, serif;
+    --font-sans:    "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-mono:    "JetBrains Mono", ui-monospace, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    line-height: 1.55;
+    padding: 48px 24px 80px;
+  }
+  .page-title {
+    max-width: 1040px;
+    margin: 0 auto 24px;
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .page-title strong { color: var(--ink); font-weight: 700; }
+
+  /* Variant scaffolding */
+  .variant {
+    max-width: 1040px;
+    margin: 0 auto 48px;
+  }
+  .variant__label {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--paper-bright);
+    background: var(--ink);
+    padding: 6px 12px;
+    border-radius: 3px 3px 0 0;
+    display: inline-block;
+  }
+  .variant__note {
+    font-family: var(--font-mono);
+    font-size: 11px; color: var(--muted);
+    margin: 0 0 12px 12px;
+    display: inline-block;
+    font-style: italic;
+  }
+  .variant__card-wrap {
+    border: 1px solid var(--line-soft);
+    border-radius: 4px;
+    padding: 24px;
+    background: var(--paper-bright);
+  }
+
+  /* Shared tip-card base */
+  .tip {
+    background: var(--ink);
+    color: var(--paper-bright);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .tip__eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.16em;
+    color: var(--highlight); text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .tip__title {
+    font-family: var(--font-display);
+    font-size: 24px; line-height: 1.2;
+    color: var(--paper-bright); margin: 0 0 8px;
+    font-style: italic; font-weight: 400;
+  }
+  .tip__detail {
+    font-size: 13px; line-height: 1.5;
+    color: rgba(251, 250, 247, 0.78);
+    margin: 0; max-width: 56ch;
+  }
+
+  /* G1 — current production (140×140 single photo) */
+  .tip--g1 {
+    padding: 28px 32px;
+    display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center;
+  }
+  .tip--g1 .badge {
+    position: relative;
+    width: 140px; height: 140px;
+    border-radius: 4px; overflow: hidden;
+    border: 1px solid rgba(247, 233, 200, 0.25);
+  }
+  .tip--g1 .badge img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(100%) contrast(1.05);
+    opacity: 0.9;
+  }
+
+  /* G2 — BIGGER (200×200) */
+  .tip--g2 {
+    padding: 28px 32px;
+    display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: center;
+  }
+  .tip--g2 .badge {
+    position: relative;
+    width: 200px; height: 200px;
+    border-radius: 4px; overflow: hidden;
+    border: 1px solid rgba(247, 233, 200, 0.25);
+  }
+  .tip--g2 .badge img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(100%) contrast(1.05);
+    opacity: 0.92;
+  }
+
+  /* G3 — TALL PORTRAIT (160×220) using "Little Shaver" Indianapolis photo */
+  .tip--g3 {
+    padding: 28px 32px;
+    display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: stretch;
+    min-height: 240px;
+  }
+  .tip--g3 .text-col { align-self: center; }
+  .tip--g3 .badge {
+    position: relative;
+    width: 160px; align-self: stretch;
+    border-radius: 4px; overflow: hidden;
+    border: 1px solid rgba(247, 233, 200, 0.25);
+  }
+  .tip--g3 .badge img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(100%) contrast(1.05);
+    opacity: 0.92;
+  }
+
+  /* G4 — DIFFERENT PHOTO (Tony Casale single-boy portrait) at 180×180 */
+  .tip--g4 {
+    padding: 28px 32px;
+    display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: center;
+  }
+  .tip--g4 .badge {
+    position: relative;
+    width: 180px; height: 180px;
+    border-radius: 4px; overflow: hidden;
+    border: 1px solid rgba(247, 233, 200, 0.25);
+  }
+  .tip--g4 .badge img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(100%) contrast(1.05);
+    opacity: 0.92;
+  }
+
+  /* G5 — HORIZONTAL STRIP (photo as full-width banner BELOW text) */
+  .tip--g5 {
+    display: block;
+  }
+  .tip--g5 .text-col {
+    padding: 28px 32px 20px;
+  }
+  .tip--g5 .banner {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-top: 1px solid rgba(247, 233, 200, 0.2);
+  }
+  .tip--g5 .banner img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    filter: grayscale(100%) contrast(1.05);
+    opacity: 0.75;
+  }
+  .tip--g5 .banner-caption {
+    position: absolute;
+    bottom: 12px; right: 16px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(251, 250, 247, 0.7);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+  }
+
+  /* G6 — FULL-BLEED BACKGROUND (photo behind text, text overlaid) */
+  .tip--g6 {
+    position: relative;
+    padding: 40px 32px;
+    min-height: 220px;
+    overflow: hidden;
+  }
+  .tip--g6 .bg {
+    position: absolute; inset: 0; z-index: 0;
+  }
+  .tip--g6 .bg img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    filter: grayscale(100%) contrast(1.1);
+    opacity: 0.28;
+  }
+  .tip--g6::after {
+    content: '';
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(90deg, var(--ink) 0%, rgba(20,24,28,0.85) 50%, rgba(20,24,28,0.55) 100%);
+  }
+  .tip--g6 .text-col {
+    position: relative; z-index: 2;
+    max-width: 60%;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-title">
+  <strong>Tip-card photo options</strong> &middot; pick any combination of size, photo, and layout. G1 is what's currently live.
+</div>
+
+<!-- ─────────── G1 ─────────── -->
+<div class="variant">
+  <span class="variant__label">G1 · LIVE NOW</span>
+  <span class="variant__note">140×140 single square · Hartford Newsboys, Hine 1909</span>
+  <div class="variant__card-wrap">
+    <aside class="tip tip--g1">
+      <div class="text-col">
+        <div class="tip__eyebrow">Editor's note &middot; no purchase needed</div>
+        <h3 class="tip__title">Use newspaper on the windshield. Yes, really.</h3>
+        <p class="tip__detail">Modern ink doesn't transfer to glass anymore. Paper is mildly abrasive without scratching. Spray your glass cleaner, wipe with crumpled newspaper, throw the paper away. Works better than most microfiber towels, costs nothing.</p>
+      </div>
+      <div class="badge">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lewis_Hine,_Hartford_Newsboys,_1909,_NGA_115839.jpg?width=320" alt="Hartford newsboys, 1909, by Lewis Hine">
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ─────────── G2 ─────────── -->
+<div class="variant">
+  <span class="variant__label">G2 · BIGGER</span>
+  <span class="variant__note">200×200 square · same photo, just larger</span>
+  <div class="variant__card-wrap">
+    <aside class="tip tip--g2">
+      <div class="text-col">
+        <div class="tip__eyebrow">Editor's note &middot; no purchase needed</div>
+        <h3 class="tip__title">Use newspaper on the windshield. Yes, really.</h3>
+        <p class="tip__detail">Modern ink doesn't transfer to glass anymore. Paper is mildly abrasive without scratching. Spray your glass cleaner, wipe with crumpled newspaper, throw the paper away. Works better than most microfiber towels, costs nothing.</p>
+      </div>
+      <div class="badge">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lewis_Hine,_Hartford_Newsboys,_1909,_NGA_115839.jpg?width=400" alt="Hartford newsboys, 1909, by Lewis Hine">
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ─────────── G3 ─────────── -->
+<div class="variant">
+  <span class="variant__label">G3 · TALL PORTRAIT</span>
+  <span class="variant__note">160×~240 (matches card height) · "A Little Shaver" Indianapolis newsboy, Hine 1908</span>
+  <div class="variant__card-wrap">
+    <aside class="tip tip--g3">
+      <div class="text-col">
+        <div class="tip__eyebrow">Editor's note &middot; no purchase needed</div>
+        <h3 class="tip__title">Use newspaper on the windshield. Yes, really.</h3>
+        <p class="tip__detail">Modern ink doesn't transfer to glass anymore. Paper is mildly abrasive without scratching. Spray your glass cleaner, wipe with crumpled newspaper, throw the paper away. Works better than most microfiber towels, costs nothing.</p>
+      </div>
+      <div class="badge">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lewis_Hine,_Indianapolis_newsboy,_41_inches_high,_1908.jpg?width=400" alt="Indianapolis newsboy, 1908, by Lewis Hine">
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ─────────── G4 ─────────── -->
+<div class="variant">
+  <span class="variant__label">G4 · DIFFERENT PHOTO</span>
+  <span class="variant__note">180×180 square · Tony Casale "Bologna", Hartford 1909 · single-boy portrait, more direct gaze</span>
+  <div class="variant__card-wrap">
+    <aside class="tip tip--g4">
+      <div class="text-col">
+        <div class="tip__eyebrow">Editor's note &middot; no purchase needed</div>
+        <h3 class="tip__title">Use newspaper on the windshield. Yes, really.</h3>
+        <p class="tip__detail">Modern ink doesn't transfer to glass anymore. Paper is mildly abrasive without scratching. Spray your glass cleaner, wipe with crumpled newspaper, throw the paper away. Works better than most microfiber towels, costs nothing.</p>
+      </div>
+      <div class="badge">
+        <img src='https://commons.wikimedia.org/wiki/Special:FilePath/Lewis_Hine,_Tony_Casale,_called_"Bologna",_newsboy,_Hartford,_Connecticut,_1909.jpg?width=360' alt="Tony Casale, newsboy, Hartford, 1909, by Lewis Hine">
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ─────────── G5 ─────────── -->
+<div class="variant">
+  <span class="variant__label">G5 · HORIZONTAL STRIP</span>
+  <span class="variant__note">Full-card-width photo banner below text · biggest photo, most editorial-magazine feel</span>
+  <div class="variant__card-wrap">
+    <aside class="tip tip--g5">
+      <div class="text-col">
+        <div class="tip__eyebrow">Editor's note &middot; no purchase needed</div>
+        <h3 class="tip__title">Use newspaper on the windshield. Yes, really.</h3>
+        <p class="tip__detail">Modern ink doesn't transfer to glass anymore. Paper is mildly abrasive without scratching. Spray your glass cleaner, wipe with crumpled newspaper, throw the paper away. Works better than most microfiber towels, costs nothing.</p>
+      </div>
+      <div class="banner">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lewis_Hine,_Hartford_Newsboys,_1909,_NGA_115839.jpg?width=1200" alt="Hartford newsboys, 1909, by Lewis Hine">
+        <div class="banner-caption">Lewis Hine &middot; Hartford, 1909</div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ─────────── G6 ─────────── -->
+<div class="variant">
+  <span class="variant__label">G6 · FULL-BLEED BACKGROUND</span>
+  <span class="variant__note">Photo as faded full-card background, text overlaid · most atmospheric, most "magazine spread"</span>
+  <div class="variant__card-wrap">
+    <aside class="tip tip--g6">
+      <div class="bg">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lewis_Hine,_Hartford_Newsboys,_1909,_NGA_115839.jpg?width=1400" alt="">
+      </div>
+      <div class="text-col">
+        <div class="tip__eyebrow">Editor's note &middot; no purchase needed</div>
+        <h3 class="tip__title">Use newspaper on the windshield. Yes, really.</h3>
+        <p class="tip__detail">Modern ink doesn't transfer to glass anymore. Paper is mildly abrasive without scratching. Spray your glass cleaner, wipe with crumpled newspaper, throw the paper away. Works better than most microfiber towels, costs nothing.</p>
+      </div>
+    </aside>
+  </div>
+</div>
+
+</body>
+</html>

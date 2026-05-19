@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quick Picks · Mockup J: I2 variations + more color</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:        #F4F2EE;
+    --paper-bright: #FBFAF7;
+    --paper-soft:   #ECEAE4;
+    --ink:          #14181C;
+    --ink-soft:     #3A4148;
+    --muted:        #6A7079;
+    --line-soft:    #E7E4DC;
+    --highlight:    #F7E9C8;
+    --font-display: "Instrument Serif", Georgia, serif;
+    --font-sans:    "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-mono:    "JetBrains Mono", ui-monospace, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--font-sans); line-height: 1.55;
+    padding: 48px 24px 80px;
+  }
+  .page-title {
+    max-width: 1040px; margin: 0 auto 6px;
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .page-title strong { color: var(--ink); font-weight: 700; }
+  .page-sub {
+    max-width: 1040px; margin: 0 auto 32px;
+    font-size: 13px; color: var(--ink-soft); font-style: italic;
+  }
+  .variant { max-width: 1040px; margin: 0 auto 36px; }
+  .variant__label {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--paper-bright); background: var(--ink);
+    padding: 6px 12px; border-radius: 3px 3px 0 0;
+    display: inline-block;
+  }
+  .variant__note {
+    font-family: var(--font-mono);
+    font-size: 11px; color: var(--muted);
+    margin: 0 0 12px 12px; display: inline-block; font-style: italic;
+  }
+  .variant__card-wrap {
+    border: 1px solid var(--line-soft); border-radius: 4px;
+    padding: 24px; background: var(--paper-bright);
+  }
+  .tip {
+    background: var(--ink);
+    color: var(--paper-bright);
+    border-radius: 4px;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 28px;
+    align-items: center;
+  }
+  .tip__eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.16em;
+    color: var(--highlight); text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .tip__title {
+    font-family: var(--font-display);
+    font-size: 24px; line-height: 1.2;
+    color: var(--paper-bright); margin: 0 0 8px;
+    font-style: italic; font-weight: 400;
+  }
+  .tip__detail {
+    font-size: 13px; line-height: 1.5;
+    color: rgba(251, 250, 247, 0.78);
+    margin: 0; max-width: 56ch;
+  }
+  .badge {
+    position: relative; width: 200px; height: 200px;
+    border-radius: 4px; overflow: hidden;
+    border: 1px solid rgba(247, 233, 200, 0.25);
+    flex-shrink: 0;
+  }
+  .badge img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+  /* Saturation boost variant */
+  .badge--punch img { filter: saturate(1.35) brightness(1.04) contrast(1.05); }
+  .badge--punchplus img { filter: saturate(1.6) brightness(1.06) contrast(1.08); }
+</style>
+</head>
+<body>
+
+<div class="page-title"><strong>I2 variations + more color</strong> &middot; all 3/4 angle, windshield-dominant, full color</div>
+<div class="page-sub">J1 is I2 unchanged for reference. J2 / J3 boost the original photo's saturation via CSS. J4–J8 are different photos that match the same angle but bring more color.</div>
+
+<!-- J1 -->
+<div class="variant">
+  <span class="variant__label">J1 · I2 ORIGINAL</span>
+  <span class="variant__note">Reference · same classic-car photo from before, no filter</span>
+  <div class="variant__card-wrap">
+    <aside class="tip">
+      <div>
+        <div class="tip__eyebrow">Editor's note &middot; no purchase needed</div>
+        <h3 class="tip__title">Use newspaper on the windshield. Yes, really.</h3>
+        <p class="tip__detail">Modern ink doesn't transfer to glass anymore. Paper is mildly abrasive without scratching. Spray your glass cleaner, wipe with crumpled newspaper, throw the paper away. Works better than most microfiber towels, costs nothing.</p>
+      </div>
+      <div class="badge"><img src="https://images.unsplash.com/photo-1741084471705-e868d864342a?w=600&q=80&auto=format&fit=crop" alt=""></div>
+    </aside>
+  </div>
+</div>
+
+<!-- J2 -->
+<div class="variant">
+  <span class="variant__label">J2 · I2 + PUNCH</span>
+  <span class="variant__note">Same photo · CSS saturate(1.35) brightness(1.04) — moderate boost</span>
+  <div class="variant__card-wrap">
+    <aside class="tip">
+      <div>
+        <div class="tip__eyebrow">Editor's note &middot; no purchase needed</div>
+        <h3 class="tip__title">Use newspaper on the windshield. Yes, really.</h3>
+        <p class="tip__detail">Modern ink doesn't transfer to glass anymore. Paper is mildly abrasive without scratching. Spray your glass cleaner, wipe with crumpled newspaper, throw the paper away. Works better than most microfiber towels, costs nothing.</p>
+      </div>
+      <div class="badge badge--punch"><img src="https://images.unsplash.com/photo-1741084471705-e868d864342a?w=600&q=80&auto=format&fit=crop" alt=""></div>
+    </aside>
+  </div>
+</div>
+
+<!-- J3 -->
+<div class="variant">
+  <span class="variant__label">J3 · I2 + PUNCH+</span>
+  <span class="variant__note">Same photo · CSS saturate(1.6) — heavier boost, magazine-ad colors</span>
+  <div class="variant__card-wrap">
+    <aside class="tip">
+      <div>
+        <div class="tip__eyebrow">Editor's note &middot; no purchase needed</div>
+        <h3 class="tip__title">Use newspaper on the windshield. Yes, really.</h3>
+        <p class="tip__detail">Modern ink doesn't transfer to glass anymore. Paper is mildly abrasive without scratching. Spray your glass cleaner, wipe with crumpled newspaper, throw the paper away. Works better than most microfiber towels, costs nothing.</p>
+      </div>
+      <div class="badge badge--punchplus"><img src="https://images.unsplash.com/photo-1741084471705-e868d864342a?w=600&q=80&auto=format&fit=crop" alt=""></div>
+    </aside>
+  </div>
+</div>
+
+<!-- J4 -->
+<div class="variant">
+  <span class="variant__label">J4 · YELLOW PORSCHE</span>
+  <span class="variant__note">Top-down 3/4 (closest angle to original I2/H6) · vivid yellow paint, dappled shade</span>
+  <div class="variant__card-wrap">
+    <aside class="tip">
+      <div>
+        <div class="tip__eyebrow">Editor's note &middot; no purchase needed</div>
+        <h3 class="tip__title">Use newspaper on the windshield. Yes, really.</h3>
+        <p class="tip__detail">Modern ink doesn't transfer to glass anymore. Paper is mildly abrasive without scratching. Spray your glass cleaner, wipe with crumpled newspaper, throw the paper away. Works better than most microfiber towels, costs nothing.</p>
+      </div>
+      <div class="badge"><img src="https://images.unsplash.com/photo-1765345241240-7ca827df053c?w=600&q=80&auto=format&fit=crop" alt=""></div>
+    </aside>
+  </div>
+</div>
+
+<!-- J5 -->
+<div class="variant">
+  <span class="variant__label">J5 · RED VINTAGE</span>
+  <span class="variant__note">Red classic car 3/4 · prominent windshield with chrome trim, urban bokeh background</span>
+  <div class="variant__card-wrap">
+    <aside class="tip">
+      <div>
+        <div class="tip__eyebrow">Editor's note &middot; no purchase needed</div>
+        <h3 class="tip__title">Use newspaper on the windshield. Yes, really.</h3>
+        <p class="tip__detail">Modern ink doesn't transfer to glass anymore. Paper is mildly abrasive without scratching. Spray your glass cleaner, wipe with crumpled newspaper, throw the paper away. Works better than most microfiber towels, costs nothing.</p>
+      </div>
+      <div class="badge"><img src="https://images.unsplash.com/photo-1770316936472-fa049c5da2b5?w=600&q=80&auto=format&fit=crop" alt=""></div>
+    </aside>
+  </div>
+</div>
+
+<!-- J6 -->
+<div class="variant">
+  <span class="variant__label">J6 · RED VOLGA</span>
+  <span class="variant__note">Russian Volga-style red vintage · deep red + chrome, hood + windshield + grille visible</span>
+  <div class="variant__card-wrap">
+    <aside class="tip">
+      <div>
+        <div class="tip__eyebrow">Editor's note &middot; no purchase needed</div>
+        <h3 class="tip__title">Use newspaper on the windshield. Yes, really.</h3>
+        <p class="tip__detail">Modern ink doesn't transfer to glass anymore. Paper is mildly abrasive without scratching. Spray your glass cleaner, wipe with crumpled newspaper, throw the paper away. Works better than most microfiber towels, costs nothing.</p>
+      </div>
+      <div class="badge"><img src="https://images.unsplash.com/photo-1698250145928-3787d5ff3df6?w=600&q=80&auto=format&fit=crop" alt=""></div>
+    </aside>
+  </div>
+</div>
+
+<!-- J7 -->
+<div class="variant">
+  <span class="variant__label">J7 · RED CORVETTE</span>
+  <span class="variant__note">50s Corvette C1 · windshield + side mirror + hood, indoor showroom bokeh — most "polished"</span>
+  <div class="variant__card-wrap">
+    <aside class="tip">
+      <div>
+        <div class="tip__eyebrow">Editor's note &middot; no purchase needed</div>
+        <h3 class="tip__title">Use newspaper on the windshield. Yes, really.</h3>
+        <p class="tip__detail">Modern ink doesn't transfer to glass anymore. Paper is mildly abrasive without scratching. Spray your glass cleaner, wipe with crumpled newspaper, throw the paper away. Works better than most microfiber towels, costs nothing.</p>
+      </div>
+      <div class="badge"><img src="https://images.unsplash.com/photo-1772549411247-b713c114df7d?w=600&q=80&auto=format&fit=crop" alt=""></div>
+    </aside>
+  </div>
+</div>
+
+<!-- J8 -->
+<div class="variant">
+  <span class="variant__label">J8 · RED MUSTANG CONVERTIBLE</span>
+  <span class="variant__note">'65 Mustang convertible 3/4 front · sunny driveway-adjacent feel, vivid red paint</span>
+  <div class="variant__card-wrap">
+    <aside class="tip">
+      <div>
+        <div class="tip__eyebrow">Editor's note &middot; no purchase needed</div>
+        <h3 class="tip__title">Use newspaper on the windshield. Yes, really.</h3>
+        <p class="tip__detail">Modern ink doesn't transfer to glass anymore. Paper is mildly abrasive without scratching. Spray your glass cleaner, wipe with crumpled newspaper, throw the paper away. Works better than most microfiber towels, costs nothing.</p>
+      </div>
+      <div class="badge"><img src="https://images.unsplash.com/photo-1686132214854-a7099516d308?w=600&q=80&auto=format&fit=crop" alt=""></div>
+    </aside>
+  </div>
+</div>
+
+</body>
+</html>

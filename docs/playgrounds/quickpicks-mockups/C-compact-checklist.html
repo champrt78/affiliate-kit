@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quick Picks · Mockup C: Compact Checklist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:        #F4F2EE;
+    --paper-bright: #FBFAF7;
+    --paper-soft:   #ECEAE4;
+    --paper-mid:    #E1DED5;
+    --ink:          #14181C;
+    --ink-soft:     #3A4148;
+    --muted:        #6A7079;
+    --line:         #D6D2C8;
+    --line-soft:    #E7E4DC;
+    --steel:        #2C5E8C;
+    --steel-deep:   #1E456A;
+    --highlight:    #F7E9C8;
+    --font-display: "Instrument Serif", Georgia, serif;
+    --font-sans:    "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-mono:    "JetBrains Mono", ui-monospace, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    line-height: 1.55;
+  }
+  .variant-badge {
+    position: fixed; top: 14px; left: 14px; z-index: 50;
+    font-family: var(--font-mono);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 6px 10px;
+    background: var(--ink); color: var(--paper-bright);
+    border-radius: 3px;
+  }
+
+  /* Hero compact */
+  .hero {
+    padding: 56px 32px 36px;
+    background: var(--paper-bright);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .hero__inner { max-width: 760px; margin: 0 auto; }
+  .hero__eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--steel); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .hero__eyebrow::before {
+    content: ''; display: inline-block; width: 28px; height: 1px;
+    background: var(--steel);
+  }
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 4.5vw, 56px); line-height: 1.02;
+    letter-spacing: -0.022em; color: var(--ink);
+    margin: 0 0 18px; font-weight: 400;
+  }
+  .hero__title em { font-style: italic; color: var(--steel); }
+  .hero__lede {
+    font-size: 17px; line-height: 1.55; color: var(--ink-soft);
+    margin: 0; max-width: 60ch;
+  }
+
+  /* Checklist */
+  .list {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 48px 32px;
+  }
+  .list__head {
+    font-family: var(--font-mono);
+    font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
+    color: var(--muted); margin-bottom: 16px;
+    display: flex; justify-content: space-between; align-items: end;
+    padding-bottom: 12px; border-bottom: 1px solid var(--line);
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 24px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line-soft);
+    align-items: center;
+  }
+  .row:last-of-type { border-bottom: 1px solid var(--line); }
+  .row__check {
+    width: 22px; height: 22px;
+    border: 1.5px solid var(--line);
+    border-radius: 3px;
+    display: grid; place-items: center;
+    color: var(--steel);
+  }
+  .row__body {
+    display: grid; grid-template-columns: 240px 1fr; gap: 24px;
+    align-items: baseline;
+  }
+  @media (max-width: 760px) {
+    .row__body { grid-template-columns: 1fr; gap: 4px; }
+  }
+  .row__name {
+    font-family: var(--font-sans);
+    font-size: 16px; font-weight: 600; color: var(--ink);
+    line-height: 1.3;
+  }
+  .row__cat {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); margin-top: 4px; display: block; font-weight: 400;
+  }
+  .row__blurb {
+    font-size: 14px; line-height: 1.5; color: var(--ink-soft); margin: 0;
+  }
+  .row__buy {
+    font-family: var(--font-sans);
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--ink); background: transparent;
+    border: 1px solid var(--ink);
+    padding: 8px 14px; border-radius: 2px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 200ms ease, color 200ms ease;
+  }
+  .row__buy:hover { background: var(--ink); color: var(--paper-bright); }
+
+  /* Tip footer */
+  .tip {
+    max-width: 880px;
+    margin: 32px auto 0;
+    padding: 24px 32px;
+    background: var(--ink);
+    color: var(--paper-bright);
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+  .tip__icon {
+    font-family: var(--font-display);
+    font-size: 48px;
+    color: var(--highlight);
+    line-height: 0.8;
+    font-style: italic;
+  }
+  .tip__text {}
+  .tip__eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.14em;
+    color: var(--highlight); text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .tip__title {
+    font-family: var(--font-display);
+    font-size: 22px; line-height: 1.2;
+    color: var(--paper-bright); margin: 0 0 8px;
+    font-style: italic; font-weight: 400;
+  }
+  .tip__detail {
+    font-size: 13px; color: rgba(251, 250, 247, 0.8); margin: 0;
+  }
+
+  /* After */
+  .after {
+    background: var(--paper-soft);
+    padding: 48px 32px 64px;
+    border-top: 1px solid var(--line-soft);
+    margin-top: 64px;
+  }
+  .after__inner { max-width: 880px; margin: 0 auto; }
+  .after__title {
+    font-family: var(--font-display);
+    font-size: 28px; line-height: 1.1;
+    color: var(--ink); margin: 0 0 14px;
+    font-weight: 400; font-style: italic;
+  }
+  .after__lede {
+    font-size: 15px; color: var(--ink-soft); margin: 0 0 22px;
+    max-width: 60ch;
+  }
+  .after__links {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 8px 24px;
+  }
+  .after__link {
+    font-size: 14px; font-weight: 500; color: var(--steel);
+    text-decoration: none; padding: 8px 0;
+    border-bottom: 1px solid var(--line-soft);
+    transition: padding-left 180ms ease;
+  }
+  .after__link:hover { padding-left: 6px; color: var(--steel-deep); }
+
+  @media (max-width: 600px) {
+    .row { grid-template-columns: 28px 1fr; }
+    .row__buy { grid-column: 1 / -1; justify-self: start; margin-top: 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="variant-badge">MOCKUP C · COMPACT CHECKLIST</div>
+
+<section class="hero">
+  <div class="hero__inner">
+    <div class="hero__eyebrow">Quick Picks · the starter kit</div>
+    <h1 class="hero__title">No time to read? <em>Buy these six.</em></h1>
+    <p class="hero__lede">
+      Under $80 total at Amazon. Mass-retail accessible. Safe on paint and ceramic coating. A weekend driveway wash with this kit leaves your car better than any automatic carwash.
+    </p>
+  </div>
+</section>
+
+<section class="list">
+  <div class="list__head">
+    <span>The kit · 6 items</span>
+    <span>~$78 total</span>
+  </div>
+
+  <div class="row">
+    <div class="row__check">&check;</div>
+    <div class="row__body">
+      <div>
+        <div class="row__name">Chemical Guys Mr. Pink</div>
+        <span class="row__cat">Car wash soap</span>
+      </div>
+      <p class="row__blurb">Pink, foamy, gentle on paint. Pour a cap into a bucket, mix with your hose, you're done.</p>
+    </div>
+    <a href="#" class="row__buy">Buy &rarr;</a>
+  </div>
+
+  <div class="row">
+    <div class="row__check">&check;</div>
+    <div class="row__body">
+      <div>
+        <div class="row__name">Chemical Guys InnerClean</div>
+        <span class="row__cat">Interior cleaner</span>
+      </div>
+      <p class="row__blurb">Works on every surface inside. No greasy finish, smells great. Spray onto a microfiber, wipe.</p>
+    </div>
+    <a href="#" class="row__buy">Buy &rarr;</a>
+  </div>
+
+  <div class="row">
+    <div class="row__check">&check;</div>
+    <div class="row__body">
+      <div>
+        <div class="row__name">Meguiar's Ultimate All Wheel Cleaner</div>
+        <span class="row__cat">Wheel cleaner</span>
+      </div>
+      <p class="row__blurb">Ten bucks at AutoZone. Turns purple on brake dust. Safe on every wheel finish.</p>
+    </div>
+    <a href="#" class="row__buy">Buy &rarr;</a>
+  </div>
+
+  <div class="row">
+    <div class="row__check">&check;</div>
+    <div class="row__body">
+      <div>
+        <div class="row__name">Meguiar's Supreme Shine Microfiber (6-pack)</div>
+        <span class="row__cat">Detailing rags</span>
+      </div>
+      <p class="row__blurb">Six 16x16 towels. Use one for soap, one for drying. Don't drop on the ground.</p>
+    </div>
+    <a href="#" class="row__buy">Buy &rarr;</a>
+  </div>
+
+  <div class="row">
+    <div class="row__check">&check;</div>
+    <div class="row__body">
+      <div>
+        <div class="row__name">Chemical Guys Chenille Microfiber Wash Mitt</div>
+        <span class="row__cat">Wash mitt</span>
+      </div>
+      <p class="row__blurb">Wash with this, not a sponge. Sponges drag dirt back across paint.</p>
+    </div>
+    <a href="#" class="row__buy">Buy &rarr;</a>
+  </div>
+
+  <div class="row">
+    <div class="row__check">&check;</div>
+    <div class="row__body">
+      <div>
+        <div class="row__name">Stoner Invisible Glass</div>
+        <span class="row__cat">Glass cleaner · optional</span>
+      </div>
+      <p class="row__blurb">Five bucks aerosol. Sprays foamy, wipes streak-free. Not for tinted rear windshields.</p>
+    </div>
+    <a href="#" class="row__buy">Buy &rarr;</a>
+  </div>
+</section>
+
+<aside class="tip">
+  <div class="tip__icon">&para;</div>
+  <div class="tip__text">
+    <div class="tip__eyebrow">Pro tip · no purchase needed</div>
+    <h3 class="tip__title">Use newspaper on the windshield. Yes, really.</h3>
+    <p class="tip__detail">Modern ink doesn't transfer. Paper is mildly abrasive without scratching. Wipe-cleans glass streak-free. Free.</p>
+  </div>
+</aside>
+
+<section class="after">
+  <div class="after__inner">
+    <h2 class="after__title">Want the deep version?</h2>
+    <p class="after__lede">These six are the starter kit. The full buying guides go deeper with spec comparisons across 5 to 7 products and reader-segment fit.</p>
+    <div class="after__links">
+      <a href="#" class="after__link">Best car wash soap &rarr;</a>
+      <a href="#" class="after__link">Best interior cleaner &rarr;</a>
+      <a href="#" class="after__link">Best wheel cleaner &rarr;</a>
+      <a href="#" class="after__link">Best foam cannon &rarr;</a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
