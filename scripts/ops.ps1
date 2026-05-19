@@ -1484,6 +1484,12 @@ $html = @"
     border-left-color: var(--steel);
   }
   .piece-link:hover .piece-title { color: var(--steel); }
+  .piece-link:focus-visible {
+    outline: none;
+    background: var(--surface-2);
+    border-left-color: var(--steel);
+    box-shadow: 0 0 0 1px var(--steel);
+  }
 
   .inline-link {
     color: inherit;
@@ -1494,6 +1500,13 @@ $html = @"
   .inline-link:hover {
     color: var(--steel);
     border-bottom-color: var(--steel);
+  }
+  .inline-link:focus-visible {
+    outline: none;
+    color: var(--steel);
+    border-bottom-color: var(--steel);
+    box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.35);
+    border-radius: 1px;
   }
 
   .commit-link {
@@ -1507,6 +1520,12 @@ $html = @"
   }
   .commit-link:hover { background: var(--surface-2); }
   .commit-link:hover .commit-hash { color: var(--accent); }
+  .commit-link:focus-visible {
+    outline: none;
+    background: var(--surface-2);
+    box-shadow: 0 0 0 1px var(--steel);
+  }
+  .commit-link:focus-visible .commit-hash { color: var(--accent); }
 
   .queue-link {
     display: block;
@@ -1515,6 +1534,19 @@ $html = @"
     transition: color 120ms ease;
   }
   .queue-link:hover { color: var(--steel); }
+  .queue-link:focus-visible {
+    outline: none;
+    color: var(--steel);
+    box-shadow: 0 0 0 1px var(--steel);
+    border-radius: 2px;
+  }
+
+  .ref-link:focus-visible {
+    outline: none;
+    border-color: var(--steel);
+    color: var(--steel);
+    box-shadow: 0 0 0 1px var(--steel);
+  }
 
   .empty-cmd {
     display: flex;
