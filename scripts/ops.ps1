@@ -909,7 +909,7 @@ $html = @"
   .ref-group { display: flex; flex-direction: column; gap: 5px; }
   .ref-label {
     font-size: 9px;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--muted);
     font-weight: 600;
@@ -1007,7 +1007,7 @@ $html = @"
     font-family: var(--font-sans);
     font-size: 9px;
     font-weight: 700;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--accent);
     display: flex;
@@ -1327,7 +1327,7 @@ $html = @"
     font-family: var(--font-sans);
     font-size: 10px;
     font-weight: 600;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.18em;
     padding: 5px 10px;
     border-radius: 2px;
     text-transform: uppercase;
@@ -1378,7 +1378,7 @@ $html = @"
   .panel__eyebrow {
     font-size: 10px;
     font-weight: 600;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--muted);
     margin-bottom: 8px;
@@ -1525,7 +1525,7 @@ $html = @"
     font-family: var(--font-sans);
     font-size: 10px;
     font-weight: 600;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--muted-deep);
   }
@@ -1576,7 +1576,7 @@ $html = @"
   .stat-box__label {
     font-size: 9px;
     font-weight: 600;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--muted);
     margin-bottom: 4px;
