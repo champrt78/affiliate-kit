@@ -630,7 +630,7 @@ $html = @"
     gap: 10px;
     padding: 5px 12px;
     background: var(--surface);
-    border: 1px solid var(--line-soft);
+    border: 1px solid var(--line);
     border-radius: 3px;
   }
   .topbar__goal-value {
@@ -724,13 +724,13 @@ $html = @"
   .do-next-panel__site {
     display: inline-block;
     font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--ink-soft);
-    background: rgba(255, 255, 255, 0.05);
-    padding: 3px 9px;
-    border-radius: 2px;
-    margin-bottom: 10px;
+    font-size: 10px;
+    color: var(--muted);
+    padding: 0;
+    margin: 0 0 0 0;
+    letter-spacing: 0.02em;
   }
+  .do-next-panel__site::before { content: '· '; color: var(--muted-deep); }
   .do-next-panel__reason {
     font-size: 13px;
     color: var(--ink-soft);
@@ -962,8 +962,8 @@ $html = @"
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--steel);
-    margin-bottom: 4px;
+    color: var(--muted);
+    margin-bottom: 6px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -971,7 +971,7 @@ $html = @"
   .drill__eyebrow::before {
     content: '';
     width: 20px; height: 1px;
-    background: var(--steel);
+    background: var(--muted-deep);
   }
   .drill__title {
     font-family: var(--font-serif);
@@ -1371,8 +1371,7 @@ $drillDownsHtml
       </header>
 
       <section class="do-next-panel do-next-panel--$($topActionData.PriorityLabel)">
-        <div class="do-next-panel__eyebrow">Do this next · highest priority</div>
-        <div class="do-next-panel__site">$topSite</div>
+        <div class="do-next-panel__eyebrow">Do this next<span class="do-next-panel__site">$topSite</span></div>
         <h3 class="do-next-panel__title">$(HtmlEscape $topActionData.Headline)</h3>
         <p class="do-next-panel__reason">$(HtmlEscape $topActionData.Reason)</p>
         $topCmd
