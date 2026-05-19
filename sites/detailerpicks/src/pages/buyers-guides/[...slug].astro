@@ -388,12 +388,13 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
   }
   .qcard__body { padding: 18px 20px 18px; flex: 1; display: flex; flex-direction: column; }
   .qcard__persona {
-    font-family: var(--font-mono, "JetBrains Mono", ui-monospace, Consolas, monospace);
-    font-size: 10px; letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--color-brass, #A07C3A);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.35;
+    letter-spacing: -0.005em;
+    color: var(--color-paper-ink);
     margin-bottom: 10px;
-    font-weight: 600;
+    font-weight: 700;
   }
   /* qcard__product IS the product link (whole card is wrapped in <a>) — keep the
      forest accent color so it reads as a link. */
@@ -492,12 +493,13 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
 
   .deep-card__body { min-width: 0; }
   .deep-card__persona {
-    font-family: var(--font-mono, "JetBrains Mono", ui-monospace, Consolas, monospace);
-    font-size: 11px; letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--color-brass, #A07C3A);
-    margin-bottom: 10px;
-    font-weight: 600;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.35;
+    letter-spacing: -0.005em;
+    color: var(--color-paper-ink);
+    margin-bottom: 12px;
+    font-weight: 700;
   }
   .deep-card__heading {
     font-family: var(--font-serif);
