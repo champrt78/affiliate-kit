@@ -21,25 +21,32 @@ const { entry } = Astro.props;
 const { data, body } = entry;
 const { Content } = await entry.render();
 
-// DRAFT detection — shared marker across review + buyers-guide piece types
 const DRAFT_MARKER = "_The Bottom Line is being written._";
 const isDraft = typeof body === "string" && body.includes(DRAFT_MARKER);
 
-// One JSON-LD Product entry per listed product. Google reads each block independently.
 const productLds = data.products.map((p) =>
   productSchema({
     name: p.name,
     brand: p.brand,
     sku: p.name,
-    image: "",
+    image: (p as any).image ?? "",
     description: data.description,
     offerUrl: p.affiliateUrl,
   })
 );
 
 const cloakedHref = cloakedLink({ slug: entry.slug });
-
 const robotsContent = isDraft ? "noindex, nofollow" : "index, follow";
+
+const formattedUpdated = data.lastUpdated instanceof Date
+  ? data.lastUpdated.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+  : String(data.lastUpdated);
+const isoUpdated = data.lastUpdated instanceof Date
+  ? data.lastUpdated.toISOString()
+  : String(data.lastUpdated);
+
+const totalPicks = data.products.length;
+const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : null;
 ---
 <MainLayout
   title={data.title}
@@ -67,18 +74,122 @@ const robotsContent = isDraft ? "noindex, nofollow" : "index, follow";
   <article class="guide">
     <header class="guide-header">
       <p class="kicker">Buyer's Guide</p>
-      <h1>{data.title}</h1>
-      <p class="description">{data.description}</p>
-      <div class="cta-wrap">
-        <CTA href={cloakedHref} rel="sponsored noopener" target="_blank">
-          See the top pick on Amazon
-        </CTA>
+      <h1 class="guide-title">{data.title}</h1>
+      <p class="guide-desc">{data.description}</p>
+      <div class="guide-byline">
+        <div class="guide-byline__avatar">D</div>
+        <div class="guide-byline__who">
+          <div class="guide-byline__name">The DetailerPicks editorial team</div>
+          <div class="guide-byline__role">Spec analysis &middot; verified against current Amazon listings</div>
+        </div>
+        <div class="guide-byline__date">
+          <span class="guide-byline__date-label">Last updated</span>
+          <time datetime={isoUpdated}>{formattedUpdated}</time>
+        </div>
       </div>
     </header>
 
-    <div class="prose">
-      <Content />
-    </div>
+    {/* ════════ AT A GLANCE ════════ */}
+    <section class="section">
+      <div class="section-head">
+        <h2>At a glance</h2>
+      </div>
+
+      <div class="quick-grid">
+        {data.products.map((p, i) => {
+          const price = fmtPrice(p.priceFrom);
+          const link = (p as any).cloakedSlug
+            ? cloakedLink({ slug: (p as any).cloakedSlug })
+            : p.affiliateUrl;
+          return (
+            <a href={`#pick-${i + 1}`} class="qcard">
+              <div class="qcard__img">
+                {(p as any).image && <img src={(p as any).image} alt={p.name} loading="lazy" decoding="async" />}
+                {price && <div class="qcard__img__price">{price}</div>}
+              </div>
+              <div class="qcard__body">
+                <div class="qcard__persona">{p.bestFor || p.brand}</div>
+                <div class="qcard__product">{p.name} <span aria-hidden="true">&rarr;</span></div>
+                {(p as any).hook && <p class="qcard__hook">{(p as any).hook}</p>}
+                <div class="qcard__cta">
+                  Read the full review <span class="qcard__cta__arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+
+    {/* ════════ THE FULL DETAIL ════════ */}
+    <section class="section">
+      <div class="section-head">
+        <h2>The full detail</h2>
+      </div>
+      <p class="section-intro">
+        The ranking reflects which reader segment each product fits best, based on documented chemistry and credible third-party reviewer commentary. Most premium products in this category clean adequately for weekly maintenance.
+      </p>
+
+      {data.products.map((p, i) => {
+        const price = fmtPrice(p.priceFrom);
+        const priceUnit = (p as any).priceUnit;
+        const link = p.affiliateUrl;
+        const reason = (p as any).reason;
+        const productBody = (p as any).body;
+        const facts = (p as any).facts;
+        return (
+          <article id={`pick-${i + 1}`} class="deep-card">
+            <div class="deep-card__img-col">
+              <div class="deep-card__img">
+                {(p as any).image && <img src={(p as any).image} alt={p.name} loading="lazy" decoding="async" />}
+              </div>
+              <div class="deep-card__rank"><span>{i + 1}</span>of {totalPicks} picks</div>
+            </div>
+
+            <div class="deep-card__body">
+              {p.bestFor && <div class="deep-card__persona">{p.bestFor}</div>}
+              <h3 class="deep-card__heading">
+                {reason && <span class="reason">{reason}</span>}
+                <a class="product-link" href={link} rel="sponsored noopener" target="_blank">{p.name} <span aria-hidden="true">&rarr;</span></a>
+              </h3>
+              {productBody && <Fragment set:html={productBody} />}
+            </div>
+
+            <aside class="deep-card__rail">
+              {price && (
+                <>
+                  <div class="deep-card__rail__price-label">Price from</div>
+                  <div class="deep-card__rail__price">{price}{priceUnit && <small>/{priceUnit}</small>}</div>
+                </>
+              )}
+              <a class="deep-card__rail__cta" href={link} rel="sponsored noopener" target="_blank">
+                Check current price <span aria-hidden="true">&rarr;</span>
+              </a>
+              <div class="deep-card__rail__cta-sub">Affiliate link &middot; Amazon</div>
+              {facts && Object.keys(facts).length > 0 && (
+                <dl class="deep-card__rail__facts">
+                  {Object.entries(facts).map(([k, v]) => (
+                    <>
+                      <dt>{k}</dt>
+                      <dd>{v}</dd>
+                    </>
+                  ))}
+                </dl>
+              )}
+            </aside>
+          </article>
+        );
+      })}
+    </section>
+
+    {/* ════════ EDITORIAL BODY ════════
+        Tables, FAQ, doctrine split, how-we-picked, etc. — everything that
+        is not a per-pick block lives in the markdown body. */}
+    <section class="section editorial">
+      <div class="prose">
+        <Content />
+      </div>
+    </section>
 
     <footer class="guide-footer">
       <div class="cta-wrap">
@@ -88,15 +199,14 @@ const robotsContent = isDraft ? "noindex, nofollow" : "index, follow";
       </div>
       <p class="updated">
         Last updated:
-        <time datetime={data.lastUpdated instanceof Date ? data.lastUpdated.toISOString() : String(data.lastUpdated)}>
-          {data.lastUpdated instanceof Date ? data.lastUpdated.toISOString().slice(0, 10) : String(data.lastUpdated)}
-        </time>
+        <time datetime={isoUpdated}>{formattedUpdated}</time>
       </p>
     </footer>
   </article>
 </MainLayout>
 
 <style>
+  /* ─── Draft banner ─── */
   .draft-banner {
     background: #fef3c7;
     border: 2px solid #d97706;
@@ -108,8 +218,7 @@ const robotsContent = isDraft ? "noindex, nofollow" : "index, follow";
   }
   .draft-banner strong { font-size: var(--text-base); }
 
-  /* Article hero — letterboxed editorial image with dark gradient anchor.
-     Capped by max-height so it never dominates the viewport above the fold. */
+  /* ─── Article hero — capped, doesn't fill the viewport ─── */
   .guide-hero {
     position: relative;
     width: 100%;
@@ -121,97 +230,31 @@ const robotsContent = isDraft ? "noindex, nofollow" : "index, follow";
     margin-bottom: var(--space-8);
   }
   .guide-hero__overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(20, 24, 28, 0.10) 0%, rgba(20, 24, 28, 0.45) 100%);
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(20,24,28,0.10) 0%, rgba(20,24,28,0.45) 100%);
   }
   @media (max-width: 760px) {
     .guide-hero { aspect-ratio: 3 / 2; max-height: 220px; margin-bottom: var(--space-5); }
   }
 
-  /* Pick cards — product image + headline-as-link + body */
-  .prose :global(.pick-card) {
-    display: grid;
-    grid-template-columns: 160px 1fr;
-    gap: var(--space-6);
-    align-items: start;
-    margin: var(--space-8) 0;
-    padding: var(--space-5);
-    background: var(--color-paper-muted);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--color-sage-light);
+  /* ─── Article container — wide for cards, narrow for prose ─── */
+  .guide {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--space-6) var(--space-12);
   }
-  .prose :global(.pick-card__img) {
-    width: 160px;
-    height: 160px;
-    background: var(--color-cream);
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--color-sage-light);
-    overflow: hidden;
-    display: grid;
-    place-items: center;
+  .guide-header {
+    max-width: 720px;
+    margin: 0 0 var(--space-10);
   }
-  .prose :global(.pick-card__img img) {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    padding: 8px;
-  }
-  .prose :global(.pick-card__body) {
-    min-width: 0;
-  }
-  .prose :global(.pick-card__body > h3) {
-    margin-top: 0;
-    margin-bottom: var(--space-3);
-    font-size: 1.25rem;
-    line-height: 1.25;
-  }
-  .prose :global(.pick-card__link) {
-    color: var(--color-forest);
-    font-weight: 700;
-    text-decoration: none;
-    border-bottom: 2px solid var(--color-brass-soft, #d4b966);
-    transition: color 180ms ease, border-color 180ms ease;
-  }
-  .prose :global(.pick-card__link:hover) {
-    color: var(--color-forest-mid, #2c5e8c);
-    border-bottom-color: var(--color-forest);
-  }
-  /* Make product mentions inside blurbs visually distinct as affiliate links */
-  .prose :global(.pick-card__body a[rel*="sponsored"]),
-  .prose :global(.pick-card__body p a) {
-    color: var(--color-forest);
-    font-weight: 600;
-    text-decoration: underline;
-    text-decoration-color: var(--color-brass-soft, #d4b966);
-    text-underline-offset: 3px;
-  }
-  .prose :global(.pick-card__body p a:hover) {
-    color: var(--color-forest-mid, #2c5e8c);
-  }
-  @media (max-width: 720px) {
-    .prose :global(.pick-card) {
-      grid-template-columns: 1fr;
-      gap: var(--space-4);
-    }
-    .prose :global(.pick-card__img) {
-      width: 100%;
-      height: 200px;
-    }
-  }
-
-  .guide { max-width: var(--content-max); margin: 0 auto; padding: 0 var(--space-6); }
-  .guide-header { margin-bottom: var(--space-8); max-width: 720px; }
   .kicker {
     text-transform: uppercase;
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.18em;
     color: var(--color-forest);
     margin: 0 0 var(--space-4);
-    display: flex;
-    align-items: center;
-    gap: 14px;
+    display: flex; align-items: center; gap: 14px;
   }
   .kicker::before {
     content: '';
@@ -220,38 +263,478 @@ const robotsContent = isDraft ? "noindex, nofollow" : "index, follow";
     height: 1px;
     background: var(--color-forest);
   }
-  h1 {
+  .guide-title {
     font-family: var(--font-serif);
-    font-weight: 400;
+    font-weight: 500;
     font-size: clamp(2.25rem, 5vw, 3.5rem);
     line-height: 1.02;
     letter-spacing: -0.02em;
-    margin: 0 0 var(--space-5);
+    margin: 0 0 var(--space-4);
     color: var(--color-paper-ink);
   }
-  .description {
+  .guide-desc {
     font-family: var(--font-sans);
     font-size: 1.1875rem;
-    line-height: 1.55;
-    color: var(--color-muted);
+    line-height: 1.6;
+    color: var(--color-paper-ink);
     margin: 0 0 var(--space-6);
-    max-width: 36ch;
+    max-width: 56ch;
+  }
+
+  /* Byline strip under title */
+  .guide-byline {
+    display: flex; align-items: center; gap: 16px;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-sage-light);
+    font-size: 13px;
+    color: var(--color-muted);
+  }
+  .guide-byline__avatar {
+    width: 36px; height: 36px;
+    border-radius: 999px;
+    background: var(--color-forest);
+    color: var(--color-paper-bright, #FBFAF7);
+    display: grid; place-items: center;
+    font-family: var(--font-serif);
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .guide-byline__who { line-height: 1.4; }
+  .guide-byline__name { color: var(--color-paper-ink); font-weight: 600; }
+  .guide-byline__role { color: var(--color-muted); font-size: 12px; }
+  .guide-byline__date {
+    margin-left: auto;
+    text-align: right;
+    font-family: var(--font-mono, "JetBrains Mono", ui-monospace, Consolas, monospace);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .guide-byline__date-label { display: block; opacity: 0.7; font-size: 9.5px; margin-bottom: 2px; }
+  @media (max-width: 600px) {
+    .guide-byline__role { display: none; }
+    .guide-byline__date { text-align: right; }
+  }
+
+  /* ─── Sections ─── */
+  .section { margin: 0 0 var(--space-12); }
+  .section-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin: 0 0 var(--space-6);
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--color-paper-ink);
+  }
+  .section-head h2 {
+    font-family: var(--font-serif);
+    font-size: 32px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--color-paper-ink);
+    margin: 0;
+    font-weight: 500;
+  }
+  .section-intro {
+    max-width: 680px;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--color-paper-ink);
+    margin: 0 0 var(--space-8);
+  }
+
+  /* ════ AT A GLANCE — quick card grid ════ */
+  .quick-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .qcard {
+    background: var(--color-paper-bright, #FBFAF7);
+    border: 1px solid var(--color-sage-light);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 200ms ease, transform 200ms ease;
+  }
+  .qcard:hover {
+    border-color: var(--color-brass-soft, #D4B966);
+    transform: translateY(-2px);
+  }
+  .qcard__img {
+    aspect-ratio: 5 / 4;
+    background: var(--color-cream);
+    border-bottom: 1px solid var(--color-sage-light);
+    display: grid; place-items: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .qcard__img img {
+    max-width: 62%;
+    max-height: 76%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+  }
+  .qcard__img__price {
+    position: absolute;
+    top: 10px; right: 10px;
+    background: var(--color-paper-ink);
+    color: var(--color-paper-bright, #FBFAF7);
+    font-family: var(--font-mono, "JetBrains Mono", ui-monospace, Consolas, monospace);
+    font-size: 10.5px; font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 999px;
+    letter-spacing: 0.04em;
+  }
+  .qcard__body { padding: 18px 20px 18px; flex: 1; display: flex; flex-direction: column; }
+  .qcard__persona {
+    font-family: var(--font-mono, "JetBrains Mono", ui-monospace, Consolas, monospace);
+    font-size: 10px; letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-brass, #A07C3A);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .qcard__product {
+    font-family: var(--font-serif);
+    font-size: 17px; line-height: 1.25;
+    color: var(--color-forest);
+    margin: 0 0 12px;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    border-bottom: 1.5px solid var(--color-brass-soft, #D4B966);
+    padding-bottom: 4px;
+    align-self: flex-start;
+    transition: color 180ms ease, border-color 180ms ease;
+  }
+  .qcard:hover .qcard__product {
+    color: var(--color-brass, #A07C3A);
+    border-bottom-color: var(--color-brass, #A07C3A);
+  }
+  .qcard__hook {
+    font-size: 13.5px; line-height: 1.55;
+    color: var(--color-paper-ink);
+    margin: 0 0 16px;
+    flex: 1;
+    max-width: 38ch;
+    opacity: 0.85;
+  }
+  .qcard__cta {
+    font-family: var(--font-sans);
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--color-forest);
+    padding: 10px 0 0;
+    border-top: 1px solid var(--color-sage-light);
+    display: flex; align-items: center; gap: 8px;
+    transition: color 200ms ease;
+  }
+  .qcard:hover .qcard__cta { color: var(--color-brass, #A07C3A); }
+  .qcard__cta__arrow { transition: transform 200ms ease; }
+  .qcard:hover .qcard__cta__arrow { transform: translateX(3px); }
+
+  /* ════ THE FULL DETAIL — expanded cards ════ */
+  .deep-card {
+    display: grid;
+    grid-template-columns: 220px 1fr 240px;
+    gap: 32px;
+    align-items: start;
+    padding: 32px;
+    margin: 0 0 28px;
+    background: var(--color-paper-bright, #FBFAF7);
+    border: 1px solid var(--color-sage-light);
+    border-radius: 10px;
+    scroll-margin-top: 24px;
+  }
+  .deep-card:last-child { margin-bottom: 0; }
+  .deep-card__img-col {
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .deep-card__img {
+    width: 220px;
+    height: 220px;
+    background: var(--color-cream);
+    border: 1px solid var(--color-sage-light);
+    border-radius: 6px;
+    overflow: hidden;
+    display: grid; place-items: center;
+    padding: 16px;
+  }
+  .deep-card__img img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+  }
+  .deep-card__rank {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--color-sage-light);
+    width: 100%;
+    text-align: center;
+    font-family: var(--font-mono, "JetBrains Mono", ui-monospace, Consolas, monospace);
+    font-size: 10px; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+  .deep-card__rank span {
+    color: var(--color-forest);
+    font-family: var(--font-serif);
+    font-size: 22px;
+    margin-right: 6px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    vertical-align: -2px;
+  }
+
+  .deep-card__body { min-width: 0; }
+  .deep-card__persona {
+    font-family: var(--font-mono, "JetBrains Mono", ui-monospace, Consolas, monospace);
+    font-size: 11px; letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-brass, #A07C3A);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .deep-card__heading {
+    font-family: var(--font-serif);
+    font-size: 26px;
+    line-height: 1.25;
+    margin: 0 0 18px;
+    font-weight: 500;
+    color: var(--color-paper-ink);
+    letter-spacing: -0.015em;
+    max-width: 32ch;
+  }
+  .deep-card__heading .reason {
+    display: block;
+    color: var(--color-muted);
+    font-weight: 400;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.3;
+    margin-bottom: 4px;
+    letter-spacing: 0;
+  }
+  .deep-card__heading .product-link {
+    color: var(--color-forest);
+    font-weight: 500;
+    border-bottom: 2px solid var(--color-brass-soft, #D4B966);
+    text-decoration: none;
+    transition: color 180ms ease, border-color 180ms ease;
+  }
+  .deep-card__heading .product-link:hover {
+    color: var(--color-brass, #A07C3A);
+    border-bottom-color: var(--color-brass, #A07C3A);
+  }
+  .deep-card__body :global(p) {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--color-paper-ink);
+    margin: 0 0 16px;
+    max-width: 62ch;
+    opacity: 0.9;
+  }
+  .deep-card__body :global(p:last-child) { margin-bottom: 0; }
+  .deep-card__body :global(p a) {
+    color: var(--color-forest);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--color-brass-soft, #D4B966);
+    text-underline-offset: 3px;
+  }
+  .deep-card__body :global(p a:hover) {
+    color: var(--color-brass, #A07C3A);
+  }
+
+  /* Right rail: price + CTA + facts */
+  .deep-card__rail {
+    background: var(--color-paper-muted);
+    border-radius: 6px;
+    padding: 20px;
+    text-align: left;
+  }
+  .deep-card__rail__price-label {
+    font-family: var(--font-mono, "JetBrains Mono", ui-monospace, Consolas, monospace);
+    font-size: 10px; letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 4px;
+  }
+  .deep-card__rail__price {
+    font-family: var(--font-serif);
+    font-size: 32px;
+    color: var(--color-paper-ink);
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .deep-card__rail__price small {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-muted);
+    margin-left: 4px;
+    font-family: var(--font-mono, "JetBrains Mono", ui-monospace, Consolas, monospace);
+    letter-spacing: 0.04em;
+    vertical-align: 0.15em;
+  }
+  .deep-card__rail__cta {
+    display: block;
+    background: var(--color-forest);
+    color: var(--color-paper-bright, #FBFAF7);
+    font-family: var(--font-sans);
+    font-size: 13px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 12px 18px;
+    border-radius: 6px;
+    text-align: center;
+    margin-bottom: 12px;
+    text-decoration: none;
+    transition: background 200ms ease, transform 200ms ease;
+  }
+  .deep-card__rail__cta:hover {
+    background: var(--color-brass, #A07C3A);
+    transform: translateY(-1px);
+  }
+  .deep-card__rail__cta-sub {
+    font-size: 11px;
+    color: var(--color-muted);
+    text-align: center;
+    font-style: italic;
+  }
+  .deep-card__rail__facts {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-sage-light);
+    font-size: 12px;
+  }
+  .deep-card__rail__facts dt {
+    font-family: var(--font-mono, "JetBrains Mono", ui-monospace, Consolas, monospace);
+    font-size: 9.5px; letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 2px;
+  }
+  .deep-card__rail__facts dd {
+    margin: 0 0 10px;
+    font-size: 12.5px;
+    color: var(--color-paper-ink);
+    line-height: 1.45;
+  }
+  .deep-card__rail__facts dd:last-child { margin-bottom: 0; }
+
+  /* ════ EDITORIAL BODY (markdown content after the picks) ════ */
+  .editorial .prose {
+    max-width: 680px;
+    line-height: 1.7;
+    font-size: 16px;
+    color: var(--color-paper-ink);
+  }
+  .editorial .prose :global(h2) {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: var(--space-10) 0 var(--space-4);
+    font-weight: 500;
+    color: var(--color-paper-ink);
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-paper-ink);
+  }
+  .editorial .prose :global(h3) {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    margin: var(--space-8) 0 var(--space-3);
+    font-weight: 500;
+    color: var(--color-paper-ink);
+  }
+  .editorial .prose :global(p) { margin: 0 0 18px; }
+  .editorial .prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-6) 0;
+    font-size: 14px;
+  }
+  .editorial .prose :global(th),
+  .editorial .prose :global(td) {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--color-sage-light);
+    text-align: left;
+    vertical-align: top;
+  }
+  .editorial .prose :global(th) {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
+    border-bottom-color: var(--color-paper-ink);
+  }
+  /* Bullet lists inside the editorial body — chunked panel style */
+  .editorial .prose :global(ul) {
+    list-style: none;
+    padding-left: 0;
+    margin: var(--space-5) 0;
+  }
+  .editorial .prose :global(ul > li) {
+    position: relative;
+    padding: 14px 18px 14px 22px;
+    margin: 0 0 12px;
+    background: var(--color-paper-muted);
+    border-left: 3px solid var(--color-forest);
+    border-radius: 0 6px 6px 0;
+  }
+  .editorial .prose :global(ul > li > strong:first-child) {
+    display: block;
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.35;
+    color: var(--color-paper-ink);
+    margin-bottom: 6px;
+  }
+  .editorial .prose :global(a) {
+    color: var(--color-forest);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--color-brass-soft, #D4B966);
+    text-underline-offset: 3px;
+  }
+  .editorial .prose :global(a:hover) {
+    color: var(--color-brass, #A07C3A);
+  }
+
+  /* ─── Footer ─── */
+  .guide-footer {
+    margin-top: var(--space-10);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-sage-light);
   }
   .cta-wrap { margin: var(--space-6) 0; }
-  .prose { line-height: 1.7; }
-  .prose :global(h2) {
-    font-size: var(--text-2xl);
-    margin-top: var(--space-8);
-    margin-bottom: var(--space-3);
+  .updated { color: var(--color-muted); font-size: 13px; }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 980px) {
+    .quick-grid { grid-template-columns: repeat(2, 1fr); }
+    .deep-card {
+      grid-template-columns: 180px 1fr;
+      grid-template-areas: "img body" "rail rail";
+    }
+    .deep-card__img-col { grid-area: img; }
+    .deep-card__body { grid-area: body; }
+    .deep-card__rail { grid-area: rail; }
+    .deep-card__img { width: 180px; height: 180px; }
   }
-  .prose :global(h3) {
-    font-size: var(--text-xl);
-    margin-top: var(--space-6);
+  @media (max-width: 640px) {
+    .quick-grid { grid-template-columns: 1fr; }
+    .deep-card {
+      grid-template-columns: 1fr;
+      grid-template-areas: "img" "body" "rail";
+      padding: 20px;
+    }
+    .deep-card__img { width: 100%; max-width: 240px; height: 200px; margin: 0 auto; }
+    .section-head h2 { font-size: 26px; }
+    .guide-title { font-size: 2rem; }
   }
-  .guide-footer {
-    margin-top: var(--space-8);
-    padding-top: var(--space-6);
-    border-top: 1px solid var(--color-border);
-  }
-  .updated { color: var(--color-muted); font-size: var(--text-sm); }
 </style>

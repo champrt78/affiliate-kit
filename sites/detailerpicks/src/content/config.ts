@@ -88,6 +88,15 @@ const buyersGuides = defineCollection({
       cloakedSlug: z.string().optional(),
       bestFor: z.string().optional(),
       priceFrom: z.number().optional(),
+      priceUnit: z.string().optional(),
+      /* hook = 1-sentence at-a-glance summary, shown on the quick card */
+      hook: z.string().optional(),
+      /* reason = the italic lead-in on the deep-card heading, e.g. "The one-bottle workflow" */
+      reason: z.string().optional(),
+      /* facts = right-rail mini-table on the deep card. Keys are labels, values are short answers. */
+      facts: z.record(z.string(), z.string()).optional(),
+      /* body = HTML string with the per-pick prose for the deep card. Use <p> tags + <a href>. */
+      body: z.string().optional(),
     })),
     pubDate: z.date(),
     lastUpdated: z.date(),

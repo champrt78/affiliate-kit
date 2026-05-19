@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unified Pick-Card System Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Tokens shared with the repo — forest+cream+brass system. Swap to mywildlifecam's
+       forest variant by uncommenting --site-forest etc. below. */
+    --paper:        #F4F2EE;
+    --paper-bright: #FBFAF7;
+    --paper-muted:  #ECEAE4;
+    --cream:        #FBFAF7;
+    --ink:          #14181C;
+    --ink-soft:     #3A4148;
+    --muted:        #6A7079;
+    --muted-soft:   #8A8F95;
+    --line:         #D6D2C8;
+    --line-soft:    #E7E4DC;
+    --forest:       #1F3D2F;
+    --forest-mid:   #2D5A45;
+    --brass:        #A07C3A;
+    --brass-soft:   #D4B966;
+    --brass-bright: #E8C77A;
+    --steel:        #2C5E8C;
+    --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+    --font-italic:  "Instrument Serif", Georgia, serif;
+    --font-sans:    "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-mono:    "JetBrains Mono", ui-monospace, Consolas, monospace;
+    --container-wide: 1280px;
+    --container-mid:  1040px;
+    --content-narrow: 680px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    line-height: 1.55;
+    font-size: 17px;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ─── Mockup notes overlay (visible only on this mockup, not the real site) ─── */
+  .mockup-note {
+    position: fixed;
+    top: 12px; right: 12px;
+    background: var(--ink);
+    color: var(--paper-bright);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 8px 14px;
+    border-radius: 3px;
+    z-index: 100;
+    max-width: 320px;
+    line-height: 1.5;
+  }
+  .mockup-note strong { color: var(--brass-soft); display: block; margin-bottom: 4px; }
+
+  /* ─── Site header (placeholder) ─── */
+  .site-head {
+    border-bottom: 1px solid var(--line-soft);
+    background: var(--paper-bright);
+    padding: 18px 0;
+  }
+  .site-head__inner {
+    max-width: var(--container-wide);
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .site-head__brand {
+    font-family: var(--font-display); font-size: 22px;
+    letter-spacing: -0.01em;
+  }
+  .site-head__brand em { color: var(--forest); font-style: italic; }
+  .site-head__nav {
+    display: flex; gap: 32px;
+    font-size: 14px; font-weight: 500;
+  }
+
+  /* ─── Article hero (now properly capped, not viewport-filling) ─── */
+  .article-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 6;
+    max-height: 320px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 48px;
+  }
+  .article-hero__overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(20,24,28,0.10) 0%, rgba(20,24,28,0.45) 100%);
+  }
+
+  /* ─── Article header — narrow text col ─── */
+  .article {
+    max-width: var(--container-wide);
+    margin: 0 auto;
+    padding: 0 32px 64px;
+  }
+  .article-header {
+    max-width: var(--content-narrow);
+    margin: 0 0 48px;
+  }
+  .kicker {
+    font-family: var(--font-sans);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--forest);
+    margin: 0 0 18px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .kicker::before {
+    content: ''; display: inline-block; width: 28px; height: 1px;
+    background: var(--forest);
+  }
+  h1.article-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin: 0 0 20px;
+    color: var(--ink);
+  }
+  .article-desc {
+    font-family: var(--font-sans);
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0 0 28px;
+    max-width: 56ch;
+  }
+  .article-byline {
+    display: flex; align-items: center; gap: 16px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line-soft);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .article-byline__avatar {
+    width: 36px; height: 36px;
+    border-radius: 999px;
+    background: var(--forest); color: var(--paper-bright);
+    display: grid; place-items: center;
+    font-family: var(--font-display); font-size: 18px;
+  }
+  .article-byline__date { margin-left: auto; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* ─── Section heading + tab labels ─── */
+  .section {
+    margin-bottom: 80px;
+  }
+  .section-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin: 0 0 28px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--ink);
+  }
+  .section-head h2 {
+    font-family: var(--font-display);
+    font-size: 32px; line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0; font-weight: 500;
+  }
+  .section-head .section-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .section-intro {
+    max-width: var(--content-narrow);
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0 0 40px;
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     QUICK READ — compact card grid
+     One card per pick. Persona-led, product-as-link, price visible.
+     Full-width container — uses the page real estate properly.
+     ════════════════════════════════════════════════════════════ */
+  .quick-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .qcard {
+    background: var(--paper-bright);
+    border: 1px solid var(--line-soft);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: border-color 200ms ease, transform 200ms ease;
+  }
+  .qcard:hover {
+    border-color: var(--brass-soft);
+    transform: translateY(-2px);
+  }
+  .qcard__img {
+    aspect-ratio: 5 / 4;
+    background: var(--cream);
+    border-bottom: 1px solid var(--line-soft);
+    display: grid; place-items: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .qcard__img img {
+    max-width: 62%;
+    max-height: 76%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+  }
+  .qcard__img__price {
+    position: absolute;
+    top: 10px; right: 10px;
+    background: var(--ink);
+    color: var(--paper-bright);
+    font-family: var(--font-mono);
+    font-size: 10.5px; font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 999px;
+    letter-spacing: 0.04em;
+  }
+  .qcard__body { padding: 18px 20px 18px; flex: 1; display: flex; flex-direction: column; }
+  .qcard__persona {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .qcard__product {
+    font-family: var(--font-display);
+    font-size: 17px; line-height: 1.25;
+    color: var(--forest);
+    margin: 0 0 12px;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    border-bottom: 1.5px solid var(--brass-soft);
+    padding-bottom: 4px;
+    display: inline-block;
+    transition: color 180ms ease, border-color 180ms ease;
+  }
+  .qcard__product:hover {
+    color: var(--brass);
+    border-bottom-color: var(--brass);
+  }
+  .qcard__hook {
+    font-size: 13.5px; line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 0 16px;
+    flex: 1;
+    max-width: 38ch;
+  }
+  .qcard__cta {
+    font-family: var(--font-sans);
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--forest);
+    padding: 10px 0 0;
+    border-top: 1px solid var(--line-soft);
+    display: flex; align-items: center; gap: 8px;
+    transition: color 200ms ease;
+  }
+  .qcard__cta:hover { color: var(--brass); }
+  .qcard__cta__arrow { transition: transform 200ms ease; }
+  .qcard:hover .qcard__cta__arrow { transform: translateX(3px); }
+
+  /* ════════════════════════════════════════════════════════════
+     DEEP DIVE — full-width detailed cards
+     Image LEFT (180px) + body RIGHT (everything else).
+     "Reason: Product (link)" heading. Body prose. Price. CTA.
+     ════════════════════════════════════════════════════════════ */
+  .deep-card {
+    display: grid;
+    grid-template-columns: 220px 1fr 220px;
+    gap: 32px;
+    align-items: start;
+    padding: 32px;
+    margin: 0 0 32px;
+    background: var(--paper-bright);
+    border: 1px solid var(--line-soft);
+    border-radius: 10px;
+  }
+  .deep-card__img-col {
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .deep-card__img {
+    width: 220px;
+    height: 220px;
+    background: var(--cream);
+    border: 1px solid var(--line-soft);
+    border-radius: 6px;
+    overflow: hidden;
+    display: grid; place-items: center;
+    padding: 16px;
+  }
+  .deep-card__img img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+  }
+  .deep-card__rank {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line-soft);
+    width: 100%;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .deep-card__rank span {
+    color: var(--forest);
+    font-family: var(--font-display);
+    font-size: 22px;
+    margin-right: 6px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    vertical-align: -2px;
+  }
+
+  .deep-card__body { min-width: 0; }
+  .deep-card__persona {
+    font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .deep-card__heading {
+    font-family: var(--font-display);
+    font-size: 26px;
+    line-height: 1.25;
+    margin: 0 0 18px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+    max-width: 32ch;
+  }
+  .deep-card__heading .reason {
+    display: block;
+    color: var(--muted);
+    font-weight: 400;
+    font-style: italic;
+    font-family: var(--font-italic);
+    font-size: 19px;
+    line-height: 1.3;
+    margin-bottom: 4px;
+    letter-spacing: 0;
+  }
+  .deep-card__heading .product-link {
+    color: var(--forest);
+    font-weight: 500;
+    border-bottom: 2px solid var(--brass-soft);
+    text-decoration: none;
+    transition: color 180ms ease, border-color 180ms ease;
+  }
+  .deep-card__heading .product-link:hover {
+    color: var(--brass);
+    border-bottom-color: var(--brass);
+  }
+  .deep-card__body p {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0 0 16px;
+    max-width: 62ch;
+  }
+  .deep-card__body p:last-child { margin-bottom: 0; }
+  .deep-card__body p a {
+    color: var(--forest);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--brass-soft);
+    text-underline-offset: 3px;
+  }
+  .deep-card__body p a:hover {
+    color: var(--brass);
+  }
+
+  /* Right rail: price + CTA + facts */
+  .deep-card__rail {
+    background: var(--paper-muted);
+    border-radius: 6px;
+    padding: 20px;
+    text-align: left;
+  }
+  .deep-card__rail__price-label {
+    font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .deep-card__rail__price {
+    font-family: var(--font-display);
+    font-size: 32px;
+    color: var(--ink);
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .deep-card__rail__price small {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-left: 4px;
+    font-family: var(--font-mono);
+    letter-spacing: 0.04em;
+    vertical-align: 0.15em;
+  }
+  .deep-card__rail__cta {
+    display: block;
+    background: var(--forest);
+    color: var(--paper-bright);
+    font-family: var(--font-sans);
+    font-size: 13px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 12px 18px;
+    border-radius: 6px;
+    text-align: center;
+    margin-bottom: 12px;
+    transition: background 200ms ease, transform 200ms ease;
+  }
+  .deep-card__rail__cta:hover {
+    background: var(--brass);
+    transform: translateY(-1px);
+  }
+  .deep-card__rail__cta-sub {
+    font-size: 11px;
+    color: var(--muted);
+    text-align: center;
+    font-style: italic;
+  }
+  .deep-card__rail__facts {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+  }
+  .deep-card__rail__facts dt {
+    font-family: var(--font-mono);
+    font-size: 9.5px; letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+  .deep-card__rail__facts dd {
+    margin: 0 0 10px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    line-height: 1.45;
+  }
+  .deep-card__rail__facts dd:last-child { margin-bottom: 0; }
+
+  /* ═══ Responsive ═══ */
+  @media (max-width: 980px) {
+    .quick-grid { grid-template-columns: repeat(2, 1fr); }
+    .deep-card {
+      grid-template-columns: 180px 1fr;
+      grid-template-areas: "img body" "rail rail";
+    }
+    .deep-card__img-col { grid-area: img; }
+    .deep-card__body { grid-area: body; }
+    .deep-card__rail { grid-area: rail; }
+  }
+  @media (max-width: 640px) {
+    .quick-grid { grid-template-columns: 1fr; }
+    .deep-card {
+      grid-template-columns: 1fr;
+      grid-template-areas: "img" "body" "rail";
+      padding: 20px;
+    }
+    .deep-card__img { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="mockup-note">
+  <strong>MOCKUP · UNIFIED PICK-CARD SYSTEM</strong>
+  Addresses: wider page, 2-tier (quick + deep), images both tiers, "Reason: Product (link)" headings, prices, capped hero, CTAs. Single system, works for mywildlifecam + detailerpicks.
+</div>
+
+<!-- ─── Site header ─── -->
+<header class="site-head">
+  <div class="site-head__inner">
+    <div class="site-head__brand">Detailer<em>Picks</em></div>
+    <nav class="site-head__nav">
+      <a>Home</a><a>Guides</a><a>Reviews</a><a>About</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ─── Article hero (capped, no longer fills the viewport) ─── -->
+<div class="article-hero" style="background-image: url('https://images.unsplash.com/photo-1771402689232-14d4d1c1c685?auto=format&fit=crop&w=2400&q=80')">
+  <div class="article-hero__overlay"></div>
+</div>
+
+<article class="article">
+  <header class="article-header">
+    <div class="kicker">Buyer's Guide</div>
+    <h1 class="article-title">Best Interior Cleaner for Home Detailers</h1>
+    <p class="article-desc">Six interior cleaners, picked by who you are, not by feature count. InnerClean covers most cars. 303 adds UV defense.</p>
+    <div class="article-byline">
+      <div class="article-byline__avatar">D</div>
+      <div>
+        <div style="color: var(--ink); font-weight: 600;">The DetailerPicks editorial team</div>
+        <div style="color: var(--muted);">Spec analysis &middot; verified against current Amazon listings</div>
+      </div>
+      <div class="article-byline__date">Updated May 19, 2026</div>
+    </div>
+  </header>
+
+  <!-- ════════════════════════ QUICK READ ════════════════════════ -->
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <h2>At a glance</h2>
+      </div>
+    </div>
+
+    <div class="quick-grid">
+
+      <!-- Quick card 1 -->
+      <a href="#deep-1" class="qcard">
+        <div class="qcard__img">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/B008LPEZ6Q.01.LZZZZZZZ.jpg" alt="">
+          <div class="qcard__img__price">$11.99</div>
+        </div>
+        <div class="qcard__body">
+          <div class="qcard__persona">All-surface weekend enthusiast</div>
+          <div class="qcard__product">Chemical Guys InnerClean &rarr;</div>
+          <p class="qcard__hook">Matte OEM finish, screen-safe, anti-static. 4.7-star Amazon across 6,000+ reviews. The one-bottle workflow.</p>
+          <div class="qcard__cta">Read the full review <span class="qcard__cta__arrow">&rarr;</span></div>
+        </div>
+      </a>
+
+      <!-- Quick card 2 -->
+      <a href="#deep-2" class="qcard">
+        <div class="qcard__img">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/B019X2BJSM.01.LZZZZZZZ.jpg" alt="">
+          <div class="qcard__img__price">$15.99</div>
+        </div>
+        <div class="qcard__body">
+          <div class="qcard__persona">Dark-dash daily driver, high sun</div>
+          <div class="qcard__product">303 Aerospace Protectant &rarr;</div>
+          <p class="qcard__hook">SPF 40, blocks 98% UV per Gold Eagle docs. The category UV benchmark. Apply after a cleaner.</p>
+          <div class="qcard__cta">Read the full review <span class="qcard__cta__arrow">&rarr;</span></div>
+        </div>
+      </a>
+
+      <!-- Quick card 3 -->
+      <a href="#deep-3" class="qcard">
+        <div class="qcard__img">
+          <img src="https://m.media-amazon.com/images/I/311ow8X1kcL._AC_SL500_.jpg" alt="">
+          <div class="qcard__img__price">$12.99</div>
+        </div>
+        <div class="qcard__body">
+          <div class="qcard__persona">Show-car polymer-coating fan</div>
+          <div class="qcard__product">Adam's Total Interior &rarr;</div>
+          <p class="qcard__hook">SiO2 ceramic-infused. Self-crosslinking polymer that cures into a coating-like film. Matte, broad surface coverage.</p>
+          <div class="qcard__cta">Read the full review <span class="qcard__cta__arrow">&rarr;</span></div>
+        </div>
+      </a>
+
+      <!-- Quick card 4 -->
+      <a href="#deep-4" class="qcard">
+        <div class="qcard__img">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/B0GTWQ19PM.01.LZZZZZZZ.jpg" alt="">
+          <div class="qcard__img__price">$8.00</div>
+        </div>
+        <div class="qcard__body">
+          <div class="qcard__persona">First-time, needs it today</div>
+          <div class="qcard__product">Meguiar's Quik Interior D157 &rarr;</div>
+          <p class="qcard__hook">Under $10 at AutoZone, Walmart, Amazon. OEM matte, screen-safe, sunblocking. Mass-retail default.</p>
+          <div class="qcard__cta">Read the full review <span class="qcard__cta__arrow">&rarr;</span></div>
+        </div>
+      </a>
+
+      <!-- Quick card 5 -->
+      <a href="#deep-5" class="qcard">
+        <div class="qcard__img">
+          <img src="https://m.media-amazon.com/images/I/21AN8GQGn4L._AC_SL500_.jpg" alt="">
+          <div class="qcard__img__price">$17.59</div>
+        </div>
+        <div class="qcard__body">
+          <div class="qcard__persona">Leather-seat dilution fan</div>
+          <div class="qcard__product">CarPro PERL Coat &rarr;</div>
+          <p class="qcard__hook">Concentrate that dilutes 1:5. Lowest per-ounce-of-usable cost. 3-month protection claim.</p>
+          <div class="qcard__cta">Read the full review <span class="qcard__cta__arrow">&rarr;</span></div>
+        </div>
+      </a>
+
+      <!-- Quick card 6 -->
+      <a href="#deep-6" class="qcard">
+        <div class="qcard__img">
+          <img src="https://m.media-amazon.com/images/I/315+oIBqNdL._AC_SL500_.jpg" alt="">
+          <div class="qcard__img__price">$10.28</div>
+        </div>
+        <div class="qcard__body">
+          <div class="qcard__persona">Kid &amp; pet daily-driver, bulk cleaner</div>
+          <div class="qcard__product">P&amp;S Xpress Interior Cleaner &rarr;</div>
+          <p class="qcard__hook">Pure cleaning chemistry, no protectant. Gallon economy. The pro-shop default for high-frequency cleaning.</p>
+          <div class="qcard__cta">Read the full review <span class="qcard__cta__arrow">&rarr;</span></div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════ DEEP DIVE ════════════════════════ -->
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <h2>The full detail</h2>
+      </div>
+    </div>
+    <p class="section-intro">
+      The "ranking" here is not about which product cleans best in absolute terms — most premium interior detailers clean adequately for weekly maintenance. The ranking reflects which reader segment each product fits best, based on documented chemistry and credible third-party reviewer commentary.
+    </p>
+
+    <!-- Deep card 1 -->
+    <article id="deep-1" class="deep-card">
+      <div class="deep-card__img-col">
+        <div class="deep-card__img">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/B008LPEZ6Q.01.LZZZZZZZ.jpg" alt="">
+        </div>
+        <div class="deep-card__rank"><span>1</span>of six picks</div>
+      </div>
+
+      <div class="deep-card__body">
+        <div class="deep-card__persona">Best for the all-surface weekend enthusiast</div>
+        <h3 class="deep-card__heading">
+          <span class="reason">The one-bottle workflow:</span>
+          <a class="product-link" href="https://www.amazon.com/dp/B008LPEZ6Q?tag=mywildlifecam-20" rel="sponsored noopener">Chemical Guys InnerClean &rarr;</a>
+        </h3>
+        <p>Chemical Guys' product page lists <a href="#">InnerClean</a> as compatible with leather, plastic, vinyl, cloth, chrome, glass, carpet, metal, upholstery, rubber, and LCD screens. The combination of broad surface compatibility, matte OEM finish (no greasy sheen), and one-step cleaner-plus-protectant chemistry makes it the strongest single-product match for the reader who wants a workflow that fits in one bottle.</p>
+        <p>The Autopia forum thread comparing InnerClean to 303 noted it leaves "no residue like 303," meaning users perceive it as drier on the surface. The 4.7-star Amazon rating across over 6,000 reviews on the 16 oz variant is the strongest social proof in this lineup.</p>
+      </div>
+
+      <aside class="deep-card__rail">
+        <div class="deep-card__rail__price-label">Price from</div>
+        <div class="deep-card__rail__price">$11.99<small>/16oz</small></div>
+        <a class="deep-card__rail__cta" href="#">Check current price &rarr;</a>
+        <div class="deep-card__rail__cta-sub">Affiliate link &middot; Amazon</div>
+        <dl class="deep-card__rail__facts">
+          <dt>Surface coverage</dt><dd>Leather, plastic, vinyl, glass, screens</dd>
+          <dt>UV claim</dt><dd>Yes (no SPF number)</dd>
+          <dt>Combo?</dt><dd>Cleaner + protectant in one</dd>
+        </dl>
+      </aside>
+    </article>
+
+    <!-- Deep card 2 -->
+    <article id="deep-2" class="deep-card">
+      <div class="deep-card__img-col">
+        <div class="deep-card__img">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/B019X2BJSM.01.LZZZZZZZ.jpg" alt="">
+        </div>
+        <div class="deep-card__rank"><span>2</span>of six picks</div>
+      </div>
+
+      <div class="deep-card__body">
+        <div class="deep-card__persona">Best for the dark-dash daily driver in high sun</div>
+        <h3 class="deep-card__heading">
+          <span class="reason">The category UV benchmark:</span>
+          <a class="product-link" href="https://www.amazon.com/dp/B019X2BJSM?tag=mywildlifecam-20" rel="sponsored noopener">303 Aerospace Protectant &rarr;</a>
+        </h3>
+        <p><a href="#">303 Aerospace</a> is the category UV-protection benchmark. Gold Eagle (the manufacturer) documents SPF 40 and up to 98% UV block, claiming the highest UV protection of any surface protectant in the category. Larry Kosilla (AMMO NYC) and the AutoGeek detailing community consistently reference 303 as the dedicated protectant standard.</p>
+        <p>Important framing: 303 is a protectant, not a cleaner. It is applied to a clean surface, not to a dirty one. Pair with <a href="#">Chemical Guys InnerClean</a> for the cleaning step, then apply 303 to the dashboard and door cards for the UV-protection step.</p>
+      </div>
+
+      <aside class="deep-card__rail">
+        <div class="deep-card__rail__price-label">Price from</div>
+        <div class="deep-card__rail__price">$15.99<small>/16oz</small></div>
+        <a class="deep-card__rail__cta" href="#">Check current price &rarr;</a>
+        <div class="deep-card__rail__cta-sub">Affiliate link &middot; Amazon</div>
+        <dl class="deep-card__rail__facts">
+          <dt>Surface coverage</dt><dd>Vinyl, plastic, finished leather</dd>
+          <dt>UV claim</dt><dd>SPF 40, 98% UV block</dd>
+          <dt>Combo?</dt><dd>Protectant only (no cleaner)</dd>
+        </dl>
+      </aside>
+    </article>
+
+    <!-- Deep card 3 -->
+    <article id="deep-3" class="deep-card">
+      <div class="deep-card__img-col">
+        <div class="deep-card__img">
+          <img src="https://m.media-amazon.com/images/I/311ow8X1kcL._AC_SL500_.jpg" alt="">
+        </div>
+        <div class="deep-card__rank"><span>3</span>of six picks</div>
+      </div>
+
+      <div class="deep-card__body">
+        <div class="deep-card__persona">Best for the show-car owner wanting a polymer layer</div>
+        <h3 class="deep-card__heading">
+          <span class="reason">SiO2 ceramic-infused, no carnauba sheen:</span>
+          <a class="product-link" href="#" rel="sponsored noopener">Adam's Total Interior Cleaner &rarr;</a>
+        </h3>
+        <p><a href="#">Adam's Total Interior</a> is the technical differentiator in this lineup. The Amazon listing calls out SiO2 ceramic-infused technology, and the product page describes a "self-crosslinking polymer" that cures into a coating-like film rather than evaporating like a typical silicone protectant. The result: matte finish on hard non-porous surfaces, foaming action on textiles.</p>
+        <p>The trade-off: AutoGeek and AdamsForums threads note Adam's interior line is regarded as well-engineered but premium-priced compared to Meguiar's for equivalent surface cleaning. The polymer-coating angle is the reason to pick Adam's over <a href="#">InnerClean</a>.</p>
+      </div>
+
+      <aside class="deep-card__rail">
+        <div class="deep-card__rail__price-label">Price from</div>
+        <div class="deep-card__rail__price">$12.99<small>/16oz</small></div>
+        <a class="deep-card__rail__cta" href="#">Check current price &rarr;</a>
+        <div class="deep-card__rail__cta-sub">Affiliate link &middot; Amazon</div>
+        <dl class="deep-card__rail__facts">
+          <dt>Surface coverage</dt><dd>Dashes, panels, glass, screens, vinyl, plastic, leather, carpet</dd>
+          <dt>UV claim</dt><dd>Yes (no SPF figure)</dd>
+          <dt>Combo?</dt><dd>Polymer + SiO2 cleaner-protectant</dd>
+        </dl>
+      </aside>
+    </article>
+
+  </section>
+
+</article>
+
+</body>
+</html>
