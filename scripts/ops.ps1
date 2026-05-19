@@ -340,6 +340,25 @@ function HtmlEscape {
     return $Text.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;").Replace('"', "&quot;")
 }
 
+function Get-PieceUrl {
+    param([pscustomobject]$Piece)
+    $info = $siteInfo[$Piece.Site]
+    if (-not $info -or -not $info.Url) { return $null }
+    $type = if ($Piece.Type -eq "reviews") { "reviews" } else { "buyers-guides" }
+    return ($info.Url.TrimEnd('/') + "/$type/$($Piece.Slug)/")
+}
+
+function Get-ResearchUrl {
+    param([string]$File)
+    $abs = (Join-Path $researchDir $File) -replace '\\', '/'
+    return "file:///$abs"
+}
+
+function Get-CommitUrl {
+    param([string]$Hash)
+    return "https://github.com/champrt78/affiliate-kit/commit/$Hash"
+}
+
 function Format-RecentPieces {
     param([array]$Pieces, [int]$Limit = 20)
     $live = $Pieces | Where-Object { -not $_.IsDraft } | Sort-Object -Property PubDate -Descending | Select-Object -First $Limit
@@ -349,7 +368,13 @@ function Format-RecentPieces {
         $age = if ($p.AgeDays -ne $null) { "$($p.AgeDays)d" } else { "?" }
         $type = if ($p.Type -eq "reviews") { "review" } else { "guide" }
         $title = HtmlEscape $p.Title
-        $items += "<li><div class='piece-meta'><span class='piece-age'>$age</span><span class='piece-type'>$type</span></div><div class='piece-title'>$title</div><div class='piece-slug'>$($p.Slug)</div></li>"
+        $url = Get-PieceUrl -Piece $p
+        $inner = "<div class='piece-meta'><span class='piece-age'>$age</span><span class='piece-type'>$type</span></div><div class='piece-title'>$title</div><div class='piece-slug'>$($p.Slug)</div>"
+        if ($url) {
+            $items += "<li><a href='$url' target='_blank' rel='noopener' class='piece-link'>$inner</a></li>"
+        } else {
+            $items += "<li>$inner</li>"
+        }
     }
     return "<ul class='piece-list'>$items</ul>"
 }
@@ -396,7 +421,9 @@ function Build-SiteDrillDown {
     if ($Site.DraftCount -gt 0) {
         $items = ""
         foreach ($d in $Site.Drafts) {
-            $items += "<li><strong>$($d.Slug)</strong> · <code class='cmd-pill cmd-pill--inline'>/bottom-line-helper $($d.Slug)</code></li>"
+            $dUrl = Get-PieceUrl -Piece $d
+            $slugStr = if ($dUrl) { "<a href='$dUrl' target='_blank' rel='noopener' class='inline-link'><strong>$($d.Slug)</strong></a>" } else { "<strong>$($d.Slug)</strong>" }
+            $items += "<li>$slugStr · <code class='cmd-pill cmd-pill--inline'>/bottom-line-helper $($d.Slug)</code></li>"
         }
         $draftHtml = @"
     <section class="panel panel--warning">
@@ -416,7 +443,9 @@ function Build-SiteDrillDown {
         $items = ""
         foreach ($r in $relevant) {
             $title = HtmlEscape $r.Title
-            $items += "<li><div class='piece-meta'><span class='piece-age'>$($r.Age)d</span><span class='piece-type'>research</span></div><div class='piece-title'>$title</div><div class='piece-slug'>$($r.File)</div></li>"
+            $rUrl = Get-ResearchUrl -File $r.File
+            $rInner = "<div class='piece-meta'><span class='piece-age'>$($r.Age)d</span><span class='piece-type'>research</span></div><div class='piece-title'>$title</div><div class='piece-slug'>$($r.File)</div>"
+            $items += "<li><a href='$rUrl' target='_blank' rel='noopener' class='piece-link'>$rInner</a></li>"
         }
         $researchHtml = "<ul class='piece-list'>$items</ul>"
     } else {
@@ -429,7 +458,12 @@ function Build-SiteDrillDown {
     if ($siteRefresh.Count -gt 0) {
         $items = ""
         foreach ($p in $siteRefresh) {
-            $items += "<li><strong>$($p.Slug)</strong> · $($p.AgeDays)d old</li>"
+            $rfUrl = Get-PieceUrl -Piece $p
+            if ($rfUrl) {
+                $items += "<li><a href='$rfUrl' target='_blank' rel='noopener' class='inline-link'><strong>$($p.Slug)</strong></a> · $($p.AgeDays)d old</li>"
+            } else {
+                $items += "<li><strong>$($p.Slug)</strong> · $($p.AgeDays)d old</li>"
+            }
         }
         $refreshHtml = "<ul class='bare-list'>$items</ul>"
     } else {
@@ -466,7 +500,8 @@ function Build-SiteDrillDown {
         $items = ""
         foreach ($r in ($relevantNotes | Select-Object -First 3)) {
             $title = HtmlEscape $r.Title
-            $items += "<li>$title<span class='queue-meta'>research · $($r.Age)d old</span></li>"
+            $qUrl = Get-ResearchUrl -File $r.File
+            $items += "<li><a href='$qUrl' target='_blank' rel='noopener' class='queue-link'>$title<span class='queue-meta'>research · $($r.Age)d old</span></a></li>"
         }
         $queueHtml = "<ul class='queue-list'>$items</ul>"
     } else {
@@ -589,13 +624,15 @@ $commitItemsHtml = ""
 foreach ($c in $recentCommits) {
     $subj = HtmlEscape $c.Subject
     if ($subj.Length -gt 70) { $subj = $subj.Substring(0, 67) + "..." }
-    $commitItemsHtml += "<li><span class='commit-hash'>$($c.Hash)</span> <span class='muted'>$($c.Date)</span> $subj</li>"
+    $cUrl = Get-CommitUrl -Hash $c.Hash
+    $commitItemsHtml += "<li><a href='$cUrl' target='_blank' rel='noopener' class='commit-link'><span class='commit-hash'>$($c.Hash)</span> <span class='muted'>$($c.Date)</span> $subj</a></li>"
 }
 
 $researchAllItemsHtml = ""
 foreach ($r in $researchNotes) {
     $title = HtmlEscape $r.Title
-    $researchAllItemsHtml += "<li><div class='piece-meta'><span class='piece-age'>$($r.Age)d</span><span class='piece-type'>research</span></div><div class='piece-title'>$title</div></li>"
+    $rallUrl = Get-ResearchUrl -File $r.File
+    $researchAllItemsHtml += "<li><a href='$rallUrl' target='_blank' rel='noopener' class='piece-link'><div class='piece-meta'><span class='piece-age'>$($r.Age)d</span><span class='piece-type'>research</span></div><div class='piece-title'>$title</div></a></li>"
 }
 
 # === Build TODO list items ===
@@ -1429,6 +1466,55 @@ $html = @"
     color: var(--muted);
     margin: 0;
   }
+
+  /* Link styles for clickable list items */
+  .piece-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 4px 8px;
+    margin: 0 -8px;
+    border-radius: 3px;
+    border-left: 2px solid transparent;
+    transition: background 120ms ease, border-color 120ms ease;
+  }
+  .piece-link:hover {
+    background: var(--surface-2);
+    border-left-color: var(--steel);
+  }
+  .piece-link:hover .piece-title { color: var(--steel); }
+
+  .inline-link {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dotted var(--muted-deep);
+    transition: color 120ms ease, border-bottom-color 120ms ease;
+  }
+  .inline-link:hover {
+    color: var(--steel);
+    border-bottom-color: var(--steel);
+  }
+
+  .commit-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 3px 6px;
+    margin: 0 -6px;
+    border-radius: 2px;
+    transition: background 120ms ease;
+  }
+  .commit-link:hover { background: var(--surface-2); }
+  .commit-link:hover .commit-hash { color: var(--accent); }
+
+  .queue-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: color 120ms ease;
+  }
+  .queue-link:hover { color: var(--steel); }
+
   .empty-cmd {
     display: flex;
     flex-direction: column;
