@@ -52,8 +52,8 @@ products:
 pubDate: 2026-05-19
 lastUpdated: 2026-05-19
 images:
-  hero: "https://images.unsplash.com/photo-1474511320723-9a56873867b5?auto=format&fit=crop&w=2400&q=80"
-  heroCaption: "Wildlife at the edge of cover. Photos: Unsplash."
+  hero: "https://images.unsplash.com/photo-1761072969560-d59dab77ad21?auto=format&fit=crop&w=2400&q=80"
+  heroCaption: "Buck and doe at the water's edge. Photo: Unsplash."
 bottomLine:
   verdict: ""
   supporting: ""

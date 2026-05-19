@@ -24,9 +24,9 @@ Google these. Drop URLs (Amazon product page works, right-click the main pic →
 
 ## MyWildlifeCam article heroes (wildlife/trail-cam scenes, NOT the fox we already use)
 
-14. Hero for "Best Stealth Cam Trail Camera by Use Case" — trail cam mounted on tree, deer at edge of woods, wildlife at dusk, anything woods/wildlife (wide aspect)
-15. Hero for "Best Trail Cameras for Backyard Wildlife" — buck at dawn, raccoon, owl, suburban wildlife (wide aspect)
+14. ~~Hero for "Best Stealth Cam Trail Camera by Use Case"~~ ✅ (buck and doe at water's edge, photo-1761072969560-d59dab77ad21)
+15. ~~Hero for "Best Trail Cameras for Backyard Wildlife"~~ ✅ (raccoon in dappled forest, photo-1727891936309-c4c1ce50a0cc)
 
 ## Spypoint Flex-M review
 
-16. Wider/less-zoomed Spypoint Flex-M shot — or one with the camera mounted on a tree in-context
+16. ~~Wider/less-zoomed Spypoint Flex-M shot~~ ✅ — fixed via CSS (imageScale 1.8 → 1.15, hero aspect 16:9 → 16:7 with max-height 360px). Better Flex-M photo can replace later if found.

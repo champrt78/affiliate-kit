@@ -15,10 +15,9 @@ lastUpdated: 2026-05-17
 images:
   hero: "https://www.spypoint.com/on/demandware.static/-/Sites-physical_product_m_catalog/default/dw5517eccf/images/large/flex-m-main-1.png"
   heroCaption: "Spypoint Flex-M cellular trail camera. Photo: Spypoint manufacturer media kit."
-  # Spypoint's manufacturer PNG centers the product in ~25% of the canvas
-  # with whitespace; Trailcampro's Stealth Cam composite fills ~70% tightly.
-  # Scale Spypoint up to land both products at consistent visual size.
-  imageScale: 1.8
+  # Spypoint's manufacturer PNG has whitespace around the product.
+  # 1.15 gives it a mild boost without over-zooming (1.8 was way too much).
+  imageScale: 1.15
 bottomLine:
   verdict: "Buy it if you want convenience, skip it if you want gallery-quality photos."
   supporting: "The Flex-M is the smart starting point if you want cellular trail-cam photos without committing to a monthly bill. The dual-SIM auto-carrier-detection solves the most common cellular failure mode, and the free 100-photo plan covers casual backyard use indefinitely. The caveat is image quality under motion, which is just-okay rather than great."
