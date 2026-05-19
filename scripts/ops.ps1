@@ -379,7 +379,7 @@ function Build-SiteDrillDown {
         }
         $researchHtml = "<ul class='piece-list'>$items</ul>"
     } else {
-        $researchHtml = "<p class='empty'>No research notes filed for this site yet. Use <code class='inline'>/research-product</code> or <code class='inline'>/scout-topics --&lt;category&gt;</code>.</p>"
+        $researchHtml = "<div class='empty-cmd'><div class='empty-cmd__label'>No research yet — run this</div><code class='zero-cmd'>/research-product `"$SiteSlug topic`"</code></div>"
     }
 
     # Refresh candidates for this site
@@ -392,7 +392,7 @@ function Build-SiteDrillDown {
         }
         $refreshHtml = "<ul class='bare-list'>$items</ul>"
     } else {
-        $refreshHtml = "<p class='empty'>No pieces past 90 days.</p>"
+        $refreshHtml = "<div class='empty-cmd'><div class='empty-cmd__label'>All pieces fresh — next sweep</div><code class='zero-cmd'>pwsh scripts/list-links.ps1 -Site $SiteSlug</code></div>"
     }
 
     $panelClass = "do-next-panel do-next-panel--$($Action.PriorityLabel)"
@@ -578,13 +578,15 @@ $html = @"
     min-width: 0;
   }
   .topbar__brand {
-    font-family: var(--font-serif);
-    font-size: 18px;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 500;
     color: var(--muted);
-    letter-spacing: -0.01em;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
     white-space: nowrap;
   }
-  .topbar__brand em { font-style: italic; color: var(--muted-deep); }
+  .topbar__brand em { font-style: normal; color: var(--muted-deep); }
 
   .site-select {
     appearance: none;
@@ -636,6 +638,7 @@ $html = @"
     font-size: 11px;
     color: var(--ink);
     white-space: nowrap;
+    font-variant-numeric: tabular-nums;
   }
   .topbar__goal-value em { font-style: italic; color: var(--steel); }
   .topbar__goal-track {
@@ -842,12 +845,14 @@ $html = @"
 
   /* Mini goal in sidebar */
   .mini-goal__value {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     font-size: 18px;
+    font-weight: 600;
     color: var(--ink);
     margin-bottom: 4px;
+    font-variant-numeric: tabular-nums;
   }
-  .mini-goal__value em { font-style: italic; color: var(--steel); }
+  .mini-goal__value em { font-style: normal; color: var(--steel); }
   .mini-goal__sub {
     font-family: var(--font-mono);
     font-size: 10px;
@@ -1009,11 +1014,14 @@ $html = @"
     flex-shrink: 0;
   }
   .panel h3 {
-    font-family: var(--font-serif);
-    font-size: 16px;
-    line-height: 1.1;
-    margin: 0 0 8px;
-    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin: 0 0 10px;
+    color: var(--ink-soft);
   }
   .panel p { margin: 0 0 8px; color: var(--ink-soft); font-size: 12px; }
   .panel p:last-child { margin-bottom: 0; }
@@ -1097,6 +1105,7 @@ $html = @"
     color: var(--muted);
     margin-bottom: 3px;
     letter-spacing: 0.02em;
+    font-variant-numeric: tabular-nums;
   }
   .piece-age {
     color: var(--steel);
@@ -1120,8 +1129,33 @@ $html = @"
   .empty {
     font-size: 12px;
     color: var(--muted);
-    font-style: italic;
     margin: 0;
+  }
+  .empty-cmd {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 4px 0;
+  }
+  .empty-cmd__label {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted-deep);
+  }
+  .zero-cmd {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-soft);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 4px 9px;
+    border-radius: 3px;
+    opacity: 0.7;
+    user-select: all;
+    align-self: flex-start;
   }
   code.inline {
     font-family: var(--font-mono);
@@ -1164,12 +1198,15 @@ $html = @"
     margin-bottom: 4px;
   }
   .stat-box__value {
-    font-family: var(--font-serif);
-    font-size: 22px;
+    font-family: var(--font-sans);
+    font-size: 24px;
+    font-weight: 600;
     line-height: 1;
     color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
   }
-  .stat-box__value em { font-style: italic; color: var(--steel); }
+  .stat-box__value em { font-style: normal; color: var(--steel); }
 
   /* Goal big bar */
   .goal-section {
@@ -1188,12 +1225,15 @@ $html = @"
     flex-wrap: wrap;
   }
   .goal-section h3 {
-    font-family: var(--font-serif);
-    font-size: 17px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     margin: 0;
-    color: var(--ink);
+    color: var(--ink-soft);
   }
-  .goal-section h3 em { font-style: italic; color: var(--steel); }
+  .goal-section h3 em { font-style: normal; color: var(--steel); font-variant-numeric: tabular-nums; }
   .goal-pace {
     font-family: var(--font-mono);
     font-size: 11px;
@@ -1277,6 +1317,10 @@ $html = @"
     font-family: var(--font-mono);
     font-size: 10px;
     color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .goal-total__head .value {
+    font-variant-numeric: tabular-nums;
   }
 </style>
 </head>
@@ -1376,7 +1420,7 @@ $goalRowsHtml
       <div class="panel-grid panel-grid--3col flex-fill">
         <section class="panel">
           <h3>TODO Now ($($todoNow.Count))</h3>
-          $( if ($todoSidebarHtml) { "<ul class='bare-list'>$todoSidebarHtml</ul>" } else { "<p class='empty'>Nothing in TODO Now.</p>" } )
+          $( if ($todoSidebarHtml) { "<ul class='bare-list'>$todoSidebarHtml</ul>" } else { "<div class='empty-cmd'><div class='empty-cmd__label'>Inbox clean — capture an idea</div><code class='zero-cmd'>/capture &lt;idea&gt;</code></div>" } )
         </section>
         <section class="panel">
           <h3>Research notes ($($researchNotes.Count))</h3>
