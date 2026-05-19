@@ -6,44 +6,58 @@ const picks = [
   {
     slug: "quickpicks-soap",
     name: "Chemical Guys Mr. Pink",
+    shortName: "Mr. Pink",
     category: "Car wash soap",
     blurb: "Pink, foamy, gentle on paint. Pour a cap into a bucket, mix with your hose, you're done. No fancy dilution math.",
+    asin: "B0009IQXHM",
   },
   {
     slug: "best-interior-cleaner-for-home-detailers",
     name: "Chemical Guys InnerClean",
+    shortName: "InnerClean",
     category: "Interior cleaner",
     blurb: "Works on every surface inside the car. No greasy finish, smells great. Spray onto a microfiber, wipe, done.",
+    asin: "B008LPEZ6Q",
   },
   {
     slug: "quickpicks-wheel",
     name: "Meguiar's Ultimate All Wheel Cleaner",
+    shortName: "Meguiar's Ultimate",
     category: "Wheel cleaner",
     blurb: "Ten bucks at AutoZone. Turns purple on brake dust so you can see it working. Safe on every wheel finish.",
+    asin: "B072FCF2ZF",
   },
   {
     slug: "quickpicks-microfiber",
     name: "Meguiar's Supreme Shine Microfiber Towels (6-pack)",
+    shortName: "Microfiber 6-pack",
     category: "Detailing rags",
     blurb: "Six 16x16 towels. Use one for soap, one for drying, rotate clean ones in. Do not drop on the ground. If you do, that one is dead.",
+    asin: "B003J3JFLE",
   },
   {
     slug: "quickpicks-mitt",
     name: "Chemical Guys Chenille Microfiber Wash Mitt",
+    shortName: "Chenille Mitt",
     category: "Wash mitt",
     blurb: "Wash with this, not a sponge. Sponges drag dirt back across paint. A mitt holds the dirt away from the fibers touching your car.",
+    asin: "B003TLU6QU",
   },
   {
     slug: "quickpicks-glass",
     name: "Stoner Invisible Glass",
-    category: "Glass cleaner (optional)",
-    blurb: "Aerosol can, five bucks. Sprays foamy, wipes streak-free. Do not use on tinted rear windshields — it can eat the tint film over time.",
+    shortName: "Invisible Glass",
+    category: "Glass cleaner · optional",
+    blurb: "Aerosol can, five bucks. Sprays foamy, wipes streak-free. Do not use on tinted rear windshields. It can eat the tint film over time.",
+    asin: "B0009IQ02G",
   },
 ];
+
+const imgUrl = (asin: string) => `https://images-na.ssl-images-amazon.com/images/P/${asin}.01.LZZZZZZZ.jpg`;
 ---
 <MainLayout
   title="Quick Picks · DetailerPicks"
-  description="No time to read? These six products are inexpensive, mass-retail accessible, and work perfectly for a weekend driveway car wash without ruining your paint or wheels."
+  description="No time to read? Six mass-retail products under $80 total for a weekend driveway car wash that won't ruin your paint or wheels."
 >
   <section class="qp-hero">
     <div class="qp-hero__inner">
@@ -52,59 +66,68 @@ const picks = [
       <p class="qp-hero__lede">
         Six products you can buy on Amazon for under $80 total. Mass-retail
         accessible, safe on paint, ceramic-coating friendly, and good enough
-        that a weekend driveway wash leaves your car better than the
-        automatic carwash ever will.
+        that a weekend driveway wash leaves your car better than the automatic
+        carwash ever will.
       </p>
       <p class="qp-hero__sub">
         Each link goes through our affiliate redirect to Amazon. We earn a
-        small commission at no extra cost to you, and we picked each one
-        because it actually works, not because it pays the best.
+        small commission at no extra cost to you.
       </p>
     </div>
   </section>
 
-  <section class="qp-grid-wrap">
-    <div class="qp-grid">
-      {picks.map((p) => (
-        <article class="qp-card">
-          <div class="qp-card__category">{p.category}</div>
-          <h2 class="qp-card__name">{p.name}</h2>
-          <p class="qp-card__blurb">{p.blurb}</p>
-          <a
-            href={cloakedLink({ slug: p.slug })}
-            class="qp-card__buy"
-            rel="sponsored noopener"
-            target="_blank"
-          >
-            Buy on Amazon
-            <span class="qp-card__arrow" aria-hidden="true">&rarr;</span>
-          </a>
-        </article>
-      ))}
-
-      <article class="qp-card qp-card--tip">
-        <div class="qp-card__category">Pro tip · no purchase needed</div>
-        <h2 class="qp-card__name">Use newspaper on the windshield.</h2>
-        <p class="qp-card__blurb">
-          Crumpled newspaper cleans glass better than most microfiber towels.
-          The ink does not transfer to glass anymore (modern ink chemistry),
-          the paper is mildly abrasive without scratching, and it leaves zero
-          streaks. Spray your glass cleaner, wipe with newspaper, throw the
-          paper away. Done.
-        </p>
-        <div class="qp-card__tip-tag">Editor's note</div>
+  <section class="qp-picks">
+    {picks.map((p, i) => (
+      <article class="qp-pick">
+        <div class="qp-pick__num">{String(i + 1).padStart(2, '0')}</div>
+        <div class="qp-pick__body">
+          <div class="qp-pick__cat">{p.category}</div>
+          <h2 class="qp-pick__name">{p.name}</h2>
+          <p class="qp-pick__blurb">{p.blurb}</p>
+        </div>
+        <div class="qp-pick__img">
+          <span class="qp-pick__img__fallback">{p.shortName}</span>
+          <img src={imgUrl(p.asin)} alt={p.name} loading="lazy" onerror="this.style.display='none'" />
+        </div>
+        <a href={cloakedLink({ slug: p.slug })} class="qp-pick__buy" rel="sponsored noopener" target="_blank">
+          Buy on Amazon <span aria-hidden="true">&rarr;</span>
+        </a>
       </article>
-    </div>
+    ))}
+  </section>
+
+  <section class="qp-tip-wrap">
+    <aside class="qp-tip">
+      <div class="qp-tip__text">
+        <div class="qp-tip__eyebrow">Editor's note · no purchase needed</div>
+        <h3 class="qp-tip__title">Use newspaper on the windshield. Yes, really.</h3>
+        <p class="qp-tip__detail">
+          Modern ink doesn't transfer to glass anymore. Paper is mildly abrasive
+          without scratching. Spray your glass cleaner, wipe with crumpled
+          newspaper, throw the paper away. Works better than most microfiber
+          towels, costs nothing.
+        </p>
+      </div>
+      <div class="qp-tip__badge" aria-hidden="true">
+        <span class="qp-tip__badge__fallback">&para;</span>
+        <img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Lewis_Hine,_Hartford_Newsboys,_1909,_NGA_115839.jpg?width=240"
+          alt=""
+          loading="lazy"
+          onerror="this.style.display='none'"
+        />
+      </div>
+    </aside>
   </section>
 
   <section class="qp-after">
     <div class="qp-after__inner">
       <h2 class="qp-after__title">Want the deep version?</h2>
       <p class="qp-after__lede">
-        These six picks are the no-brainer starter kit. If you want the
-        full editorial deep-dive on any of these categories with spec
-        comparisons across 5 to 7 products and reader-segment fit, the
-        buying guides go deeper.
+        These six picks are the no-brainer starter kit. If you want the full
+        editorial deep-dive on any of these categories with spec comparisons
+        across 5 to 7 products and reader-segment fit, the buying guides go
+        deeper.
       </p>
       <div class="qp-after__links">
         <a href="/buyers-guides/best-car-wash-soap-for-home-detailers/" class="qp-after__link">Best car wash soap &rarr;</a>
@@ -119,19 +142,15 @@ const picks = [
 <style>
   /* Hero */
   .qp-hero {
-    background: var(--color-paper);
     padding: var(--space-12) var(--space-6) var(--space-8);
+    background: var(--color-cream);
     border-bottom: 1px solid var(--color-sage-light);
   }
-  .qp-hero__inner {
-    max-width: 740px;
-    margin: 0 auto;
-  }
+  .qp-hero__inner { max-width: 760px; margin: 0 auto; }
   .qp-hero__eyebrow {
-    font-family: var(--font-sans);
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--color-forest);
     margin-bottom: var(--space-4);
@@ -148,11 +167,11 @@ const picks = [
   }
   .qp-hero__title {
     font-family: var(--font-serif);
-    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-size: clamp(2.25rem, 4.5vw, 3.25rem);
     line-height: 1.04;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.022em;
     color: var(--color-paper-ink);
-    margin: 0 0 var(--space-5);
+    margin: 0 0 var(--space-4);
     font-weight: 400;
   }
   .qp-hero__title em {
@@ -161,141 +180,208 @@ const picks = [
   }
   .qp-hero__lede {
     font-family: var(--font-sans);
-    font-size: 1.1875rem;
+    font-size: 17px;
     line-height: 1.55;
     color: var(--color-paper-ink);
-    margin: 0 0 var(--space-4);
+    margin: 0 0 var(--space-3);
+    max-width: 60ch;
   }
   .qp-hero__sub {
-    font-family: var(--font-sans);
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: 13px;
     color: var(--color-muted);
-    margin: 0;
     font-style: italic;
+    margin: 0;
   }
 
-  /* Grid */
-  .qp-grid-wrap {
-    background: var(--color-paper);
-    padding: var(--space-10) var(--space-6);
-  }
-  .qp-grid {
-    max-width: var(--container-max, 1240px);
+  /* Picks — 4-column grid */
+  .qp-picks {
+    max-width: 1040px;
     margin: 0 auto;
+    padding: var(--space-10) var(--space-6) var(--space-6);
+  }
+  .qp-pick {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: var(--space-5);
+    grid-template-columns: 72px 1fr 110px auto;
+    gap: var(--space-6);
+    padding: var(--space-6) 0;
+    border-bottom: 1px solid var(--color-sage-light);
+    align-items: center;
   }
-
-  /* Card */
-  .qp-card {
-    background: var(--color-cream);
-    border: 1px solid var(--color-sage-light);
-    border-radius: 4px;
-    padding: var(--space-6);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    transition: border-color 200ms ease, transform 200ms ease;
+  .qp-pick:first-child { padding-top: 0; }
+  .qp-pick:last-child { border-bottom: 0; }
+  .qp-pick__num {
+    font-family: var(--font-serif);
+    font-size: 60px;
+    font-style: italic;
+    color: var(--color-forest);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    align-self: start;
+    padding-top: 6px;
   }
-  .qp-card:hover {
-    border-color: var(--color-forest);
-    transform: translateY(-2px);
-  }
-  .qp-card__category {
-    font-family: var(--font-sans);
+  .qp-pick__body { min-width: 0; }
+  .qp-pick__cat {
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--color-forest);
+    color: var(--color-muted);
+    margin-bottom: 6px;
   }
-  .qp-card__name {
+  .qp-pick__name {
     font-family: var(--font-serif);
-    font-size: 24px;
+    font-size: 26px;
     line-height: 1.15;
     letter-spacing: -0.012em;
     color: var(--color-paper-ink);
-    margin: 0;
+    margin: 0 0 8px;
     font-weight: 400;
   }
-  .qp-card__blurb {
+  .qp-pick__blurb {
     font-family: var(--font-sans);
     font-size: 14px;
     line-height: 1.55;
     color: var(--color-paper-ink);
     margin: 0;
-    flex-grow: 1;
+    max-width: 56ch;
   }
-  .qp-card__buy {
+  .qp-pick__img {
+    width: 110px;
+    height: 110px;
+    background: var(--color-paper-muted);
+    border: 1px solid var(--color-sage-light);
+    border-radius: 4px;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    position: relative;
+  }
+  .qp-pick__img__fallback {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    z-index: 0;
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--color-muted);
+    font-size: 12px;
+    text-align: center;
+    padding: 8px;
+  }
+  .qp-pick__img img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 6px;
+    background: var(--color-cream);
+  }
+  .qp-pick__buy {
     font-family: var(--font-sans);
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     color: var(--color-cream);
     background: var(--color-paper-ink);
-    padding: var(--space-3) var(--space-4);
+    padding: 12px 18px;
     border-radius: 2px;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    gap: var(--space-2);
-    margin-top: var(--space-2);
+    gap: 8px;
+    white-space: nowrap;
     transition: background 200ms ease, transform 200ms ease;
-    align-self: flex-start;
   }
-  .qp-card__buy:hover {
+  .qp-pick__buy:hover {
     background: var(--color-forest);
     transform: translateX(2px);
   }
-  .qp-card__arrow {
-    transition: transform 180ms ease;
-  }
-  .qp-card__buy:hover .qp-card__arrow {
-    transform: translateX(3px);
-  }
 
-  /* Pro-tip card variant */
-  .qp-card--tip {
+  /* Pro-tip card at end */
+  .qp-tip-wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-6) var(--space-12);
+  }
+  .qp-tip {
     background: var(--color-paper-ink);
     color: var(--color-cream);
-    border-color: var(--color-paper-ink);
-    position: relative;
+    border-radius: 4px;
+    padding: var(--space-6) var(--space-8);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-6);
+    align-items: center;
   }
-  .qp-card--tip .qp-card__category {
-    color: var(--color-brass-soft, #F7E9C8);
-  }
-  .qp-card--tip .qp-card__name {
-    color: var(--color-cream);
-    font-style: italic;
-  }
-  .qp-card--tip .qp-card__blurb {
-    color: rgba(251, 250, 247, 0.85);
-  }
-  .qp-card__tip-tag {
+  .qp-tip__eyebrow {
     font-family: var(--font-mono, "JetBrains Mono", ui-monospace, Consolas, monospace);
-    font-size: 11px;
-    letter-spacing: 0.04em;
+    font-size: 10px;
+    letter-spacing: 0.16em;
     color: var(--color-brass-soft, #F7E9C8);
-    margin-top: var(--space-2);
-    opacity: 0.7;
+    text-transform: uppercase;
+    margin-bottom: 8px;
   }
-  .qp-card--tip:hover {
-    transform: translateY(-2px);
-    border-color: var(--color-paper-ink);
+  .qp-tip__title {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    line-height: 1.2;
+    color: var(--color-cream);
+    margin: 0 0 8px;
+    font-style: italic;
+    font-weight: 400;
+  }
+  .qp-tip__detail {
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(251, 250, 247, 0.78);
+    margin: 0;
+    max-width: 56ch;
+  }
+  .qp-tip__badge {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(247, 233, 200, 0.25);
+    background: rgba(247, 233, 200, 0.05);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+  .qp-tip__badge img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.05);
+    opacity: 0.9;
+  }
+  .qp-tip__badge__fallback {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-serif);
+    font-size: 72px;
+    line-height: 0.7;
+    color: var(--color-brass-soft, #F7E9C8);
+    font-style: italic;
+    opacity: 0.6;
   }
 
-  /* After-section / links to deep guides */
+  /* After-section */
   .qp-after {
     background: var(--color-paper-muted);
     padding: var(--space-12) var(--space-6);
     border-top: 1px solid var(--color-sage-light);
   }
-  .qp-after__inner {
-    max-width: 740px;
-    margin: 0 auto;
-  }
+  .qp-after__inner { max-width: 760px; margin: 0 auto; }
   .qp-after__title {
     font-family: var(--font-serif);
     font-size: clamp(1.75rem, 3vw, 2.25rem);
@@ -307,7 +393,7 @@ const picks = [
   }
   .qp-after__lede {
     font-family: var(--font-sans);
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.55;
     color: var(--color-paper-ink);
     margin: 0 0 var(--space-6);
@@ -315,33 +401,43 @@ const picks = [
   .qp-after__links {
     display: flex;
     flex-direction: column;
-    gap: var(--space-2);
+    gap: var(--space-1);
   }
   .qp-after__link {
     font-family: var(--font-sans);
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
     color: var(--color-forest);
     text-decoration: none;
     padding: var(--space-2) 0;
     border-bottom: 1px solid var(--color-sage-light);
-    transition: color 180ms ease, padding-left 180ms ease;
+    transition: padding-left 180ms ease, color 180ms ease;
   }
   .qp-after__link:hover {
-    color: var(--color-forest-mid);
     padding-left: var(--space-2);
+    color: var(--color-forest-mid);
   }
-  .qp-after__link:last-child {
-    border-bottom: 0;
-  }
+  .qp-after__link:last-child { border-bottom: 0; }
 
-  @media (max-width: 760px) {
-    .qp-hero,
-    .qp-after {
-      padding: var(--space-10) var(--space-4);
+  @media (max-width: 880px) {
+    .qp-pick {
+      grid-template-columns: 48px 1fr;
+      grid-template-rows: auto auto;
+      gap: var(--space-3) var(--space-3);
+      padding: var(--space-5) 0;
     }
-    .qp-grid-wrap {
-      padding: var(--space-8) var(--space-4);
+    .qp-pick__num { font-size: 40px; padding-top: 2px; }
+    .qp-pick__img {
+      grid-column: 1 / -1;
+      width: 100%;
+      height: 140px;
     }
+    .qp-pick__buy {
+      grid-column: 1 / -1;
+      align-self: start;
+    }
+    .qp-pick__name { font-size: 22px; }
+    .qp-tip { grid-template-columns: 1fr; gap: var(--space-3); padding: var(--space-5); }
+    .qp-tip__badge { display: none; }
   }
 </style>
