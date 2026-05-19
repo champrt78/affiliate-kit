@@ -181,9 +181,19 @@ function Get-SiteState {
     }
 }
 
+$siteShorthand = @{
+    "mywildlifecam"   = "mwc"
+    "detailerpicks"   = "dp"
+    "fussybean"       = "fb"
+    "starteraquarium" = "sa"
+    "gameovergear"    = "gog"
+}
+
 function Get-NextActionForSite {
     param([pscustomobject]$Site)
     $slug = $Site.Slug
+    $shorthand = $siteShorthand[$slug]
+    $scoutCmd = if ($shorthand) { "/scout-topics --$shorthand" } else { "/scout-topics" }
 
     if ($Site.DraftCount -gt 0) {
         $first = $Site.Drafts | Select-Object -First 1
@@ -211,8 +221,8 @@ function Get-NextActionForSite {
         $sinceLast = if ($Site.DaysSinceLast) { "$($Site.DaysSinceLast)d since last" } else { "no pieces yet" }
         return [pscustomobject]@{
             Headline = "Ship the next piece — behind cadence"
-            Reason   = "$sinceLast, target $($Site.CadenceTarget)d. Run /scout-topics for candidates."
-            Command  = "/scout-topics"
+            Reason   = "$sinceLast, target $($Site.CadenceTarget)d. Run scout for candidates."
+            Command  = $scoutCmd
             Priority = 2
             PriorityLabel = "high"
         }
@@ -222,7 +232,7 @@ function Get-NextActionForSite {
     return [pscustomobject]@{
         Headline = "On clock — next piece due in ~$daysToNext day(s)"
         Reason   = "Cadence healthy. Use the time to scout topics or queue research."
-        Command  = "/scout-topics"
+        Command  = $scoutCmd
         Priority = 5
         PriorityLabel = "ok"
     }

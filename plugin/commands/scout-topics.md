@@ -1,10 +1,23 @@
 ---
-description: Surface candidate topics to write about next across the affiliate portfolio. With no flags, proposes 5-10 ideas based on site niches + content gaps + community signal. With a seed flag (e.g. --wheel-cleaning, --cellular-trail-cam, --espresso-grinder), deep-dives into that category and surfaces specific products + sub-angles. Use when Ray asks "what should I write next" or "scout topics".
+description: Surface candidate topics to write about next across the affiliate portfolio. Three modes — (1) no flags = portfolio-wide candidate ranking, (2) --site <slug> = scope to one site's gaps + research-ready topics + next-piece queue, (3) --<category-seed> like --wheel-cleaning = parallel research deep-dive into that category. Use when Ray asks "what should I write next" or "scout topics".
 ---
 
-You are being invoked because Ray wants candidate topics to write about. The user's input follows `/scout-topics [--<seed>]`.
+You are being invoked because Ray wants candidate topics to write about. The user's input follows `/scout-topics [--site <slug>] [--<seed>]`.
 
-## Two modes
+## Three modes
+
+**Quick decision tree:**
+- `--site <slug>` alone (or shorthand `--mwc`, `--dp`, `--fb`, `--sa`, `--gog`) → **Mode B (site focus)**
+- `--<category-seed>` alone (e.g. `--wheel-cleaning`) → **Mode C (category deep-dive)** — routes to whichever site matches the keyword
+- `--site <slug> --<category-seed>` together → **Mode C scoped to that site**
+- No flags → **Mode A (portfolio-wide)**
+
+Shorthand site aliases:
+- `--mwc` = `--site mywildlifecam`
+- `--dp` = `--site detailerpicks`
+- `--fb` = `--site fussybean`
+- `--sa` = `--site starteraquarium`
+- `--gog` = `--site gameovergear`
 
 ### Mode A — No seed flag
 
@@ -34,7 +47,50 @@ Output format:
 
 End with a `Next:` line recommending ONE: `Next: /research-product "<top pick>" — then /scaffold-piece + Bottom Line.`
 
-### Mode B — Seed flag
+### Mode B — Site focus (`--site <slug>` or shorthand `--mwc` / `--dp` / etc.)
+
+Ray says `/scout-topics --site mywildlifecam` or `/scout-topics --mwc`. Scope the scout to ONE site. NO web research needed — pull entirely from local data because the site's content + research notes already exist.
+
+Steps:
+
+1. **Survey the site.** List shipped pieces in `sites/<slug>/src/content/{reviews,buyers-guides}/` with their slugs + types.
+
+2. **Pull site config.** Read `sites/<slug>/src/data/site-config.json` to see `categoryPillars` + reader segments. Categories with ZERO or ONE piece shipped are gaps.
+
+3. **Pull research notes for this site.** Walk `docs/research/` and filter to files whose names or content match the site's keywords (use the keyword map: mywildlifecam = trail-cam, cellular, tactacam, spypoint, moultrie, stealth cam, bushnell, muddy, browning; detailerpicks = detail, wash, foam, soap, ceramic, polish, wheel, wax, sealant, mitt, shampoo; etc.). Surface every piece-shaped subsection in those notes as a candidate.
+
+4. **Cross-reference shipped vs research-ready.** A candidate is "high readiness" if research exists AND it hasn't been shipped yet.
+
+5. **Apply cadence pressure.** Use the site's cadence target (mywildlifecam = 7d, detailerpicks = 18d, others = 180d). If days-since-last-shipped exceeds the target, mark this scout as "behind cadence — pick one now."
+
+Output format:
+
+```
+## Scout: <site> · <X> live · last shipped <N>d ago
+
+### Already shipped on this site (skip these)
+- <slug> (<review|guide>)
+- ...
+
+### HIGH readiness (research exists, not yet shipped)
+1. **<piece title>** — type: review|guide. Why this is loaded: <1-line citing the research>. Picks/products if known: <list>.
+2. ...
+
+### MEDIUM readiness (category gap, no research yet)
+- **<piece title>** — type: <review|guide>. Why this category matters: <site-config rationale>.
+
+### SPECULATIVE (needs /research-product first)
+- <topic>
+
+### Recommended next
+**<title>** — type: <review|guide>. <Why this one over the others — keyword volume / cross-link potential / cadence pressure.>
+
+Run: `/scaffold-piece site=<slug> type=<review|guide> slug=<slug> ...` to ship it as DRAFT.
+```
+
+End with the literal `/scaffold-piece ...` command pre-filled with the recommended pick's args so Ray can run it.
+
+### Mode C — Category seed (`--<seed>` without `--site`)
 
 Ray says `/scout-topics --wheel-cleaning` or `/scout-topics --cellular-trail-cam` or similar. The seed is the category/topic to dig into.
 
@@ -94,10 +150,13 @@ Pick one: `/research-product "<title>"` to do the full multi-source deep-dive, t
 ## Example invocations
 
 ```
-/scout-topics
-/scout-topics --wheel-cleaning
-/scout-topics --cellular-trail-cam
-/scout-topics --espresso-grinder
+/scout-topics                              # Mode A — portfolio-wide ranking
+/scout-topics --mwc                        # Mode B — scope to mywildlifecam (shorthand)
+/scout-topics --site mywildlifecam         # Mode B — same as --mwc, explicit
+/scout-topics --dp                         # Mode B — scope to detailerpicks
+/scout-topics --wheel-cleaning             # Mode C — category deep-dive (routes to detailerpicks)
+/scout-topics --cellular-trail-cam         # Mode C — category deep-dive (routes to mywildlifecam)
+/scout-topics --mwc --browning-strike-force # Mode B+C — site + category
 ```
 
 ## When NOT to use this
