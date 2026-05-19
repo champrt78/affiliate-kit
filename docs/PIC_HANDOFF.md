@@ -1,5 +1,9 @@
 # Pics needed
 
+**Tag-team mode when Ray's back:** I open each product page, Ray right-clicks the main image + copies URL + pastes, I confirm + wire + commit, next.
+
+
+
 Google these. Drop URLs (Amazon product page works, right-click the main pic → "Copy image address").
 
 ## Products

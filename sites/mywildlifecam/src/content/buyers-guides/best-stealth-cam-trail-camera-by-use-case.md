@@ -27,7 +27,7 @@ products:
   - name: "Stealth Cam Revolver Pro 2.0 360"
     brand: "Stealth Cam"
     affiliateUrl: "https://www.amazon.com/Stealth-Cam-Revolver-Cellular-Demand/dp/B0DVVJR634?tag=mywildlifecam-20"
-    image: "https://m.media-amazon.com/images/I/41IqI1UpKlL._AC_SL1000_.jpg"
+    image: "https://m.media-amazon.com/images/I/71gsR76nTXL._AC_SL1500_.jpg"
     tagline: "360-degree cellular with 1-6 selectable PIR zones. 40MP, 1440P, 0.22s trigger. TrailCamPro 92/100 in open ground; vegetation false-triggers in brush."
     bestFor: "Open-area property owners covering food plots, driveways, or clearings"
     priceFrom: 83.09
