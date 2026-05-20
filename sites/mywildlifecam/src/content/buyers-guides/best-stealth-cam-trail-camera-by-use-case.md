@@ -41,7 +41,8 @@ products:
     priceFrom: 89.99
   - name: "Stealth Cam QS24"
     brand: "Stealth Cam"
-    affiliateUrl: "https://www.amazon.com/s?k=stealth+cam+QS24&tag=mywildlifecam-20"
+    affiliateUrl: "https://www.amazon.com/Stealth-Cam-0-8-Second-Trigger-Detection/dp/B0GD759N9D?tag=mywildlifecam-20"
+    image: "https://m.media-amazon.com/images/I/41SX0oOyvcL._AC_.jpg"
     tagline: "Entry-level non-cellular. 24MP, 720P, 80 ft detection, LoGlo IR. The first-camera or zero-subscription gift pick."
     bestFor: "First-time buyers, zero-subscription gift buyers, kids' woodlot projects"
     priceFrom: 79.99
