@@ -2,20 +2,24 @@
 
 > Canonical open-work list per global CLAUDE.md. Update as we work. `cat docs/TODO.md` or open in VS Code any time. For deeper context on past wins + walkthroughs, see `docs/RAY_QUEUE.md`.
 
-**Last refreshed:** 2026-05-18
+**Last refreshed:** 2026-05-19
 
 ---
 
-## Now
+## Now (pick up next session)
 
-- [ ] **Find proper foam-cannon-in-use Unsplash image** for `best-foam-cannon-for-home-detailers.md` article hero. Brief from Ray: foam cannon spraying water + foam, outside, nice sunny day, summer, conveys "nice day outside." Currently using `photo-1520340356584-f9917d1eea6f` as placeholder.
-- [ ] Verify detailerpicks design live + screenshot for session log (~3 min after push for GH Actions deploy)
+- [ ] **MWC background polish — photo-gutter mockups.** M1 (solid forest-green edge gutters) is locked as baseline candidate. Next session: build new mockups at `docs/playgrounds/mwc-background/N-photo-gutters.html` with ACTUAL forest photos in the gutters (dark forest, misty woods, forest floor, canopy, etc.). Keep M1 alongside for direct comparison. Then Ray picks → apply to MWC `BaseLayout.astro`. Full context: memory file `project_mwc_background_next_session.md`. Existing 6-variant mockup at `docs/playgrounds/mwc-background/M-background-options.html`.
+- [ ] **Vikeri → Campark T85 swap** (or other under-$80 trail cam). Vikeri is discontinued on Amazon. Need a current product Amazon URL + image. Updates: `sites/mywildlifecam/src/content/buyers-guides/best-trail-cameras-for-backyard-wildlife.md` products[2], bottomLine.supporting third bullet, body prose mentions.
+- [ ] **6th wash-soap pick** for `best-car-wash-soap-for-home-detailers.md`. Ray said "6 is better on the eyes." Natural slot is a mass-retail under-$10 pick (Meguiar's Gold Class, Chemical Guys Honeydew Snow Foam). Need URL + image.
+- [ ] **Foam-cannon-in-use Unsplash image** for `best-foam-cannon-for-home-detailers.md`. Foam cannon spraying water + foam, outside, sunny day, "nice day outside" vibe. Currently `photo-1520340356584-f9917d1eea6f` as placeholder.
 - [ ] Confirm Bing Webmaster Tools — detailerpicks property added + sitemap submitted
 
 ## Next
 
-- [ ] Scaffold next mywildlifecam piece — cellular trail cam buying guide, Moultrie EDGE review, or Spypoint Flex G36 review (research notes ready for all three) — use the new `/research-product` + `/scaffold-piece` flow
-- [ ] Bring satellite sites (fussybean, starteraquarium, gameovergear) into the content rotation — system streamlining first, satellite work next
+- [ ] **Next mywildlifecam piece — Moultrie EDGE review.** Recommended pick from `/scout-topics --mwc` ran 2026-05-19. Research exists at `docs/research/2026-05-17-trail-cam-research.md`. Run `/research-product "Moultrie EDGE review"` → `/scaffold-piece site=mywildlifecam type=review slug=moultrie-edge-review ...`
+- [ ] **Cellular trail cam buying guide** (alternate next MWC piece). Multi-brand cornerstone.
+- [ ] **Spypoint Flex G36 review** (alternate next MWC piece). Sister piece to existing Flex-M review.
+- [ ] **Bring satellite sites into rotation** — fussybean, starteraquarium, gameovergear. Each needs the unified pick-card template ported (palette swap only — structure stays).
 
 ## Later / Ideas
 
