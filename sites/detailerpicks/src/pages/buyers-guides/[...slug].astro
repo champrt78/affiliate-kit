@@ -21,8 +21,11 @@ const { entry } = Astro.props;
 const { data, body } = entry;
 const { Content } = await entry.render();
 
-const DRAFT_MARKER = "_The Bottom Line is being written._";
-const isDraft = typeof body === "string" && body.includes(DRAFT_MARKER);
+const BOTTOMLINE_PLACEHOLDER = "_The Bottom Line is being written._";
+const isDraft = !data.bottomLine
+  || !data.bottomLine.verdict
+  || data.bottomLine.verdict.trim() === ""
+  || data.bottomLine.verdict.includes(BOTTOMLINE_PLACEHOLDER);
 
 const productLds = data.products.map((p) =>
   productSchema({

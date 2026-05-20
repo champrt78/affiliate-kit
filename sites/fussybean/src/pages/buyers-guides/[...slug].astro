@@ -21,9 +21,13 @@ const { entry } = Astro.props;
 const { data, body } = entry;
 const { Content } = await entry.render();
 
-// DRAFT detection — shared marker across review + buyers-guide piece types
-const DRAFT_MARKER = "_The Bottom Line is being written._";
-const isDraft = typeof body === "string" && body.includes(DRAFT_MARKER);
+// DRAFT detection — empty frontmatter Bottom Line gates indexing.
+// Matches the doctrine in CLAUDE.md: "Never publish with `## Bottom Line` empty."
+const BOTTOMLINE_PLACEHOLDER = "_The Bottom Line is being written._";
+const isDraft = !data.bottomLine
+  || !data.bottomLine.verdict
+  || data.bottomLine.verdict.trim() === ""
+  || data.bottomLine.verdict.includes(BOTTOMLINE_PLACEHOLDER);
 
 // One JSON-LD Product entry per listed product. Google reads each block independently.
 const productLds = data.products.map((p) =>
