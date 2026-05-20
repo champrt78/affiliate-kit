@@ -116,6 +116,8 @@ External:
 | `GROQ_API_KEY` or `OPENAI_API_KEY` | Whisper fallback for `/watch` when YouTube captions missing | Groq has generous free tier |
 | `BRAVE_API_KEY`, `EXA_API_KEY` | Alternative web search backends | Yes |
 | `XAI_API_KEY` | X/Twitter via Grok (currently no credits) | Application-gated |
+| `UNSPLASH_ACCESS_KEY` | Scene/lifestyle image search (foam-cannon-in-use, forest gutters, etc.) — NOT product hero shots | Yes (demo: 50 req/hr; production: 5000 req/hr after short review) |
+| `PEXELS_API_KEY` | Fallback image source when Unsplash returns nothing usable | Yes (200 req/hr, 20k/month — no tiered review) |
 
 ---
 
