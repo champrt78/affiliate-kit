@@ -14,6 +14,7 @@ products:
   - name: "Stealth Cam DS4K Transmit"
     brand: "Stealth Cam"
     affiliateUrl: "https://www.amazon.com/dp/B0924V7QWF?tag=mywildlifecam-20"
+    image: "https://m.media-amazon.com/images/I/51bGn9JuJjL._AC_SL1250_.jpg"
     tagline: "Cellular 4K flagship. Dual-SIM AT&T and Verizon, built-in GPS, 32MP, 4K at 30 FPS. Low-glow 850nm IR, not true no-glow."
     bestFor: "The cellular buyer who wants 4K and does not need fully covert IR"
     priceFrom: 165.33

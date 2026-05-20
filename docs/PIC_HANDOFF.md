@@ -14,7 +14,7 @@ Google these. Drop URLs (Amazon product page works, right-click the main pic →
 4. ~~Labocosmetica SÈMPER~~ ✅
 5. ~~Pan The Organizer Demineralizing Shampoo~~ ✅
 6. ~~Stealth Cam DS4K Ultimate~~ ✅
-7. Stealth Cam DS4K Transmit
+7. ~~Stealth Cam DS4K Transmit~~ ✅
 8. ~~Stealth Cam Deceptor MAX 2.0~~ ✅
 9. ~~Stealth Cam Revolver Pro 2.0 360~~ ✅
 10. Stealth Cam Fusion MAX 2.0
