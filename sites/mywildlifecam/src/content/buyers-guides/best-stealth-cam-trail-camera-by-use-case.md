@@ -35,6 +35,7 @@ products:
   - name: "Stealth Cam Fusion MAX 2.0"
     brand: "Stealth Cam"
     affiliateUrl: "https://www.amazon.com/Stealth-Cam-Fusion-Cellular-Camera/dp/B0DVVSHK6F?tag=mywildlifecam-20"
+    image: "https://m.media-amazon.com/images/I/7136g8mC-AL._AC_SL1500_.jpg"
     tagline: "Budget cellular dual-SIM. 36MP, 1080P, dual-SIM AT&T and Verizon, 16GB internal memory. The brand-recognized gift-buyer pick under $150."
     bestFor: "Backyard property owners and gift buyers who want cellular without the premium price"
     priceFrom: 89.99
