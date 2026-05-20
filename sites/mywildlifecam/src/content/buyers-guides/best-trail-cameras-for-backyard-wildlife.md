@@ -25,7 +25,7 @@ products:
 images:
   hero: "https://images.unsplash.com/photo-1727891936309-c4c1ce50a0cc?auto=format&fit=crop&w=2000&q=80"
   heroCaption: "Raccoon at the edge of cover. Photo: Unsplash."
-  # Magazine 1+2 hero on the home page featured card — large raccoon feature
+  # Magazine 1+2 hero on the home page featured card. Large raccoon feature
   # with two stacked smaller wildlife shots on the right.
   heroImages:
     - "https://images.unsplash.com/photo-1727891936309-c4c1ce50a0cc?auto=format&fit=crop&w=1200&q=80"

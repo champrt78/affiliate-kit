@@ -49,6 +49,7 @@ products:
   - name: "Stealth Cam GMAX32"
     brand: "Stealth Cam"
     affiliateUrl: "https://www.amazon.com/dp/B08ZG4PVVV?tag=mywildlifecam-20"
+    image: "https://m.media-amazon.com/images/I/61gZl4F4OJL._AC_SL1260_.jpg"
     tagline: "Non-cellular no-glow. 32MP, 1080P, 42 940nm LEDs with matte No-Glare PIR, 0.4s trigger, 80 ft detection. Covert SD-card deployment under $100."
     bestFor: "SD-card buyers who want true 940nm no-glow without paying flagship money"
     priceFrom: 71.75

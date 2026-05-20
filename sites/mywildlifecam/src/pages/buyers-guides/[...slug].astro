@@ -2,7 +2,6 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import MainLayout from "../../layouts/MainLayout.astro";
 import CTA from "@affkit/shared-ui/CTA.astro";
-import AffiliateDisclosure from "@affkit/shared-ui/AffiliateDisclosure.astro";
 import { cloakedLink } from "@affkit/shared-utils";
 import { productSchema } from "@affkit/shared-utils";
 
@@ -121,45 +120,10 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
       </div>
     </header>
 
-    {/* Bottom Line callout */}
-    {data.bottomLine && !isDraft && (
-      <section class="bottom-line" aria-label="Bottom Line">
-        <span class="bottom-line__label">Bottom Line</span>
-        <p class="bottom-line__verdict">{data.bottomLine.verdict}</p>
-        {data.bottomLine.supporting && Array.isArray(data.bottomLine.supporting) ? (
-          <ul class="bottom-line__list">
-            {data.bottomLine.supporting.map((item) => <li set:html={item}></li>)}
-          </ul>
-        ) : data.bottomLine.supporting ? (
-          <p class="bottom-line__supporting" set:html={data.bottomLine.supporting}></p>
-        ) : null}
-      </section>
-    )}
-
-    {/* Buy-if for the category */}
-    {data.buyIf && (
-      <section class="buyif" aria-label="Buy it if / Don't buy it if">
-        <div class="buyif__card buyif__card--buy">
-          <h3 class="buyif__heading">This guide is for you if</h3>
-          <ul>
-            {data.buyIf.buy.map((item) => <li>{item}</li>)}
-          </ul>
-        </div>
-        <div class="buyif__card buyif__card--skip">
-          <h3 class="buyif__heading">Skip this guide if</h3>
-          <ul>
-            {data.buyIf.skip.map((item) => <li>{item}</li>)}
-          </ul>
-        </div>
-      </section>
-    )}
-
-    <AffiliateDisclosure siteName="MyWildlifeCam" variant="inline" />
-
-    {/* ════════ AT A GLANCE ════════ */}
+    {/* ════════ THE QUICK SCOUT ════════ */}
     <section class="section">
       <div class="section-head">
-        <h2>At a glance</h2>
+        <h2>The quick scout</h2>
       </div>
 
       <div class="quick-grid">
@@ -190,10 +154,10 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
       </div>
     </section>
 
-    {/* ════════ THE FULL DETAIL ════════ */}
+    {/* ════════ FIELD NOTES ════════ */}
     <section class="section">
       <div class="section-head">
-        <h2>The full detail</h2>
+        <h2>Field notes</h2>
       </div>
 
       {data.products.map((p, i) => {
@@ -260,32 +224,16 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
       </div>
     </section>
 
-    {/* FAQ */}
-    {data.faq && data.faq.length > 0 && (
-      <section class="faq" aria-label="Frequently asked questions">
-        <h2 class="faq__title">FAQ</h2>
-        {data.faq.map((item) => (
-          <details class="faq__item">
-            <summary>{item.question}</summary>
-            <p>{item.answer}</p>
-          </details>
-        ))}
-      </section>
-    )}
-
-    <aside class="bottomline-cta">
-      <h3>Still on the fence?</h3>
-      <p>
-        Pick number one is the default for most people reading this. The full
-        comparison up top is for the cases where number one isn't quite right.
-      </p>
-      <CTA href={topPickHref} variant="primary" size="lg" rel="sponsored noopener" target="_blank">
-        See the top pick on Amazon
-      </CTA>
-    </aside>
-
     <footer class="guide-footer">
-      <a href="/how-we-evaluate/" class="methodology-link">How we evaluate trail cameras</a>
+      <div class="cta-wrap">
+        <CTA href={topPickHref} rel="sponsored noopener" target="_blank">
+          See the top pick on Amazon
+        </CTA>
+      </div>
+      <p class="updated">
+        Last updated:
+        <time datetime={isoUpdated}>{formattedUpdated}</time>
+      </p>
     </footer>
 
   </article>
@@ -410,90 +358,6 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
   .guide-byline__date-label { display: block; opacity: 0.7; font-size: 9.5px; margin-bottom: 2px; }
   @media (max-width: 600px) {
     .guide-byline__role { display: none; }
-  }
-
-  /* ─── Bottom Line callout ─── */
-  .bottom-line {
-    background: var(--color-cream);
-    border-left: 3px solid var(--color-brass);
-    padding: var(--space-6) var(--space-8);
-    margin: 0 0 var(--space-8);
-    border-radius: 0 var(--radius-md) var(--radius-md) 0;
-    max-width: 880px;
-  }
-  .bottom-line__label {
-    display: block;
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--color-brass);
-    margin-bottom: var(--space-3);
-  }
-  .bottom-line__verdict {
-    font-family: var(--font-serif);
-    font-size: clamp(1.25rem, 2vw, 1.5rem);
-    line-height: 1.45;
-    color: var(--color-forest);
-    margin: 0;
-    font-weight: 500;
-  }
-  .bottom-line__supporting {
-    margin: var(--space-4) 0 0;
-    font-family: var(--font-sans);
-    font-size: var(--text-base);
-    line-height: 1.65;
-    color: var(--color-paper-ink);
-  }
-  .bottom-line__list {
-    margin: var(--space-4) 0 0;
-    padding-left: var(--space-5);
-    font-family: var(--font-sans);
-    font-size: var(--text-base);
-    line-height: 1.65;
-    color: var(--color-paper-ink);
-  }
-  .bottom-line__list li { margin-bottom: var(--space-2); }
-  .bottom-line__list li:last-child { margin-bottom: 0; }
-  .bottom-line__list li::marker { color: var(--color-brass); }
-
-  /* ─── Buy-if ─── */
-  .buyif {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-5);
-    margin: 0 0 var(--space-8);
-    max-width: 1040px;
-  }
-  .buyif__card {
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: var(--space-5) var(--space-6);
-    background: var(--color-paper);
-  }
-  .buyif__card--buy { border-left: 3px solid var(--color-forest); }
-  .buyif__card--skip { border-left: 3px solid #8a4a3a; }
-  .buyif__heading {
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--color-brass);
-    margin: 0 0 var(--space-3);
-  }
-  .buyif__card--skip .buyif__heading { color: #8a4a3a; }
-  .buyif__card ul {
-    margin: 0;
-    padding-left: var(--space-5);
-    font-size: var(--text-sm);
-    line-height: 1.55;
-  }
-  .buyif__card li { margin-bottom: var(--space-2); color: var(--color-paper-ink); }
-  .buyif__card li:last-child { margin-bottom: 0; }
-  @media (max-width: 700px) {
-    .buyif { grid-template-columns: 1fr; }
   }
 
   /* ─── Sections ─── */
@@ -913,96 +777,14 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     color: var(--color-brass);
   }
 
-  /* ─── FAQ ─── */
-  .faq { margin: var(--space-10) 0; max-width: 880px; }
-  .faq__title {
-    font-family: var(--font-serif);
-    font-size: 28px;
-    color: var(--color-paper-ink);
-    margin: 0 0 var(--space-5);
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--color-paper-ink);
-    font-weight: 500;
-  }
-  .faq__item {
-    border-bottom: 1px solid var(--color-border);
-    padding: var(--space-4) 0;
-  }
-  .faq__item summary {
-    font-family: var(--font-serif);
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--color-paper-ink);
-    cursor: pointer;
-    list-style: none;
-    position: relative;
-    padding-right: var(--space-6);
-  }
-  .faq__item summary::-webkit-details-marker { display: none; }
-  .faq__item summary::after {
-    content: "+";
-    position: absolute;
-    right: 0;
-    top: 0;
-    color: var(--color-brass);
-    font-size: var(--text-xl);
-    line-height: 1;
-  }
-  .faq__item[open] summary::after { content: "−"; }
-  .faq__item p {
-    margin: var(--space-3) 0 0;
-    font-size: 14.5px;
-    line-height: 1.65;
-    color: var(--color-paper-ink);
-  }
-
-  /* ─── Bottom CTA ─── */
-  .bottomline-cta {
-    margin-top: var(--space-12);
-    padding: var(--space-8);
-    background: var(--color-forest);
-    color: var(--color-paper);
-    border-radius: var(--radius-lg);
-    text-align: center;
-    max-width: 720px;
-  }
-  .bottomline-cta h3 {
-    font-family: var(--font-serif);
-    font-size: 28px;
-    color: var(--color-paper);
-    margin: 0 0 var(--space-3);
-  }
-  .bottomline-cta p {
-    font-size: var(--text-sm);
-    color: var(--color-paper);
-    opacity: 0.85;
-    margin: 0 auto var(--space-6);
-    max-width: 44ch;
-  }
-
-  /* ─── Methodology footer ─── */
+  /* ─── Footer ─── */
   .guide-footer {
     margin-top: var(--space-10);
     padding-top: var(--space-6);
     border-top: 1px solid var(--color-border);
   }
-  .methodology-link {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-family: var(--font-sans);
-    font-size: var(--text-sm);
-    font-weight: 500;
-    color: var(--color-brass);
-    text-decoration: none;
-  }
-  .methodology-link::before {
-    content: "";
-    width: 18px;
-    height: 1px;
-    background: var(--color-brass);
-  }
-  .methodology-link:hover { color: var(--color-brass-hover); }
+  .cta-wrap { margin: var(--space-6) 0; }
+  .updated { color: var(--color-muted); font-size: 13px; }
 
   /* ─── Responsive ─── */
   @media (max-width: 980px) {

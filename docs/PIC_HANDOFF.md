@@ -19,7 +19,7 @@ Google these. Drop URLs (Amazon product page works, right-click the main pic →
 9. ~~Stealth Cam Revolver Pro 2.0 360~~ ✅
 10. ~~Stealth Cam Fusion MAX 2.0~~ ✅
 11. ~~Stealth Cam QS24~~ ✅ (also locked in the canonical product URL `dp/B0GD759N9D`)
-12. Stealth Cam GMAX32
+12. ~~Stealth Cam GMAX32~~ ✅
 13. ~~Vikeri Trail Camera~~ — **discontinued, needs replacement product chosen first**
 
 ## MyWildlifeCam article heroes (wildlife/trail-cam scenes, NOT the fox we already use)
