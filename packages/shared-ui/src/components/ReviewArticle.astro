@@ -161,6 +161,8 @@ const imageScale = (data.images as any)?.imageScale as number | undefined;
         <img
           src={heroImage}
           alt={data.product.name}
+          width="1600"
+          height="1000"
           loading="eager"
           decoding="async"
           style={imageScale ? `transform: scale(${imageScale}); transform-origin: center;` : undefined}

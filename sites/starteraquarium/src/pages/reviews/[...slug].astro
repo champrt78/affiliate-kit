@@ -74,7 +74,7 @@ const robotsContent = isDraft ? "noindex, nofollow" : "index, follow";
       <h1>{data.title}</h1>
       <p class="description">{data.description}</p>
       {heroImage && (
-        <img src={heroImage} alt={data.product.name} class="hero" />
+        <img src={heroImage} alt={data.product.name} width="1600" height="1000" class="hero" />
       )}
       <div class="cta-wrap">
         <CTA href={cloakedHref} rel="sponsored noopener" target="_blank">

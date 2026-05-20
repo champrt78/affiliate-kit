@@ -66,6 +66,26 @@ Full rule with audiences and rationale lives in `~/.claude/CLAUDE.md` "Session D
 - Conventional commits: `feat:`, `fix:`, `refactor:`, `docs:`, `chore:`, `test:`.
 - Frequent commits; one logical change per commit.
 
+## Web vitals — image dimensions are mandatory
+**Every `<img>` tag MUST have `width` and `height` attributes.** No exceptions, even when CSS uses `aspect-ratio` on the container or `width:100%; height:100%; object-fit:cover` on the image. The HTML attrs are an aspect-ratio HINT the browser uses during parse, before CSS arrives — without them, the browser reserves 0 height and the image pops in late, causing a layout shift (CLS).
+
+**This bit us on 2026-05-20:** Cloudflare Web Analytics flagged detailerpicks.com homepage with CLS = 0.458 on `#main > article.guide-card` ("Poor" tier; threshold is 0.1). Root cause: `<img>` in `Hero.astro`, `BuyersGuideCard.astro`, `ReviewCard.astro`, `ProductCard.astro`, `ReviewArticle.astro`, and several per-site `[...slug].astro` pages all rendered dimensionless. CSS aspect-ratio was set but didn't save us — there's a parse-time window where the browser doesn't know the eventual size.
+
+**The fix is just attributes:** the actual pixel values are aspect-ratio hints, not display sizes. CSS still controls real layout via `width:100%; height:100%`. Defaults to use:
+- Hero / cover photo (16:9): `width="1600" height="900"`
+- Guide card thumbnail (4:3): `width="1600" height="1200"`
+- Review article hero (8:5): `width="1600" height="1000"`
+- Product card / square thumb: `width="1200" height="1200"`
+- Amazon product image (PA-API): `width="500" height="500"` (Amazon's standard)
+
+If the source image has a specific known aspect, use that ratio. Match the container's CSS aspect-ratio when possible — but the *exact* numbers don't matter, only the ratio.
+
+Quick check before committing any page or component with images:
+```powershell
+Select-String -Path "**\*.astro" -Pattern "<img\s" | Where-Object { $_.Line -notmatch 'width=' }
+```
+If anything prints, fix it.
+
 ## Tone of generated output
 - Tone is currently fixed at snarky-but-friendly. Configurable tone is deferred until a concrete consumer exists.
 

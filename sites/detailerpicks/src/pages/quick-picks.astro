@@ -87,7 +87,7 @@ const imgUrl = (asin: string) => `https://images-na.ssl-images-amazon.com/images
         </div>
         <div class="qp-pick__img">
           <span class="qp-pick__img__fallback">{p.shortName}</span>
-          <img src={imgUrl(p.asin)} alt={p.name} loading="lazy" onerror="this.style.display='none'" />
+          <img src={imgUrl(p.asin)} alt={p.name} width="500" height="500" loading="lazy" onerror="this.style.display='none'" />
         </div>
         <a href={cloakedLink({ slug: p.slug })} class="qp-pick__buy" rel="sponsored noopener" target="_blank">
           Buy on Amazon <span aria-hidden="true">&rarr;</span>
@@ -113,6 +113,8 @@ const imgUrl = (asin: string) => `https://images-na.ssl-images-amazon.com/images
         <img
           src="https://images.unsplash.com/photo-1698250145928-3787d5ff3df6?w=600&h=600&fit=crop&q=85&auto=format"
           alt=""
+          width="600"
+          height="600"
           loading="lazy"
           onerror="this.style.display='none'"
         />

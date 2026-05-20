@@ -135,7 +135,7 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
           return (
             <article class="qcard">
               <a href={buyHref} class="qcard__img" rel="sponsored noopener" target="_blank" aria-label={`Check current price for ${p.name}`}>
-                {(p as any).image && <img src={(p as any).image} alt={p.name} loading="lazy" decoding="async" />}
+                {(p as any).image && <img src={(p as any).image} alt={p.name} width="1200" height="1200" loading="lazy" decoding="async" />}
                 {price && <div class="qcard__img__price">{price}</div>}
               </a>
               <div class="qcard__body">
@@ -174,7 +174,7 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
           <article id={`pick-${i + 1}`} class="deep-card">
             <div class="deep-card__img-col">
               <div class="deep-card__img">
-                {(p as any).image && <img src={(p as any).image} alt={p.name} loading="lazy" decoding="async" style={(p as any).imageScale ? `transform: scale(${(p as any).imageScale}); transform-origin: center;` : undefined} />}
+                {(p as any).image && <img src={(p as any).image} alt={p.name} width="1200" height="1200" loading="lazy" decoding="async" style={(p as any).imageScale ? `transform: scale(${(p as any).imageScale}); transform-origin: center;` : undefined} />}
               </div>
               <div class="deep-card__rank"><span>{i + 1}</span>of {totalPicks} picks</div>
             </div>
