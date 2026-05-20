@@ -11,7 +11,7 @@ Google these. Drop URLs (Amazon product page works, right-click the main pic →
 1. ~~P&S Brake Buster Total Wheel Cleaner~~ ✅
 2. ~~CarPro Iron X~~ ✅
 3. ~~Gyeon Q²M Bathe~~ ✅
-4. Labocosmetica SÈMPER
+4. ~~Labocosmetica SÈMPER~~ ✅
 5. ~~Pan The Organizer Demineralizing Shampoo~~ ✅
 6. ~~Stealth Cam DS4K Ultimate~~ ✅
 7. Stealth Cam DS4K Transmit

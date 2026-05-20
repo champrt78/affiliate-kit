@@ -7,6 +7,7 @@ products:
   - name: "Labocosmetica SÈMPER"
     brand: "Labocosmetica"
     affiliateUrl: "https://www.labocosmetica.store/products/labocosmetica-semper"
+    image: "https://www.labocosmetica.store/cdn/shop/files/Semper-500ml.jpg?v=1756675554&width=1200"
     bestFor: "Best for the Dr. Beasley's pure-soap school"
     priceFrom: 21.95
     priceUnit: "500ml"
