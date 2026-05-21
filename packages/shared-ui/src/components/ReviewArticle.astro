@@ -157,7 +157,7 @@ const imageScale = (data.images as any)?.imageScale as number | undefined;
 
   {heroImage && (
     <figure class="article-hero">
-      <div class="article-hero__frame">
+      <a href={cloakedHref} class="article-hero__frame" rel="sponsored noopener" target="_blank" aria-label={`Check current price for ${data.product.name}`}>
         <img
           src={heroImage}
           alt={data.product.name}
@@ -167,7 +167,10 @@ const imageScale = (data.images as any)?.imageScale as number | undefined;
           decoding="async"
           style={imageScale ? `transform: scale(${imageScale}); transform-origin: center;` : undefined}
         />
-      </div>
+        <span class="article-hero__price-tag" aria-hidden="true">
+          See on Amazon <span class="article-hero__price-arrow">&rarr;</span>
+        </span>
+      </a>
       {heroCaption && <figcaption class="article-hero__caption">{heroCaption}</figcaption>}
     </figure>
   )}
@@ -411,18 +414,60 @@ const imageScale = (data.images as any)?.imageScale as number | undefined;
 
   .article-hero { margin: 0 0 var(--space-10); }
   .article-hero__frame {
+    display: grid;
+    place-items: center;
     background:
       radial-gradient(ellipse at center, var(--color-paper) 0%, var(--color-paper-muted) 100%);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     padding: var(--space-8) var(--space-6);
-    display: grid;
-    place-items: center;
     overflow: hidden;
     /* 4/3 better fits portrait/square product cutouts than the old 16/7 letterbox.
        Cap height so the band stays a hero, not a photo essay. */
     aspect-ratio: 4 / 3;
     max-height: 440px;
+    position: relative;
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color var(--duration-base) var(--ease-out),
+                box-shadow var(--duration-base) var(--ease-out);
+  }
+  .article-hero__frame:hover {
+    border-color: var(--color-brass);
+    box-shadow: var(--shadow-md);
+  }
+  .article-hero__frame:hover img {
+    transform: scale(1.02);
+  }
+  /* Affordance pill — sits in the top-right of the hero, makes it visually
+     obvious the whole image is a clickable affiliate link. */
+  .article-hero__price-tag {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    background: var(--color-forest);
+    color: var(--color-paper);
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border-radius: var(--radius-full);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: var(--shadow-sm);
+    transition: background var(--duration-base) var(--ease-out);
+  }
+  .article-hero__frame:hover .article-hero__price-tag {
+    background: var(--color-brass);
+  }
+  .article-hero__price-arrow {
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+  .article-hero__frame:hover .article-hero__price-arrow {
+    transform: translateX(3px);
   }
   .article-hero img {
     max-width: 75%;
