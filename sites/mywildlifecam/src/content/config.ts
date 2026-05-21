@@ -33,6 +33,19 @@ const faqSchema = z.array(z.object({
   answer: z.string(),
 })).optional();
 
+/* bgTheme — photo-gutter background theme for the page (MWC only).
+   Defaults to "dawn" (N1 misty dawn) when omitted. Pick a theme that
+   matches the content: e.g. "twilight" for covert/no-glow guides,
+   "dawn" for general / backyard / golden-hour pieces. */
+const bgThemeSchema = z.enum([
+  "dawn",
+  "canopy",
+  "moss",
+  "twilight",
+  "pine",
+  "solid",
+]).optional();
+
 const reviews = defineCollection({
   type: "content",
   schema: z.object({
@@ -71,6 +84,7 @@ const reviews = defineCollection({
     buyIf: buyIfSchema,
     flaws: flawsSchema,
     faq: faqSchema,
+    bgTheme: bgThemeSchema,
   }),
 });
 
@@ -115,6 +129,7 @@ const buyersGuides = defineCollection({
     bottomLine: bottomLineSchema,
     buyIf: buyIfSchema,
     faq: faqSchema,
+    bgTheme: bgThemeSchema,
   }),
 });
 
