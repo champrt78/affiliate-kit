@@ -174,7 +174,7 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
           <article id={`pick-${i + 1}`} class="deep-card">
             <div class="deep-card__img-col">
               <div class="deep-card__img">
-                {(p as any).image && <img src={(p as any).image} alt={p.name} width="1200" height="1200" loading="lazy" decoding="async" style={(p as any).imageScale ? `transform: scale(${(p as any).imageScale}); transform-origin: center;` : undefined} />}
+                {(p as any).image && <img src={(p as any).image} alt={p.name} width="1200" height="1200" loading="lazy" decoding="async" />}
               </div>
               <div class="deep-card__rank"><span>{i + 1}</span>of {totalPicks} picks</div>
             </div>
@@ -408,8 +408,14 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
   }
   .qcard__img:hover img { transform: scale(1.03); }
   .qcard__img img {
-    max-width: 62%;
-    max-height: 76%;
+    /* Fixed height normalizes visible size across all picks regardless of
+       source PNG aspect ratio or embedded whitespace (some products ship
+       1500x928 with ~50% padding, some 772x772 with ~80% fill). Pairs with
+       object-fit:contain so wide products take more width, tall products
+       take less, but the perceived vertical band stays consistent. */
+    height: 70%;
+    width: auto;
+    max-width: 80%;
     object-fit: contain;
     mix-blend-mode: multiply;
     transition: transform 220ms ease;
@@ -501,8 +507,16 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     padding: 16px;
   }
   .deep-card__img img {
-    max-width: 100%;
-    max-height: 100%;
+    /* Fixed height normalizes visible product size in the 220x220 frame.
+       Mirrors the qcard + ReviewCard pattern: same vertical band across
+       every pick, regardless of source-PNG aspect or embedded whitespace.
+       Replaced the previous max-width:100% + max-height:100% combo, which
+       let a square product render at 220px while a portrait product
+       rendered at ~140px width — the "pic 2 can't be a close-up of the
+       nozzle" effect Ray called out 2026-05-20. */
+    height: 88%;
+    width: auto;
+    max-width: 96%;
     object-fit: contain;
     mix-blend-mode: multiply;
   }
