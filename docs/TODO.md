@@ -8,8 +8,7 @@
 
 ## Now (pick up next session)
 
-<!-- Done 2026-05-20: bgTheme photo-gutter system shipped on MWC (commits f5e9f37 + 2e840af). Themes dawn/canopy/moss/twilight/pine/solid, default dawn, stealth-cam guide overrides to twilight. See Session_2026-05-20.md iteration 3. -->
-
+- [ ] **MWC background polish — photo-gutter mockups.** M1 (solid forest-green edge gutters) is locked as baseline candidate. Next session: build new mockups at `docs/playgrounds/mwc-background/N-photo-gutters.html` with ACTUAL forest photos in the gutters (dark forest, misty woods, forest floor, canopy, etc.). Keep M1 alongside for direct comparison. Then Ray picks → apply to MWC `BaseLayout.astro`. Full context: memory file `project_mwc_background_next_session.md`. Existing 6-variant mockup at `docs/playgrounds/mwc-background/M-background-options.html`.
 - [ ] **Vikeri → Campark T85 swap** (or other under-$80 trail cam). Vikeri is discontinued on Amazon. Need a current product Amazon URL + image. Updates: `sites/mywildlifecam/src/content/buyers-guides/best-trail-cameras-for-backyard-wildlife.md` products[2], bottomLine.supporting third bullet, body prose mentions.
 - [ ] **6th wash-soap pick** for `best-car-wash-soap-for-home-detailers.md`. Ray said "6 is better on the eyes." Natural slot is a mass-retail under-$10 pick (Meguiar's Gold Class, Chemical Guys Honeydew Snow Foam). Need URL + image.
 - [ ] **Foam-cannon-in-use Unsplash image** for `best-foam-cannon-for-home-detailers.md`. Foam cannon spraying water + foam, outside, sunny day, "nice day outside" vibe. Currently `photo-1520340356584-f9917d1eea6f` as placeholder.
@@ -40,7 +39,6 @@
 
 ## Done
 
-- [x] 2026-05-20 — **MWC bgTheme photo-gutter system shipped** (commits `f5e9f37` + `2e840af`). Six themes: dawn (default) / canopy / moss / twilight / pine / solid. Optional `z.enum` field in content schema → typos fail at build. Stealth-cam guide explicitly themed `twilight` (tree silhouettes match the no-glow / covert use cases). Backyard guide stays on dawn default. Mobile (<1280px) gracefully retreats to full cream. Closes the "too-white pages" feedback from earlier in the day.
 - [x] 2026-05-18 — **Detailerpicks Chrome & Suds design LANDED to production** (commit `101e0a5`). Full palette swap charcoal→cream + steel-blue brand + Instrument Serif. Manifesto section inverted as the page's one dark band. Article heroes swapped on both buying-guide pieces. Old tokens preserved at `site-tokens.charcoal.bak.css` for revert. Build clean: 10 pages, 1.10s.
 - [x] 2026-05-18 — **PLAYBOOK rewritten as comprehensive operating guide** (commit `61d9e23` + `e597dde`) — 5 slash commands, other skills, repo scripts, every API the system hits with key locations, external accounts at-a-glance.
 - [x] 2026-05-18 — **`/scout-topics` command added** (commit `e597dde`) — discovery layer that sits before `/research-product`. No flags → 5-10 candidates from gaps + signal. Seed flag → 3-5 candidate angles for that category.
