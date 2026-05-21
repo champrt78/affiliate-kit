@@ -2,12 +2,6 @@
 import BaseLayout from "@affkit/shared-ui/BaseLayout.astro";
 import AffiliateDisclosure from "@affkit/shared-ui/AffiliateDisclosure.astro";
 
-/* bgTheme — photo-gutter background system (locked 2026-05-20).
-   Each theme paints a forest photograph in the left/right "table" outside
-   the centered cream content card. Below the container width the photo
-   gracefully retreats and the cream takes the full viewport. */
-type BgTheme = "dawn" | "canopy" | "moss" | "twilight" | "pine" | "solid";
-
 interface Props {
   title: string;
   description: string;
@@ -15,10 +9,9 @@ interface Props {
   robotsContent?: string;
   ogType?: string;
   ogImage?: string;
-  bgTheme?: BgTheme;
 }
 
-const { title, description, canonical, robotsContent, ogType, ogImage, bgTheme = "dawn" } = Astro.props;
+const { title, description, canonical, robotsContent, ogType, ogImage } = Astro.props;
 const siteName = "MyWildlifeCam";
 const navItems = [
   { href: "/", label: "Home" },
@@ -80,7 +73,7 @@ const currentPath = Astro.url.pathname;
     </nav>
   </header>
 
-  <main id="main" tabindex="-1" class={`bg-theme bg-theme--${bgTheme}`}>
+  <main id="main" tabindex="-1">
     <slot />
   </main>
 
@@ -333,89 +326,11 @@ const currentPath = Astro.url.pathname;
     .site-header__inner { padding: 0 var(--space-4); gap: var(--space-3); }
   }
 
-  /* Main content — photo-gutter background system.
-     Each theme paints a forest photo on `main`, then masks the middle
-     container-width stripe with cream so the content card sits on top
-     of the photo only in the gutters. Below container width the photo
-     retreats and cream takes the full viewport. */
+  /* Main content */
   main {
     min-height: 60vh;
-    position: relative;
-    isolation: isolate;
-    background-color: var(--color-forest);
-    background-size: cover;
-    background-position: center;
-    background-attachment: scroll;
+    background: var(--color-bg);
   }
-  /* Cream center stripe — masks the photo across the container width.
-     Sits behind direct slot children via z-index. */
-  main.bg-theme::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(100%, var(--container-max));
-    background: var(--color-paper);
-    z-index: 0;
-    pointer-events: none;
-  }
-  main.bg-theme > * {
-    position: relative;
-    z-index: 1;
-  }
-  /* Below container width the photo can't fit a gutter at all — cream
-     takes the full viewport. */
-  @media (max-width: 1152px) {
-    main.bg-theme::before { width: 100%; }
-  }
-
-  /* Solid fallback — forest gutters, no photo (M1 baseline) */
-  main.bg-theme--solid {
-    background-image: none;
-  }
-
-  /* Dawn — misty woods at dawn (N1, default). Soft, low-contrast scene
-     that fades to its own ambient grey. */
-  main.bg-theme--dawn {
-    background-image: url("https://images.pexels.com/photos/15222306/pexels-photo-15222306.jpeg?auto=compress&cs=tinysrgb&w=1600&h=1200&fit=crop");
-  }
-
-  /* Canopy — forest canopy looking up (N2). Open / sky feel. */
-  main.bg-theme--canopy {
-    background-image: url("https://images.pexels.com/photos/12067501/pexels-photo-12067501.jpeg?auto=compress&cs=tinysrgb&w=1600&h=1200&fit=crop");
-  }
-
-  /* Moss — forest floor / moss (N4). Grounded, earthy. */
-  main.bg-theme--moss {
-    background-image: url("https://images.pexels.com/photos/12623932/pexels-photo-12623932.jpeg?auto=compress&cs=tinysrgb&w=1600&h=1200&fit=crop");
-  }
-
-  /* Twilight — tree silhouette at twilight (N5). Night / covert / stealth. */
-  main.bg-theme--twilight {
-    background-image: url("https://images.pexels.com/photos/5688636/pexels-photo-5688636.jpeg?auto=compress&cs=tinysrgb&w=1600&h=1200&fit=crop");
-  }
-
-  /* Pine — pine dawn with fade-to-cream vignette (N6). The gradient
-     itself paints the cream center, so the ::before mask is suppressed. */
-  main.bg-theme--pine {
-    background-image:
-      linear-gradient(
-        to right,
-        rgba(31, 61, 47, 0) 0%,
-        rgba(31, 61, 47, 0) calc(50% - 600px),
-        rgba(250, 247, 239, 0.85) calc(50% - 590px),
-        var(--color-paper) calc(50% - 580px),
-        var(--color-paper) calc(50% + 580px),
-        rgba(250, 247, 239, 0.85) calc(50% + 590px),
-        rgba(31, 61, 47, 0) calc(50% + 600px),
-        rgba(31, 61, 47, 0) 100%
-      ),
-      url("https://images.pexels.com/photos/29154771/pexels-photo-29154771.jpeg?auto=compress&cs=tinysrgb&w=1600&h=1200&fit=crop");
-    background-size: cover, cover;
-    background-position: center, center;
-  }
-  main.bg-theme--pine::before { display: none; }
 
   /* Footer */
   .site-footer {
