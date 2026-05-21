@@ -2,7 +2,7 @@
 
 **The single picture of how all the pieces fit together.** This is the doc that replaces "it lives in Ray's memory." If you move to a new machine, lose context, or onboard someone else, start here.
 
-**Last refreshed:** 2026-05-18
+**Last refreshed:** 2026-05-20
 
 ---
 
@@ -118,6 +118,28 @@ External:
 | `XAI_API_KEY` | X/Twitter via Grok (currently no credits) | Application-gated |
 | `UNSPLASH_ACCESS_KEY` | Scene/lifestyle image search (foam-cannon-in-use, forest gutters, etc.) — NOT product hero shots | Yes (demo: 50 req/hr; production: 5000 req/hr after short review) |
 | `PEXELS_API_KEY` | Fallback image source when Unsplash returns nothing usable | Yes (200 req/hr, 20k/month — no tiered review) |
+
+---
+
+## The three memory layers
+
+Borrowed from the self-evolving-agent pattern (YC, 2026-05-20). The Affiliate Kit has three memory layers that map cleanly to where work goes:
+
+| Layer | What it holds | Where it lives in this repo |
+|---|---|---|
+| **Factual memory** | The code + content the agent reads to answer "what exists today?" | `sites/<slug>/` (Astro projects), `packages/` (shared code), `docs/research/` (research notes), `docs/changelog/` (shipped pieces), git history |
+| **Behavioral memory** | Instructions, conventions, and feedback the agent reads on every turn to know HOW to work | `CLAUDE.md` (project-level rules), `~/.claude/CLAUDE.md` (global Ray rules), `~/.claude/projects/<hashed-project>/memory/` (per-project memory + index `MEMORY.md`) |
+| **Procedural memory** | Tools the agent can run when it needs to DO something. Self-authored where possible. | `plugin/commands/*.md` (slash commands), `scripts/*.ps1` (PowerShell helpers), `workers/` (Cloudflare Workers), Claude Code skills like `/scout-topics`, `/research-product` |
+
+**Why this matters:** when work that doesn't fit any existing tool comes up, the answer is usually "write a new procedural-memory entry" (slash command or PowerShell script) rather than "do it manually again." See `feedback_write_cli_before_repeat.md` in memory for the trigger heuristic (2 occurrences across sessions, 3 in a single session).
+
+**Concrete examples by layer:**
+
+- *Factual*: `sites/mywildlifecam/src/content/buyers-guides/best-stealth-cam-trail-camera-by-use-case.md` — the markdown for the Stealth Cam buying guide. Agent reads this to answer "what does our Stealth Cam guide say about no-glow IR?"
+- *Behavioral*: `CLAUDE.md` "Content rules" section — tells the agent never to claim hands-on use, to gate empty Bottom Lines, to run `lint-voice.ps1` before commit.
+- *Procedural*: `scripts/new-review.ps1` + `/scaffold-piece` command — the tools the agent uses to spin up a new piece. Without these, every scaffold would be hand-rolled.
+
+The three-memory frame is useful when adding a new capability: ask which layer the new thing belongs in, then put it there.
 
 ---
 
