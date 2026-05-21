@@ -74,7 +74,9 @@ const currentPath = Astro.url.pathname;
   </header>
 
   <main id="main" tabindex="-1">
-    <slot />
+    <div class="page-shell">
+      <slot />
+    </div>
   </main>
 
   <footer class="site-footer">
@@ -326,10 +328,43 @@ const currentPath = Astro.url.pathname;
     .site-header__inner { padding: 0 var(--space-4); gap: var(--space-3); }
   }
 
-  /* Main content */
+  /* Main content — forest gutters via body bg + cream page-shell card.
+     The body is painted forest so every page floats a cream surface on
+     a dark walnut-table tone (the M1 mockup, locked 2026-05-19). The
+     header (translucent cream) and footer (forest) remain full-bleed
+     strips above/below the shell.
+
+     We force the body background via :global() so this overrides the
+     html-level rule in shared-styles/tokens.css for this site only. */
+  :global(body) {
+    background: #1F3D2F; /* --color-forest, hard-coded so it doesn't depend on cascade order */
+  }
+
   main {
     min-height: 60vh;
+    background: #1F3D2F;
+    padding: 0;
+  }
+  .page-shell {
+    max-width: 1320px;
+    margin: 0 auto;
     background: var(--color-bg);
+    box-shadow: 0 0 0 1px rgba(31, 61, 47, 0.06),
+                0 24px 60px -16px rgba(15, 26, 21, 0.35);
+    /* The shell is the cream content surface. Sections inside (lead, featured,
+       reviews, manifesto, .guide, .article) paint their own bgs INSIDE this
+       container, so the manifesto dark band now lives inside the cream card
+       — a deliberate inversion-within-the-card, not a full-bleed strip. */
+  }
+  @media (max-width: 1380px) {
+    /* On mid-width screens, give the gutters a smaller value rather than
+       collapsing entirely. 24px of forest on each side keeps the editorial
+       feel even at laptop sizes. */
+    .page-shell { max-width: calc(100vw - 48px); }
+  }
+  @media (max-width: 760px) {
+    /* On mobile a forest gutter is uglier than no gutter — collapse. */
+    .page-shell { max-width: none; box-shadow: none; }
   }
 
   /* Footer */
