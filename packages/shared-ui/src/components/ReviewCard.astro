@@ -10,7 +10,10 @@ const { entry, featured = false } = Astro.props;
 const { data, slug } = entry;
 const href = `/reviews/${slug}/`;
 const hero = data.images?.hero && data.images.hero.length > 0 ? data.images.hero : null;
-const imageScale = (data.images as any)?.imageScale;
+// Note: data.images.imageScale is still consumed by ReviewArticle.astro for
+// the in-article hero (a different use case). We deliberately do NOT apply
+// it on the index card — the fixed-height normalization below produces
+// consistent visible sizes across all 4 cards regardless of source PNG.
 const pubDate = data.pubDate instanceof Date
   ? data.pubDate.toISOString().slice(0, 10)
   : String(data.pubDate);
@@ -30,7 +33,6 @@ const formattedDate = data.pubDate instanceof Date
           height="1200"
           loading="lazy"
           decoding="async"
-          style={imageScale ? `transform: scale(${imageScale}); transform-origin: center;` : undefined}
         />
       ) : (
         <div class="review-card__placeholder" aria-hidden="true">
@@ -95,10 +97,15 @@ const formattedDate = data.pubDate instanceof Date
     padding: var(--space-8);
   }
   .review-card__media img {
-    max-width: 65%;
-    max-height: 100%;
+    /* Normalize visible product size across the index, regardless of source
+       PNG aspect ratio or embedded whitespace. Fixed height + auto width
+       means every product fills the same vertical band of the card; wide
+       products take more width, tall products take less, but the perceived
+       size is consistent. Replaces the previous max-width: 65% + per-product
+       imageScale transform system that produced inconsistent rendered sizes. */
+    height: 78%;
     width: auto;
-    height: auto;
+    max-width: 88%;
     object-fit: contain;
     /* multiply: white pixels in source PNGs (e.g. retailer composites with
        hard-white backgrounds) blend into the cream card so all products
