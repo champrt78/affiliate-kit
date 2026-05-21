@@ -8,7 +8,20 @@
 
 ## Now (pick up next session)
 
-- [ ] **(Optional) MWC photo-gutter variants.** Solid forest gutters landed 2026-05-20 (commit `95efdcc`, M1 mockup as locked baseline). If Ray wants to compare a photo-gutter variant against M1-solid, build new mockups at `docs/playgrounds/mwc-background/N-photo-gutters.html` with ACTUAL forest photos in the gutters (dark forest, misty woods, forest floor, canopy). M1-solid is already in production, so this is a "do we want to A/B against it" exploration, not a fix. Existing 6-variant mockup at `docs/playgrounds/mwc-background/M-background-options.html`. **GOTCHA from earlier 2026-05-20 attempt (commits f5e9f37 + 2e840af, both reverted):** painting the photo on `main` and masking the center with `::before` broke every page. The new gutter implementation uses body-bg + `.page-shell` wrapper which is safe for any background treatment — but still verify all page types before pushing.
+- [ ] **MWC photo-gutter variants — wire them in per-page (Ray confirmed wanted).** The N-photo-gutters playground at `docs/playgrounds/mwc-background/N-photo-gutters.html` has 7 variants Ray approved on 2026-05-20: "N1 down ... we can use all those on different pages, if a page is about night something use the night one, that kinda thing." Solid forest M1 landed as the baseline (`95efdcc`); now layer the photo variants on top of it per-content. Tentative theme map:
+  - **dawn** (N1, misty woods) — default. Backyard/general/golden-hour pieces.
+  - **canopy** (N2, forest canopy up) — open / sky / sunlight pieces.
+  - **moss** (N4, forest floor) — grounded, plants, low-camera pieces.
+  - **twilight** (N5, tree silhouettes) — stealth/covert/no-glow/night pieces (e.g. `best-stealth-cam-trail-camera-by-use-case`).
+  - **pine** (N6, pine dawn with fade-to-cream) — alternative quiet/calm variant.
+
+  **Implementation pattern (use this, NOT the failed bgTheme approach):**
+  - Add `bgTheme: z.enum([...]).optional()` to the content schema (same as the reverted f5e9f37 attempt's schema — that part was fine).
+  - In `MainLayout.astro`, conditionally set the **body** background per-theme (NOT `<main>`, NOT `::before` masks). The `.page-shell` wrapper stays unchanged — it sits on top of whatever body bg is set. This is the load-bearing difference from the reverted bgTheme attempt which painted `<main>` and masked the center.
+  - Each theme just paints a different body-bg image: `body.bg-theme--dawn { background: url(...) #1F3D2F }` etc. The cream `.page-shell` floats on top.
+  - **Mandatory verification before pushing:** All 5 page types (`/`, `/reviews/`, `/buyers-guides/`, individual review, individual guide) at 1440px AND 375px. Photo bg should be invisible under the shell on every page and only show in the gutters at viewport > 1380px. Mobile must collapse cleanly to no photo (just like the solid M1).
+
+  **GOTCHA from the earlier failed attempt (commits f5e9f37 + 2e840af, reverted 6448139 + ba5d05c):** painting the photo on `<main>` and masking the center with `::before` broke every page rendered through `MainLayout` (homepage whitespace blowup, review-card grid distorted, hundreds of px of empty cream on review article pages). The body-bg + `.page-shell` pattern shipped in `95efdcc` is structurally safe for photo variants — but read the full post-mortem in `docs/sessions/Session_2026-05-20.md` ("Evening — `/goal` loop iterations + bgTheme attempt REVERTED" section) before starting.
 - [ ] **Vikeri → Campark T85 swap** (or other under-$80 trail cam). Vikeri is discontinued on Amazon. Need a current product Amazon URL + image. Updates: `sites/mywildlifecam/src/content/buyers-guides/best-trail-cameras-for-backyard-wildlife.md` products[2], bottomLine.supporting third bullet, body prose mentions.
 - [ ] **6th wash-soap pick** for `best-car-wash-soap-for-home-detailers.md`. Ray said "6 is better on the eyes." Natural slot is a mass-retail under-$10 pick (Meguiar's Gold Class, Chemical Guys Honeydew Snow Foam). Need URL + image.
 - [ ] **Foam-cannon-in-use Unsplash image** for `best-foam-cannon-for-home-detailers.md`. Foam cannon spraying water + foam, outside, sunny day, "nice day outside" vibe. Currently `photo-1520340356584-f9917d1eea6f` as placeholder.
