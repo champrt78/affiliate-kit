@@ -347,15 +347,17 @@ const currentPath = Astro.url.pathname;
     background-position: center;
     background-attachment: scroll;
   }
-  /* Cream center stripe — masks the photo across the container width.
-     Sits behind direct slot children via z-index. */
+  /* Cream center stripe — masks the photo across the widest content
+     container used on MWC (guide article = 1280px). Reviews live inside
+     this stripe at 920px max-width; the extra cream on either side just
+     reads as more breathing room. Sits behind direct slot children via z-index. */
   main.bg-theme::before {
     content: "";
     position: absolute;
     inset: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: min(100%, var(--container-max));
+    width: min(100%, 1280px);
     background: var(--color-paper);
     z-index: 0;
     pointer-events: none;
@@ -364,9 +366,9 @@ const currentPath = Astro.url.pathname;
     position: relative;
     z-index: 1;
   }
-  /* Below container width the photo can't fit a gutter at all — cream
-     takes the full viewport. */
-  @media (max-width: 1152px) {
+  /* Below the cream-stripe width the photo can't fit a gutter at all —
+     cream takes the full viewport. */
+  @media (max-width: 1280px) {
     main.bg-theme::before { width: 100%; }
   }
 
@@ -397,18 +399,19 @@ const currentPath = Astro.url.pathname;
   }
 
   /* Pine — pine dawn with fade-to-cream vignette (N6). The gradient
-     itself paints the cream center, so the ::before mask is suppressed. */
+     itself paints the cream center across a 1280px-wide stripe (matches
+     the guide article width), so the ::before mask is suppressed. */
   main.bg-theme--pine {
     background-image:
       linear-gradient(
         to right,
         rgba(31, 61, 47, 0) 0%,
-        rgba(31, 61, 47, 0) calc(50% - 600px),
-        rgba(250, 247, 239, 0.85) calc(50% - 590px),
-        var(--color-paper) calc(50% - 580px),
-        var(--color-paper) calc(50% + 580px),
-        rgba(250, 247, 239, 0.85) calc(50% + 590px),
-        rgba(31, 61, 47, 0) calc(50% + 600px),
+        rgba(31, 61, 47, 0) calc(50% - 650px),
+        rgba(250, 247, 239, 0.85) calc(50% - 640px),
+        var(--color-paper) calc(50% - 630px),
+        var(--color-paper) calc(50% + 630px),
+        rgba(250, 247, 239, 0.85) calc(50% + 640px),
+        rgba(31, 61, 47, 0) calc(50% + 650px),
         rgba(31, 61, 47, 0) 100%
       ),
       url("https://images.pexels.com/photos/29154771/pexels-photo-29154771.jpeg?auto=compress&cs=tinysrgb&w=1600&h=1200&fit=crop");
