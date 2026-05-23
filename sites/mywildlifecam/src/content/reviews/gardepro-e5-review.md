@@ -18,8 +18,8 @@ images:
   heroCaption: "GardePro E5 trail camera. Photo: GardePro manufacturer media."
   imageScale: 1.0
 bottomLine:
-  verdict: ""
-  supporting: ""
+  verdict: "Buy it if you want a working trail cam without the subscription tax. Skip it if image quality at distance is the priority."
+  supporting: "The E5 is the smart starting point for a first-time trail-cam buyer who doesn't want an app, a SIM, or a monthly bill. The three-PIR detection and no-glow IR are the structural reasons it sits above the genuinely-cheap sub-$30 cameras. The catch is sensor quality at distance, which trails the DS4K Ultimate's native 4K notably past about forty feet."
 scorecard:
   axes:
     - { name: "Image Quality (Day)", weight: 20, score: 7.5 }
