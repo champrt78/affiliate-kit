@@ -96,8 +96,8 @@ images:
   hero: "https://images.unsplash.com/photo-1761942943505-f134f851e88e?auto=format&fit=crop&w=2400&q=80"
   heroCaption: "Alloy wheel and brake caliper close-up. Photo: Unsplash."
 bottomLine:
-  verdict: ""
-  supporting: ""
+  verdict: "Two workhorses cover most weekly wheel cleaning: Sonax for coated wheels, P&S Brake Buster for everything else. A third handles periodic iron decon, and two more fill the mass-retail and gel-format slots."
+  supporting: "Sonax Full Effect is the coated-wheel reference and the standard 'iron-killer' formula that's safe on most finishes. P&S Brake Buster is the pro-shop default for high-volume work, gallon economy with corrosion protection in the formula. CarPro Iron X is the iron-decon specialist for periodic resets, heavier-duty than a maintenance cleaner. Meguiar's Ultimate All Wheel Cleaner is the under-$10 mass-retail entry; Chemical Guys Diablo Gel covers the vertical-cling use case for buyers who prefer gel dwell time over spray-and-rinse."
 buyIf:
   buy:
     - "You wash weekly or biweekly and want a dedicated wheel cleaner that does not strip ceramic coating, dull anodized finishes, or pit polished aluminum"
