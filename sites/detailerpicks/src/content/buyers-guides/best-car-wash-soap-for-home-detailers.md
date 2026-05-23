@@ -68,6 +68,24 @@ products:
     body: |
       <p>Phoenix E.O.D. is a veteran-owned brand. The product page lists <a href="https://www.amazon.com/Phoenix-D-Apex-Auto/dp/B0B2YGKKZB?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">Apex Auto Wash</a> as "pH neutral... contains no dyes, fragrances, or 'optical' additives... thick, highly lubricious suds."</p>
       <p>The no-additives positioning matches Dr. Beasley's pure-soap school at a lower price point ($17.99 for a pint vs SÈMPER's $21.95 for 500ml). Pan The Organizer ranked it S-tier in a recent tier-list video, noting it is also available on Amazon. For owners who follow the pure-soap doctrine but want the under-$20 entry price, Apex is the strongest commercial match.</p>
+  - name: "Chemical Guys Mr. Pink"
+    brand: "Chemical Guys"
+    affiliateUrl: "https://www.amazon.com/dp/B00AFBXQNC?tag=mywildlifecam-20"
+    image: "https://m.media-amazon.com/images/I/611ZmeSQ3zL.jpg"
+    bestFor: "Best for first-time detailers and grocery-aisle buyers"
+    priceFrom: 9.99
+    priceUnit: "16 oz"
+    hook: "Under-$10 entry point. pH-balanced, no waxes, safe on ceramic. The bottle you grab when you don't want to overthink it."
+    reason: "The under-ten-bucks entry point:"
+    facts:
+      pH: "Neutral / pH-balanced"
+      Dilution: "1 oz per 5 gal (foam cannon)"
+      Sizes: "16 oz, 64 oz, 128 oz"
+      Coating-safe: "Yes (no waxes / sealants added)"
+    body: |
+      <p><a href="https://www.amazon.com/dp/B00AFBXQNC?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">Chemical Guys Mr. Pink</a> is the mass-retail entry point. The 16-ounce bottle runs around ten dollars on Amazon and is widely stocked at AutoZone, Walmart, and most parts-store chains. The product page describes it as "pH balanced, safe on wax, sealant, ceramic, and clear coat finishes" with high foam output for foam-cannon or bucket use.</p>
+      <p>Owner-review patterns: Mr. Pink shows up repeatedly as the first car wash soap detailing-curious buyers pick up at a parts store before committing to anything pricier. The recurring positive themes are "foams a ton" and "smells like bubblegum." The recurring critical themes are slickness-against-friction during contact wash (lower than the Labocosmetica/Gyeon tier) and the soap stripping any wax-style topper faster than a wax-infused shampoo would (which the detailing community considers a feature, not a bug, for owners on a coating-care path).</p>
+      <p>Pick Mr. Pink when the budget is tight, the use case is light (one car, washed every other week), or you want a starting-line shampoo before deciding whether ceramic-safe maintenance soap matters to your situation. It's not the absolute best wash for a coated car, but it's the right "first car wash soap" for the grocery-aisle buyer the existing five picks aren't sized for.</p>
   - name: "Pan The Organizer Demineralizing Shampoo"
     brand: "Pan The Organizer"
     affiliateUrl: "https://www.carsupplieswarehouse.com/products/clean-by-pan-the-organizer-demineralizing-shampoo-acidic-mineral-deposit-remover"
@@ -90,8 +108,8 @@ images:
   hero: "https://images.unsplash.com/photo-1769641156620-48f014424c4f?auto=format&fit=crop&w=2400&q=80"
   heroCaption: "Foam-covered car under contact wash. Photo: Unsplash."
 bottomLine:
-  verdict: "Two top picks for ceramic-coated cars, two budget alternatives, and one acidic shampoo for hard-water reset. Pick based on what your paint actually needs, not on hype."
-  supporting: "The car wash soap category has two opposed schools of thought on ceramic-coated paint: Dr. Beasley's says use a pure cleaner with no additives; The Rag Company says use a ceramic-infused protective soap to actively maintain the coating. Both schools agree on what to skip: alkaline strippers and 'wax-added' shampoos. Five spec-verified picks here cover both schools plus a hard-water-region acidic shampoo for the every-few-months reset."
+  verdict: "Two top picks for ceramic-coated cars, three budget-tier options across mid- and entry-level, and one acidic shampoo for hard-water reset. Pick based on what your paint actually needs, not on hype."
+  supporting: "The car wash soap category has two opposed schools of thought on ceramic-coated paint: Dr. Beasley's says use a pure cleaner with no additives; The Rag Company says use a ceramic-infused protective soap to actively maintain the coating. Both schools agree on what to skip: alkaline strippers and 'wax-added' shampoos. Six spec-verified picks here cover both schools, a sub-ten-dollar grocery-aisle entry, and a hard-water-region acidic shampoo for the every-few-months reset."
 buyIf:
   buy:
     - "You have a ceramic-coated daily driver and want a soap that won't compromise the coating's chemistry"
