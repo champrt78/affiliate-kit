@@ -12,12 +12,26 @@ Run again any time after `git pull` to refresh commands. Idempotent — preserve
 
 ## Slash commands provided
 
+**Two user-facing commands.** Everything else is an internal mechanic that `/aff` reads inline.
+
+### User surface
+
 | Command | Purpose |
 |---|---|
-| `/capture <idea>` | File a sidetrack idea into the Second Brain `ideas/` inbox without breaking the current conversation. Detects project from cwd. |
-| `/research-product <topic>` | Multi-source research pipeline. Parallel-fires Firecrawl search, `/last30days`, `/watch` on top YouTube reviewer, and Canopy ASIN verify. Output: `docs/research/<date>-<slug>.md`. |
-| `/scaffold-piece <args>` | Wraps `scripts/new-review.ps1` or `scripts/buyers-guide.ps1` + KV cloaker registration + voice lint + astro build. Stops short of commit so the DRAFT gate stays Ray's call. |
-| `/bottom-line-helper <slug>` | Reads a DRAFT-gated piece's frontmatter (scorecard, buyIf, flaws) + prior shipped Bottom Lines on the same site for voice anchor, drafts 3 verdict options + a supporting paragraph. Never writes to the file. |
+| `/aff` | State-aware router across MWC + DTP. Surveys portfolio state, computes posture, opens with ONE next-move proposal + Y/N. No flags. Plain language both ways. The one command Ray types. |
+| `/aff-idea <text>` | Sidetrack capture into Second Brain `ideas/` inbox without breaking the active `/aff` thread. Renamed from `/capture` to avoid colliding with moonlit-meadow's `/idea`. |
+
+### Internal mechanics (not for direct use)
+
+These appear in `/help` (Claude Code has no mechanism to suppress slash listing — confirmed via CE feasibility review 2026-05-20), but Ray ignores them. Their `description:` starts with `Internal —`. `/aff` `Read`s these `.md` files inline and executes their steps in the same conversation turn.
+
+| Command | Read inline by `/aff` when |
+|---|---|
+| `/scout-topics` | Posture is `hero-behind-cadence`, `dp-behind-cadence`, or `ready-for-next-topic`. |
+| `/research-product` | After a scout pick lands. Synthesizes Firecrawl + last30days + /watch + Canopy into `docs/research/<date>-<slug>.md`. |
+| `/scaffold-piece` | Posture is `research-ready-to-scaffold`. Has entry-mode B accepting already-collected context from `/aff`. |
+| `/bottom-line-helper` | Posture is `draft-needs-bottom-line`. Read-only — drafts 3 verdict options. |
+| `/ops` | Folded into `/aff`'s state survey (`Step 2`) and `where-are-we` flow. Still usable standalone for the static HTML dashboard render. |
 
 ## What lives in `plugin/`
 

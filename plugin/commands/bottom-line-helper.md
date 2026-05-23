@@ -1,5 +1,5 @@
 ---
-description: Draft 3 candidate Bottom Line verdict options + a supporting paragraph for a DRAFT-gated piece. Ray writes the actual Bottom Line in his voice; this skill just gives him 3 starting points to pick from or edit. Use when Ray says "draft bottom line options for X" or "give me bottom line picks for the latest piece" or similar.
+description: Internal — Bottom Line drafter that `/aff` reads inline when posture is `draft-needs-bottom-line`. Drafts 3 verdict options + supporting paragraph per piece (read-only — Ray picks one and writes the final). Ray uses `/aff` as the entry point — invocable directly only for debugging.
 ---
 
 You are being invoked because Ray wants 3 candidate Bottom Line options drafted for a DRAFT-gated piece. The user's input follows `/bottom-line-helper <piece-file-path>` OR just identifies the piece by slug.

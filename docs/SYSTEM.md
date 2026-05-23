@@ -149,12 +149,21 @@ Source: `plugin/commands/*.md` in this repo.
 Install destination: `~/.claude/commands/*.md` (Claude Code reads here).
 Install command: `pnpm install-plugin`.
 
-| Command | What it does | Calls into |
+**Two user-facing commands. Everything else is internal mechanic that `/aff` reads inline.**
+
+| Command | Surface | What it does |
 |---|---|---|
-| `/capture <idea>` | Files an idea into Second Brain `ideas/` inbox without breaking the active conversation. Detects project from cwd. | `~/documents/github/second-brain/ideas/` |
-| `/research-product <topic>` | Parallel-fires Firecrawl search, `/last30days`, `/watch` on top YouTube reviewer, and Canopy ASIN verify. Output: `docs/research/<date>-<slug>.md`. | Firecrawl + last30days + watch + Canopy |
-| `/scaffold-piece <args>` | Wraps `scripts/new-review.ps1` or `scripts/buyers-guide.ps1` + `add-link.ps1` (KV cloaker) + `lint-voice.ps1` + `pnpm build`. Stops at DRAFT — won't commit until Ray writes Bottom Line. | `scripts/*.ps1` |
-| `/bottom-line-helper <slug>` | Drafts 3 verdict options + supporting paragraph from a piece's frontmatter. Never writes to file. Preserves the human-Bottom-Line discipline. | Reads piece frontmatter + prior pieces |
+| `/aff` | **User-facing** | State-aware router. Surveys MWC + DTP portfolio state, computes posture, opens with ONE next-move proposal + Y/N. No flags. Plain language both ways. See `plugin/commands/aff.md` for the full state machine + posture table. |
+| `/aff-idea <text>` | **User-facing** | Sidetrack capture. Files an idea into Second Brain `ideas/` inbox without breaking the active `/aff` thread. (Renamed from `/capture` because moonlit-meadow already owns the `/idea` slug globally.) |
+| `/scout-topics` | Internal | Topic discovery across portfolio. Read inline by `/aff` for `hero-behind-cadence` / `dp-behind-cadence` / `ready-for-next-topic` postures. |
+| `/research-product <topic>` | Internal | Firecrawl + last30days + /watch + Canopy parallel research synthesis → `docs/research/<date>-<slug>.md`. Read inline by `/aff` after a scout pick. |
+| `/scaffold-piece` | Internal | Wraps `scripts/new-review.ps1` / `buyers-guide.ps1` + `add-link.ps1` (KV cloaker) + `lint-voice.ps1` + `pnpm build`. Has entry-mode B that accepts already-collected context from `/aff`. Stops at DRAFT. |
+| `/bottom-line-helper` | Internal | Drafts 3 verdict options + supporting paragraph (read-only). Read inline by `/aff` for `draft-needs-bottom-line` posture. |
+| `/ops` | Internal | Static HTML dashboard generator at `docs/ops.html`. Folded into `/aff` state survey for the conversational version; still usable standalone for the HTML render. |
+
+**Hidden from /help?** No. Claude Code has no mechanism to suppress slash-command listing (confirmed via CE feasibility review 2026-05-20). Internal mechanics appear in `/help` but their `description:` starts with `Internal —` so they're visually distinct. Ray uses `/aff` and `/aff-idea`; the others are reference-only.
+
+**Dispatch model.** Slash commands cannot invoke other slash commands. `/aff` `Read`s the relevant playbook `.md` inline and executes its steps in the same conversation turn.
 
 ---
 

@@ -1,10 +1,10 @@
 ---
-description: Capture a sidetrack idea into Second Brain ideas/ inbox without breaking the current conversation thread. Writes a markdown file with project-tag frontmatter, auto-commits via Brad's hooks. Use this whenever an idea hits mid-flow that doesn't belong to what we're working on right now.
+description: Capture a sidetrack idea for affiliate-kit into Second Brain ideas/ inbox without breaking the active /aff conversation thread. Writes a markdown file with project-tag frontmatter, auto-commits via Brad's hooks. Use whenever an idea hits mid-flow that doesn't belong to what we're working on right now. (Renamed from /capture; project-prefixed to avoid colliding with moonlit-meadow's /idea.)
 ---
 
 You are being invoked because the user wants to capture a sidetrack idea WITHOUT breaking the current conversation thread.
 
-The user's input follows the form `/capture <idea text>` (or sometimes just `capture: <idea text>` in plain chat, which you should treat identically).
+The user's input follows the form `/aff-idea <idea text>` (or sometimes just `aff-idea: <idea text>` in plain chat, which you should treat identically).
 
 ## What to do
 

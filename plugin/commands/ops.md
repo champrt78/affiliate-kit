@@ -1,5 +1,5 @@
 ---
-description: Regenerate and open the Affiliate Kit operations dashboard at docs/ops.html. Shows portfolio status, per-site next-action recommendations, DRAFT pieces waiting on Bottom Line, refresh-sweep candidates, open TODO items, recent commits, and research notes ready to mine. Use whenever Ray asks "what should I do next" or wants the portal/operations board view.
+description: Internal — operations dashboard generator. Folded into `/aff`'s state survey (Step 2) and `where-are-we` flow. Still useful standalone for regenerating the HTML ops board at docs/ops.html. Ray uses `/aff` for the conversational version — this file is invocable directly only for the static dashboard render.
 ---
 
 You are being invoked because Ray wants the operations dashboard regenerated and opened.

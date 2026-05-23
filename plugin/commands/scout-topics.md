@@ -1,5 +1,5 @@
 ---
-description: Surface candidate topics to write about next across the affiliate portfolio. Three modes — (1) no flags = portfolio-wide candidate ranking, (2) --site <slug> = scope to one site's gaps + research-ready topics + next-piece queue, (3) --<category-seed> like --wheel-cleaning = parallel research deep-dive into that category. Use when Ray asks "what should I write next" or "scout topics".
+description: Internal — topic discovery layer that `/aff` reads inline when posture is `hero-behind-cadence`, `dp-behind-cadence`, or `ready-for-next-topic`. Surfaces candidate topics across the portfolio (three modes: portfolio-wide / site-scoped / category-seed). Ray uses `/aff` as the entry point — this file is invocable directly only for debugging.
 ---
 
 You are being invoked because Ray wants candidate topics to write about. The user's input follows `/scout-topics [--site <slug>] [--<seed>]`.

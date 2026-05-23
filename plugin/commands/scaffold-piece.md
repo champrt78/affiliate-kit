@@ -1,12 +1,16 @@
 ---
-description: Scaffold a new content piece in the affiliate-sites monorepo. Wraps the existing PowerShell scaffolders (new-review.ps1 / buyers-guide.ps1) + KV cloaker registration + voice lint + astro build in one command. Use when Ray says "scaffold a piece on X" or "let's start the next piece" or similar.
+description: Internal — scaffolder that `/aff` reads inline after research-ready-to-scaffold posture or scout-then-scaffold flow completes. Wraps PowerShell scaffolders (new-review.ps1 / buyers-guide.ps1) + KV cloaker registration + voice lint + astro build. Ray uses `/aff` as the entry point — invocable directly only for debugging.
 ---
 
-You are being invoked because Ray wants to scaffold a new content piece on the affiliate-sites monorepo. The user's input follows the form `/scaffold-piece <args>` where args describe the piece.
+You are being invoked to scaffold a new content piece. Two entry modes:
+
+**Mode A — Direct slash invocation** (`/scaffold-piece <args>`): Ray typed the command directly with CLI-style args. Parse them per Step 1A.
+
+**Mode B — Read inline by `/aff`**: `/aff` has already collected site/type/slug/product/brand/amazon_url/description conversationally during its Step 6.C flow. Skip Step 1A entirely — those values are already in conversation context. Jump straight to Step 2 (scaffolder execution).
 
 ## What you'll do
 
-1. **Parse Ray's input** to extract:
+1. **(Mode A only)** **Parse Ray's input** to extract:
    - `site` — one of: `mywildlifecam`, `detailerpicks`, `fussybean`, `starteraquarium`, `gameovergear`
    - `type` — `review` (single product) or `buyers-guide` (multi-product comparison)
    - `slug` — URL slug for the piece (kebab-case)
@@ -16,6 +20,8 @@ You are being invoked because Ray wants to scaffold a new content piece on the a
    - `description` — short piece description
 
    If any are missing, ask ONE consolidated question listing what's needed. Don't ping-pong one-by-one.
+
+   **(Mode B)** Skip this step — `/aff` already collected and passed all values.
 
 2. **Run the appropriate scaffolder** from `C:\Users\Ray\documents\github\affiliate-sites\scripts\`:
    - For review: `pwsh scripts/new-review.ps1 -Site <site> -Slug <slug> -ProductName <product> -Brand <brand> -AmazonUrl <url> -Description <desc>`

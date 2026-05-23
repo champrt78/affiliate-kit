@@ -89,11 +89,26 @@ If anything prints, fix it.
 ## Tone of generated output
 - Tone is currently fixed at snarky-but-friendly. Configurable tone is deferred until a concrete consumer exists.
 
-## Slash commands provided by the Kit (source: `plugin/commands/`)
-- `/capture <idea>` — file a sidetrack into Second Brain `ideas/` inbox without breaking the active conversation
-- `/research-product <topic>` — parallel research (Firecrawl + last30days + /watch + Canopy) → `docs/research/<date>-<slug>.md`
-- `/scaffold-piece <args>` — scaffolder + cloaker KV + voice lint + build, stops at DRAFT
-- `/bottom-line-helper <slug>` — drafts 3 verdict options + supporting paragraph from a piece's frontmatter, never writes to file
+## Slash command surface (NON-NEGOTIABLE)
+
+**Two user-facing commands. That's it.**
+
+- **`/aff`** — state-aware router. Surveys portfolio state across MWC + DTP, computes posture, opens with ONE next-move proposal + Y/N. Plain language both ways. No flags. Walks Ray through whatever the next correct step is: write Bottom Lines, scaffold, scout, unblock, or report state.
+- **`/aff-idea <text>`** — sidetrack capture. Files an idea into Second Brain `ideas/` inbox without breaking the active `/aff` thread.
+
+**Everything else in `plugin/commands/` is an internal mechanic.** They appear in `/help` (Claude Code has no mechanism to suppress slash-command listing — confirmed via CE feasibility review 2026-05-20), but Ray ignores them. Their `description:` starts with `Internal —` so they're visually distinct in any picker.
+
+| Internal command | What it does | Read inline by `/aff` when |
+|---|---|---|
+| `/scout-topics` | Topic discovery across portfolio | posture is `hero-behind-cadence`, `dp-behind-cadence`, `ready-for-next-topic` |
+| `/research-product` | Firecrawl + Canopy + last30days + /watch synthesis | After scout produces a pick |
+| `/scaffold-piece` | Scaffolder + KV + voice lint + build | `research-ready-to-scaffold` posture; has entry-mode B for already-collected context |
+| `/bottom-line-helper` | 3 verdict drafts (read-only) | `draft-needs-bottom-line` posture |
+| `/ops` | Static HTML dashboard | Folded into `/aff` state survey; still usable standalone for the HTML render |
+
+**Dispatch model:** Slash commands cannot invoke other slash commands. `/aff` `Read`s the relevant playbook `.md` file inline and executes its steps in the same conversation turn.
+
+**When Ray's plain-language request maps to an `/aff` workflow** — "let's write the next DTP piece", "where are we?", "research X", "I had a thought" — **announce the dispatch in one line** ("Running `/aff` under the hood now") **and walk through `plugin/commands/aff.md` verbatim.** Do NOT freelance scout/research/scaffold/bottom-line/capture logic. The internal mechanics encode voice-doctrine lint, DRAFT/noindex gates, KV registration, schema validation, `pnpm build`. Freelancing skips the safety net and produces subtly broken work.
 
 ## When in doubt
 - Architecture / how everything connects → `docs/SYSTEM.md`

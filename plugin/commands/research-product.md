@@ -1,5 +1,5 @@
 ---
-description: Multi-source research pipeline for a single product or category. Parallel-fires Firecrawl search, Canopy ASIN lookup, ScrapeCreators last30days, and /watch on the top credible YouTube review. Synthesizes findings into a structured research note at affiliate-sites/docs/research/<date>-<slug>.md. Use when Ray says "research X" or "let's research the next product."
+description: Internal — research pipeline that `/aff` reads inline during the `research-ready-to-scaffold` and scout-then-scaffold flows. Parallel-fires Firecrawl search, Canopy ASIN lookup, ScrapeCreators last30days, and /watch on the top credible YouTube review. Synthesizes findings into a structured research note at docs/research/<date>-<slug>.md. Ray uses `/aff` as the entry point — invocable directly only for debugging.
 ---
 
 You are being invoked because Ray wants research data on a product or category before scaffolding/drafting content. The user's input follows `/research-product <topic>`.
