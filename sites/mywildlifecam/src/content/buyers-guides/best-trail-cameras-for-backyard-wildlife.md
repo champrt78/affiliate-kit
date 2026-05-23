@@ -46,7 +46,7 @@ products:
     affiliateUrl: "https://www.amazon.com/dp/B08LGLJBNK?tag=mywildlifecam-20"
     image: "https://m.media-amazon.com/images/I/71hJG6XtwUL._AC_SL1000_.jpg"
     bestFor: "Best for gift buyers and first-time trail-cam owners"
-    priceFrom: 69.99
+    priceFrom: 41.99
     priceUnit: "unit"
     hook: "Under-$80 entry point. 48MP photos, 1296P video, 100 ft no-glow night vision. The camera you give a first-time owner."
     reason: "The gift-buyer entry point:"
