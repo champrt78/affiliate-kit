@@ -7,7 +7,7 @@ products:
   - name: "Chemical Guys InnerClean"
     brand: "Chemical Guys"
     affiliateUrl: "https://www.amazon.com/Chemical-Guys-SPI_663_16-InnerClean-Protectant/dp/B008LPEZ6Q?tag=mywildlifecam-20"
-    image: "https://images-na.ssl-images-amazon.com/images/P/B008LPEZ6Q.01.LZZZZZZZ.jpg"
+    image: "https://m.media-amazon.com/images/I/71-KVNzML-L.jpg"
     bestFor: "Best for the all-surface weekend enthusiast"
     priceFrom: 11.99
     priceUnit: "16oz"
@@ -24,7 +24,7 @@ products:
   - name: "303 Aerospace Protectant"
     brand: "303 Products"
     affiliateUrl: "https://www.amazon.com/AMRS-303-30340-125-303-Aerospace-Protectant-16oz/dp/B019X2BJSM?tag=mywildlifecam-20"
-    image: "https://images-na.ssl-images-amazon.com/images/P/B019X2BJSM.01.LZZZZZZZ.jpg"
+    image: "https://m.media-amazon.com/images/I/61DO1dAAeFL.jpg"
     bestFor: "Best for the dark-dash daily driver in high sun"
     priceFrom: 15.99
     priceUnit: "16oz"
@@ -58,7 +58,7 @@ products:
   - name: "Meguiar's Quik Interior Detailer (D157)"
     brand: "Meguiar's"
     affiliateUrl: "https://www.amazon.com/dp/B0GTWQ19PM?tag=mywildlifecam-20"
-    image: "https://images-na.ssl-images-amazon.com/images/P/B0GTWQ19PM.01.LZZZZZZZ.jpg"
+    image: "https://m.media-amazon.com/images/I/71R5IYTskgL.jpg"
     bestFor: "Best for the first-time interior detailer who needs a product today"
     priceFrom: 8.00
     priceUnit: "16oz"

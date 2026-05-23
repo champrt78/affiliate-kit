@@ -7,7 +7,7 @@ products:
   - name: "Sonax Full Effect Wheel Cleaner"
     brand: "Sonax"
     affiliateUrl: "https://www.amazon.com/Sonax-230200-755-Wheel-Cleaner-Effect/dp/B003UT3S6Q?tag=mywildlifecam-20"
-    image: "https://images-na.ssl-images-amazon.com/images/P/B003UT3S6Q.01.LZZZZZZZ.jpg"
+    image: "https://m.media-amazon.com/images/I/61aO7E+bNSL.jpg"
     bestFor: "Best for coated wheels and the iron-killer reference"
     priceFrom: 16.99
     priceUnit: "500ml"
@@ -41,7 +41,7 @@ products:
   - name: "Chemical Guys Diablo Gel Concentrate"
     brand: "Chemical Guys"
     affiliateUrl: "https://www.amazon.com/Chemical-Guys-CLD_997_16-Diablo-Cleaner/dp/B003TTRORQ?tag=mywildlifecam-20"
-    image: "https://images-na.ssl-images-amazon.com/images/P/B003TTRORQ.01.LZZZZZZZ.jpg"
+    image: "https://m.media-amazon.com/images/I/71W1R17a4PL.jpg"
     bestFor: "Best for the gel-cling enthusiast"
     priceFrom: 18.99
     priceUnit: "16oz"
@@ -58,7 +58,7 @@ products:
   - name: "Meguiar's Ultimate All Wheel Cleaner"
     brand: "Meguiar's"
     affiliateUrl: "https://www.amazon.com/Meguiars-G180124-Ultimate-Cleaner-fluid_ounces/dp/B072FCF2ZF?tag=mywildlifecam-20"
-    image: "https://images-na.ssl-images-amazon.com/images/P/B072FCF2ZF.01.LZZZZZZZ.jpg"
+    image: "https://m.media-amazon.com/images/I/71dStjwvBSL.jpg"
     bestFor: "Best for mass-retail accessibility"
     priceFrom: 9.99
     priceUnit: "24oz"
