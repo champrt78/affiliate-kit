@@ -33,6 +33,19 @@ const faqSchema = z.array(z.object({
   answer: z.string(),
 })).optional();
 
+/* bgTheme — per-page forest gutter theme. Defaults to "dawn" when omitted.
+   Pick the theme that matches the content (twilight for covert/no-glow,
+   moss for grounded/entry-level, canopy for cellular/open, etc.).
+   Locked 2026-05-23. */
+const bgThemeSchema = z.enum([
+  "dawn",
+  "canopy",
+  "moss",
+  "twilight",
+  "pine",
+  "solid",
+]).optional();
+
 const reviews = defineCollection({
   type: "content",
   schema: z.object({
@@ -71,6 +84,7 @@ const reviews = defineCollection({
     buyIf: buyIfSchema,
     flaws: flawsSchema,
     faq: faqSchema,
+    bgTheme: bgThemeSchema,
   }),
 });
 
@@ -115,6 +129,7 @@ const buyersGuides = defineCollection({
     bottomLine: bottomLineSchema,
     buyIf: buyIfSchema,
     faq: faqSchema,
+    bgTheme: bgThemeSchema,
   }),
 });
 

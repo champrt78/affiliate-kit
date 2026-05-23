@@ -10,6 +10,7 @@ product:
   affiliate:
     amazon: "https://www.amazon.com/TACTACAM-Cellular-Required-RV-TC-XGEN3-Surveillance/dp/B0D7FQNM38"
 classification: "review"
+bgTheme: canopy
 pubDate: 2026-05-17
 lastUpdated: 2026-05-17
 images:

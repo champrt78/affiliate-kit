@@ -10,6 +10,7 @@ product:
   affiliate:
     amazon: "https://www.amazon.com/dp/B09QBV2GP8"
 classification: "review"
+bgTheme: twilight
 pubDate: 2026-05-16
 lastUpdated: 2026-05-17
 images:

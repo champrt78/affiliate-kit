@@ -11,6 +11,7 @@ product:
     amazon: "https://www.amazon.com/dp/B08LGLJBNK?tag=mywildlifecam-20"
 rating: 4.0
 classification: "review"
+bgTheme: moss
 pubDate: 2026-05-23
 lastUpdated: 2026-05-23
 images:

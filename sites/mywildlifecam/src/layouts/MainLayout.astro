@@ -2,6 +2,19 @@
 import BaseLayout from "@affkit/shared-ui/BaseLayout.astro";
 import AffiliateDisclosure from "@affkit/shared-ui/AffiliateDisclosure.astro";
 
+/* bgTheme — per-page forest gutter theme. Defaults to "dawn" when omitted.
+   Six options locked 2026-05-23 from the N-photo-gutters playground:
+     dawn       — misty woods (default, friendly broad-audience pages)
+     canopy     — forest canopy up (open/sky, cellular cams)
+     moss       — forest floor (grounded, entry-level)
+     twilight   — tree silhouettes (covert/stealth/no-glow content)
+     pine       — pine dawn fade (quiet, methodology, about pages)
+     solid      — no photo, forest green (legal/admin pages)
+   Layout writes the theme to body's bg-theme class via Astro's
+   `body:` attribute pass-through; matching CSS lives in this file's
+   <style is:global> block (must be global to reach body). */
+type BgTheme = "dawn" | "canopy" | "moss" | "twilight" | "pine" | "solid";
+
 interface Props {
   title: string;
   description: string;
@@ -9,10 +22,25 @@ interface Props {
   robotsContent?: string;
   ogType?: string;
   ogImage?: string;
+  bgTheme?: BgTheme;
 }
 
-const { title, description, canonical, robotsContent, ogType, ogImage } = Astro.props;
+const { title, description, canonical, robotsContent, ogType, ogImage, bgTheme = "dawn" } = Astro.props;
 const siteName = "MyWildlifeCam";
+
+/* Resolve bgTheme → CSS background value. Pexels CDN hot-links (per the
+   image policy in CLAUDE.md: scene/atmosphere only, never product hero).
+   Forest-green fallback color keeps the gutters dark while the photo loads.
+   Single string injected into CSS via Astro's `define:vars` directive below. */
+const themeBackgrounds: Record<typeof bgTheme, string> = {
+  dawn: 'url("https://images.pexels.com/photos/15222306/pexels-photo-15222306.jpeg?auto=compress&cs=tinysrgb&w=1600") center/cover no-repeat fixed, #1F3D2F',
+  canopy: 'url("https://images.pexels.com/photos/12067501/pexels-photo-12067501.jpeg?auto=compress&cs=tinysrgb&w=1600") center/cover no-repeat fixed, #1F3D2F',
+  moss: 'url("https://images.pexels.com/photos/12623932/pexels-photo-12623932.jpeg?auto=compress&cs=tinysrgb&w=1600") center/cover no-repeat fixed, #1F3D2F',
+  twilight: 'url("https://images.pexels.com/photos/5688636/pexels-photo-5688636.jpeg?auto=compress&cs=tinysrgb&w=1600") center/cover no-repeat fixed, #1F3D2F',
+  pine: 'url("https://images.pexels.com/photos/29154771/pexels-photo-29154771.jpeg?auto=compress&cs=tinysrgb&w=1600") center/cover no-repeat fixed, #1F3D2F',
+  solid: "#1F3D2F",
+};
+const pageBg = themeBackgrounds[bgTheme];
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/buyers-guides/", label: "Guides" },
@@ -159,7 +187,7 @@ const currentPath = Astro.url.pathname;
   })();
 </script>
 
-<style>
+<style define:vars={{ pageBg }}>
   /* Skip link */
   .skip-link {
     position: absolute;
@@ -347,7 +375,7 @@ const currentPath = Astro.url.pathname;
      We force the body background via :global() so this overrides the
      html-level rule in shared-styles/tokens.css for this site only. */
   :global(body) {
-    background: #1F3D2F; /* --color-forest, hard-coded so it doesn't depend on cascade order */
+    background: var(--pageBg); /* per-page forest gutter theme; resolved in frontmatter from bgTheme prop */
   }
 
   main {

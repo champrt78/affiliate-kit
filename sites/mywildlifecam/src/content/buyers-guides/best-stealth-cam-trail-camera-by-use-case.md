@@ -140,6 +140,7 @@ products:
       <p>One stock note: the stealthcam.com product page showed out-of-stock status for the GMAX32 at time of research, though the Amazon listing remained active with confirmed pricing. If the Amazon listing goes inactive before this guide refreshes, the closest replacement is the DS4K Ultimate (better image, no-glow gap) or the Deceptor MAX 2.0 if the buyer can accept the cellular subscription cost.</p>
 pubDate: 2026-05-19
 lastUpdated: 2026-05-19
+bgTheme: twilight
 images:
   hero: "https://images.unsplash.com/photo-1761072969560-d59dab77ad21?auto=format&fit=crop&w=2400&q=80"
   heroCaption: "Buck and doe at the water's edge. Photo: Unsplash."
