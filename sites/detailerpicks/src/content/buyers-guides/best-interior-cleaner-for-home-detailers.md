@@ -112,8 +112,8 @@ images:
   hero: "https://images.unsplash.com/photo-1771402689232-14d4d1c1c685?auto=format&fit=crop&w=2400&q=80"
   heroCaption: "Vintage cognac-leather interior. Photo: Unsplash."
 bottomLine:
-  verdict: ""
-  supporting: ""
+  verdict: "Two products cover 90% of weekly interior maintenance: InnerClean for the wipe-down, 303 for UV defense. The other four pick up edge cases the first two cannot."
+  supporting: "InnerClean is the everyday all-surface cleaner most home detailers can default to without overthinking. 303 Aerospace Protectant covers what InnerClean misses: UV defense for dashboards exposed to direct sun, which prevents the cracking and fade that destroys plastic in three to five years. Adam's Total Interior trades up to a premium all-in-one; Meguiar's Quik Interior is the under-$10 grocery-aisle entry; CarPro PERL coats trim plastic and rubber; P&S Xpress is the dilutable concentrate for deep cleaning at a lower per-use cost."
 buyIf:
   buy:
     - "You want one bottle that handles dashboard, door panels, vinyl, leather, plastic, and screens without surface-by-surface product juggling"
