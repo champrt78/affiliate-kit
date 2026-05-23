@@ -2,11 +2,19 @@
 description: Internal — topic discovery layer that `/aff` reads inline when posture is `hero-behind-cadence`, `dp-behind-cadence`, or `ready-for-next-topic`. Surfaces candidate topics across the portfolio (three modes: portfolio-wide / site-scoped / category-seed). Ray uses `/aff` as the entry point — this file is invocable directly only for debugging.
 ---
 
-You are being invoked because Ray wants candidate topics to write about. The user's input follows `/scout-topics [--site <slug>] [--<seed>]`.
+You are being invoked to surface candidate topics. Two entry contexts:
+
+**Direct slash invocation** (`/scout-topics [--site <slug>] [--<seed>]`): Ray typed the command with optional flags. Parse the flags per the decision tree below.
+
+**Read inline by `/aff`**: `/aff` has already determined the scope from its source posture during Step 6.D. Skip flag parsing — use the scope passed in conversation context:
+- `hero-behind-cadence` posture → scope is Mode B mwc (treat as if `--mwc` was passed)
+- `dp-behind-cadence` posture → scope is Mode B dp (treat as if `--dp` was passed)
+- `ready-for-next-topic` posture → scope is Mode A portfolio-wide (no flags)
+- Mode C (`--<category-seed>`) is reachable only via direct slash invocation today; `/aff` does not route to it. If Ray wants a category deep-dive, he types `/scout-topics --wheel-cleaning` directly.
 
 ## Three modes
 
-**Quick decision tree:**
+**Quick decision tree (for direct slash invocation only):**
 - `--site <slug>` alone (or shorthand `--mwc`, `--dp`, `--fb`, `--sa`, `--gog`) → **Mode B (site focus)**
 - `--<category-seed>` alone (e.g. `--wheel-cleaning`) → **Mode C (category deep-dive)** — routes to whichever site matches the keyword
 - `--site <slug> --<category-seed>` together → **Mode C scoped to that site**

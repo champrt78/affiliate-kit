@@ -1,3 +1,14 @@
+---
+target_site: detailerpicks
+target_slugs:
+  - best-car-wash-soap-for-home-detailers
+  - best-foam-cannon-for-home-detailers
+  - best-interior-cleaner-for-home-detailers
+  - best-wheel-cleaner-for-home-detailers
+created: 2026-05-17
+status: scaffolded
+---
+
 # Detailing research notes — 2026-05-17
 
 Source-attributed research compiled from `/watch` (YouTube transcripts via Whisper) + `/last30days` (Reddit threads). Use this as raw material for the first detailerpicks pieces. **All quotes / verdicts are attributed to the reviewer who said them — we do not claim hands-on use ourselves.**

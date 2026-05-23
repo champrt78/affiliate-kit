@@ -1,3 +1,10 @@
+---
+target_site: detailerpicks
+target_slug: best-wheel-cleaner-for-home-detailers
+created: 2026-05-18
+status: scaffolded
+---
+
 # Wheel cleaner research notes — 2026-05-18
 
 Source-attributed research for detailerpicks piece #4 (Best Wheel Cleaner for Home Detailers).

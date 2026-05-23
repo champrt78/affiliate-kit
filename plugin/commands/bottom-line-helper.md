@@ -2,14 +2,20 @@
 description: Internal — Bottom Line drafter that `/aff` reads inline when posture is `draft-needs-bottom-line`. Drafts 3 verdict options + supporting paragraph per piece (read-only — Ray picks one and writes the final). Ray uses `/aff` as the entry point — invocable directly only for debugging.
 ---
 
-You are being invoked because Ray wants 3 candidate Bottom Line options drafted for a DRAFT-gated piece. The user's input follows `/bottom-line-helper <piece-file-path>` OR just identifies the piece by slug.
+You are being invoked to draft 3 candidate Bottom Line options for a DRAFT-gated piece. Two entry modes:
+
+**Mode A — Direct slash invocation** (`/bottom-line-helper <piece-file-path>`): Ray typed the command directly. Resolve the target per Step 1A.
+
+**Mode B — Read inline by `/aff`**: `/aff` has already resolved the piece path during its Step 6.B flow. Skip Step 1A entirely — the path is already in conversation context. Jump straight to Step 2.
 
 ## What you'll do
 
-1. **Resolve the target file.** Ray may give you:
+1. **(Mode A only)** **Resolve the target file.** Ray may give you:
    - A full path: `sites/detailerpicks/src/content/buyers-guides/best-pressure-washer-for-home-detailers.md`
    - A slug: `best-pressure-washer-for-home-detailers` (search both sites' content/ for it)
    - Just the topic: "the latest detailerpicks piece" → list recent DRAFT-gated pieces and pick the most recent
+
+   **(Mode B)** Skip this step — `/aff` already passed the resolved file path.
 
 2. **Read the file's frontmatter** and extract:
    - `title`, `deck`, `rubric`

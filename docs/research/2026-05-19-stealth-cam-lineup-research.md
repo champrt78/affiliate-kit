@@ -1,3 +1,10 @@
+---
+target_site: mywildlifecam
+target_slug: best-stealth-cam-trail-camera-by-use-case
+created: 2026-05-19
+status: scaffolded
+---
+
 # Stealth Cam lineup research notes — 2026-05-19
 
 Source-attributed research for mywildlifecam piece #6 (Best Stealth Cam Trail Cameras by Use Case).

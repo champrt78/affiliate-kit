@@ -42,7 +42,9 @@ You are being invoked to scaffold a new content piece. Two entry modes:
    - Build clean / failed (with first error)
    - Next step: "Ray writes Bottom Line at line N, then commit + push for live deploy"
 
-6. **DO NOT commit or push.** The piece is DRAFT-gated until Ray writes the Bottom Line. Let him drive the publish moment.
+6. **Commit + push behavior — depends on entry mode:**
+   - **Mode A** (direct slash invocation): DO NOT commit or push. Leave the scaffolded file uncommitted in the working tree. Ray drives the publish moment.
+   - **Mode B** (read inline by `/aff`): DO commit + push as `feat(<site>): scaffold <slug> [DRAFT]`. The DRAFT/noindex gate keeps the page out of Google's index until Ray writes the Bottom Line via the next /aff loop. Per Ray's decision 2026-05-23: file-system durability + safe-because-noindexed wins over deferred publish. **Callers depending on this:** `plugin/commands/aff.md` Step 6.C.7. Don't change this contract without checking aff.md.
 
 ## Constraints
 

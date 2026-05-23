@@ -2,16 +2,22 @@
 description: Internal — research pipeline that `/aff` reads inline during the `research-ready-to-scaffold` and scout-then-scaffold flows. Parallel-fires Firecrawl search, Canopy ASIN lookup, ScrapeCreators last30days, and /watch on the top credible YouTube review. Synthesizes findings into a structured research note at docs/research/<date>-<slug>.md. Ray uses `/aff` as the entry point — invocable directly only for debugging.
 ---
 
-You are being invoked because Ray wants research data on a product or category before scaffolding/drafting content. The user's input follows `/research-product <topic>`.
+You are being invoked to do research on a product or category. Two entry modes:
+
+**Mode A — Direct slash invocation** (`/research-product <topic>`): Ray typed the command with a topic. Parse per Step 1A.
+
+**Mode B — Read inline by `/aff`**: `/aff` has already collected the topic + target site/type during its Step 6.C flow. Skip Step 1A. Use the topic, target_site, and target_type passed in conversation context. Jump to Step 2.
 
 ## What you'll do
 
-1. **Parse the topic** from Ray's input. Examples:
+1. **(Mode A only)** **Parse the topic** from Ray's input. Examples:
    - `Tactacam Reveal Ultra` — single product, trail-cam niche
    - `best foam cannon for home detailers` — category, detailing niche
    - `Bushnell CelluCORE 20` — single product, trail-cam niche
 
-2. **Generate a kebab-case slug** for the output file (max 6 words).
+   **(Mode B)** Skip this step — `/aff` already passed the topic + target site/type.
+
+2. **Generate a kebab-case slug** for the output file (max 6 words). Also derive the `target_slug` (the future piece's slug) — usually `best-<category>-for-<segment>` for buying guides or `<brand>-<model>-review` for single-product reviews. **Always write `target_site:` and `target_slug:` (or `target_slugs:` if multi-piece) into the research note's frontmatter** so `/aff` Step 2.5 can map research → piece without filename-guessing.
 
 3. **Fire parallel research jobs in background** (use Bash with `run_in_background: true`):
 

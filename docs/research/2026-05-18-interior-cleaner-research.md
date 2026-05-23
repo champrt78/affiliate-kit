@@ -1,3 +1,10 @@
+---
+target_site: detailerpicks
+target_slug: best-interior-cleaner-for-home-detailers
+created: 2026-05-18
+status: scaffolded
+---
+
 # Interior cleaner research notes — 2026-05-18
 
 Source-attributed research for detailerpicks piece #3 (Best Interior Cleaner / Detailer / Protectant for Home Detailers).

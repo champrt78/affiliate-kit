@@ -1,3 +1,15 @@
+---
+target_site: mywildlifecam
+target_slugs:
+  - best-trail-cameras-for-backyard-wildlife
+  - spypoint-flex-m-review
+  - stealth-cam-ds4k-ultimate-review
+  - tactacam-reveal-x-3-review
+  - vikeri-trail-camera-review
+created: 2026-05-17
+status: scaffolded
+---
+
 # Trail-cam research notes — 2026-05-17
 
 Source-attributed research compiled from `/watch` (YouTube transcripts) + `/last30days`. Use as raw material for mywildlifecam piece #4+ candidates. **All claims attributed to reviewer who said them. We do not claim hands-on use.**
