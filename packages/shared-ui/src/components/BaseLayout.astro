@@ -58,6 +58,10 @@ const resolvedOgImage = ogImage ?? defaultOgImage;
   <meta property="og:image" content={resolvedOgImage} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content={resolvedOgImage} />
+
+  {/* Per-site head content (analytics/affiliate verification/etc).
+       Sites pass `<Fragment slot="head">...</Fragment>` into their MainLayout. */}
+  <slot name="head" />
 </head>
 <body>
   <slot />

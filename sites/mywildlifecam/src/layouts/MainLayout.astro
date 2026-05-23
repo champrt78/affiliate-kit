@@ -30,6 +30,15 @@ const currentPath = Astro.url.pathname;
   ogType={ogType}
   ogImage={ogImage}
 >
+  {/* AvantLink site verification — MWC-only, added 2026-05-23.
+       Protocol flipped http→https to avoid mixed-content blocking on the HTTPS site;
+       classic.avantlink.com supports HTTPS. AuthResponse hash is the per-publisher
+       verification token issued by AvantLink. Once verification clears, this script
+       may be removable — leave in place until they confirm. */}
+  <Fragment slot="head">
+    <script is:inline type="text/javascript" src="https://classic.avantlink.com/affiliate_app_confirm.php?mode=js&authResponse=c0c99aa9ade2dc7ce92bc0b1105a97427e5069ba"></script>
+  </Fragment>
+
   <a href="#main" class="skip-link">Skip to content</a>
 
   <header class="site-header" data-site-header>
