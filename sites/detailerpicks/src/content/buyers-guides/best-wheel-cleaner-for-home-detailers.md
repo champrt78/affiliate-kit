@@ -92,7 +92,7 @@ products:
   - name: "CarPro Iron X"
     brand: "CarPro"
     affiliateUrl: "https://www.amazon.com/Carpro-Iron-Remover-500-Sprayer/dp/B004UM6DLE?tag=mywildlifecam-20"
-    image: "https://m.media-amazon.com/images/I/51zmW0m-w7L._AC_SY300_SX300_QL70_FMwebp_.jpg"
+    image: "https://m.media-amazon.com/images/I/51zmW0m-w7L._AC_SL1500_.jpg"
     bestFor: "Best for periodic deep decontamination"
     priceFrom: 19.99
     priceUnit: "500ml"
