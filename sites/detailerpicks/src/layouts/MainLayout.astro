@@ -25,13 +25,19 @@ interface Props {
 const { title, description, canonical, robotsContent, ogType, ogImage, bgTheme = "foam-cascade" } = Astro.props;
 const siteName = "DetailerPicks";
 
+/* CSS `background` shorthand: per spec, color value MAY appear ONLY in the
+   LAST layer, attached inline (no comma separator). The earlier form
+   `<gradient>, <url>, #14181C` treated #14181C as its own layer (invalid)
+   and the whole declaration was rejected — the silent root cause of the
+   blank-gutter bug. Returning two CSS declarations: explicit
+   background-color first (for fallback), then the layered image. */
 const themeBackgrounds: Record<typeof bgTheme, string> = {
-  "foam-cascade": 'linear-gradient(rgba(20,24,28,0.15), rgba(20,24,28,0.15)), url("https://images.pexels.com/photos/6873174/pexels-photo-6873174.jpeg?auto=compress&cs=tinysrgb&w=2000") center/cover no-repeat fixed, #14181C',
-  "wheel-suds": 'linear-gradient(rgba(20,24,28,0.15), rgba(20,24,28,0.15)), url("https://images.pexels.com/photos/14231678/pexels-photo-14231678.jpeg?auto=compress&cs=tinysrgb&w=2000") center/cover no-repeat fixed, #14181C',
-  "suds-closeup": 'linear-gradient(rgba(20,24,28,0.15), rgba(20,24,28,0.15)), url("https://images.pexels.com/photos/4870702/pexels-photo-4870702.jpeg?auto=compress&cs=tinysrgb&w=2000") center/cover no-repeat fixed, #14181C',
-  "interior-detail": 'linear-gradient(rgba(20,24,28,0.25), rgba(20,24,28,0.25)), url("https://images.pexels.com/photos/6873008/pexels-photo-6873008.jpeg?auto=compress&cs=tinysrgb&w=2000") center/cover no-repeat fixed, #14181C',
-  "chrome-reflection": 'url("https://images.pexels.com/photos/27317283/pexels-photo-27317283.jpeg?auto=compress&cs=tinysrgb&w=2000") center/cover no-repeat fixed, #14181C',
-  "solid": "#14181C",
+  "foam-cascade": 'linear-gradient(rgba(20,24,28,0.15), rgba(20,24,28,0.15)), url("https://images.pexels.com/photos/6873174/pexels-photo-6873174.jpeg?auto=compress&cs=tinysrgb&w=2000") center/cover no-repeat fixed',
+  "wheel-suds": 'linear-gradient(rgba(20,24,28,0.15), rgba(20,24,28,0.15)), url("https://images.pexels.com/photos/14231678/pexels-photo-14231678.jpeg?auto=compress&cs=tinysrgb&w=2000") center/cover no-repeat fixed',
+  "suds-closeup": 'linear-gradient(rgba(20,24,28,0.15), rgba(20,24,28,0.15)), url("https://images.pexels.com/photos/4870702/pexels-photo-4870702.jpeg?auto=compress&cs=tinysrgb&w=2000") center/cover no-repeat fixed',
+  "interior-detail": 'linear-gradient(rgba(20,24,28,0.25), rgba(20,24,28,0.25)), url("https://images.pexels.com/photos/6873008/pexels-photo-6873008.jpeg?auto=compress&cs=tinysrgb&w=2000") center/cover no-repeat fixed',
+  "chrome-reflection": 'url("https://images.pexels.com/photos/27317283/pexels-photo-27317283.jpeg?auto=compress&cs=tinysrgb&w=2000") center/cover no-repeat fixed',
+  "solid": "none",
 };
 const pageBg = themeBackgrounds[bgTheme];
 const navItems = [
@@ -58,9 +64,11 @@ const fontsHref = "https://fonts.googleapis.com/css2?family=Instrument+Serif:ita
   {/* Per-page body bg. Astro's define:vars scopes --pageBg to the
       component's wrapping element, so :global(body)'s var() lookup can't
       see it. Inject a per-render <style is:inline> into the head slot
-      that hardcodes the bg URL string. */}
+      that hardcodes the bg image string, with #14181C as a separate
+      background-color so it survives the shorthand's bg-color reset.
+      (Order matters: bg-color declaration goes AFTER background shorthand.) */}
   <Fragment slot="head">
-    <style is:inline set:html={`body { background: ${pageBg}; }`}></style>
+    <style is:inline set:html={`body { background: ${pageBg}; background-color: #14181C; }`}></style>
   </Fragment>
 
   <a href="#main" class="skip-link">Skip to content</a>

@@ -32,13 +32,21 @@ const siteName = "MyWildlifeCam";
    image policy in CLAUDE.md: scene/atmosphere only, never product hero).
    Forest-green fallback color keeps the gutters dark while the photo loads.
    Single string injected into CSS via Astro's `define:vars` directive below. */
+/* CSS background shorthand can't have a bare color as its own comma-
+   separated layer — it must attach to the LAST image layer's value
+   (no comma) OR be a separate background-color declaration. The
+   previous `url(...), #1F3D2F` was rejected as invalid by the browser
+   and made body bg fall to transparent. Fix: drop the color from this
+   string; emit it as a separate background-color declaration in the
+   Fragment slot style block (after the shorthand, so it overrides
+   shorthand's bg-color reset). */
 const themeBackgrounds: Record<typeof bgTheme, string> = {
-  dawn: 'url("https://images.pexels.com/photos/15222306/pexels-photo-15222306.jpeg?auto=compress&cs=tinysrgb&w=1600") center/cover no-repeat fixed, #1F3D2F',
-  canopy: 'url("https://images.pexels.com/photos/12067501/pexels-photo-12067501.jpeg?auto=compress&cs=tinysrgb&w=1600") center/cover no-repeat fixed, #1F3D2F',
-  moss: 'url("https://images.pexels.com/photos/12623932/pexels-photo-12623932.jpeg?auto=compress&cs=tinysrgb&w=1600") center/cover no-repeat fixed, #1F3D2F',
-  twilight: 'url("https://images.pexels.com/photos/5688636/pexels-photo-5688636.jpeg?auto=compress&cs=tinysrgb&w=1600") center/cover no-repeat fixed, #1F3D2F',
-  pine: 'url("https://images.pexels.com/photos/29154771/pexels-photo-29154771.jpeg?auto=compress&cs=tinysrgb&w=1600") center/cover no-repeat fixed, #1F3D2F',
-  solid: "#1F3D2F",
+  dawn: 'url("https://images.pexels.com/photos/15222306/pexels-photo-15222306.jpeg?auto=compress&cs=tinysrgb&w=1600") center/cover no-repeat fixed',
+  canopy: 'url("https://images.pexels.com/photos/12067501/pexels-photo-12067501.jpeg?auto=compress&cs=tinysrgb&w=1600") center/cover no-repeat fixed',
+  moss: 'url("https://images.pexels.com/photos/12623932/pexels-photo-12623932.jpeg?auto=compress&cs=tinysrgb&w=1600") center/cover no-repeat fixed',
+  twilight: 'url("https://images.pexels.com/photos/5688636/pexels-photo-5688636.jpeg?auto=compress&cs=tinysrgb&w=1600") center/cover no-repeat fixed',
+  pine: 'url("https://images.pexels.com/photos/29154771/pexels-photo-29154771.jpeg?auto=compress&cs=tinysrgb&w=1600") center/cover no-repeat fixed',
+  solid: "none",
 };
 const pageBg = themeBackgrounds[bgTheme];
 const navItems = [
@@ -69,7 +77,7 @@ const currentPath = Astro.url.pathname;
         component's wrapping element (here <main>), so :global(body)'s
         var() lookup can't see it. Inject a per-render <style is:inline>
         into the head slot that hardcodes the bg URL string. */}
-    <style is:inline set:html={`body { background: ${pageBg}; }`}></style>
+    <style is:inline set:html={`body { background: ${pageBg}; background-color: #1F3D2F; }`}></style>
     <script is:inline type="text/javascript" src="http://classic.avantlink.com/affiliate_app_confirm.php?mode=js&authResponse=c0c99aa9ade2dc7ce92bc0b1105a97427e5069ba"></script>
   </Fragment>
 
