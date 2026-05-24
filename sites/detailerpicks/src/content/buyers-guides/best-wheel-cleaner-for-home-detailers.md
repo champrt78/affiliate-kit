@@ -21,6 +21,23 @@ products:
       <p><a href="https://www.amazon.com/Sonax-230200-755-Wheel-Cleaner-Effect/dp/B003UT3S6Q?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">Sonax Full Effect</a> is the category's iron-reactive reference product. The Sonax USA product page documents pH-neutral, acid-free chemistry. Thiocarbamate compounds form water-soluble iron complexes; the cleaner sprays fluorescent yellow-green and turns deep red or purple on contact with ferrous iron from brake dust. The 10-minute maximum dwell time per the product page is the longest among the iron-reactive picks in this lineup, giving the chemistry adequate time to bond to embedded iron particles.</p>
       <p>Surface compatibility per the product page and Amazon listing: painted, alloy, anodized, clear-coated, chrome, aluminum, stainless steel, with explicit ceramic-coat-safe language. For the ceramic-coated-wheel owner, the explicit safety claim plus the no-acid chemistry pencil out to the most trustworthy iron-killer in this category.</p>
       <p>Available in 500 ml (around $16.99 on Amazon) and 5 liter (around $99.99) sizes. The 500 ml bottle covers roughly 10 to 15 full wheel sets. The sulfur odor characteristic of iron-reactive chemistry is present and noticeable; rinse in a well-ventilated area.</p>
+  - name: "Adam's Polishes Wheel Cleaner"
+    brand: "Adam's Polishes"
+    affiliateUrl: "https://www.amazon.com/dp/B00BPGGSCW?tag=mywildlifecam-20"
+    image: "https://m.media-amazon.com/images/I/71N1uhCyYJL.jpg"
+    bestFor: "Best for the premium consumer with ceramic-coated or sensitive finishes"
+    priceFrom: 16.99
+    priceUnit: "16 oz"
+    hook: "pH-balanced, acid-free, color-changing iron-reactive chemistry. The ceramic-coat-safe everyday spray for owners who don't want to think about chemistry."
+    reason: "The premium consumer ceramic-safe pick:"
+    facts:
+      Iron-reactive: "Yes (color-change indicator)"
+      pH: "Balanced, acid-free"
+      Surfaces: "All finishes including ceramic-coated, anodized, polished"
+    body: |
+      <p><a href="https://www.amazon.com/dp/B00BPGGSCW?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">Adam's Polishes Wheel Cleaner</a> is the premium-consumer pick for owners who want Sonax-level chemistry without thinking about whether to upgrade. The Adam's product page documents acid-free, pH-balanced chemistry with a color-changing iron reactant, the same general chemistry class as Sonax Full Effect at the same price tier.</p>
+      <p>Owner-review patterns on Amazon (4.5 stars across 5,100+ reviews): the recurring positive theme is safe-on-every-wheel-type confidence combined with the visual reassurance of the color-change reaction confirming brake dust is dissolving. The recurring critical theme is dwell-time sensitivity in direct sun (the spray dries faster than the chemistry needs to react), which is a category-wide property, not Adam's-specific.</p>
+      <p>The difference between Adam's and Sonax at the same price: Adam's positions as the all-purpose premium consumer spray with US-based brand support and dense detailing-community presence; Sonax positions as the European-engineered iron-killer reference with the longest dwell tolerance in the lineup. Pick Adam's when the buyer's mental model is "trust the brand my detailing-forum friends recommend"; pick Sonax when the buyer wants the longest possible dwell window and the deepest iron-decon claim.</p>
   - name: "P&S Brake Buster Total Wheel Cleaner"
     brand: "P&S Detail Products"
     affiliateUrl: "https://www.amazon.com/PROFESSIONAL-DETAIL-PRODUCTS-Buster-Cleaner/dp/B07RTZBGWX?tag=mywildlifecam-20"
@@ -96,8 +113,8 @@ images:
   hero: "https://images.unsplash.com/photo-1761942943505-f134f851e88e?auto=format&fit=crop&w=2400&q=80"
   heroCaption: "Alloy wheel and brake caliper close-up. Photo: Unsplash."
 bottomLine:
-  verdict: "Two workhorses cover most weekly wheel cleaning: Sonax for coated wheels, P&S Brake Buster for everything else. A third handles periodic iron decon, and two more fill the mass-retail and gel-format slots."
-  supporting: "Sonax Full Effect is the coated-wheel reference and the standard 'iron-killer' formula that's safe on most finishes. P&S Brake Buster is the pro-shop default for high-volume work, gallon economy with corrosion protection in the formula. CarPro Iron X is the iron-decon specialist for periodic resets, heavier-duty than a maintenance cleaner. Meguiar's Ultimate All Wheel Cleaner is the under-$10 mass-retail entry; Chemical Guys Diablo Gel covers the vertical-cling use case for buyers who prefer gel dwell time over spray-and-rinse."
+  verdict: "Three workhorses cover most weekly wheel cleaning: Sonax for the iron-killer reference, Adam's for the premium-consumer everyday, P&S Brake Buster for pro-shop economy. A fourth handles periodic iron decon, and two more fill the mass-retail and gel-format slots."
+  supporting: "Sonax Full Effect is the coated-wheel reference with the longest dwell tolerance in this lineup. Adam's Polishes Wheel Cleaner is the premium-consumer ceramic-safe everyday spray at the same price tier with US-based brand presence. P&S Brake Buster is the pro-shop default for high-volume work, gallon economy with corrosion protection in the formula. CarPro Iron X is the iron-decon specialist for periodic resets, heavier-duty than a maintenance cleaner. Meguiar's Ultimate All Wheel Cleaner is the under-$10 mass-retail entry; Chemical Guys Diablo Gel covers the vertical-cling use case for buyers who prefer gel dwell time over spray-and-rinse."
 buyIf:
   buy:
     - "You wash weekly or biweekly and want a dedicated wheel cleaner that does not strip ceramic coating, dull anodized finishes, or pit polished aluminum"
