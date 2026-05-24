@@ -198,16 +198,16 @@ const fontsHref = "https://fonts.googleapis.com/css2?family=Instrument+Serif:ita
     padding: 0;
   }
   .page-shell {
-    max-width: 1280px;
+    max-width: 1100px;
     margin: 0 auto;
     background: var(--color-bg);
     box-shadow:
       0 0 0 1px rgba(20, 24, 28, 0.06),
       0 24px 60px -16px rgba(20, 24, 28, 0.35);
   }
-  @media (max-width: 1340px) {
-    .page-shell { max-width: calc(100vw - 48px); }
-  }
+  /* Mobile: shell takes full width so the photo doesn't show on small screens.
+     Above 760px: shell stays at 1100px max so gutters are clearly visible
+     at all desktop widths (1366 → 133px each, 1920 → 410px each). */
   @media (max-width: 760px) {
     .page-shell { max-width: none; box-shadow: none; }
   }

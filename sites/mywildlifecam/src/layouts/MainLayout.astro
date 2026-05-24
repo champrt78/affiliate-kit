@@ -399,24 +399,17 @@ const currentPath = Astro.url.pathname;
     padding: 0;
   }
   .page-shell {
-    max-width: 1320px;
+    max-width: 1100px;
     margin: 0 auto;
     background: var(--color-bg);
     box-shadow: 0 0 0 1px rgba(31, 61, 47, 0.06),
                 0 24px 60px -16px rgba(15, 26, 21, 0.35);
     /* The shell is the cream content surface. Sections inside (lead, featured,
        reviews, manifesto, .guide, .article) paint their own bgs INSIDE this
-       container, so the manifesto dark band now lives inside the cream card
-       — a deliberate inversion-within-the-card, not a full-bleed strip. */
+       container. */
   }
-  @media (max-width: 1380px) {
-    /* On mid-width screens, give the gutters a smaller value rather than
-       collapsing entirely. 24px of forest on each side keeps the editorial
-       feel even at laptop sizes. */
-    .page-shell { max-width: calc(100vw - 48px); }
-  }
+  /* Mobile (<=760px) collapses to full-width so the photo doesn't show. */
   @media (max-width: 760px) {
-    /* On mobile a forest gutter is uglier than no gutter — collapse. */
     .page-shell { max-width: none; box-shadow: none; }
   }
 
