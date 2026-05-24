@@ -2,6 +2,7 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import MainLayout from "../../layouts/MainLayout.astro";
 import CTA from "@affkit/shared-ui/CTA.astro";
+import BottomLine from "@affkit/shared-ui/BottomLine.astro";
 import { cloakedLink } from "@affkit/shared-utils";
 import { productSchema } from "@affkit/shared-utils";
 
@@ -101,6 +102,12 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
   )}
 
   <article class="guide">
+
+    {/* Bottom Line — single shared component (locked 2026-05-24).
+        Renders the two-line pivot (primary forest semibold + counter muted).
+        Sits at the TOP of the article per the anti-recipe-page principle:
+        Ray's verdict is what the reader sees first. */}
+    <BottomLine bottomLine={data.bottomLine} isDraft={isDraft} />
 
     <header class="guide-header">
       <a href="/buyers-guides/" class="guide-crumb">← All buying guides</a>
@@ -409,14 +416,17 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
   }
   .qcard__img:hover img { transform: scale(1.03); }
   .qcard__img img {
-    /* Fixed height normalizes visible size across all picks regardless of
-       source PNG aspect ratio or embedded whitespace (some products ship
-       1500x928 with ~50% padding, some 772x772 with ~80% fill). Pairs with
-       object-fit:contain so wide products take more width, tall products
-       take less, but the perceived vertical band stays consistent. */
-    height: 70%;
-    width: auto;
+    /* Fit the image inside the 5:4 card box with NEITHER axis overflowing.
+       max-width + max-height bound both axes; width/height auto preserves
+       the source aspect; object-fit:contain handles any remaining edge case
+       on browsers that interpret max- inconsistently. The container's
+       display:grid place-items:center handles the centering.
+       (Fixes the 2026-05-24 center-clip bug where portrait products were
+       being scaled past max-height and clipped by overflow:hidden.) */
     max-width: 80%;
+    max-height: 88%;
+    width: auto;
+    height: auto;
     object-fit: contain;
     mix-blend-mode: multiply;
     transition: transform 220ms ease;
@@ -508,16 +518,17 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     padding: 16px;
   }
   .deep-card__img img {
-    /* Fixed height normalizes visible product size in the 220x220 frame.
-       Mirrors the qcard + ReviewCard pattern: same vertical band across
-       every pick, regardless of source-PNG aspect or embedded whitespace.
-       Replaced the previous max-width:100% + max-height:100% combo, which
-       let a square product render at 220px while a portrait product
-       rendered at ~140px width — the "pic 2 can't be a close-up of the
-       nozzle" effect Ray called out 2026-05-20. */
-    height: 88%;
-    width: auto;
+    /* Fit-inside-box with BOTH axes bounded. max-height + max-width prevent
+       portrait products from overflowing the height axis (which previously
+       got clipped by overflow:hidden, creating the "middle band only"
+       center-crop bug Ray called out 2026-05-24 on CarPro Iron X, P&S
+       Brake Buster, Stealth Cam DS4K Transmit, Deceptor MAX 2.0, Revolver
+       Pro 2.0, etc.). object-fit:contain belt-and-suspenders any browser
+       quirk; place-items:center on parent handles centering. */
     max-width: 96%;
+    max-height: 96%;
+    width: auto;
+    height: auto;
     object-fit: contain;
     mix-blend-mode: multiply;
   }

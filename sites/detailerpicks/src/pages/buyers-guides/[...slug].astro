@@ -2,6 +2,7 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import MainLayout from "../../layouts/MainLayout.astro";
 import CTA from "@affkit/shared-ui/CTA.astro";
+import BottomLine from "@affkit/shared-ui/BottomLine.astro";
 import { cloakedLink } from "@affkit/shared-utils";
 import { productSchema } from "@affkit/shared-utils";
 
@@ -76,6 +77,10 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
   )}
 
   <article class="guide">
+    {/* Bottom Line — shared component (locked 2026-05-24). Two-line pivot at the top
+        of every guide. Single source: packages/shared-ui/src/components/BottomLine.astro */}
+    <BottomLine bottomLine={data.bottomLine} isDraft={isDraft} />
+
     <header class="guide-header">
       <p class="kicker">Buyer's Guide</p>
       <h1 class="guide-title">{data.title}</h1>

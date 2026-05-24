@@ -12,7 +12,8 @@
     "./ReviewCard.astro": "./src/components/ReviewCard.astro",
     "./BuyersGuideCard.astro": "./src/components/BuyersGuideCard.astro",
     "./ProductCard.astro": "./src/components/ProductCard.astro",
-    "./ReviewArticle.astro": "./src/components/ReviewArticle.astro"
+    "./ReviewArticle.astro": "./src/components/ReviewArticle.astro",
+    "./BottomLine.astro": "./src/components/BottomLine.astro"
   },
   "dependencies": {
     "@affkit/shared-styles": "workspace:*",

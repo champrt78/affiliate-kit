@@ -1,0 +1,118 @@
+---
+/* Single source of truth for the Bottom Line render block. Used by:
+   - packages/shared-ui/src/components/ReviewArticle.astro (review pages)
+   - sites/mywildlifecam/src/pages/buyers-guides/[...slug].astro
+   - sites/detailerpicks/src/pages/buyers-guides/[...slug].astro
+
+   Locked 2026-05-23 (commit 20dad94): the verdict is split on '. ' into a
+   two-line pivot (Buy / Skip). Primary line = forest semibold (the strong
+   recommendation). Counter line = muted ink, regular weight (the caveat).
+
+   Bug that prompted this extraction (2026-05-24): the render block lived
+   ONLY in ReviewArticle.astro. The two guide page templates had the
+   frontmatter schema for bottomLine but NEVER rendered it — all 6 guide
+   Bottom Lines were invisible to users. Extracting to a shared component
+   means "one source, three callers" — drift becomes impossible. */
+interface BottomLineData {
+  verdict: string;
+  supporting?: string | string[];
+}
+
+interface Props {
+  bottomLine: BottomLineData | undefined;
+  isDraft: boolean;
+}
+
+const { bottomLine, isDraft } = Astro.props;
+
+// Split verdict on '. ' (period + whitespace) into pivot sentences.
+// First sentence = primary (the "Buy" recommendation). Subsequent = counter.
+const verdictSentences = bottomLine?.verdict
+  ? bottomLine.verdict.split(/\.\s+/).filter(Boolean).map((s, i, arr) =>
+      i < arr.length - 1 || /\.$/.test(s) ? s + (s.endsWith('.') ? '' : '.') : s
+    )
+  : [];
+
+const supportingIsArray = Array.isArray(bottomLine?.supporting);
+---
+{bottomLine && !isDraft && (
+  <section class="bottom-line" aria-label="Bottom Line">
+    <span class="bottom-line__label">Bottom Line</span>
+    {verdictSentences.map((sentence, i) => (
+      <p class={`bottom-line__verdict bottom-line__verdict--${i === 0 ? 'primary' : 'counter'}`}>
+        {sentence}
+      </p>
+    ))}
+    {supportingIsArray ? (
+      <ul class="bottom-line__list">
+        {(bottomLine.supporting as string[]).map((item) => <li set:html={item}></li>)}
+      </ul>
+    ) : bottomLine?.supporting ? (
+      <p class="bottom-line__supporting">{bottomLine.supporting}</p>
+    ) : null}
+  </section>
+)}
+
+<style>
+  .bottom-line {
+    background: var(--color-surface-alt, #FAF7EF);
+    border-left: 4px solid var(--color-brass, #A07C3A);
+    padding: var(--space-6, 1.5rem) var(--space-8, 2rem);
+    margin: var(--space-8, 2rem) 0;
+    border-radius: var(--radius-md, 6px);
+  }
+  .bottom-line__label {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: var(--text-xs, 0.75rem);
+    font-weight: var(--weight-semibold, 600);
+    letter-spacing: var(--tracking-wide, 0.05em);
+    text-transform: uppercase;
+    color: var(--color-brass, #A07C3A);
+    margin-bottom: var(--space-3, 0.75rem);
+  }
+  .bottom-line__verdict {
+    font-family: var(--font-serif);
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    line-height: 1.45;
+    margin: 0;
+    font-variation-settings: "opsz" 30;
+  }
+  .bottom-line__verdict + .bottom-line__verdict {
+    margin-top: var(--space-3, 0.75rem);
+  }
+  /* Primary: the strong recommendation ("Buy it if you..."). Forest semibold. */
+  .bottom-line__verdict--primary {
+    color: var(--color-forest, var(--color-fg, #1F3D2F));
+    font-weight: var(--weight-semibold, 600);
+  }
+  /* Counter: the caveat ("Skip it if you..."). Muted ink, regular weight. */
+  .bottom-line__verdict--counter {
+    color: var(--color-paper-ink, var(--color-fg, #2A2A2A));
+    font-weight: var(--weight-regular, 400);
+    opacity: 0.85;
+  }
+  .bottom-line__supporting {
+    margin: var(--space-4, 1rem) 0 0;
+    font-family: var(--font-sans);
+    font-size: var(--text-base, 1rem);
+    line-height: var(--leading-normal, 1.5);
+    color: var(--color-paper-ink, var(--color-fg, #2A2A2A));
+    font-weight: var(--weight-regular, 400);
+  }
+  .bottom-line__list {
+    margin: var(--space-4, 1rem) 0 0;
+    padding-left: var(--space-6, 1.5rem);
+    font-family: var(--font-sans);
+    font-size: var(--text-base, 1rem);
+    line-height: var(--leading-normal, 1.5);
+    color: var(--color-paper-ink, var(--color-fg, #2A2A2A));
+  }
+  .bottom-line__list li {
+    margin-bottom: var(--space-2, 0.5rem);
+  }
+  .bottom-line__list li :global(a) {
+    color: var(--color-forest, var(--color-fg, #1F3D2F));
+    font-weight: var(--weight-semibold, 600);
+  }
+</style>

@@ -14,6 +14,7 @@
 import type { CollectionEntry } from "astro:content";
 import CTA from "./CTA.astro";
 import AffiliateDisclosure from "./AffiliateDisclosure.astro";
+import BottomLine from "./BottomLine.astro";
 import { cloakedLink, productSchema } from "@affkit/shared-utils";
 
 interface Props {
@@ -177,28 +178,7 @@ const imageScale = (data.images as any)?.imageScale as number | undefined;
 
   <div class="article-body">
 
-    {bottomLine && !isDraft && (
-      <section class="bottom-line" aria-label="Bottom Line">
-        <span class="bottom-line__label">Bottom Line</span>
-        {/* Split verdict on '. ' into Buy/Skip lines (or any 2-sentence pivot).
-             Each sentence renders as its own paragraph with a distinguishing
-             class so the two halves of the pivot are visually distinct.
-             Locked 2026-05-23 as the site-wide Bottom Line treatment. */}
-        {(() => {
-          const sentences = bottomLine.verdict.split(/\.\s+/).filter(Boolean).map((s, i, arr) => i < arr.length - 1 || /\.$/.test(s) ? s + (s.endsWith('.') ? '' : '.') : s);
-          return sentences.map((sentence, i) => (
-            <p class={`bottom-line__verdict bottom-line__verdict--${i === 0 ? 'primary' : 'counter'}`}>{sentence}</p>
-          ));
-        })()}
-        {bottomLine.supporting && Array.isArray(bottomLine.supporting) ? (
-          <ul class="bottom-line__list">
-            {bottomLine.supporting.map((item) => <li>{item}</li>)}
-          </ul>
-        ) : bottomLine.supporting ? (
-          <p class="bottom-line__supporting">{bottomLine.supporting}</p>
-        ) : null}
-      </section>
-    )}
+    <BottomLine bottomLine={bottomLine} isDraft={isDraft} />
 
     {scorecard && composite !== null && (
       <section class="scorecard" aria-label="Editorial scorecard">
