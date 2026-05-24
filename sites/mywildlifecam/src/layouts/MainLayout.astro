@@ -395,7 +395,11 @@ const currentPath = Astro.url.pathname;
 
   main {
     min-height: 60vh;
-    background: #1F3D2F;
+    /* Transparent so body-bg photo shows in LEFT/RIGHT gutters either side
+       of the centered .page-shell. Earlier main { background: #1F3D2F }
+       covered body horizontally and was the actual reason the photo
+       gutters never appeared. */
+    background: transparent;
     padding: 0;
   }
   .page-shell {

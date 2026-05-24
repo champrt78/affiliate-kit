@@ -196,6 +196,10 @@ const fontsHref = "https://fonts.googleapis.com/css2?family=Instrument+Serif:ita
   main {
     min-height: 60vh;
     padding: 0;
+    /* Make main transparent so the body-bg photo shows in the LEFT and RIGHT
+       gutters either side of the centered .page-shell. Without this, the
+       shared-styles base rule paints main cream and covers body horizontally. */
+    background: transparent;
   }
   .page-shell {
     max-width: 1100px;
