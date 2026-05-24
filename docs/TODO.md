@@ -2,30 +2,15 @@
 
 > Canonical open-work list per global CLAUDE.md. Update as we work. `cat docs/TODO.md` or open in VS Code any time. For deeper context on past wins + walkthroughs, see `docs/RAY_QUEUE.md`.
 
-**Last refreshed:** 2026-05-19
+**Last refreshed:** 2026-05-24
 
 ---
 
 ## Now (pick up next session)
 
-- [ ] **MWC photo-gutter variants — wire them in per-page (Ray confirmed wanted).** The N-photo-gutters playground at `docs/playgrounds/mwc-background/N-photo-gutters.html` has 7 variants Ray approved on 2026-05-20: "N1 down ... we can use all those on different pages, if a page is about night something use the night one, that kinda thing." Solid forest M1 landed as the baseline (`95efdcc`); now layer the photo variants on top of it per-content. Tentative theme map:
-  - **dawn** (N1, misty woods) — default. Backyard/general/golden-hour pieces.
-  - **canopy** (N2, forest canopy up) — open / sky / sunlight pieces.
-  - **moss** (N4, forest floor) — grounded, plants, low-camera pieces.
-  - **twilight** (N5, tree silhouettes) — stealth/covert/no-glow/night pieces (e.g. `best-stealth-cam-trail-camera-by-use-case`).
-  - **pine** (N6, pine dawn with fade-to-cream) — alternative quiet/calm variant.
-
-  **Implementation pattern (use this, NOT the failed bgTheme approach):**
-  - Add `bgTheme: z.enum([...]).optional()` to the content schema (same as the reverted f5e9f37 attempt's schema — that part was fine).
-  - In `MainLayout.astro`, conditionally set the **body** background per-theme (NOT `<main>`, NOT `::before` masks). The `.page-shell` wrapper stays unchanged — it sits on top of whatever body bg is set. This is the load-bearing difference from the reverted bgTheme attempt which painted `<main>` and masked the center.
-  - Each theme just paints a different body-bg image: `body.bg-theme--dawn { background: url(...) #1F3D2F }` etc. The cream `.page-shell` floats on top.
-  - **Mandatory verification before pushing:** All 5 page types (`/`, `/reviews/`, `/buyers-guides/`, individual review, individual guide) at 1440px AND 375px. Photo bg should be invisible under the shell on every page and only show in the gutters at viewport > 1380px. Mobile must collapse cleanly to no photo (just like the solid M1).
-
-  **GOTCHA from the earlier failed attempt (commits f5e9f37 + 2e840af, reverted 6448139 + ba5d05c):** painting the photo on `<main>` and masking the center with `::before` broke every page rendered through `MainLayout` (homepage whitespace blowup, review-card grid distorted, hundreds of px of empty cream on review article pages). The body-bg + `.page-shell` pattern shipped in `95efdcc` is structurally safe for photo variants — but read the full post-mortem in `docs/sessions/Session_2026-05-20.md` ("Evening — `/goal` loop iterations + bgTheme attempt REVERTED" section) before starting.
-- [ ] **Vikeri → Campark T85 swap** (or other under-$80 trail cam). Vikeri is discontinued on Amazon. Need a current product Amazon URL + image. Updates: `sites/mywildlifecam/src/content/buyers-guides/best-trail-cameras-for-backyard-wildlife.md` products[2], bottomLine.supporting third bullet, body prose mentions.
-- [ ] **6th wash-soap pick** for `best-car-wash-soap-for-home-detailers.md`. Ray said "6 is better on the eyes." Natural slot is a mass-retail under-$10 pick (Meguiar's Gold Class, Chemical Guys Honeydew Snow Foam). Need URL + image.
+- [ ] **Confirm Bing Webmaster Tools** — detailerpicks property added + sitemap submitted
+- [ ] **Verify the 5 swapped DTP product images render correctly on live site** after CF deploy of `8e426b3` / `dd78693` completes. Five products got new Canopy URLs today: Gyeon Q²M Bathe (wash soap), MTM Hydro PF22 (foam cannon), Adam's Polishes Wheel Cleaner, P&S Brake Buster, CarPro Iron X (all wheel cleaner). If any look wrong, re-fetch from the Amazon product page.
 - [ ] **Foam-cannon-in-use Unsplash image** for `best-foam-cannon-for-home-detailers.md`. Foam cannon spraying water + foam, outside, sunny day, "nice day outside" vibe. Currently `photo-1520340356584-f9917d1eea6f` as placeholder.
-- [ ] Confirm Bing Webmaster Tools — detailerpicks property added + sitemap submitted
 
 ## Next
 
@@ -36,6 +21,8 @@
 
 ## Later / Ideas
 
+- [ ] **Build-time image-URL refresh from Canopy** — root cause investigation 2026-05-24 (task #51) found that Amazon's `mainImageUrl` rotates over weeks (sometimes to brand logos / wordmarks / variant thumbnails), making static scaffold-time URLs go stale. Today's pre-commit lint catches staleness AT commit time, but doesn't prevent already-shipped URLs from rotting later. Two architectural fixes worth prototyping: (a) build-time job that re-fetches Canopy `mainImageUrl` for every ASIN in `affiliateUrl` frontmatter at deploy time and writes refreshed URLs into a build artifact; (b) Cloudflare Worker that proxies image requests through a per-ASIN Canopy lookup with KV caching (1-7 day TTL). Pick one once the scaffolder is producing more pieces and stale-URL events are observable in CF analytics.
+- [ ] **Orphan Vikeri review decision** — `sites/mywildlifecam/src/content/reviews/vikeri-trail-camera-review.md` is a complete piece (Bottom Line, scorecard, body) but no buying guide links to it anymore since the Vikeri→GardePro E5 swap. Three options: (a) delete (URL goes away on next deploy), (b) keep as standalone (gets some long-tail traffic but no internal-link channel), (c) repurpose as a "discontinued / what to buy instead" pointer page directing to GardePro E5. Skipping autonomous deletion because Ray's call.
 - [ ] **xAI billing setup** — claim trial credit or skip; X data isn't blocking content work
 - [ ] **Direct brand affiliate programs** — Pan The Organizer, Phoenix E.O.D., Labocosmetica, Carbon Collective HD, MJJC, Tactacam (5-10% vs Amazon 3%)
 - [ ] **aclaps.xyz SEO cleanup** — Assetto Corsa leaderboards side project (deferred; affiliate work takes priority)
@@ -52,6 +39,12 @@
 
 ## Done
 
+- [x] 2026-05-24 — **Durable image + affiliate-tag safeguard infrastructure SHIPPED.** Two PowerShell lints (`scripts/lint-product-images.ps1`, `scripts/lint-affiliate-tags.ps1`) + pre-commit hook (`scripts/pre-commit-hook.sh` + `install-hooks.ps1`) auto-block broken-image and wrong-tag commits at source. Pnpm scripts wired (`pnpm install-hooks`, `pnpm lint:images`, `pnpm lint:tags`). 5 first-run image catches on DTP swapped (Gyeon, MTM, Adam's, P&S, CarPro) using URLs Ray sourced from each product page. Shared `BottomLine.astro` extracted to `packages/shared-ui/`. CLAUDE.md + PROJECT_STATE.md updated. Root-cause investigation closed on suffix-stripping (no scaffolder strips suffixes — real cause is Canopy `mainImageUrl` rotation over time, captured as a Later/Ideas item).
+- [x] 2026-05-23 — **All 4 DTP buying guides Google-indexable + per-page gutter themes shipped on both sites.** Bottom Lines written for interior cleaner + wheel cleaner; meta-robots flip to `index,follow` on next deploy. MWC forest gutters + DTP detailing gutters per-content, body-bg pattern (NOT `<main>` paint). GardePro E5 review SCAFFOLDED + WRITTEN + LIVE via first end-to-end autonomous chain run.
+- [x] 2026-05-23 — Vikeri → GardePro E5 swap in trail-cam buying guide (`3b80cd6`).
+- [x] 2026-05-23 — Chemical Guys Mr. Pink lands as 6th wash-soap pick (`435d77c`).
+- [x] 2026-05-23 — Adam's Polishes Wheel Cleaner lands as 6th wheel pick (`7848b40`).
+- [x] 2026-05-20 — **MWC photo-gutter variants wired in per-page** (5 themes + solid fallback on each of MWC and DTP). Reverted earlier `<main>`-painted attempt; final implementation uses body-bg + transparent `<main>` + 1100px page-shell. Closes the "next session" carryover from 2026-05-20.
 - [x] 2026-05-20 — **MWC polish-pass v2 — 4 clean commits, all 5 page types verified.** Forest gutters back via body-bg + `.page-shell` wrapper (`95efdcc`, M1 mockup locked, closes #19). Image proportion uniformity in qcard + deep-card rows (`2d21c7c`). Editorial typography rhythm — leading-bold lead-ins, standalone-bold pull-quotes, distinctive blockquote (`fb38083`). Clickable review hero with "SEE ON AMAZON →" affordance pill (`1739034`). All 4 commits verified at 1440px + 375px on `/`, `/reviews/`, `/buyers-guides/`, an individual review, and an individual guide before pushing.
 - [x] 2026-05-18 — **Detailerpicks Chrome & Suds design LANDED to production** (commit `101e0a5`). Full palette swap charcoal→cream + steel-blue brand + Instrument Serif. Manifesto section inverted as the page's one dark band. Article heroes swapped on both buying-guide pieces. Old tokens preserved at `site-tokens.charcoal.bak.css` for revert. Build clean: 10 pages, 1.10s.
 - [x] 2026-05-18 — **PLAYBOOK rewritten as comprehensive operating guide** (commit `61d9e23` + `e597dde`) — 5 slash commands, other skills, repo scripts, every API the system hits with key locations, external accounts at-a-glance.
