@@ -13,6 +13,9 @@
     "typecheck": "pnpm -r --if-present typecheck",
     "lint": "pnpm -r --if-present lint",
     "install-plugin": "pwsh ./scripts/install-plugin.ps1",
+    "install-hooks": "pwsh ./scripts/install-hooks.ps1",
+    "lint:images": "pwsh ./scripts/lint-product-images.ps1",
+    "lint:tags": "pwsh ./scripts/lint-affiliate-tags.ps1",
     "ops": "pwsh ./scripts/ops.ps1 -Open",
     "install-desktop-shortcut": "pwsh ./scripts/install-desktop-shortcut.ps1"
   },
