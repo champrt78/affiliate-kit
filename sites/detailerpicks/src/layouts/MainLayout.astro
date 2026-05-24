@@ -181,9 +181,10 @@ const fontsHref = "https://fonts.googleapis.com/css2?family=Instrument+Serif:ita
      the cream page-shell floats on top at 1280px max. Mobile collapses
      to full-width so the photo doesn't show.
      Locked 2026-05-23. */
-  :global(body) {
-    background: var(--pageBg);
-  }
+  /* Per-page body bg is set via <style is:inline> in BaseLayout's head slot.
+     Don't add `body { background: var(--pageBg) }` here — that compiles into
+     the linked CSS file which loads AFTER the inline head style and
+     overrides it (unresolved var() → invalid → no bg). Cascade gotcha. */
   main {
     min-height: 60vh;
     padding: 0;
