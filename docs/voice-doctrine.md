@@ -28,6 +28,8 @@ Concrete phrases the AI must not produce and the lint must catch. Each bullet st
 - `I bought` — claims direct purchase
 - `I own` — claims ownership
 - `I've owned` — claims past ownership
+- `we own` — plural of `I own`; same hands-on claim (caught 2026-05-24 in MWC homepage manifesto: *"When we own a camera, we say so plainly..."*)
+- `we've owned` — plural of `I've owned`
 - `I've been using` — claims ongoing use
 - `my own` — implies personal possession (e.g., "in my own backyard")
 - `in my backyard` — claims a specific use environment
