@@ -386,11 +386,10 @@ const fontsHref = "https://fonts.googleapis.com/css2?family=Instrument+Serif:ita
     .site-header__inner { padding: 0 var(--space-4); gap: var(--space-3); }
   }
 
-  /* Main content */
-  main {
-    min-height: 60vh;
-    background: var(--color-bg);
-  }
+  /* Main content — bg is set transparent at the top of this style block so
+     the body-bg photo shows in the LEFT/RIGHT gutters either side of the
+     centered .page-shell. Don't add `background: var(--color-bg)` back
+     here; it loads after the transparent rule and covers body horizontally. */
 
   /* Footer */
   .site-footer {
