@@ -55,6 +55,14 @@ const fontsHref = "https://fonts.googleapis.com/css2?family=Instrument+Serif:ita
   themeColor="#F4F2EE"
   fontsHref={fontsHref}
 >
+  {/* Per-page body bg. Astro's define:vars scopes --pageBg to the
+      component's wrapping element, so :global(body)'s var() lookup can't
+      see it. Inject a per-render <style is:inline> into the head slot
+      that hardcodes the bg URL string. */}
+  <Fragment slot="head">
+    <style is:inline set:html={`body { background: ${pageBg}; }`}></style>
+  </Fragment>
+
   <a href="#main" class="skip-link">Skip to content</a>
 
   <header class="site-header" data-site-header>

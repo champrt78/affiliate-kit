@@ -65,6 +65,11 @@ const currentPath = Astro.url.pathname;
        page) but AvantLink's verifier just checks for the snippet's presence in HTML
        source, not execution. Once verification clears, REMOVE this entire Fragment. */}
   <Fragment slot="head">
+    {/* Per-page body bg. Astro's define:vars scopes --pageBg to the
+        component's wrapping element (here <main>), so :global(body)'s
+        var() lookup can't see it. Inject a per-render <style is:inline>
+        into the head slot that hardcodes the bg URL string. */}
+    <style is:inline set:html={`body { background: ${pageBg}; }`}></style>
     <script is:inline type="text/javascript" src="http://classic.avantlink.com/affiliate_app_confirm.php?mode=js&authResponse=c0c99aa9ade2dc7ce92bc0b1105a97427e5069ba"></script>
   </Fragment>
 
