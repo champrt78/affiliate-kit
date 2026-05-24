@@ -104,6 +104,7 @@ products:
       <p>Pair with one of the pH-neutral picks above for weekly washes; this product fills the "every-few-months reset" slot in the rotation. For owners in hard-water regions where mineral contamination is the main coating-degradation pathway, the Demineralizing Shampoo is the missing piece in a full ceramic-coat-care workflow.</p>
 pubDate: 2026-05-17
 lastUpdated: 2026-05-19
+bgTheme: suds-closeup
 images:
   hero: "https://images.unsplash.com/photo-1769641156620-48f014424c4f?auto=format&fit=crop&w=2400&q=80"
   heroCaption: "Foam-covered car under contact wash. Photo: Unsplash."

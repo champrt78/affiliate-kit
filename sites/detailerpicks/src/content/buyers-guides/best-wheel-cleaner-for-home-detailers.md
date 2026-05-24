@@ -109,6 +109,7 @@ products:
       <p>The framing for the buying guide: Iron X is not a routine wheel cleaner. It is a quarterly or seasonal deep-decontamination tool. Pair it with one of the routine cleaners above for weekly maintenance. The Lemon Scent variant is available for readers who find the standard sulfur smell unpleasant.</p>
 pubDate: 2026-05-19
 lastUpdated: 2026-05-19
+bgTheme: wheel-suds
 images:
   hero: "https://images.unsplash.com/photo-1761942943505-f134f851e88e?auto=format&fit=crop&w=2400&q=80"
   heroCaption: "Alloy wheel and brake caliper close-up. Photo: Unsplash."

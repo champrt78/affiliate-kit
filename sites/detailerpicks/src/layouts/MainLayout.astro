@@ -4,6 +4,14 @@ import AffiliateDisclosure from "@affkit/shared-ui/AffiliateDisclosure.astro";
 // Charcoal + electric blue + amber palette overrides
 import "../styles/site-tokens.css";
 
+/* bgTheme — per-page detailing gutter theme. Defaults to "foam-cascade"
+   when omitted. Mirrors the MWC pattern (commit 6cf4dda) — paint the
+   body, let the cream page-shell float on top. Mobile collapses the
+   shell to full-width so the photo doesn't show. Source photos hot-
+   linked from Pexels (image policy: scene/atmosphere only, never
+   product hero). */
+type BgTheme = "foam-cascade" | "wheel-suds" | "suds-closeup" | "interior-detail" | "chrome-reflection" | "solid";
+
 interface Props {
   title: string;
   description: string;
@@ -11,10 +19,21 @@ interface Props {
   robotsContent?: string;
   ogType?: string;
   ogImage?: string;
+  bgTheme?: BgTheme;
 }
 
-const { title, description, canonical, robotsContent, ogType, ogImage } = Astro.props;
+const { title, description, canonical, robotsContent, ogType, ogImage, bgTheme = "foam-cascade" } = Astro.props;
 const siteName = "DetailerPicks";
+
+const themeBackgrounds: Record<typeof bgTheme, string> = {
+  "foam-cascade": 'linear-gradient(rgba(20,24,28,0.15), rgba(20,24,28,0.15)), url("https://images.pexels.com/photos/6873174/pexels-photo-6873174.jpeg?auto=compress&cs=tinysrgb&w=2000") center/cover no-repeat fixed, #14181C',
+  "wheel-suds": 'linear-gradient(rgba(20,24,28,0.15), rgba(20,24,28,0.15)), url("https://images.pexels.com/photos/14231678/pexels-photo-14231678.jpeg?auto=compress&cs=tinysrgb&w=2000") center/cover no-repeat fixed, #14181C',
+  "suds-closeup": 'linear-gradient(rgba(20,24,28,0.15), rgba(20,24,28,0.15)), url("https://images.pexels.com/photos/4870702/pexels-photo-4870702.jpeg?auto=compress&cs=tinysrgb&w=2000") center/cover no-repeat fixed, #14181C',
+  "interior-detail": 'linear-gradient(rgba(20,24,28,0.25), rgba(20,24,28,0.25)), url("https://images.pexels.com/photos/6873008/pexels-photo-6873008.jpeg?auto=compress&cs=tinysrgb&w=2000") center/cover no-repeat fixed, #14181C',
+  "chrome-reflection": 'url("https://images.pexels.com/photos/27317283/pexels-photo-27317283.jpeg?auto=compress&cs=tinysrgb&w=2000") center/cover no-repeat fixed, #14181C',
+  "solid": "#14181C",
+};
+const pageBg = themeBackgrounds[bgTheme];
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/buyers-guides/", label: "Guides" },
@@ -73,7 +92,9 @@ const fontsHref = "https://fonts.googleapis.com/css2?family=Instrument+Serif:ita
   </header>
 
   <main id="main" tabindex="-1">
-    <slot />
+    <div class="page-shell">
+      <slot />
+    </div>
   </main>
 
   <footer class="site-footer">
@@ -147,7 +168,32 @@ const fontsHref = "https://fonts.googleapis.com/css2?family=Instrument+Serif:ita
   })();
 </script>
 
-<style>
+<style define:vars={{ pageBg }}>
+  /* Per-page detailing gutter — body is painted with the theme bg;
+     the cream page-shell floats on top at 1280px max. Mobile collapses
+     to full-width so the photo doesn't show.
+     Locked 2026-05-23. */
+  :global(body) {
+    background: var(--pageBg);
+  }
+  main {
+    min-height: 60vh;
+    padding: 0;
+  }
+  .page-shell {
+    max-width: 1280px;
+    margin: 0 auto;
+    background: var(--color-bg);
+    box-shadow:
+      0 0 0 1px rgba(20, 24, 28, 0.06),
+      0 24px 60px -16px rgba(20, 24, 28, 0.35);
+  }
+  @media (max-width: 1340px) {
+    .page-shell { max-width: calc(100vw - 48px); }
+  }
+  @media (max-width: 760px) {
+    .page-shell { max-width: none; box-shadow: none; }
+  }
   /* Skip link */
   .skip-link {
     position: absolute;

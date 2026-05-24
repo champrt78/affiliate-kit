@@ -59,6 +59,7 @@ products:
       <p>Trade-off: the Pro V3.0 bottle is V3.0-specific and is NOT cross-compatible with the older Pro V2.0 or the S V3.0 bottles. If you have multiple MJJC cannons in your inventory, expect to keep parts separate. This is a small issue for most home detailers (single cannon) but matters for shops with mixed inventory.</p>
 pubDate: 2026-05-17
 lastUpdated: 2026-05-19
+bgTheme: foam-cascade
 images:
   hero: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=2400&q=80"
   heroCaption: "Foam application before contact wash. Photo: Unsplash."

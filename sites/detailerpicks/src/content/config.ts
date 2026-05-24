@@ -34,6 +34,23 @@ const faqSchema = z.array(z.object({
   answer: z.string(),
 })).optional();
 
+/* bgTheme — per-page detailing gutter theme. Defaults to "foam-cascade"
+   when omitted. Six options locked 2026-05-23 from the D-playground:
+     foam-cascade      — foam-covered car (default, homepage + foam-cannon)
+     wheel-suds        — alloy wheel covered in soap (wheel-cleaner)
+     suds-closeup      — hand + sponge + bubbles (car-wash-soap)
+     interior-detail   — interior cleaning at pro shop (interior-cleaner)
+     chrome-reflection — vintage chrome detail (about / methodology)
+     solid             — no photo, ink #14181C (legal / admin) */
+const bgThemeSchema = z.enum([
+  "foam-cascade",
+  "wheel-suds",
+  "suds-closeup",
+  "interior-detail",
+  "chrome-reflection",
+  "solid",
+]).optional();
+
 const reviews = defineCollection({
   type: "content",
   schema: z.object({
@@ -68,6 +85,7 @@ const reviews = defineCollection({
     buyIf: buyIfSchema,
     flaws: flawsSchema,
     faq: faqSchema,
+    bgTheme: bgThemeSchema,
   }),
 });
 
@@ -108,6 +126,7 @@ const buyersGuides = defineCollection({
     bottomLine: bottomLineSchema,
     buyIf: buyIfSchema,
     faq: faqSchema,
+    bgTheme: bgThemeSchema,
   }),
 });
 

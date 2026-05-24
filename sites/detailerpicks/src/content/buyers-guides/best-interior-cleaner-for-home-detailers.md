@@ -108,6 +108,7 @@ products:
       <p>Clear Reflection Detailing's April 2025 review noted the cleaning performance is strong without drying, discoloring, or damaging surfaces. The community signal from AutoGeek and forum threads is that Xpress is the pro-shop default when bulk-buying matters more than combo-product convenience. The natural pairing: Xpress for cleaning frequency, <a href="https://www.amazon.com/AMRS-303-30340-125-303-Aerospace-Protectant-16oz/dp/B019X2BJSM?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">303 Aerospace</a> applied separately to the dashboard for UV protection.</p>
 pubDate: 2026-05-19
 lastUpdated: 2026-05-19
+bgTheme: interior-detail
 images:
   hero: "https://images.unsplash.com/photo-1771402689232-14d4d1c1c685?auto=format&fit=crop&w=2400&q=80"
   heroCaption: "Vintage cognac-leather interior. Photo: Unsplash."
