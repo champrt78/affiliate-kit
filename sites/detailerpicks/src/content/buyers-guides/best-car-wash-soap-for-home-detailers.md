@@ -23,7 +23,7 @@ products:
   - name: "Gyeon Q²M Bathe"
     brand: "Gyeon"
     affiliateUrl: "https://www.amazon.com/GYEON-quartz-Cloth-Shampoo-1000ml/dp/B00OORQWSY?tag=mywildlifecam-20"
-    image: "https://m.media-amazon.com/images/I/51UMnejYMtL._AC_SL1500_.jpg"
+    image: "https://m.media-amazon.com/images/I/510N2Pw7BDL._AC_SL1500_.jpg"
     bestFor: "Best for the Rag Company protective-soap school"
     priceFrom: 15.99
     priceUnit: "500ml"

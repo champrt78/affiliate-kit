@@ -3,6 +3,9 @@
   "domain": "mywildlifecam.com",
   "niche": "trail cameras and wildlife cameras",
   "tier": "hero",
+  "affiliate": {
+    "amazonTag": "mywildlifecam-20"
+  },
   "primarySegments": [
     "homeowners",
     "property owners",

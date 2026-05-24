@@ -5,6 +5,9 @@
     "tagline": "Car detailing, by use case.",
     "apex": "detailerpicks.com"
   },
+  "affiliate": {
+    "amazonTag": ""
+  },
   "niche": {
     "vertical": "car-detailing",
     "subcategory": "home-detailer + weekend-enthusiast"

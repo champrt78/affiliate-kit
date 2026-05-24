@@ -7,7 +7,7 @@ products:
   - name: "MTM Hydro PF22"
     brand: "MTM Hydro"
     affiliateUrl: "https://www.amazon.com/Hydro-Foam-Cannon-Wand-Bottle/dp/B083QTGTBM?tag=mywildlifecam-20"
-    image: "https://m.media-amazon.com/images/I/61Laubtx4TL._AC_SL500_.jpg"
+    image: "https://m.media-amazon.com/images/I/71N6F0pBMGL._AC_SL1500_.jpg"
     bestFor: "Best for long-term durability"
     priceFrom: 80
     priceUnit: "unit"
