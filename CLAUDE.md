@@ -60,6 +60,19 @@ Full rule with audiences and rationale lives in `~/.claude/CLAUDE.md` "Session D
 - After AI drafting, run `pwsh scripts/lint-voice.ps1 <piece>.md` to grep for forbidden phrases as a back-stop before commit.
 - AI-generated product images are banned. AI for scene/context only. Product hero shots come from Amazon PA-API or the brand's affiliate media kit.
 
+## Pre-commit safeguards (auto-enforced)
+
+A Git pre-commit hook (`scripts/pre-commit-hook.sh`, installed via `pwsh scripts/install-hooks.ps1`) runs two PowerShell lints on every commit that touches relevant files:
+
+- **`scripts/lint-product-images.ps1`** — for every `image:` / `hero:` URL in staged content markdown: HEAD-fetches the URL, validates 200 + `image/*` content-type + min file size, and decodes the bytes via `[System.Drawing.Image]::FromStream` to check aspect ratio in 0.35..2.5 (tolerates tall product bottles, rejects wordmark banners). Skips aspect-check on Unsplash/Pexels (scene photos, not product photos). Catches the failure class that bit DTP 2026-05-24 (Canopy `mainImageUrl` rotating to brand logos / wordmarks / variant thumbnails over time, leaving static scaffold-time URLs stale).
+- **`scripts/lint-affiliate-tags.ps1`** — for every `tag=<value>` in staged `.md` / `.astro` under `sites/`, verifies it matches that site's declared `affiliate.amazonTag` in `src/data/site-config.json`. Skips silently when a site hasn't declared its own tag yet (current DTP state). Catches scaffolder-default-tag bleed across sites.
+
+Both run automatically — no remembering required. Bypass with `git commit --no-verify` only when intentional and explained. If either fails, the commit is blocked and the failures listed inline. Fix the source data, not the lint thresholds.
+
+**On a fresh clone:** run `pwsh scripts/install-hooks.ps1` once to install the hook into `.git/hooks/pre-commit`. (The source lives in `scripts/` so it's version-controlled; the hook itself isn't.)
+
+**When adding a new site:** add `"affiliate": { "amazonTag": "<your-tag>" }` to its `src/data/site-config.json`. Leave `amazonTag` empty (`""`) until the site has its own Amazon Associates tag set up — the lint skips validation for empty tags rather than blocking commits.
+
 ## Style
 - TypeScript strict mode. No `any` without a `// reason:` comment.
 - Test the hard parts (Worker logic, helpers, schema generators). Don't unit-test Astro templates — `astro build` is the test.
