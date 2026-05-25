@@ -16,6 +16,8 @@
     "install-hooks": "pwsh ./scripts/install-hooks.ps1",
     "lint:images": "pwsh ./scripts/lint-product-images.ps1",
     "lint:tags": "pwsh ./scripts/lint-affiliate-tags.ps1",
+    "audit:images": "pwsh ./scripts/audit-product-images.ps1",
+    "audit:images:apply": "pwsh ./scripts/audit-product-images.ps1 -Apply",
     "ops": "pwsh ./scripts/ops.ps1 -Open",
     "install-desktop-shortcut": "pwsh ./scripts/install-desktop-shortcut.ps1"
   },

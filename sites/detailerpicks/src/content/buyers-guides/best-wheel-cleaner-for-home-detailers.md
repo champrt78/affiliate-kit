@@ -24,7 +24,7 @@ products:
   - name: "Adam's Polishes Wheel Cleaner"
     brand: "Adam's Polishes"
     affiliateUrl: "https://www.amazon.com/dp/B00BPGGSCW?tag=mywildlifecam-20"
-    image: "https://m.media-amazon.com/images/I/71N1uhCyYJL._AC_SL1500_.jpg"
+    image: "https://m.media-amazon.com/images/I/71OuhMfQvJL._AC_SL1500_.jpg"
     bestFor: "Best for the premium consumer with ceramic-coated or sensitive finishes"
     priceFrom: 16.99
     priceUnit: "16 oz"
@@ -41,7 +41,7 @@ products:
   - name: "P&S Brake Buster Total Wheel Cleaner"
     brand: "P&S Detail Products"
     affiliateUrl: "https://www.amazon.com/PROFESSIONAL-DETAIL-PRODUCTS-Buster-Cleaner/dp/B07RTZBGWX?tag=mywildlifecam-20"
-    image: "https://m.media-amazon.com/images/I/51OzhmMa3lL._AC_SX425_.jpg"
+    image: "https://m.media-amazon.com/images/I/51OzhmMa3lL.jpg"
     bestFor: "Best for pro-shop economy and corrosion protection"
     priceFrom: 11.66
     priceUnit: "pint"
@@ -92,7 +92,7 @@ products:
   - name: "CarPro Iron X"
     brand: "CarPro"
     affiliateUrl: "https://www.amazon.com/Carpro-Iron-Remover-500-Sprayer/dp/B004UM6DLE?tag=mywildlifecam-20"
-    image: "https://m.media-amazon.com/images/I/51zmW0m-w7L._AC_SL1500_.jpg"
+    image: "https://m.media-amazon.com/images/I/51zmW0m-w7L.jpg"
     bestFor: "Best for periodic deep decontamination"
     priceFrom: 19.99
     priceUnit: "500ml"

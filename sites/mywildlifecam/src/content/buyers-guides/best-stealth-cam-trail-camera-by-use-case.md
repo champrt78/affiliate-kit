@@ -7,7 +7,7 @@ products:
   - name: "Stealth Cam DS4K Ultimate"
     brand: "Stealth Cam"
     affiliateUrl: "https://www.amazon.com/Stealth-Photo-Trigger-Hunting-Camera/dp/B09QBV2GP8?tag=mywildlifecam-20"
-    image: "https://m.media-amazon.com/images/I/315kWjiO0EL._AC_.jpg"
+    image: "https://m.media-amazon.com/images/I/61u7ULxprIL.jpg"
     bestFor: "Best for the image-quality buyer who skips cellular subscriptions"
     priceFrom: 249.99
     priceUnit: "unit"
@@ -27,7 +27,7 @@ products:
   - name: "Stealth Cam DS4K Transmit"
     brand: "Stealth Cam"
     affiliateUrl: "https://www.amazon.com/dp/B0924V7QWF?tag=mywildlifecam-20"
-    image: "https://m.media-amazon.com/images/I/51bGn9JuJjL._AC_SL1250_.jpg"
+    image: "https://m.media-amazon.com/images/I/51bGn9JuJjL.jpg"
     bestFor: "Best for cellular 4K when covert IR is not required"
     priceFrom: 165.33
     priceUnit: "unit"
@@ -46,7 +46,7 @@ products:
   - name: "Stealth Cam Deceptor MAX 2.0"
     brand: "Stealth Cam"
     affiliateUrl: "https://www.amazon.com/Stealth-Cam-Deceptor-Cellular-Camera/dp/B0DVVS7LP4?tag=mywildlifecam-20"
-    image: "https://m.media-amazon.com/images/I/81WpkoJk4vL._AC_SL1500_.jpg"
+    image: "https://m.media-amazon.com/images/I/71UwEJqJ6rL._AC_SL1080_.jpg"
     bestFor: "Best for the covert-deployment cellular buyer who wants invisible night flash"
     priceFrom: 89.99
     priceUnit: "unit"
@@ -65,7 +65,7 @@ products:
   - name: "Stealth Cam Revolver Pro 2.0 360"
     brand: "Stealth Cam"
     affiliateUrl: "https://www.amazon.com/Stealth-Cam-Revolver-Cellular-Demand/dp/B0DVVJR634?tag=mywildlifecam-20"
-    image: "https://m.media-amazon.com/images/I/71gsR76nTXL._AC_SL1500_.jpg"
+    image: "https://m.media-amazon.com/images/I/61c0lILLQ3L._AC_SL1350_.jpg"
     bestFor: "Best for open-area property owners covering food plots, driveways, or clearings"
     priceFrom: 83.09
     priceUnit: "unit"
@@ -122,7 +122,7 @@ products:
   - name: "Stealth Cam GMAX32"
     brand: "Stealth Cam"
     affiliateUrl: "https://www.amazon.com/dp/B08ZG4PVVV?tag=mywildlifecam-20"
-    image: "https://m.media-amazon.com/images/I/61gZl4F4OJL._AC_SL1260_.jpg"
+    image: "https://m.media-amazon.com/images/I/61gZl4F4OJL.jpg"
     bestFor: "Best for SD-card buyers who want true 940nm no-glow without paying flagship money"
     priceFrom: 71.75
     priceUnit: "unit"

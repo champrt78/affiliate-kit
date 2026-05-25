@@ -41,7 +41,7 @@ products:
   - name: "Adam's Total Interior"
     brand: "Adam's Polishes"
     affiliateUrl: "https://www.amazon.com/Adams-Total-Interior-Cleaner-Protectant/dp/B0923BDFH5?tag=mywildlifecam-20"
-    image: "https://m.media-amazon.com/images/I/7196p62r8YL.jpg"
+    image: "https://m.media-amazon.com/images/I/718xBiWFzpL._AC_SL1500_.jpg"
     bestFor: "Best for the show-car owner wanting a polymer layer"
     priceFrom: 12.99
     priceUnit: "16oz"
@@ -75,7 +75,7 @@ products:
   - name: "CarPro PERL Coat"
     brand: "CarPro"
     affiliateUrl: "https://www.amazon.com/CarPro-PERL-Plastic-Rubber-Protectant/dp/B004UM9V5Y?tag=mywildlifecam-20"
-    image: "https://m.media-amazon.com/images/I/61m7cMBm6VL.jpg"
+    image: "https://m.media-amazon.com/images/I/715hOzQ8RzL._AC_SL1000_.jpg"
     bestFor: "Best for the leather-seat owner willing to mix dilutions"
     priceFrom: 17.59
     priceUnit: "500ml"

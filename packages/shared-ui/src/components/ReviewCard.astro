@@ -97,15 +97,17 @@ const formattedDate = data.pubDate instanceof Date
     padding: var(--space-8);
   }
   .review-card__media img {
-    /* Normalize visible product size across the index, regardless of source
-       PNG aspect ratio or embedded whitespace. Fixed height + auto width
-       means every product fills the same vertical band of the card; wide
-       products take more width, tall products take less, but the perceived
-       size is consistent. Replaces the previous max-width: 65% + per-product
-       imageScale transform system that produced inconsistent rendered sizes. */
-    height: 78%;
-    width: auto;
+    /* Constrain to both axes so tall portrait products (e.g. 718x1053
+       cameras with mounting brackets) don't overflow the card vertically.
+       Using max-width + max-height + auto on the actual dimensions lets
+       object-fit: contain do its real job (it only kicks in when both
+       dims are set on the img, not when one is fixed). Replaces the
+       earlier height: 78% + width: auto pattern that bottom-cropped
+       portrait products. */
     max-width: 88%;
+    max-height: 88%;
+    width: auto;
+    height: auto;
     object-fit: contain;
     /* multiply: white pixels in source PNGs (e.g. retailer composites with
        hard-white backgrounds) blend into the cream card so all products

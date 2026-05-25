@@ -7,7 +7,7 @@ products:
   - name: "Spypoint Flex-M"
     brand: "Spypoint"
     affiliateUrl: "https://www.amazon.com/dp/B0DKRHHQ5P?tag=mywildlifecam-20"
-    image: "https://www.spypoint.com/on/demandware.static/-/Sites-physical_product_m_catalog/default/dw5517eccf/images/large/flex-m-main-1.png"
+    image: "https://m.media-amazon.com/images/I/61h7tcbiXGL._AC_SL1080_.jpg"
     imageScale: 1.15
     bestFor: "Best for cellular convenience without a monthly bill"
     priceFrom: 129.99

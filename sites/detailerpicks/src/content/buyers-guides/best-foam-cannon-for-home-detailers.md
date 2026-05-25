@@ -43,7 +43,7 @@ products:
   - name: "MJJC Foam Cannon Pro V3.0"
     brand: "MJJC"
     affiliateUrl: "https://www.amazon.com/MJJC-Ultimate-Cannon-Pressure-Washers/dp/B0FL17VGJF?tag=mywildlifecam-20"
-    image: "https://m.media-amazon.com/images/I/61hpV8lNfEL._AC_SL500_.jpg"
+    image: "https://m.media-amazon.com/images/I/61lSIrxLDlL.jpg"
     bestFor: "Best for tinkerers and multi-pressure-washer setups"
     priceFrom: 0
     hook: "Spare filter, extra O-rings, 1.1mm + 1.35mm orifices in the box. Deepest parts kit at this tier."

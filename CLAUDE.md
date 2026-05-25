@@ -73,6 +73,18 @@ Both run automatically — no remembering required. Bypass with `git commit --no
 
 **When adding a new site:** add `"affiliate": { "amazonTag": "<your-tag>" }` to its `src/data/site-config.json`. Leave `amazonTag` empty (`""`) until the site has its own Amazon Associates tag set up — the lint skips validation for empty tags rather than blocking commits.
 
+### Image quality audit (Canopy-driven, deeper than lint)
+
+`scripts/lint-product-images.ps1` catches catastrophic failures (HTTP errors, wordmarks at aspect 4.6, slivers at 0.05). It does NOT catch a subtler class: Amazon's `mainImageUrl` is sometimes a marketing **composite** at e.g. 1280×2560 — passable aspect 0.5, but the actual product occupies only the bottom half + scene art above. That renders as a tall narrow visual inside our 1:1-hint card containers (`width="1200" height="1200"` HTML attrs + `object-fit: contain`).
+
+`scripts/audit-product-images.ps1` catches that class. It walks every product entry, extracts the ASIN from `affiliateUrl:`, queries Canopy for the full `imageUrls` array, decodes each candidate's true dims via `[System.Drawing.Image]::FromStream`, and picks the one with aspect closest to 1.0 (log-distance from square). HEAD-validates each candidate first so stale Canopy entries (image IDs Amazon no longer serves) don't get picked.
+
+Two modes:
+- `pnpm audit:images` — dry-run, prints recommendations
+- `pnpm audit:images:apply` — rewrites markdown in place; re-run `pnpm lint:images` + `pnpm build` before commit
+
+Caught 12 swappable images on first run 2026-05-24: 3 tall-bottle products (Adam's Wheel Cleaner 605×1500, P&S Brake Buster 425×717, CarPro Iron X 523×1500) all swapped to clean 1000-1500px squares from Canopy's array. The audit is **not** in the pre-commit hook — it's slow (5-10 min for a full sweep) and requires the Canopy API key. Run it manually after big content drops or when a card looks visually off.
+
 ## Style
 - TypeScript strict mode. No `any` without a `// reason:` comment.
 - Test the hard parts (Worker logic, helpers, schema generators). Don't unit-test Astro templates — `astro build` is the test.
