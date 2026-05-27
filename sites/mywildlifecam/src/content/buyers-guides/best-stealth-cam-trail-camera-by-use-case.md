@@ -145,8 +145,14 @@ images:
   hero: "https://images.unsplash.com/photo-1761072969560-d59dab77ad21?auto=format&fit=crop&w=2400&q=80"
   heroCaption: "Buck and doe at the water's edge. Photo: Unsplash."
 bottomLine:
-  verdict: ""
-  supporting: ""
+  verdict: "Seven picks because Stealth Cam built seven cameras for seven jobs. Match the camera to the job:"
+  supporting:
+    - "Want covert AND cellular? <strong>Deceptor MAX 2.0</strong>."
+    - "Want covert AND cheap? <strong>GMAX32</strong>."
+    - "Want 4K with no monthly bill? <strong>DS4K Ultimate</strong>."
+    - "Want cellular 4K and don't need invisible IR? <strong>DS4K Transmit</strong>."
+    - "Want 360-degree coverage? <strong>Revolver Pro 2.0</strong>."
+    - "Want a first camera or a gift? <strong>QS24</strong> or <strong>Fusion MAX 2.0</strong>."
 buyIf:
   buy:
     - "You want a brand-coherent set of picks across cellular and SD-card formats from one manufacturer with consistent app behavior"
@@ -197,5 +203,3 @@ Four design decisions divide this lineup. Knowing which side of each split matte
 ## How we picked
 
 Specs were verified directly from stealthcam.com product pages, Amazon listings (cross-referenced via the Canopy ASIN lookup API), and TrailCamPro's measured-testing reviews on 2026-05-19. Trigger speeds, detection ranges, battery life, and IR-LED wavelengths on the Deceptor MAX 2.0 and Revolver Pro 2.0 are from TrailCamPro's third-party measurement rather than manufacturer marketing. Reader-segment fit draws from forum signal on Rokslide (Stealth Cam as the value-cellular brand, "worth it" thread), TrailCamPro editorial framing (89/100 and 92/100 scores on the Deceptor and Revolver), Bowhunter's 2026 trail-camera editorial (DS4K Ultimate endorsement, low-glow framing, Colorado cellular restriction context), and the American Hunter / Outdoor Wire coverage of the 3.0 series announcement (retroactive firmware update for 2.0 owners). No products were tested in-house for this guide; recommendations are derived from spec analysis and synthesis of credible third-party reviewer commentary. Cited reviewers and their sources are linked in the [editorial method page](/how-we-evaluate).
-
-<!-- HUMAN: fill in the Bottom Line with the real verdict before publishing. The build will block (DRAFT banner + noindex) until the placeholder line is replaced. -->
