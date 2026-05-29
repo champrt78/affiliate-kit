@@ -1,0 +1,77 @@
+{
+  "site": {
+    "slug": "fussybean",
+    "name": "FussyBean",
+    "tagline": "Home coffee gear, by use case.",
+    "apex": "fussybean.com"
+  },
+  "affiliate": {
+    "amazonTag": ""
+  },
+  "niche": {
+    "vertical": "home-coffee-gear",
+    "subcategory": "espresso + manual brewing hardware"
+  },
+  "voice": {
+    "register": "warm-enthusiast",
+    "tone": "precise about specs, warm about the ritual, never snobbish; reads the way a good coffeeshop smells",
+    "core_anxiety": "spending real money on gear that won't actually improve the cup",
+    "framings": [
+      "Upgrade-path: what to buy first, what to skip until later",
+      "Cross-brand honest comparison (Breville vs Gaggia vs De'Longhi vs Baratza)",
+      "Hardware not beans: we rank the machine, not the roast",
+      "Total-cost-of-ownership, not just sticker price"
+    ]
+  },
+  "readerSegments": {
+    "primary": [
+      "first-espresso-machine-buyer",
+      "upgrading-from-pods",
+      "manual-brew-enthusiast",
+      "gift-buyer"
+    ],
+    "secondary": [
+      "small-office-buyer"
+    ],
+    "excluded": [
+      "commercial-cafe-operators (different price tier, different machines)"
+    ]
+  },
+  "featureAxes": {
+    "default": [
+      { "name": "Build Quality", "weight": 25, "description": "materials, boiler type, longevity" },
+      { "name": "Temperature Stability", "weight": 20, "description": "PID, thermal recovery, shot consistency" },
+      { "name": "Value", "weight": 20, "description": "performance per dollar, total cost of ownership" },
+      { "name": "Ease of Use", "weight": 20, "description": "learning curve, cleaning, daily friction" },
+      { "name": "Footprint", "weight": 15, "description": "counter space, water tank, noise" }
+    ]
+  },
+  "categoryPillars": [
+    "espresso-machines",
+    "grinders",
+    "gooseneck-kettles",
+    "scales",
+    "manual-brewers"
+  ],
+  "navigation": {
+    "pillars": [
+      { "slug": "espresso-machines", "label": "Espresso Machines", "type": "commercial", "categoryPillar": "espresso-machines", "blurb": "Pump, lever, and super-auto machines for the home bar.", "hubKicker": "Buying guides" },
+      { "slug": "grinders", "label": "Grinders", "type": "commercial", "categoryPillar": "grinders", "blurb": "Burr grinders that matter more than the machine.", "hubKicker": "Buying guides" },
+      { "slug": "manual-brewing", "label": "Kettles & Scales", "type": "commercial", "categoryPillar": "manual-brewers", "blurb": "Gooseneck kettles, scales, pour-over, and press gear.", "hubKicker": "Buying guides" },
+      { "slug": "coffee-costs", "label": "What It Costs", "type": "informational", "categoryPillar": null, "blurb": "Cost-to-brew math, upgrade paths, and total-cost guides.", "hubKicker": "Guides & research" },
+      { "slug": "fun-stuff", "label": "Gifts & Fun", "type": "informational", "categoryPillar": null, "blurb": "Novelty and gift gear for the coffee-obsessed.", "hubKicker": "Gifts & novelty" }
+    ]
+  },
+  "brandsCovered": [
+    "Breville",
+    "Gaggia",
+    "De'Longhi",
+    "Rancilio",
+    "Baratza",
+    "Fellow",
+    "Hario",
+    "Acaia",
+    "Timemore"
+  ],
+  "doctrineNotes": "Comparison-and-fit framework. Hardware only, not beans (not yet). Never claim hands-on use; cite manufacturer specs, verified-buyer reviews, and independent testing (James Hoffmann, Whole Latte Love teardowns) as third-party evidence. No em dashes. No defensive audience exclusions."
+}
