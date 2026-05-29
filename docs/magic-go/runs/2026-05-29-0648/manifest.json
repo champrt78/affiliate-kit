@@ -53,15 +53,19 @@
       "type": "review",
       "title": "Bushnell CelluCORE 20 Review",
       "product": "Bushnell CelluCORE 20",
-      "status": "scouted",
+      "status": "ready",
       "research_note": "",
-      "content_path": "",
-      "bottom_line_options": [],
-      "supporting": "",
+      "content_path": "sites/mywildlifecam/src/content/reviews/bushnell-cellucore-20-review.md",
+      "bottom_line_options": [
+        "The Bushnell CelluCORE 20 makes sense for one specific buyer: someone with confirmed AT&T coverage who wants an affordable Bushnell data plan and solid daytime images, and who can live with slow recovery between shots and an app-only setup. Outside that lane, a dual-SIM rival is the safer call.",
+        "At around $114 the CelluCORE 20 is one of the cheaper ways into cellular, and its daytime image quality earns consistent praise from reviewers. But it is locked to AT&T, recovery between photos is slow, and the customer-service reputation is a documented concern. Buy it only if you have verified AT&T signal where it will hang.",
+        "If you already know AT&T is strong on your property, the CelluCORE 20 is a competent budget pick. If you are unsure of your carrier, the dual-SIM Spypoint Flex-S or Moultrie Edge 2 remove the single biggest risk with this camera at a similar price. Match the camera to your coverage first, features second."
+      ],
+      "supporting": "Single-carrier AT&T budget cellular cam (model 119904A, ASIN B098KPX5B4). Spec-verified from the Amazon listing + Bushnell, with independent measurements and owner reports attributed. Strengths: daytime image quality, simple affordable data plans, low entry price. Documented weaknesses: AT&T lock, slow 40s recovery, app-only setup, mixed customer-service reputation, thin third-party stock.",
       "verdict_written": false,
       "failed_at": null,
       "error": null,
-      "kv_status": "none",
+      "kv_status": "skipped (direct tagged URL)",
       "last_commit": ""
     },
     {

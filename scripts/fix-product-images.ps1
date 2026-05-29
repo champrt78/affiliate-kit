@@ -37,7 +37,7 @@ if (-not (Test-Path -LiteralPath $Path)) { Write-Host "File not found: $Path" -F
 $content = Get-Content -Raw -LiteralPath $Path
 
 # Pair each Amazon /dp ASIN with the image: line that follows it.
-$pattern = '(?:affiliateUrl|amazon):\s*"https://www\.amazon\.com[^"]*?/dp/(?<asin>[A-Z0-9]{10})[^"]*"\s*(?:\r?\n[^\r\n]*)*?\r?\n\s+image:\s*"(?<imgurl>https?://[^"]+)"'
+$pattern = '(?:affiliateUrl|amazon):\s*"https://www\.amazon\.com[^"]*?/dp/(?<asin>[A-Z0-9]{10})[^"]*"\s*(?:\r?\n[^\r\n]*)*?\r?\n\s+(?:image|hero):\s*"(?<imgurl>https?://[^"]+)"'
 $matches = [regex]::Matches($content, $pattern)
 if ($matches.Count -eq 0) { Write-Host "No Amazon affiliateUrl+image pairs found in $Path." -ForegroundColor Yellow; exit 0 }
 
