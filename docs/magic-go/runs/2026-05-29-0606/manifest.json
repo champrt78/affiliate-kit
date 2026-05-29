@@ -1,0 +1,51 @@
+{
+  "runid": "2026-05-29-0606",
+  "requested_n": 2,
+  "allocation": {
+    "mywildlifecam": 1,
+    "fussybean": 1
+  },
+  "started": "2026-05-29T06:06:28.2116045-04:00",
+  "pieces": [
+    {
+      "slug": "spypoint-flex-g36-review",
+      "site": "mywildlifecam",
+      "type": "review",
+      "title": "Spypoint Flex G36 Review",
+      "product": "Spypoint Flex G36",
+      "research_note": "",
+      "failed_at": null,
+      "error": null,
+      "kv_status": "registered",
+      "content_path": "sites/mywildlifecam/src/content/reviews/spypoint-flex-g36-review.md",
+      "last_commit": "3336530",
+      "bottom_line_options": [
+        "Buy it if your land plays carrier roulette: dual-SIM picks the strongest signal for you, the trigger is genuinely quick, and the photos are sharp.",
+        "The best all-around cellular pick here once you are past the budget tier: faster trigger and more megapixels than the Flex-M, dual-SIM over single-carrier rivals.",
+        "Buy it for the dual-SIM and the 0.3-second trigger, not the price tag. Skip it if a single-unit budget cam already covers your one spot."
+      ],
+      "supporting": "The G36 edge over the cellular field is dual-SIM auto-connect to the strongest of two carriers, a 0.3-second trigger, and 36MP stills, with one owner running it through eight months of harsh weather and a bear attack. Honest caveats: it sells mostly as a ~$220 twin pack, the broader Spypoint lineup has a documented SD-card-failure track record (the G36 itself has not shown it in independent testing), and there is no lab-grade third-party test yet, so the evidence is owner reports plus the spec sheet.",
+      "verdict_written": true,
+      "status": "verdict-written"
+    },
+    {
+      "slug": "best-coffee-grinder-for-beginners",
+      "site": "fussybean",
+      "type": "buyers-guide",
+      "title": "Best Coffee Grinder for Beginners",
+      "product": "",
+      "status": "scouted",
+      "research_note": "",
+      "content_path": "",
+      "bottom_line_options": [],
+      "supporting": "",
+      "verdict_written": false,
+      "failed_at": null,
+      "error": null,
+      "kv_status": "none",
+      "last_commit": ""
+    }
+  ],
+  "status": "complete",
+  "updated": "2026-05-29T06:48:46.2872227-04:00"
+}

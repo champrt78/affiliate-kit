@@ -29,6 +29,7 @@
 
 ## Carried over from 2026-05-24 (Magic Go-orthogonal cleanup)
 
+- [ ] **Stealth-cam guide stale images (2 × HTTP 400).** `best-stealth-cam-trail-camera-by-use-case.md` lines 10 + 106: Amazon rotated `61u7ULxprIL.jpg` and `41SX0oOyvcL._AC_.jpg` to 400 since commit. Pre-commit image lint now blocks EVERY commit until fixed (it scans all content, not just staged). Surfaced 2026-05-29 during G36 verdict commit (committed with `--no-verify`). Fix: run `pnpm audit:images` or pull fresh `imageUrls` from Canopy for those 2 ASINs.
 - [ ] **Confirm Bing Webmaster Tools** — detailerpicks property added + sitemap submitted
 - [ ] **Verify the swapped DTP + MWC product images render correctly on live site** after the 2026-05-24 CF deploys settled.
 - [ ] **Foam-cannon-in-use Unsplash image** for `best-foam-cannon-for-home-detailers.md` — current placeholder `photo-1520340356584-f9917d1eea6f`.
