@@ -10,7 +10,7 @@ bgTheme: "solid"
 products:
   - name: "Breville Barista Express"
     brand: "Breville"
-    affiliateUrl: "https://www.amazon.com/dp/B00CH9QWOU"
+    affiliateUrl: "https://www.amazon.com/dp/B00CH9QWOU?tag=fussybean-20"
     bestFor: "The all-in-one starter"
     reason: "The grind-to-cup convenience pick"
     priceFrom: 699
@@ -25,7 +25,7 @@ products:
       <p>The trade-off is the single boiler: you cannot brew and steam at the same instant, and there is no PID, so temperature control is analog. Verified-buyer reviews on Amazon consistently mention the convenience of the all-in-one design and the learning curve of dialing in the built-in grinder.</p>
   - name: "Gaggia Classic Pro"
     brand: "Gaggia"
-    affiliateUrl: "https://www.amazon.com/dp/B07GNVST8D"
+    affiliateUrl: "https://www.amazon.com/dp/B07GNVST8D?tag=fussybean-20"
     bestFor: "The upgrade-friendly enthusiast pick"
     reason: "The mod-it-later workhorse"
     priceFrom: 499
@@ -40,7 +40,7 @@ products:
       <p>It ships without a grinder, so budget for one separately (see the grinder guide). The single boiler means brew-then-steam, not both at once.</p>
   - name: "De'Longhi Dedica Arte"
     brand: "De'Longhi"
-    affiliateUrl: "https://www.amazon.com/dp/B0BVKADHG4"
+    affiliateUrl: "https://www.amazon.com/dp/B0BVKADHG4?tag=fussybean-20"
     bestFor: "The small-counter budget pick"
     reason: "The narrow-footprint option"
     priceFrom: 249
@@ -55,7 +55,7 @@ products:
       <p>It uses a pressurized 51mm portafilter, which is more forgiving for beginners but a ceiling for those who later want to pull non-pressurized shots. Trade-off: gains affordability and size at the cost of the upgrade headroom the Gaggia offers.</p>
   - name: "Breville Bambino Plus"
     brand: "Breville"
-    affiliateUrl: "https://www.amazon.com/dp/B07W4XKVFW"
+    affiliateUrl: "https://www.amazon.com/dp/B07W4XKVFW?tag=fussybean-20"
     bestFor: "The fast-warmup automatic-milk pick"
     reason: "The quick-start option"
     priceFrom: 499

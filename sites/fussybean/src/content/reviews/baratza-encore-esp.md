@@ -14,7 +14,7 @@ product:
   price: 199
   currency: "USD"
   affiliate:
-    amazon: "https://www.amazon.com/dp/B0BL9JC2DJ"
+    amazon: "https://www.amazon.com/dp/B0BL9JC2DJ?tag=fussybean-20"
 ---
 
 ## Who this is for
