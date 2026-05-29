@@ -30,6 +30,7 @@ Concrete phrases the AI must not produce and the lint must catch. Each bullet st
 - `I've owned` — claims past ownership
 - `we own` — plural of `I own`; same hands-on claim (caught 2026-05-24 in MWC homepage manifesto: *"When we own a camera, we say so plainly..."*)
 - `we've owned` — plural of `I've owned`
+- `hands-on review` — claims a first-person review (e.g. "honest, hands-on reviews"); the comparison-and-fit framework never claims hands-on. Caught 2026-05-28 in the site template + fussybean homepage, which would have infected every bootstrapped satellite. Note: denials phrased as "we don't claim hands-on testing" use different wording and are fine — this literal only catches the claim form.
 - `I've been using` — claims ongoing use
 - `my own` — implies personal possession (e.g., "in my own backyard")
 - `in my backyard` — claims a specific use environment
