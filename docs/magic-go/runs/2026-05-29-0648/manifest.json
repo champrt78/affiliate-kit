@@ -15,7 +15,7 @@
       "type": "buyers-guide",
       "title": "Best Cellular Trail Cameras (2026)",
       "product": "(6-pick guide)",
-      "status": "ready",
+      "status": "verdict-written",
       "research_note": "",
       "content_path": "sites/mywildlifecam/src/content/buyers-guides/best-cellular-trail-cameras.md",
       "bottom_line_options": [
@@ -24,7 +24,7 @@
         "You do not need to spend more than $200 to get reliable cellular. The Moultrie Edge 2 and GardePro X66 cover most backyard and property jobs under $90. The Tactacam Reveal X 3.0 is the no-regret all-around upgrade. Spend up only for the Stealth Cam DS4K Transmit's 4K image quality or the Flex-S Dark's solar-plus-dual-SIM combination."
       ],
       "supporting": "Six spec-verified cellular trail cameras spanning best-overall, best-image-quality, best-budget, best-dual-SIM-plus-solar, best-battery-life, and best-value segments. Picks are sourced from current Amazon listings and brand spec pages, cross-referenced with independent reviewer measurements. Carrier coverage and the recurring photo-transmission plan matter as much as the hardware.",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "skipped (guide uses direct tagged URLs)",
@@ -38,7 +38,7 @@
       "type": "review",
       "title": "Browning Strike Force Pro X 1080 Review",
       "product": "Browning Strike Force Pro X 1080 (Pro XD discontinued; pivoted)",
-      "status": "ready",
+      "status": "verdict-written",
       "research_note": "",
       "content_path": "sites/mywildlifecam/src/content/reviews/browning-strike-force-pro-x-1080-review.md",
       "bottom_line_options": [
@@ -47,7 +47,7 @@
         "Choose the Strike Force Pro X 1080 if zero subscription cost and quick triggers matter more than remote access or no-glow stealth. For buyers who can visit the camera to swap cards, it is one of the better-value SD-card cams. For hands-off remote monitoring, step up to a cellular model."
       ],
       "supporting": "Single-lens 1080p SD-card cam (ASIN B0BX4S5KN8, in stock). Spec-verified from Browning + Amazon listing with trailcampro measurements attributed. Strong trigger (0.22s) and battery life; honest caveats: red-glow flash visible up close, detection range tested below marketed figure, no cellular (SD-card retrieval needed).",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "skipped (direct tagged URLs)",
@@ -61,7 +61,7 @@
       "type": "review",
       "title": "Bushnell CelluCORE 20 Review",
       "product": "Bushnell CelluCORE 20",
-      "status": "ready",
+      "status": "verdict-written",
       "research_note": "",
       "content_path": "sites/mywildlifecam/src/content/reviews/bushnell-cellucore-20-review.md",
       "bottom_line_options": [
@@ -70,7 +70,7 @@
         "If you already know AT&T is strong on your property, the CelluCORE 20 is a competent budget pick. If you are unsure of your carrier, the dual-SIM Spypoint Flex-S or Moultrie Edge 2 remove the single biggest risk with this camera at a similar price. Match the camera to your coverage first, features second."
       ],
       "supporting": "Single-carrier AT&T budget cellular cam (model 119904A, ASIN B098KPX5B4). Spec-verified from the Amazon listing + Bushnell, with independent measurements and owner reports attributed. Strengths: daytime image quality, simple affordable data plans, low entry price. Documented weaknesses: AT&T lock, slow 40s recovery, app-only setup, mixed customer-service reputation, thin third-party stock.",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "skipped (direct tagged URL)",
@@ -84,7 +84,7 @@
       "type": "buyers-guide",
       "title": "Best Ceramic Coatings for Home Detailers",
       "product": "(6-pick guide)",
-      "status": "ready",
+      "status": "verdict-written",
       "research_note": "",
       "content_path": "sites/detailerpicks/src/content/buyers-guides/best-ceramic-coating-for-home-detailers.md",
       "bottom_line_options": [
@@ -93,7 +93,7 @@
         "For most home detailers, an easy spray-on like Meguiar's Hybrid or Adam's Graphene is the right first ceramic. Spend up to CarPro CQUARTZ or Gtechniq CSL only when you are ready to clay, polish, and panel-wipe first, because a wipe-on coating is only as durable as the prep underneath it."
       ],
       "supporting": "Six ceramic products across three tiers (easy spray-on, step-up SiO2 spray, wipe-on enthusiast coating), spec-verified from brand pages and Amazon listings. Durability claims range from 6 months to 5 years and trade off directly against application difficulty and required paint prep.",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "skipped (direct tagged URLs)",
@@ -107,7 +107,7 @@
       "type": "buyers-guide",
       "title": "Best Drying Towels for Cars",
       "product": "(6-pick guide)",
-      "status": "ready",
+      "status": "verdict-written",
       "research_note": "",
       "content_path": "sites/detailerpicks/src/content/buyers-guides/best-drying-towel-for-home-detailers.md",
       "bottom_line_options": [
@@ -116,7 +116,7 @@
         "You do not need to spend $30 on a towel. The SMINDER and Adam's Jumbo multipacks dry most cars well for about half the price of the premium picks. Step up to the Rag Company Gauntlet or a waffle-weave only if you want the plushest feel or the safest finish on soft, dark paint."
       ],
       "supporting": "Six drying towels spanning twist-loop, waffle-weave, and plush, across premium and budget price bands. Spec-verified on GSM, size, and weave from brand pages and Amazon listings, with carousel spec-contamination corrected. GSM and size matter more than brand for drying performance.",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "skipped (direct tagged URLs)",
@@ -130,7 +130,7 @@
       "type": "review",
       "title": "Adam's Graphene Ceramic Spray Coating Review",
       "product": "Adam's Graphene Ceramic Spray Coating",
-      "status": "ready",
+      "status": "verdict-written",
       "research_note": "",
       "content_path": "sites/detailerpicks/src/content/reviews/adams-graphene-ceramic-spray-review.md",
       "bottom_line_options": [
@@ -139,7 +139,7 @@
         "Buy Adam's Graphene Ceramic Spray if you want a fast, repeatable way to keep a coated or waxed car beading between deeper details. Skip it as your only protection if you want years of durability, and avoid heavy passes on glass and light colors where high spots and streaks show most."
       ],
       "supporting": "Adam's Graphene Ceramic Spray (12oz, ASIN B08CPDDGZZ). Spray-on graphene topper; claims verified from adamspolishes.com and the listing, sentiment attributed. Strong gloss and hydrophobics for minimal effort; durability is months-to-a-year as a topper, not the multi-year life of an installed coating.",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "skipped (direct tagged URLs)",
@@ -153,7 +153,7 @@
       "type": "buyers-guide",
       "title": "Best Espresso Machines for Beginners",
       "product": "(6-pick guide \u2014 fix images+ASINs)",
-      "status": "ready",
+      "status": "verdict-written",
       "research_note": "",
       "content_path": "sites/fussybean/src/content/buyers-guides/best-espresso-machine-for-beginners.md",
       "bottom_line_options": [
@@ -162,7 +162,7 @@
         "For most first-time buyers, the Breville Bambino hits the sweet spot of small footprint, fast heat-up, and real espresso, and the De'Longhi Stilosa proves you can start under $150. Step up to the Barista Express only if you want the grinder built in, and choose the Gaggia Classic Evo Pro if modding and longevity matter more than convenience."
       ],
       "supporting": "Six beginner espresso machines validated as currently buyable, spanning ultra-budget steam machines to a do-it-all with built-in grinder, spec-verified from brand pages and Amazon listings. The real beginner decision is grind-and-go simplicity versus a semi-auto that rewards technique; budget for a decent grinder either way.",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "skipped (direct tagged URLs)",
@@ -176,7 +176,7 @@
       "type": "buyers-guide",
       "title": "Best Coffee Grinders for Beginners",
       "product": "(6-pick guide)",
-      "status": "ready",
+      "status": "verdict-written",
       "research_note": "",
       "content_path": "sites/fussybean/src/content/buyers-guides/best-coffee-grinder-for-beginners.md",
       "bottom_line_options": [
@@ -185,7 +185,7 @@
         "If you brew filter or French press, a $50 to $70 electric burr like the Bodum Bistro or SHARDOR is plenty. If you pull espresso, do not cheap out: the Baratza Encore ESP is the entry standard and the MiiCoffee DF54 is the single-dose step up. A Timemore hand grinder is the quiet budget overachiever if you do not mind the workout."
       ],
       "supporting": "Six beginner grinders validated as currently buyable, from a $50 electric burr to a single-dose espresso grinder, spec-verified from manufacturer pages and listings. The big fork is filter versus espresso: espresso needs fine, repeatable steps; filter and French press are far more forgiving.",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "skipped (direct tagged URLs)",
@@ -199,7 +199,7 @@
       "type": "review",
       "title": "Fellow Stagg EKG Pro Electric Kettle Review",
       "product": "Fellow Stagg EKG",
-      "status": "ready",
+      "status": "verdict-written",
       "research_note": "",
       "content_path": "sites/fussybean/src/content/reviews/fellow-stagg-ekg-electric-kettle-review.md",
       "bottom_line_options": [
@@ -208,7 +208,7 @@
         "The Stagg EKG Pro is a beautiful, precise pour-over kettle that owners rate highly, and it is the one to get if you want to dial in brew temperature to the degree. Just go in clear-eyed: it is expensive, the capacity is small, and the Pro app adds little, so buy it for the pour and the precision rather than the smart features."
       ],
       "supporting": "Fellow Stagg EKG Pro (ASIN B0BF7DXLBF, the current generation; the original EKG is discontinued). Precise gooseneck pour-over kettle with to-the-degree temperature control and a hold mode; spec-verified, sentiment attributed. A premium want at $180 with a small 0.9L capacity, not a need.",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "skipped (direct tagged URLs)",

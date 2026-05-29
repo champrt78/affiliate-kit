@@ -113,7 +113,7 @@ images:
   hero: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=2400&q=80"
   heroCaption: "Water beading on freshly coated paint. Photo: Unsplash."
 bottomLine:
-  verdict: ""
+  verdict: "The honest tradeoff in ceramic is durability versus difficulty. Spray-ons give months of protection in minutes; wipe-on coatings give years but demand decontamination and careful application. Match the product to how much prep work you will actually do, not to the biggest durability number on the bottle."
   supporting: "Six picks span the consumer DIY ceramic spectrum, from easy spray-on toppers to wipe-on coatings with multi-year claims; the right one depends on how much effort and durability you want."
 buyIf:
   buy:

@@ -20,7 +20,7 @@ images:
   heroCaption: "Browning Strike Force Pro X 1080 (BTC-5PX-1080). Photo: Browning manufacturer media."
   imageScale: 1.0
 bottomLine:
-  verdict: ""
+  verdict: "The Strike Force Pro X 1080 is the pick when you do not want a monthly bill: an SD-card cam with a fast 0.22-second trigger and a long red-glow flash, best on a reachable property where you can pull the card yourself. If you need photos pushed to your phone from remote land, a cellular camera is the better fit."
 scorecard:
   axes:
     - { name: "Trigger & Recovery Speed", weight: 20, score: 9.5 }

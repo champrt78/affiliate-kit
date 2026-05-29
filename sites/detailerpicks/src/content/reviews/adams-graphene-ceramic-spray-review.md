@@ -19,7 +19,7 @@ images:
   heroCaption: "Adam's Graphene Ceramic Spray Coating, 12oz. Photo: Adam's Polishes / Amazon listing."
   imageScale: 1.0
 bottomLine:
-  verdict: ""
+  verdict: "Buy Adam's Graphene Ceramic Spray if you want a fast, repeatable way to keep a coated or waxed car beading between deeper details. Skip it as your only protection if you want years of durability, and avoid heavy passes on glass and light colors where high spots and streaks show most."
   supporting: "A spray-and-wipe graphene coating that Adam's positions for both standalone protection and as a topper over an existing ceramic coating."
 scorecard:
   axes:

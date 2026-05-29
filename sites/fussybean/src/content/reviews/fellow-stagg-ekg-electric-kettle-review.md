@@ -21,7 +21,7 @@ images:
   imageScale: 1.0
 rating: 4.0
 bottomLine:
-  verdict: ""
+  verdict: "The Fellow Stagg EKG Pro is the kettle to buy when you have caught the pour-over bug: a precise gooseneck, to-the-degree temperature control, and a hold mode that keeps water exactly where you set it. It is a genuine want, not a need, at $180, and the small 0.9-liter capacity suits single servings more than a full house."
   supporting: "The Stagg EKG Pro is a premium precision kettle: to-the-degree control, a true gooseneck, and a hold mode aimed at the ritual pour-over brewer."
 scorecard:
   axes:

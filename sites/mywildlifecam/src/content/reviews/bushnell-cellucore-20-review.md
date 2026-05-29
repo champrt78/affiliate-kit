@@ -19,7 +19,7 @@ images:
   heroCaption: "Bushnell CelluCORE 20 trail camera (AT&T). Photo: Amazon / Bushnell product listing."
   imageScale: 1.0
 bottomLine:
-  verdict: ""
+  verdict: "If you already know AT&T is strong on your property, the CelluCORE 20 is a competent budget pick. If you are unsure of your carrier, the dual-SIM Spypoint Flex-S or Moultrie Edge 2 remove the single biggest risk with this camera at a similar price. Match the camera to your coverage first, features second."
   supporting: "The CelluCORE 20 reviewed here is the AT&T-locked 119904A, not the newer dual-SIM model on Bushnell.com. It fits a narrow buyer: someone in confirmed AT&T coverage who wants an affordable Bushnell data plan and good daytime images, and who can accept slow recovery between shots, an app-only setup with no on-camera viewer, and a customer-service reputation that several owners describe as poor. Buyers unsure of their local carrier, or who want fast back-to-back captures, are a mismatch for this single-carrier unit."
 scorecard:
   axes:

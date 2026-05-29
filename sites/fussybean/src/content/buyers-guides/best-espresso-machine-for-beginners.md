@@ -116,7 +116,7 @@ images:
   hero: "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?auto=format&fit=crop&w=2400&q=80"
   heroCaption: "Fresh espresso pulling into a cup at home. Photo: Unsplash."
 bottomLine:
-  verdict: ""
+  verdict: "For most first-time buyers, the Breville Bambino hits the sweet spot of small footprint, fast heat-up, and real espresso, and the De'Longhi Stilosa proves you can start under $150. Step up to the Barista Express only if you want the grinder built in, and choose the Gaggia Classic Evo Pro if modding and longevity matter more than convenience."
   supporting: "Six spec-verified beginner machines span an ultra-budget entry, a slim semi-auto for small counters, two Breville semi-autos, the modder's-classic Gaggia, and a budget all-in-one, with every spec drawn from the manufacturer listing or an attributed reviewer."
 ---
 

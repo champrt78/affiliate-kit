@@ -114,7 +114,7 @@ images:
   hero: "https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?auto=format&fit=crop&w=2400&q=80"
   heroCaption: "Fresh grounds falling from a burr grinder. Photo: Unsplash."
 bottomLine:
-  verdict: ""
+  verdict: "If you brew filter or French press, a $50 to $70 electric burr like the Bodum Bistro or SHARDOR is plenty. If you pull espresso, do not cheap out: the Baratza Encore ESP is the entry standard and the MiiCoffee DF54 is the single-dose step up. A Timemore hand grinder is the quiet budget overachiever if you do not mind the workout."
   supporting: "Six beginner-friendly grinders, spec-verified across burr type, setting count, manual versus electric, espresso fitness, and price from $50 to $249."
 buyIf:
   buy:
