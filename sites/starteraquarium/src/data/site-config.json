@@ -1,0 +1,78 @@
+{
+  "site": {
+    "slug": "starteraquarium",
+    "name": "Starter Aquarium",
+    "tagline": "Your first tank, made fun.",
+    "apex": "starteraquarium.com"
+  },
+  "affiliate": {
+    "amazonTag": ""
+  },
+  "niche": {
+    "vertical": "beginner-aquarium-gear",
+    "subcategory": "freshwater starter setups and fishkeeping basics"
+  },
+  "voice": {
+    "register": "friendly-encouraging",
+    "tone": "fun, warm, and beginner-first; celebrates the hobby and removes the intimidation, spec-honest without the snobbery of advanced aquascaping forums",
+    "core_anxiety": "buying the wrong gear, killing the fish, or being overwhelmed before the first tank is even running",
+    "framings": [
+      "First-tank-first: what a beginner actually needs day one vs later",
+      "Tank-size fit: matching gear to a 5, 10, or 20 gallon setup",
+      "Reliability over features: the boring dependable pick beats the gadget",
+      "Total setup cost, not just the tank sticker price"
+    ]
+  },
+  "readerSegments": {
+    "primary": [
+      "first-tank-beginner",
+      "kids-and-family-setup",
+      "betta-keeper",
+      "gift-buyer"
+    ],
+    "secondary": [
+      "returning-hobbyist-restarting"
+    ],
+    "excluded": [
+      "advanced-reef-and-saltwater-keepers (different gear, different budget)"
+    ]
+  },
+  "featureAxes": {
+    "default": [
+      { "name": "Beginner-Friendliness", "weight": 25, "description": "how easy to set up and run without prior experience" },
+      { "name": "Reliability", "weight": 25, "description": "consistent, safe operation and longevity" },
+      { "name": "Value", "weight": 20, "description": "performance per dollar, total setup cost" },
+      { "name": "Tank-Size Fit", "weight": 15, "description": "right-sized for common beginner tanks (5 to 20 gal)" },
+      { "name": "Ease of Maintenance", "weight": 15, "description": "cleaning, media changes, daily friction" }
+    ]
+  },
+  "categoryPillars": [
+    "tanks-and-kits",
+    "filters",
+    "heaters",
+    "lighting",
+    "water-care",
+    "food-and-feeding"
+  ],
+  "navigation": {
+    "pillars": [
+      { "slug": "tanks-and-kits", "label": "Tanks & Kits", "type": "commercial", "categoryPillar": "tanks-and-kits", "blurb": "All-in-one starter kits and the right first tank size.", "hubKicker": "Buying guides" },
+      { "slug": "filters", "label": "Filters", "type": "commercial", "categoryPillar": "filters", "blurb": "The piece of gear that keeps your fish alive, made simple.", "hubKicker": "Buying guides" },
+      { "slug": "heaters", "label": "Heaters", "type": "commercial", "categoryPillar": "heaters", "blurb": "Safe, reliable warmth sized to your tank.", "hubKicker": "Buying guides" },
+      { "slug": "lighting", "label": "Lighting", "type": "commercial", "categoryPillar": "lighting", "blurb": "Lights that show off your fish and keep plants happy.", "hubKicker": "Buying guides" },
+      { "slug": "tank-school", "label": "Tank School", "type": "informational", "categoryPillar": null, "blurb": "The nitrogen cycle, water testing, and beginner mistakes to skip.", "hubKicker": "Guides & research" },
+      { "slug": "fun-finds", "label": "Fun Finds", "type": "informational", "categoryPillar": null, "blurb": "Decor, gifts, and playful gear that make the hobby fun.", "hubKicker": "Gifts & novelty" }
+    ]
+  },
+  "brandsCovered": [
+    "Fluval",
+    "Aqueon",
+    "Tetra",
+    "Marina",
+    "Eheim",
+    "NICREW",
+    "Hygger",
+    "API"
+  ],
+  "doctrineNotes": "Comparison-and-fit framework. Never claim hands-on use; cite manufacturer specs, verified-buyer reviews, and independent sources (Aquarium Co-Op, Prime Time Aquatics) as third-party evidence. No em dashes. No defensive audience exclusions. Visual identity is FUN: bright aquatic palette (aqua blues + greens with a warm coral pop), playful rounded shapes, bubbles, friendly rounded type. The opposite of clinical lab-equipment review sites; keep body copy readable, the fun lives in palette/shapes/motifs."
+}

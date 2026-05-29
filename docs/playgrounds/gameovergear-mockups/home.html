@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Game Over Gear — homepage identity mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0a16; --bg2:#13112a; --panel:#1a1733;
+    --ink:#e9e6ff; --muted:#9a93c7;
+    --magenta:#ff2e88; --cyan:#2ee6ff; --yellow:#ffd23f; --green:#39ff14; --orange:#ff7a18;
+    --line:#2c2752;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(120% 80% at 50% -10%, #241a4d 0%, var(--bg) 55%) fixed,
+      var(--bg);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  /* CRT scanline + vignette overlay */
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:9999;
+    background:repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) 2px, rgba(0,0,0,.18) 3px, rgba(0,0,0,0) 4px);
+    mix-blend-mode:multiply;
+  }
+  body::after{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:9998;
+    box-shadow:inset 0 0 180px 40px rgba(0,0,0,.6);
+    background:radial-gradient(130% 100% at 50% 50%, transparent 60%, rgba(0,0,0,.35) 100%);
+  }
+  .pixel{font-family:'Press Start 2P',monospace; line-height:1.5; letter-spacing:1px;}
+  .vt{font-family:'VT323',monospace;}
+  .wrap{max-width:1100px; margin:0 auto; padding:0 22px;}
+
+  /* ---- top bar ---- */
+  header.bar{border-bottom:2px solid var(--line); background:rgba(11,10,22,.7); backdrop-filter:blur(4px); position:sticky; top:0; z-index:50;}
+  .bar .wrap{display:flex; align-items:center; justify-content:space-between; height:64px;}
+  .logo{font-family:'Press Start 2P',monospace; font-size:13px; color:var(--cyan); text-shadow:0 0 8px rgba(46,230,255,.6);}
+  .logo b{color:var(--magenta); text-shadow:0 0 8px rgba(255,46,136,.6);}
+  nav.menu{display:flex; gap:18px;}
+  nav.menu a{font-family:'VT323',monospace; font-size:21px; color:var(--muted); text-decoration:none; text-transform:uppercase;}
+  nav.menu a:hover{color:var(--yellow); text-shadow:0 0 8px rgba(255,210,63,.6);}
+
+  /* ---- hero / attract screen ---- */
+  .hero{text-align:center; padding:74px 0 50px;}
+  .hero .coin{font-family:'VT323',monospace; font-size:22px; color:var(--green); text-transform:uppercase; letter-spacing:3px; animation:blink 1.1s steps(2,start) infinite;}
+  @keyframes blink{50%{opacity:0;}}
+  .hero h1{
+    font-family:'Press Start 2P',monospace; margin:18px 0 10px; line-height:1.25;
+    font-size:clamp(26px,6vw,58px);
+    color:var(--yellow);
+    text-shadow:4px 4px 0 var(--magenta), 8px 8px 0 var(--cyan);
+  }
+  .hero .tag{font-family:'VT323',monospace; font-size:26px; color:var(--ink); max-width:640px; margin:14px auto 26px;}
+  .cta{display:inline-block; font-family:'Press Start 2P',monospace; font-size:12px; color:#0b0a16; background:var(--green); padding:16px 22px; text-decoration:none; border:3px solid #0b0a16; box-shadow:5px 5px 0 var(--magenta); text-transform:uppercase;}
+  .cta:hover{transform:translate(2px,2px); box-shadow:3px 3px 0 var(--magenta);}
+
+  /* ---- select your gear ---- */
+  .section-title{font-family:'Press Start 2P',monospace; font-size:16px; color:var(--cyan); text-shadow:0 0 10px rgba(46,230,255,.5); text-align:center; margin:60px 0 28px;}
+  .grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  @media(max-width:860px){.grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:480px){.grid{grid-template-columns:1fr;}}
+  .tile{
+    background:var(--panel); border:3px solid var(--line); border-radius:4px;
+    padding:22px 18px; position:relative; transition:.12s; cursor:pointer; min-height:170px;
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .tile:hover{border-color:var(--magenta); box-shadow:0 0 0 3px rgba(255,46,136,.25), 0 0 24px rgba(255,46,136,.25); transform:translateY(-4px);}
+  .tile .ic{font-size:40px; line-height:1;}
+  .tile h3{font-family:'Press Start 2P',monospace; font-size:11px; color:var(--yellow); margin:14px 0 8px; line-height:1.5;}
+  .tile p{font-family:'VT323',monospace; font-size:19px; color:var(--muted); margin:0;}
+  .tile .arrow{font-family:'VT323',monospace; color:var(--cyan); font-size:20px; margin-top:10px;}
+
+  /* ---- high scores / featured ---- */
+  .scores{margin:30px 0; background:linear-gradient(180deg,var(--bg2),var(--panel)); border:2px solid var(--line); border-radius:6px; padding:26px;}
+  .scores .row{display:flex; align-items:center; gap:16px; padding:12px 0; border-bottom:1px dashed var(--line);}
+  .scores .row:last-child{border-bottom:none;}
+  .scores .rank{font-family:'Press Start 2P',monospace; font-size:14px; color:var(--magenta); width:42px;}
+  .scores .name{font-family:'VT323',monospace; font-size:23px; color:var(--ink); flex:1;}
+  .scores .pts{font-family:'VT323',monospace; font-size:22px; color:var(--green);}
+
+  footer{margin-top:60px; border-top:2px solid var(--line); padding:30px 0 60px; text-align:center;}
+  footer p{font-family:'VT323',monospace; font-size:19px; color:var(--muted);}
+  .note{max-width:760px;margin:40px auto 0;padding:16px 18px;border:1px dashed var(--line);border-radius:6px;font-family:'VT323',monospace;font-size:19px;color:var(--muted);text-align:center;}
+</style>
+</head>
+<body>
+  <header class="bar"><div class="wrap">
+    <span class="logo">GAME<b>OVER</b>GEAR</span>
+    <nav class="menu">
+      <a href="#">Controllers</a><a href="#">Arcade Sticks</a><a href="#">Handhelds</a><a href="#">Displays</a><a href="#">Level Up</a>
+    </nav>
+  </div></header>
+
+  <section class="hero"><div class="wrap">
+    <div class="coin">★ Insert Coin to Continue ★</div>
+    <h1>GAME OVER GEAR</h1>
+    <p class="tag">Retro gaming gear, ranked by the way you actually play. Spec-checked, compatibility-first, nostalgia included.</p>
+    <a class="cta" href="#">▶ Press Start</a>
+  </div></section>
+
+  <div class="wrap">
+    <h2 class="section-title">— Select Your Gear —</h2>
+    <div class="grid">
+      <div class="tile"><div class="ic">🎮</div><div><h3>Controllers</h3><p>Pads that feel like the originals.</p></div><span class="arrow">▶ enter</span></div>
+      <div class="tile"><div class="ic">🕹️</div><div><h3>Arcade Sticks</h3><p>Fight sticks and cabinet parts.</p></div><span class="arrow">▶ enter</span></div>
+      <div class="tile"><div class="ic">📟</div><div><h3>Handhelds</h3><p>Emulation, pocket to powerhouse.</p></div><span class="arrow">▶ enter</span></div>
+      <div class="tile"><div class="ic">📺</div><div><h3>Displays &amp; Scalers</h3><p>CRTs, RetroTINK, a clean picture.</p></div><span class="arrow">▶ enter</span></div>
+    </div>
+
+    <h2 class="section-title">— High Scores: Top Rated —</h2>
+    <div class="scores">
+      <div class="row"><span class="rank">1ST</span><span class="name">8BitDo Pro 2 — best all-around retro controller</span><span class="pts">96 PTS</span></div>
+      <div class="row"><span class="rank">2ND</span><span class="name">Anbernic RG40XX — best budget emulation handheld</span><span class="pts">92 PTS</span></div>
+      <div class="row"><span class="rank">3RD</span><span class="name">RetroTINK 4K — best modern scaler for a clean picture</span><span class="pts">90 PTS</span></div>
+    </div>
+
+    <div class="note">Homepage identity mockup for Ray. Vibe = 1980s Nintendo / Atari / arcade: pixel display type (Press Start 2P), CRT scanlines + vignette, neon arcade palette, game-select pillar tiles, "high scores" featured strip. Body copy stays readable (VT323/Inter). Sample products are placeholders. Approve the vibe or redirect, then I wire it into the live Astro site.</div>
+  </div>
+
+  <footer><div class="wrap"><p>GAME OVER GEAR · gameovergear.games · © 2026 · As an Amazon Associate we earn from qualifying purchases.</p></div></footer>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Starter Aquarium — homepage identity mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --deep:#0a6c8f; --aqua:#19b3c6; --teal:#2bd4be; --sky:#7fe3ef; --foam:#e8fbfb;
+    --coral:#ff7a59; --sun:#ffd166; --ink:#0f3a47; --muted:#4a7682; --white:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito',system-ui,sans-serif; color:var(--ink); line-height:1.65;
+    background:linear-gradient(180deg,#bff0f6 0%, #8fe1ec 22%, var(--aqua) 60%, var(--deep) 100%);
+    background-attachment:fixed; min-height:100vh; overflow-x:hidden; position:relative;
+  }
+  /* drifting bubbles */
+  .bubble{position:fixed; bottom:-60px; border-radius:50%; background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.9), rgba(255,255,255,.15)); box-shadow:0 0 8px rgba(255,255,255,.4); animation:rise linear infinite; z-index:0; pointer-events:none;}
+  @keyframes rise{to{transform:translateY(-110vh) translateX(20px); opacity:0;}}
+  h1,h2,h3,.brand{font-family:'Baloo 2',cursive;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 22px; position:relative; z-index:1;}
+
+  header.bar{position:sticky; top:0; z-index:50; background:rgba(232,251,251,.82); backdrop-filter:blur(6px); border-bottom:3px solid rgba(255,255,255,.6);}
+  .bar .wrap{display:flex; align-items:center; justify-content:space-between; height:68px;}
+  .brand{font-size:26px; font-weight:800; color:var(--deep);}
+  .brand .fish{color:var(--coral);}
+  nav.menu{display:flex; gap:18px;}
+  nav.menu a{font-weight:700; color:var(--deep); text-decoration:none; font-size:15px; padding:6px 12px; border-radius:999px;}
+  nav.menu a:hover{background:var(--sun); color:var(--ink);}
+
+  .hero{text-align:center; padding:64px 0 40px;}
+  .hero .kicker{display:inline-block; background:var(--coral); color:#fff; font-weight:800; font-family:'Baloo 2',cursive; padding:6px 16px; border-radius:999px; font-size:15px; transform:rotate(-2deg);}
+  .hero h1{font-size:clamp(34px,6.5vw,62px); color:#fff; margin:18px 0 8px; text-shadow:0 3px 0 rgba(10,108,143,.35); line-height:1.1;}
+  .hero p{font-size:20px; color:#f4ffff; max-width:600px; margin:8px auto 26px; font-weight:600;}
+  .cta{display:inline-block; background:var(--sun); color:var(--ink); font-family:'Baloo 2',cursive; font-weight:800; font-size:18px; padding:15px 30px; border-radius:999px; text-decoration:none; box-shadow:0 6px 0 #e0a93c; transition:.1s;}
+  .cta:hover{transform:translateY(2px); box-shadow:0 4px 0 #e0a93c;}
+
+  .section-title{text-align:center; color:#fff; font-size:30px; margin:54px 0 10px; text-shadow:0 2px 0 rgba(10,108,143,.3);}
+  .section-sub{text-align:center; color:#eafdff; font-weight:600; margin:0 0 26px;}
+  .grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  @media(max-width:860px){.grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:480px){.grid{grid-template-columns:1fr;}}
+  .card{background:var(--white); border-radius:22px; padding:24px 20px; text-align:center; box-shadow:0 10px 24px rgba(10,60,71,.18); transition:.14s; cursor:pointer; border:3px solid transparent;}
+  .card:hover{transform:translateY(-6px) rotate(-1deg); border-color:var(--sun);}
+  .card .ic{font-size:46px;}
+  .card h3{font-size:20px; color:var(--deep); margin:10px 0 6px;}
+  .card p{font-size:15px; color:var(--muted); margin:0; font-weight:600;}
+
+  .picks{background:rgba(255,255,255,.92); border-radius:24px; padding:28px; margin:26px 0; box-shadow:0 12px 30px rgba(10,60,71,.2);}
+  .picks h2{color:var(--deep); text-align:center; margin:0 0 18px; font-size:26px;}
+  .pick{display:flex; gap:16px; align-items:center; padding:14px 0; border-bottom:2px dashed #d6eef2;}
+  .pick:last-child{border-bottom:none;}
+  .pick .badge{background:var(--teal); color:#063; font-weight:800; font-family:'Baloo 2',cursive; border-radius:14px; padding:8px 12px; font-size:14px; white-space:nowrap;}
+  .pick .t{flex:1;}
+  .pick .t b{color:var(--ink); font-size:17px; display:block; font-family:'Baloo 2',cursive;}
+  .pick .t span{color:var(--muted); font-size:14px; font-weight:600;}
+
+  footer{text-align:center; padding:36px 0 60px; color:#eafdff; font-weight:600;}
+  .note{max-width:780px;margin:36px auto 0;background:rgba(255,255,255,.9);border-radius:18px;padding:18px 20px;color:var(--muted);font-size:15px;font-weight:600;text-align:center;box-shadow:0 8px 20px rgba(10,60,71,.15);}
+</style>
+</head>
+<body>
+  <!-- bubbles -->
+  <div class="bubble" style="left:8%;width:18px;height:18px;animation-duration:14s;"></div>
+  <div class="bubble" style="left:22%;width:10px;height:10px;animation-duration:10s;animation-delay:2s;"></div>
+  <div class="bubble" style="left:40%;width:26px;height:26px;animation-duration:18s;animation-delay:1s;"></div>
+  <div class="bubble" style="left:58%;width:14px;height:14px;animation-duration:12s;animation-delay:3s;"></div>
+  <div class="bubble" style="left:74%;width:20px;height:20px;animation-duration:16s;"></div>
+  <div class="bubble" style="left:88%;width:12px;height:12px;animation-duration:11s;animation-delay:2.5s;"></div>
+
+  <header class="bar"><div class="wrap">
+    <span class="brand">🐠 Starter<span class="fish">Aquarium</span></span>
+    <nav class="menu"><a href="#">Tanks &amp; Kits</a><a href="#">Filters</a><a href="#">Heaters</a><a href="#">Lighting</a><a href="#">Tank School</a></nav>
+  </div></header>
+
+  <section class="hero"><div class="wrap">
+    <span class="kicker">No experience needed</span>
+    <h1>Your first tank,<br>made fun.</h1>
+    <p>Friendly, beginner-first gear guides. We match the filter, heater, and kit to your tank size so your first fish actually thrive.</p>
+    <a class="cta" href="#">Start your tank →</a>
+  </div></section>
+
+  <div class="wrap">
+    <h2 class="section-title">What do you need first?</h2>
+    <p class="section-sub">Tap a category. We keep it simple.</p>
+    <div class="grid">
+      <div class="card"><div class="ic">🐟</div><h3>Tanks &amp; Kits</h3><p>The right first tank size.</p></div>
+      <div class="card"><div class="ic">💧</div><h3>Filters</h3><p>The gear that keeps fish alive.</p></div>
+      <div class="card"><div class="ic">🌡️</div><h3>Heaters</h3><p>Safe, reliable warmth.</p></div>
+      <div class="card"><div class="ic">💡</div><h3>Lighting</h3><p>Show off your fish + plants.</p></div>
+    </div>
+
+    <div class="picks">
+      <h2>🏆 Beginner favorites</h2>
+      <div class="pick"><span class="badge">Best kit</span><div class="t"><b>Fluval Flex 9 Gallon</b><span>All-in-one starter kit with built-in filtration</span></div></div>
+      <div class="pick"><span class="badge">Best filter</span><div class="t"><b>AquaClear 30 HOB</b><span>The dependable hang-on-back most pros recommend first</span></div></div>
+      <div class="pick"><span class="badge">Best heater</span><div class="t"><b>Fluval E-Series 100W</b><span>Accurate, safe, and sized for a beginner tank</span></div></div>
+    </div>
+
+    <div class="note">Homepage identity mockup for Ray. Vibe = FUN: bright aquatic gradient (sky to deep blue), drifting bubbles, playful rounded type (Baloo 2), coral + sunshine pops, rounded bubbly cards, friendly beginner-first copy. The opposite of clinical lab-equipment sites. Sample products are placeholders. Approve the vibe or redirect, then I wire it into the live Astro site.</div>
+  </div>
+
+  <footer><div class="wrap">StarterAquarium · starteraquarium.com · © 2026 · As an Amazon Associate we earn from qualifying purchases.</div></footer>
+</body>
+</html>
