@@ -91,6 +91,13 @@ durability; a crash resumes from the manifest):
      `priceFrom`, `priceUnit`, `hook`, `reason`, `facts` map, and HTML `body`
      (the unified two-tier pick-card system — see
      `sites/detailerpicks/src/content/buyers-guides/best-car-wash-soap-for-home-detailers.md`).
+     **GRID-BALANCE RULE (Ray, 2026-05-29):** a guide's `products[]` count must
+     render as a balanced grid — never an orphan row. **Target 6 (2 rows of 3).**
+     Acceptable fallbacks: 4 (2x2) or 3 (one row). NEVER 5 (3+2 leaves a gap) or
+     7 (3+3+1 orphans one). If research can only validate 5 real products,
+     either find a defensible 6th or drop to 4 — do not ship a 5- or
+     3-plus-1-shaped guide. Research (step 2) should target 6 validated picks so
+     this never binds late.
    - **`## Bottom Line` / `bottomLine.verdict` STAYS EMPTY** (the placeholder).
      This keeps the page noindex'd and is Ray's gate.
    Run `lint-voice.ps1` on the result. Status `body-filled`.

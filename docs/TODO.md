@@ -34,11 +34,22 @@
 - [ ] **Verify the swapped DTP + MWC product images render correctly on live site** after the 2026-05-24 CF deploys settled.
 - [ ] **Foam-cannon-in-use Unsplash image** for `best-foam-cannon-for-home-detailers.md` — current placeholder `photo-1520340356584-f9917d1eea6f`.
 
+## ⭐ Magic Go batch run 2026-05-29 — READY FOR RAY (do these first)
+
+**9 DRAFT pieces are live in noindex state with 3 Bottom Line options each.** Open the queue and pick verdicts: `pwsh scripts/magic-go-queue.ps1 -Open` (or open `dist/magic-go/queue.html`). Verify-first pieces sorted to top.
+
+- [ ] **Write Bottom Lines for the 9 queued pieces**, then publish: `pwsh scripts/magic-go-publish.ps1`. The 3 verify-first ones to eyeball: Bushnell (thin stock — confirm still buyable), Espresso guide (re-confirm Barista Express price; Casabrews is a contested pick), Fellow Stagg (it's the EKG **Pro** — original discontinued; OK with that framing?).
+- [ ] **Approve the 2 cold-site homepage mockups** (taste call): `docs/playgrounds/gameovergear-mockups/home.html` (retro/arcade) + `docs/playgrounds/starteraquarium-mockups/home.html` (fun/aquatic). Approve the vibe or redirect.
+- [ ] **AFTER approval — wire cold sites live (supervised):** gameovergear + starteraquarium have canonical `site-config.json` now but are still on the OLD template (no content routes, no identity site.css). Port the current MWC/fussybean template + per-site identity `site.css` + pillar IA, THEN run Tier-2 content (3 pieces each). Blocked on homepage approval so identities don't get built twice.
+- [ ] **Set Amazon tags** for gameovergear + starteraquarium `site-config.json` (currently empty `amazonTag` → those pieces earn $0 until set), same as fussybean's pending tag.
+- [ ] **Canopy quota resets ~June 1** → re-run `pnpm audit:images` for a belt-and-suspenders authoritative-image pass across the new pieces (this run used the new firecrawl `fix-product-images.ps1` instead; images are authoritative + visually spot-checked, but a Canopy pass is cheap insurance once quota is back).
+- [ ] **(Optional) KV cloaker registration** for the new guide/review affiliate URLs — skipped this run because guides use direct `?tag=` URLs that already monetize; `/go/` cloaking is a separate layer if you want click tracking through the Worker.
+
 ## Backburner (deferred until Magic Go ships)
 
 - [ ] **Moultrie EDGE review** — research ready at `docs/research/2026-05-17-trail-cam-research.md`; ship via Magic Go run once Item 5 lands.
-- [ ] **Cellular trail cam buying guide** — Magic Go candidate.
-- [ ] **Spypoint Flex G36 review** — Magic Go candidate.
+- [x] **Cellular trail cam buying guide** — SHIPPED 2026-05-29 (best-cellular-trail-cameras, 6 picks).
+- [x] **Spypoint Flex G36 review** — SHIPPED 2026-05-29 (`75a985f`, indexed).
 - [ ] **Bring satellite sites into rotation** — ~~fussybean~~ (DONE 2026-05-28, READY*), starteraquarium, gameovergear. Each will inherit Items 3 + 4 + Magic Go automatically once the template ports through. fussybean is the first one through: canonical config + Variant-C identity + pillar hubs + E-E-A-T + 2 DRAFTs; passes readiness gate. starteraquarium + gameovergear still cold (no site-config). Ray: set fussybean's Amazon tag + create/point Cloudflare Pages tomorrow.
 
 ## Later / Ideas
@@ -50,7 +61,7 @@
 - [ ] **aclaps.xyz SEO cleanup** — Assetto Corsa leaderboards side project (deferred; affiliate work takes priority)
 - [ ] **Re-research wash mitt category with US-availability check** before drafting that piece
 - [ ] **Track Cloudflare Pages → Workers Static Assets migration** as Q3-Q4 2026 planning item
-- [ ] **More detailerpicks pieces** — pressure washer guide, drying towel guide, ceramic spray sealant (research notes have outlines for all three)
+- [ ] **More detailerpicks pieces** — pressure washer guide (~~drying towel guide~~ SHIPPED 2026-05-29; ~~ceramic spray sealant~~ → ceramic coating guide + Adam's review SHIPPED 2026-05-29)
 
 ## Blocked
 
@@ -61,6 +72,11 @@
 
 ## Done
 
+- [x] 2026-05-29 — **Magic Go batch run: 9 DRAFT pieces across MWC + DTP + fussybean** (run 2026-05-29-0648), each with 3 Bottom Line options + a confidence tag, rendered to `dist/magic-go/queue.html`. Includes the cellular trail-cam guide, Spypoint Flex G36 verdict (`75a985f`), DTP ceramic + drying-towel guides, DTP's first review (Adam's Graphene), and the fussybean grinder guide + Fellow Stagg review. Commits `6ef2b8b` `689e7d3` `1493e78` `a3c9aaa` `43ed80f`.
+- [x] 2026-05-29 — **#58 fussybean espresso guide FIXED** — rewrote with 6 validated machines (replaced the bootstrap's 4 hallucinated ASINs), authoritative images, 6-pick 2x3 grid. Part of `a3c9aaa`.
+- [x] 2026-05-29 — **#57 grid-balance rule CODIFIED** — target 6 (2x3), fallback 4 (2x2) or 3, never 5 or 3+1. Documented in `plugin/commands/magic-go.md` step 4 + memory. (Documented rule, not yet a hard lint mechanism.)
+- [x] 2026-05-29 — **Image pipeline rebuilt Canopy-free:** `fix-product-images.ps1` (firecrawl `colorImages.hiRes`) + curl-based `lint-product-images.ps1` rewrite (Amazon 400s the .NET client + mangles `+` in image IDs). Canopy free-tier quota exhausted; resets ~June 1.
+- [x] 2026-05-29 — **gameovergear + starteraquarium configs + homepage identity mockups** (`8ed3cb2`) — retro/arcade + fun/aquatic, awaiting Ray's approval before live wire-in.
 - [x] 2026-05-24 — **Durable image + affiliate-tag safeguard infrastructure SHIPPED.** Two PowerShell lints (`scripts/lint-product-images.ps1`, `scripts/lint-affiliate-tags.ps1`) + pre-commit hook (`scripts/pre-commit-hook.sh` + `install-hooks.ps1`) auto-block broken-image and wrong-tag commits at source. Pnpm scripts wired (`pnpm install-hooks`, `pnpm lint:images`, `pnpm lint:tags`). 5 first-run image catches on DTP swapped (Gyeon, MTM, Adam's, P&S, CarPro) using URLs Ray sourced from each product page. Shared `BottomLine.astro` extracted to `packages/shared-ui/`. CLAUDE.md + PROJECT_STATE.md updated. Root-cause investigation closed on suffix-stripping (no scaffolder strips suffixes — real cause is Canopy `mainImageUrl` rotation over time, captured as a Later/Ideas item).
 - [x] 2026-05-23 — **All 4 DTP buying guides Google-indexable + per-page gutter themes shipped on both sites.** Bottom Lines written for interior cleaner + wheel cleaner; meta-robots flip to `index,follow` on next deploy. MWC forest gutters + DTP detailing gutters per-content, body-bg pattern (NOT `<main>` paint). GardePro E5 review SCAFFOLDED + WRITTEN + LIVE via first end-to-end autonomous chain run.
 - [x] 2026-05-23 — Vikeri → GardePro E5 swap in trail-cam buying guide (`3b80cd6`).
