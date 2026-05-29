@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FussyBean — Variant B (Cozy Minimal)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --espresso:#33241a;
+    --espresso-soft:#4a3526;
+    --caramel:#bd7f3e;
+    --caramel-deep:#a0612a;
+    --crema:#e7cfa6;
+    --latte:#f3e7d3;
+    --paper:#f4ead9;
+    --card:#fbf4e8;
+    --ink:#3a2c20;
+    --muted:#7a6650;
+    --line:#e0cfb1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  .col{max-width:680px;margin:0 auto;padding:0 26px;}
+  .col-wide{max-width:880px;margin:0 auto;padding:0 26px;}
+
+  /* Header — minimal centered */
+  header.site{padding:30px 0 8px;text-align:center;}
+  .logo{
+    font-family:'Newsreader',serif;font-weight:600;font-size:26px;
+    color:var(--espresso);letter-spacing:.01em;display:inline-flex;align-items:center;gap:9px;
+  }
+  .logo .bean{
+    width:26px;height:26px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
+    background:radial-gradient(circle at 35% 30%,var(--caramel),var(--espresso));
+    transform:rotate(-14deg);position:relative;
+  }
+  .logo .bean::after{content:"";position:absolute;left:48%;top:14%;width:2px;height:72%;background:var(--paper);transform:translateX(-50%) rotate(8deg);}
+  nav.top{margin-top:14px;display:flex;justify-content:center;gap:26px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;}
+  nav.top a:hover{color:var(--caramel-deep);}
+  .rule{height:1px;background:var(--line);max-width:120px;margin:24px auto 0;}
+
+  /* Hero */
+  .hero{text-align:center;padding:48px 0 26px;}
+  .hero .kicker{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--caramel-deep);font-weight:600;margin-bottom:20px;}
+  .hero h1{
+    font-family:'Newsreader',serif;font-weight:500;
+    font-size:clamp(36px,6.5vw,56px);line-height:1.08;color:var(--espresso);
+    letter-spacing:-0.01em;margin-bottom:20px;
+  }
+  .hero h1 em{font-style:italic;color:var(--caramel-deep);}
+  .hero p{font-size:18px;color:var(--muted);max-width:30em;margin:0 auto 26px;}
+  .niche{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--espresso-soft);font-weight:600;}
+  .niche span{color:var(--caramel-deep);}
+
+  .hero-photo{margin:38px auto 0;max-width:880px;padding:0 26px;}
+  .hero-photo img{
+    width:100%;height:430px;object-fit:cover;border-radius:10px;
+    box-shadow:0 26px 50px -30px rgba(51,36,26,.55);
+  }
+  .hero-photo .cap{text-align:center;font-family:'Newsreader',serif;font-style:italic;font-size:15px;color:var(--muted);margin-top:14px;}
+
+  /* Section heading */
+  .shead{text-align:center;margin:56px 0 32px;}
+  .shead .eyebrow{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--caramel-deep);font-weight:600;margin-bottom:10px;}
+  .shead h2{font-family:'Newsreader',serif;font-weight:500;font-size:32px;color:var(--espresso);}
+  .shead p{font-size:15px;color:var(--muted);margin-top:6px;}
+
+  /* Pillars — stacked list rows, cozy */
+  .pillar-list{display:flex;flex-direction:column;gap:18px;margin-bottom:20px;}
+  .prow{
+    display:grid;grid-template-columns:130px 1fr;gap:22px;align-items:center;
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:16px;transition:transform .22s,box-shadow .22s;
+  }
+  .prow:hover{transform:translateY(-3px);box-shadow:0 18px 34px -24px rgba(51,36,26,.45);}
+  .prow .thumb{width:130px;height:120px;border-radius:8px;overflow:hidden;}
+  .prow .thumb img{width:100%;height:100%;object-fit:cover;}
+  .prow .label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--caramel-deep);margin-bottom:5px;}
+  .prow .label.info{color:var(--espresso-soft);}
+  .prow h3{font-family:'Newsreader',serif;font-weight:600;font-size:23px;color:var(--espresso);line-height:1.15;margin-bottom:6px;}
+  .prow p{font-size:14.5px;color:var(--muted);}
+  .prow .arrow{font-family:'Newsreader',serif;font-size:22px;color:var(--caramel);margin-left:auto;}
+
+  /* Latest — simple bordered list */
+  .latest{border-top:1px solid var(--line);}
+  .litem{
+    display:grid;grid-template-columns:1fr 96px;gap:20px;align-items:center;
+    padding:22px 0;border-bottom:1px solid var(--line);
+  }
+  .litem .meta{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--caramel-deep);font-weight:600;margin-bottom:6px;}
+  .litem h4{font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:var(--espresso);line-height:1.2;margin-bottom:5px;}
+  .litem p{font-size:14px;color:var(--muted);}
+  .litem .thumb{width:96px;height:96px;border-radius:8px;overflow:hidden;}
+  .litem .thumb img{width:100%;height:100%;object-fit:cover;}
+
+  .cta-line{text-align:center;margin:34px 0 10px;}
+  .cta-line a{font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--caramel-deep);border-bottom:2px solid var(--crema);padding-bottom:3px;}
+
+  /* Footer */
+  footer{background:var(--latte);border-top:1px solid var(--line);margin-top:60px;}
+  .foot{padding:46px 0 34px;text-align:center;}
+  .foot .fb{font-family:'Newsreader',serif;font-weight:600;font-size:24px;color:var(--espresso);margin-bottom:14px;}
+  .foot nav{display:flex;justify-content:center;flex-wrap:wrap;gap:22px;font-size:13px;color:var(--espresso-soft);font-weight:500;margin-bottom:22px;}
+  .foot nav a:hover{color:var(--caramel-deep);}
+  .disclosure{font-size:12.5px;color:var(--muted);line-height:1.7;max-width:46em;margin:0 auto 16px;}
+  .copy{font-size:12px;color:#9a8266;}
+
+  @media(max-width:560px){
+    .prow{grid-template-columns:1fr;}
+    .prow .thumb{width:100%;height:160px;}
+    .prow .arrow{display:none;}
+    .litem{grid-template-columns:1fr 72px;}
+    .litem .thumb{width:72px;height:72px;}
+    nav.top{flex-wrap:wrap;gap:16px;}
+    .hero-photo img{height:300px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <a href="#" class="logo"><span class="bean"></span>FussyBean</a>
+  <nav class="top">
+    <a href="#">Espresso</a>
+    <a href="#">Grinders</a>
+    <a href="#">Kettles</a>
+    <a href="#">Scales</a>
+    <a href="#">Gifts</a>
+  </nav>
+  <div class="rule"></div>
+</header>
+
+<section class="hero">
+  <div class="col">
+    <div class="kicker">Home Coffee Gear</div>
+    <h1>The quiet pleasure of <em>good gear</em>, figured out for you.</h1>
+    <p>Espresso machines, grinders, gooseneck kettles, scales, and the gift-y extras. We read every spec sheet so your morning ritual feels effortless.</p>
+    <div class="niche">Espresso · Grinders · Kettles · Scales · <span>Gifts</span></div>
+  </div>
+  <div class="hero-photo">
+    <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1600&q=80" width="1600" height="1067" alt="A latte with leaf art resting on a worn wooden café table in soft light">
+    <p class="cap">A slow morning, a good cup. That's the whole point.</p>
+  </div>
+</section>
+
+<div class="col-wide">
+  <div class="shead">
+    <div class="eyebrow">Browse by topic</div>
+    <h2>Start where your counter needs help</h2>
+    <p>Five lanes, one calm place to compare them.</p>
+  </div>
+
+  <div class="pillar-list">
+    <a class="prow" href="#">
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?auto=format&fit=crop&w=1600&q=80" width="1600" height="1067" alt="Chrome espresso machine with steam"></div>
+      <div>
+        <div class="label">Espresso machines</div>
+        <h3>From your first machine to a dual boiler</h3>
+        <p>Breville Barista Express, Gaggia Classic Pro, and the rest of the field — what each trades away.</p>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+    <a class="prow" href="#">
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=1600&q=80" width="1600" height="900" alt="Coffee beans in a grinder hopper"></div>
+      <div>
+        <div class="label">Grinders</div>
+        <h3>The burr grinder guide</h3>
+        <p>Why the grinder outranks the machine — Baratza Encore up to stepless espresso burrs.</p>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+    <a class="prow" href="#">
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1442550528053-c431ecb55509?auto=format&fit=crop&w=1600&q=80" width="1600" height="1067" alt="Gooseneck kettle pouring over a dripper"></div>
+      <div>
+        <div class="label">Kettles &amp; scales</div>
+        <h3>Pour control &amp; tenth-gram accuracy</h3>
+        <p>Fellow Stagg, Acaia Pearl, and the budget rivals worth a look.</p>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+    <a class="prow" href="#">
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?auto=format&fit=crop&w=1600&q=80" width="1600" height="1067" alt="Brewing tools and beans laid out on wood"></div>
+      <div>
+        <div class="label info">Guide</div>
+        <h3>What an espresso setup really costs</h3>
+        <p>Machine, grinder, and the small stuff nobody warns you about — three honest tiers.</p>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+
+    <a class="prow" href="#">
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1521302080334-4bebac2763a6?auto=format&fit=crop&w=1600&q=80" width="1600" height="1067" alt="Coffee mugs and accessories on a shelf"></div>
+      <div>
+        <div class="label">Gifts &amp; novelties</div>
+        <h3>Fun, gift-y, slightly unnecessary</h3>
+        <p>Giant-coffee-cup pod holder territory — impulse buys that still earn their spot.</p>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+</div>
+
+<div class="col-wide">
+  <div class="shead">
+    <div class="eyebrow">Fresh off the desk</div>
+    <h2>Latest reviews &amp; guides</h2>
+  </div>
+  <div class="latest">
+    <a class="litem" href="#">
+      <div>
+        <div class="meta">Review · Espresso</div>
+        <h4>Breville Barista Express: who it fits</h4>
+        <p>The all-in-one convenience, weighed against the ceiling you'll eventually hit.</p>
+      </div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1600&q=80" width="1600" height="1067" alt="Portafilter being loaded on an espresso machine"></div>
+    </a>
+    <a class="litem" href="#">
+      <div>
+        <div class="meta">Guide · Grinders</div>
+        <h4>Baratza Encore vs the budget field</h4>
+        <p>Where the extra spend stops paying off for pour-over and drip.</p>
+      </div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1600&q=80" width="1600" height="1067" alt="Cup of coffee with latte art"></div>
+    </a>
+    <a class="litem" href="#">
+      <div>
+        <div class="meta">Comparison · Kettles</div>
+        <h4>Fellow Stagg EKG vs cheaper goosenecks</h4>
+        <p>What temperature control and a good spout buy you — and when they don't.</p>
+      </div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1500423079914-b65af272b8db?auto=format&fit=crop&w=1600&q=80" width="1600" height="1067" alt="Pour-over coffee dripping into a glass carafe"></div>
+    </a>
+  </div>
+  <div class="cta-line"><a href="#">See all reviews &amp; guides →</a></div>
+</div>
+
+<footer>
+  <div class="col foot">
+    <div class="fb">FussyBean</div>
+    <nav>
+      <a href="#">About &amp; method</a>
+      <a href="#">Buying guides</a>
+      <a href="#">Reviews</a>
+      <a href="#">Affiliate disclosure</a>
+      <a href="#">Privacy</a>
+      <a href="#">Contact</a>
+    </nav>
+    <p class="disclosure">FussyBean is reader-supported. When you buy through links on our site, we may earn a commission at no extra cost to you. Our recommendations come from published specifications and use-case fit, not from claims of hands-on testing.</p>
+    <p class="copy">© 2026 FussyBean. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

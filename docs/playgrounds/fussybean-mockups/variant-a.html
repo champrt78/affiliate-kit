@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FussyBean — Variant A (Editorial Magazine)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --espresso:#2b1d14;
+    --espresso-soft:#3d2a1d;
+    --caramel:#b07a3c;
+    --caramel-deep:#9a5f28;
+    --crema:#e9d3ad;
+    --latte:#f0e2cd;
+    --paper:#f6ecdb;
+    --paper-deep:#efe1c9;
+    --ink:#33271d;
+    --muted:#6f5c49;
+    --line:#d8c4a4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+  /* Masthead */
+  .masthead{
+    border-bottom:2px solid var(--espresso);
+    background:var(--paper);
+  }
+  .masthead-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 0 18px;
+  }
+  .logo{
+    font-family:'Fraunces',serif;font-weight:900;font-size:30px;
+    letter-spacing:-0.02em;color:var(--espresso);
+    display:flex;align-items:center;gap:10px;
+  }
+  .logo .bean{
+    width:34px;height:34px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
+    background:radial-gradient(circle at 35% 30%,var(--caramel),var(--espresso));
+    position:relative;transform:rotate(-12deg);
+  }
+  .logo .bean::after{
+    content:"";position:absolute;left:48%;top:12%;width:2px;height:76%;
+    background:var(--paper);transform:translateX(-50%) rotate(8deg);border-radius:2px;
+  }
+  .topnav{display:flex;gap:30px;font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;}
+  .topnav a{color:var(--espresso-soft);padding-bottom:2px;border-bottom:2px solid transparent;transition:.2s;}
+  .topnav a:hover{border-color:var(--caramel);color:var(--caramel-deep);}
+  .strapline{
+    font-size:12px;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--muted);padding:8px 0;border-top:1px solid var(--line);
+    text-align:center;
+  }
+
+  /* Hero — asymmetric editorial */
+  .hero{padding:54px 0 40px;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;}
+  .kicker{
+    font-size:13px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--caramel-deep);font-weight:600;margin-bottom:18px;
+  }
+  .hero h1{
+    font-family:'Fraunces',serif;font-weight:900;
+    font-size:clamp(40px,6vw,68px);line-height:1.02;
+    letter-spacing:-0.02em;color:var(--espresso);margin-bottom:22px;
+  }
+  .hero h1 em{font-style:italic;color:var(--caramel-deep);}
+  .hero p.lede{font-size:19px;color:var(--muted);max-width:30em;margin-bottom:28px;}
+  .niche-row{display:flex;flex-wrap:wrap;gap:10px;}
+  .niche-row span{
+    font-size:13px;font-weight:600;background:var(--latte);
+    border:1px solid var(--line);color:var(--espresso-soft);
+    padding:7px 14px;border-radius:40px;
+  }
+  .hero-figure{position:relative;}
+  .hero-figure img{
+    width:100%;height:480px;object-fit:cover;border-radius:6px;
+    box-shadow:0 30px 60px -28px rgba(43,29,20,.55);
+  }
+  .hero-figure .cap{
+    position:absolute;bottom:14px;left:14px;right:14px;
+    background:rgba(43,29,20,.78);color:var(--crema);
+    font-size:12px;letter-spacing:.04em;padding:9px 14px;border-radius:4px;
+    backdrop-filter:blur(2px);
+  }
+
+  /* Section header */
+  .sec-head{
+    display:flex;align-items:flex-end;justify-content:space-between;
+    border-bottom:2px solid var(--espresso);padding-bottom:10px;margin-bottom:30px;
+  }
+  .sec-head h2{
+    font-family:'Fraunces',serif;font-weight:600;font-size:30px;color:var(--espresso);
+    letter-spacing:-0.01em;
+  }
+  .sec-head a{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--caramel-deep);}
+  .sec-head a:hover{text-decoration:underline;}
+  section{padding:46px 0;}
+
+  /* Pillar grid — magazine, one feature + supporting */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .pillar{
+    grid-column:span 1;background:var(--paper-deep);border:1px solid var(--line);
+    border-radius:6px;overflow:hidden;transition:transform .25s,box-shadow .25s;
+    display:flex;flex-direction:column;
+  }
+  .pillar:hover{transform:translateY(-4px);box-shadow:0 22px 40px -26px rgba(43,29,20,.5);}
+  .pillar.feature{grid-column:span 2;grid-row:span 2;}
+  .pillar .ph{position:relative;overflow:hidden;}
+  .pillar .ph img{width:100%;height:180px;object-fit:cover;}
+  .pillar.feature .ph img{height:330px;}
+  .pillar .tag{
+    position:absolute;top:12px;left:12px;font-size:11px;font-weight:600;
+    letter-spacing:.1em;text-transform:uppercase;background:var(--caramel);
+    color:#fff;padding:5px 11px;border-radius:30px;
+  }
+  .pillar .tag.info{background:var(--espresso);}
+  .pillar .tag.gift{background:var(--caramel-deep);}
+  .pillar .body{padding:18px 20px 22px;flex:1;display:flex;flex-direction:column;}
+  .pillar h3{font-family:'Fraunces',serif;font-weight:600;font-size:22px;color:var(--espresso);margin-bottom:8px;line-height:1.15;}
+  .pillar.feature h3{font-size:30px;}
+  .pillar p{font-size:14.5px;color:var(--muted);margin-bottom:14px;flex:1;}
+  .pillar.feature p{font-size:16px;}
+  .pillar .go{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--caramel-deep);}
+
+  /* Latest strip */
+  .latest{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .post{display:flex;flex-direction:column;}
+  .post .ph{overflow:hidden;border-radius:6px;margin-bottom:14px;}
+  .post .ph img{width:100%;height:200px;object-fit:cover;transition:transform .4s;}
+  .post:hover .ph img{transform:scale(1.05);}
+  .post .meta{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--caramel-deep);font-weight:600;margin-bottom:7px;}
+  .post h4{font-family:'Fraunces',serif;font-weight:600;font-size:20px;color:var(--espresso);line-height:1.2;margin-bottom:8px;}
+  .post p{font-size:14px;color:var(--muted);}
+
+  /* Footer */
+  footer{background:var(--espresso);color:var(--crema);margin-top:30px;}
+  .foot-inner{padding:48px 0 30px;}
+  .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;border-bottom:1px solid rgba(233,211,173,.2);padding-bottom:26px;margin-bottom:22px;}
+  .foot-brand{font-family:'Fraunces',serif;font-weight:900;font-size:26px;color:var(--crema);}
+  .foot-brand p{font-family:'Inter';font-weight:400;font-size:14px;color:#c9b393;margin-top:8px;max-width:24em;}
+  .foot-cols{display:flex;gap:64px;}
+  .foot-cols h5{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#c9b393;margin-bottom:12px;}
+  .foot-cols a{display:block;font-size:14px;color:var(--latte);margin-bottom:9px;}
+  .foot-cols a:hover{color:#fff;}
+  .disclosure{font-size:12.5px;color:#b39f87;line-height:1.7;max-width:60em;}
+  .copy{font-size:12px;color:#8f7c66;margin-top:18px;}
+
+  @media(max-width:880px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-figure img{height:340px;}
+    .pillars,.latest{grid-template-columns:1fr 1fr;}
+    .pillar.feature{grid-column:span 2;grid-row:auto;}
+  }
+  @media(max-width:600px){
+    .topnav{display:none;}
+    .pillars,.latest{grid-template-columns:1fr;}
+    .pillar.feature{grid-column:span 1;}
+    .foot-top{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a href="#" class="logo"><span class="bean"></span>FussyBean</a>
+    <nav class="topnav">
+      <a href="#">Espresso</a>
+      <a href="#">Grinders</a>
+      <a href="#">Kettles &amp; Scales</a>
+      <a href="#">Guides</a>
+      <a href="#">Gifts</a>
+    </nav>
+  </div>
+  <div class="strapline">The home coffee gear desk · Reviews · Buying guides · Setup math</div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker">Home Coffee Gear · Honest Comparisons</div>
+      <h1>Build the café <em>counter</em> you actually want.</h1>
+      <p class="lede">Espresso machines, burr grinders, gooseneck kettles, scales, and the gift-y odds and ends. We dig through the specs so you can stop guessing and start brewing.</p>
+      <div class="niche-row">
+        <span>Espresso machines</span><span>Grinders</span><span>Kettles &amp; scales</span><span>Setup costs</span><span>Gifts &amp; novelties</span>
+      </div>
+    </div>
+    <figure class="hero-figure">
+      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=80" width="1600" height="1067" alt="Barista pulling an espresso shot with crema in a warm café">
+      <figcaption class="cap">Pulling a shot at golden hour — the feeling we build the gear list around.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="sec-head">
+    <h2>Browse by the gear that matters</h2>
+    <a href="#">All topics →</a>
+  </div>
+  <div class="pillars">
+    <article class="pillar feature">
+      <div class="ph">
+        <span class="tag">Espresso machines</span>
+        <img src="https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?auto=format&fit=crop&w=1600&q=80" width="1600" height="1067" alt="Chrome espresso machine on a café counter with steam rising">
+      </div>
+      <div class="body">
+        <h3>Espresso machines, from first machine to dual boiler</h3>
+        <p>The pillar everyone starts with. We line up the Breville Barista Express against the Gaggia Classic Pro and the rest of the under-$1,000 field — what each one trades away, and who it's actually built for.</p>
+        <span class="go">Read the espresso guide →</span>
+      </div>
+    </article>
+
+    <article class="pillar">
+      <div class="ph">
+        <span class="tag">Grinders</span>
+        <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=1600&q=80" width="1600" height="900" alt="Coffee beans in a burr grinder hopper">
+      </div>
+      <div class="body">
+        <h3>Burr grinders</h3>
+        <p>Why the grinder matters more than the machine — Baratza Encore up through stepless espresso burrs.</p>
+        <span class="go">Compare grinders →</span>
+      </div>
+    </article>
+
+    <article class="pillar">
+      <div class="ph">
+        <span class="tag">Kettles &amp; scales</span>
+        <img src="https://images.unsplash.com/photo-1442550528053-c431ecb55509?auto=format&fit=crop&w=1600&q=80" width="1600" height="1067" alt="Gooseneck kettle pouring water over a pour-over dripper">
+      </div>
+      <div class="body">
+        <h3>Kettles &amp; scales</h3>
+        <p>Gooseneck control and tenth-gram readouts — Fellow Stagg, Acaia Pearl, and the budget rivals.</p>
+        <span class="go">See the picks →</span>
+      </div>
+    </article>
+
+    <article class="pillar">
+      <div class="ph">
+        <span class="tag info">Guide</span>
+        <img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?auto=format&fit=crop&w=1600&q=80" width="1600" height="1067" alt="Coffee beans and brewing tools laid out on a wood table">
+      </div>
+      <div class="body">
+        <h3>What an espresso setup actually costs</h3>
+        <p>Machine plus grinder plus the bits nobody warns you about — three honest budget tiers.</p>
+        <span class="go">Run the numbers →</span>
+      </div>
+    </article>
+
+    <article class="pillar">
+      <div class="ph">
+        <span class="tag gift">Gifts &amp; novelties</span>
+        <img src="https://images.unsplash.com/photo-1521302080334-4bebac2763a6?auto=format&fit=crop&w=1600&q=80" width="1600" height="1067" alt="Cozy coffee mugs and accessories on a shelf">
+      </div>
+      <div class="body">
+        <h3>Gifts &amp; fun stuff</h3>
+        <p>The giant-coffee-cup pod holder energy — impulse-buy accessories that still earn counter space.</p>
+        <span class="go">Find a gift →</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="sec-head">
+    <h2>Latest from the desk</h2>
+    <a href="#">All reviews &amp; guides →</a>
+  </div>
+  <div class="latest">
+    <article class="post">
+      <div class="ph"><img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1600&q=80" width="1600" height="1067" alt="Espresso machine portafilter being loaded"></div>
+      <div class="meta">Review · Espresso</div>
+      <h4>Breville Barista Express: who it fits</h4>
+      <p>The built-in grinder convenience, weighed against the ceiling you'll eventually hit.</p>
+    </article>
+    <article class="post">
+      <div class="ph"><img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1600&q=80" width="1600" height="1067" alt="Cup of coffee with latte art on a wooden table"></div>
+      <div class="meta">Guide · Grinders</div>
+      <h4>Baratza Encore vs the budget field</h4>
+      <p>Where the extra spend stops paying off for pour-over and drip drinkers.</p>
+    </article>
+    <article class="post">
+      <div class="ph"><img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1600&q=80" width="1600" height="1067" alt="Pour-over coffee being brewed with a gooseneck kettle"></div>
+      <div class="meta">Comparison · Kettles</div>
+      <h4>Fellow Stagg EKG vs the cheaper goosenecks</h4>
+      <p>What temperature control and a good spout buy you — and when they don't.</p>
+    </article>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div class="foot-top">
+      <div class="foot-brand">
+        FussyBean
+        <p>Home coffee gear, ranked by spec and use case — so the counter you build is the one you'll actually love.</p>
+      </div>
+      <div class="foot-cols">
+        <div>
+          <h5>Browse</h5>
+          <a href="#">Espresso machines</a>
+          <a href="#">Grinders</a>
+          <a href="#">Kettles &amp; scales</a>
+          <a href="#">Gifts</a>
+        </div>
+        <div>
+          <h5>Site</h5>
+          <a href="#">About &amp; method</a>
+          <a href="#">Buying guides</a>
+          <a href="#">Reviews</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </div>
+    <p class="disclosure">FussyBean is reader-supported. When you buy through links on our site, we may earn a commission at no extra cost to you. Our picks are based on published specifications and use-case fit, not on claims of hands-on testing.</p>
+    <p class="copy">© 2026 FussyBean. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
