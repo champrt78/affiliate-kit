@@ -42,6 +42,11 @@ function HtmlEnc([string]$s) {
 $ready      = @($m.pieces | Where-Object { @("ready","committed","verdict-written") -contains $_.status })
 $quarantined= @($m.pieces | Where-Object { $_.status -eq "quarantined" })
 
+# Sort verify-first pieces to the top so they get attention before Ray flies
+# through the solid ones; within a tier, keep site grouping for a dashboard feel.
+$confRank = { switch ($_.confidence) { "verify-first" {0} "thin" {1} default {2} } }
+$ready = @($ready | Sort-Object @{Expression=$confRank}, site, type)
+
 $readyCards = foreach ($p in $ready) {
   $opts = ""
   if ($p.bottom_line_options -and $p.bottom_line_options.Count -gt 0) {
@@ -54,6 +59,10 @@ $readyCards = foreach ($p in $ready) {
     $opts = "<p class='muted'>No options drafted (write your own).</p>"
   }
   $verdictBadge = if ($p.verdict_written) { "<span class='badge done'>verdict written</span>" } else { "<span class='badge todo'>needs verdict</span>" }
+  $confClass = switch ($p.confidence) { "verify-first" {"vfirst"} "thin" {"thin"} default {"solid"} }
+  $confLabel = switch ($p.confidence) { "verify-first" {"verify first"} "thin" {"thin evidence"} default {"solid"} }
+  $confBadge = if ($p.confidence) { "<span class='badge conf-$confClass'>$confLabel</span>" } else { "" }
+  $confNote  = if ($p.confidence_note) { "<p class='confnote'>$(HtmlEnc $p.confidence_note)</p>" } else { "" }
   $fileAbs = (Join-Path $repoRoot $p.content_path) -replace '\\','/'
   @"
 <article class="card">
@@ -61,7 +70,8 @@ $readyCards = foreach ($p in $ready) {
     <span class="site">$(HtmlEnc $p.site) · $(HtmlEnc $p.type)</span>
     <h2>$(HtmlEnc $p.title)</h2>
     <span class="product">$(HtmlEnc $p.product)</span>
-    $verdictBadge
+    $confBadge $verdictBadge
+    $confNote
   </header>
   <div class="opts">
     <h3>Bottom Line — pick / edit / write your own</h3>
@@ -101,6 +111,8 @@ $html = @"
   .card h2 { font-size:20px; margin:4px 0 2px; } .product { color:var(--muted); font-size:14px; }
   .badge { display:inline-block; font-size:11px; font-weight:700; padding:2px 8px; border-radius:999px; margin-left:8px; vertical-align:middle; }
   .badge.todo { background:#f3e6c6; color:#7a5b16; } .badge.done { background:#d8ecd8; color:#2c5e2c; } .badge.fail { background:#e9c9c9; color:#7a2c2c; }
+  .badge.conf-solid { background:#d8ecd8; color:#2c5e2c; } .badge.conf-vfirst { background:#f7e0c0; color:#8a4b16; } .badge.conf-thin { background:#f1e2c2; color:#7a5b16; }
+  .confnote { font-size:13px; color:#7a4b16; margin:8px 0 0; font-style:italic; }
   .opts { margin-top:14px; } .opts h3 { font-size:13px; color:var(--muted); margin:0 0 8px; font-weight:600; }
   .opt { border-left:3px solid var(--accent); padding:2px 0 2px 12px; margin:0 0 10px; } .optn { font-size:11px; font-weight:700; color:var(--accent); }
   .opt p { margin:2px 0 0; } .supporting { font-size:14px; color:#3a342c; margin-top:10px; }
