@@ -147,14 +147,21 @@ function Get-DoctrineSection {
 $forbiddenSection = Get-DoctrineSection -Doctrine $voiceDoctrine -Heading "Forbidden phrases"
 $preferredSection = Get-DoctrineSection -Doctrine $voiceDoctrine -Heading "Preferred framings"
 
-# Reader-segment context lines. Build defensively in case site-config is null.
+# Reader-segment context lines. Use the two-shape adapter so DTP's nested
+# config resolves (CE finding V3 — this block was silently degrading to
+# "(none specified)" on the nested shape, gutting reader-segment targeting).
+. (Join-Path $PSScriptRoot "lib/site-config.ps1")
 if ($siteConfig) {
-    $siteName = $siteConfig.siteName
-    $niche = $siteConfig.niche
-    $brandTone = $siteConfig.brandTone
-    $primary = if ($siteConfig.primarySegments) { ($siteConfig.primarySegments -join ", ") } else { "(none specified)" }
-    $secondary = if ($siteConfig.secondarySegments) { ($siteConfig.secondarySegments -join ", ") } else { "(none specified)" }
-    $excluded = if ($siteConfig.excludedSegments) { ($siteConfig.excludedSegments -join ", ") } else { "(none specified)" }
+    $siteName  = (Get-SiteConfigField -Config $siteConfig -Field 'siteName');  if (-not $siteName)  { $siteName = $Site }
+    $niche     = (Get-SiteConfigField -Config $siteConfig -Field 'niche');     if (-not $niche)     { $niche = "(none specified)" }
+    $brandTone = (Get-SiteConfigField -Config $siteConfig -Field 'brandTone'); if (-not $brandTone) { $brandTone = "(none specified)" }
+    $rs = $siteConfig.readerSegments
+    $primSrc = if ($null -ne $siteConfig.primarySegments)   { $siteConfig.primarySegments }   elseif ($rs) { $rs.primary }   else { $null }
+    $secSrc  = if ($null -ne $siteConfig.secondarySegments) { $siteConfig.secondarySegments } elseif ($rs) { $rs.secondary } else { $null }
+    $excSrc  = if ($null -ne $siteConfig.excludedSegments)  { $siteConfig.excludedSegments }  elseif ($rs) { $rs.excluded }  else { $null }
+    $primary   = if ($primSrc) { ($primSrc -join ", ") } else { "(none specified)" }
+    $secondary = if ($secSrc)  { ($secSrc -join ", ") }  else { "(none specified)" }
+    $excluded  = if ($excSrc)  { ($excSrc -join ", ") }  else { "(none specified)" }
 } else {
     $siteName = $Site
     $niche = "(unknown — site-config.json missing)"
