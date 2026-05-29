@@ -123,7 +123,17 @@ const bottomLine = (data as any).bottomLine as {
 
 const buyIf = (data as any).buyIf as { buy: string[]; skip: string[] } | undefined;
 const flaws = (data as any).flaws as Array<{ title: string; body: string }> | undefined;
-const imageScale = (data.images as any)?.imageScale as number | undefined;
+// imageScale is a per-piece nudge to normalize product-shot disparity. On the
+// CARD it's deliberately ignored (ReviewCard normalizes via fixed box). On the
+// in-article HERO we clamp it to <= 1: values > 1 scale the image UP after
+// layout, overflowing the fixed-height frame and clipping the product (the
+// "half the product" hero bug, I1 — e.g. spypoint-flex-m imageScale 1.55,
+// tactacam 1.2). A contained-smaller hero is acceptable; a cropped one is not.
+// We can't edit the frontmatter, so the clamp lives here. (reason: number|undef)
+const rawImageScale = (data.images as any)?.imageScale as number | undefined;
+const heroImageScale = typeof rawImageScale === "number"
+  ? Math.min(rawImageScale, 1)
+  : undefined;
 ---
 <script type="application/ld+json" set:html={JSON.stringify(productLd)} />
 {faqLd && <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />}
@@ -166,7 +176,7 @@ const imageScale = (data.images as any)?.imageScale as number | undefined;
           height="1000"
           loading="eager"
           decoding="async"
-          style={imageScale ? `transform: scale(${imageScale}); transform-origin: center;` : undefined}
+          style={heroImageScale && heroImageScale !== 1 ? `transform: scale(${heroImageScale}); transform-origin: center;` : undefined}
         />
         <span class="article-hero__price-tag" aria-hidden="true">
           See on Amazon <span class="article-hero__price-arrow">&rarr;</span>
@@ -403,18 +413,29 @@ const imageScale = (data.images as any)?.imageScale as number | undefined;
 
   .article-hero { margin: 0 0 var(--space-10); }
   .article-hero__frame {
-    display: grid;
-    place-items: center;
+    /* flex (not grid) centering: a flex container with a DEFINITE height
+       resolves the child img's max-height:100% against that height. Under
+       grid + place-items:center the single auto-placed item's grid area is
+       treated as indefinite for percentage max-height, so the height cap
+       evaporated and portrait products (e.g. Browning) were bound only by
+       max-width and overflowed the frame, clipping top/bottom (I1). */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background:
       radial-gradient(ellipse at center, var(--color-paper) 0%, var(--color-paper-muted) 100%);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     padding: var(--space-8) var(--space-6);
     overflow: hidden;
-    /* 4/3 better fits portrait/square product cutouts than the old 16/7 letterbox.
-       Cap height so the band stays a hero, not a photo essay. */
-    aspect-ratio: 4 / 3;
-    max-height: 440px;
+    /* DEFINITE height (not aspect-ratio + max-height). A percentage max-height
+       on the child img (max-height:100% below) only resolves against a parent
+       with a definite height; aspect-ratio + max-height leaves the height
+       indefinite, so the img sized by width alone and overflowed the frame,
+       clipping the product top/bottom (I1 "half the product"). A clamped px
+       height fixes the reference. Caps the band as a hero, not a photo essay. */
+    height: clamp(320px, 38vw, 440px);
+    width: 100%;
     position: relative;
     text-decoration: none;
     cursor: pointer;
@@ -459,8 +480,12 @@ const imageScale = (data.images as any)?.imageScale as number | undefined;
     transform: translateX(3px);
   }
   .article-hero img {
-    max-width: 75%;
-    max-height: 92%;
+    /* Both axes bounded against the frame's now-definite height. contain keeps
+       the product whole; the frame's overflow:hidden is belt-and-suspenders.
+       Hero imageScale is clamped to <=1 in the component script so it can only
+       shrink, never inflate past the frame. */
+    max-width: 80%;
+    max-height: 100%;
     width: auto;
     height: auto;
     object-fit: contain;

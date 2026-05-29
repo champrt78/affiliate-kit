@@ -16,7 +16,19 @@
 
 > Paste raw issues / screenshot references here. Claude moves each into a numbered rule below, fixes current occurrences, and notes the commit.
 
-- _(empty — awaiting Ray's screenshot pass)_
+**Pass 1 — 2026-05-29 (Ray, on the freshly-published Magic Go pieces). Status: TRIAGING → root-cause fix pending.**
+
+- [ ] **I1. Hero image on review pages is TOO BIG and CROPPED.** Product images (square, on white) render as oversized cover-cropped heroes. Seen on: MWC Browning review (Image #7), MWC Bushnell review (Image #8). Root: hero container blows up + crops the product shot instead of containing it at a sane height.
+- [ ] **I2. Hero image on GUIDE pages is too big + cropped.** MWC cellular guide (Image #6) — no `images.hero`, so it falls back to a product image rendered huge/cropped at the top.
+- [ ] **I3. Review content card is not CENTERED on the page.** MWC Browning review (Image #7) — content column pushed left, forest gutter only on the right. Should be centered with symmetric gutters.
+- [ ] **I4. DTP buyers-guides INDEX has no content padding/border — heading flush to the left edge.** "Buyer's guides" heading + intro sit right on the page edge (Image #9), looks unfinished. Needs the page-shell padding/gutter the other pages have.
+- [ ] **I4b. (related) DTP guide-index cards reuse the SAME hero image** (same car-wash splash on multiple cards, Image #9) — distinct or category-appropriate thumbnails would read better. Lower priority than the padding.
+
+- [ ] **I5. DTP Reviews INDEX heading flush to left border too** (Image #10) — same padding/gutter gap as I4, on the reviews index.
+- [ ] **I6. 🚨 VOICE VIOLATION live on DTP Reviews index:** intro reads "Hands-on product reviews. What works, what doesn't, and what we'd buy with our own money." Both "hands-on" and "buy with our own money" violate the doctrine. Root: hardcoded in the index `.astro` page, which the voice lint does NOT scan. FIX the copy AND extend the lint to cover `.astro` pages. Check MWC indexes for the same.
+- [ ] **I7. Card thumbnails crop product images to "half the product"** (Image #10) — `object-fit:cover` on tall product images. Card thumbs should contain, not cover-crop.
+
+Root-cause buckets: (A) hero + card image containment [I1, I2, I7], (B) content-shell centering [I3], (C) page-shell padding/gutter on index pages [I4, I5], (D) voice violations hardcoded in `.astro` index pages + lint blind spot [I6]. Fix the roots in the shared templates, not per-page.
 
 ---
 

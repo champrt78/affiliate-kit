@@ -12,23 +12,32 @@ const sorted = entries.sort((a, b) => {
 ---
 <MainLayout
   title="Reviews"
-  description="Hands-on product reviews — what works, what doesn't, and what we'd actually buy."
+  description="Spec-verified product reviews. What each one does well, where it falls short, and who it actually fits."
 >
-  <header class="page-header">
-    <h1>Reviews</h1>
-    <p class="lede">Hands-on product reviews. What works, what doesn't, and what we'd buy with our own money.</p>
-  </header>
+  <div class="page-inner">
+    <header class="page-header">
+      <h1>Reviews</h1>
+      <p class="lede">Spec-verified product reviews. What each one does well, where it falls short, and who it actually fits.</p>
+    </header>
 
-  {sorted.length === 0 ? (
-    <p class="empty">No reviews yet — check back soon.</p>
-  ) : (
-    <div class="grid">
-      {sorted.map((entry) => <ReviewCard entry={entry} />)}
-    </div>
-  )}
+    {sorted.length === 0 ? (
+      <p class="empty">No reviews yet. Check back soon.</p>
+    ) : (
+      <div class="grid">
+        {sorted.map((entry) => <ReviewCard entry={entry} />)}
+      </div>
+    )}
+  </div>
 </MainLayout>
 
 <style>
+  /* Centered, padded shell so the heading + grid don't sit flush against the
+     page-shell edge. Matches the horizontal gutter the article pages carry. */
+  .page-inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: var(--space-12) var(--space-6) var(--space-20);
+  }
   .page-header { margin-bottom: var(--space-8); }
   .page-header h1 { font-size: var(--text-3xl); margin: 0 0 var(--space-3); }
   .lede { font-size: var(--text-lg); color: var(--color-muted); margin: 0; }
@@ -37,5 +46,8 @@ const sorted = entries.sort((a, b) => {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: var(--space-6);
+  }
+  @media (max-width: 760px) {
+    .page-inner { padding: var(--space-10) var(--space-4) var(--space-16); }
   }
 </style>

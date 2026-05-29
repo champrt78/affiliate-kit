@@ -10,6 +10,13 @@
 #   - A single file (.md, .astro, .mdx, .html, anything textual)
 #   - A directory (recurses, scans .md + .astro + .mdx within)
 #   - A glob pattern resolved via Get-ChildItem
+#   - OMITTED — defaults to a full-repo sweep: every content markdown under
+#     sites/*/src/content/ AND every page template under sites/*/src/pages/
+#     (*.astro). The page-template sweep was added 2026-05-29 after a voice
+#     violation ("Hands-on product reviews ... buy with our own money") shipped
+#     live in DetailerPicks reviews/index.astro: the copy is hardcoded in the
+#     .astro page, not the content markdown the pre-commit hook scans, so the
+#     existing lint never saw it. The default sweep closes that blind spot.
 #
 # Exit codes:
 #   0 — clean (no forbidden phrases found)
@@ -18,8 +25,8 @@
 
 [CmdletBinding()]
 param(
-    [Parameter(Mandatory = $true)]
-    [string]$Path,
+    [Parameter(Mandatory = $false)]
+    [string]$Path = "",
 
     [string]$DoctrinePath = ""
 )
@@ -32,30 +39,57 @@ if (-not $DoctrinePath -or $DoctrinePath.Trim().Length -eq 0) {
     $DoctrinePath = Join-Path $repoRoot "docs/voice-doctrine.md"
 }
 
-# --- validate inputs ---------------------------------------------------------
+# --- resolve targets ---------------------------------------------------------
 
-if (-not (Test-Path $Path)) {
-    [Console]::Error.WriteLine("[err] Target path not found: $Path")
-    Write-Host ""
-    Write-Host "Next:"
-    Write-Host "  - Fix the lint setup, then re-run."
-    exit 2
-}
-
-# Resolve $Path to a concrete list of files. Directory → recurse for content
-# extensions; single file → list-of-one; glob → expand via Get-ChildItem.
 $targetFiles = @()
-$item = Get-Item -LiteralPath $Path -ErrorAction SilentlyContinue
-if ($item -and $item.PSIsContainer) {
-    $targetFiles = Get-ChildItem -Path $Path -Recurse -File -Include *.md, *.astro, *.mdx |
+
+if (-not $Path -or $Path.Trim().Length -eq 0) {
+    # No -Path → full-repo sweep. Two roots:
+    #   1. Content markdown (the original scope) — sites/*/src/content/**.md
+    #   2. Page templates — sites/*/src/pages/**/*.astro. These carry hardcoded
+    #      copy (page ledes, descriptions, intros) that the content-markdown
+    #      scan never sees. This is the blind spot that let the DTP reviews
+    #      index ship a hands-on + "buy with our own money" violation.
+    $sitesRoot = Join-Path $repoRoot "sites"
+    if (-not (Test-Path $sitesRoot)) {
+        [Console]::Error.WriteLine("[err] No -Path given and sites/ root not found at: $sitesRoot")
+        Write-Host ""
+        Write-Host "Next:"
+        Write-Host "  - Run from the repo root, or pass an explicit -Path."
+        exit 2
+    }
+    $contentFiles = Get-ChildItem -Path $sitesRoot -Recurse -File -Include *.md, *.mdx |
+        Where-Object { $_.FullName -match '[\\/]src[\\/]content[\\/]' } |
         ForEach-Object { $_.FullName }
-}
-elseif ($item) {
-    $targetFiles = @($item.FullName)
+    $pageFiles = Get-ChildItem -Path $sitesRoot -Recurse -File -Include *.astro |
+        Where-Object { $_.FullName -match '[\\/]src[\\/]pages[\\/]' } |
+        ForEach-Object { $_.FullName }
+    $targetFiles = @($contentFiles) + @($pageFiles)
 }
 else {
-    # Glob — let Get-ChildItem expand it
-    $targetFiles = Get-ChildItem -Path $Path -File | ForEach-Object { $_.FullName }
+    # --- validate explicit path ---
+    if (-not (Test-Path $Path)) {
+        [Console]::Error.WriteLine("[err] Target path not found: $Path")
+        Write-Host ""
+        Write-Host "Next:"
+        Write-Host "  - Fix the lint setup, then re-run."
+        exit 2
+    }
+
+    # Resolve $Path to a concrete list of files. Directory → recurse for content
+    # extensions; single file → list-of-one; glob → expand via Get-ChildItem.
+    $item = Get-Item -LiteralPath $Path -ErrorAction SilentlyContinue
+    if ($item -and $item.PSIsContainer) {
+        $targetFiles = Get-ChildItem -Path $Path -Recurse -File -Include *.md, *.astro, *.mdx |
+            ForEach-Object { $_.FullName }
+    }
+    elseif ($item) {
+        $targetFiles = @($item.FullName)
+    }
+    else {
+        # Glob — let Get-ChildItem expand it
+        $targetFiles = Get-ChildItem -Path $Path -File | ForEach-Object { $_.FullName }
+    }
 }
 
 if ($targetFiles.Count -eq 0) {
@@ -136,25 +170,60 @@ foreach ($lit in $literals) {
 Write-Verbose "Loaded $($uniqueLiterals.Count) forbidden literals from $DoctrinePath"
 
 # --- grep the targets --------------------------------------------------------
+#
+# Two literal sets, partitioned by file type:
+#   - Markdown (.md / .mdx) is wholly content body, so the FULL literal list
+#     applies — including the punctuation-only em-dash ban.
+#   - Page templates (.astro) interleave copy with CSS and JS where hyphens,
+#     em dashes in code comments, and other punctuation are legitimate source,
+#     not prose. Applying a punctuation-only literal (the em dash) to raw
+#     .astro source flags `flex-direction`, `/* … — … */` comments, etc. —
+#     code, not copy. So for .astro we skip any literal that is ENTIRELY
+#     non-letter characters (the em-dash style-tell), and keep every literal
+#     that carries at least one letter (the real hands-on / ownership / quote
+#     phrases that hardcoded page copy can still smuggle in). The em-dash ban
+#     still has full force in markdown content bodies.
 
 $findings = @()
 
-foreach ($literal in $uniqueLiterals) {
-    # -SimpleMatch makes this a literal substring search (regex metacharacters
-    # in the literal are treated as plain text). Default -CaseSensitive:$false
-    # is implicit; Select-String is case-insensitive by default.
-    $hits = Select-String -Path $targetFiles -Pattern $literal -SimpleMatch
-    if ($hits) {
-        foreach ($hit in $hits) {
-            $findings += [pscustomobject]@{
-                Literal    = $literal
-                FilePath   = $hit.Path
-                LineNumber = $hit.LineNumber
-                LineText   = $hit.Line
+# Split targets by extension once.
+$mdTargets = @($targetFiles | Where-Object { $_ -match '\.(md|mdx)$' })
+$astroTargets = @($targetFiles | Where-Object { $_ -match '\.astro$' })
+$otherTargets = @($targetFiles | Where-Object { $_ -notmatch '\.(md|mdx|astro)$' })
+
+# Letter-bearing literals only — used for .astro source.
+$letterLiterals = @($uniqueLiterals | Where-Object { $_ -match '\p{L}' })
+
+function Find-Literals {
+    param(
+        [string[]]$Files,
+        [string[]]$Literals
+    )
+    $out = @()
+    if ($Files.Count -eq 0) { return $out }
+    foreach ($literal in $Literals) {
+        # -SimpleMatch makes this a literal substring search (regex metacharacters
+        # in the literal are treated as plain text). Select-String is
+        # case-insensitive by default.
+        $hits = Select-String -Path $Files -Pattern $literal -SimpleMatch
+        if ($hits) {
+            foreach ($hit in $hits) {
+                $out += [pscustomobject]@{
+                    Literal    = $literal
+                    FilePath   = $hit.Path
+                    LineNumber = $hit.LineNumber
+                    LineText   = $hit.Line
+                }
             }
         }
     }
+    return $out
 }
+
+# Markdown + any other textual target: full literal set (em dash included).
+$findings += Find-Literals -Files ($mdTargets + $otherTargets) -Literals $uniqueLiterals
+# .astro page templates: letter-bearing literals only (skip the em-dash style-tell).
+$findings += Find-Literals -Files $astroTargets -Literals $letterLiterals
 
 # --- report ------------------------------------------------------------------
 

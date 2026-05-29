@@ -409,7 +409,10 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     aspect-ratio: 5 / 4;
     background: var(--color-cream);
     border-bottom: 1px solid var(--color-border);
-    display: grid; place-items: center;
+    /* flex centering so img max-height resolves against the aspect-ratio
+       height; grid + place-items left it indefinite and clipped portrait
+       products (I7). */
+    display: flex; align-items: center; justify-content: center;
     overflow: hidden;
     position: relative;
     cursor: pointer;
