@@ -1,0 +1,150 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import siteConfig from "../data/site-config.json";
+
+/* Methodology page - renders the weighted featureAxes rubric straight from
+   site-config.json so the published weights match the per-piece scorecards.
+   Voice-clean: states plainly that we do not claim hands-on testing. */
+const axes = siteConfig.featureAxes.default;
+const total = axes.reduce((sum, a) => sum + a.weight, 0);
+---
+<MainLayout
+  title="How we evaluate coffee gear"
+  description="The weighted rubric behind every FussyBean pick: build quality, temperature stability, value, ease of use, and footprint, plus what we don't claim."
+>
+  <article class="doc">
+    <header class="doc-header">
+      <span class="doc-kicker">Methodology</span>
+      <h1>How we evaluate coffee gear</h1>
+      <p class="doc-lede">
+        Every pick runs through the same weighted rubric. Here is exactly what we
+        weigh, how much each axis counts, and what we deliberately do not claim.
+      </p>
+    </header>
+
+    <h2>The rubric</h2>
+    <p>
+      We score each product on five axes. The weights below add up to {total} and
+      are the same weights behind the scorecard on every review.
+    </p>
+
+    <div class="rubric">
+      {axes.map((axis) => (
+        <div class="rubric-row">
+          <div class="rubric-row__head">
+            <span class="rubric-row__name">{axis.name}</span>
+            <span class="rubric-row__weight">{axis.weight}%</span>
+          </div>
+          <div class="rubric-bar" aria-hidden="true">
+            <span class="rubric-bar__fill" style={`width:${axis.weight}%`}></span>
+          </div>
+          <p class="rubric-row__desc">{axis.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <h2>What the evidence is</h2>
+    <p>
+      Scores come from published manufacturer specifications, patterns across
+      aggregated verified-buyer reviews, and independent third-party testing
+      (teardowns and measured results from outlets like James Hoffmann and Whole
+      Latte Love), each cited where we lean on it.
+    </p>
+
+    <h2>What we don't claim</h2>
+    <p>
+      We do not claim personal hands-on testing of the products we cover. Our
+      content is comparison-and-fit analysis, not first-person reviews. When we
+      describe how a machine behaves, we are reporting the spec, the aggregated
+      owner reports, or an independent test, and we say which. If you want a
+      first-person review, look for a reviewer who claims one.
+    </p>
+
+    <h2>Hardware, not beans</h2>
+    <p>
+      FussyBean ranks the machine, not the roast. We focus on the gear that lives
+      on your counter for years, where build quality, temperature stability, and
+      total cost of ownership decide whether the purchase was worth it.
+    </p>
+  </article>
+</MainLayout>
+
+<style>
+  .doc { max-width: var(--content-wide); margin: 0 auto; padding: var(--space-12) var(--space-6) var(--space-20); }
+  .doc-header { margin-bottom: var(--space-10); }
+  .doc-kicker {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-brass);
+    margin-bottom: var(--space-3);
+  }
+  .doc h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-forest);
+    margin: 0 0 var(--space-4);
+  }
+  .doc-lede {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--text-lg);
+    color: var(--color-muted);
+    margin: 0;
+    max-width: 58ch;
+  }
+  .doc h2 {
+    font-family: var(--font-serif);
+    font-size: var(--text-2xl);
+    color: var(--color-forest);
+    margin: var(--space-10) 0 var(--space-3);
+  }
+  .doc p { line-height: 1.7; margin: 0 0 var(--space-4); max-width: 64ch; }
+
+  .rubric { margin: var(--space-6) 0; }
+  .rubric-row {
+    padding: var(--space-5) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .rubric-row:last-child { border-bottom: 0; }
+  .rubric-row__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .rubric-row__name {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    font-weight: var(--weight-semibold);
+    color: var(--color-forest);
+  }
+  .rubric-row__weight {
+    font-family: var(--font-mono, ui-monospace, Consolas, monospace);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-brass-hover);
+  }
+  .rubric-bar {
+    height: 8px;
+    background: var(--color-cream);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  .rubric-bar__fill {
+    display: block;
+    height: 100%;
+    background: var(--color-brass);
+    border-radius: 999px;
+  }
+  .rubric-row__desc {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+  }
+</style>
