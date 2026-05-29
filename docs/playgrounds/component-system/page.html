@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Canonical page — scale + skin tuning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=Nunito+Sans:wght@400;600;700&family=Poppins:wght@600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f5f0e6; --surface:#fff; --ink:#1a1410; --muted:#6b6256; --accent:#2f5d40; --accent-ink:#fff; --line:#e2d9c8; --tint:#f3eee2;
+    --radius:12px; --shell:1180px; --gut:clamp(18px,5vw,52px); --read:760px; --scale:0.92;
+  }
+  body.mwc      { --bg:#f5f0e6; --surface:#fffdf8; --ink:#1c2b22; --muted:#5c6b60; --accent:#2f5d40; --line:#e4ddca; --tint:#eef1e7; --fd:'Fraunces',serif; --fb:'Inter',sans-serif; }
+  body.dtp      { --bg:#f4f2ee; --surface:#fbfaf7; --ink:#14181c; --muted:#5a6b7b; --accent:#2c5e8c; --line:#d6d2c8; --tint:#eef1f4; --fd:'Instrument Serif',serif; --fb:'Inter',sans-serif; }
+  body.fussybean{ --bg:#f3e9dc; --surface:#fffaf3; --ink:#3a2417; --muted:#7a6450; --accent:#9a5b2b; --line:#e7d8c4; --tint:#f1e6d6; --fd:'Fraunces',serif; --fb:'Inter',sans-serif; }
+  body.gog      { --bg:#0e0b1c; --surface:#171331; --ink:#ede9ff; --muted:#9a93c7; --accent:#2ee6ff; --accent-ink:#0b0a16; --line:#2c2752; --tint:#1d1840; --fd:'Press Start 2P',monospace; --fb:'Inter',sans-serif; }
+  body.aquarium { --bg:#dff3f6; --surface:#fff; --ink:#103642; --muted:#557079; --accent:#1f97ad; --line:#cfe8ec; --tint:#e7f6f8; --fd:'Poppins',sans-serif; --fb:'Nunito Sans',sans-serif; }
+
+  *{box-sizing:border-box;} html,body{margin:0;}
+  body{ background:var(--bg); color:var(--ink); font-family:var(--fb,'Inter',sans-serif); }
+  /* the page scales via zoom; demo bar does not */
+  .page{ zoom:var(--scale); }
+  .shell{ max-width:var(--shell); margin:0 auto; padding-inline:var(--gut); }
+  .read{ max-width:var(--read); }
+
+  /* demo bar */
+  .demo{ position:sticky; top:0; z-index:200; background:#11100f; color:#f5f0e6; padding:8px 0; font:600 12.5px/1 'Inter',sans-serif; }
+  .demo .shell{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  .demo b{ font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#bcae93; }
+  .demo button{ font:600 12.5px/1 'Inter'; padding:7px 10px; border-radius:7px; border:1px solid #3a352c; background:#1d1b17; color:#e9e3d4; cursor:pointer; }
+  .demo button.on{ background:#caa86a; color:#11100f; border-color:#caa86a; }
+  .demo input[type=range]{ width:200px; accent-color:#caa86a; }
+  .demo .val{ font-variant-numeric:tabular-nums; color:#caa86a; min-width:38px; }
+  .demo .sep{ width:1px;height:20px;background:#3a352c;margin:0 4px; }
+
+  /* header — full width */
+  .site-header{ background:var(--surface); border-bottom:1px solid var(--line); }
+  .site-header .shell{ display:flex; align-items:center; justify-content:space-between; height:64px; gap:18px; }
+  .brand .logo{ font-family:var(--fd); font-weight:700; font-size:22px; color:var(--ink); line-height:1; }
+  body.gog .brand .logo{ font-size:13px; color:var(--accent); }
+  .brand .kick{ font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-top:5px; }
+  .nav{ display:flex; gap:4px; }
+  .nav a{ color:var(--ink); text-decoration:none; font-weight:600; font-size:13.5px; padding:7px 10px; border-radius:7px; }
+  .nav a:hover{ background:var(--tint); }
+  body.gog .nav a{ font-size:11px; }
+
+  .crumb{ font-size:12px; letter-spacing:.04em; text-transform:uppercase; color:var(--muted); margin:26px 0 0; }
+  .kicker{ display:inline-block; background:var(--tint); color:var(--accent); font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; padding:5px 11px; border-radius:7px; margin-top:14px; }
+  h1{ font-family:var(--fd); font-weight:700; font-size:clamp(28px,3.6vw,42px); line-height:1.12; margin:14px 0 12px; color:var(--ink); }
+  body.gog h1{ font-size:clamp(18px,2.4vw,26px); line-height:1.4; }
+  .deck{ font-size:18px; line-height:1.6; color:var(--muted); max-width:var(--read); }
+  .byline{ display:flex; justify-content:space-between; align-items:center; gap:16px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin:22px 0 0; padding:12px 0; font-size:13px; color:var(--muted); flex-wrap:wrap; }
+  .byline b{ color:var(--ink); }
+
+  /* BOTTOM LINE box — verdict at top */
+  .bottomline{ background:var(--tint); border-left:4px solid var(--accent); border-radius:0 10px 10px 0; padding:18px 22px; margin:28px 0; max-width:var(--read); }
+  .bottomline .lab{ font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); font-weight:700; }
+  .bottomline .verdict{ font-family:var(--fd); font-size:21px; line-height:1.35; color:var(--ink); margin:8px 0 0; }
+  .bottomline .sup{ font-size:15.5px; line-height:1.65; color:var(--muted); margin:10px 0 0; }
+
+  h2{ font-family:var(--fd); font-size:25px; margin:40px 0 14px; color:var(--ink); }
+  body.gog h2{ font-size:14px; line-height:1.5; }
+
+  /* at-a-glance comparison table */
+  .table-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:10px; }
+  table{ border-collapse:collapse; width:100%; font-size:14.5px; background:var(--surface); }
+  th,td{ text-align:left; padding:11px 14px; border-bottom:1px solid var(--line); }
+  th{ font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); font-weight:700; background:var(--tint); }
+  tr:last-child td{ border-bottom:none; }
+  td .pk{ font-weight:700; color:var(--ink); }
+  td .seg{ color:var(--muted); font-size:13px; }
+  td .pr{ font-weight:700; color:var(--accent); }
+
+  /* pick grid */
+  .grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  @media(max-width:820px){ .grid{ grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:520px){ .grid{ grid-template-columns:1fr;} }
+  .card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column; }
+  .card .media{ height:160px; background:var(--tint); display:flex; align-items:center; justify-content:center; padding:12px; }
+  .card .media img{ max-width:100%; max-height:100%; object-fit:contain; }
+  .card .media .ph{ font-size:36px; opacity:.55; }
+  .card .body{ padding:13px 15px 15px; display:flex; flex-direction:column; gap:5px; flex:1; }
+  .badge{ align-self:flex-start; background:var(--tint); color:var(--accent); font-weight:700; font-size:10.5px; letter-spacing:.04em; text-transform:uppercase; padding:3px 9px; border-radius:999px; }
+  .card h3{ font-family:var(--fd); font-size:16px; margin:3px 0 0; }
+  body.gog .card h3{ font-size:11px; line-height:1.5; }
+  .card p{ font-size:13.5px; color:var(--muted); margin:0; flex:1; }
+  .card .row{ display:flex; align-items:center; justify-content:space-between; margin-top:6px; }
+  .card .price{ font-weight:700; font-size:15px; }
+  .card .cta{ background:var(--accent); color:var(--accent-ink); text-decoration:none; font-weight:700; font-size:12.5px; padding:8px 12px; border-radius:7px; }
+
+  /* deep card — the detailed pick (this is the one that was broken on live) */
+  .deep{ display:grid; grid-template-columns:230px 1fr 200px; gap:22px; border:1px solid var(--line); border-radius:12px; background:var(--surface); padding:20px; margin:18px 0; }
+  @media(max-width:760px){ .deep{ grid-template-columns:1fr; } }
+  .deep .media{ background:var(--tint); border-radius:10px; height:230px; display:flex; align-items:center; justify-content:center; padding:16px; }
+  .deep .media img{ max-width:100%; max-height:100%; object-fit:contain; }
+  .deep .media .ph{ font-size:44px; opacity:.55; }
+  .deep h3{ font-family:var(--fd); font-size:22px; margin:6px 0 8px; }
+  .deep .prose p{ font-size:15.5px; line-height:1.7; color:var(--ink); margin:0 0 10px; }
+  .deep .aside{ border-left:1px solid var(--line); padding-left:18px; }
+  .deep .aside .pr{ font-family:var(--fd); font-size:30px; color:var(--ink); }
+  .deep .aside .cta{ display:block; text-align:center; background:var(--accent); color:var(--accent-ink); text-decoration:none; font-weight:700; font-size:13px; padding:11px; border-radius:8px; margin:12px 0; }
+  .deep .spec{ font-size:13px; color:var(--muted); border-top:1px solid var(--line); padding-top:8px; margin-top:8px; }
+  .deep .spec b{ color:var(--ink); display:block; }
+
+  footer{ margin-top:48px; border-top:1px solid var(--line); background:var(--surface); }
+  footer .shell{ padding:22px 0 50px; color:var(--muted); font-size:13.5px; }
+</style>
+</head>
+<body class="dtp">
+
+  <div class="demo"><div class="shell">
+    <b>Skin</b>
+    <button data-skin="mwc">MWC</button>
+    <button data-skin="dtp" class="on">DTP</button>
+    <button data-skin="fussybean">Fussy</button>
+    <button data-skin="gog">GameOver</button>
+    <button data-skin="aquarium">Aquarium</button>
+    <span class="sep"></span>
+    <b>Scale</b>
+    <input id="scale" type="range" min="0.80" max="1.00" step="0.01" value="0.92">
+    <span class="val" id="scaleval">0.92</span>
+    <span class="sep"></span>
+    <b id="hint">drag the scale, read the number, tell me</b>
+  </div></div>
+
+  <div class="page">
+    <header class="site-header"><div class="shell">
+      <div class="brand"><span class="logo" id="logo"></span><span class="kick" id="kick"></span></div>
+      <nav class="nav" id="nav"></nav>
+    </div></header>
+
+    <main class="shell">
+      <p class="crumb">← All buying guides</p>
+      <span class="kicker" id="kicker"></span>
+      <h1 id="h1"></h1>
+      <p class="deck" id="deck"></p>
+      <div class="byline read"><span id="by"></span><span id="upd">Last updated May 29, 2026</span></div>
+
+      <div class="bottomline">
+        <div class="lab">Bottom Line</div>
+        <p class="verdict" id="verdict"></p>
+        <p class="sup" id="sup"></p>
+      </div>
+
+      <h2>At a glance</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Pick</th><th>Best for</th><th>Price</th></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table></div>
+
+      <h2>The picks</h2>
+      <div class="grid" id="grid"></div>
+
+      <h2>The detailed pick</h2>
+      <div class="deep" id="deep"></div>
+    </main>
+
+    <footer><div class="shell" id="foot"></div></footer>
+  </div>
+
+<script>
+  const DATA = {
+    mwc:{ logo:'MyWildlifeCam', kick:'TRAIL CAMERAS, BY USE CASE', nav:['Home','Guides','Reviews','About'], kicker:'Buying guide', by:'The MyWildlifeCam editorial team · spec-verified',
+      h1:'Best Cellular Trail Cameras (2026)', deck:'Six cellular trail cameras across six buyer needs: the multi-carrier default, the 4K image pick, the budget cloud pick, the solar dual-SIM, the endurance pick, and the value pick.',
+      verdict:'For most buyers the Tactacam Reveal X 3.0 is the no-regret pick: auto carrier selection, no SD card, and long battery life. Match the rest to your coverage, not the marketing.',
+      sup:'Carrier coverage at your actual site and the monthly photo-transmission plan matter as much as the megapixel count. Picks are sourced from current listings and brand spec pages, cross-checked against independent reviewer measurements.',
+      cards:[
+        {b:'Best overall',t:'Tactacam Reveal X 3.0',p:'Auto carrier, no SD card needed, long battery.',pr:'$118',img:'https://m.media-amazon.com/images/I/61dt2qC02LL._AC_SL1500_.jpg'},
+        {b:'Best image',t:'Stealth Cam DS4K Transmit',p:'Cellular 4K, GPS-enabled.',pr:'$165',img:'https://m.media-amazon.com/images/I/51bGn9JuJjL._AC_SL1250_.jpg'},
+        {b:'Best budget',t:'Moultrie Edge 2',p:'Free unlimited cloud.',pr:'$80',img:'https://m.media-amazon.com/images/I/61rbyid-wcL._AC_SL1500_.jpg'},
+        {b:'Best dual-SIM',t:'Spypoint Flex-S Dark',p:'Solar + dual-SIM, 40MP.',pr:'$150',img:'https://m.media-amazon.com/images/I/41SxPdepCPL._AC_SL1000_.jpg'},
+        {b:'Best battery',t:'Browning Defender Pro',p:'~11 months runtime.',pr:'$97',img:'https://m.media-amazon.com/images/I/71kziOgT+CL._AC_SL1500_.jpg'},
+        {b:'Best value',t:'GardePro X66 Pro',p:'Built-in GPS, rechargeable.',pr:'$90',img:'https://m.media-amazon.com/images/I/71OLBtMxLtL._AC_SL1500_.jpg'},
+      ]},
+    dtp:{ logo:'DetailerPicks', kick:'CAR DETAILING, BY USE CASE', nav:['Home','Guides','Reviews','About'], kicker:'Buying guide', by:'The DetailerPicks editorial team · spec-verified',
+      h1:'Best Ceramic Coatings for Home Detailers', deck:'Spray, kit, or wipe-on. Six picks across three tiers, durability traded honestly against how much paint prep you will actually do.',
+      verdict:'For most home detailers an easy spray-on like Meguiar’s Hybrid or Adam’s Graphene is the right first ceramic. Spend up to CarPro or Gtechniq only when you are ready to clay, polish, and panel-wipe first.',
+      sup:'The honest tradeoff is durability versus difficulty. Spray-ons give months of protection in minutes; wipe-on coatings give years but demand decontamination and careful application. A wipe-on coating is only as durable as the prep underneath it.',
+      cards:[
+        {b:'Best value',t:'Turtle Wax Hybrid Ceramic',p:'Mass-retail spray, 6-month.',pr:'$18',img:'https://m.media-amazon.com/images/I/61XYNe8wTiL._AC_SL1500_.jpg'},
+        {b:'Easiest',t:"Meguiar's Hybrid Ceramic Wax",p:'Spray-and-rinse, no buffing.',pr:'$20',img:'https://m.media-amazon.com/images/I/71zG-BEZ4hL._AC_SL1500_.jpg'},
+        {b:'Best graphene',t:"Adam's Graphene Spray",p:'Gloss + beading, 1+ year.',pr:'$36',img:'https://m.media-amazon.com/images/I/715P3t+v0kL._AC_SL1500_.jpg'},
+        {b:'Step-up',t:'Gyeon Q2 CanCoat EVO',p:'True SiO2 spray, 12 months.',pr:'$68',img:'https://m.media-amazon.com/images/I/71jfWvypSXL._AC_SL1500_.jpg'},
+        {b:'Best durability',t:'CarPro CQUARTZ UK 3.0',p:'70% SiO2 kit, 24-month.',pr:'$93',img:'https://m.media-amazon.com/images/I/51sAehW5i5L._AC_SL1280_.jpg'},
+        {b:'Enthusiast',t:'Gtechniq Crystal Serum Light',p:'Up to 5-year coating.',pr:'$76',img:'https://m.media-amazon.com/images/I/71b4BGNLZGL._AC_SL1500_.jpg'},
+      ]},
+    fussybean:{ logo:'FussyBean', kick:'HOME COFFEE GEAR, BY USE CASE', nav:['Home','Espresso','Grinders','Kettles','About'], kicker:'Buying guide', by:'The FussyBean editorial team · spec-verified',
+      h1:'Best Espresso Machines for Beginners', deck:'Your first machine is a trade between how much you learn and how much you spend. Six starters lined up on the specs that decide the buy.',
+      verdict:'For most first-time buyers the Breville Bambino hits the sweet spot of small footprint, fast heat-up, and real espresso. The De’Longhi Stilosa proves you can start under $150.',
+      sup:'Grind-and-go all-in-ones get you a drink fast; semi-autos reward technique and a separate grinder. Budget for a decent grinder either way, because it matters more than the machine for shot quality.',
+      cards:[
+        {b:'Ultra-budget',t:"De'Longhi Stilosa",p:'Under $150 into real espresso.',pr:'$150',img:'https://m.media-amazon.com/images/I/81c3ItE+jyL._AC_SL1500_.jpg'},
+        {b:'Best entry',t:'Breville Bambino',p:'Fast ThermoJet, small.',pr:'$250',img:'https://m.media-amazon.com/images/I/61egYXcL9OL._AC_SL1500_.jpg'},
+        {b:'Do-it-all',t:'Breville Barista Express',p:'Grinder built in.',pr:'$700',img:'https://m.media-amazon.com/images/I/71BvCt6eAFL._SL1500_.jpg'},
+        {b:"Modder's",t:'Gaggia Classic Evo Pro',p:'58mm, moddable.',pr:'$454',img:'https://m.media-amazon.com/images/I/81pyys3loPL._AC_SL1500_.jpg'},
+        {b:'Slim',t:"De'Longhi Dedica Arte",p:'Slim for small counters.',pr:'$250',img:'https://m.media-amazon.com/images/I/71qNudnQ-nL._AC_SL1500_.jpg'},
+        {b:'All-in-one',t:'Casabrews 3700',p:'Budget all-in-one.',pr:'$140',img:'https://m.media-amazon.com/images/I/61W9TL+98wL._AC_SL1500_.jpg'},
+      ]},
+    gog:{ logo:'GAMEOVERGEAR', kick:'RETRO GAMING GEAR', nav:['Home','Controllers','Handhelds','Displays','Level Up'], kicker:'Buying guide', by:'The GameOverGear desk · spec-verified',
+      h1:'Best Retro Controllers', deck:'Pads, sticks, and adapters that feel like the originals. Spec-checked and compatibility-first, nostalgia included.',
+      verdict:'The 8BitDo Pro 2 is the no-regret all-around retro pad. Step to a fight stick or an emulation handheld only if that is your main way to play.',
+      sup:'Compatibility with your actual consoles and displays matters more than spec count. Buy-once beats cheap-and-replace for pads and cables.',
+      cards:[
+        {b:'Best overall',t:'8BitDo Pro 2',p:'The all-around retro pad.',pr:'$50',ph:'🎮'},
+        {b:'Best budget',t:'Retro-Bit Tribute64',p:'Modern N64-style pad.',pr:'$25',ph:'🎮'},
+        {b:'Best stick',t:'Hori Fighting Stick',p:'Coin-op feel at home.',pr:'$90',ph:'🕹️'},
+        {b:'Best handheld',t:'Anbernic RG40XX',p:'Pocket emulation power.',pr:'$80',ph:'📟'},
+        {b:'Best wireless',t:'8BitDo SN30 Pro',p:'SNES-style, Bluetooth.',pr:'$45',ph:'🎮'},
+        {b:'Best adapter',t:'Mayflash Magic-NS',p:'Any pad, any console.',pr:'$20',ph:'🔌'},
+      ]},
+    aquarium:{ logo:'StarterAquarium', kick:'BEGINNER FISHKEEPING, MADE SIMPLE', nav:['Home','Tanks','Filters','Heaters','Tank School'], kicker:'Buying guide', by:'The StarterAquarium team · spec-verified',
+      h1:'Best Starter Aquarium Kits', deck:'Friendly, beginner-first picks. We match the kit, filter, and heater to your tank size so your first fish actually thrive.',
+      verdict:'For a first tank the Fluval Flex 9 Gallon all-in-one removes the guesswork. Size the heater and filter to your tank and you are most of the way there.',
+      sup:'Reliability beats features for a beginner. The boring dependable pick keeps fish alive better than the gadget. Budget the whole setup, not just the tank.',
+      cards:[
+        {b:'Best kit',t:'Fluval Flex 9 Gallon',p:'All-in-one with filtration.',pr:'$110',ph:'🐠'},
+        {b:'Best filter',t:'AquaClear 30 HOB',p:'Dependable hang-on-back.',pr:'$35',ph:'💧'},
+        {b:'Best heater',t:'Fluval E-Series 100W',p:'Accurate and safe.',pr:'$40',ph:'🌡️'},
+        {b:'Best light',t:'NICREW ClassicLED',p:'Bright, plant-friendly.',pr:'$25',ph:'💡'},
+        {b:'Best small',t:'Aqueon 10 Gallon',p:'Classic beginner size.',pr:'$60',ph:'🐟'},
+        {b:'Best test kit',t:'API Freshwater Kit',p:'Track your cycle.',pr:'$30',ph:'🧪'},
+      ]},
+  };
+  let SKIN='dtp';
+  function media(c){ return c.img ? '<img src="'+c.img+'" alt="'+c.t+'" width="600" height="450">' : '<span class="ph">'+(c.ph||'📦')+'</span>'; }
+  function render(){
+    document.body.className = SKIN;
+    const d=DATA[SKIN];
+    logo.textContent=d.logo; kick.textContent=d.kick; kicker.textContent=d.kicker; h1.textContent=d.h1; deck.textContent=d.deck;
+    by.textContent=d.by; verdict.textContent=d.verdict; sup.textContent=d.sup;
+    nav.innerHTML=d.nav.map(n=>'<a href="#">'+n+'</a>').join('');
+    foot.textContent=d.logo+' · As an Amazon Associate we earn from qualifying purchases.';
+    tbody.innerHTML=d.cards.map(c=>'<tr><td class="pk">'+c.t+'</td><td class="seg">'+c.b+'</td><td class="pr">'+c.pr+'</td></tr>').join('');
+    grid.innerHTML=d.cards.map(c=>'<article class="card"><div class="media">'+media(c)+'</div><div class="body"><span class="badge">'+c.b+'</span><h3>'+c.t+'</h3><p>'+c.p+'</p><div class="row"><span class="price">'+c.pr+'</span><a class="cta" href="#">See on Amazon &rarr;</a></div></div></article>').join('');
+    const c=d.cards[0];
+    deep.innerHTML='<div class="media">'+media(c)+'</div>'
+      +'<div><span class="badge">'+c.b+'</span><h3>'+c.t+'</h3><div class="prose"><p>'+c.p+' This is where the detailed, readable write-up lives: what it does well, where it falls short, and who it actually fits. Comfortable line length, calm scale, and the product image sits fully inside its box at any proportion.</p><p>A second paragraph keeps paragraphs short and scannable, the way the research says readers actually consume review pages.</p></div></div>'
+      +'<div class="aside"><div class="lab" style="font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700">Price from</div><div class="pr">'+c.pr+'</div><a class="cta" href="#">Check current price →</a><div class="spec"><b>Best for</b>'+c.b+'</div></div>';
+  }
+  document.querySelectorAll('[data-skin]').forEach(b=>b.addEventListener('click',()=>{SKIN=b.dataset.skin; document.querySelectorAll('[data-skin]').forEach(x=>x.classList.toggle('on',x===b)); render();}));
+  const sc=document.getElementById('scale'), sv=document.getElementById('scaleval');
+  sc.addEventListener('input',()=>{ document.documentElement.style.setProperty('--scale',sc.value); sv.textContent=parseFloat(sc.value).toFixed(2); });
+  render();
+</script>
+</body>
+</html>
