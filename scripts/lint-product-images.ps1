@@ -71,6 +71,26 @@ $checked = 0
 
 $sceneHosts = @('images.unsplash.com', 'images.pexels.com')
 
+# Browser UA — Amazon's CDN sometimes 400s/429s requests with no/odd UA, and
+# the bare default WebRequest UA gets rate-limited on bursts. Use a real one.
+$browserUA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+
+# Retry wrapper — absorbs TRANSIENT Amazon-CDN failures (sporadic 400/429/5xx on
+# HEAD bursts) that would otherwise spuriously block every commit. Caught a real
+# transient 400 on 2026-05-29 where the same URL returned 200 on retry. Only the
+# LAST exception propagates, so genuinely-dead URLs still fail the lint.
+function Invoke-WithRetry {
+  param([scriptblock]$Action, [int]$Tries = 3, [int]$DelayMs = 600)
+  $lastErr = $null
+  for ($i = 1; $i -le $Tries; $i++) {
+    try { return & $Action } catch {
+      $lastErr = $_
+      if ($i -lt $Tries) { Start-Sleep -Milliseconds ($DelayMs * $i) }
+    }
+  }
+  throw $lastErr
+}
+
 foreach ($file in $mdFiles) {
   $content = Get-Content -Raw -LiteralPath $file.FullName
   # Extract every `image: "URL"` (or `hero: "URL"`) in frontmatter
@@ -86,7 +106,7 @@ foreach ($file in $mdFiles) {
     $isScenePhoto = $sceneHosts -contains $hostName
 
     try {
-      $head = Invoke-WebRequest -Uri $url -Method Head -UseBasicParsing -TimeoutSec 10 -ErrorAction Stop
+      $head = Invoke-WithRetry { Invoke-WebRequest -Uri $url -Method Head -UseBasicParsing -TimeoutSec 10 -UserAgent $browserUA -ErrorAction Stop }
     } catch {
       $findings += [PSCustomObject]@{
         File = $file.FullName.Replace($repoRoot, '').TrimStart('\','/')
@@ -128,7 +148,7 @@ foreach ($file in $mdFiles) {
 
     # Decode image with .NET to get canonical width/height.
     try {
-      $resp = Invoke-WebRequest -Uri $url -UseBasicParsing -TimeoutSec 15 -UserAgent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" -ErrorAction Stop
+      $resp = Invoke-WithRetry { Invoke-WebRequest -Uri $url -UseBasicParsing -TimeoutSec 15 -UserAgent $browserUA -ErrorAction Stop }
       $stream = New-Object System.IO.MemoryStream(, [byte[]]$resp.Content)
       $img = [System.Drawing.Image]::FromStream($stream)
       $dim = @{ w = $img.Width; h = $img.Height }
