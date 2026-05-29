@@ -21,9 +21,15 @@
 #>
 
 $script:MG_RUNS_DIR_REL = "docs/magic-go/runs"
+# Capture the lib's OWN directory at dot-source time. $PSScriptRoot at top-level
+# of a dot-sourced file is that file's dir (here scripts/lib); $PSCommandPath
+# inside a dot-sourced function is unreliable. repoRoot = two levels up
+# (scripts/lib -> scripts -> repoRoot). (Bug fixed 2026-05-28: was one level
+# too shallow, writing runs to scripts/docs/magic-go/runs/.)
+$script:MG_LIB_DIR = $PSScriptRoot
 
 function Get-MagicGoRunsDir {
-  $repoRoot = Split-Path -Parent (Split-Path -Parent $PSCommandPath)
+  $repoRoot = Split-Path -Parent (Split-Path -Parent $script:MG_LIB_DIR)
   return (Join-Path $repoRoot $script:MG_RUNS_DIR_REL)
 }
 
