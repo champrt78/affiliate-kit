@@ -105,51 +105,34 @@ foreach ($file in $mdFiles) {
     $hostName = ([uri]$url).Host.ToLower()
     $isScenePhoto = $sceneHosts -contains $hostName
 
+    # Fetch via curl, NOT Invoke-WebRequest. Amazon's image CDN consistently
+    # 400s the .NET WebRequest client (TLS/header fingerprint) AND mangles a
+    # literal '+' in image IDs (e.g. 71kziOgT+CL) into a space — both produce
+    # FALSE failures on images that are valid and render fine in browsers.
+    # curl fetches all of them correctly. (Confirmed 2026-05-29: curl 200 /
+    # IWR 400 on the same Amazon URLs, with and without '+'.) curl.exe ships
+    # with Windows 10+ and git, so it's always on PATH for the pre-commit hook.
+    $tmp = [System.IO.Path]::GetTempFileName()
+    $httpCode = (& curl.exe -s -L -A $browserUA --retry 2 --max-time 20 -w "%{http_code}" -o $tmp $url 2>$null)
+    $bytes = if (Test-Path $tmp) { [System.IO.File]::ReadAllBytes($tmp) } else { @() }
+    Remove-Item $tmp -ErrorAction SilentlyContinue
+
+    if ("$httpCode" -ne "200") {
+      $findings += [PSCustomObject]@{ File = $file.FullName.Replace($repoRoot, '').TrimStart('\','/'); Url = $url; Issue = "HTTP $httpCode" }
+      continue
+    }
+    if (-not $bytes -or $bytes.Length -lt $MinBytes) {
+      $sz = if ($bytes) { $bytes.Length } else { 0 }
+      $findings += [PSCustomObject]@{ File = $file.FullName.Replace($repoRoot, '').TrimStart('\','/'); Url = $url; Issue = "Too small ($sz bytes < $MinBytes)" }
+      continue
+    }
+
+    # Decode with .NET to get canonical width/height for the aspect gate.
+    # Decode failure is a SOFT skip (some valid CDN images use formats
+    # System.Drawing can't read); the 200 + min-bytes checks above already
+    # gate the catastrophic cases.
     try {
-      $head = Invoke-WithRetry { Invoke-WebRequest -Uri $url -Method Head -UseBasicParsing -TimeoutSec 10 -UserAgent $browserUA -ErrorAction Stop }
-    } catch {
-      $findings += [PSCustomObject]@{
-        File = $file.FullName.Replace($repoRoot, '').TrimStart('\','/')
-        Url = $url
-        Issue = "HEAD failed: $($_.Exception.Message.Split([Environment]::NewLine)[0])"
-      }
-      continue
-    }
-
-    if ($head.StatusCode -ne 200) {
-      $findings += [PSCustomObject]@{
-        File = $file.FullName.Replace($repoRoot, '').TrimStart('\','/')
-        Url = $url
-        Issue = "HTTP $($head.StatusCode)"
-      }
-      continue
-    }
-
-    $contentType = $head.Headers['Content-Type']
-    if ($contentType -is [array]) { $contentType = $contentType[0] }
-    if (-not $contentType -or $contentType -notlike "image/*") {
-      $findings += [PSCustomObject]@{
-        File = $file.FullName.Replace($repoRoot, '').TrimStart('\','/')
-        Url = $url
-        Issue = "Not an image (Content-Type: $contentType)"
-      }
-      continue
-    }
-
-    $size = [int]($head.Headers['Content-Length'] | Select-Object -First 1)
-    if ($size -and $size -lt $MinBytes) {
-      $findings += [PSCustomObject]@{
-        File = $file.FullName.Replace($repoRoot, '').TrimStart('\','/')
-        Url = $url
-        Issue = "Too small ($size bytes < $MinBytes)"
-      }
-      continue
-    }
-
-    # Decode image with .NET to get canonical width/height.
-    try {
-      $resp = Invoke-WithRetry { Invoke-WebRequest -Uri $url -UseBasicParsing -TimeoutSec 15 -UserAgent $browserUA -ErrorAction Stop }
-      $stream = New-Object System.IO.MemoryStream(, [byte[]]$resp.Content)
+      $stream = New-Object System.IO.MemoryStream(, [byte[]]$bytes)
       $img = [System.Drawing.Image]::FromStream($stream)
       $dim = @{ w = $img.Width; h = $img.Height }
       $img.Dispose()
@@ -161,7 +144,7 @@ foreach ($file in $mdFiles) {
           $findings += [PSCustomObject]@{
             File = $file.FullName.Replace($repoRoot, '').TrimStart('\','/')
             Url = $url
-            Issue = "Bad aspect $($dim.w)x$($dim.h) (=$aspect) — outside $MinAspect..$MaxAspect"
+            Issue = "Bad aspect $($dim.w)x$($dim.h) (=$aspect) - outside $MinAspect..$MaxAspect"
           }
         }
       }

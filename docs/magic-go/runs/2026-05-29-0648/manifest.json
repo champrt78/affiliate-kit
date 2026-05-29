@@ -15,15 +15,19 @@
       "type": "buyers-guide",
       "title": "Best Cellular Trail Cameras (2026)",
       "product": "(6-pick guide)",
-      "status": "scouted",
+      "status": "ready",
       "research_note": "",
-      "content_path": "",
-      "bottom_line_options": [],
-      "supporting": "",
+      "content_path": "sites/mywildlifecam/src/content/buyers-guides/best-cellular-trail-cameras.md",
+      "bottom_line_options": [
+        "Six cellular cams for six jobs. The Tactacam Reveal X 3.0 is the safe all-around pick for most buyers (auto carrier selection, no SD card needed). The Moultrie Edge 2 is the budget entry with free unlimited cloud. Step up to the Spypoint Flex-S Dark when you need dual-SIM coverage plus a solar panel. Match the camera to your property's carrier signal and how often you want to swap batteries.",
+        "Cellular trail cams live or die on two things the spec sheet buries: carrier coverage at your actual site, and how the photo-transmission plan is priced. Choose auto-carrier models like the Tactacam Reveal X 3.0 where signal is uncertain, dual-SIM models like the Spypoint Flex-S Dark and Browning Defender on carrier-edge land, and read the monthly plan as carefully as the megapixel count.",
+        "You do not need to spend more than $200 to get reliable cellular. The Moultrie Edge 2 and GardePro X66 cover most backyard and property jobs under $90. The Tactacam Reveal X 3.0 is the no-regret all-around upgrade. Spend up only for the Stealth Cam DS4K Transmit's 4K image quality or the Flex-S Dark's solar-plus-dual-SIM combination."
+      ],
+      "supporting": "Six spec-verified cellular trail cameras spanning best-overall, best-image-quality, best-budget, best-dual-SIM-plus-solar, best-battery-life, and best-value segments. Picks are sourced from current Amazon listings and brand spec pages, cross-referenced with independent reviewer measurements. Carrier coverage and the recurring photo-transmission plan matter as much as the hardware.",
       "verdict_written": false,
       "failed_at": null,
       "error": null,
-      "kv_status": "none",
+      "kv_status": "skipped (guide uses direct tagged URLs)",
       "last_commit": ""
     },
     {
@@ -116,7 +120,7 @@
       "site": "fussybean",
       "type": "buyers-guide",
       "title": "Best Espresso Machines for Beginners (REPAIR)",
-      "product": "(6-pick guide — fix images+ASINs)",
+      "product": "(6-pick guide \u2014 fix images+ASINs)",
       "status": "researched",
       "research_note": "",
       "content_path": "",
