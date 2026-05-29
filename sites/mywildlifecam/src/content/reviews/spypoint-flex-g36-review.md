@@ -19,8 +19,8 @@ images:
   hero: "https://m.media-amazon.com/images/I/91bV2GM0vnL.jpg"
   heroCaption: "Spypoint Flex G36 cellular trail camera. Photo: Spypoint manufacturer media."
 bottomLine:
-  verdict: ''
-  supporting: ''
+  verdict: "The best all-around cellular pick here once you're past the budget tier: faster trigger and more megapixels than the Flex-M, dual-SIM over single-carrier rivals."
+  supporting: "The G36's edge over the cellular field is dual-SIM auto-connect to the strongest of two carriers, a 0.3-second trigger, and 36MP stills, with one owner running it through eight months of harsh weather and a bear attack. Honest caveats: it sells mostly as a roughly $220 twin pack, the broader Spypoint lineup has a documented SD-card-failure track record (the G36 itself has not shown it in independent testing), and there is no lab-grade third-party test yet, so the evidence is owner reports plus the spec sheet."
 scorecard:
   axes:
     - { name: "Cellular Connectivity", weight: 25, score: 8.5 }
