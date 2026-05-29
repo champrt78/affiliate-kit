@@ -28,7 +28,21 @@
 - [ ] **I6. 🚨 VOICE VIOLATION live on DTP Reviews index:** intro reads "Hands-on product reviews. What works, what doesn't, and what we'd buy with our own money." Both "hands-on" and "buy with our own money" violate the doctrine. Root: hardcoded in the index `.astro` page, which the voice lint does NOT scan. FIX the copy AND extend the lint to cover `.astro` pages. Check MWC indexes for the same.
 - [ ] **I7. Card thumbnails crop product images to "half the product"** (Image #10) — `object-fit:cover` on tall product images. Card thumbs should contain, not cover-crop.
 
-Root-cause buckets: (A) hero + card image containment [I1, I2, I7], (B) content-shell centering [I3], (C) page-shell padding/gutter on index pages [I4, I5], (D) voice violations hardcoded in `.astro` index pages + lint blind spot [I6]. Fix the roots in the shared templates, not per-page.
+- [ ] **I8. Detail/"deep" card media box renders tall product images at wildly wrong scale** (Image #21 grid card + Image #22 deep card, Spypoint Flex-S Dark). The deep-card image box is too tall/portrait, so a tall-antenna product shows as a giant thin antenna line with a tiny camera body. The image needs to be RESIZED to a sane scale. SYSTEM FIX: a single shared **Media** component with a fixed, sensible box (square or 4:3) + `object-fit:contain` + centered, used identically for grid cards, deep/detail cards, AND review hero — so ANY product image (tall, wide, antenna-up) shows fully at a comfortable scale, never stretched or dominating. Pairs with R1.5 (prefer antenna-down source images). This is the #1 image acceptance criterion for the kit.
+
+Root-cause buckets: (A) hero + card image containment [I1, I2, I7, **I8 — one shared Media component, sane fixed aspect, contain, used everywhere**], (B) content-shell centering [I3], (C) page-shell padding/gutter on index pages [I4, I5], (D) voice violations hardcoded in `.astro` index pages + lint blind spot [I6]. Fix the roots in the shared templates, not per-page.
+
+- [ ] **I9. HEADER must span the full page width** (Image #23, MWC cellular guide; also flagged on fussybean + "that should spread the whole page"). The header content is crammed/left-clustered instead of using the full width. SYSTEM FIX: the shared Header component is a full-width band with logo pinned to the far left and nav to the far right, edge to edge (its own comfortable padding, NOT clamped to the narrow article shell). RECURRING across 3 sites — this is a hard requirement, not a one-off.
+
+- [ ] **I10. Duplicate hero shots across guides** (Image #24) — CONFIRMED on 3 DTP guides: ceramic + drying-towels share the identical car-wash splash, and a third repeats. Every guide needs a distinct, category-appropriate hero. SYSTEM: hero image is per-piece data; the kit must not fall back to a shared default, and scaffolding should assign/require a distinct scene per guide. (was I4b — now confirmed across 3, promoted.)
+- [ ] **I11. Article/detail content "smashed into the left," big empty right** (Image #25, DTP interior guide) — the article column is left-aligned in a wide page instead of centered/using the width comfortably. Same bucket as I3 (centering). The content column should be centered in the shell with balanced gutters.
+- [ ] **I12. Content "feels zoomed in, too hard to read — scale back / zoom out"** (Images #26-27, DTP interior bottom-line + body). CONFIRMED on multiple pages now. Reinforces R1.6: the global UI scale is too large; the kit sets a calmer base scale (~0.9-0.92 of current live) once, so body copy + headings + blocks read comfortably. This is a hard, recurring requirement.
+
+Root-cause bucket (E): **shared full-width Header component** [I9] — logo far-left, nav far-right, spans the page; do not constrain to the article content shell.
+Root-cause bucket (F): **distinct per-piece hero imagery** [I10] — no shared default hero; each guide/review gets its own.
+Root-cause bucket (G): **calmer global scale** [I12, R1.6] — set base type/spacing ~0.9-0.92 of current in the kit; everything inherits.
+
+**Reference look to build the kit TO: the live DTP ceramic guide** (`detailerpicks.com/buyers-guides/best-ceramic-coating-for-home-detailers`) — Ray: "essentially what is right here" (bg, content width, gutters, bg image), scaled to ~0.9–0.95.
 
 ---
 
