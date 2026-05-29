@@ -22,7 +22,7 @@ products:
       <p>Dilution ratio runs from 1:800 to 1:1200, the highest concentration ratio in this lineup. The 500ml bottle ($21.95) yields more washes per ounce than competing options at similar price points. For owners who follow the Dr. Beasley's coating-care protocol of avoiding additive buildup on ceramic-coated paint, SÈMPER is the cleanest commercial pick currently sold in the US market.</p>
   - name: "Gyeon Q²M Bathe"
     brand: "Gyeon"
-    affiliateUrl: "https://www.amazon.com/GYEON-quartz-Cloth-Shampoo-1000ml/dp/B00OORQWSY?tag=mywildlifecam-20"
+    affiliateUrl: "https://www.amazon.com/GYEON-quartz-Cloth-Shampoo-1000ml/dp/B00OORQWSY?tag=detailerpicks-20"
     image: "https://m.media-amazon.com/images/I/510N2Pw7BDL.jpg"
     bestFor: "Best for the Rag Company protective-soap school"
     priceFrom: 15.99
@@ -34,7 +34,7 @@ products:
       Dilution: "Up to 500:1"
       Sizes: "500ml, 1L, 4L"
     body: |
-      <p>Gyeon's product page describes <a href="https://www.amazon.com/GYEON-quartz-Cloth-Shampoo-1000ml/dp/B00OORQWSY?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">Q²M Bathe</a> as "the best car soap designed specifically for maintaining a polished paint finish... highly lubricated ceramic coating wash soap." This puts it on the opposite side of the doctrine split from SÈMPER: instead of a pure cleaner, Q²M Bathe is positioned as a maintenance product for ceramic-coated cars.</p>
+      <p>Gyeon's product page describes <a href="https://www.amazon.com/GYEON-quartz-Cloth-Shampoo-1000ml/dp/B00OORQWSY?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">Q²M Bathe</a> as "the best car soap designed specifically for maintaining a polished paint finish... highly lubricated ceramic coating wash soap." This puts it on the opposite side of the doctrine split from SÈMPER: instead of a pure cleaner, Q²M Bathe is positioned as a maintenance product for ceramic-coated cars.</p>
       <p>At $15.99 for 500ml, it is the lowest entry-price pick in this guide. Pan The Organizer ranked it B-tier in a recent tier-list video, noting it works better in the bucket than in a foam cannon. For weekly maintenance on a coated daily driver where the owner trusts coating-safe protective additives, Q²M Bathe is the easiest entry pick.</p>
   - name: "CLEAN. Shampoo by Pan The Organizer"
     brand: "Pan The Organizer"
@@ -54,7 +54,7 @@ products:
       <p>Pan demonstrates in his comparison videos that the formula does not strip wax during use. At $18.99 for 16 oz and $64.99 for a gallon (about $1 per wash at the gallon size), it is the volume pick for owners who want one bottle that handles coated and uncoated cars equivalently. The brand pairing with Pan's companion ceramic spray sealant and ceramic coating products is the system-integration play for owners already in his ecosystem.</p>
   - name: "Phoenix E.O.D. Apex Auto Wash 3.0"
     brand: "Phoenix E.O.D."
-    affiliateUrl: "https://www.amazon.com/Phoenix-D-Apex-Auto/dp/B0B2YGKKZB?tag=mywildlifecam-20"
+    affiliateUrl: "https://www.amazon.com/Phoenix-D-Apex-Auto/dp/B0B2YGKKZB?tag=detailerpicks-20"
     image: "https://phoenixeod.com/cdn/shop/files/9.jpg?v=1757537221&width=800"
     bestFor: "Best budget alternative to the pure-soap school"
     priceFrom: 17.99
@@ -66,11 +66,11 @@ products:
       Dilution: "(not specified on page)"
       Sizes: "Pint, Gallon"
     body: |
-      <p>Phoenix E.O.D. is a veteran-owned brand. The product page lists <a href="https://www.amazon.com/Phoenix-D-Apex-Auto/dp/B0B2YGKKZB?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">Apex Auto Wash</a> as "pH neutral... contains no dyes, fragrances, or 'optical' additives... thick, highly lubricious suds."</p>
+      <p>Phoenix E.O.D. is a veteran-owned brand. The product page lists <a href="https://www.amazon.com/Phoenix-D-Apex-Auto/dp/B0B2YGKKZB?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">Apex Auto Wash</a> as "pH neutral... contains no dyes, fragrances, or 'optical' additives... thick, highly lubricious suds."</p>
       <p>The no-additives positioning matches Dr. Beasley's pure-soap school at a lower price point ($17.99 for a pint vs SÈMPER's $21.95 for 500ml). Pan The Organizer ranked it S-tier in a recent tier-list video, noting it is also available on Amazon. For owners who follow the pure-soap doctrine but want the under-$20 entry price, Apex is the strongest commercial match.</p>
   - name: "Chemical Guys Mr. Pink"
     brand: "Chemical Guys"
-    affiliateUrl: "https://www.amazon.com/dp/B00AFBXQNC?tag=mywildlifecam-20"
+    affiliateUrl: "https://www.amazon.com/dp/B00AFBXQNC?tag=detailerpicks-20"
     image: "https://m.media-amazon.com/images/I/611ZmeSQ3zL.jpg"
     bestFor: "Best for first-time detailers and grocery-aisle buyers"
     priceFrom: 9.99
@@ -83,7 +83,7 @@ products:
       Sizes: "16 oz, 64 oz, 128 oz"
       Coating-safe: "Yes (no waxes / sealants added)"
     body: |
-      <p><a href="https://www.amazon.com/dp/B00AFBXQNC?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">Chemical Guys Mr. Pink</a> is the mass-retail entry point. The 16-ounce bottle runs around ten dollars on Amazon and is widely stocked at AutoZone, Walmart, and most parts-store chains. The product page describes it as "pH balanced, safe on wax, sealant, ceramic, and clear coat finishes" with high foam output for foam-cannon or bucket use.</p>
+      <p><a href="https://www.amazon.com/dp/B00AFBXQNC?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">Chemical Guys Mr. Pink</a> is the mass-retail entry point. The 16-ounce bottle runs around ten dollars on Amazon and is widely stocked at AutoZone, Walmart, and most parts-store chains. The product page describes it as "pH balanced, safe on wax, sealant, ceramic, and clear coat finishes" with high foam output for foam-cannon or bucket use.</p>
       <p>Owner-review patterns: Mr. Pink shows up repeatedly as the first car wash soap detailing-curious buyers pick up at a parts store before committing to anything pricier. The recurring positive themes are "foams a ton" and "smells like bubblegum." The recurring critical themes are slickness-against-friction during contact wash (lower than the Labocosmetica/Gyeon tier) and the soap stripping any wax-style topper faster than a wax-infused shampoo would (which the detailing community considers a feature, not a bug, for owners on a coating-care path).</p>
       <p>Pick Mr. Pink when the budget is tight, the use case is light (one car, washed every other week), or you want a starting-line shampoo before deciding whether ceramic-safe maintenance soap matters to your situation. It's not the absolute best wash for a coated car, but it's the right "first car wash soap" for the grocery-aisle buyer the existing five picks aren't sized for.</p>
   - name: "Pan The Organizer Demineralizing Shampoo"

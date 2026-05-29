@@ -6,7 +6,7 @@ deck: "When seven cannons foam roughly the same, the differentiators are build q
 products:
   - name: "MTM Hydro PF22"
     brand: "MTM Hydro"
-    affiliateUrl: "https://www.amazon.com/Hydro-Foam-Cannon-Wand-Bottle/dp/B083QTGTBM?tag=mywildlifecam-20"
+    affiliateUrl: "https://www.amazon.com/Hydro-Foam-Cannon-Wand-Bottle/dp/B083QTGTBM?tag=detailerpicks-20"
     image: "https://m.media-amazon.com/images/I/71N6F0pBMGL._AC_SL1500_.jpg"
     bestFor: "Best for long-term durability"
     priceFrom: 80
@@ -19,7 +19,7 @@ products:
       In box: "None (orifices sold separately)"
       Pressure: "1,100-5,000 PSI, 1.8-5.3 GPM"
     body: |
-      <p>The <a href="https://www.amazon.com/Hydro-Foam-Cannon-Wand-Bottle/dp/B083QTGTBM?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">MTM PF22</a> (current version PF22.2 / PF22.3 depending on retailer revision) is positioned as "the new standard in the foaming industry" by Car Candy's product listing.</p>
+      <p>The <a href="https://www.amazon.com/Hydro-Foam-Cannon-Wand-Bottle/dp/B083QTGTBM?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">MTM PF22</a> (current version PF22.2 / PF22.3 depending on retailer revision) is positioned as "the new standard in the foaming industry" by Car Candy's product listing.</p>
       <p>The head is a single-cast nickel-plated brass design, which resists the tarnishing that gradually dulls solid brass cannons over time. The fan-blade reinforcement is structural plastic around the fan area at the cannon tip; one reviewer reported bending the fan blades on a competitor cannon by cranking the adjustment too hard, which is mechanically not possible on the PF22 due to that reinforcement.</p>
       <p>Pressure-washer compatibility runs the full premium range: 1,100-5,000 PSI and 1.8-5.3 GPM, with a 140°F maximum temperature rating. Standard 1/4" stainless steel quick-connect fitting. Two-way adjustable spray pattern with adjustable fan blades from jet to wide. Bottle is a 1-litre wide-mouth top design for easy refill.</p>
       <p>Trade-off worth disclosing: MTM PF22 ships with no spare parts in the box. If you need a different orifice size for your specific pressure-washer GPM, that is an additional MJJC or MTM aftermarket purchase. For a cannon expected to last a decade, this is acceptable to most owners but not all. Available standalone (~$80-100 USD) or as part of the Magnum 28 Kit (~$210) with the SGS28 spray gun and SS quick-connect bundled.</p>
@@ -42,7 +42,7 @@ products:
       <p>Trade-offs: aluminum body is more vulnerable to dents from drops or impacts than brass or stainless steel. The Carbon Collective is also a UK-based brand; US availability runs through their direct shop and selected retailers (Detail Division, Northampton Motorsport). Shipping and warranty support may take longer than for US-based brands.</p>
   - name: "MJJC Foam Cannon Pro V3.0"
     brand: "MJJC"
-    affiliateUrl: "https://www.amazon.com/MJJC-Ultimate-Cannon-Pressure-Washers/dp/B0FL17VGJF?tag=mywildlifecam-20"
+    affiliateUrl: "https://www.amazon.com/MJJC-Ultimate-Cannon-Pressure-Washers/dp/B0FL17VGJF?tag=detailerpicks-20"
     image: "https://m.media-amazon.com/images/I/61lSIrxLDlL.jpg"
     bestFor: "Best for tinkerers and multi-pressure-washer setups"
     priceFrom: 0
@@ -54,7 +54,7 @@ products:
       In box: "Filter + O-rings + 1.1mm + 1.35mm orifices"
       Pressure: "Standard pressure-washer ranges"
     body: |
-      <p>MJJC Foam Inc. ships the <a href="https://www.amazon.com/MJJC-Ultimate-Cannon-Pressure-Washers/dp/B0FL17VGJF?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">Pro V3.0</a> with the deepest spare-parts inventory in the lineup: spare filter, multiple O-rings, plus 1.1mm and 1.35mm orifice nozzles alongside the stock 1.25mm. For owners who want to tune their cannon for different pressure-washer GPMs or who are replacing parts on their existing MJJC cannon, this is the most cost-effective pick.</p>
+      <p>MJJC Foam Inc. ships the <a href="https://www.amazon.com/MJJC-Ultimate-Cannon-Pressure-Washers/dp/B0FL17VGJF?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">Pro V3.0</a> with the deepest spare-parts inventory in the lineup: spare filter, multiple O-rings, plus 1.1mm and 1.35mm orifice nozzles alongside the stock 1.25mm. For owners who want to tune their cannon for different pressure-washer GPMs or who are replacing parts on their existing MJJC cannon, this is the most cost-effective pick.</p>
       <p>MJJC also sells every individual spare separately on their site (mjjc.com): spare bottles, individual orifice nozzles, O-ring kits, white-rubber gasket kits. If you plan to keep a cannon for many years and want first-party replacement parts to remain available, MJJC's parts catalog depth is best-in-class for this segment.</p>
       <p>Trade-off: the Pro V3.0 bottle is V3.0-specific and is NOT cross-compatible with the older Pro V2.0 or the S V3.0 bottles. If you have multiple MJJC cannons in your inventory, expect to keep parts separate. This is a small issue for most home detailers (single cannon) but matters for shops with mixed inventory.</p>
 pubDate: 2026-05-17

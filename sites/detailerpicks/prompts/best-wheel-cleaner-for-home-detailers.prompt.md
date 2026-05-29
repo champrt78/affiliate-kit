@@ -137,7 +137,7 @@ description: "Five spec-verified wheel cleaners across the iron-killer doctrine 
 products:
   - name: "Sonax Full Effect Wheel Cleaner"
     brand: "Sonax"
-    affiliateUrl: "https://www.amazon.com/Sonax-230200-755-Wheel-Cleaner-Effect/dp/B003UT3S6Q?tag=mywildlifecam-20"
+    affiliateUrl: "https://www.amazon.com/Sonax-230200-755-Wheel-Cleaner-Effect/dp/B003UT3S6Q?tag=detailerpicks-20"
 pubDate: 2026-05-19
 lastUpdated: 2026-05-19
 ---

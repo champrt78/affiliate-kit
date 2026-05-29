@@ -137,7 +137,7 @@ description: "Six interior cleaners for home detailers, mapped to reader segment
 products:
   - name: "Chemical Guys InnerClean"
     brand: "Chemical Guys"
-    affiliateUrl: "https://www.amazon.com/Chemical-Guys-SPI_663_16-InnerClean-Protectant/dp/B008LPEZ6Q?tag=mywildlifecam-20"
+    affiliateUrl: "https://www.amazon.com/Chemical-Guys-SPI_663_16-InnerClean-Protectant/dp/B008LPEZ6Q?tag=detailerpicks-20"
 pubDate: 2026-05-19
 lastUpdated: 2026-05-19
 ---
