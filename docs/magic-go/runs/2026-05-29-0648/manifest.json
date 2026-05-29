@@ -31,20 +31,24 @@
       "last_commit": ""
     },
     {
-      "slug": "browning-strike-force-pro-xd-review",
+      "slug": "browning-strike-force-pro-x-1080-review",
       "site": "mywildlifecam",
       "type": "review",
-      "title": "Browning Strike Force Pro XD Review",
-      "product": "Browning Strike Force Pro XD",
-      "status": "scouted",
+      "title": "Browning Strike Force Pro X 1080 Review",
+      "product": "Browning Strike Force Pro X 1080 (Pro XD discontinued; pivoted)",
+      "status": "ready",
       "research_note": "",
-      "content_path": "",
-      "bottom_line_options": [],
-      "supporting": "",
+      "content_path": "sites/mywildlifecam/src/content/reviews/browning-strike-force-pro-x-1080-review.md",
+      "bottom_line_options": [
+        "The Strike Force Pro X 1080 is the pick when you do not want a monthly bill: an SD-card cam with a fast 0.22-second trigger and a long red-glow flash, best on a reachable property where you can pull the card yourself. If you need photos pushed to your phone from remote land, a cellular camera is the better fit.",
+        "Browning's measured trigger speed and battery life are genuinely strong for the price, but the red-glow flash is visible to animals up close and the real-world detection range tested well below the marketed number. A solid no-fee workhorse for the right spot, not a covert or long-range setup.",
+        "Choose the Strike Force Pro X 1080 if zero subscription cost and quick triggers matter more than remote access or no-glow stealth. For buyers who can visit the camera to swap cards, it is one of the better-value SD-card cams. For hands-off remote monitoring, step up to a cellular model."
+      ],
+      "supporting": "Single-lens 1080p SD-card cam (ASIN B0BX4S5KN8, in stock). Spec-verified from Browning + Amazon listing with trailcampro measurements attributed. Strong trigger (0.22s) and battery life; honest caveats: red-glow flash visible up close, detection range tested below marketed figure, no cellular (SD-card retrieval needed).",
       "verdict_written": false,
       "failed_at": null,
       "error": null,
-      "kv_status": "none",
+      "kv_status": "skipped (direct tagged URLs)",
       "last_commit": ""
     },
     {
@@ -74,15 +78,19 @@
       "type": "buyers-guide",
       "title": "Best Ceramic Coatings for Home Detailers",
       "product": "(6-pick guide)",
-      "status": "scouted",
+      "status": "ready",
       "research_note": "",
-      "content_path": "",
-      "bottom_line_options": [],
-      "supporting": "",
+      "content_path": "sites/detailerpicks/src/content/buyers-guides/best-ceramic-coating-for-home-detailers.md",
+      "bottom_line_options": [
+        "Six ceramic options across three tiers: spray-on for beginners (Turtle Wax, Meguiar's, Adam's graphene), a step-up SiO2 spray (Gyeon CanCoat), and wipe-on enthusiast coatings for real durability (CarPro CQUARTZ, Gtechniq CSL). Start with a spray if it is your first coating, and reach for a wipe-on kit only if you will prep the paint properly.",
+        "The honest tradeoff in ceramic is durability versus difficulty. Spray-ons give months of protection in minutes; wipe-on coatings give years but demand decontamination and careful application. Match the product to how much prep work you will actually do, not to the biggest durability number on the bottle.",
+        "For most home detailers, an easy spray-on like Meguiar's Hybrid or Adam's Graphene is the right first ceramic. Spend up to CarPro CQUARTZ or Gtechniq CSL only when you are ready to clay, polish, and panel-wipe first, because a wipe-on coating is only as durable as the prep underneath it."
+      ],
+      "supporting": "Six ceramic products across three tiers (easy spray-on, step-up SiO2 spray, wipe-on enthusiast coating), spec-verified from brand pages and Amazon listings. Durability claims range from 6 months to 5 years and trade off directly against application difficulty and required paint prep.",
       "verdict_written": false,
       "failed_at": null,
       "error": null,
-      "kv_status": "none",
+      "kv_status": "skipped (direct tagged URLs)",
       "last_commit": ""
     },
     {
@@ -91,15 +99,19 @@
       "type": "buyers-guide",
       "title": "Best Drying Towels for Cars",
       "product": "(6-pick guide)",
-      "status": "scouted",
+      "status": "ready",
       "research_note": "",
-      "content_path": "",
-      "bottom_line_options": [],
-      "supporting": "",
+      "content_path": "sites/detailerpicks/src/content/buyers-guides/best-drying-towel-for-home-detailers.md",
+      "bottom_line_options": [
+        "Six drying towels from premium twist-loop to budget multipack. The Rag Company Gauntlet is the do-it-all reference, the SMINDER 2-pack is the value play, and waffle-weave and plush options cover specific preferences. Buy more towel area than you think you need: a bigger, higher-GSM towel dries a car in fewer passes with less risk of marring.",
+        "Drying towels split into twist-loop for maximum absorbency, waffle-weave for control and glass, and plush for a gentle forgiving finish. GSM and size matter more than brand. For one daily driver, a single large twist-loop towel is enough; for a careful two-towel method, pair a big absorber with a waffle finisher.",
+        "You do not need to spend $30 on a towel. The SMINDER and Adam's Jumbo multipacks dry most cars well for about half the price of the premium picks. Step up to the Rag Company Gauntlet or a waffle-weave only if you want the plushest feel or the safest finish on soft, dark paint."
+      ],
+      "supporting": "Six drying towels spanning twist-loop, waffle-weave, and plush, across premium and budget price bands. Spec-verified on GSM, size, and weave from brand pages and Amazon listings, with carousel spec-contamination corrected. GSM and size matter more than brand for drying performance.",
       "verdict_written": false,
       "failed_at": null,
       "error": null,
-      "kv_status": "none",
+      "kv_status": "skipped (direct tagged URLs)",
       "last_commit": ""
     },
     {
@@ -108,15 +120,19 @@
       "type": "review",
       "title": "Adam's Graphene Ceramic Spray Coating Review",
       "product": "Adam's Graphene Ceramic Spray Coating",
-      "status": "scouted",
+      "status": "ready",
       "research_note": "",
-      "content_path": "",
-      "bottom_line_options": [],
-      "supporting": "",
+      "content_path": "sites/detailerpicks/src/content/reviews/adams-graphene-ceramic-spray-review.md",
+      "bottom_line_options": [
+        "Adam's Graphene Ceramic Spray is one of the easiest ways to add gloss and water-beading to an already-clean car: spray, wipe, done, with Adam's claiming over a year of protection. It is a maintenance booster, not a substitute for a real wipe-on coating, and it streaks on glass and light paint if you over-apply.",
+        "As a spray-on, Adam's Graphene delivers strong hydrophobics and gloss for minimal effort, and owners rate it highly. Set expectations honestly: durability is months to a year of topper protection, not the multi-year life of an installed coating, and thin even application is the difference between glassy and streaky.",
+        "Buy Adam's Graphene Ceramic Spray if you want a fast, repeatable way to keep a coated or waxed car beading between deeper details. Skip it as your only protection if you want years of durability, and avoid heavy passes on glass and light colors where high spots and streaks show most."
+      ],
+      "supporting": "Adam's Graphene Ceramic Spray (12oz, ASIN B08CPDDGZZ). Spray-on graphene topper; claims verified from adamspolishes.com and the listing, sentiment attributed. Strong gloss and hydrophobics for minimal effort; durability is months-to-a-year as a topper, not the multi-year life of an installed coating.",
       "verdict_written": false,
       "failed_at": null,
       "error": null,
-      "kv_status": "none",
+      "kv_status": "skipped (direct tagged URLs)",
       "last_commit": ""
     },
     {
