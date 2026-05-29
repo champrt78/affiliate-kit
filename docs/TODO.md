@@ -2,22 +2,43 @@
 
 > Canonical open-work list per global CLAUDE.md. Update as we work. `cat docs/TODO.md` or open in VS Code any time. For deeper context on past wins + walkthroughs, see `docs/RAY_QUEUE.md`.
 
-**Last refreshed:** 2026-05-24
+**Last refreshed:** 2026-05-28
 
 ---
 
-## Now (pick up next session)
+## North Star — Magic Go (locked 2026-05-28)
+
+`/aff magic-go <N>` produces N DRAFT-ready pieces overnight with no human intervention until Ray writes the Bottom Line verdicts the next morning. Full plan + reasoning in `docs/brainstorms/2026-05-28-magic-go-vision.md`. Every item below is either a Magic Go prerequisite or post-launch instrumentation. **Don't freelance scope beyond what's in the brainstorm.**
+
+## Now (Magic Go prerequisite #1 — multi-network commission routing)
+
+- [ ] **Item 1: Multi-network commission routing in `link-cloaker`.** Highest-$ lever; every other item exists to make this leverage real. Extend `workers/link-cloaker` to read per-product KV `{asin, brand, links:[{network,url,commission_rate,status}]}` and pick best-paying live link at request time. Falls back to Amazon. Tracks click-through-by-network in CF Analytics.
+  - **Blocked on Ray's answers to 5 Open Items** (see `docs/brainstorms/2026-05-28-magic-go-vision.md` "Open items before Phase 1 kicks off at home"). Network-approval question has no default — needs his explicit list.
+  - **Next deliverable when unblocked:** `docs/brainstorms/2026-05-29-multi-network-routing-plan.md` (KV schema, Worker pseudocode, per-network signup state, rollout sequence, test plan). **Do not write Worker code until that plan is reviewed.**
+
+## Next (Magic Go prerequisites #2 – #4, queued in order)
+
+- [ ] **Item 2: Generic affiliate disclosure.** Trivial but required for Item 1. Decouple footer language from Amazon naming. Ships with Item 1.
+- [ ] **Item 3: Pillar-cluster IA in homepage nav.** Sites declare pillars in `site-config.json`; homepage renders pillar cards; pillar pages list spoke reviews + guides. Reference: Aaron's `home-sauna-hq.com`.
+- [ ] **Item 4: Minimalist homepage.** Template-level redesign in `templates/site-template/pages/index.astro` + sync to 5 Astro sites. Pairs with #3 (same batch).
+
+## Later (Magic Go itself + post-launch)
+
+- [ ] **Item 5: Magic Go — overnight autonomous scaffolding.** Spawns scout → research → scaffold → lint → audit → build → quarantine → render queue → notify chain. Renders `dist/magic-go/queue.html` for Ray's morning Bottom Line session. Single `/aff publish-batch` flips DRAFT → published. **Refuses to run on any site missing Items 1-4.**
+- [ ] **Item 6: Dashboard with commission + cost roll-up.** Extends `/ops` once Item 1 has produced 30+ days of click data.
+
+## Carried over from 2026-05-24 (Magic Go-orthogonal cleanup)
 
 - [ ] **Confirm Bing Webmaster Tools** — detailerpicks property added + sitemap submitted
-- [ ] **Verify the 5 swapped DTP product images render correctly on live site** after CF deploy of `8e426b3` / `dd78693` completes. Five products got new Canopy URLs today: Gyeon Q²M Bathe (wash soap), MTM Hydro PF22 (foam cannon), Adam's Polishes Wheel Cleaner, P&S Brake Buster, CarPro Iron X (all wheel cleaner). If any look wrong, re-fetch from the Amazon product page.
-- [ ] **Foam-cannon-in-use Unsplash image** for `best-foam-cannon-for-home-detailers.md`. Foam cannon spraying water + foam, outside, sunny day, "nice day outside" vibe. Currently `photo-1520340356584-f9917d1eea6f` as placeholder.
+- [ ] **Verify the swapped DTP + MWC product images render correctly on live site** after the 2026-05-24 CF deploys settled.
+- [ ] **Foam-cannon-in-use Unsplash image** for `best-foam-cannon-for-home-detailers.md` — current placeholder `photo-1520340356584-f9917d1eea6f`.
 
-## Next
+## Backburner (deferred until Magic Go ships)
 
-- [ ] **Next mywildlifecam piece — Moultrie EDGE review.** Recommended pick from `/scout-topics --mwc` ran 2026-05-19. Research exists at `docs/research/2026-05-17-trail-cam-research.md`. Run `/research-product "Moultrie EDGE review"` → `/scaffold-piece site=mywildlifecam type=review slug=moultrie-edge-review ...`
-- [ ] **Cellular trail cam buying guide** (alternate next MWC piece). Multi-brand cornerstone.
-- [ ] **Spypoint Flex G36 review** (alternate next MWC piece). Sister piece to existing Flex-M review.
-- [ ] **Bring satellite sites into rotation** — fussybean, starteraquarium, gameovergear. Each needs the unified pick-card template ported (palette swap only — structure stays).
+- [ ] **Moultrie EDGE review** — research ready at `docs/research/2026-05-17-trail-cam-research.md`; ship via Magic Go run once Item 5 lands.
+- [ ] **Cellular trail cam buying guide** — Magic Go candidate.
+- [ ] **Spypoint Flex G36 review** — Magic Go candidate.
+- [ ] **Bring satellite sites into rotation** — ~~fussybean~~ (DONE 2026-05-28, READY*), starteraquarium, gameovergear. Each will inherit Items 3 + 4 + Magic Go automatically once the template ports through. fussybean is the first one through: canonical config + Variant-C identity + pillar hubs + E-E-A-T + 2 DRAFTs; passes readiness gate. starteraquarium + gameovergear still cold (no site-config). Ray: set fussybean's Amazon tag + create/point Cloudflare Pages tomorrow.
 
 ## Later / Ideas
 
