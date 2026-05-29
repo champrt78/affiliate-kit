@@ -1,6 +1,18 @@
 ---
 import BaseLayout from "@affkit/shared-ui/BaseLayout.astro";
 import AffiliateDisclosure from "@affkit/shared-ui/AffiliateDisclosure.astro";
+import "../styles/site.css";
+import siteConfig from "../data/site-config.json";
+
+/* FussyBean MainLayout - Variant-C coffee identity (locked design at
+   docs/playgrounds/fussybean-mockups/variant-c.html). Espresso/cream/caramel
+   palette + Fraunces/Inter come from src/styles/site.css (token overrides);
+   this layout supplies the brand mark, pillar-derived nav, espresso footer,
+   and passes the coffee fontsHref to BaseLayout.
+
+   `transparentHeader` lets the homepage overlay the header on its full-bleed
+   hero (Variant-C look); interior pages use the solid espresso header. */
+type BgTheme = "dawn" | "canopy" | "moss" | "twilight" | "pine" | "solid";
 
 interface Props {
   title: string;
@@ -9,10 +21,35 @@ interface Props {
   robotsContent?: string;
   ogType?: string;
   ogImage?: string;
+  bgTheme?: BgTheme;
+  transparentHeader?: boolean;
 }
 
-const { title, description, canonical, robotsContent, ogType, ogImage } = Astro.props;
-const siteName = "FussyBean";
+const {
+  title,
+  description,
+  canonical,
+  robotsContent,
+  ogType,
+  ogImage,
+  transparentHeader = false,
+} = Astro.props;
+
+const siteName = siteConfig.site.name;
+const fontsHref =
+  "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,900;1,9..144,500&family=Inter:wght@400;500;600&display=swap";
+
+/* Primary nav: Home + each pillar (commercial → /topics/<slug>/,
+   informational → /topics/<slug>/) + About. Keeps every link resolvable. */
+const navItems = [
+  { href: "/", label: "Home" },
+  ...siteConfig.navigation.pillars.map((p) => ({
+    href: `/topics/${p.slug}/`,
+    label: p.label,
+  })),
+  { href: "/about/", label: "About" },
+];
+const currentPath = Astro.url.pathname;
 ---
 <BaseLayout
   title={title}
@@ -22,61 +59,355 @@ const siteName = "FussyBean";
   robotsContent={robotsContent}
   ogType={ogType}
   ogImage={ogImage}
+  themeColor="#241710"
+  fontsHref={fontsHref}
 >
-  <header class="site-header">
-    <a href="/" class="brand">FussyBean</a>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/about/">About</a>
-      <a href="/disclosure/">Disclosure</a>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header
+    class:list={["site-header", transparentHeader && "site-header--transparent"]}
+    data-site-header
+  >
+    <div class="site-header__inner">
+      <a href="/" class="brand" aria-label={`${siteName} home`}>
+        <span class="brand__bean" aria-hidden="true"></span>
+        <span class="brand__name">{siteName}</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class={currentPath === item.href ? "site-nav__link is-active" : "site-nav__link"}
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" data-nav-toggle>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+    </div>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" data-mobile-nav>
+      {navItems.map((item) => (
+        <a href={item.href} class="mobile-nav__link">{item.label}</a>
+      ))}
     </nav>
   </header>
 
-  <main>
+  <main id="main" tabindex="-1">
     <slot />
   </main>
 
-  <AffiliateDisclosure siteName={siteName} />
-
   <footer class="site-footer">
-    <nav>
-      <a href="/about/">About</a>
-      <a href="/disclosure/">Affiliate disclosure</a>
-      <a href="/privacy/">Privacy</a>
-      <a href="/contact/">Contact</a>
-    </nav>
-    <p>© {new Date().getFullYear()} {siteName}. All rights reserved.</p>
+    <div class="site-footer__inner">
+      <div class="site-footer__brand">
+        <span class="site-footer__name">{siteName}</span>
+        <p class="site-footer__blurb">
+          Home coffee gear, ranked by spec and use case, so the counter you build
+          is the one you'll actually love. We compare machines, grinders, and brew
+          gear and link out to where you can buy them.
+        </p>
+      </div>
+
+      <div class="site-footer__col">
+        <h4>Browse</h4>
+        <a href="/topics/espresso-machines/">Espresso machines</a>
+        <a href="/topics/grinders/">Grinders</a>
+        <a href="/topics/manual-brewing/">Kettles &amp; scales</a>
+        <a href="/topics/fun-stuff/">Gifts &amp; fun</a>
+      </div>
+
+      <div class="site-footer__col">
+        <h4>Site</h4>
+        <a href="/buyers-guides/">Buying guides</a>
+        <a href="/reviews/">Reviews</a>
+        <a href="/how-we-evaluate/">How we evaluate</a>
+        <a href="/about/">About</a>
+      </div>
+
+      <div class="site-footer__col">
+        <h4>Fine print</h4>
+        <a href="/disclosure/">Affiliate disclosure</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/contact/">Contact</a>
+      </div>
+    </div>
+
+    <div class="site-footer__base">
+      <AffiliateDisclosure siteName={siteName} variant="footer" />
+      <p class="site-footer__copy">© {new Date().getFullYear()} {siteName}. All rights reserved.</p>
+    </div>
   </footer>
 </BaseLayout>
 
+<script is:inline>
+  (function () {
+    const header = document.querySelector("[data-site-header]");
+    const toggle = document.querySelector("[data-nav-toggle]");
+    const mobileNav = document.querySelector("[data-mobile-nav]");
+
+    if (header) {
+      let ticking = false;
+      const onScroll = () => {
+        if (window.scrollY > 12) header.classList.add("is-scrolled");
+        else header.classList.remove("is-scrolled");
+        ticking = false;
+      };
+      window.addEventListener("scroll", () => {
+        if (!ticking) { window.requestAnimationFrame(onScroll); ticking = true; }
+      }, { passive: true });
+      onScroll();
+    }
+
+    if (toggle && mobileNav) {
+      toggle.addEventListener("click", () => {
+        const expanded = toggle.getAttribute("aria-expanded") === "true";
+        toggle.setAttribute("aria-expanded", String(!expanded));
+        toggle.setAttribute("aria-label", expanded ? "Open menu" : "Close menu");
+        mobileNav.classList.toggle("is-open", !expanded);
+        document.body.classList.toggle("nav-open", !expanded);
+      });
+    }
+  })();
+</script>
+
 <style>
+  /* Skip link */
+  .skip-link {
+    position: absolute;
+    left: var(--space-4);
+    top: -3rem;
+    background: var(--color-forest);
+    color: var(--color-brass-soft);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    z-index: 100;
+    transition: top var(--duration-fast) var(--ease-out);
+  }
+  .skip-link:focus { top: var(--space-4); }
+
+  /* Sticky espresso header */
   .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--color-forest);
+    border-bottom: 1px solid rgba(236, 212, 168, 0.14);
+    transition: background var(--duration-base) var(--ease-out),
+                box-shadow var(--duration-base) var(--ease-out);
+  }
+  .site-header.is-scrolled {
+    box-shadow: 0 6px 24px -12px rgba(20, 12, 7, 0.6);
+  }
+  /* Transparent variant - overlays the homepage full-bleed hero.
+     Becomes solid espresso once scrolled. */
+  .site-header--transparent {
+    position: absolute;
+    background: transparent;
+    border-bottom-color: transparent;
+    left: 0; right: 0;
+  }
+  .site-header--transparent.is-scrolled {
+    position: sticky;
+    background: var(--color-forest);
+    border-bottom-color: rgba(236, 212, 168, 0.14);
+  }
+
+  .site-header__inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+    height: var(--header-height);
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: var(--space-4) 0;
-    border-bottom: 1px solid var(--color-border);
-    margin-bottom: var(--space-8);
+    justify-content: space-between;
+    gap: var(--space-6);
   }
+
+  /* Brand - bean mark + Fraunces wordmark (Variant-C) */
   .brand {
-    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--color-brass-soft);
+  }
+  .brand:hover { color: #fdf4e4; }
+  .brand__bean {
+    width: 28px; height: 28px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    background: radial-gradient(circle at 35% 30%, var(--color-brass), #1a0f08);
+    transform: rotate(-13deg);
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    flex-shrink: 0;
+  }
+  .brand__bean::after {
+    content: "";
+    position: absolute;
+    left: 48%; top: 13%;
+    width: 2px; height: 74%;
+    background: var(--color-brass-soft);
+    transform: translateX(-50%) rotate(8deg);
+  }
+  .brand__name {
+    font-family: var(--font-serif);
+    font-weight: 900;
+    font-size: 25px;
+    letter-spacing: -0.01em;
+    color: inherit;
+  }
+
+  /* Desktop nav */
+  .site-nav { display: flex; align-items: center; gap: var(--space-6); }
+  .site-nav__link {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-brass-soft);
+    text-decoration: none;
+    padding: var(--space-2) 0;
+    opacity: 0.88;
+    border-bottom: 2px solid transparent;
+    transition: opacity var(--duration-fast) var(--ease-out),
+                border-color var(--duration-fast) var(--ease-out);
+  }
+  .site-nav__link:hover { opacity: 1; border-color: var(--color-brass); }
+  .site-nav__link.is-active { opacity: 1; border-color: var(--color-brass); }
+
+  /* Mobile toggle */
+  .nav-toggle {
+    display: none;
+    background: none; border: 0;
+    padding: var(--space-2);
+    cursor: pointer;
+    width: 40px; height: 40px;
+    align-items: center; justify-content: center;
+    flex-direction: column; gap: 5px;
+  }
+  .nav-toggle__bar {
+    width: 22px; height: 2px;
+    background: var(--color-brass-soft);
+    border-radius: 1px;
+    transition: transform var(--duration-base) var(--ease-out),
+                opacity var(--duration-base) var(--ease-out);
+  }
+  .nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile drawer */
+  .mobile-nav {
+    display: none;
+    flex-direction: column;
+    padding: var(--space-2) var(--space-6) var(--space-6);
+    background: var(--color-forest-mid);
+    border-top: 1px solid rgba(236, 212, 168, 0.14);
+  }
+  .mobile-nav.is-open { display: flex; }
+  /* Always solid when the transparent header opens its drawer */
+  .site-header--transparent .mobile-nav.is-open {
+    background: var(--color-forest);
+  }
+  .mobile-nav__link {
+    padding: var(--space-4) 0;
+    font-family: var(--font-sans);
     font-size: var(--text-lg);
-    color: var(--color-fg);
+    font-weight: 600;
+    color: var(--color-brass-soft);
     text-decoration: none;
+    border-bottom: 1px solid rgba(236, 212, 168, 0.14);
   }
-  nav a {
-    color: var(--color-fg);
-    text-decoration: none;
-    margin-left: var(--space-4);
+  .mobile-nav__link:last-child { border-bottom: 0; }
+
+  @media (max-width: 760px) {
+    .site-nav { display: none; }
+    .nav-toggle { display: flex; }
+    .site-header__inner { padding: 0 var(--space-4); gap: var(--space-3); }
   }
-  nav a:hover { color: var(--color-brand); }
-  main { min-height: 60vh; }
+
+  main { min-height: 60vh; background: var(--color-bg); }
+
+  /* Espresso footer */
   .site-footer {
-    margin-top: var(--space-16);
-    padding: var(--space-6) 0;
-    border-top: 1px solid var(--color-border);
-    text-align: center;
-    color: var(--color-muted);
-    font-size: var(--text-sm);
+    margin-top: var(--space-24);
+    background: #1c110a;
+    color: var(--color-latte, #f1e2cb);
   }
+  .site-footer__inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: var(--space-16) var(--space-6) var(--space-10);
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: var(--space-10);
+  }
+  .site-footer__brand .site-footer__name {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--color-brass-soft);
+    display: block;
+    margin-bottom: var(--space-3);
+  }
+  .site-footer__blurb {
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+    color: #b39f87;
+    max-width: 30rem;
+    margin: 0;
+  }
+  .site-footer__col h4 {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-brass);
+    margin-bottom: var(--space-4);
+  }
+  .site-footer__col a {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--color-brass-soft);
+    text-decoration: none;
+    padding: var(--space-1) 0;
+    opacity: 0.85;
+    transition: opacity var(--duration-fast) var(--ease-out);
+  }
+  .site-footer__col a:hover { opacity: 1; }
+  .site-footer__base {
+    border-top: 1px solid rgba(236, 212, 168, 0.16);
+    padding: var(--space-6);
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+  .site-footer__copy {
+    text-align: center;
+    font-size: var(--text-xs);
+    color: #7a6650;
+    margin: var(--space-4) 0 0;
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 900px) {
+    .site-footer__inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .site-footer__inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+      padding: var(--space-12) var(--space-4) var(--space-8);
+    }
+  }
+
+  :global(body.nav-open) { overflow: hidden; }
 </style>

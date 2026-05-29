@@ -1,73 +1,360 @@
 ---
 import { getCollection } from "astro:content";
 import MainLayout from "../layouts/MainLayout.astro";
-import Hero from "@affkit/shared-ui/Hero.astro";
-import ReviewCard from "@affkit/shared-ui/ReviewCard.astro";
+import siteConfig from "../data/site-config.json";
 
-const allReviews = await getCollection("reviews");
-const latest = allReviews
-  .sort((a, b) => {
-    const aTime = a.data.pubDate instanceof Date ? a.data.pubDate.getTime() : new Date(a.data.pubDate).getTime();
-    const bTime = b.data.pubDate instanceof Date ? b.data.pubDate.getTime() : new Date(b.data.pubDate).getTime();
-    return bTime - aTime;
-  })
-  .slice(0, 6);
+/* FussyBean homepage - ports the locked Variant-C design
+   (docs/playgrounds/fussybean-mockups/variant-c.html): full-bleed dark-roast
+   hero with golden-glow overlay, "Find your lane" photo pillar tiles driven
+   by navigation.pillars[], and a "Latest reviews & guides" espresso band.
+   Photography-forward, voice-clean (no hands-on claims). Every <img> carries
+   width+height aspect hints per the web-vitals rule in CLAUDE.md. */
+
+const reviews = await getCollection("reviews");
+const guides = await getCollection("buyers-guides");
+
+// Latest published (non-DRAFT) pieces across both collections for the band.
+const hasVerdict = (e: any) =>
+  e.data.bottomLine && e.data.bottomLine.verdict && e.data.bottomLine.verdict.trim() !== "";
+const time = (d: any) => (d instanceof Date ? d.getTime() : new Date(d).getTime());
+
+const latest = [
+  ...reviews.map((e) => ({
+    kind: "Review",
+    href: `/reviews/${e.slug}/`,
+    title: e.data.title,
+    desc: e.data.description,
+    pillar: (e.data as any).pillar,
+    date: e.data.pubDate,
+    draft: !hasVerdict(e),
+  })),
+  ...guides.map((e) => ({
+    kind: "Guide",
+    href: `/buyers-guides/${e.slug}/`,
+    title: e.data.title,
+    desc: e.data.description,
+    pillar: (e.data as any).pillar,
+    date: e.data.pubDate,
+    draft: !hasVerdict(e),
+  })),
+]
+  .filter((p) => !p.draft)
+  .sort((a, b) => time(b.date) - time(a.date))
+  .slice(0, 3);
+
+const pillars = siteConfig.navigation.pillars;
+
+// Scene/context photos per pillar (Unsplash, scene-only per image policy -
+// never product hero shots). Sizes are aspect hints, not display sizes.
+const tileImages: Record<string, { src: string; alt: string }> = {
+  "espresso-machines": {
+    src: "https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?auto=format&fit=crop&w=1600&q=80",
+    alt: "Chrome espresso machine on a cafe counter with steam rising",
+  },
+  grinders: {
+    src: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1600&q=80",
+    alt: "Loading a portafilter on an espresso machine",
+  },
+  "manual-brewing": {
+    src: "https://images.unsplash.com/photo-1442550528053-c431ecb55509?auto=format&fit=crop&w=1600&q=80",
+    alt: "Gooseneck kettle pouring over a dripper",
+  },
+  "coffee-costs": {
+    src: "https://images.unsplash.com/photo-1453614512568-c4024d13c247?auto=format&fit=crop&w=1600&q=80",
+    alt: "Brewing tools and coffee beans laid out on a wood surface",
+  },
+  "fun-stuff": {
+    src: "https://images.unsplash.com/photo-1521302080334-4bebac2763a6?auto=format&fit=crop&w=1600&q=80",
+    alt: "Coffee mugs and accessories on a warm shelf",
+  },
+};
+
+// Tile size classes mirroring Variant C: first tile big, second med, rest third.
+const tileClass = (i: number) => (i === 0 ? "tile big" : i === 1 ? "tile med" : "tile third");
 ---
 <MainLayout
   title="FussyBean"
-  description="FussyBean: spec-driven reviews and buyer's guides for home coffee gear, by use case."
+  description="FussyBean compares home coffee gear by spec and use case: espresso machines, grinders, gooseneck kettles, and scales."
+  transparentHeader={true}
 >
-  <Hero
-    title="FussyBean"
-    tagline="Home coffee gear, ranked by what fits your setup."
-  />
-
-  <section>
-    <div class="section-head">
-      <h2>Latest reviews</h2>
-      {latest.length > 0 && <a href="/reviews/" class="see-all">See all reviews →</a>}
-    </div>
-    {latest.length === 0 ? (
-      <p class="muted">No reviews published yet. New content lands every quarter.</p>
-    ) : (
-      <div class="grid">
-        {latest.map((entry) => <ReviewCard entry={entry} />)}
+  {/* ─── Full-bleed dark-roast hero ─── */}
+  <section class="hero">
+    <div class="wrap hero-content">
+      <div class="kicker">Home Coffee Gear · Honest Comparisons</div>
+      <h1>Brew like the cafe you <em>keep going back to.</em></h1>
+      <p>
+        Espresso machines, burr grinders, gooseneck kettles, scales, and the gift-y
+        extras. We comb the spec sheets so your counter ends up warm, capable, and
+        yours.
+      </p>
+      <div class="chips">
+        <span>Espresso machines</span><span>Grinders</span><span>Kettles &amp; scales</span><span>Setup costs</span><span>Gifts &amp; novelties</span>
       </div>
-    )}
+    </div>
   </section>
 
-  <section>
-    <div class="section-head">
-      <h2>Buyer's guides</h2>
-      <a href="/buyers-guides/" class="see-all">Browse guides →</a>
+  {/* ─── Browse by topic - photo pillar tiles ─── */}
+  <section class="wrap section">
+    <div class="shead">
+      <div>
+        <div class="eyebrow">Browse by topic</div>
+        <h2>Find your lane</h2>
+      </div>
+      <a href="/buyers-guides/" class="shead__more">All guides &rarr;</a>
     </div>
-    <p class="muted">Comparative roundups built from specs, verified-buyer reviews, and use-case fit.</p>
+
+    <div class="grid">
+      {pillars.map((p, i) => {
+        const img = tileImages[p.slug];
+        return (
+          <a class={tileClass(i)} href={`/topics/${p.slug}/`}>
+            {img && (
+              <img src={img.src} width="1600" height="1067" alt={img.alt} loading={i === 0 ? "eager" : "lazy"} decoding="async" />
+            )}
+            <div class="scrim"></div>
+            <div class="t-body">
+              <div class="lab">{p.label}</div>
+              <h3>{p.blurb}</h3>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+
+  {/* ─── Latest reviews & guides - espresso band ─── */}
+  <section class="band">
+    <div class="wrap section">
+      <div class="shead">
+        <div>
+          <div class="eyebrow">Fresh off the desk</div>
+          <h2>Latest reviews &amp; guides</h2>
+        </div>
+        <a href="/reviews/" class="shead__more">All reviews &amp; guides &rarr;</a>
+      </div>
+
+      {latest.length === 0 ? (
+        <p class="band-empty">
+          New comparisons land every quarter. The first pieces are in the works,
+          built from published specs, verified-buyer reviews, and use-case fit.
+        </p>
+      ) : (
+        <div class="posts">
+          {latest.map((p) => (
+            <a class="card" href={p.href}>
+              <div class="cb">
+                <div class="meta">{p.kind}{p.pillar ? ` · ${p.pillar.replace(/-/g, " ")}` : ""}</div>
+                <h4>{p.title}</h4>
+                <p>{p.desc}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
   </section>
 </MainLayout>
 
 <style>
-  section { margin: var(--space-12) 0; }
-  .section-head {
+  .wrap { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--space-6); }
+  .section { padding: var(--space-16) var(--space-6); }
+  .band .section { padding-left: 0; padding-right: 0; }
+
+  /* ─── Hero ─── */
+  .hero {
+    position: relative;
+    min-height: 640px;
     display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: var(--space-4);
+    align-items: flex-end;
+    background:
+      linear-gradient(180deg, rgba(20, 12, 7, 0.45) 0%, rgba(20, 12, 7, 0.15) 35%, rgba(20, 12, 7, 0.7) 100%),
+      url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=80");
+    background-size: cover;
+    background-position: center;
   }
-  h2 {
-    font-size: var(--text-2xl);
+  .hero-content { padding-bottom: 64px; padding-top: 120px; max-width: 760px; }
+  .hero .kicker {
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-brass-soft);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-weight: 900;
+    color: #fdf4e4;
+    font-size: clamp(42px, 6.5vw, 74px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 30px rgba(0, 0, 0, 0.4);
+    margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: italic; color: var(--color-brass); }
+  .hero p {
+    font-size: 19px;
+    color: #f0e3cf;
+    max-width: 34em;
+    margin-bottom: 24px;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45);
+    line-height: 1.55;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chips span {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-brass-soft);
+    background: rgba(40, 25, 15, 0.55);
+    border: 1px solid rgba(236, 212, 168, 0.4);
+    padding: 7px 15px;
+    border-radius: 40px;
+    backdrop-filter: blur(3px);
+  }
+
+  /* ─── Section heading ─── */
+  .shead {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 34px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .shead .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--color-brass-hover);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .shead h2 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 36px;
+    color: var(--color-forest);
+    letter-spacing: -0.01em;
     margin: 0;
   }
-  .see-all {
-    color: var(--color-brand);
-    text-decoration: none;
-    font-size: var(--text-sm);
+  .shead__more {
+    font-size: 13px;
     font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-brass-hover);
+    text-decoration: none;
   }
-  .see-all:hover { text-decoration: underline; }
-  .muted { color: var(--color-muted); }
+  .shead__more:hover { text-decoration: underline; }
+
+  /* ─── Pillar tiles ─── */
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: var(--space-6);
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+  }
+  .tile {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    min-height: 280px;
+    display: flex;
+    align-items: flex-end;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 18px 38px -26px rgba(36, 23, 16, 0.6);
+    transition: transform 0.3s var(--ease-out);
+  }
+  .tile:hover { transform: translateY(-5px); }
+  .tile:hover img { transform: scale(1.06); }
+  .tile img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    transition: transform 0.5s var(--ease-out);
+  }
+  .tile .scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(28, 17, 10, 0.05) 30%, rgba(28, 17, 10, 0.82) 100%);
+  }
+  .tile .t-body { position: relative; z-index: 2; padding: 24px; }
+  .tile .lab {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--color-brass);
+    margin-bottom: 8px;
+  }
+  .tile h3 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.18;
+    margin: 0;
+    color: #fdf4e4;
+    max-width: 26ch;
+  }
+  .tile.big { grid-column: span 3; min-height: 360px; }
+  .tile.big h3 { font-size: 28px; }
+  .tile.med { grid-column: span 3; }
+  .tile.third { grid-column: span 2; }
+
+  /* ─── Latest band ─── */
+  .band { background: var(--color-forest); color: var(--color-brass-soft); }
+  .band .shead h2 { color: #fdf4e4; }
+  .band .shead .eyebrow { color: var(--color-brass); }
+  .band .shead__more { color: var(--color-brass); }
+  .band-empty {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 19px;
+    color: #cdb697;
+    max-width: 48ch;
+    margin: 0;
+  }
+  .posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .card {
+    background: var(--color-forest-mid);
+    border: 1px solid rgba(236, 212, 168, 0.14);
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.25s var(--ease-out), border-color 0.25s var(--ease-out);
+  }
+  .card:hover { transform: translateY(-5px); border-color: rgba(176, 111, 44, 0.5); }
+  .card .cb { padding: 22px 24px 26px; }
+  .card .meta {
+    font-size: 11px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--color-brass);
+    font-weight: 600;
+    margin-bottom: 9px;
+  }
+  .card h4 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: 21px;
+    color: #fdf4e4;
+    line-height: 1.18;
+    margin: 0 0 9px;
+  }
+  .card p { font-size: 14px; color: #cdb697; margin: 0; line-height: 1.55; }
+
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .tile.big, .tile.med, .tile.third { grid-column: span 1; }
+    .posts { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .grid, .posts { grid-template-columns: 1fr; }
+    .hero { min-height: 540px; }
+    .hero-content { padding-top: 96px; }
   }
 </style>

@@ -1,0 +1,75 @@
+/* =============================================================================
+   FussyBean per-site theme — Variant C ("Rich Textured")
+   ============================================================================
+   Locked design: docs/playgrounds/fussybean-mockups/variant-c.html
+   Brand brief: "looks like coffeeshops smell" — warm, tactile, café at golden
+   hour. NOT clinical/cold. Espresso brown + cream/latte paper + caramel/brass.
+   Display = Fraunces, body = Inter.
+
+   This file imports the shared design tokens, then OVERRIDES the base palette
+   hexes + fonts so every shared component (Hero, ReviewCard, BuyersGuideCard,
+   ReviewArticle, BottomLine, etc.) renders in FussyBean's coffee identity for
+   free — the semantic aliases (--color-brand, --color-link, --color-surface…)
+   derive from these via var() and follow automatically. tokens.css names this
+   exact seam: "Per-site theming layer overrides these variables via
+   sites/<slug>/src/styles/site.css".
+   ============================================================================= */
+
+@import "@affkit/shared-styles/tokens.css";
+
+:root {
+  /* --- Variant-C palette ----------------------------------------------------
+     espresso  #241710  espresso2 #2f1f15  caramel #c98a44  caramel-deep #b06f2c
+     crema #ecd4a8  latte #f1e2cb  paper #efe0c9  card #f8efe0  ink #2c2018
+     muted #7c6750  line #dccaab
+     ------------------------------------------------------------------------- */
+
+  /* Surfaces — warm latte paper */
+  --color-paper:        #f4e8d4;  /* main reading surface — warm latte */
+  --color-paper-muted:  #f8efe0;  /* card / hero surface — light card */
+  --color-cream:        #efe0c9;  /* callout / accent surface — paper */
+  --color-paper-ink:    #2c2018;  /* espresso ink — body text */
+
+  /* Espresso — primary brand (maps onto --color-forest slot the components use) */
+  --color-forest:       #241710;  /* deep espresso — headlines, branding, dark bands */
+  --color-forest-mid:   #2f1f15;  /* espresso2 — hovers / band 2 */
+  --color-forest-light: #4a2f1e;  /* lighter roast — secondary accent */
+
+  /* Caramel / brass — refined accent (maps onto --color-brass slot) */
+  --color-brass:        #b06f2c;  /* caramel-deep — primary CTA / accent */
+  --color-brass-hover:  #95591f;  /* deeper caramel — hover state */
+  --color-brass-soft:   #ecd4a8;  /* crema — backgrounds, tags, soft accents */
+
+  /* Sage slot → warm taupe (meta text / borders) */
+  --color-sage:         #b39c7e;  /* warm taupe — meta text, borders */
+  --color-sage-light:   #dccaab;  /* line — subtle borders */
+
+  /* Semantic re-derivations (so component vars pick up the coffee tones) */
+  --color-bg:           var(--color-paper);
+  --color-fg:           var(--color-paper-ink);
+  --color-muted:        #7c6750;  /* warm coffee gray — secondary text */
+  --color-muted-soft:   #9b8468;  /* lighter warm gray — tertiary text */
+  --color-border:       var(--color-sage-light);
+  --color-border-strong: var(--color-sage);
+  --color-surface:      var(--color-paper-muted);
+  --color-surface-alt:  #f8efe0;  /* lightest card — alt surfaces, review cards */
+
+  --color-brand:        var(--color-forest);
+  --color-brand-fg:     var(--color-paper);
+  --color-accent:       var(--color-brass);
+  --color-accent-fg:    var(--color-paper);
+
+  --color-link:         var(--color-forest);
+  --color-link-hover:   var(--color-brass);
+
+  /* --- Typography — Fraunces (display) + Inter (body) -----------------------
+     Variant C uses plain Inter (not Inter Tight). The matching fontsHref is
+     passed to BaseLayout from MainLayout.astro. --------------------------- */
+  --font-serif: "Fraunces", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --font-sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+
+  /* Shadows — re-tint to espresso so card lift reads warm, not green */
+  --shadow-sm:  0 1px 2px rgba(36, 23, 16, 0.08);
+  --shadow-md:  0 2px 8px rgba(36, 23, 16, 0.10), 0 1px 2px rgba(36, 23, 16, 0.05);
+  --shadow-lg:  0 18px 38px -26px rgba(36, 23, 16, 0.55), 0 2px 4px rgba(36, 23, 16, 0.06);
+}

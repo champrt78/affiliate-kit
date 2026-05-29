@@ -1,0 +1,171 @@
+---
+import { getCollection } from "astro:content";
+import MainLayout from "../../layouts/MainLayout.astro";
+import ReviewCard from "@affkit/shared-ui/ReviewCard.astro";
+import BuyersGuideCard from "@affkit/shared-ui/BuyersGuideCard.astro";
+import siteConfig from "../../data/site-config.json";
+
+/* Pillar hubs — one page per navigation.pillars[] entry (commercial +
+   informational). Lists the spokes whose `pillar` FK matches, grouped by
+   collection. Empty pillars render a friendly placeholder so nav never 404s.
+   Banks plan R7/R8 (pillar IA + hub route), entirely inside sites/fussybean. */
+
+export async function getStaticPaths() {
+  return siteConfig.navigation.pillars.map((pillar) => ({
+    params: { pillar: pillar.slug },
+    props: { pillar },
+  }));
+}
+
+interface PillarDef {
+  slug: string;
+  label: string;
+  type: string;
+  categoryPillar: string | null;
+  blurb: string;
+  hubKicker: string;
+}
+
+const { pillar } = Astro.props as { pillar: PillarDef };
+
+const allReviews = await getCollection("reviews");
+const allGuides = await getCollection("buyers-guides");
+
+const byDate = (a: any, b: any) => {
+  const at = a.data.pubDate instanceof Date ? a.data.pubDate.getTime() : new Date(a.data.pubDate).getTime();
+  const bt = b.data.pubDate instanceof Date ? b.data.pubDate.getTime() : new Date(b.data.pubDate).getTime();
+  return bt - at;
+};
+
+const guides = allGuides.filter((e) => (e.data as any).pillar === pillar.slug).sort(byDate);
+const reviews = allReviews.filter((e) => (e.data as any).pillar === pillar.slug).sort(byDate);
+const isEmpty = guides.length === 0 && reviews.length === 0;
+---
+<MainLayout
+  title={pillar.label}
+  description={pillar.blurb}
+>
+  <header class="page-header">
+    <div class="page-header__inner">
+      <span class="page-header__kicker">{pillar.hubKicker}</span>
+      <h1 class="page-header__title">{pillar.label}</h1>
+      <p class="page-header__lede">{pillar.blurb}</p>
+    </div>
+  </header>
+
+  <section class="grid-section">
+    <div class="grid-section__inner">
+      {isEmpty ? (
+        <p class="empty">
+          Nothing published in this topic yet. New comparisons land every quarter,
+          built from published specs, verified-buyer reviews, and use-case fit.
+        </p>
+      ) : (
+        <>
+          {guides.length > 0 && (
+            <div class="block">
+              <h2 class="block__title">Buying guides</h2>
+              <div class="grid grid--guides">
+                {guides.map((entry) => <BuyersGuideCard entry={entry} />)}
+              </div>
+            </div>
+          )}
+          {reviews.length > 0 && (
+            <div class="block">
+              <h2 class="block__title">Reviews</h2>
+              <div class="grid grid--reviews">
+                {reviews.map((entry) => <ReviewCard entry={entry} />)}
+              </div>
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .page-header {
+    background: var(--color-bg);
+    padding: var(--space-10) var(--space-6) var(--space-6);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .page-header__inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: var(--space-10);
+    align-items: end;
+  }
+  .page-header__kicker {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-brass);
+    margin-bottom: var(--space-2);
+  }
+  .page-header__kicker::before {
+    content: "";
+    display: inline-block;
+    width: 24px; height: 1px;
+    background: var(--color-brass);
+    vertical-align: middle;
+    margin-right: 10px;
+    transform: translateY(-2px);
+  }
+  .page-header__title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.625rem, 2.6vw, 2.125rem);
+    line-height: 1.1;
+    color: var(--color-forest);
+    letter-spacing: var(--tracking-display);
+    margin: 0;
+    font-weight: var(--weight-semibold);
+  }
+  .page-header__lede {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+    line-height: 1.5;
+    color: var(--color-muted);
+    margin: 0;
+    max-width: 56ch;
+    align-self: end;
+    padding-bottom: 4px;
+  }
+
+  .grid-section {
+    padding: var(--space-12) var(--space-6) var(--space-20);
+    background: var(--color-bg);
+  }
+  .grid-section__inner { max-width: var(--container-max); margin: 0 auto; }
+  .block { margin-bottom: var(--space-16); }
+  .block:last-child { margin-bottom: 0; }
+  .block__title {
+    font-family: var(--font-serif);
+    font-size: var(--text-2xl);
+    color: var(--color-forest);
+    margin: 0 0 var(--space-6);
+  }
+  .grid { display: grid; gap: var(--space-6); }
+  .grid--reviews { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .grid--guides { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .empty {
+    color: var(--color-muted);
+    font-family: var(--font-serif);
+    font-style: italic;
+    max-width: 52ch;
+  }
+
+  @media (max-width: 760px) {
+    .page-header { padding: var(--space-10) var(--space-4) var(--space-5); }
+    .page-header__inner { grid-template-columns: 1fr; row-gap: var(--space-3); }
+    .page-header__lede { padding-bottom: 0; }
+    .grid-section { padding: var(--space-10) var(--space-4) var(--space-16); }
+    .grid--reviews, .grid--guides { grid-template-columns: 1fr; }
+  }
+</style>
