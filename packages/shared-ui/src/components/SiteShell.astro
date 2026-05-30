@@ -26,6 +26,24 @@
  * Step 2 (2026-05-29): only DetailerPicks renders through this shell. MWC and
  * fussybean keep their own MainLayout→BaseLayout path (their chrome genuinely
  * differs — sticky full-bleed header, no zoom panel). They migrate in Step 3.
+ *
+ * HARDENING (2026-05-29, per CE architecture review): the shell now carries
+ * all 5 sites' chrome topology without forking. Three classes of seam, all
+ * DEFAULTING to DTP's exact current behavior so DTP is pixel-identical:
+ *   1. Chrome COLOR tokens — `--header-bg`, `--footer-bg`, `--footer-fg`,
+ *      `--header-border`, `--nav-link` — each resolved `var(--x, <DTP value>)`.
+ *      A site reskins chrome by setting these in its site-tokens.css :root.
+ *   2. Footer grid is COLUMN-COUNT-driven (`--footer-cols` = footerColumns.length)
+ *      with a 900px intermediate breakpoint that is GATED to ≥3 footer columns
+ *      so DTP (2 cols) never enters it. fussybean (3 cols) gets the 2-up step.
+ *   3. `stickyHeader` (default false) — when true the header moves OUTSIDE the
+ *      zoom panel and goes position:sticky with backdrop-blur + an is-scrolled
+ *      restyle (MWC/fussybean). zoom on .page-shell is unreliable for sticky
+ *      children, so the sticky branch renders a STRUCTURALLY DIFFERENT tree
+ *      (header outside .page-shell, panel un-zoomed). `transparentHeader`
+ *      (default false) overlays the header for a homepage hero.
+ * The default branch (stickyHeader=false) renders the exact same DOM tree as
+ * before — see the conditional in the markup. Don't merge the two branches.
  */
 import BaseLayout from "./BaseLayout.astro";
 
@@ -70,6 +88,25 @@ interface Props {
    * pageBg is "none"). Defaults to the kit ink (#14181C).
    */
   gutterColor?: string;
+
+  /**
+   * Sticky full-bleed header (MWC / fussybean). Default false = DTP's
+   * in-panel, non-sticky header. When true the header is rendered OUTSIDE the
+   * zoom'd .page-shell (position:sticky inside a `zoom` panel is unreliable),
+   * the panel zoom is disabled, and a scroll handler toggles `is-scrolled` on
+   * the header. The site's site-tokens.css owns the actual sticky look
+   * (backdrop-blur, scrolled bg) via the chrome color tokens + its own scoped
+   * CSS — the shell only supplies position:sticky + the is-scrolled hook.
+   */
+  stickyHeader?: boolean;
+  /**
+   * Transparent / overlay header for a homepage hero (fussybean homepage).
+   * Default false = DTP. Only meaningful alongside stickyHeader; adds the
+   * `site-header--transparent` modifier so a site's CSS can paint it
+   * transparent and re-solidify it on scroll. The shell ships a minimal
+   * transparent treatment; per-site polish lives in site-tokens.css.
+   */
+  transparentHeader?: boolean;
 }
 
 const {
@@ -87,10 +124,21 @@ const {
   footerBlurb,
   pageBg = "none",
   gutterColor = "#14181C",
+  stickyHeader = false,
+  transparentHeader = false,
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
 const year = new Date().getFullYear();
+
+// Footer grid is column-count-driven: brand column (2fr) + one 1fr per footer
+// link column. DTP has 2 footer columns → "2fr 1fr 1fr" (identical to the old
+// hardcoded value). Emitted as --footer-cols on the inner + a data attr that
+// gates the 900px intermediate breakpoint (so DTP's 2 cols never enter it).
+// Floored at 1: a consumer that omits footerColumns would otherwise yield
+// `repeat(0, 1fr)`, which some CSS engines treat as invalid and drop the whole
+// grid-template-columns declaration. Floor keeps the grid valid (brand-only).
+const footerColCount = Math.max(1, footerColumns.length);
 ---
 <BaseLayout
   title={title}
@@ -120,16 +168,18 @@ const year = new Date().getFullYear();
 
   <a href="#main" class="skip-link">Skip to content</a>
 
-  {/* The whole content panel floats on the gutter photo and scales as one unit.
-      zoom:var(--page-scale) on .page-shell scales header + main + footer
-      uniformly; the gutter photo shows beside the header too. zoom (not
-      transform:scale) keeps normal document flow + centering and avoids a
-      transformed stacking context. */}
-  <div class="page-shell">
-    <header class="site-header">
+  {/* When stickyHeader: header lives OUTSIDE .page-shell so position:sticky
+      isn't trapped inside the unreliable zoom context, and the panel zoom is
+      disabled (.page-shell--flat). Default (DTP): header lives INSIDE the
+      zoom'd panel, exactly as before. */}
+  {stickyHeader && (
+    <header
+      class:list={["site-header", "is-sticky", transparentHeader && "is-transparent"]}
+      data-site-header
+      data-sticky
+    >
       <div class="site-header__inner">
         <slot name="brand" />
-
         <nav class="site-nav" aria-label="Primary">
           {navItems.map((item) => (
             <a
@@ -140,27 +190,65 @@ const year = new Date().getFullYear();
             </a>
           ))}
         </nav>
-
         <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" data-nav-toggle>
           <span class="nav-toggle__bar"></span>
           <span class="nav-toggle__bar"></span>
           <span class="nav-toggle__bar"></span>
         </button>
       </div>
-
       <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" data-mobile-nav>
         {navItems.map((item) => (
           <a href={item.href} class="mobile-nav__link">{item.label}</a>
         ))}
       </nav>
     </header>
+  )}
+
+  {/* The whole content panel floats on the gutter photo and scales as one unit.
+      zoom:var(--page-scale) on .page-shell scales header + main + footer
+      uniformly; the gutter photo shows beside the header too. zoom (not
+      transform:scale) keeps normal document flow + centering and avoids a
+      transformed stacking context. When stickyHeader is true, the panel is
+      flattened (.page-shell--flat drops the zoom) so the now-external sticky
+      header isn't out of sync with a scaled panel. */}
+  <div class:list={["page-shell", stickyHeader && "page-shell--flat"]}>
+    {!stickyHeader && (
+      <header class="site-header">
+        <div class="site-header__inner">
+          <slot name="brand" />
+
+          <nav class="site-nav" aria-label="Primary">
+            {navItems.map((item) => (
+              <a
+                href={item.href}
+                class={currentPath === item.href ? "site-nav__link is-active" : "site-nav__link"}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" data-nav-toggle>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+          </button>
+        </div>
+
+        <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" data-mobile-nav>
+          {navItems.map((item) => (
+            <a href={item.href} class="mobile-nav__link">{item.label}</a>
+          ))}
+        </nav>
+      </header>
+    )}
 
     <main id="main" tabindex="-1">
       <slot />
     </main>
 
     <footer class="site-footer">
-      <div class="site-footer__inner">
+      <div class="site-footer__inner" data-footer-cols={footerColCount} style={`--footer-cols: ${footerColCount};`}>
         <div class="site-footer__brand">
           <span class="site-footer__name">{siteName}</span>
           {footerBlurb && <p class="site-footer__blurb">{footerBlurb}</p>}
@@ -198,6 +286,32 @@ const year = new Date().getFullYear();
         document.body.classList.toggle("nav-open", !expanded);
       });
     }
+
+    // Sticky-header scroll restyle — re-homed from MWC/fussybean MainLayouts.
+    // Only wires up when stickyHeader rendered a [data-sticky] header; on DTP
+    // (default, no data-sticky) the selector misses and this is a no-op, so
+    // DTP gets zero new behavior. The inline script can't read Astro props, so
+    // the data-sticky attribute is the prop's runtime signal.
+    const stickyHeader = document.querySelector("[data-site-header][data-sticky]");
+    if (stickyHeader) {
+      let ticking = false;
+      const onScroll = () => {
+        if (window.scrollY > 12) stickyHeader.classList.add("is-scrolled");
+        else stickyHeader.classList.remove("is-scrolled");
+        ticking = false;
+      };
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (!ticking) {
+            window.requestAnimationFrame(onScroll);
+            ticking = true;
+          }
+        },
+        { passive: true }
+      );
+      onScroll();
+    }
   })();
 </script>
 
@@ -231,6 +345,10 @@ const year = new Date().getFullYear();
   @media (max-width: 760px) {
     .page-shell { max-width: none; box-shadow: none; zoom: 1; }
   }
+  /* stickyHeader sites: the header is external + sticky, so a scaled panel
+     would desync from it. Flatten the zoom. (No effect on DTP — default
+     branch never gets this class.) */
+  .page-shell--flat { zoom: 1; }
 
   /* Skip link */
   .skip-link {
@@ -252,9 +370,45 @@ const year = new Date().getFullYear();
      the panel header scrolls with the panel, and position:sticky inside a
      zoom'd panel is unreliable. Logo pins far-left, nav far-right via the
      panel's own padding (--space-8), NOT clamped to a narrow article shell. */
+  /* Chrome color tokens (hardening 2026-05-29). Each resolves to DTP's exact
+     current value when the site doesn't set the var, so DTP is unchanged. A
+     per-site site-tokens.css reskins chrome by setting --header-bg /
+     --header-border / --footer-bg / --footer-fg / --nav-link in :root. */
   .site-header {
-    background: var(--color-cream);
-    border-bottom: 1px solid var(--color-sage-light);
+    background: var(--header-bg, var(--color-cream));
+    border-bottom: 1px solid var(--header-border, var(--color-sage-light));
+  }
+  /* stickyHeader=true: external sticky band with backdrop-blur. Inert on DTP
+     (default branch never carries .is-sticky). The site supplies the scrolled
+     restyle (bg/blur/shadow) via its own scoped CSS keyed on
+     `.site-header.is-scrolled`; the shell only supplies the positioning +
+     a sane default blur so an un-themed sticky header still works. */
+  .site-header.is-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    transition: background var(--duration-base) var(--ease-out),
+                border-color var(--duration-base) var(--ease-out),
+                box-shadow var(--duration-base) var(--ease-out);
+  }
+  /* transparentHeader=true: overlay the header on a homepage hero. Goes solid
+     again on scroll (.is-scrolled, set by the gated script). Site CSS can
+     override the scrolled bg via --header-bg. */
+  .site-header.is-transparent {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: transparent;
+    border-bottom-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .site-header.is-transparent.is-scrolled {
+    position: sticky;
+    background: var(--header-bg, var(--color-cream));
+    border-bottom-color: var(--header-border, var(--color-sage-light));
   }
   .site-header__inner {
     padding: 0 var(--space-8);
@@ -275,7 +429,7 @@ const year = new Date().getFullYear();
     font-family: var(--font-sans);
     font-size: var(--text-sm);
     font-weight: var(--weight-medium);
-    color: var(--color-paper-ink);
+    color: var(--nav-link, var(--color-paper-ink));
     text-decoration: none;
     letter-spacing: 0.01em;
     padding: var(--space-2) 0;
@@ -359,21 +513,42 @@ const year = new Date().getFullYear();
   /* Footer */
   .site-footer {
     margin-top: var(--space-24);
-    background: var(--color-paper-muted);
-    color: var(--color-paper-ink);
-    border-top: 1px solid var(--color-sage-light);
+    background: var(--footer-bg, var(--color-paper-muted));
+    color: var(--footer-fg, var(--color-paper-ink));
+    border-top: 1px solid var(--header-border, var(--color-sage-light));
   }
+  /* Column-count-driven: brand (2fr) + one 1fr per footer link column.
+     --footer-cols is set inline from footerColumns.length. DTP has 2 columns →
+     "2fr 1fr 1fr" — byte-identical to the old hardcoded value. The fallback 2
+     keeps it sane if the inline var ever fails to arrive. */
   .site-footer__inner {
     padding: var(--space-16) var(--space-8) var(--space-10);
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 2fr repeat(var(--footer-cols, 2), 1fr);
     gap: var(--space-12);
   }
+  /* Intermediate breakpoint for wide footers (fussybean's 3 columns → 2-up).
+     GATED to ≥3 footer columns so DTP (data-footer-cols="2") never enters the
+     760–900 window — its only footer breakpoint stays the 760px collapse. */
+  @media (max-width: 900px) {
+    .site-footer__inner[data-footer-cols="3"],
+    .site-footer__inner[data-footer-cols="4"] {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  /* Footer sub-element colors are ALSO tokenized (beyond --footer-fg) so a
+     light-on-dark footer (MWC forest / fussybean espresso) can be fully
+     reskinned without forking. Each defaults to DTP's exact current value:
+       --footer-name → --color-paper-ink   (brand wordmark)
+       --footer-blurb → --color-muted       (brand blurb)
+       --footer-heading → --color-brass     (column h4)
+       --footer-link / --footer-link-hover → --color-paper-ink / --color-brass
+     DTP sets none of these, so its render is unchanged. */
   .site-footer__brand .site-footer__name {
     font-family: var(--font-serif);
     font-size: var(--text-2xl);
     font-weight: var(--weight-semibold);
-    color: var(--color-paper-ink);
+    color: var(--footer-name, var(--color-paper-ink));
     letter-spacing: -0.012em;
     display: block;
     margin-bottom: var(--space-3);
@@ -381,7 +556,7 @@ const year = new Date().getFullYear();
   .site-footer__blurb {
     font-size: var(--text-sm);
     line-height: var(--leading-normal);
-    color: var(--color-muted);
+    color: var(--footer-blurb, var(--color-muted));
     max-width: 32rem;
     margin: 0;
   }
@@ -391,13 +566,13 @@ const year = new Date().getFullYear();
     font-weight: var(--weight-semibold);
     text-transform: uppercase;
     letter-spacing: var(--tracking-wide);
-    color: var(--color-brass);
+    color: var(--footer-heading, var(--color-brass));
     margin-bottom: var(--space-4);
   }
   .site-footer__col a {
     display: block;
     font-size: var(--text-sm);
-    color: var(--color-paper-ink);
+    color: var(--footer-link, var(--color-paper-ink));
     text-decoration: none;
     padding: var(--space-1) 0;
     opacity: 0.85;
@@ -406,7 +581,7 @@ const year = new Date().getFullYear();
   }
   .site-footer__col a:hover {
     opacity: 1;
-    color: var(--color-brass);
+    color: var(--footer-link-hover, var(--color-brass));
   }
   /* Base/legal row aligns to the panel — same horizontal padding (--space-8) as
      the footer columns above it. CLEANUP (P1): previously this row used
@@ -415,7 +590,7 @@ const year = new Date().getFullYear();
      mismatch where the legal row sat narrower/misaligned vs the footer above.
      This is the ONE intentional visual delta in the DTP migration. */
   .site-footer__base {
-    border-top: 1px solid var(--color-sage-light);
+    border-top: 1px solid var(--footer-border, var(--header-border, var(--color-sage-light)));
     padding: var(--space-6) var(--space-8);
   }
   .site-footer__copy {
