@@ -155,7 +155,9 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
         return (
           <article id={`pick-${i + 1}`} class="deep-card">
             <div class="deep-card__img-col">
-              <Media src={(p as any).image} alt={p.name} variant="deep" class="deep-card__img" placeholder="🧴" />
+              <div class="deep-card__img">
+                <Media src={(p as any).image} alt={p.name} variant="deep" placeholder="🧴" />
+              </div>
               <div class="deep-card__rank"><span>{i + 1}</span>of {totalPicks} picks</div>
             </div>
 
@@ -281,8 +283,8 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
   .guide-title {
     font-family: var(--font-serif);
     font-weight: 500;
-    font-size: clamp(2.25rem, 5vw, 3.5rem);
-    line-height: 1.02;
+    font-size: clamp(1.75rem, 3.6vw, 2.5rem);
+    line-height: 1.06;
     letter-spacing: -0.02em;
     margin: 0 0 var(--space-4);
     color: var(--color-paper-ink);
@@ -341,8 +343,8 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
   }
   .section-head h2 {
     font-family: var(--font-serif);
-    font-size: 32px;
-    line-height: 1.1;
+    font-size: 1.5rem;
+    line-height: 1.15;
     letter-spacing: -0.02em;
     color: var(--color-paper-ink);
     margin: 0;
@@ -464,11 +466,15 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
   .deep-card__img-col {
     display: flex; flex-direction: column; align-items: center;
   }
-  /* Box sizing only — <Media variant="deep"> owns white bg + contain + radius.
-     aspect-ratio 1/1 on a 220px-wide box yields a 220px square. */
+  /* Authored wrapper around <Media variant="deep"> — Astro scope isolation means
+     a scoped rule can't target Media's root element (different component cid), so
+     the box sizing + border live on this authored wrapper and Media (width:100%)
+     fills it. radius+overflow so the border aligns with .media--deep's 10px radius. */
   .deep-card__img {
     width: 220px;
     border: 1px solid var(--color-sage-light);
+    border-radius: 10px;
+    overflow: hidden;
   }
   .deep-card__rank {
     margin-top: 18px;
@@ -640,8 +646,8 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
   }
   .editorial .prose :global(h2) {
     font-family: var(--font-serif);
-    font-size: 28px;
-    line-height: 1.15;
+    font-size: 1.5rem;
+    line-height: 1.2;
     letter-spacing: -0.02em;
     margin: var(--space-10) 0 var(--space-5);
     font-weight: 500;
@@ -658,12 +664,16 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
   }
   .editorial .prose :global(p) {
     margin: 0 0 18px;
+    max-width: 68ch;
   }
   /* Tables — structured spec sheet treatment. Full width with zebra stripes,
      a darker header row, bolded first column as the row anchor, and a hover
      highlight for scanning across wide rows. */
   .editorial .prose :global(table) {
+    display: block;
     width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
     border-collapse: separate;
     border-spacing: 0;
     margin: var(--space-6) 0 var(--space-8);
@@ -784,7 +794,7 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
       padding: 20px;
     }
     .deep-card__img { width: 100%; max-width: 240px; margin: 0 auto; }
-    .section-head h2 { font-size: 26px; }
-    .guide-title { font-size: 2rem; }
+    .section-head h2 { font-size: 1.35rem; }
+    .guide-title { font-size: 1.6rem; }
   }
 </style>
