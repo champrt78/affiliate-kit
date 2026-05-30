@@ -9,5 +9,26 @@
       "Keep the order, but set a cloakedSlug on the Genesis Mini and point the top-pick CTA there",
       "Leave it — Analogue Pocket first is fine as the aspirational hero, the per-product cards still link correctly"
     ]
+  },
+  {
+    "id": "sa-heater-image-deadspace",
+    "site": "starteraquarium",
+    "title": "Heater guide cards show side margins (tall product, image contains correctly on white)",
+    "body": "Aquarium heaters are long thin glass tubes, so their Amazon main shots are tall (aspect 0.5 to 0.76). The cards contain them correctly on white with no crop (passes the locked design and image lint), but the tall shots leave wide empty margins on the sides of the card. The QA reviewer confirmed the card box itself matches the canonical mockup exactly, so this is correct-by-design for tall products, not a bug. Do you want it changed?",
+    "options": [
+      "Accept it — containing a tall product on white is the correct, no-crop behavior; the margins are honest",
+      "Swap the tall heaters to squarer lifestyle or angled product shots so the cards fill more (I'll re-validate aspect + lint)",
+      "Add a subtle card background tint behind heater images so the margins read as intentional"
+    ]
+  },
+  {
+    "id": "gog-home-tile-orphan",
+    "site": "gameovergear",
+    "title": "gameovergear homepage category tiles render 5 + 1 orphan",
+    "body": "The homepage 'Select Your Gear' section shows 5 tiles in row one and 1 orphan in row two (6 categories total). The no-orphan rule formally governs in-guide product grids (those are all clean 2x3), not homepage nav tiles, so this is not a strict violation. Note: you already approved this homepage as 'perfect,' so this is just flagged for awareness.",
+    "options": [
+      "Leave it — already approved, and the orphan rule does not govern homepage tiles",
+      "Rebalance the 6 category tiles to a 3x2 / 2x3 grid for a more polished look"
+    ]
   }
 ]
