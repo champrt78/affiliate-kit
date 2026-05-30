@@ -20,7 +20,7 @@ images:
   hero: "https://m.media-amazon.com/images/I/81uCo3jczlL._AC_SL1500_.jpg"
   heroCaption: "Fluval Flex 9 Gallon Aquarium Kit, Black, with curved front glass. Photo: Fluval manufacturer media via Amazon."
 bottomLine:
-  verdict: ""
+  verdict: "The Fluval Flex 9 Gallon is an easy recommendation for a beginner who wants a finished-looking tank without piecing one together: the curved glass, hidden 3-stage filtration, and remote RGB lighting come in one box. Just add a small heater for tropical fish."
   supporting: "A stylish all-in-one nano kit that owner reports favor for a single betta or a small planted setup, with two well-documented quirks to plan around: the lid that wants propping and a filter compartment that sits below the tank water line."
 scorecard:
   axes:

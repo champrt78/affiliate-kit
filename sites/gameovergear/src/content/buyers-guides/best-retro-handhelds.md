@@ -116,7 +116,7 @@ pubDate: 2026-05-30
 lastUpdated: 2026-05-30
 bgTheme: solid
 bottomLine:
-  verdict: ""
+  verdict: "Match the handheld to the era you replay. For Game Boy up through PS1 on Linux, the RG40XX V and clamshell RG35XX SP are the sweet spot; for Android power up through tougher systems, step up to the RG406H or the AMOLED Retroid Pocket 5."
   supporting: "Six spec-verified picks: four budget Linux handhelds chosen by form factor over one shared chip, plus two Android devices that climb the power ladder to GameCube and beyond."
 ---
 

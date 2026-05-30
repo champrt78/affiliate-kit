@@ -117,7 +117,7 @@ pubDate: 2026-05-30
 lastUpdated: 2026-05-30
 bgTheme: solid
 bottomLine:
-  verdict: ""
+  verdict: "The 8BitDo Pro 2 is the do-everything pick: it pairs with Switch, PC, Android, and Raspberry Pi, and adds back paddles and remappable profiles most retro pads skip. Match the specialty pads to the system you actually play."
   supporting: "Six spec-verified picks span every classic controller layout and connection type, from a budget wired SNES pad to a moddable arcade stick, so the right one depends on which retro feel and platforms you want."
 faq:
   - question: "What is the difference between Bluetooth, 2.4 GHz, and wired controllers?"

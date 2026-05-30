@@ -19,7 +19,7 @@ images:
   heroCaption: "AquaClear 50 Power Filter, rated for 20 to 50 gallon aquariums. Photo: Fluval / AquaClear manufacturer media via Amazon."
 rating: 4.0
 bottomLine:
-  verdict: ""
+  verdict: "The AquaClear 50 is the filter most beginners should buy: a large media basket, a flow-control lever to dial down the current, and a refiltration design that does more biological filtration than its price suggests. The open intake is the main thing to watch with small fish."
   supporting: "If you want one dependable hang-on-back filter that grows with your first tank and lets you customize the media, the AquaClear 50 is the boring-in-the-best-way pick; the one thing to plan for is the open intake if you keep tiny fish, fry, or shrimp."
 scorecard:
   axes:

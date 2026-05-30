@@ -117,7 +117,7 @@ pubDate: 2026-05-30
 lastUpdated: 2026-05-30
 bgTheme: solid
 bottomLine:
-  verdict: ""
+  verdict: "For a true grab-one-box start, the Aqueon 10 Gallon LED Kit is the only pick here that already includes a heater. If you want the best-looking tank and don't mind buying a small heater separately, the Fluval Flex 9 Gallon is the upgrade choice."
   supporting: "Six all-in-one freshwater kits span five brands and 5 to 10 gallons; the right one comes down to budget, how much tank you want to manage, and whether you need the heater included in the box or are willing to add one."
 ---
 

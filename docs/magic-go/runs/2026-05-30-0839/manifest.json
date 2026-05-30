@@ -23,7 +23,7 @@
         "Three honest lanes: original cartridges (Atari 2600+, RetroN 5 HD), a curated built-in library (Genesis Mini, Atari Game Station Pro), or a portable that docks to the TV (Retroid Pocket Classic). The Genesis Mini is the lowest-risk pick; the Analogue Pocket is the purist splurge, but only at its real direct price."
       ],
       "supporting": "",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "registered",
@@ -31,7 +31,8 @@
       "qa_status": "passed",
       "qa_notes": "ce-design-implementation-reviewer APPROVED 2026-05-30: all 8 criteria pass (image-contain-on-white, readability 67-74 CPL, full-width header, 0.95 scale, 2x3 grids, distinct heroes, mobile clean, skins correct). Renders verified vs canonical mockup. Still DRAFT/noindex until verdict written.",
       "confidence": "verify-first",
-      "confidence_note": "Three listings have pricing caveats: the Analogue Pocket buy-box is a third-party seller far above its ~$220 direct MSRP, and the Genesis Mini and Atari 2600+ show multi-seller options with no confirmed buy-box. Re-check prices before the verdict goes live."
+      "confidence_note": "Three listings have pricing caveats: the Analogue Pocket buy-box is a third-party seller far above its ~$220 direct MSRP, and the Genesis Mini and Atari 2600+ show multi-seller options with no confirmed buy-box. Re-check prices before the verdict goes live.",
+      "verdict": "For most people the Sega Genesis Mini is the easy call: first-party hardware, widely praised M2 emulation, and the deepest owner-review base here. Hold off on the Analogue Pocket on Amazon until its price drops back toward the roughly $220 direct MSRP."
     },
     {
       "slug": "best-retro-controllers",
@@ -48,14 +49,15 @@
         "Buy-once beats cheap-and-replace here. The 8BitDo Pro 2 is the all-rounder; the SN30 Pro is the smaller, lighter take on the same idea; and the M30, Tribute64 V2, and Arcade Stick each solve one specific system better than a generic pad does."
       ],
       "supporting": "",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "registered",
       "last_commit": "",
       "qa_status": "passed",
       "qa_notes": "ce-design-implementation-reviewer APPROVED 2026-05-30: all 8 criteria pass (image-contain-on-white, readability 67-74 CPL, full-width header, 0.95 scale, 2x3 grids, distinct heroes, mobile clean, skins correct). Renders verified vs canonical mockup. Still DRAFT/noindex until verdict written.",
-      "confidence": "solid"
+      "confidence": "solid",
+      "verdict": "The 8BitDo Pro 2 is the do-everything pick: it pairs with Switch, PC, Android, and Raspberry Pi, and adds back paddles and remappable profiles most retro pads skip. Match the specialty pads to the system you actually play."
     },
     {
       "slug": "anbernic-rg40xx-review",
@@ -72,14 +74,15 @@
         "Buy the RG40XX H if you want the horizontal grip and the bigger 4-inch screen; skip it if you need Android apps or heavier systems, where the RG406H or a Retroid handheld is the better spend."
       ],
       "supporting": "",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "registered",
       "last_commit": "",
       "qa_status": "passed",
       "qa_notes": "ce-design-implementation-reviewer APPROVED 2026-05-30: all 8 criteria pass (image-contain-on-white, readability 67-74 CPL, full-width header, 0.95 scale, 2x3 grids, distinct heroes, mobile clean, skins correct). Renders verified vs canonical mockup. Still DRAFT/noindex until verdict written.",
-      "confidence": "solid"
+      "confidence": "solid",
+      "verdict": "If you want a wide-screen retro handheld without spending Android money, the RG40XX H is the value pick. It will not push the newest 3D systems, but for the libraries most people actually replay it does the job at a fraction of the cost."
     },
     {
       "slug": "best-starter-aquarium-kits",
@@ -96,14 +99,15 @@
         "The Aqueon 10 Gallon LED Kit is the safest first buy: more water volume is more forgiving for a beginner, and it is the one kit that ships with a heater. The Fluval Flex 9 is the style upgrade; the 5-gallon kits are best for bettas and tight spaces."
       ],
       "supporting": "Six all-in-one freshwater kits span five brands and 5 to 10 gallons; the right one comes down to budget, how much tank you want to manage, and whether you need the heater included in the box or are willing to add one.",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "registered",
       "last_commit": "",
       "qa_status": "passed",
       "qa_notes": "ce-design-implementation-reviewer APPROVED 2026-05-30: all 8 criteria pass (image-contain-on-white, readability 67-74 CPL, full-width header, 0.95 scale, 2x3 grids, distinct heroes, mobile clean, skins correct). Renders verified vs canonical mockup. Still DRAFT/noindex until verdict written.",
-      "confidence": "solid"
+      "confidence": "solid",
+      "verdict": "For a true grab-one-box start, the Aqueon 10 Gallon LED Kit is the only pick here that already includes a heater. If you want the best-looking tank and don't mind buying a small heater separately, the Fluval Flex 9 Gallon is the upgrade choice."
     },
     {
       "slug": "best-aquarium-filters-for-beginners",
@@ -120,14 +124,15 @@
         "Pick by tank and fuss level. AquaClear 30 for set-and-forget capacity, Tetra Whisper IQ for the quietest run, a hygger sponge for gentle betta-safe flow, and the Cascade internal when you would rather not see a filter on the back."
       ],
       "supporting": "Six beginner filters span the three styles a first-tank keeper will meet: hang-on-back workhorses for most setups, a gentle air-driven sponge for bettas and shrimp, and a fully submersible internal for spots where a HOB will not fit; the right one depends on your tank size, your fish, and where the tank sits.",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "registered",
       "last_commit": "",
       "qa_status": "passed",
       "qa_notes": "ce-design-implementation-reviewer APPROVED 2026-05-30: all 8 criteria pass (image-contain-on-white, readability 67-74 CPL, full-width header, 0.95 scale, 2x3 grids, distinct heroes, mobile clean, skins correct). Renders verified vs canonical mockup. Still DRAFT/noindex until verdict written.",
-      "confidence": "solid"
+      "confidence": "solid",
+      "verdict": "Pick by tank and fuss level. AquaClear 30 for set-and-forget capacity, Tetra Whisper IQ for the quietest run, a hygger sponge for gentle betta-safe flow, and the Cascade internal when you would rather not see a filter on the back."
     },
     {
       "slug": "fluval-flex-9-gallon-review",
@@ -144,14 +149,15 @@
         "Buy the Fluval Flex 9 for the design and the all-in-one convenience; skip it if you want the cheapest possible start or need a heater included, since this kit does not ship with one."
       ],
       "supporting": "A stylish all-in-one nano kit that owner reports favor for a single betta or a small planted setup, with two well-documented quirks to plan around: the lid that wants propping and a filter compartment that sits below the tank water line.",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "registered",
       "last_commit": "",
       "qa_status": "passed",
       "qa_notes": "ce-design-implementation-reviewer APPROVED 2026-05-30: all 8 criteria pass (image-contain-on-white, readability 67-74 CPL, full-width header, 0.95 scale, 2x3 grids, distinct heroes, mobile clean, skins correct). Renders verified vs canonical mockup. Still DRAFT/noindex until verdict written.",
-      "confidence": "solid"
+      "confidence": "solid",
+      "verdict": "The Fluval Flex 9 Gallon is an easy recommendation for a beginner who wants a finished-looking tank without piecing one together: the curved glass, hidden 3-stage filtration, and remote RGB lighting come in one box. Just add a small heater for tropical fish."
     },
     {
       "status": "options-drafted",
@@ -163,7 +169,7 @@
         "Two questions decide this: how much screen, and Linux or Android. The RG28XX is the carry-anywhere mini; the RG34XX 3:2 panel suits Game Boy Advance best; and the Retroid Pocket 5 AMOLED screen and cooling fan are what set it apart from everything else here."
       ],
       "supporting": "",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "registered",
@@ -175,7 +181,8 @@
       "slug": "best-retro-handhelds",
       "site": "gameovergear",
       "type": "buyers-guide",
-      "confidence": "solid"
+      "confidence": "solid",
+      "verdict": "Match the handheld to the era you replay. For Game Boy up through PS1 on Linux, the RG40XX V and clamshell RG35XX SP are the sweet spot; for Android power up through tougher systems, step up to the RG406H or the AMOLED Retroid Pocket 5."
     },
     {
       "status": "options-drafted",
@@ -187,7 +194,7 @@
         "Get the 8BitDo Pro 2 if you want one pad for many devices and would rather not babysit stick drift; the Hall effect SKU addresses the most common long-term complaint about analog sticks."
       ],
       "supporting": "",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "registered",
@@ -199,7 +206,8 @@
       "slug": "8bitdo-pro-2-review",
       "site": "gameovergear",
       "type": "review",
-      "confidence": "solid"
+      "confidence": "solid",
+      "verdict": "For most players the 8BitDo Pro 2 is the best-value do-everything retro pad. It is not a pro-tier fight stick, but the layout, profiles, and platform support make it the default recommendation over single-system controllers."
     },
     {
       "status": "options-drafted",
@@ -211,7 +219,7 @@
         "Heaters are the do-not-cook-or-freeze-your-fish anxiety. The Aqueon Pro handles it for most tanks; the Eheim Jager is the precise recalibratable choice; and for nano tanks the preset Tetra HT keeps it simple. Match wattage to roughly 5W per gallon."
       ],
       "supporting": "Six beginner heaters span the range a first tank needs, from a no-dial preset unit for a betta cube to a digital titanium controller for a 45 gallon community tank; the right one comes down to your tank size and whether you want simplicity, precision, or shatterproof durability.",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "registered",
@@ -223,7 +231,8 @@
       "slug": "best-aquarium-heaters-for-beginners",
       "site": "starteraquarium",
       "type": "buyers-guide",
-      "confidence": "solid"
+      "confidence": "solid",
+      "verdict": "For a worry-free first heater, the Aqueon Pro adjustable is the easy call: shatter-resistant with an auto-shutoff. Step up to the Fluval E200 if you want an LCD readout, or the hygger titanium if you have cracked a glass heater before."
     },
     {
       "status": "options-drafted",
@@ -235,7 +244,7 @@
         "Get the AquaClear 50 if you want a filter you will not outgrow and do not mind a simple foam guard over the intake for small fish or shrimp; look at a self-priming Seachem Tidal instead if you want more out-of-the-box convenience."
       ],
       "supporting": "If you want one dependable hang-on-back filter that grows with your first tank and lets you customize the media, the AquaClear 50 is the boring-in-the-best-way pick; the one thing to plan for is the open intake if you keep tiny fish, fry, or shrimp.",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "registered",
@@ -247,6 +256,80 @@
       "slug": "aquaclear-power-filter-review",
       "site": "starteraquarium",
       "type": "review",
+      "confidence": "solid",
+      "verdict": "The AquaClear 50 is the filter most beginners should buy: a large media basket, a flow-control lever to dial down the current, and a refiltration design that does more biological filtration than its price suggests. The open intake is the main thing to watch with small fish."
+    },
+    {
+      "slug": "best-arcade-sticks-for-retro-gaming",
+      "site": "gameovergear",
+      "type": "buyers-guide",
+      "title": "Best Arcade Sticks for Retro Gaming",
+      "product": "(6-pick guide)",
+      "status": "options-drafted",
+      "research_note": "",
+      "content_path": "sites/gameovergear/src/content/buyers-guides/best-arcade-sticks-for-retro-gaming.md",
+      "bottom_line_options": [
+        "For most retro fighters the Mayflash F300 is the value entry: it connects to nearly everything and takes Sanwa mods later. Step up to the 8BitDo Arcade Stick if you want wireless, or the Razer Kitsune if you have moved to leverless.",
+        "The 8BitDo Arcade Stick is the do-it-all pick: wireless across Switch and PC with full remapping. Budget players start with the Mayflash F300; leverless converts want the Razer Kitsune.",
+        "Match the stick to platform and budget. Mayflash F300 and F500 for mod-friendly value, 8BitDo for wireless convenience, Razer Kitsune for the modern leverless layout, and the Hori Fighting Stick Alpha for a premium Xbox-licensed build."
+      ],
+      "supporting": "Six spec-verified fight sticks span budget to premium, lever and leverless, so the right one depends on your platform, whether you plan to mod, and which input format you want to learn.",
+      "verdict_written": false,
+      "failed_at": null,
+      "error": null,
+      "kv_status": "registered",
+      "last_commit": "",
+      "qa_status": "none",
+      "qa_notes": "new this round; renders through the QA-approved guide template; needs a QA eyeball before publish",
+      "confidence": "solid"
+    },
+    {
+      "slug": "best-retro-scalers-and-displays",
+      "site": "gameovergear",
+      "type": "buyers-guide",
+      "title": "Best Retro Scalers and Displays",
+      "product": "(4-pick guide)",
+      "status": "options-drafted",
+      "research_note": "",
+      "content_path": "sites/gameovergear/src/content/buyers-guides/best-retro-scalers-and-displays.md",
+      "bottom_line_options": [
+        "Start where your console plugs in. A cheap GANA or LEVELHIKE converter gets composite or SNES output onto a modern TV; step up to the Marseille mClassic for a sharper picture, or the Kaico OSSC for scanline-grade scaling. The famous RetroTINK units sell direct, not on Amazon.",
+        "For most people a sub-$30 converter (GANA or LEVELHIKE) is enough to get a retro console onto an HDMI TV. The mClassic adds a real sharpness bump for around $60; the OSSC is the enthusiast pick. RetroTINK lives at retrotink.com, not here.",
+        "Cheap converters (GANA, LEVELHIKE) solve the basic problem; the Marseille mClassic is the easy quality upgrade; the Kaico OSSC is the premium of what Amazon stocks. If you want a RetroTINK, buy it direct from retrotink.com."
+      ],
+      "supporting": "Four picks span the clean-signal problem from both ends: a sub-$15 composite converter and a console-specific SNES RGB cable for getting a picture at all, an inline mClassic upscaler for a convenient quality pass, and the FPGA-based OSSC for enthusiasts who want sharp, low-latency output and have an RGB source to feed it.",
+      "verdict_written": false,
+      "failed_at": null,
+      "error": null,
+      "kv_status": "registered",
+      "last_commit": "",
+      "qa_status": "none",
+      "qa_notes": "new this round; renders through the QA-approved guide template; needs a QA eyeball before publish",
+      "confidence": "verify-first",
+      "confidence_note": "Niche category with thin Amazon stock: the GANA converter showed only 2 left, and the enthusiast-favorite RetroTINK units are not sold on Amazon (direct from retrotink.com). 4 clean picks rather than a forced 6. Re-check stock before the verdict goes live."
+    },
+    {
+      "slug": "best-aquarium-lights-for-beginners",
+      "site": "starteraquarium",
+      "type": "buyers-guide",
+      "title": "Best Aquarium Lights for Beginners",
+      "product": "(6-pick guide)",
+      "status": "options-drafted",
+      "research_note": "",
+      "content_path": "sites/starteraquarium/src/content/buyers-guides/best-aquarium-lights-for-beginners.md",
+      "bottom_line_options": [
+        "Match the light to your plans. For a fish-only tank the budget NICREW or Marineland strip is plenty; if you want live plants, step up to the Finnex Stingray for low-light or the Fluval Plant 3.0 for a planted showpiece.",
+        "The NICREW ClassicLED Plus is the easy first light: cheap, sized to common tanks, and enough for low-light plants. Go Finnex Stingray or Fluval Plant 3.0 if you are serious about plants, or the hygger clip-on for a nano tank.",
+        "Fish-only or planted decides this. NICREW or Marineland for fish-only on a budget, the hygger clip for nano tanks, the Finnex Stingray for easy low-light plants, and the app-controlled Fluval Plant 3.0 when you want a real planted tank."
+      ],
+      "supporting": "Six beginner lights span the real lighting decision a first-tank keeper faces: a budget all-around bar and a nano clip-on for most setups, two fish-display fixtures when plants are not the goal, and a slim low-light planted fixture plus a premium app-controlled one for growing live plants; the right pick depends on your tank length, whether you want plants, and how much you want to program.",
+      "verdict_written": false,
+      "failed_at": null,
+      "error": null,
+      "kv_status": "registered",
+      "last_commit": "",
+      "qa_status": "none",
+      "qa_notes": "new this round; renders through the QA-approved guide template; needs a QA eyeball before publish",
       "confidence": "solid"
     }
   ],

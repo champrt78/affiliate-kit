@@ -116,7 +116,7 @@ pubDate: 2026-05-30
 lastUpdated: 2026-05-30
 bgTheme: solid
 bottomLine:
-  verdict: ""
+  verdict: "Pick by tank and fuss level. AquaClear 30 for set-and-forget capacity, Tetra Whisper IQ for the quietest run, a hygger sponge for gentle betta-safe flow, and the Cascade internal when you would rather not see a filter on the back."
   supporting: "Six beginner filters span the three styles a first-tank keeper will meet: hang-on-back workhorses for most setups, a gentle air-driven sponge for bettas and shrimp, and a fully submersible internal for spots where a HOB will not fit; the right one depends on your tank size, your fish, and where the tank sits."
 ---
 

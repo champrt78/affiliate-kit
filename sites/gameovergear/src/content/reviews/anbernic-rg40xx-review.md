@@ -18,7 +18,7 @@ images:
   hero: "https://m.media-amazon.com/images/I/717VZqOf7eL._SL1500_.jpg"
   heroCaption: "Anbernic RG40XX H, Black edition. Photo: Anbernic manufacturer media."
 bottomLine:
-  verdict: ""
+  verdict: "If you want a wide-screen retro handheld without spending Android money, the RG40XX H is the value pick. It will not push the newest 3D systems, but for the libraries most people actually replay it does the job at a fraction of the cost."
 scorecard:
   axes:
     - { name: "2D & PS1/DS Emulation", weight: 25, score: 8.0 }

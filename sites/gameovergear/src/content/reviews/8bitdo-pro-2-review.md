@@ -21,7 +21,7 @@ images:
   imageScale: 1.0
 rating: 4.0
 bottomLine:
-  verdict: ""
+  verdict: "For most players the 8BitDo Pro 2 is the best-value do-everything retro pad. It is not a pro-tier fight stick, but the layout, profiles, and platform support make it the default recommendation over single-system controllers."
 scorecard:
   axes:
     - { name: "Authenticity", weight: 25, score: 9.0 }
