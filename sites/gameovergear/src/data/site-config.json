@@ -10,7 +10,7 @@
   },
   "niche": {
     "vertical": "retro-gaming-gear",
-    "subcategory": "classic-console + arcade + emulation hardware"
+    "subcategory": "retro consoles & systems (reissues, FPGA, minis) + classic-console, arcade & emulation hardware"
   },
   "voice": {
     "register": "nostalgic-enthusiast",
@@ -67,6 +67,7 @@
     ]
   },
   "categoryPillars": [
+    "consoles-and-systems",
     "controllers",
     "arcade-sticks",
     "retro-handhelds",
@@ -76,6 +77,14 @@
   ],
   "navigation": {
     "pillars": [
+      {
+        "slug": "consoles-and-systems",
+        "label": "Consoles & Systems",
+        "type": "commercial",
+        "categoryPillar": "consoles-and-systems",
+        "blurb": "Reissue consoles, FPGA systems, and minis: NEOGEO AES, Analogue, Hyperkin, and more.",
+        "hubKicker": "Buying guides"
+      },
       {
         "slug": "controllers",
         "label": "Controllers",
@@ -134,7 +143,9 @@
     "RetroTINK",
     "Analogue",
     "Krikzz (EverDrive)",
-    "Insurrection Industries"
+    "Insurrection Industries",
+    "SNK (NEOGEO)",
+    "Hyperkin"
   ],
   "doctrineNotes": "Comparison-and-fit framework. Never claim hands-on use; cite manufacturer specs, verified-buyer reviews, and independent testing (My Life in Gaming, RetroRGB, Modern Vintage Gamer) as third-party evidence. No em dashes. No defensive audience exclusions. Visual identity is retro 8-bit/16-bit + Atari + arcade-cabinet nostalgia (pixel display type, CRT scanlines, neon arcade palette); body copy stays readable, the retro lives in the chrome."
 }
