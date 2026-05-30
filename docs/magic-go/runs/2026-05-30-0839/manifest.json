@@ -87,18 +87,23 @@
       "type": "buyers-guide",
       "title": "Best Starter Aquarium Kits for Beginners",
       "product": "(6-pick guide)",
-      "status": "scouted",
+      "status": "options-drafted",
       "research_note": "",
-      "content_path": "",
-      "bottom_line_options": [],
-      "supporting": "",
+      "content_path": "sites/starteraquarium/src/content/buyers-guides/best-starter-aquarium-kits.md",
+      "bottom_line_options": [
+        "For a true grab-one-box start, the Aqueon 10 Gallon LED Kit is the only pick here that already includes a heater. If you want the best-looking tank and don't mind buying a small heater separately, the Fluval Flex 9 Gallon is the upgrade choice.",
+        "Match the kit to your space. A 5-gallon Marina or Fluval Spec V suits a desk or a betta; a 10-gallon Aqueon or Tetra gives community fish room to grow. Whichever you pick, budget for a small preset heater unless it is the Aqueon.",
+        "The Aqueon 10 Gallon LED Kit is the safest first buy: more water volume is more forgiving for a beginner, and it is the one kit that ships with a heater. The Fluval Flex 9 is the style upgrade; the 5-gallon kits are best for bettas and tight spaces."
+      ],
+      "supporting": "Six all-in-one freshwater kits span five brands and 5 to 10 gallons; the right one comes down to budget, how much tank you want to manage, and whether you need the heater included in the box or are willing to add one.",
       "verdict_written": false,
       "failed_at": null,
       "error": null,
-      "kv_status": "none",
+      "kv_status": "registered",
       "last_commit": "",
       "qa_status": "none",
-      "qa_notes": ""
+      "qa_notes": "",
+      "confidence": "solid"
     },
     {
       "slug": "best-aquarium-filters-for-beginners",
@@ -106,18 +111,23 @@
       "type": "buyers-guide",
       "title": "Best Aquarium Filters for Beginners",
       "product": "(6-pick guide)",
-      "status": "scouted",
+      "status": "options-drafted",
       "research_note": "",
-      "content_path": "",
-      "bottom_line_options": [],
-      "supporting": "",
+      "content_path": "sites/starteraquarium/src/content/buyers-guides/best-aquarium-filters-for-beginners.md",
+      "bottom_line_options": [
+        "For most beginner tanks the AquaClear 30 hang-on-back is the do-everything pick: simple, a big media basket, and an adjustable flow lever. Drop to a hygger sponge filter for a betta or fry tank, and the Penn-Plax Cascade internal if you want nothing hanging off the rim.",
+        "Hang-on-back filters are the beginner default, and the AquaClear 30 leads them on media volume and flow control. The Seachem Tidal 35 is the self-priming convenience pick; the Aqueon QuietFlow 10 is the budget starter.",
+        "Pick by tank and fuss level. AquaClear 30 for set-and-forget capacity, Tetra Whisper IQ for the quietest run, a hygger sponge for gentle betta-safe flow, and the Cascade internal when you would rather not see a filter on the back."
+      ],
+      "supporting": "Six beginner filters span the three styles a first-tank keeper will meet: hang-on-back workhorses for most setups, a gentle air-driven sponge for bettas and shrimp, and a fully submersible internal for spots where a HOB will not fit; the right one depends on your tank size, your fish, and where the tank sits.",
       "verdict_written": false,
       "failed_at": null,
       "error": null,
-      "kv_status": "none",
+      "kv_status": "registered",
       "last_commit": "",
       "qa_status": "none",
-      "qa_notes": ""
+      "qa_notes": "",
+      "confidence": "solid"
     },
     {
       "slug": "fluval-flex-9-gallon-review",
@@ -125,18 +135,23 @@
       "type": "review",
       "title": "Fluval Flex 9 Gallon Review",
       "product": "Fluval Flex 9 Gallon",
-      "status": "scouted",
+      "status": "options-drafted",
       "research_note": "",
-      "content_path": "",
-      "bottom_line_options": [],
-      "supporting": "",
+      "content_path": "sites/starteraquarium/src/content/reviews/fluval-flex-9-gallon-review.md",
+      "bottom_line_options": [
+        "The Fluval Flex 9 Gallon is an easy recommendation for a beginner who wants a finished-looking tank without piecing one together: the curved glass, hidden 3-stage filtration, and remote RGB lighting come in one box. Just add a small heater for tropical fish.",
+        "If you care how the tank looks on a desk or shelf, the Fluval Flex 9 is the pick. It costs more than a bare kit, but the built-in filtration and color-adjustable lighting do work a beginner would otherwise have to assemble. Budget for a nano heater.",
+        "Buy the Fluval Flex 9 for the design and the all-in-one convenience; skip it if you want the cheapest possible start or need a heater included, since this kit does not ship with one."
+      ],
+      "supporting": "A stylish all-in-one nano kit that owner reports favor for a single betta or a small planted setup, with two well-documented quirks to plan around: the lid that wants propping and a filter compartment that sits below the tank water line.",
       "verdict_written": false,
       "failed_at": null,
       "error": null,
-      "kv_status": "none",
+      "kv_status": "registered",
       "last_commit": "",
       "qa_status": "none",
-      "qa_notes": ""
+      "qa_notes": "",
+      "confidence": "solid"
     },
     {
       "status": "options-drafted",
@@ -187,15 +202,19 @@
       "confidence": "solid"
     },
     {
-      "status": "scouted",
+      "status": "options-drafted",
       "research_note": "",
-      "content_path": "",
-      "bottom_line_options": [],
-      "supporting": "",
+      "content_path": "sites/starteraquarium/src/content/buyers-guides/best-aquarium-heaters-for-beginners.md",
+      "bottom_line_options": [
+        "Size the heater to the tank first (about 5 watts per gallon), then pick for safety. The shatter-resistant Aqueon Pro is the reliable all-rounder for most beginner tanks; the Tetra HT preset is the simplest choice for a small betta tank.",
+        "For a worry-free first heater, the Aqueon Pro adjustable is the easy call: shatter-resistant with an auto-shutoff. Step up to the Fluval E200 if you want an LCD readout, or the hygger titanium if you have cracked a glass heater before.",
+        "Heaters are the do-not-cook-or-freeze-your-fish anxiety. The Aqueon Pro handles it for most tanks; the Eheim Jager is the precise recalibratable choice; and for nano tanks the preset Tetra HT keeps it simple. Match wattage to roughly 5W per gallon."
+      ],
+      "supporting": "Six beginner heaters span the range a first tank needs, from a no-dial preset unit for a betta cube to a digital titanium controller for a 45 gallon community tank; the right one comes down to your tank size and whether you want simplicity, precision, or shatterproof durability.",
       "verdict_written": false,
       "failed_at": null,
       "error": null,
-      "kv_status": "none",
+      "kv_status": "registered",
       "qa_status": "none",
       "qa_notes": "",
       "last_commit": "",
@@ -203,18 +222,23 @@
       "product": "(6-pick guide)",
       "slug": "best-aquarium-heaters-for-beginners",
       "site": "starteraquarium",
-      "type": "buyers-guide"
+      "type": "buyers-guide",
+      "confidence": "solid"
     },
     {
-      "status": "scouted",
+      "status": "options-drafted",
       "research_note": "",
-      "content_path": "",
-      "bottom_line_options": [],
-      "supporting": "",
+      "content_path": "sites/starteraquarium/src/content/reviews/aquaclear-power-filter-review.md",
+      "bottom_line_options": [
+        "The AquaClear 50 is the filter most beginners should buy: a large media basket, a flow-control lever to dial down the current, and a refiltration design that does more biological filtration than its price suggests. The open intake is the main thing to watch with small fish.",
+        "For 20 to 50 gallon beginner tanks, the AquaClear 50 is the reliability-and-value pick. It is not the quietest or the most plug-and-play, but the oversized media capacity is why long-time hobbyists keep recommending it.",
+        "Get the AquaClear 50 if you want a filter you will not outgrow and do not mind a simple foam guard over the intake for small fish or shrimp; look at a self-priming Seachem Tidal instead if you want more out-of-the-box convenience."
+      ],
+      "supporting": "If you want one dependable hang-on-back filter that grows with your first tank and lets you customize the media, the AquaClear 50 is the boring-in-the-best-way pick; the one thing to plan for is the open intake if you keep tiny fish, fry, or shrimp.",
       "verdict_written": false,
       "failed_at": null,
       "error": null,
-      "kv_status": "none",
+      "kv_status": "registered",
       "qa_status": "none",
       "qa_notes": "",
       "last_commit": "",
@@ -222,7 +246,8 @@
       "product": "AquaClear 30 Power Filter",
       "slug": "aquaclear-power-filter-review",
       "site": "starteraquarium",
-      "type": "review"
+      "type": "review",
+      "confidence": "solid"
     }
   ],
   "updated": "2026-05-30T08:39:50.5732912-04:00"
