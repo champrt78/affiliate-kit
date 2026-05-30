@@ -6,13 +6,14 @@
 
 ---
 
-## ⭐ READY FOR RAY — open the dashboard (2026-05-30 cold-site run)
+## ⭐ READY FOR RAY — open the dashboard (cockpit)
 
-**Double-click `Affiliate Dashboard` on your desktop** (it regenerates from current state + opens). It shows **10 Bottom Line picks + 3 decisions** waiting on you:
+**Double-click `Affiliate Dashboard` on your desktop** (regenerates + opens; now a multi-panel cockpit). State:
 
-- [ ] **Pick a Bottom Line for the 10 cold-site DRAFT pieces** (gameovergear ×5 + starteraquarium ×5). Check an option (or write your own), hit **Copy my picks**, paste the block back to Claude. All 10 are QA-passed (ce-design-implementation-reviewer APPROVED) and stay noindex until a verdict is written.
-- [ ] **Answer the 3 decisions** in the dashboard: (1) consoles guide hero-CTA points at the price-gouged Analogue Pocket — reorder vs cloak vs leave; (2) tall-heater card side-margins — accept-as-correct vs swap to squarer shots; (3) gog homepage 5+1 tile orphan (already-approved, FYI).
-- [ ] **Set Amazon tags are DONE** for both cold sites (gameovergear-20, mystarteraquarium-20) — pieces monetize on publish.
+- [x] 2026-05-30 — Picked all 10 cold-site Bottom Lines (live/indexed) + answered the 3 decisions (consoles reorder, heater images, gog tiles). DONE.
+- [ ] **9 new section-filler pieces are DRAFT + waiting for a Bottom Line** in the dashboard (3 arcade/scalers/lighting guides + 3 top-10 lists + 3 how-to guides). The 3 top-10 + 3 how-to are flagged **verify-first** (see below). Pick verdicts when ready; they stay noindex until you do.
+- [ ] **Re-validate the 6 firecrawl-dry pieces before publishing them** (the 3 top-10 + 3 how-to). firecrawl was at 0 credits this round, so their ASINs were browser/WebSearch-validated (not the firecrawl /dp gate) and images are browser-grabbed og:image shots. When firecrawl resets (~Jun 22) or Canopy resets (~Jun 1): re-run availability + `pnpm audit:images` / `fix-product-images.ps1` + a QA eyeball, THEN write verdicts to publish. The 3 arcade/scalers/lighting guides were firecrawl-validated (solid).
+- [x] 2026-05-30 — Coming-soon ELIMINATED: every nav section on every site has >=1 article (cockpit "Section coverage" panel = clean). Root cause was missing `pillar:` fields; now lint-blocked.
 
 ---
 
@@ -83,6 +84,8 @@
 
 ## Done
 
+- [x] 2026-05-30 — **No-coming-soon push + engine hardening + cockpit (`aaa98c0`, `9fa0a67`).** Filled every empty nav section: 3 top-10 listicles + 3 how-to guides + the pillar-field root-cause fix; cockpit confirms 0 empty sections. New `lint-content-frontmatter.ps1` (pillar + description) wired into the pre-commit hook so the coming-soon bug can't recur; promoted `pick-square-image.ps1`; $0-price guard across templates. Dashboard upgraded to a 4-panel cockpit (portfolio, coverage, deploys, TODOs). 6 of the new pieces are firecrawl-dry verify-first (re-validate on credit reset). REMAINING engine tail: capped grid into site-template, per-site section heading as config token, magic-go.md playbook updates.
+- [x] 2026-05-30 — **Live-review batch: published 10 Bottom Lines + 3 section-filling guides + visual polish (`b00ca24`).** Consoles reorder, index-card sizing, gog tiles, per-site deep-dive section headings (Full Playthrough / The Tasting Notes / The Deep Dive), heater images.
 - [x] 2026-05-30 — **Cold-site Magic Go run: 10 DRAFT pieces (gog ×5 + SA ×5) + reusable decision dashboard + passed QA gate.** gameovergear (`eff3550`) + starteraquarium (`45bb927`): firecrawl-validated in-stock ASINs, authoritative images (tall-heater slivers swapped via a closest-to-square mini-audit), voice-clean, builds green, KV `/go/` registered, 30 Bottom Line options in the manifest. Reusable dashboard shipped (`be3ed36`): stable HTML at `%USERPROFILE%\AffiliateDashboard\` + self-healing desktop shortcut aggregating all run manifests + free-form decisions. Front-end QA gate PASSED (`51013c8`): ce-design-implementation-reviewer APPROVED both sites on all 8 criteria vs the canonical mockup. Multi-network routing PLAN written (`4c50843`, build-blocked on keys). #8 (DTP distinct heroes) + #9 (review prose cap) found already-satisfied; #6 (Media fold) deferred for a Ray-watched session.
 - [x] 2026-05-29 — **Magic Go batch run: 9 DRAFT pieces across MWC + DTP + fussybean** (run 2026-05-29-0648), each with 3 Bottom Line options + a confidence tag, rendered to `dist/magic-go/queue.html`. Includes the cellular trail-cam guide, Spypoint Flex G36 verdict (`75a985f`), DTP ceramic + drying-towel guides, DTP's first review (Adam's Graphene), and the fussybean grinder guide + Fellow Stagg review. Commits `6ef2b8b` `689e7d3` `1493e78` `a3c9aaa` `43ed80f`.
 - [x] 2026-05-29 — **#58 fussybean espresso guide FIXED** — rewrote with 6 validated machines (replaced the bootstrap's 4 hallucinated ASINs), authoritative images, 6-pick 2x3 grid. Part of `a3c9aaa`.
