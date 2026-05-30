@@ -2,7 +2,17 @@
 
 > Canonical open-work list per global CLAUDE.md. Update as we work. `cat docs/TODO.md` or open in VS Code any time. For deeper context on past wins + walkthroughs, see `docs/RAY_QUEUE.md`.
 
-**Last refreshed:** 2026-05-28
+**Last refreshed:** 2026-05-30
+
+---
+
+## ⭐ READY FOR RAY — open the dashboard (2026-05-30 cold-site run)
+
+**Double-click `Affiliate Dashboard` on your desktop** (it regenerates from current state + opens). It shows **10 Bottom Line picks + 3 decisions** waiting on you:
+
+- [ ] **Pick a Bottom Line for the 10 cold-site DRAFT pieces** (gameovergear ×5 + starteraquarium ×5). Check an option (or write your own), hit **Copy my picks**, paste the block back to Claude. All 10 are QA-passed (ce-design-implementation-reviewer APPROVED) and stay noindex until a verdict is written.
+- [ ] **Answer the 3 decisions** in the dashboard: (1) consoles guide hero-CTA points at the price-gouged Analogue Pocket — reorder vs cloak vs leave; (2) tall-heater card side-margins — accept-as-correct vs swap to squarer shots; (3) gog homepage 5+1 tile orphan (already-approved, FYI).
+- [ ] **Set Amazon tags are DONE** for both cold sites (gameovergear-20, mystarteraquarium-20) — pieces monetize on publish.
 
 ---
 
@@ -14,7 +24,7 @@
 
 - [ ] **Item 1: Multi-network commission routing in `link-cloaker`.** Highest-$ lever; every other item exists to make this leverage real. Extend `workers/link-cloaker` to read per-product KV `{asin, brand, links:[{network,url,commission_rate,status}]}` and pick best-paying live link at request time. Falls back to Amazon. Tracks click-through-by-network in CF Analytics.
   - **Blocked on Ray's answers to 5 Open Items** (see `docs/brainstorms/2026-05-28-magic-go-vision.md` "Open items before Phase 1 kicks off at home"). Network-approval question has no default — needs his explicit list.
-  - **Next deliverable when unblocked:** `docs/brainstorms/2026-05-29-multi-network-routing-plan.md` (KV schema, Worker pseudocode, per-network signup state, rollout sequence, test plan). **Do not write Worker code until that plan is reviewed.**
+  - **PLAN WRITTEN 2026-05-30:** `docs/2026-05-30-multi-network-routing-plan.md` (backward-compatible KV `offers[]`, per-network link builders for Amazon/Awin/AvantLink, priority policy, per-site AFFID secrets, add-link v2, rollout, attribution). **Do not write Worker code until Ray pastes network credentials** (TODO #41 / the Blocked section). The plan is a half-day build once keys land.
 
 ## Next (Magic Go prerequisites #2 – #4, queued in order)
 
@@ -34,16 +44,11 @@
 - [ ] **Verify the swapped DTP + MWC product images render correctly on live site** after the 2026-05-24 CF deploys settled.
 - [ ] **Foam-cannon-in-use Unsplash image** for `best-foam-cannon-for-home-detailers.md` — current placeholder `photo-1520340356584-f9917d1eea6f`.
 
-## ⭐ Magic Go batch run 2026-05-29 — READY FOR RAY (do these first)
+## Post-run follow-ups (2026-05-30 cold-site run)
 
-**9 DRAFT pieces are live in noindex state with 3 Bottom Line options each.** Open the queue and pick verdicts: `pwsh scripts/magic-go-queue.ps1 -Open` (or open `dist/magic-go/queue.html`). Verify-first pieces sorted to top.
-
-- [ ] **Write Bottom Lines for the 9 queued pieces**, then publish: `pwsh scripts/magic-go-publish.ps1`. The 3 verify-first ones to eyeball: Bushnell (thin stock — confirm still buyable), Espresso guide (re-confirm Barista Express price; Casabrews is a contested pick), Fellow Stagg (it's the EKG **Pro** — original discontinued; OK with that framing?).
-- [ ] **Approve the 2 cold-site homepage mockups** (taste call): `docs/playgrounds/gameovergear-mockups/home.html` (retro/arcade) + `docs/playgrounds/starteraquarium-mockups/home.html` (fun/aquatic). Approve the vibe or redirect.
-- [ ] **AFTER approval — wire cold sites live (supervised):** gameovergear + starteraquarium have canonical `site-config.json` now but are still on the OLD template (no content routes, no identity site.css). Port the current MWC/fussybean template + per-site identity `site.css` + pillar IA, THEN run Tier-2 content (3 pieces each). Blocked on homepage approval so identities don't get built twice.
-- [ ] **Set Amazon tags** for gameovergear + starteraquarium `site-config.json` (currently empty `amazonTag` → those pieces earn $0 until set), same as fussybean's pending tag.
-- [ ] **Canopy quota resets ~June 1** → re-run `pnpm audit:images` for a belt-and-suspenders authoritative-image pass across the new pieces (this run used the new firecrawl `fix-product-images.ps1` instead; images are authoritative + visually spot-checked, but a Canopy pass is cheap insurance once quota is back).
-- [ ] **(Optional) KV cloaker registration** for the new guide/review affiliate URLs — skipped this run because guides use direct `?tag=` URLs that already monetize; `/go/` cloaking is a separate layer if you want click tracking through the Worker.
+- [ ] **Canopy quota resets ~June 1** → re-run `pnpm audit:images` for a belt-and-suspenders authoritative-image pass across the 10 new cold-site pieces (this run used firecrawl `fix-product-images.ps1` + a closest-to-square mini-audit for tall heaters; images are authoritative, image-lint-clean, and QA-verified, but a Canopy pass is cheap insurance once quota is back).
+- [ ] **After Ray picks the 10 Bottom Lines** → publish flips them index,follow. The cold sites then have their first indexable content.
+- [ ] **`.tmp/pick-square-imgs.ps1` is worth promoting into the pipeline** — it's the Canopy-free equivalent of `audit-product-images.ps1` (decodes every hiRes+large candidate, picks min |log(aspect)| within the 0.35..2.5 gate). The fixer always grabs `colorImages.initial[0]`, which is a sliver for tall products (heaters, bottles). Consider wiring the mini-audit as a post-fix step for tall-product categories.
 
 ## Backburner (deferred until Magic Go ships)
 
@@ -55,7 +60,7 @@
 ## Component-system rebuild — SiteShell follow-ups (Step 2 landed 2026-05-29)
 
 - [ ] **Step 3: migrate MWC + fussybean onto `SiteShell`.** Step 2 extracted the shared shell and migrated ONLY DetailerPicks (proven pixel-identical to live `28aa9b6`). MWC + fussybean still run their own ~470-line MainLayout→BaseLayout (sticky full-bleed header, no zoom panel, live `is-scrolled`). Migrating them adopts the floating-panel look — that's a DESIGN change (Step 3 of `docs/brainstorms/2026-05-29-component-system-rebuild-plan.md`), needs Ray's sign-off per site. When done, also remove their now-dead `is-scrolled` JS + `data-site-header` (DTP's were removed in Step 2; theirs are still LIVE because their headers are still sticky).
-- [ ] **M-next: fold the card-image boxes onto `<Media>`.** Step 2 made Media the canonical box for the review HERO only. The buyers-guide qcard + deep-card thumbnails (`sites/*/src/pages/buyers-guides/[...slug].astro`), `ReviewCard.astro`, and `ProductCard.astro` still use their own inline `.media`-style boxes with per-context shrink caps + `mix-blend-mode:multiply`. Consolidate them through Media (criterion I8 "used everywhere"). Media's docstring documents the current half-migrated state.
+- [ ] **M-next: fold the card-image boxes onto `<Media>`. [DEFERRED 2026-05-30 — needs Ray watching]** Advisor flagged this as the highest-regression-risk open item: it refactors shared components used by all 5 live, already-approved sites, and the only verification available in an autonomous run is build+lint — exactly the verification that missed the original visual bugs the rebuild fixed. Do it as a screenshot-diff session (before/after per site) with Ray able to eyeball, not blind. — Step 2 made Media the canonical box for the review HERO only. The buyers-guide qcard + deep-card thumbnails (`sites/*/src/pages/buyers-guides/[...slug].astro`), `ReviewCard.astro`, and `ProductCard.astro` still use their own inline `.media`-style boxes with per-context shrink caps + `mix-blend-mode:multiply`. Consolidate them through Media (criterion I8 "used everywhere"). Media's docstring documents the current half-migrated state.
 - [ ] **Deferred: Media `:global(.media img)` hover hook.** ReviewArticle's `.article-hero__frame:hover :global(.media img){transform:scale(1.02)}` pierces into Media's internal `<img>`. Not a true page-wide leak (scoped under the hero frame) and the hero is pixel-identical, so left as-is in Step 2. Give Media a first-class hover/zoom hook (prop or data-attr the consumer can target without `:global`) when the card boxes are consolidated above.
 
 ## Later / Ideas
@@ -78,6 +83,7 @@
 
 ## Done
 
+- [x] 2026-05-30 — **Cold-site Magic Go run: 10 DRAFT pieces (gog ×5 + SA ×5) + reusable decision dashboard + passed QA gate.** gameovergear (`eff3550`) + starteraquarium (`45bb927`): firecrawl-validated in-stock ASINs, authoritative images (tall-heater slivers swapped via a closest-to-square mini-audit), voice-clean, builds green, KV `/go/` registered, 30 Bottom Line options in the manifest. Reusable dashboard shipped (`be3ed36`): stable HTML at `%USERPROFILE%\AffiliateDashboard\` + self-healing desktop shortcut aggregating all run manifests + free-form decisions. Front-end QA gate PASSED (`51013c8`): ce-design-implementation-reviewer APPROVED both sites on all 8 criteria vs the canonical mockup. Multi-network routing PLAN written (`4c50843`, build-blocked on keys). #8 (DTP distinct heroes) + #9 (review prose cap) found already-satisfied; #6 (Media fold) deferred for a Ray-watched session.
 - [x] 2026-05-29 — **Magic Go batch run: 9 DRAFT pieces across MWC + DTP + fussybean** (run 2026-05-29-0648), each with 3 Bottom Line options + a confidence tag, rendered to `dist/magic-go/queue.html`. Includes the cellular trail-cam guide, Spypoint Flex G36 verdict (`75a985f`), DTP ceramic + drying-towel guides, DTP's first review (Adam's Graphene), and the fussybean grinder guide + Fellow Stagg review. Commits `6ef2b8b` `689e7d3` `1493e78` `a3c9aaa` `43ed80f`.
 - [x] 2026-05-29 — **#58 fussybean espresso guide FIXED** — rewrote with 6 validated machines (replaced the bootstrap's 4 hallucinated ASINs), authoritative images, 6-pick 2x3 grid. Part of `a3c9aaa`.
 - [x] 2026-05-29 — **#57 grid-balance rule CODIFIED** — target 6 (2x3), fallback 4 (2x2) or 3, never 5 or 3+1. Documented in `plugin/commands/magic-go.md` step 4 + memory. (Documented rule, not yet a hard lint mechanism.)
