@@ -16,7 +16,7 @@ bgTheme: canopy
 pubDate: 2026-05-28
 lastUpdated: 2026-05-28
 images:
-  hero: "https://m.media-amazon.com/images/I/71EDlbBgF6L.jpg"
+  hero: "https://m.media-amazon.com/images/I/81Fyc-L36CL._AC_SL1500_.jpg"
   heroCaption: "Moultrie Edge 2 cellular trail camera. Photo: Moultrie manufacturer media."
 bottomLine:
   verdict: 'This is the no-fuss cellular pick: no SD card to format, no carrier to second-guess, no fight to get a photo to your phone.'
