@@ -1,0 +1,13 @@
+[
+  {
+    "id": "gog-consoles-hero-cta",
+    "site": "gameovergear",
+    "title": "Consoles guide: the big top-pick CTA points at the price-gouged Analogue Pocket",
+    "body": "The buyers-guide template wires the large top-pick buy button to products[0], which on the consoles guide is the Analogue Pocket. Its Amazon buy-box is a third-party seller around $670, far above the roughly $220 direct MSRP, and the Bottom Line recommends the Sega Genesis Mini instead. How should the hero CTA behave?",
+    "options": [
+      "Reorder products[] so the Sega Genesis Mini is first — hero CTA and the first card both point at the recommended pick",
+      "Keep the order, but set a cloakedSlug on the Genesis Mini and point the top-pick CTA there",
+      "Leave it — Analogue Pocket first is fine as the aspirational hero, the per-product cards still link correctly"
+    ]
+  }
+]
