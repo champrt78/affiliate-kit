@@ -1,0 +1,115 @@
+---
+/**
+ * <Media ... /> — the ONE product-image box used everywhere.
+ *
+ * Locked 2026-05-29 (component-system rebuild, criterion I8 — "#1 image
+ * acceptance criterion"). Before this, three divergent implementations of the
+ * product-image box existed (guide qcard, guide deep-card, review article-hero),
+ * each with its own bg color, shrink caps, and mix-blend-mode. Any product image
+ * (tall antenna, wide, square) MUST show fully at a comfortable scale, never
+ * cropped/zoomed/stretched. This component is the single source of that rule.
+ *
+ * The rule (style-guide criterion 2):
+ *   - WHITE background (--media-bg, #fff). A colored tint clashes with product
+ *     shots that are themselves shot on white.
+ *   - object-fit: contain — the WHOLE product scales to fit, never cropped.
+ *   - max-width/max-height: 100% (no 62%/76%/80% shrink caps — those left small
+ *     products floating in dead space and were per-context guesses).
+ *   - NO mix-blend-mode: multiply — that darkened/tinted products against the
+ *     warm paper bg; on a true white box it is unnecessary and can dim whites.
+ *
+ * For SCENE / atmosphere imagery (guide hero photo), do NOT use this component —
+ * those are allowed to cover-crop. This is product shots only.
+ *
+ * Variants control only the box's aspect/sizing, never the contain behavior:
+ *   - "card"  → square-ish thumbnail box (grid pick cards)
+ *   - "deep"  → larger square box (the detailed/deep pick)
+ *   - "hero"  → wide band (single-product review hero)
+ */
+interface Props {
+  src?: string;
+  alt: string;
+  /** Box sizing/aspect preset. Containment is identical across all. */
+  variant?: "card" | "deep" | "hero";
+  /** Aspect-ratio HINT attrs (web-vitals R1.1). Default square. */
+  width?: number;
+  height?: number;
+  loading?: "eager" | "lazy";
+  /** Placeholder glyph when no src (e.g. text-only picks). */
+  placeholder?: string;
+  /** Extra class on the box (for context-specific hover/sizing hooks). */
+  class?: string;
+}
+
+const {
+  src,
+  alt,
+  variant = "card",
+  width = 1200,
+  height = 1200,
+  loading = "lazy",
+  placeholder = "📦",
+  class: className,
+} = Astro.props;
+---
+<div class:list={["media", `media--${variant}`, className]}>
+  {src ? (
+    <img
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      loading={loading}
+      decoding="async"
+    />
+  ) : (
+    <span class="media__ph" aria-hidden="true">{placeholder}</span>
+  )}
+</div>
+
+<style>
+  /* --media-bg defaults to white; sites/components can override the token but
+     the criterion is white for product shots. */
+  .media {
+    background: var(--media-bg, #ffffff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  /* The containment rule — identical for every variant. The whole product
+     scales DOWN to fit; it is never cropped, zoomed past 1:1, or stretched. */
+  .media img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+  .media__ph {
+    font-size: 40px;
+    opacity: 0.5;
+  }
+
+  /* card — grid thumbnail. Fixed comfortable height, padded so the product
+     doesn't kiss the edges. */
+  .media--card {
+    height: 160px;
+    padding: 14px;
+  }
+  /* deep — the detailed pick. Larger square box. */
+  .media--deep {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    padding: 18px;
+    border-radius: 10px;
+  }
+  /* hero — single-product review band. Wide, capped height so a product shot
+     reads as a hero, not a photo essay; still fully contained. */
+  .media--hero {
+    height: clamp(280px, 34vw, 400px);
+    width: 100%;
+    padding: 24px;
+    border-radius: var(--radius-md, 6px);
+  }
+</style>

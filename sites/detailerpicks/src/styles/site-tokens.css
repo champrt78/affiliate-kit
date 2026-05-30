@@ -50,6 +50,10 @@
   --color-link:         var(--color-forest);
   --color-link-hover:   var(--color-forest-mid);
 
+  /* Product-image box bg (criterion 2). Product shots are themselves on white;
+     a colored tint clashes. The shared <Media> component reads this token. */
+  --media-bg:           #ffffff;
+
   /* === Typography ===
      Instrument Serif for editorial display (italic-leaning, magazine
      register), Inter Tight for body. Loaded via Google Fonts in

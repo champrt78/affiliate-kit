@@ -8,6 +8,7 @@
     "./CTA.astro": "./src/components/CTA.astro",
     "./ComparisonTable.astro": "./src/components/ComparisonTable.astro",
     "./Hero.astro": "./src/components/Hero.astro",
+    "./Media.astro": "./src/components/Media.astro",
     "./AffiliateDisclosure.astro": "./src/components/AffiliateDisclosure.astro",
     "./ReviewCard.astro": "./src/components/ReviewCard.astro",
     "./BuyersGuideCard.astro": "./src/components/BuyersGuideCard.astro",

@@ -3,6 +3,7 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import MainLayout from "../../layouts/MainLayout.astro";
 import CTA from "@affkit/shared-ui/CTA.astro";
 import BottomLine from "@affkit/shared-ui/BottomLine.astro";
+import Media from "@affkit/shared-ui/Media.astro";
 import { cloakedLink } from "@affkit/shared-utils";
 import { productSchema } from "@affkit/shared-utils";
 
@@ -77,10 +78,6 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
   )}
 
   <article class="guide">
-    {/* Bottom Line — shared component (locked 2026-05-24). Two-line pivot at the top
-        of every guide. Single source: packages/shared-ui/src/components/BottomLine.astro */}
-    <BottomLine bottomLine={data.bottomLine} isDraft={isDraft} />
-
     <header class="guide-header">
       <p class="kicker">Buyer's Guide</p>
       <h1 class="guide-title">{data.title}</h1>
@@ -98,6 +95,13 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
       </div>
     </header>
 
+    {/* Bottom Line — shared component (locked 2026-05-24). Verdict box sits
+        directly under the title block, above every pick/spec — matching the
+        canonical mockup order (title → deck → byline → Bottom Line) and the
+        review template. The DRAFT/noindex gate is position-independent.
+        Single source: packages/shared-ui/src/components/BottomLine.astro */}
+    <BottomLine bottomLine={data.bottomLine} isDraft={isDraft} />
+
     {/* ════════ AT A GLANCE ════════ */}
     <section class="section">
       <div class="section-head">
@@ -113,7 +117,7 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
           return (
             <article class="qcard">
               <a href={buyHref} class="qcard__img" rel="sponsored noopener" target="_blank" aria-label={`Check current price for ${p.name}`}>
-                {(p as any).image && <img src={(p as any).image} alt={p.name} width="1200" height="1200" loading="lazy" decoding="async" />}
+                <Media src={(p as any).image} alt={p.name} variant="card" placeholder="🧴" />
                 {price && <div class="qcard__img__price">{price}</div>}
               </a>
               <div class="qcard__body">
@@ -151,9 +155,7 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
         return (
           <article id={`pick-${i + 1}`} class="deep-card">
             <div class="deep-card__img-col">
-              <div class="deep-card__img">
-                {(p as any).image && <img src={(p as any).image} alt={p.name} width="1200" height="1200" loading="lazy" decoding="async" />}
-              </div>
+              <Media src={(p as any).image} alt={p.name} variant="deep" class="deep-card__img" placeholder="🧴" />
               <div class="deep-card__rank"><span>{i + 1}</span>of {totalPicks} picks</div>
             </div>
 
@@ -254,8 +256,10 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     margin: 0 auto;
     padding: 0 var(--space-6) var(--space-12);
   }
+  /* Header fills the content column (criterion 5) — no narrow left cap that
+     leaves dead space on the right. Long-form text gets a per-element ch cap
+     below so line length stays readable while the block spans the width. */
   .guide-header {
-    max-width: 720px;
     margin: 0 0 var(--space-10);
   }
   .kicker {
@@ -371,26 +375,17 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     border-color: var(--color-brass-soft, #D4B966);
     transform: translateY(-2px);
   }
+  /* The card image box is the shared <Media variant="card"> (white bg, contain,
+     fixed height). .qcard__img is just the link + positioning context for the
+     price badge; Media owns the box. */
   .qcard__img {
-    aspect-ratio: 5 / 4;
-    background: var(--color-cream);
     border-bottom: 1px solid var(--color-sage-light);
-    /* flex centering so img max-height resolves against the aspect-ratio
-       height; grid + place-items left it indefinite and clipped portrait
-       products (I7). */
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
     position: relative;
     cursor: pointer;
+    display: block;
   }
-  .qcard__img:hover img { transform: scale(1.03); }
-  .qcard__img img { transition: transform 220ms ease; }
-  .qcard__img img {
-    max-width: 62%;
-    max-height: 76%;
-    object-fit: contain;
-    mix-blend-mode: multiply;
-  }
+  .qcard__img :global(.media img) { transition: transform 220ms ease; }
+  .qcard:hover .qcard__img :global(.media img) { transform: scale(1.03); }
   .qcard__img__price {
     position: absolute;
     top: 10px; right: 10px;
@@ -469,21 +464,11 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
   .deep-card__img-col {
     display: flex; flex-direction: column; align-items: center;
   }
+  /* Box sizing only — <Media variant="deep"> owns white bg + contain + radius.
+     aspect-ratio 1/1 on a 220px-wide box yields a 220px square. */
   .deep-card__img {
     width: 220px;
-    height: 220px;
-    background: var(--color-cream);
     border: 1px solid var(--color-sage-light);
-    border-radius: 6px;
-    overflow: hidden;
-    display: grid; place-items: center;
-    padding: 16px;
-  }
-  .deep-card__img img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    mix-blend-mode: multiply;
   }
   .deep-card__rank {
     margin-top: 18px;
@@ -789,7 +774,7 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     .deep-card__img-col { grid-area: img; }
     .deep-card__body { grid-area: body; }
     .deep-card__rail { grid-area: rail; }
-    .deep-card__img { width: 180px; height: 180px; }
+    .deep-card__img { width: 180px; }
   }
   @media (max-width: 640px) {
     .quick-grid { grid-template-columns: 1fr; }
@@ -798,7 +783,7 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
       grid-template-areas: "img" "body" "rail";
       padding: 20px;
     }
-    .deep-card__img { width: 100%; max-width: 240px; height: 200px; margin: 0 auto; }
+    .deep-card__img { width: 100%; max-width: 240px; margin: 0 auto; }
     .section-head h2 { font-size: 26px; }
     .guide-title { font-size: 2rem; }
   }
