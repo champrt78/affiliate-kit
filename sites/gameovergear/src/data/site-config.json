@@ -6,7 +6,7 @@
     "apex": "gameovergear.games"
   },
   "affiliate": {
-    "amazonTag": ""
+    "amazonTag": "gameovergear-20"
   },
   "niche": {
     "vertical": "retro-gaming-gear",
@@ -39,11 +39,31 @@
   },
   "featureAxes": {
     "default": [
-      { "name": "Authenticity", "weight": 25, "description": "how close to the original feel, latency, and look" },
-      { "name": "Compatibility", "weight": 25, "description": "consoles, regions, displays, and media it supports" },
-      { "name": "Build Quality", "weight": 20, "description": "materials, durability, button/stick feel" },
-      { "name": "Value", "weight": 20, "description": "performance per dollar, buy-once vs replace" },
-      { "name": "Ease of Setup", "weight": 10, "description": "plug-and-play vs configuration required" }
+      {
+        "name": "Authenticity",
+        "weight": 25,
+        "description": "how close to the original feel, latency, and look"
+      },
+      {
+        "name": "Compatibility",
+        "weight": 25,
+        "description": "consoles, regions, displays, and media it supports"
+      },
+      {
+        "name": "Build Quality",
+        "weight": 20,
+        "description": "materials, durability, button/stick feel"
+      },
+      {
+        "name": "Value",
+        "weight": 20,
+        "description": "performance per dollar, buy-once vs replace"
+      },
+      {
+        "name": "Ease of Setup",
+        "weight": 10,
+        "description": "plug-and-play vs configuration required"
+      }
     ]
   },
   "categoryPillars": [
@@ -56,12 +76,54 @@
   ],
   "navigation": {
     "pillars": [
-      { "slug": "controllers", "label": "Controllers", "type": "commercial", "categoryPillar": "controllers", "blurb": "Wired and wireless pads that feel like the originals.", "hubKicker": "Buying guides" },
-      { "slug": "arcade-sticks", "label": "Arcade Sticks", "type": "commercial", "categoryPillar": "arcade-sticks", "blurb": "Fight sticks and cabinet parts for the coin-op feel.", "hubKicker": "Buying guides" },
-      { "slug": "retro-handhelds", "label": "Handhelds", "type": "commercial", "categoryPillar": "retro-handhelds", "blurb": "Emulation handhelds from pocket to powerhouse.", "hubKicker": "Buying guides" },
-      { "slug": "displays-and-scalers", "label": "Displays & Scalers", "type": "commercial", "categoryPillar": "displays-and-scalers", "blurb": "CRTs, RetroTINK, OSSC, and the path to a clean picture.", "hubKicker": "Buying guides" },
-      { "slug": "level-up", "label": "Level Up", "type": "informational", "categoryPillar": null, "blurb": "Setup guides, region-lock explainers, and the why behind the gear.", "hubKicker": "Guides & research" },
-      { "slug": "1-up", "label": "Gifts & 1-Ups", "type": "informational", "categoryPillar": null, "blurb": "Nostalgic gifts and fun gear for the retro-obsessed.", "hubKicker": "Gifts & novelty" }
+      {
+        "slug": "controllers",
+        "label": "Controllers",
+        "type": "commercial",
+        "categoryPillar": "controllers",
+        "blurb": "Wired and wireless pads that feel like the originals.",
+        "hubKicker": "Buying guides"
+      },
+      {
+        "slug": "arcade-sticks",
+        "label": "Arcade Sticks",
+        "type": "commercial",
+        "categoryPillar": "arcade-sticks",
+        "blurb": "Fight sticks and cabinet parts for the coin-op feel.",
+        "hubKicker": "Buying guides"
+      },
+      {
+        "slug": "retro-handhelds",
+        "label": "Handhelds",
+        "type": "commercial",
+        "categoryPillar": "retro-handhelds",
+        "blurb": "Emulation handhelds from pocket to powerhouse.",
+        "hubKicker": "Buying guides"
+      },
+      {
+        "slug": "displays-and-scalers",
+        "label": "Displays & Scalers",
+        "type": "commercial",
+        "categoryPillar": "displays-and-scalers",
+        "blurb": "CRTs, RetroTINK, OSSC, and the path to a clean picture.",
+        "hubKicker": "Buying guides"
+      },
+      {
+        "slug": "level-up",
+        "label": "Level Up",
+        "type": "informational",
+        "categoryPillar": null,
+        "blurb": "Setup guides, region-lock explainers, and the why behind the gear.",
+        "hubKicker": "Guides & research"
+      },
+      {
+        "slug": "1-up",
+        "label": "Gifts & 1-Ups",
+        "type": "informational",
+        "categoryPillar": null,
+        "blurb": "Nostalgic gifts and fun gear for the retro-obsessed.",
+        "hubKicker": "Gifts & novelty"
+      }
     ]
   },
   "brandsCovered": [
