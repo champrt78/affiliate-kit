@@ -10,10 +10,10 @@ const { entry, featured = false } = Astro.props;
 const { data, slug } = entry;
 const href = `/reviews/${slug}/`;
 const hero = data.images?.hero && data.images.hero.length > 0 ? data.images.hero : null;
-// Note: data.images.imageScale is still consumed by ReviewArticle.astro for
-// the in-article hero (a different use case). We deliberately do NOT apply
-// it on the index card — the fixed-height normalization below produces
-// consistent visible sizes across all 4 cards regardless of source PNG.
+// The fixed-height normalization below (aspect-ratio box + object-fit:contain)
+// produces consistent visible sizes across all cards regardless of source PNG.
+// (imageScale was retired in the 2026-05-29 component-system rebuild — no card
+// or hero applies a per-image transform any more.)
 const pubDate = data.pubDate instanceof Date
   ? data.pubDate.toISOString().slice(0, 10)
   : String(data.pubDate);

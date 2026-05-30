@@ -129,6 +129,12 @@
   --content-wide:     52rem;   /* 832px — wider content, comparison cards */
   --header-height:    4.5rem;  /* sticky header height */
 
+  /* Floating-panel scale (the SiteShell .page-shell zoom). Single source of
+     truth for the approved ~0.95 "calmer read" zoom-out. A site overrides this
+     in its own site-tokens.css to tune its per-site scale. This is the per-site
+     scale override knob — do NOT hardcode a magic number on the panel. */
+  --page-scale:       0.95;
+
   --radius-sm:        4px;
   --radius-md:        6px;
   --radius-lg:        10px;

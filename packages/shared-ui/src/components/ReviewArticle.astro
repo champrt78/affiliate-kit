@@ -124,11 +124,12 @@ const bottomLine = (data as any).bottomLine as {
 
 const buyIf = (data as any).buyIf as { buy: string[]; skip: string[] } | undefined;
 const flaws = (data as any).flaws as Array<{ title: string; body: string }> | undefined;
-// NOTE: per-piece images.imageScale is now intentionally unused on the hero.
-// The shared <Media variant="hero"> contains the product in a definite box, so
-// it can never overflow/crop regardless of source proportion — the structural
+// imageScale is retired (2026-05-29 component-system rebuild). The shared
+// <Media variant="hero"> contains the product in a definite box via object-fit,
+// so it can never overflow/crop regardless of source proportion — the structural
 // fix for the "half the product" hero bug (I1) that the old transform:scale
-// clamp worked around. The frontmatter field is left in place but no-ops.
+// clamp worked around. The frontmatter field has been removed from the schema;
+// any stray values in older .md files are silently ignored by zod.
 ---
 <script type="application/ld+json" set:html={JSON.stringify(productLd)} />
 {faqLd && <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />}
@@ -166,9 +167,8 @@ const flaws = (data as any).flaws as Array<{ title: string; body: string }> | un
       <a href={cloakedHref} class="article-hero__frame" rel="sponsored noopener" target="_blank" aria-label={`Check current price for ${data.product.name}`}>
         {/* Product hero → shared <Media variant="hero"> (white bg, contain, the
             whole product shows, never cropped). The clickable frame + price pill
-            wrap it. imageScale clamp is no longer needed: contain on a definite
-            box can't overflow, so the "half the product" hero bug (I1) can't
-            recur structurally. */}
+            wrap it. contain on a definite box can't overflow, so the "half the
+            product" hero bug (I1) can't recur structurally. */}
         <Media src={heroImage} alt={data.product.name} variant="hero" width={1600} height={1000} loading="eager" />
         <span class="article-hero__price-tag" aria-hidden="true">
           See on Amazon <span class="article-hero__price-arrow">&rarr;</span>

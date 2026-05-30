@@ -71,11 +71,6 @@ const reviews = defineCollection({
     images: z.object({
       hero: z.string().optional(),
       heroCaption: z.string().optional(),
-      // CSS transform: scale() applied to the hero image. Use this to
-      // normalize product PNGs when source images have wildly different
-      // content-to-canvas ratios (e.g. Spypoint's manufacturer shot has
-      // lots of whitespace while Trailcampro's composite is tightly cropped).
-      imageScale: z.number().optional(),
       context: z.string().optional(),
       comparison: z.string().optional(),
     }).optional(),
@@ -100,8 +95,6 @@ const buyersGuides = defineCollection({
       brand: z.string(),
       affiliateUrl: z.string(),
       image: z.string().optional(),
-      // CSS transform: scale() to normalize product image disparity.
-      imageScale: z.number().optional(),
       tagline: z.string().optional(),
       cloakedSlug: z.string().optional(),
       bestFor: z.string().optional(),

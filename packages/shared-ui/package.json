@@ -5,6 +5,7 @@
   "type": "module",
   "exports": {
     "./BaseLayout.astro": "./src/components/BaseLayout.astro",
+    "./SiteShell.astro": "./src/components/SiteShell.astro",
     "./CTA.astro": "./src/components/CTA.astro",
     "./ComparisonTable.astro": "./src/components/ComparisonTable.astro",
     "./Hero.astro": "./src/components/Hero.astro",

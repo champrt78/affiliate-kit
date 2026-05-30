@@ -1,15 +1,14 @@
 ---
-import BaseLayout from "@affkit/shared-ui/BaseLayout.astro";
+import SiteShell from "@affkit/shared-ui/SiteShell.astro";
 import AffiliateDisclosure from "@affkit/shared-ui/AffiliateDisclosure.astro";
 // Charcoal + electric blue + amber palette overrides
 import "../styles/site-tokens.css";
 
 /* bgTheme — per-page detailing gutter theme. Defaults to "foam-cascade"
-   when omitted. Mirrors the MWC pattern (commit 6cf4dda) — paint the
-   body, let the cream page-shell float on top. Mobile collapses the
-   shell to full-width so the photo doesn't show. Source photos hot-
-   linked from Pexels (image policy: scene/atmosphere only, never
-   product hero). */
+   when omitted. The shell paints the body and floats the cream page-shell on
+   top; mobile collapses the shell to full-width so the photo doesn't show.
+   Source photos hot-linked from Pexels (image policy: scene/atmosphere only,
+   never product hero). */
 type BgTheme = "foam-cascade" | "wheel-suds" | "suds-closeup" | "interior-detail" | "chrome-reflection" | "solid";
 
 interface Props {
@@ -29,8 +28,9 @@ const siteName = "DetailerPicks";
    LAST layer, attached inline (no comma separator). The earlier form
    `<gradient>, <url>, #14181C` treated #14181C as its own layer (invalid)
    and the whole declaration was rejected — the silent root cause of the
-   blank-gutter bug. Returning two CSS declarations: explicit
-   background-color first (for fallback), then the layered image. */
+   blank-gutter bug. The shell emits the gutter color as a SEPARATE
+   background-color declaration (after the shorthand) via its head-slot
+   cascade workaround, so this map carries only the image layer(s). */
 const themeBackgrounds: Record<typeof bgTheme, string> = {
   "foam-cascade": 'linear-gradient(rgba(20,24,28,0.15), rgba(20,24,28,0.15)), url("https://images.pexels.com/photos/6873174/pexels-photo-6873174.jpeg?auto=compress&cs=tinysrgb&w=2000") center/cover no-repeat fixed',
   "wheel-suds": 'linear-gradient(rgba(20,24,28,0.15), rgba(20,24,28,0.15)), url("https://images.pexels.com/photos/14231678/pexels-photo-14231678.jpeg?auto=compress&cs=tinysrgb&w=2000") center/cover no-repeat fixed',
@@ -40,17 +40,41 @@ const themeBackgrounds: Record<typeof bgTheme, string> = {
   "solid": "none",
 };
 const pageBg = themeBackgrounds[bgTheme];
+
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/buyers-guides/", label: "Guides" },
   { href: "/reviews/", label: "Reviews" },
   { href: "/about/", label: "About" },
 ];
-const currentPath = Astro.url.pathname;
+
+const footerBlurb =
+  "Honest, cross-brand car-detailing picks for home detailers and weekend enthusiasts. We compare specs, frame fit, and link to where you can actually buy them.";
+
+const footerColumns = [
+  {
+    heading: "Explore",
+    links: [
+      { href: "/buyers-guides/", label: "Buying guides" },
+      { href: "/reviews/", label: "Single-product reviews" },
+      { href: "/how-we-evaluate/", label: "How we evaluate" },
+      { href: "/about/", label: "About this site" },
+    ],
+  },
+  {
+    heading: "Fine print",
+    links: [
+      { href: "/disclosure/", label: "Affiliate disclosure" },
+      { href: "/privacy/", label: "Privacy" },
+      { href: "/contact/", label: "Contact" },
+    ],
+  },
+];
+
 // Chrome & Suds editorial register — Instrument Serif + Inter Tight.
 const fontsHref = "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&display=swap";
 ---
-<BaseLayout
+<SiteShell
   title={title}
   description={description}
   canonical={canonical}
@@ -60,207 +84,30 @@ const fontsHref = "https://fonts.googleapis.com/css2?family=Instrument+Serif:ita
   ogImage={ogImage}
   themeColor="#F4F2EE"
   fontsHref={fontsHref}
+  navItems={navItems}
+  footerColumns={footerColumns}
+  footerBlurb={footerBlurb}
+  pageBg={pageBg}
+  gutterColor="#14181C"
 >
-  {/* Per-page body bg. Astro's define:vars scopes --pageBg to the
-      component's wrapping element, so :global(body)'s var() lookup can't
-      see it. Inject a per-render <style is:inline> into the head slot
-      that hardcodes the bg image string, with #14181C as a separate
-      background-color so it survives the shorthand's bg-color reset.
-      (Order matters: bg-color declaration goes AFTER background shorthand.) */}
-  <Fragment slot="head">
-    <style is:inline set:html={`body { background: ${pageBg}; background-color: #14181C; }`}></style>
-  </Fragment>
+  {/* Brand markup is authored HERE so DTP's scoped .brand* CSS (below) matches
+      it — Astro scopes slot styles to the authoring component, not SiteShell. */}
+  <a href="/" class="brand" slot="brand">
+    <span class="brand__type">
+      <span class="brand__name">Detailer<em>Picks</em></span>
+      <span class="brand__tag">Car detailing, by use case</span>
+    </span>
+  </a>
 
-  <a href="#main" class="skip-link">Skip to content</a>
+  <AffiliateDisclosure slot="footer-legal" siteName={siteName} variant="footer" />
 
-  {/* The whole content panel floats on the gutter photo and scales as one unit
-      (criterion 1 scale + criterion 3 header-in-panel). zoom:var(--page-scale)
-      on .page-shell scales header + main + footer uniformly; the gutter photo
-      shows beside the header too, matching the locked mockup's .page wrapper. */}
-  <div class="page-shell">
-  <header class="site-header" data-site-header>
-    <div class="site-header__inner">
-      <a href="/" class="brand">
-        <span class="brand__type">
-          <span class="brand__name">Detailer<em>Picks</em></span>
-          <span class="brand__tag">Car detailing, by use case</span>
-        </span>
-      </a>
+  <slot />
+</SiteShell>
 
-      <nav class="site-nav" aria-label="Primary">
-        {navItems.map(item => (
-          <a
-            href={item.href}
-            class={currentPath === item.href ? "site-nav__link is-active" : "site-nav__link"}
-          >
-            {item.label}
-          </a>
-        ))}
-      </nav>
-
-      <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" data-nav-toggle>
-        <span class="nav-toggle__bar"></span>
-        <span class="nav-toggle__bar"></span>
-        <span class="nav-toggle__bar"></span>
-      </button>
-    </div>
-
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" data-mobile-nav>
-      {navItems.map(item => (
-        <a href={item.href} class="mobile-nav__link">{item.label}</a>
-      ))}
-    </nav>
-  </header>
-
-  <main id="main" tabindex="-1">
-    <slot />
-  </main>
-
-  <footer class="site-footer">
-    <div class="site-footer__inner">
-      <div class="site-footer__brand">
-        <span class="site-footer__name">DetailerPicks</span>
-        <p class="site-footer__blurb">
-          Honest, cross-brand car-detailing picks for home detailers and weekend
-          enthusiasts. We compare specs, frame fit, and link to where you can
-          actually buy them.
-        </p>
-      </div>
-
-      <div class="site-footer__col">
-        <h4>Explore</h4>
-        <a href="/buyers-guides/">Buying guides</a>
-        <a href="/reviews/">Single-product reviews</a>
-        <a href="/how-we-evaluate/">How we evaluate</a>
-        <a href="/about/">About this site</a>
-      </div>
-
-      <div class="site-footer__col">
-        <h4>Fine print</h4>
-        <a href="/disclosure/">Affiliate disclosure</a>
-        <a href="/privacy/">Privacy</a>
-        <a href="/contact/">Contact</a>
-      </div>
-    </div>
-
-    <div class="site-footer__base">
-      <AffiliateDisclosure siteName={siteName} variant="footer" />
-      <p class="site-footer__copy">© {new Date().getFullYear()} {siteName}. All rights reserved.</p>
-    </div>
-  </footer>
-  </div>{/* .page-shell — floating content panel */}
-</BaseLayout>
-
-<script is:inline>
-  (function () {
-    const header = document.querySelector("[data-site-header]");
-    const toggle = document.querySelector("[data-nav-toggle]");
-    const mobileNav = document.querySelector("[data-mobile-nav]");
-
-    if (header) {
-      let ticking = false;
-      const onScroll = () => {
-        if (window.scrollY > 12) {
-          header.classList.add("is-scrolled");
-        } else {
-          header.classList.remove("is-scrolled");
-        }
-        ticking = false;
-      };
-      window.addEventListener("scroll", () => {
-        if (!ticking) {
-          window.requestAnimationFrame(onScroll);
-          ticking = true;
-        }
-      }, { passive: true });
-      onScroll();
-    }
-
-    if (toggle && mobileNav) {
-      toggle.addEventListener("click", () => {
-        const expanded = toggle.getAttribute("aria-expanded") === "true";
-        toggle.setAttribute("aria-expanded", String(!expanded));
-        toggle.setAttribute("aria-label", expanded ? "Open menu" : "Close menu");
-        mobileNav.classList.toggle("is-open", !expanded);
-        document.body.classList.toggle("nav-open", !expanded);
-      });
-    }
-  })();
-</script>
-
-<style define:vars={{ pageBg }}>
-  /* Per-page detailing gutter — body is painted with the theme bg;
-     the cream page-shell floats on top at 1280px max. Mobile collapses
-     to full-width so the photo doesn't show.
-     Locked 2026-05-23. */
-  /* Per-page body bg is set via <style is:inline> in BaseLayout's head slot.
-     Don't add `body { background: var(--pageBg) }` here — that compiles into
-     the linked CSS file which loads AFTER the inline head style and
-     overrides it (unresolved var() → invalid → no bg). Cascade gotcha. */
-  /* The floating content panel (criterion 4 + 3 + 1). Header + main + footer
-     all live INSIDE this panel — the gutter photo shows beside the WHOLE panel
-     (header included), matching the locked mockup's .page wrapper. zoom scales
-     the entire panel uniformly (criterion 1: calmer ~0.95 read). zoom (not
-     transform:scale) keeps normal document flow + centering and avoids a
-     transformed stacking context swallowing position:sticky elsewhere. */
-  .page-shell {
-    zoom: var(--page-scale, 0.95);
-    max-width: 1240px;
-    margin: 0 auto;
-    min-height: 100vh;
-    background: var(--color-bg);
-    box-shadow:
-      0 0 0 1px rgba(20, 24, 28, 0.06),
-      0 24px 60px -16px rgba(20, 24, 28, 0.35);
-  }
-  main {
-    min-height: 60vh;
-    padding: 0;
-    /* main is transparent; the .page-shell panel carries the cream surface so
-       the body-bg photo shows in the gutters beside the panel. */
-    background: transparent;
-  }
-  /* Mobile: panel takes full width so the photo doesn't show on small screens,
-     and we drop the zoom so phone text isn't double-shrunk under the browser's
-     own text scaling. */
-  @media (max-width: 760px) {
-    .page-shell { max-width: none; box-shadow: none; zoom: 1; }
-  }
-  /* Skip link */
-  .skip-link {
-    position: absolute;
-    left: var(--space-4);
-    top: -3rem;
-    background: var(--color-forest);
-    color: var(--color-paper);
-    padding: var(--space-2) var(--space-4);
-    border-radius: var(--radius-md);
-    text-decoration: none;
-    z-index: 100;
-    transition: top var(--duration-fast) var(--ease-out);
-  }
-  .skip-link:focus { top: var(--space-4); }
-
-  /* Header — full panel width (criterion 3). Lives INSIDE .page-shell, so it
-     spans the floating panel edge-to-edge with the gutter photo beside it.
-     Not sticky: the mockup header scrolls with the panel, and position:sticky
-     inside a zoom'd panel is unreliable. Logo pins far-left, nav far-right via
-     the panel's own padding (--space-8), NOT clamped to a narrow article shell. */
-  .site-header {
-    background: var(--color-cream);
-    border-bottom: 1px solid var(--color-sage-light);
-  }
-
-  .site-header__inner {
-    padding: 0 var(--space-8);
-    height: var(--header-height);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-6);
-  }
-
-  /* Brand: editorial serif wordmark with italic-steel "Picks" mark */
+<style>
+  /* Brand: editorial serif wordmark with italic-steel "Picks" mark. Lives in
+     this layout (not SiteShell) because the brand markup is slotted from here —
+     Astro scopes these styles to the markup THIS file authors. */
   .brand {
     display: flex;
     align-items: center;
@@ -294,178 +141,7 @@ const fontsHref = "https://fonts.googleapis.com/css2?family=Instrument+Serif:ita
     text-transform: uppercase;
     font-weight: 500;
   }
-
-  /* Desktop nav */
-  .site-nav {
-    display: flex;
-    align-items: center;
-    gap: var(--space-6);
-  }
-  .site-nav__link {
-    font-family: var(--font-sans);
-    font-size: var(--text-sm);
-    font-weight: var(--weight-medium);
-    color: var(--color-paper-ink);
-    text-decoration: none;
-    letter-spacing: 0.01em;
-    padding: var(--space-2) 0;
-    position: relative;
-  }
-  .site-nav__link::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 2px;
-    background: var(--color-forest);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform var(--duration-base) var(--ease-out);
-  }
-  .site-nav__link:hover { color: var(--color-forest); }
-  .site-nav__link:hover::after { transform: scaleX(1); }
-  .site-nav__link.is-active { color: var(--color-forest); }
-  .site-nav__link.is-active::after { transform: scaleX(1); }
-
-  /* Mobile toggle */
-  .nav-toggle {
-    display: none;
-    background: none;
-    border: 0;
-    padding: var(--space-2);
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 5px;
-  }
-  .nav-toggle__bar {
-    width: 22px;
-    height: 2px;
-    background: var(--color-paper-ink);
-    border-radius: 1px;
-    transition: transform var(--duration-base) var(--ease-out),
-                opacity var(--duration-base) var(--ease-out);
-  }
-  .nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-  }
-  .nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(2) {
-    opacity: 0;
-  }
-  .nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
-  }
-
-  /* Mobile drawer */
-  .mobile-nav {
-    display: none;
-    flex-direction: column;
-    padding: var(--space-2) var(--space-6) var(--space-6);
-    background: var(--color-paper);
-    border-top: 1px solid var(--color-sage-light);
-  }
-  .mobile-nav.is-open { display: flex; }
-  .mobile-nav__link {
-    padding: var(--space-4) 0;
-    font-family: var(--font-sans);
-    font-size: var(--text-lg);
-    font-weight: var(--weight-medium);
-    color: var(--color-paper-ink);
-    text-decoration: none;
-    border-bottom: 1px solid var(--color-sage-light);
-  }
-  .mobile-nav__link:last-child { border-bottom: 0; }
-
   @media (max-width: 760px) {
-    .site-nav { display: none; }
-    .nav-toggle { display: flex; }
     .brand__tag { display: none; }
-    .site-header__inner { padding: 0 var(--space-4); gap: var(--space-3); }
   }
-
-  /* Main content — bg is set transparent at the top of this style block so
-     the body-bg photo shows in the LEFT/RIGHT gutters either side of the
-     centered .page-shell. Don't add `background: var(--color-bg)` back
-     here; it loads after the transparent rule and covers body horizontally. */
-
-  /* Footer */
-  .site-footer {
-    margin-top: var(--space-24);
-    background: var(--color-paper-muted);
-    color: var(--color-paper-ink);
-    border-top: 1px solid var(--color-sage-light);
-  }
-  .site-footer__inner {
-    padding: var(--space-16) var(--space-8) var(--space-10);
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: var(--space-12);
-  }
-  .site-footer__brand .site-footer__name {
-    font-family: var(--font-serif);
-    font-size: var(--text-2xl);
-    font-weight: var(--weight-semibold);
-    color: var(--color-paper-ink);
-    letter-spacing: -0.012em;
-    display: block;
-    margin-bottom: var(--space-3);
-  }
-  .site-footer__blurb {
-    font-size: var(--text-sm);
-    line-height: var(--leading-normal);
-    color: var(--color-muted);
-    max-width: 32rem;
-    margin: 0;
-  }
-  .site-footer__col h4 {
-    font-family: var(--font-sans);
-    font-size: var(--text-xs);
-    font-weight: var(--weight-semibold);
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-wide);
-    color: var(--color-brass);
-    margin-bottom: var(--space-4);
-  }
-  .site-footer__col a {
-    display: block;
-    font-size: var(--text-sm);
-    color: var(--color-paper-ink);
-    text-decoration: none;
-    padding: var(--space-1) 0;
-    opacity: 0.85;
-    transition: opacity var(--duration-fast) var(--ease-out),
-                color var(--duration-fast) var(--ease-out);
-  }
-  .site-footer__col a:hover {
-    opacity: 1;
-    color: var(--color-brass);
-  }
-  .site-footer__base {
-    border-top: 1px solid var(--color-sage-light);
-    padding: var(--space-6);
-    max-width: var(--container-max);
-    margin: 0 auto;
-  }
-  .site-footer__copy {
-    text-align: center;
-    font-size: var(--text-xs);
-    color: var(--color-muted);
-    margin: var(--space-4) 0 0;
-    letter-spacing: var(--tracking-wide);
-  }
-
-  @media (max-width: 760px) {
-    .site-footer__inner {
-      grid-template-columns: 1fr;
-      gap: var(--space-8);
-      padding: var(--space-12) var(--space-4) var(--space-8);
-    }
-  }
-
-  /* Lock scroll when mobile nav open */
-  :global(body.nav-open) { overflow: hidden; }
 </style>

@@ -4,7 +4,6 @@ interface Props {
   name: string;
   brand: string;
   image?: string;
-  imageScale?: number;
   tagline?: string;
   bestFor?: string;
   priceFrom?: number;
@@ -16,7 +15,6 @@ const {
   name,
   brand,
   image,
-  imageScale,
   tagline,
   bestFor,
   priceFrom,
@@ -43,7 +41,6 @@ const formattedPrice = typeof priceFrom === "number"
         height="1200"
         loading="lazy"
         decoding="async"
-        style={imageScale ? `transform: scale(${imageScale}); transform-origin: center;` : undefined}
       />
     ) : (
       <div class="product-card__placeholder" aria-hidden="true">

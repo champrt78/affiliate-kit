@@ -1,6 +1,15 @@
 ---
-import BaseLayout from "@affkit/shared-ui/BaseLayout.astro";
+import SiteShell from "@affkit/shared-ui/SiteShell.astro";
 import AffiliateDisclosure from "@affkit/shared-ui/AffiliateDisclosure.astro";
+// Per-site palette/font token overrides. Create this file when you spawn the
+// site; it sets --color-*, --font-*, and (optionally) --page-scale.
+// import "../styles/site-tokens.css";
+
+/* Per-page gutter theme. A site defines its own themeBackgrounds map of CSS
+   `background` shorthand values (scene/atmosphere photos only — never product
+   hero, per the image policy). The shell paints the body and floats the cream
+   page-shell on top; mobile collapses the shell to full-width. */
+type BgTheme = "default" | "solid";
 
 interface Props {
   title: string;
@@ -9,12 +18,51 @@ interface Props {
   robotsContent?: string;
   ogType?: string;
   ogImage?: string;
+  bgTheme?: BgTheme;
 }
 
-const { title, description, canonical, robotsContent, ogType, ogImage } = Astro.props;
+const { title, description, canonical, robotsContent, ogType, ogImage, bgTheme = "solid" } = Astro.props;
 const siteName = "__SITE_NAME__";
+
+/* Resolve bgTheme → CSS `background` shorthand value. Add real photo layers per
+   the site's visual direction. "solid" → "none" (gutter shows gutterColor). */
+const themeBackgrounds: Record<typeof bgTheme, string> = {
+  default: "none",
+  solid: "none",
+};
+const pageBg = themeBackgrounds[bgTheme];
+
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/buyers-guides/", label: "Guides" },
+  { href: "/reviews/", label: "Reviews" },
+  { href: "/about/", label: "About" },
+];
+
+const footerBlurb =
+  "__SITE_NAME__ — short one-line description of what the site covers and how it helps.";
+
+const footerColumns = [
+  {
+    heading: "Explore",
+    links: [
+      { href: "/buyers-guides/", label: "Buying guides" },
+      { href: "/reviews/", label: "Single-product reviews" },
+      { href: "/how-we-evaluate/", label: "How we evaluate" },
+      { href: "/about/", label: "About this site" },
+    ],
+  },
+  {
+    heading: "Fine print",
+    links: [
+      { href: "/disclosure/", label: "Affiliate disclosure" },
+      { href: "/privacy/", label: "Privacy" },
+      { href: "/contact/", label: "Contact" },
+    ],
+  },
+];
 ---
-<BaseLayout
+<SiteShell
   title={title}
   description={description}
   canonical={canonical}
@@ -22,61 +70,37 @@ const siteName = "__SITE_NAME__";
   robotsContent={robotsContent}
   ogType={ogType}
   ogImage={ogImage}
+  navItems={navItems}
+  footerColumns={footerColumns}
+  footerBlurb={footerBlurb}
+  pageBg={pageBg}
 >
-  <header class="site-header">
-    <a href="/" class="brand">__SITE_NAME__</a>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/about/">About</a>
-      <a href="/disclosure/">Disclosure</a>
-    </nav>
-  </header>
+  {/* Brand markup is authored HERE so this layout's scoped .brand* CSS matches
+      it — Astro scopes slot styles to the authoring component, not SiteShell.
+      Swap in the site's real wordmark / mark per its visual direction. */}
+  <a href="/" class="brand" slot="brand">
+    <span class="brand__name">__SITE_NAME__</span>
+  </a>
 
-  <main>
-    <slot />
-  </main>
+  <AffiliateDisclosure slot="footer-legal" siteName={siteName} variant="footer" />
 
-  <AffiliateDisclosure siteName={siteName} />
-
-  <footer class="site-footer">
-    <nav>
-      <a href="/about/">About</a>
-      <a href="/disclosure/">Affiliate disclosure</a>
-      <a href="/privacy/">Privacy</a>
-      <a href="/contact/">Contact</a>
-    </nav>
-    <p>© {new Date().getFullYear()} {siteName}. All rights reserved.</p>
-  </footer>
-</BaseLayout>
+  <slot />
+</SiteShell>
 
 <style>
-  .site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--space-4) 0;
-    border-bottom: 1px solid var(--color-border);
-    margin-bottom: var(--space-8);
-  }
+  /* Brand wordmark. Lives in this layout (not SiteShell) because the brand
+     markup is slotted from here — Astro scopes these styles to the markup THIS
+     file authors. Restyle per the site's visual direction. */
   .brand {
-    font-weight: 700;
-    font-size: var(--text-lg);
-    color: var(--color-fg);
+    display: flex;
+    align-items: center;
     text-decoration: none;
+    color: var(--color-paper-ink, var(--color-fg));
   }
-  nav a {
-    color: var(--color-fg);
-    text-decoration: none;
-    margin-left: var(--space-4);
-  }
-  nav a:hover { color: var(--color-brand); }
-  main { min-height: 60vh; }
-  .site-footer {
-    margin-top: var(--space-16);
-    padding: var(--space-6) 0;
-    border-top: 1px solid var(--color-border);
-    text-align: center;
-    color: var(--color-muted);
-    font-size: var(--text-sm);
+  .brand__name {
+    font-family: var(--font-serif);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-xl);
+    letter-spacing: -0.01em;
   }
 </style>

@@ -74,7 +74,6 @@ const reviews = defineCollection({
     images: z.object({
       hero: z.string().optional(),
       heroCaption: z.string().optional(),
-      imageScale: z.number().optional(),
       context: z.string().optional(),
       comparison: z.string().optional(),
     }).optional(),
@@ -100,7 +99,6 @@ const buyersGuides = defineCollection({
       brand: z.string(),
       affiliateUrl: z.string(),
       image: z.string().optional(),
-      imageScale: z.number().optional(),
       tagline: z.string().optional(),
       cloakedSlug: z.string().optional(),
       bestFor: z.string().optional(),
