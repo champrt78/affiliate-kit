@@ -6,7 +6,7 @@
     "apex": "starteraquarium.com"
   },
   "affiliate": {
-    "amazonTag": ""
+    "amazonTag": "mystarteraquarium-20"
   },
   "niche": {
     "vertical": "beginner-aquarium-gear",
@@ -39,11 +39,31 @@
   },
   "featureAxes": {
     "default": [
-      { "name": "Beginner-Friendliness", "weight": 25, "description": "how easy to set up and run without prior experience" },
-      { "name": "Reliability", "weight": 25, "description": "consistent, safe operation and longevity" },
-      { "name": "Value", "weight": 20, "description": "performance per dollar, total setup cost" },
-      { "name": "Tank-Size Fit", "weight": 15, "description": "right-sized for common beginner tanks (5 to 20 gal)" },
-      { "name": "Ease of Maintenance", "weight": 15, "description": "cleaning, media changes, daily friction" }
+      {
+        "name": "Beginner-Friendliness",
+        "weight": 25,
+        "description": "how easy to set up and run without prior experience"
+      },
+      {
+        "name": "Reliability",
+        "weight": 25,
+        "description": "consistent, safe operation and longevity"
+      },
+      {
+        "name": "Value",
+        "weight": 20,
+        "description": "performance per dollar, total setup cost"
+      },
+      {
+        "name": "Tank-Size Fit",
+        "weight": 15,
+        "description": "right-sized for common beginner tanks (5 to 20 gal)"
+      },
+      {
+        "name": "Ease of Maintenance",
+        "weight": 15,
+        "description": "cleaning, media changes, daily friction"
+      }
     ]
   },
   "categoryPillars": [
@@ -56,12 +76,54 @@
   ],
   "navigation": {
     "pillars": [
-      { "slug": "tanks-and-kits", "label": "Tanks & Kits", "type": "commercial", "categoryPillar": "tanks-and-kits", "blurb": "All-in-one starter kits and the right first tank size.", "hubKicker": "Buying guides" },
-      { "slug": "filters", "label": "Filters", "type": "commercial", "categoryPillar": "filters", "blurb": "The piece of gear that keeps your fish alive, made simple.", "hubKicker": "Buying guides" },
-      { "slug": "heaters", "label": "Heaters", "type": "commercial", "categoryPillar": "heaters", "blurb": "Safe, reliable warmth sized to your tank.", "hubKicker": "Buying guides" },
-      { "slug": "lighting", "label": "Lighting", "type": "commercial", "categoryPillar": "lighting", "blurb": "Lights that show off your fish and keep plants happy.", "hubKicker": "Buying guides" },
-      { "slug": "tank-school", "label": "Tank School", "type": "informational", "categoryPillar": null, "blurb": "The nitrogen cycle, water testing, and beginner mistakes to skip.", "hubKicker": "Guides & research" },
-      { "slug": "fun-finds", "label": "Fun Finds", "type": "informational", "categoryPillar": null, "blurb": "Decor, gifts, and playful gear that make the hobby fun.", "hubKicker": "Gifts & novelty" }
+      {
+        "slug": "tanks-and-kits",
+        "label": "Tanks & Kits",
+        "type": "commercial",
+        "categoryPillar": "tanks-and-kits",
+        "blurb": "All-in-one starter kits and the right first tank size.",
+        "hubKicker": "Buying guides"
+      },
+      {
+        "slug": "filters",
+        "label": "Filters",
+        "type": "commercial",
+        "categoryPillar": "filters",
+        "blurb": "The piece of gear that keeps your fish alive, made simple.",
+        "hubKicker": "Buying guides"
+      },
+      {
+        "slug": "heaters",
+        "label": "Heaters",
+        "type": "commercial",
+        "categoryPillar": "heaters",
+        "blurb": "Safe, reliable warmth sized to your tank.",
+        "hubKicker": "Buying guides"
+      },
+      {
+        "slug": "lighting",
+        "label": "Lighting",
+        "type": "commercial",
+        "categoryPillar": "lighting",
+        "blurb": "Lights that show off your fish and keep plants happy.",
+        "hubKicker": "Buying guides"
+      },
+      {
+        "slug": "tank-school",
+        "label": "Tank School",
+        "type": "informational",
+        "categoryPillar": null,
+        "blurb": "The nitrogen cycle, water testing, and beginner mistakes to skip.",
+        "hubKicker": "Guides & research"
+      },
+      {
+        "slug": "fun-finds",
+        "label": "Fun Finds",
+        "type": "informational",
+        "categoryPillar": null,
+        "blurb": "Decor, gifts, and playful gear that make the hobby fun.",
+        "hubKicker": "Gifts & novelty"
+      }
     ]
   },
   "brandsCovered": [
