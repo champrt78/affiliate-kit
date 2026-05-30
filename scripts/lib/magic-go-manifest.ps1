@@ -15,6 +15,12 @@
     human states : verdict-written, discarded, published
     failure state: quarantined  (+ failed_at phase + verbatim error)
     kv state     : kv_status (registered | failed | none) per piece (V10)
+    qa state     : qa_status (none | passed | failed) + qa_notes per piece —
+                   the pre-publish front-end QA gate. NOT a value of the main
+                   `status` state machine and NOT a terminal state; it's a
+                   parallel field like kv_status. publish-batch refuses any
+                   piece whose qa_status != "passed" (qa-failed / qa-none both
+                   block). A qa-failed piece is fixed and re-QA'd, never shipped.
 
   All writes are ATOMIC (temp-file + rename, CE finding V10) so a mid-write
   crash can't corrupt the source of truth.
@@ -108,6 +114,7 @@ function Add-MagicGoPiece {
     status = "scouted"; research_note = ""; content_path = ""
     bottom_line_options = @(); supporting = ""; verdict_written = $false
     failed_at = $null; error = $null; kv_status = "none"; last_commit = ""
+    qa_status = "none"; qa_notes = ""
   }
   foreach ($k in $Piece.Keys) { $defaults[$k] = $Piece[$k] }
   $list = @($m.pieces) + (New-Object psobject -Property $defaults)

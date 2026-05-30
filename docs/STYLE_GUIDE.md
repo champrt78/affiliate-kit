@@ -98,4 +98,10 @@ Root-cause bucket (G): **calmer global scale** [I12, R1.6] — set base type/spa
 
 ---
 
+## 8. Enforcement — pre-publish QA gate in Magic Go
+
+- **R8.1 👁️🧩 Pre-publish front-end QA gate.** WHY: the shared kit makes pieces on-brand by construction, but per-piece data can still violate a criterion (duplicate/oversized hero, badly-contained tall product shot, orphan grid, wrapping heading). FIX: before any Magic Go piece flips noindex→index, a front-end QA review (`compound-engineering:ce-design-implementation-reviewer`) builds the affected site, screenshots the piece at **1440 + true-390px**, and checks it against the acceptance criteria in this guide (readability/scale, product images contained on white, full-width header, no mobile overflow, balanced grid, Bottom Line placement, distinct hero). The verdict is recorded in the run manifest as `qa_status` (passed/failed) + `qa_notes`. A failed piece is fixed and re-QA'd, never published. ENFORCED: `plugin/commands/magic-go.md` "PRE-PUBLISH FRONT-END QA GATE" phase (the review) + `scripts/magic-go-publish.ps1` (fail-closed code gate: refuses publish unless every publishable piece has BOTH a non-empty Bottom Line verdict AND `qa_status == "passed"`).
+
+---
+
 _Related canonical docs: project `CLAUDE.md` (web-vitals + pre-commit safeguards), `docs/voice-doctrine.md` (forbidden phrases), `docs/SYSTEM.md` (architecture). This file is the human-facing visual/UX bible those don't fully cover._

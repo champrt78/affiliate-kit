@@ -10,6 +10,26 @@ run-manifest, quarantining failures, and rendering `dist/magic-go/queue.html`
 for Ray to whip through verdicts. **The `## Bottom Line` gate stays Ray's —
 this never writes a verdict.**
 
+## Rendering: on-brand by construction (shared kit)
+
+All 5 sites render through the **shared component kit** (`packages/shared-ui`:
+`SiteShell` + `Media` + the unified guide/review templates — see the rebuild
+plan `docs/brainstorms/2026-05-29-component-system-rebuild-plan.md`). Magic Go
+produces only content (markdown frontmatter + per-site `site-config.json`); the
+kit owns layout, scale, header, gutters, and image containment. So a new piece
+is **on-brand, readable, and image-contained BY CONSTRUCTION** — the structural
+acceptance criteria in `docs/STYLE_GUIDE.md` (calmer ~0.92 scale, `object-fit:
+contain` Media boxes on white, full-width header, centered content shell,
+balanced grids, web-vitals img dims) are satisfied by the templates, not by
+per-piece work. The canonical structure these reproduce is the approved mockup
+`docs/playgrounds/component-system/page.html`.
+
+That construction is necessary but NOT sufficient: per-piece data can still
+violate a criterion (a duplicate/oversized hero, a tall antenna-up product shot
+that contains badly, a 5-card orphan grid, a too-long heading that wraps). The
+**pre-publish front-end QA gate** below is the catch for that class — a piece
+is verified on the real rendered page before its noindex flips.
+
 ## Entry modes
 
 - **Mode B — read inline by `/aff`** (normal): `/aff` matched `magic-go-ready`
@@ -130,6 +150,57 @@ durability; a crash resumes from the manifest):
 4. Notify (plan §6): print `Queue ready: <R> drafts (<Q> quarantined).` In
    Mode B, control returns to `/aff`, whose `bottom-line-queue-pending` posture
    takes over (Ray clears verdicts), then `publish-batch-ready`.
+
+## PRE-PUBLISH FRONT-END QA GATE (REQUIRED — runs before publish, never skipped)
+
+**This is an ordered, required step. No piece reaches `/aff publish-batch`
+(`magic-go-publish.ps1`) until it has passed this gate.** The kit makes pieces
+on-brand by construction; this gate verifies that on the ACTUAL rendered page,
+at real viewports, and catches the per-piece-data failures construction can't.
+
+Sequence: it runs AFTER the queue render and AFTER Ray has written the Bottom
+Line verdicts (so "Bottom Line placement / distinct hero" can be checked on the
+real, index-eligible page), and BEFORE publish. Publish refuses any piece whose
+`qa_status` is not `passed` — the gate is enforced in code, not just here.
+
+For each publishable piece (exclude `quarantined` / `discarded`):
+
+1. **Dispatch the front-end QA review.** Use the
+   **`compound-engineering:ce-design-implementation-reviewer`** agent. Build the
+   affected site (`pnpm --filter <site> build`, or run the dev server) and have
+   the agent screenshot the rendered piece at **1440px** (desktop) and
+   **true-390px** (mobile — real device width, not a scaled-down 1440 shot).
+2. **Check against the `docs/STYLE_GUIDE.md` acceptance criteria** (the same set
+   the kit targets, verified on the real page):
+   - **Readability / scale** — body copy + headings comfortable at the ~0.92
+     kit scale; nothing feels zoomed.
+   - **Product images contained on white** — `object-fit: contain` in a sane
+     Media box; the whole product shows, never cropped/stretched/oversized.
+   - **Full-width header** — logo far-left, nav far-right, edge to edge; not
+     clamped to the article shell.
+   - **No mobile overflow** — nothing runs off the right edge or causes a
+     horizontal scrollbar at true-390px.
+   - **Balanced grid** — guide `products[]` render 2×3 / 2×2 / one row; no
+     orphan row (never 5 or 3+1).
+   - **Bottom Line placement** — `## Bottom Line` renders at the TOP of the
+     piece (anti-recipe-page), with the verdict present.
+   - **Distinct hero** — the piece's hero is its own, category-appropriate
+     image; not a shared/duplicate hero reused across guides.
+3. **Record the verdict in the manifest.** Dot-source the manifest lib and call
+   `Update-MagicGoPiece -RunId <runid> -Slug <slug> -Set @{ qa_status = "passed"; qa_notes = "<one-line summary>" }`
+   on a clean pass, or `qa_status = "failed"` with `qa_notes` listing the
+   violated criteria. (`qa_status` is a parallel field like `kv_status` — it is
+   NOT a value of the main `status` state machine.)
+4. **A failed piece is FIXED and RE-QA'd, never published.** Fix the source
+   (data: swap the hero / pick an antenna-down product image / drop to a
+   balanced grid; or template if it's a kit regression), rebuild, re-dispatch
+   the reviewer, and re-record. Loop until `qa_status = "passed"`. Only then is
+   the piece eligible for publish.
+
+When every publishable piece is `qa_status = "passed"`, control returns to
+`/aff` → `publish-batch-ready`. `magic-go-publish.ps1` independently re-checks
+both the verdict AND `qa_status == "passed"` and refuses any piece missing
+either (fail-closed — `none` / `failed` / unset all block).
 
 ## What this NEVER does
 

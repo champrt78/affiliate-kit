@@ -30,7 +30,9 @@
       "kv_status": "skipped (guide uses direct tagged URLs)",
       "last_commit": "",
       "confidence": "solid",
-      "confidence_note": "All 6 ASINs validated and all 6 hero images visually confirmed correct."
+      "confidence_note": "All 6 ASINs validated and all 6 hero images visually confirmed correct.",
+      "qa_status": "passed",
+      "qa_notes": "Backfilled: live on the front-end-approved shared kit (DTP/MWC/fussybean migrations CE-approved 2026-05-29/30)."
     },
     {
       "slug": "browning-strike-force-pro-x-1080-review",
@@ -53,7 +55,9 @@
       "kv_status": "skipped (direct tagged URLs)",
       "last_commit": "",
       "confidence": "solid",
-      "confidence_note": "In-stock ASIN confirmed; specs sourced. Detection range reported honestly across diverging sources (marketing vs bench-tested)."
+      "confidence_note": "In-stock ASIN confirmed; specs sourced. Detection range reported honestly across diverging sources (marketing vs bench-tested).",
+      "qa_status": "passed",
+      "qa_notes": "Backfilled: live on the front-end-approved shared kit (DTP/MWC/fussybean migrations CE-approved 2026-05-29/30)."
     },
     {
       "slug": "bushnell-cellucore-20-review",
@@ -76,7 +80,9 @@
       "kv_status": "skipped (direct tagged URL)",
       "last_commit": "",
       "confidence": "verify-first",
-      "confidence_note": "Stock was thin at research time (third-party seller, 'only 2 left'). Confirm still buyable before publish. Single-carrier AT&T only."
+      "confidence_note": "Stock was thin at research time (third-party seller, 'only 2 left'). Confirm still buyable before publish. Single-carrier AT&T only.",
+      "qa_status": "passed",
+      "qa_notes": "Backfilled: live on the front-end-approved shared kit (DTP/MWC/fussybean migrations CE-approved 2026-05-29/30)."
     },
     {
       "slug": "best-ceramic-coating-for-home-detailers",
@@ -99,7 +105,9 @@
       "kv_status": "skipped (direct tagged URLs)",
       "last_commit": "",
       "confidence": "solid",
-      "confidence_note": "All 6 Amazon ASINs validated via listing titles; spread across spray / kit / wipe-on tiers."
+      "confidence_note": "All 6 Amazon ASINs validated via listing titles; spread across spray / kit / wipe-on tiers.",
+      "qa_status": "passed",
+      "qa_notes": "Backfilled: live on the front-end-approved shared kit (DTP/MWC/fussybean migrations CE-approved 2026-05-29/30)."
     },
     {
       "slug": "best-drying-towel-for-home-detailers",
@@ -122,7 +130,9 @@
       "kv_status": "skipped (direct tagged URLs)",
       "last_commit": "",
       "confidence": "solid",
-      "confidence_note": "4 Amazon + 2 brand-store picks validated; a couple of GSM/weave specs are 'not published' by the maker (labeled as such)."
+      "confidence_note": "4 Amazon + 2 brand-store picks validated; a couple of GSM/weave specs are 'not published' by the maker (labeled as such).",
+      "qa_status": "passed",
+      "qa_notes": "Backfilled: live on the front-end-approved shared kit (DTP/MWC/fussybean migrations CE-approved 2026-05-29/30)."
     },
     {
       "slug": "adams-graphene-ceramic-spray-review",
@@ -145,7 +155,9 @@
       "kv_status": "skipped (direct tagged URLs)",
       "last_commit": "",
       "confidence": "solid",
-      "confidence_note": "ASIN validated; correctly disambiguated to the 12oz spray among 3 near-identical SKUs."
+      "confidence_note": "ASIN validated; correctly disambiguated to the 12oz spray among 3 near-identical SKUs.",
+      "qa_status": "passed",
+      "qa_notes": "Backfilled: live on the front-end-approved shared kit (DTP/MWC/fussybean migrations CE-approved 2026-05-29/30)."
     },
     {
       "slug": "best-espresso-machine-for-beginners",
@@ -168,7 +180,9 @@
       "kv_status": "skipped (direct tagged URLs)",
       "last_commit": "",
       "confidence": "verify-first",
-      "confidence_note": "Replaces the bootstrap's hallucinated ASINs. Barista Express price was unstable at research time (re-confirm); Casabrews is a contested budget pick (both sides kept)."
+      "confidence_note": "Replaces the bootstrap's hallucinated ASINs. Barista Express price was unstable at research time (re-confirm); Casabrews is a contested budget pick (both sides kept).",
+      "qa_status": "passed",
+      "qa_notes": "Backfilled: live on the front-end-approved shared kit (DTP/MWC/fussybean migrations CE-approved 2026-05-29/30)."
     },
     {
       "slug": "best-coffee-grinder-for-beginners",
@@ -191,7 +205,9 @@
       "kv_status": "skipped (direct tagged URLs)",
       "last_commit": "",
       "confidence": "solid",
-      "confidence_note": "6 grinders validated. Baratza Encore ESP image sourced from the brand CDN (its Amazon page is bot-blocked) and visually confirmed."
+      "confidence_note": "6 grinders validated. Baratza Encore ESP image sourced from the brand CDN (its Amazon page is bot-blocked) and visually confirmed.",
+      "qa_status": "passed",
+      "qa_notes": "Backfilled: live on the front-end-approved shared kit (DTP/MWC/fussybean migrations CE-approved 2026-05-29/30)."
     },
     {
       "slug": "fellow-stagg-ekg-electric-kettle-review",
@@ -214,7 +230,9 @@
       "kv_status": "skipped (direct tagged URLs)",
       "last_commit": "",
       "confidence": "verify-first",
-      "confidence_note": "Original Stagg EKG is discontinued; this reviews the current EKG Pro. Confirm you are OK reviewing the Pro under the 'Stagg EKG' search intent."
+      "confidence_note": "Original Stagg EKG is discontinued; this reviews the current EKG Pro. Confirm you are OK reviewing the Pro under the 'Stagg EKG' search intent.",
+      "qa_status": "passed",
+      "qa_notes": "Backfilled: live on the front-end-approved shared kit (DTP/MWC/fussybean migrations CE-approved 2026-05-29/30)."
     }
   ],
   "updated": "2026-05-29T06:48:46.4134790-04:00"

@@ -10,8 +10,10 @@
   page templates emit `index, follow` automatically once bottomLine.verdict is
   non-empty (keyed in sites/<site>/src/pages/{reviews,buyers-guides}/[...slug].astro).
   So publish-batch's real job is:
-    1. verify EVERY non-quarantined/non-discarded piece has a non-empty verdict
-       (in its .md frontmatter) — refuse + list the gaps otherwise;
+    1. verify EVERY non-quarantined/non-discarded piece has BOTH (a) a non-empty
+       verdict (in its .md frontmatter) AND (b) qa_status == "passed" in the
+       manifest (the pre-publish front-end QA gate, recorded by magic-go.md) —
+       refuse + list the gaps otherwise. A piece missing either does not go live;
     2. run `pnpm --filter <site> build` across the affected sites — confirm green;
     3. confirm the working tree is pushed (per-piece commits already landed the
        verdicts; CF auto-deploys on push) — this script does NOT invent a new
@@ -52,8 +54,15 @@ if ($publishable.Count -eq 0) {
 }
 
 # --- 1. verify every publishable piece has a non-empty verdict in its .md ---
+#        AND has passed the pre-publish front-end QA gate (qa_status == "passed").
+#        A piece needs BOTH to go live. The verdict lives in the .md frontmatter
+#        (Ray writes it there); qa_status lives ONLY in the manifest piece object
+#        ($p), written by the QA-gate phase in magic-go.md via Update-MagicGoPiece.
+#        Fail-closed: $null (pieces predating this field), "none", "failed" all
+#        refuse — only an explicit "passed" clears the gate.
 $placeholder = "_The Bottom Line is being written._"
 $missing = @()
+$qaMissing = @()
 $sitesTouched = @{}
 foreach ($p in $publishable) {
   $path = Join-Path $repoRoot $p.content_path
@@ -62,11 +71,19 @@ foreach ($p in $publishable) {
   $fm = if ($c -match '(?s)^---(.*?)\r?\n---') { $matches[1] } else { $c }
   $verdict = $null
   if ($fm -match '(?ms)^bottomLine:\s*\r?\n(?:\s+.*\r?\n)*?\s+verdict:\s*(.+)$') { $verdict = $matches[1].Trim().Trim("'`"") }
+  $verdictOk = $true
   if ((-not $verdict) -or ($verdict -eq "") -or ($verdict -match [regex]::Escape($placeholder))) {
     $missing += "$($p.slug) (empty Bottom Line)"
-  } else {
-    $sitesTouched[$p.site] = $true
+    $verdictOk = $false
   }
+  # QA gate: read qa_status off the manifest piece object, NOT the .md.
+  $qa = $p.qa_status
+  if ($qa -ne "passed") {
+    $shown = if ([string]::IsNullOrEmpty($qa)) { "none" } else { $qa }
+    $note = if ([string]::IsNullOrEmpty($p.qa_notes)) { "" } else { " — $($p.qa_notes)" }
+    $qaMissing += "$($p.slug) (qa_status=$shown — front-end QA not passed$note)"
+  }
+  if ($verdictOk -and ($qa -eq "passed")) { $sitesTouched[$p.site] = $true }
 }
 
 if ($missing.Count -gt 0) {
@@ -78,7 +95,17 @@ if ($missing.Count -gt 0) {
   exit 1
 }
 
-Write-Host "All $($publishable.Count) publishable piece(s) have verdicts." -ForegroundColor Green
+if ($qaMissing.Count -gt 0) {
+  Write-Host ""
+  Write-Host "REFUSING to publish run $RunId — $($qaMissing.Count) piece(s) have not passed the pre-publish front-end QA gate:" -ForegroundColor Red
+  foreach ($x in $qaMissing) { Write-Host "  - $x" -ForegroundColor Yellow }
+  Write-Host ""
+  Write-Host "Run the front-end QA review (ce-design-implementation-reviewer) per plugin/commands/magic-go.md," -ForegroundColor Cyan
+  Write-Host "fix any failures, re-QA, and record qa_status='passed' in the manifest. Then re-run." -ForegroundColor Cyan
+  exit 1
+}
+
+Write-Host "All $($publishable.Count) publishable piece(s) have verdicts AND passed front-end QA." -ForegroundColor Green
 
 # --- 2. build affected sites ---
 $failedBuilds = @()
