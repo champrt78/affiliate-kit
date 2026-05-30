@@ -20,7 +20,7 @@ const {
   priceFrom,
   affiliateUrl,
 } = Astro.props;
-const formattedPrice = typeof priceFrom === "number"
+const formattedPrice = (typeof priceFrom === "number" && priceFrom > 0)
   ? `from $${priceFrom.toLocaleString()}`
   : null;
 ---

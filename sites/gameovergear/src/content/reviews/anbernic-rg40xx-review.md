@@ -14,6 +14,7 @@ classification: "review"
 bgTheme: solid
 pubDate: 2026-05-30
 lastUpdated: 2026-05-30
+pillar: "retro-handhelds"
 images:
   hero: "https://m.media-amazon.com/images/I/717VZqOf7eL._SL1500_.jpg"
   heroCaption: "Anbernic RG40XX H, Black edition. Photo: Anbernic manufacturer media."

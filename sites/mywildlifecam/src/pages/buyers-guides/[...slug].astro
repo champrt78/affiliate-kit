@@ -74,7 +74,7 @@ const isoUpdated = data.lastUpdated instanceof Date
   : String(data.lastUpdated);
 
 const totalPicks = data.products.length;
-const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : null;
+const fmtPrice = (n?: number) => (typeof n === "number" && n > 0) ? `$${n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : null;
 ---
 <MainLayout
   title={data.title}

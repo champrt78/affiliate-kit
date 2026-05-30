@@ -114,6 +114,7 @@ products:
       <p>That programmability and the stronger output are why this is the strongest plant light in the guide, capable of supporting more demanding setups than the low-light fixtures above. The trade-offs are real for a beginner: at around $150 it is by far the most expensive pick here, and the app-driven flexibility is more than a first fish-only tank needs. The case for it is forward-looking: if you already know you want a planted tank and would rather buy once than upgrade later, the Plant 3.0 is the fixture that grows with the hobby rather than capping it.</p>
 pubDate: 2026-05-30
 lastUpdated: 2026-05-30
+pillar: "lighting"
 bgTheme: solid
 bottomLine:
   verdict: ""

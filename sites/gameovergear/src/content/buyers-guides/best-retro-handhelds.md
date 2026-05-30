@@ -114,6 +114,7 @@ products:
       <p>Joey's Retro Handhelds reports the Snapdragon 865 plays all systems up to and including 3DS, GameCube, PS2 and Wii U, upscaled and for the most part worry-free, with Dreamcast running every tested game well and PPSSPP able to max settings at 1080p, logging roughly 3 hours 35 minutes on GameCube and PS2 and up to 11 hours on GBA. DROIX framed it as a great premium Android gaming handheld at a low price. Unlike the Anbernic picks, this is a first-party Amazon listing sold by the Retroid Pocket brand store. Brand-direct pricing runs lower, so the Amazon buy-box price is worth re-checking before purchase.</p>
 pubDate: 2026-05-30
 lastUpdated: 2026-05-30
+pillar: "retro-handhelds"
 bgTheme: solid
 bottomLine:
   verdict: "Match the handheld to the era you replay. For Game Boy up through PS1 on Linux, the RG40XX V and clamshell RG35XX SP are the sweet spot; for Android power up through tougher systems, step up to the RG406H or the AMOLED Retroid Pocket 5."

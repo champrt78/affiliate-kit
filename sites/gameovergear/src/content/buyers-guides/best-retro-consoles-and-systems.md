@@ -108,6 +108,7 @@ products:
       <p>Pricing note: like the Genesis Mini, this listing shows buying options across multiple sellers rather than one buy-box winner, so the roughly $99.99 figure should be re-checked before purchase. Atari's own page confirms the headline feature, stating the 2600+ can play both original 2600 and 7800 cartridges. One caveat to flag: community compatibility lists note that a minority of original cartridges do not run perfectly on the 2600+, so the honest move is to point buyers to ongoing AtariAge and r/Atari2600 compatibility threads rather than promise universal support. Its Amazon rating is 4.4 stars across 853 ratings.</p>
 pubDate: 2026-05-30
 lastUpdated: 2026-05-30
+pillar: "consoles-and-systems"
 bgTheme: solid
 bottomLine:
   verdict: "For most people the Sega Genesis Mini is the easy call: first-party hardware, widely praised M2 emulation, and the deepest owner-review base here. Hold off on the Analogue Pocket on Amazon until its price drops back toward the roughly $220 direct MSRP."

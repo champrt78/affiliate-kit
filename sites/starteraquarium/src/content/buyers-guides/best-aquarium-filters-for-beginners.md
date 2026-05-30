@@ -114,6 +114,7 @@ products:
       <p>For beginners the appeal is flexibility and forgiveness around tank placement. Per the listing an adjustable flow switch lets you dial the current down at feeding time, directional flow nozzles aim the output, and an included spray bar plus venturi aeration add surface agitation and oxygen, which is handy if your tank lid sits flush against a wall where a hang-on-back will not fit. The trade-offs versus a HOB: the unit takes up visible space inside the tank rather than hiding behind it, and because it is submerged you reach into the water to service it. It also doubles as a turtle-tank filter per the listing. As an internal, it is the pick when a hang-on-back simply does not fit your spot.</p>
 pubDate: 2026-05-30
 lastUpdated: 2026-05-30
+pillar: "filters"
 bgTheme: solid
 bottomLine:
   verdict: "Pick by tank and fuss level. AquaClear 30 for set-and-forget capacity, Tetra Whisper IQ for the quietest run, a hygger sponge for gentle betta-safe flow, and the Cascade internal when you would rather not see a filter on the back."
