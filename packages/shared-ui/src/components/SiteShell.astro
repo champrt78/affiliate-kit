@@ -211,7 +211,7 @@ const footerColCount = Math.max(1, footerColumns.length);
       transformed stacking context. When stickyHeader is true, the panel is
       flattened (.page-shell--flat drops the zoom) so the now-external sticky
       header isn't out of sync with a scaled panel. */}
-  <div class:list={["page-shell", stickyHeader && "page-shell--flat"]}>
+  <div class:list={["page-shell", stickyHeader && "page-shell--flat", transparentHeader && "page-shell--bleed"]}>
     {!stickyHeader && (
       <header class="site-header">
         <div class="site-header__inner">
@@ -349,6 +349,18 @@ const footerColCount = Math.max(1, footerColumns.length);
      would desync from it. Flatten the zoom. (No effect on DTP — default
      branch never gets this class.) */
   .page-shell--flat { zoom: 1; }
+  /* transparentHeader sites (homepage hero only): the floating 1240px panel
+     would frame the full-bleed hero with espresso gutter strips + a drop
+     shadow — a regression from the approved Variant-C edge-to-edge hero. Drop
+     the max-width + shadow so the panel spans the viewport. KEEP background so
+     the body sections below the hero (e.g. the latte pillar tiles) stay on the
+     page surface, not the espresso gutter. Gated on transparentHeader, which
+     only the homepage passes, so interior pages keep the floating panel. No
+     effect on DTP (never passes transparentHeader). */
+  .page-shell--bleed {
+    max-width: none;
+    box-shadow: none;
+  }
 
   /* Skip link */
   .skip-link {
@@ -435,6 +447,9 @@ const footerColCount = Math.max(1, footerColumns.length);
     padding: var(--space-2) 0;
     position: relative;
   }
+  /* Nav accent (hover/active color + underline) is tokenized so a site whose
+     --color-forest equals its header-bg (fussybean: both espresso → invisible
+     hover) can override it. Defaults to --color-forest so DTP is unchanged. */
   .site-nav__link::after {
     content: "";
     position: absolute;
@@ -442,14 +457,14 @@ const footerColCount = Math.max(1, footerColumns.length);
     right: 0;
     bottom: 0;
     height: 2px;
-    background: var(--color-forest);
+    background: var(--nav-accent, var(--color-forest));
     transform: scaleX(0);
     transform-origin: left;
     transition: transform var(--duration-base) var(--ease-out);
   }
-  .site-nav__link:hover { color: var(--color-forest); }
+  .site-nav__link:hover { color: var(--nav-accent, var(--color-forest)); }
   .site-nav__link:hover::after { transform: scaleX(1); }
-  .site-nav__link.is-active { color: var(--color-forest); }
+  .site-nav__link.is-active { color: var(--nav-accent, var(--color-forest)); }
   .site-nav__link.is-active::after { transform: scaleX(1); }
 
   /* Mobile toggle */
@@ -466,10 +481,14 @@ const footerColCount = Math.max(1, footerColumns.length);
     flex-direction: column;
     gap: 5px;
   }
+  /* Toggle bars are tokenized for the same reason as --nav-accent: a site whose
+     --color-paper-ink ≈ its --header-bg (fussybean: espresso on espresso) would
+     render an invisible hamburger. Defaults to --color-paper-ink so DTP is
+     unchanged. */
   .nav-toggle__bar {
     width: 22px;
     height: 2px;
-    background: var(--color-paper-ink);
+    background: var(--nav-toggle-bar, var(--color-paper-ink));
     border-radius: 1px;
     transition: transform var(--duration-base) var(--ease-out),
                 opacity var(--duration-base) var(--ease-out);
@@ -485,12 +504,15 @@ const footerColCount = Math.max(1, footerColumns.length);
   }
 
   /* Mobile drawer */
+  /* Mobile drawer is tokenized so a dark-chrome site (fussybean espresso) keeps
+     its drawer on-skin instead of flipping to the light --color-paper default.
+     Each falls back to DTP's exact current value. */
   .mobile-nav {
     display: none;
     flex-direction: column;
     padding: var(--space-2) var(--space-6) var(--space-6);
-    background: var(--color-paper);
-    border-top: 1px solid var(--color-sage-light);
+    background: var(--mobile-nav-bg, var(--color-paper));
+    border-top: 1px solid var(--header-border, var(--color-sage-light));
   }
   .mobile-nav.is-open { display: flex; }
   .mobile-nav__link {
@@ -498,9 +520,9 @@ const footerColCount = Math.max(1, footerColumns.length);
     font-family: var(--font-sans);
     font-size: var(--text-lg);
     font-weight: var(--weight-medium);
-    color: var(--color-paper-ink);
+    color: var(--nav-link, var(--color-paper-ink));
     text-decoration: none;
-    border-bottom: 1px solid var(--color-sage-light);
+    border-bottom: 1px solid var(--header-border, var(--color-sage-light));
   }
   .mobile-nav__link:last-child { border-bottom: 0; }
 
@@ -593,10 +615,14 @@ const footerColCount = Math.max(1, footerColumns.length);
     border-top: 1px solid var(--footer-border, var(--header-border, var(--color-sage-light)));
     padding: var(--space-6) var(--space-8);
   }
+  /* Copyright line. --footer-copy added (2026-05-29) so a dark forest/espresso
+     footer can lift this off the muted default; without the seam it inherited
+     var(--color-muted) (#5C5A4F) which is invisible on a dark --footer-bg.
+     Defaults to --color-muted so DTP (light footer) is byte-identical. */
   .site-footer__copy {
     text-align: center;
     font-size: var(--text-xs);
-    color: var(--color-muted);
+    color: var(--footer-copy, var(--color-muted));
     margin: var(--space-4) 0 0;
     letter-spacing: var(--tracking-wide);
   }

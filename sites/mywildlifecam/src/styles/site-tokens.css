@@ -1,0 +1,38 @@
+/* ================================================================
+   mywildlifecam — site-specific chrome tokens
+   ================================================================
+   MWC's palette IS the shared-styles/tokens.css default (elevated
+   nature publication: forest + cream + brass, Fraunces + Inter Tight),
+   so the base color/type tokens are inherited and NOT redeclared here.
+
+   This file exists only to set the SiteShell CHROME seams (added in
+   the 2026-05-29 shell hardening) so the header + footer keep MWC's
+   forest identity after the migration onto the shared shell:
+
+     - Header: cream band (matches the approved mockup "mwc" skin —
+       --header-bg / --header-border default to MWC's cream + sage via
+       the shell's var() fallbacks, so they're left at default).
+     - Footer: forest band with cream text (MWC's pre-migration look,
+       NOT DTP's cream footer). Values pulled from the old MainLayout
+       footer CSS so the render is unchanged.
+   ================================================================ */
+
+:root {
+  /* Product-image box bg (style-guide criterion 2). Product shots are on
+     white; a colored tint clashes. The shared <Media> component reads this. */
+  --media-bg: #ffffff;
+
+  /* === Footer chrome — forest band, cream text === */
+  --footer-bg:      var(--color-forest);          /* #1F3D2F deep forest */
+  --footer-fg:      var(--color-paper);           /* cream body text */
+  --footer-name:    var(--color-paper);           /* brand wordmark */
+  --footer-blurb:   #C9CFC4;                       /* lightened cream (was paper @ 0.75) */
+  --footer-heading: var(--color-brass-soft);      /* brass-soft column headings */
+  --footer-link:    var(--color-paper);           /* cream links */
+  --footer-link-hover: var(--color-brass-soft);   /* brass-soft on hover */
+  --footer-border:  rgba(245, 240, 230, 0.15);    /* hairline on forest */
+  --footer-copy:    #C9CFC4;                       /* copyright line — must be
+                                                      light on forest, else it
+                                                      inherits the dark muted
+                                                      default and disappears */
+}

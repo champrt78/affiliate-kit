@@ -72,4 +72,33 @@
   --shadow-sm:  0 1px 2px rgba(36, 23, 16, 0.08);
   --shadow-md:  0 2px 8px rgba(36, 23, 16, 0.10), 0 1px 2px rgba(36, 23, 16, 0.05);
   --shadow-lg:  0 18px 38px -26px rgba(36, 23, 16, 0.55), 0 2px 4px rgba(36, 23, 16, 0.06);
+
+  /* --- SiteShell chrome tokens ---------------------------------------------
+     The shared <SiteShell> resolves each chrome color as var(--x, <DTP value>).
+     fussybean sets them here to keep the espresso/cream "coffeeshops smell"
+     header + footer. Without these the shell would render DTP's cream chrome.
+     Header = deep espresso (the old .site-header bg). Nav links = crema; the
+     nav ACCENT (hover/active/underline) must NOT default to --color-forest
+     here (it equals the espresso header bg → invisible), so it's caramel.
+     Footer = darkest espresso with crema/caramel text. ----------------------- */
+  --product-image-bg: #ffffff;   /* product shots are on white — Media box bg */
+  --media-bg:         #ffffff;
+
+  /* Header band */
+  --header-bg:        var(--color-forest);          /* deep espresso */
+  --header-border:    rgba(236, 212, 168, 0.14);    /* faint crema hairline */
+  --nav-link:         var(--color-brass-soft);      /* crema nav text */
+  --nav-accent:       var(--color-brass);           /* caramel hover/active/underline */
+  --nav-toggle-bar:   var(--color-brass-soft);      /* crema hamburger (espresso-on-espresso otherwise invisible) */
+  --mobile-nav-bg:    var(--color-forest-mid);      /* espresso2 drawer, stays on-skin */
+
+  /* Footer band */
+  --footer-bg:        #1c110a;                       /* darkest espresso */
+  --footer-fg:        #f1e2cb;                       /* latte body text */
+  --footer-border:    rgba(236, 212, 168, 0.16);
+  --footer-name:      var(--color-brass-soft);       /* crema wordmark */
+  --footer-blurb:     #b39f87;                        /* muted latte */
+  --footer-heading:   var(--color-brass);            /* caramel column headings */
+  --footer-link:      var(--color-brass-soft);       /* crema links */
+  --footer-link-hover: #fdf4e4;                       /* bright cream on hover */
 }

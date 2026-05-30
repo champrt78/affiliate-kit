@@ -3,6 +3,7 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import MainLayout from "../../layouts/MainLayout.astro";
 import CTA from "@affkit/shared-ui/CTA.astro";
 import BottomLine from "@affkit/shared-ui/BottomLine.astro";
+import Media from "@affkit/shared-ui/Media.astro";
 import { cloakedLink } from "@affkit/shared-utils";
 import { productSchema } from "@affkit/shared-utils";
 
@@ -143,7 +144,7 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
           return (
             <article class="qcard">
               <a href={buyHref} class="qcard__img" rel="sponsored noopener" target="_blank" aria-label={`Check current price for ${p.name}`}>
-                {(p as any).image && <img src={(p as any).image} alt={p.name} width="1200" height="1200" loading="lazy" decoding="async" />}
+                <Media src={(p as any).image} alt={p.name} variant="card" placeholder="☕" />
                 {price && <div class="qcard__img__price">{price}</div>}
               </a>
               <div class="qcard__body">
@@ -182,7 +183,7 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
           <article id={`pick-${i + 1}`} class="deep-card">
             <div class="deep-card__img-col">
               <div class="deep-card__img">
-                {(p as any).image && <img src={(p as any).image} alt={p.name} width="1200" height="1200" loading="lazy" decoding="async" />}
+                <Media src={(p as any).image} alt={p.name} variant="deep" placeholder="☕" />
               </div>
               <div class="deep-card__rank"><span>{i + 1}</span>of {totalPicks} picks</div>
             </div>
@@ -319,8 +320,8 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
   .guide-title {
     font-family: var(--font-serif);
     font-weight: 600;
-    font-size: clamp(2.25rem, 5vw, 3.5rem);
-    line-height: 1.02;
+    font-size: clamp(1.75rem, 3.6vw, 2.5rem);
+    line-height: 1.06;
     letter-spacing: -0.02em;
     margin: 0 0 var(--space-4);
     color: var(--color-paper-ink);
@@ -378,8 +379,8 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
   }
   .section-head h2 {
     font-family: var(--font-serif);
-    font-size: 32px;
-    line-height: 1.1;
+    font-size: 1.5rem;
+    line-height: 1.15;
     letter-spacing: -0.02em;
     color: var(--color-paper-ink);
     margin: 0;
@@ -405,25 +406,17 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     border-color: var(--color-brass);
     transform: translateY(-2px);
   }
+  /* The card image box is the shared <Media variant="card"> (white bg, contain,
+     fixed 160px height). .qcard__img is just the link + positioning context for
+     the price badge; Media owns the box (criterion: contained product images). */
   .qcard__img {
-    aspect-ratio: 5 / 4;
-    background: var(--color-cream);
     border-bottom: 1px solid var(--color-border);
-    display: grid; place-items: center;
-    overflow: hidden;
     position: relative;
     cursor: pointer;
+    display: block;
   }
-  .qcard__img:hover img { transform: scale(1.03); }
-  .qcard__img img {
-    max-width: 80%;
-    max-height: 88%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    mix-blend-mode: multiply;
-    transition: transform 220ms ease;
-  }
+  .qcard__img :global(.media img) { transition: transform 220ms ease; }
+  .qcard:hover .qcard__img :global(.media img) { transform: scale(1.03); }
   .qcard__img__price {
     position: absolute;
     top: 10px; right: 10px;
@@ -498,23 +491,14 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
   .deep-card__img-col {
     display: flex; flex-direction: column; align-items: center;
   }
+  /* Authored wrapper around <Media variant="deep"> — Astro scope isolation
+     means a scoped rule can't target Media's root (different component cid), so
+     the box border + radius live here and Media (width:100%) fills it. */
   .deep-card__img {
     width: 220px;
-    height: 220px;
-    background: var(--color-cream);
     border: 1px solid var(--color-border);
-    border-radius: 6px;
+    border-radius: 10px;
     overflow: hidden;
-    display: grid; place-items: center;
-    padding: 16px;
-  }
-  .deep-card__img img {
-    max-width: 96%;
-    max-height: 96%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    mix-blend-mode: multiply;
   }
   .deep-card__rank {
     margin-top: 18px;
@@ -687,8 +671,8 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
   }
   .editorial .prose :global(h2) {
     font-family: var(--font-serif);
-    font-size: 28px;
-    line-height: 1.15;
+    font-size: 1.5rem;
+    line-height: 1.2;
     letter-spacing: -0.02em;
     margin: var(--space-10) 0 var(--space-5);
     font-weight: 500;
@@ -703,7 +687,7 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     font-weight: 500;
     color: var(--color-paper-ink);
   }
-  .editorial .prose :global(p) { margin: 0 0 18px; }
+  .editorial .prose :global(p) { margin: 0 0 18px; max-width: 58ch; }
   .editorial .prose :global(p > strong:first-child) {
     font-family: var(--font-serif);
     font-weight: var(--weight-semibold);
@@ -725,8 +709,14 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     box-shadow: var(--shadow-sm);
   }
   .editorial .prose :global(blockquote > p) { margin: 0; }
+  /* Tables scroll horizontally on narrow viewports instead of overflowing the
+     panel (criterion: tables display:block; overflow-x:auto). */
   .editorial .prose :global(table) {
+    display: block;
     width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
     border-collapse: separate;
     border-spacing: 0;
     margin: var(--space-6) 0 var(--space-8);
@@ -734,7 +724,6 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     background: var(--color-paper-muted);
     border: 1px solid var(--color-border);
     border-radius: 8px;
-    overflow: hidden;
   }
   .editorial .prose :global(th),
   .editorial .prose :global(td) {
@@ -810,7 +799,7 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     .deep-card__img-col { grid-area: img; }
     .deep-card__body { grid-area: body; }
     .deep-card__rail { grid-area: rail; }
-    .deep-card__img { width: 180px; height: 180px; }
+    .deep-card__img { width: 180px; }
   }
   @media (max-width: 640px) {
     .quick-grid { grid-template-columns: 1fr; }
@@ -819,7 +808,7 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
       grid-template-areas: "img" "body" "rail";
       padding: 20px;
     }
-    .deep-card__img { width: 100%; max-width: 240px; height: 200px; margin: 0 auto; }
+    .deep-card__img { width: 100%; max-width: 240px; margin: 0 auto; }
     .section-head h2 { font-size: 26px; }
     .guide-title { font-size: 2rem; }
   }
