@@ -664,7 +664,7 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
   }
   .editorial .prose :global(p) {
     margin: 0 0 18px;
-    max-width: 68ch;
+    max-width: 58ch;
   }
   /* Tables — structured spec sheet treatment. Full width with zebra stripes,
      a darker header row, bolded first column as the row anchor, and a hover
@@ -681,7 +681,7 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     background: var(--color-paper-bright, #FBFAF7);
     border: 1px solid var(--color-sage-light);
     border-radius: 8px;
-    overflow: hidden;
+    overflow-y: hidden;
   }
   .editorial .prose :global(th),
   .editorial .prose :global(td) {

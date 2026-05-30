@@ -49,7 +49,9 @@ const resolvedTarget = target ?? (external ? "_blank" : undefined);
                 border-color var(--duration-base) var(--ease-out),
                 transform var(--duration-fast) var(--ease-out),
                 box-shadow var(--duration-base) var(--ease-out);
-    white-space: nowrap;
+    white-space: normal;
+    max-width: 100%;
+    text-align: center;
   }
   .cta:hover { transform: translateY(-1px); }
   .cta:active { transform: translateY(0); }
