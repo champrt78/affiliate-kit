@@ -1,73 +1,344 @@
 ---
 import { getCollection } from "astro:content";
 import MainLayout from "../layouts/MainLayout.astro";
-import Hero from "@affkit/shared-ui/Hero.astro";
-import ReviewCard from "@affkit/shared-ui/ReviewCard.astro";
+import siteConfig from "../data/site-config.json";
 
-const allReviews = await getCollection("reviews");
-const latest = allReviews
-  .sort((a, b) => {
-    const aTime = a.data.pubDate instanceof Date ? a.data.pubDate.getTime() : new Date(a.data.pubDate).getTime();
-    const bTime = b.data.pubDate instanceof Date ? b.data.pubDate.getTime() : new Date(b.data.pubDate).getTime();
-    return bTime - aTime;
-  })
-  .slice(0, 6);
+/* StarterAquarium homepage — ports the locked v2 identity mockup
+   (docs/playgrounds/starteraquarium-mockups/home.html): a bright aquarium-glass
+   aqua gradient page, friendly hero, rounded category cards with small icon
+   chips, and a white "Beginner favorites" picks panel. Fun but not childish:
+   Poppins headings (via --font-serif slot), icon chips not giant emoji, deeper
+   palette, gentle bubbles. Beginner-first, voice-clean (no hands-on claims).
+
+   Background model note: the shared SiteShell wraps <main> in a white floating
+   panel (.page-shell). To match the mockup's full aqua page, the homepage's
+   sections paint their OWN aqua gradient (full panel width) and float white
+   cards on top — the panel's white surface only shows through where we let it.
+   Every <img> would carry width+height; this page is icon/CSS-driven so there
+   are no <img> tags yet (Magic Go adds product imagery in the picks later). */
+
+const reviews = await getCollection("reviews");
+const guides = await getCollection("buyers-guides");
+
+// Latest published (non-DRAFT) pieces for the "Beginner favorites" panel.
+const hasVerdict = (e: any) =>
+  e.data.bottomLine && e.data.bottomLine.verdict && e.data.bottomLine.verdict.trim() !== "";
+const time = (d: any) => (d instanceof Date ? d.getTime() : new Date(d).getTime());
+
+const latest = [
+  ...reviews.map((e) => ({
+    kind: "Review",
+    href: `/reviews/${e.slug}/`,
+    title: e.data.title,
+    desc: e.data.description,
+    badge: (e.data as any).pillar ? String((e.data as any).pillar).replace(/-/g, " ") : "Review",
+    date: e.data.pubDate,
+    draft: !hasVerdict(e),
+  })),
+  ...guides.map((e) => ({
+    kind: "Guide",
+    href: `/buyers-guides/${e.slug}/`,
+    title: e.data.title,
+    desc: e.data.description,
+    badge: (e.data as any).pillar ? String((e.data as any).pillar).replace(/-/g, " ") : "Guide",
+    date: e.data.pubDate,
+    draft: !hasVerdict(e),
+  })),
+]
+  .filter((p) => !p.draft)
+  .sort((a, b) => time(b.date) - time(a.date))
+  .slice(0, 3);
+
+const pillars = siteConfig.navigation.pillars;
+
+// Small icon chip per pillar slug (kept restrained per the v2 "not childish"
+// note: small chips, not giant emoji).
+const pillarIcons: Record<string, string> = {
+  "tanks-and-kits": "🐟",
+  filters: "💧",
+  heaters: "🌡️",
+  lighting: "💡",
+  "tank-school": "🎓",
+  "fun-finds": "🐚",
+};
 ---
 <MainLayout
-  title="StarterAquarium"
-  description="StarterAquarium. Spec-driven reviews and buyer's guides for beginner aquariums."
+  title="StarterAquarium: your first tank, done right"
+  description="Friendly, beginner-first gear guides for your first freshwater aquarium. We match the filter, heater, and kit to your tank size so your first fish actually thrive."
 >
-  <Hero
-    title="StarterAquarium"
-    tagline="Beginner aquarium gear without the marketing fluff."
-  />
-
-  <section>
-    <div class="section-head">
-      <h2>Latest reviews</h2>
-      {latest.length > 0 && <a href="/reviews/" class="see-all">See all reviews →</a>}
+  <div class="home">
+    {/* gentle bubbles motif (cheap, decorative) */}
+    <div class="bubbles" aria-hidden="true">
+      <span style="left:12%;width:14px;height:14px;animation-duration:16s;"></span>
+      <span style="left:34%;width:9px;height:9px;animation-duration:13s;animation-delay:3s;"></span>
+      <span style="left:62%;width:18px;height:18px;animation-duration:19s;animation-delay:1s;"></span>
+      <span style="left:84%;width:11px;height:11px;animation-duration:14s;animation-delay:2s;"></span>
     </div>
-    {latest.length === 0 ? (
-      <p class="muted">No reviews published yet. New content lands every quarter.</p>
-    ) : (
-      <div class="grid">
-        {latest.map((entry) => <ReviewCard entry={entry} />)}
+
+    {/* ─── Friendly hero ─── */}
+    <section class="hero">
+      <div class="wrap">
+        <span class="kicker">Beginner-first guides</span>
+        <h1>Your first tank, done right.</h1>
+        <p class="lede">
+          Friendly, no-jargon gear guides. We match the filter, heater, and kit to
+          your tank size so your first fish actually thrive, without the forum
+          gatekeeping.
+        </p>
+        <div class="cta-row">
+          <a class="cta" href="/buyers-guides/">Start your tank</a>
+          <a class="cta cta--ghost" href="/topics/tank-school/">How tanks work</a>
+        </div>
       </div>
-    )}
-  </section>
+    </section>
 
-  <section>
-    <div class="section-head">
-      <h2>Buyer's guides</h2>
-      <a href="/buyers-guides/" class="see-all">Browse guides →</a>
-    </div>
-    <p class="muted">Comparative roundups of products we've researched but don't own.</p>
-  </section>
+    {/* ─── Category cards with icon chips ─── */}
+    <section class="wrap section">
+      <h2 class="section-title">What do you need first?</h2>
+      <p class="section-sub">Pick a category. We keep the science simple.</p>
+      <div class="cat-grid">
+        {pillars.map((p) => (
+          <a class="cat-card" href={`/topics/${p.slug}/`}>
+            <span class="chip" aria-hidden="true">{pillarIcons[p.slug] ?? "🐟"}</span>
+            <h3>{p.label}</h3>
+            <p>{p.blurb}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    {/* ─── Beginner favorites panel ─── */}
+    <section class="wrap section">
+      <div class="picks">
+        <div class="picks__head">
+          <h2>Beginner favorites</h2>
+          <a href="/reviews/" class="picks__more">All reviews &amp; guides &rarr;</a>
+        </div>
+        {latest.length === 0 ? (
+          <p class="picks__empty">
+            Our first picks are in the works, built from published specs,
+            verified-buyer reviews, and use-case fit. New comparisons land every
+            quarter. Check back soon.
+          </p>
+        ) : (
+          <div class="picks__list">
+            {latest.map((p) => (
+              <a class="pick" href={p.href}>
+                <span class="pick__badge">{p.kind}</span>
+                <span class="pick__t">
+                  <b>{p.title}</b>
+                  <span>{p.desc}</span>
+                </span>
+                <span class="pick__arrow" aria-hidden="true">&rarr;</span>
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  </div>
 </MainLayout>
 
 <style>
-  section { margin: var(--space-12) 0; }
-  .section-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: var(--space-4);
+  /* The homepage paints its own full aqua gradient over the white panel so it
+     matches the mockup; cards float white on top. */
+  .home {
+    position: relative;
+    background: linear-gradient(180deg, #dff3f6 0%, #a9dbe3 26%, var(--color-forest-light) 74%, var(--color-forest) 100%);
+    overflow: hidden;
   }
-  h2 {
-    font-size: var(--text-2xl);
-    margin: 0;
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 var(--space-6); position: relative; z-index: 1; }
+
+  /* gentle bubbles */
+  .bubbles span {
+    position: absolute;
+    bottom: -50px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.55), rgba(255,255,255,0.08));
+    animation: rise linear infinite;
+    z-index: 0;
+    pointer-events: none;
   }
-  .see-all {
-    color: var(--color-brand);
-    text-decoration: none;
-    font-size: var(--text-sm);
+  @keyframes rise { to { transform: translateY(-120vh); opacity: 0; } }
+
+  /* ─── Hero ─── */
+  .hero { padding: 78px 0 40px; position: relative; z-index: 1; }
+  .hero .wrap { max-width: 1080px; }
+  .kicker {
+    display: inline-block;
+    background: rgba(255,255,255,0.72);
+    color: var(--color-forest);
+    font-family: var(--font-serif);
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-weight: 800;
+    font-size: clamp(34px, 5.6vw, 56px);
+    color: #fff;
+    margin: 18px 0 10px;
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 14px rgba(12,84,112,0.28);
+    max-width: 14ch;
+  }
+  .hero .lede {
+    font-size: 19px;
+    color: #f3ffff;
+    max-width: 560px;
+    margin: 8px 0 26px;
     font-weight: 600;
+    line-height: 1.55;
+    text-shadow: 0 1px 10px rgba(12,84,112,0.25);
   }
-  .see-all:hover { text-decoration: underline; }
-  .muted { color: var(--color-muted); }
-  .grid {
+  .cta-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .cta {
+    display: inline-block;
+    background: var(--color-sun, #f4b740);
+    color: var(--color-paper-ink);
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 16px;
+    padding: 14px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(244,183,64,0.35);
+    transition: transform 120ms ease, box-shadow 120ms ease;
+  }
+  .cta:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(244,183,64,0.45); }
+  .cta--ghost {
+    background: transparent;
+    color: #fff;
+    box-shadow: none;
+    border: 1.5px solid rgba(255,255,255,0.6);
+  }
+  .cta--ghost:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); box-shadow: none; }
+
+  /* ─── Sections ─── */
+  .section { padding: 18px var(--space-6) 0; }
+  .section:last-of-type { padding-bottom: 64px; }
+  .section-title {
+    font-family: var(--font-serif);
+    color: #fff;
+    font-size: 27px;
+    margin: 38px 0 6px;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(12,84,112,0.2);
+  }
+  .section-sub { color: #eafdff; font-weight: 600; margin: 0 0 24px; font-size: 16px; }
+
+  /* ─── Category cards ─── */
+  .cat-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: var(--space-6);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .cat-card {
+    background: var(--color-paper-muted);
+    border-radius: 16px;
+    padding: 22px 20px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(12,84,112,0.06);
+    text-decoration: none;
+    display: block;
+    transition: transform 140ms ease, box-shadow 140ms ease;
+  }
+  .cat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .chip {
+    display: inline-flex;
+    width: 42px; height: 42px;
+    align-items: center; justify-content: center;
+    border-radius: 12px;
+    background: var(--color-brass-soft);
+    font-size: 21px;
+    margin-bottom: 12px;
+  }
+  .cat-card h3 {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    color: var(--color-forest);
+    margin: 0 0 6px;
+    font-weight: 700;
+  }
+  .cat-card p { font-size: 14.5px; color: var(--color-muted); margin: 0; font-weight: 600; line-height: 1.5; }
+
+  /* ─── Beginner favorites panel ─── */
+  .picks {
+    background: var(--color-paper-muted);
+    border-radius: 18px;
+    padding: 28px;
+    margin: 8px 0 0;
+    box-shadow: var(--shadow-lg);
+  }
+  .picks__head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    flex-wrap: wrap; gap: 10px;
+    margin: 0 0 14px;
+  }
+  .picks h2 {
+    font-family: var(--font-serif);
+    color: var(--color-forest);
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .picks__more {
+    font-size: 13px; font-weight: 700;
+    color: var(--color-brass);
+    text-decoration: none;
+  }
+  .picks__more:hover { text-decoration: underline; }
+  .picks__empty {
+    color: var(--color-muted);
+    font-weight: 600;
+    font-size: 15.5px;
+    margin: 0;
+    max-width: 60ch;
+    line-height: 1.6;
+  }
+  .picks__list { display: flex; flex-direction: column; }
+  .pick {
+    display: flex; gap: 16px; align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--color-border);
+    text-decoration: none;
+    transition: padding-left 160ms ease;
+  }
+  .pick:last-child { border-bottom: none; }
+  .pick:hover { padding-left: 6px; }
+  .pick__badge {
+    background: var(--color-forest-light);
+    color: #fff;
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 7px 12px;
+    font-size: 12.5px;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+    text-transform: capitalize;
+  }
+  .pick__t { flex: 1; min-width: 0; }
+  .pick__t b {
+    color: var(--color-paper-ink);
+    font-size: 16px;
+    display: block;
+    font-family: var(--font-serif);
+    font-weight: 700;
+  }
+  .pick__t span { color: var(--color-muted); font-size: 14px; font-weight: 600; line-height: 1.45; display: block; }
+  .pick__arrow { color: var(--color-brass); font-weight: 700; font-size: 18px; }
+
+  @media (max-width: 860px) {
+    .cat-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 540px) {
+    .cat-grid { grid-template-columns: 1fr; }
+    .hero { padding-top: 56px; }
+    .pick { flex-wrap: wrap; }
   }
 </style>

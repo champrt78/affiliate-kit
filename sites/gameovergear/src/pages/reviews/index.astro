@@ -11,31 +11,109 @@ const sorted = entries.sort((a, b) => {
 });
 ---
 <MainLayout
-  title="Reviews"
-  description="Spec-verified product reviews: what each does well, where it falls short, and who it fits."
+  title="Single-product reviews"
+  description="Spec-driven single-product reviews of retro gaming gear. What it does well, what it does badly, and who it's the right fit for."
 >
   <header class="page-header">
-    <h1>Reviews</h1>
-    <p class="lede">Spec-verified product reviews. What each one does well, where it falls short, and who it actually fits.</p>
+    <div class="page-header__inner">
+      <span class="page-header__kicker">Reviews</span>
+      <h1 class="page-header__title">Single-product reviews</h1>
+      <p class="page-header__lede">
+        We read the spec sheets, owner reviews, and independent teardowns,
+        then ask who this is actually the right gear for. Each piece is
+        one product, one verdict.
+      </p>
+    </div>
   </header>
 
-  {sorted.length === 0 ? (
-    <p class="empty">No reviews yet — check back soon.</p>
-  ) : (
-    <div class="grid">
-      {sorted.map((entry) => <ReviewCard entry={entry} />)}
+  <section class="grid-section">
+    <div class="grid-section__inner">
+      {sorted.length === 0 ? (
+        <p class="empty">No reviews yet. New ones land every quarter.</p>
+      ) : (
+        <div class="grid">
+          {sorted.map((entry) => <ReviewCard entry={entry} />)}
+        </div>
+      )}
     </div>
-  )}
+  </section>
 </MainLayout>
 
 <style>
-  .page-header { margin-bottom: var(--space-8); }
-  .page-header h1 { font-size: var(--text-3xl); margin: 0 0 var(--space-3); }
-  .lede { font-size: var(--text-lg); color: var(--color-muted); margin: 0; }
-  .empty { color: var(--color-muted); }
+  .page-header {
+    background: var(--color-bg);
+    padding: var(--space-10) var(--space-6) var(--space-6);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .page-header__inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: var(--space-10);
+    align-items: end;
+  }
+  .page-header__kicker {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-brass);
+    margin-bottom: var(--space-2);
+  }
+  .page-header__kicker::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--color-brass);
+    vertical-align: middle;
+    margin-right: 10px;
+    transform: translateY(-2px);
+  }
+  .page-header__title {
+    font-family: var(--font-serif);
+    line-height: 1.45;
+    color: var(--color-paper-ink);
+    margin: 0;
+    font-weight: var(--weight-semibold);
+  }
+  .page-header__lede {
+    font-family: var(--font-sans);
+    font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+    line-height: 1.6;
+    color: var(--color-muted);
+    margin: 0;
+    max-width: 56ch;
+    align-self: end;
+    padding-bottom: 4px;
+  }
+
+  .grid-section {
+    padding: var(--space-12) var(--space-6) var(--space-20);
+    background: var(--color-bg);
+  }
+  .grid-section__inner { max-width: var(--container-max); margin: 0 auto; }
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-6);
+  }
+  .empty {
+    color: var(--color-muted);
+    font-family: var(--font-sans);
+    font-style: italic;
+  }
+
+  @media (max-width: 760px) {
+    .page-header { padding: var(--space-10) var(--space-4) var(--space-5); }
+    .page-header__inner { grid-template-columns: 1fr; row-gap: var(--space-3); }
+    .page-header__lede { padding-bottom: 0; }
+    .grid-section { padding: var(--space-10) var(--space-4) var(--space-16); }
+  }
+  @media (max-width: 720px) {
+    .grid { grid-template-columns: 1fr; }
   }
 </style>

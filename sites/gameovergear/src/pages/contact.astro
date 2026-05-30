@@ -5,7 +5,7 @@ import MainLayout from "../layouts/MainLayout.astro";
   title="Contact"
   description="Get in touch with GameOverGear."
 >
-  <article>
+  <article class="doc">
     <h1>Contact</h1>
 
     <p>
@@ -21,6 +21,8 @@ import MainLayout from "../layouts/MainLayout.astro";
 </MainLayout>
 
 <style>
-  article { max-width: var(--content-max); margin: 0 auto; }
-  h1 { font-size: var(--text-3xl); margin-bottom: var(--space-6); }
+  .doc { max-width: var(--content-max); margin: 0 auto; padding: var(--space-12) var(--space-6) var(--space-20); }
+  .doc h1 { font-family: var(--font-serif); color: var(--color-paper-ink); margin-bottom: var(--space-6); line-height: 1.45; }
+  .doc p { font-family: var(--font-sans); line-height: 1.7; margin: 0 0 var(--space-4); color: var(--color-paper-ink); }
+  .doc a { color: var(--color-brass); }
 </style>

@@ -1,0 +1,119 @@
+/* =============================================================================
+   StarterAquarium per-site theme — "fun but NOT childish" aquatic skin (v2)
+   ============================================================================
+   Locked design: docs/playgrounds/starteraquarium-mockups/home.html (v2).
+   Brand brief: fun, bright, beginner-first freshwater fishkeeping. Aquarium-
+   glass teal + deep blue, foam-white reading surfaces, a warm coral + sun pop
+   for accents. Poppins (friendly-but-grown-up headings) + Nunito Sans (warm,
+   readable body). Bubbles + rounded shapes carry the "fun"; copy stays
+   spec-honest and the body stays highly readable.
+
+   This file imports the shared design tokens, then OVERRIDES the base palette
+   hexes + fonts so every shared component (Hero, ReviewCard, BuyersGuideCard,
+   ReviewArticle, BottomLine, Media, CTA…) renders in StarterAquarium's aquatic
+   identity for free — the semantic aliases (--color-brand, --color-link,
+   --color-surface…) derive from these via var() and follow automatically.
+
+   FONT-SLOT NOTE (load-bearing): every shared component hardcodes
+   var(--font-serif) for headings. Poppins is a SANS, so it goes in the SERIF
+   slot; Nunito Sans goes in the SANS slot. The matching fontsHref (Poppins +
+   Nunito Sans) is passed to BaseLayout from MainLayout.astro.
+   ============================================================================= */
+
+@import "@affkit/shared-styles/tokens.css";
+
+:root {
+  /* --- Aquatic palette (from the v2 mockup) -------------------------------
+     deep #0c5470  aqua #1f97ad  teal #2bb6a8  sky #bfe9ef  foam #f1fbfc
+     coral #ef6f53  sun #f4b740  ink #103642  muted #557079
+     ------------------------------------------------------------------------- */
+
+  /* Surfaces — foam-white reading paper, cool and bright */
+  --color-paper:        #f6fcfd;  /* main reading surface — palest foam */
+  --color-paper-muted:  #ffffff;  /* card / hero surface — clean white (product boxes) */
+  --color-cream:        #e9f6f8;  /* callout / accent surface — pale sky tint */
+  --color-paper-ink:    #103642;  /* deep aquarium ink — body text */
+
+  /* Deep aquarium teal — primary brand (maps onto --color-forest slot) */
+  --color-forest:       #0c5470;  /* deep teal-blue — headlines, branding, dark bands */
+  --color-forest-mid:   #0f6585;  /* mid aqua — hovers / band 2 */
+  --color-forest-light: #1f97ad;  /* bright aqua — secondary accent */
+
+  /* Coral / sun — warm accent (maps onto --color-brass slot).
+     Coral is deepened from the mockup's #ef6f53 to #e0573a so it clears AA
+     contrast when the kit uses it as a button background under white text. */
+  --color-brass:        #e0573a;  /* deep coral — primary CTA / accent */
+  --color-brass-hover:  #c8472d;  /* deeper coral — hover state */
+  --color-brass-soft:   #bfe9ef;  /* sky — soft backgrounds, tags, underlines */
+
+  /* Sage slot → muted teal-gray (meta text / borders) */
+  --color-sage:         #8fb3bc;  /* muted aqua-gray — meta text, borders */
+  --color-sage-light:   #cfe7eb;  /* pale aqua line — subtle borders */
+
+  /* Semantic re-derivations (so component vars pick up the aquatic tones) */
+  --color-bg:           var(--color-paper);
+  --color-fg:           var(--color-paper-ink);
+  --color-muted:        #557079;  /* aqua-gray — secondary text */
+  --color-muted-soft:   #759199;  /* lighter aqua-gray — tertiary text */
+  --color-border:       var(--color-sage-light);
+  --color-border-strong: var(--color-sage);
+  --color-surface:      var(--color-paper-muted);
+  --color-surface-alt:  #ffffff;  /* clean white — alt surfaces, cards */
+
+  --color-brand:        var(--color-forest);
+  --color-brand-fg:     #ffffff;
+  --color-accent:       var(--color-brass);
+  --color-accent-fg:    #ffffff;
+
+  --color-link:         var(--color-forest);
+  --color-link-hover:   var(--color-brass);
+
+  /* Sun-yellow — secondary warm accent used for the homepage primary CTA
+     (sun bg + dark ink text clears AA contrast, where coral-on-white as a
+     button bg would be borderline). */
+  --color-sun:          #f4b740;
+
+  /* --- Typography — Poppins (display/headings) + Nunito Sans (body) --------
+     Poppins occupies the SERIF slot (components hardcode --font-serif for
+     headings). Nunito Sans is the body sans. --------------------------------- */
+  --font-serif: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans:  "Nunito Sans", system-ui, -apple-system, "Segoe UI", Helvetica, sans-serif;
+
+  /* Headings sit a touch tighter than Fraunces wanted; Poppins reads big.
+     Re-tune the display tracking so kit headlines don't over-spread. */
+  --tracking-display: -0.01em;
+
+  /* Shadows — re-tint to deep teal so card lift reads aquatic, not green */
+  --shadow-sm:  0 1px 2px rgba(12, 84, 112, 0.10);
+  --shadow-md:  0 4px 14px rgba(12, 84, 112, 0.12), 0 1px 2px rgba(12, 84, 112, 0.06);
+  --shadow-lg:  0 14px 34px rgba(12, 84, 112, 0.18), 0 2px 6px rgba(12, 84, 112, 0.08);
+
+  /* --- SiteShell chrome tokens ---------------------------------------------
+     The shared <SiteShell> resolves each chrome color as var(--x, <DTP value>).
+     StarterAquarium sets them here to keep the bright-aquatic header + deep-teal
+     footer. Header = light foam sticky bar (matches the mockup's translucent
+     foam header). Footer = deep teal with light foam text. The nav ACCENT must
+     NOT default to --color-forest (it equals nothing useful on the foam header
+     anyway) — use teal for a friendly hover. --------------------------------- */
+  --product-image-bg: #ffffff;   /* product shots are on white — Media box bg */
+  --media-bg:         #ffffff;
+
+  /* Header band — light foam, dark teal text */
+  --header-bg:        #f1fbfc;                       /* foam */
+  --header-border:    rgba(12, 84, 112, 0.12);       /* faint deep-teal hairline */
+  --nav-link:         var(--color-forest);           /* deep teal nav text */
+  --nav-accent:       var(--color-forest-light);     /* bright aqua hover/active/underline */
+  --nav-toggle-bar:   var(--color-forest);           /* deep teal hamburger on foam */
+  --mobile-nav-bg:    #ffffff;                       /* clean white drawer */
+
+  /* Footer band — deep teal, light foam text */
+  --footer-bg:        #093f55;                        /* darkest teal */
+  --footer-fg:        #d7f0f4;                         /* light foam body text */
+  --footer-border:    rgba(191, 233, 239, 0.18);
+  --footer-name:      #ffffff;                         /* white wordmark */
+  --footer-blurb:     #9fc6cf;                         /* muted foam */
+  --footer-heading:   var(--color-brass-soft);        /* sky column headings */
+  --footer-link:      #d7f0f4;                         /* foam links */
+  --footer-link-hover: #ffffff;                        /* bright white on hover */
+  --footer-copy:      #7ea7b1;                          /* muted foam copyright (dark-footer seam) */
+}

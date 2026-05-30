@@ -1,0 +1,248 @@
+/* =============================================================================
+   GameOverGear per-site theme — "Arcade Attract Screen" (retro/neon)
+   ============================================================================
+   Locked identity (project memory + docs/playgrounds/gameovergear-mockups/home.html
+   + the `body.gog` skin in docs/playgrounds/component-system/page.html):
+   1980s Nintendo / Atari / arcade. Pixel DISPLAY type (Press Start 2P), neon
+   arcade palette on near-black, CRT scanlines in the gutter. Body copy stays
+   READABLE — the retro lives in the chrome + headers, never in the prose.
+
+   This file imports the shared design tokens, then OVERRIDES the base palette
+   hexes + fonts so every shared component (Hero, ReviewCard, BuyersGuideCard,
+   ReviewArticle, BottomLine, CTA, Media, etc.) renders in GameOverGear's neon
+   identity for free. tokens.css names this exact seam: "Per-site theming layer
+   overrides these variables via sites/<slug>/src/styles/site.css".
+
+   POLARITY NOTE (load-bearing — gog is the kit's first dark-CONTENT skin):
+   fussybean is dark-chrome / light-content (it could swap hexes 1:1 because its
+   reading surface stayed light). gog INVERTS the page: dark reading surface,
+   light text. A token pairing only survives the inversion if its fg + bg flip
+   TOGETHER. The kit collapses two mockup roles (`--ink` light heading + `--accent`
+   neon) into the single `--color-forest` token, which is BOTH heading TEXT (must
+   go light) AND a dark band BG (CTA/ReviewArticle bands). We resolve it the way
+   the proof-skin does: `--color-forest` → LIGHT INK (so prose/headings/verdicts
+   stay readable — readability #1), and the NEON is carried by --color-brass /
+   --color-accent. The few shared bands that used forest-as-bg render pale under
+   this mapping; with empty collections none render yet, and any that look washed
+   once content lands are recovered via `body`-scoped rules at the bottom of this
+   file — NEVER by editing a shared component (the other 4 sites must build green).
+   ============================================================================= */
+
+@import "@affkit/shared-styles/tokens.css";
+
+:root {
+  /* --- Neon arcade palette ---------------------------------------------------
+     bg #0e0b1c  bg2 #13112a  panel/surface #171331  tint #1d1840
+     ink #ede9ff  muted #9a93c7  line #2c2752
+     cyan #2ee6ff  magenta #ff2e88  yellow #ffd23f  green #39ff14
+     ------------------------------------------------------------------------- */
+
+  /* Surfaces — near-black arcade. These FLIP dark (gog is dark-content). The
+     forest/paper pairing in shared components flips together, so dark-band text
+     (`--color-paper`) stays readable on the (now light-ink) forest token. */
+  --color-paper:        #0e0b1c;  /* main reading surface — near-black */
+  --color-paper-muted:  #171331;  /* card / hero surface — deep indigo panel */
+  --color-cream:        #1d1840;  /* callout / accent surface — indigo tint */
+  --color-paper-ink:    #ede9ff;  /* light ink — body text (FLIPPED light) */
+
+  /* Forest slot → LIGHT INK. In the kit this token is heading text in most
+     components (BottomLine verdict, card titles, prose h2/h3) and a dark band bg
+     in a few. Readability wins: map it light so headings/verdicts are legible on
+     the dark surfaces. The neon comes from the brass/accent slots below. */
+  --color-forest:       #ede9ff;  /* light ink — headings, branding text */
+  --color-forest-mid:   #c9c2f0;  /* slightly dimmer ink — hovers / band 2 */
+  --color-forest-light: #9a93c7;  /* muted lavender — secondary accent */
+
+  /* Brass / accent slot → NEON CYAN (primary accent / CTA / emphasis). */
+  --color-brass:        #2ee6ff;  /* neon cyan — primary CTA / accent */
+  --color-brass-hover:  #5cf0ff;  /* brighter cyan — hover state */
+  --color-brass-soft:   #2c2752;  /* dim indigo — soft accent SURFACE (tags, bg) */
+
+  /* Sage slot → muted lavender (meta text / borders). */
+  --color-sage:         #6b6499;  /* muted lavender — meta text */
+  --color-sage-light:   #2c2752;  /* line — subtle borders */
+
+  /* Semantic re-derivations (component vars pick up the neon tones). */
+  --color-bg:           var(--color-paper);
+  --color-fg:           var(--color-paper-ink);
+  --color-muted:        #9a93c7;  /* lavender gray — secondary text */
+  --color-muted-soft:   #7e76ad;  /* dimmer lavender — tertiary text */
+  --color-border:       var(--color-sage-light);
+  --color-border-strong: #3a3470;
+  --color-surface:      var(--color-paper-muted);
+  --color-surface-alt:  #171331;  /* deep indigo — alt surfaces, review cards */
+
+  --color-brand:        var(--color-forest);
+  --color-brand-fg:     var(--color-paper);
+  --color-accent:       var(--color-brass);
+  --color-accent-fg:    #0b0a16;  /* near-black ink ON neon (CTA label) */
+
+  --color-link:         var(--color-brass);
+  --color-link-hover:   var(--color-brass-hover);
+
+  /* --- Typography — Press Start 2P (display) + Inter (body, readable) --------
+     PS2P is pixel-perfect retro but ~2x wider per glyph; only ever used for
+     DISPLAY headers (handled via the heading-size overrides below). Inter is the
+     readable body face. VT323 is loaded for short arcade LABELS only (kickers,
+     "insert coin"), never prose. fontsHref in MainLayout matches this. */
+  --font-serif: "Press Start 2P", "VT323", ui-monospace, monospace;  /* DISPLAY */
+  --font-sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;  /* BODY */
+  --font-mono:  "VT323", ui-monospace, "Cascadia Code", Menlo, monospace;
+
+  /* Shadows — re-tint to neon-on-black so card lift reads electric, not green. */
+  --shadow-sm:  0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md:  0 2px 10px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-lg:  0 18px 40px -22px rgba(0, 0, 0, 0.8), 0 0 22px rgba(46, 230, 255, 0.12);
+
+  /* --- SiteShell chrome tokens ---------------------------------------------
+     The shared <SiteShell> resolves each chrome color as var(--x, <DTP value>).
+     gog sets them here for the dark arcade header + footer. Without these the
+     shell would render DTP's cream chrome. Nav links light (lavender); the nav
+     ACCENT (hover/active/underline) is neon cyan. ------------------------------ */
+  --product-image-bg: #ffffff;   /* product shots on white — Media box bg */
+  --media-bg:         #ffffff;
+
+  /* Header band */
+  --header-bg:        #0b0a16;                      /* near-black header */
+  --header-border:    rgba(46, 230, 255, 0.18);     /* faint neon hairline */
+  --nav-link:         #9a93c7;                       /* lavender nav text */
+  --nav-accent:       #2ee6ff;                       /* neon cyan hover/active/underline */
+  --nav-toggle-bar:   #2ee6ff;                       /* neon hamburger */
+  --mobile-nav-bg:    #13112a;                       /* deep indigo drawer */
+
+  /* Footer band */
+  --footer-bg:        #08070f;                       /* darkest near-black */
+  --footer-fg:        #c9c2f0;                        /* light lavender body text */
+  --footer-border:    rgba(46, 230, 255, 0.16);
+  --footer-name:      #2ee6ff;                        /* neon cyan wordmark */
+  --footer-blurb:     #9a93c7;                        /* lavender blurb */
+  --footer-heading:   #ff2e88;                        /* neon magenta column headings */
+  --footer-link:      #c9c2f0;                        /* light lavender links */
+  --footer-link-hover: #2ee6ff;                       /* neon cyan on hover */
+  --footer-copy:      #6b6499;                         /* dim lavender copyright */
+
+  /* Slightly smaller floating-panel zoom is unnecessary on a dark skin; keep
+     the kit default so the panel matches the others. */
+}
+
+/* =============================================================================
+   Press Start 2P heading-size overrides (gog-only, global)
+   ============================================================================
+   PS2P is ~2x wider per glyph than Fraunces, so the kit's Fraunces-tuned heading
+   sizes (h1 48px, h2 36px, card h3 16px, page titles clamp 28-42px) overflow
+   cards and wrap badly in pixel type. These GLOBAL rules shrink display headings
+   to the proof-skin's targets (h1 18-26px, h2 ~14px, card h3 ~11px) with a looser
+   line-height so pixel glyphs breathe. Done here (NOT in shared components) so the
+   other 4 sites are untouched. Body PROSE stays Inter at full readable size —
+   only the pixel DISPLAY type is shrunk. Component class selectors are listed
+   explicitly because Astro scopes component <style> to a hashed class; these
+   plain selectors still win on the base elements + via specificity where needed. */
+
+h1 {
+  font-size: clamp(18px, 2.6vw, 28px);
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+}
+h2 {
+  font-size: clamp(14px, 1.6vw, 18px);
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+h3 {
+  font-size: clamp(12px, 1.2vw, 14px);
+  line-height: 1.5;
+}
+h4, h5, h6 {
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+
+/* Tighten the few large clamps the kit/components set inline so PS2P doesn't blow
+   out of cards and headers. These match the rendered class names in the shared
+   components + per-site pages; the !important is needed because Astro scoped
+   component styles carry a higher specificity than these unscoped rules. */
+:is(.guide-title, .page-header__title, .doc h1, .review__title) {
+  font-size: clamp(16px, 2.4vw, 24px) !important;
+  line-height: 1.45 !important;
+}
+:is(.section-head h2, .editorial .prose h2, .block__title, .doc h2) {
+  font-size: clamp(13px, 1.5vw, 16px) !important;
+  line-height: 1.55 !important;
+}
+.deep-card__heading,
+.qcard__product {
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+/* Card titles in the shared ReviewCard / BuyersGuideCard / ProductCard. */
+:is(.review-card__title, .guide-card__title, .product-card__title, .card h3) {
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+}
+/* BottomLine verdict — pixel font at prose size would be unreadable; the verdict
+   is a short headline so a small pixel size reads as an arcade callout. */
+.bottomline__verdict,
+.bottom-line__verdict {
+  font-size: 14px !important;
+  line-height: 1.55 !important;
+}
+
+/* =============================================================================
+   Body-scoped recovery rules (zero shared-component edits)
+   ============================================================================
+   The kit's CRT-readability + a couple of forest-bg bands that render pale under
+   forest->light-ink. We recover them on the `body` (the site renders inside it),
+   so the other 4 sites are untouched.
+
+   1) Neon-glow on the soft-accent tags (kit uses --color-brass-soft as a bg tint;
+      we keep it dim but give the accent text a neon glow where it appears). */
+
+/* Subtle CRT scanline overlay on the GUTTER ONLY (behind the floating panel) +
+   a vignette. pointer-events:none so it never blocks interaction; it sits behind
+   the .page-shell panel (z-index) so the reading surface stays crisp — readability
+   #1. The panel itself is opaque (--color-bg), so prose is never overlaid. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.22) 3px,
+    rgba(0, 0, 0, 0) 4px
+  );
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  box-shadow: inset 0 0 200px 50px rgba(0, 0, 0, 0.55);
+}
+/* The floating content panel must sit ABOVE the scanline overlay so prose is
+   crisp. SiteShell's .page-shell is the panel; lift it. */
+.page-shell { position: relative; z-index: 1; }
+
+/* Pale-band recovery: shared CTA band + ReviewArticle dark bands used
+   --color-forest as a BG (now light ink). Repaint them as a near-black band with
+   a neon border so they read as arcade chrome, not a washed light box. Scoped to
+   body so no shared component is edited. These only render once content lands;
+   harmless no-ops on empty collections. */
+.cta {
+  background: #13112a !important;
+  color: #2ee6ff !important;
+  border: 2px solid #2ee6ff !important;
+  box-shadow: 0 0 18px rgba(46, 230, 255, 0.25) !important;
+}
+.cta:hover {
+  background: #1d1840 !important;
+  color: #5cf0ff !important;
+}
+
+/* Neon focus ring on the dark skin (kit default brass is now cyan — fine). */
+::selection { background: #ff2e88; color: #0b0a16; }

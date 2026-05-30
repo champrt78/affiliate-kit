@@ -2,44 +2,115 @@
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 <MainLayout
-  title="About"
-  description="About StarterAquarium — who we are and how we review."
+  title="About StarterAquarium"
+  description="How StarterAquarium researches beginner aquarium gear: published specs, aggregated verified-buyer reviews, independent sources, and use-case fit."
 >
-  <article>
-    <h1>About StarterAquarium</h1>
+  <article class="doc">
+    <header class="doc-header">
+      <span class="doc-kicker">About</span>
+      <h1>About StarterAquarium</h1>
+      <p class="doc-lede">
+        StarterAquarium is an independent site that compares beginner aquarium gear
+        by spec and use case, so your first tank is one your fish actually thrive in.
+      </p>
+    </header>
 
+    <h2>What we do</h2>
     <p>
-      StarterAquarium is a small, independent site covering beginner aquariums.
-      Our recommendations are based on published product specs and
-      aggregated owner reviews from verified buyers. We focus on use-case
-      fit, not first-person experience.
+      We cover the gear: tanks and all-in-one kits, filters, heaters, lighting,
+      water care, and the food and fun extras. We rank the gear for the person
+      setting up their first freshwater tank. Every piece starts from one
+      question: who is this actually the right fit for?
     </p>
 
     <h2>How we research</h2>
     <p>
-      Full methodology details coming as this site's content rolls out.
-      Until then: we cross-reference manufacturer specs, read the most
-      relevant owner reviews (including the critical ones), and match
-      products to use cases. If you have feedback or corrections, the
-      contact email is in the footer.
+      Our recommendations are research-based. We synthesize three kinds of
+      evidence into use-case-fit picks:
+    </p>
+    <ul>
+      <li>
+        <strong>Published specifications.</strong> Manufacturer spec sheets,
+        flow rates, wattage, listed tank-size ranges, and rated figures, read
+        carefully and compared across brands.
+      </li>
+      <li>
+        <strong>Aggregated verified-buyer reviews.</strong> Patterns across owner
+        reviews on Amazon and hobbyist forums, including the critical ones, cited
+        to their source.
+      </li>
+      <li>
+        <strong>Independent sources.</strong> Write-ups and testing from outlets
+        like Aquarium Co-Op and Prime Time Aquatics, cited where we lean on them.
+      </li>
+    </ul>
+
+    <p>
+      We do not claim personal hands-on testing in our content. We are explicit
+      about that. If you want a first-person review, look for a reviewer who claims
+      one. What we offer instead is careful comparison: spec analysis, aggregated
+      owner reports, and honest use-case fit. You can read exactly how we weigh a
+      product on our <a href="/how-we-evaluate/">how we evaluate</a> page.
     </p>
 
     <h2>How we make money</h2>
     <p>
-      We earn affiliate commissions when you buy through our links. It
-      doesn't change the price you pay. We don't accept payment in exchange
-      for positive coverage and we'll flag any product where we have a
-      conflict of interest. Full details in our
-      <a href="/disclosure/">affiliate disclosure</a>.
+      We earn affiliate commissions when you buy through our links. It does not
+      change the price you pay, and it does not change which product we recommend.
+      We do not accept payment in exchange for positive coverage. Full details are
+      in our <a href="/disclosure/">affiliate disclosure</a>.
+    </p>
+
+    <h2>Corrections</h2>
+    <p>
+      Specs change and listings drift. If something is out of date or wrong, tell
+      us on the <a href="/contact/">contact</a> page and we will fix it.
     </p>
   </article>
 </MainLayout>
 
 <style>
-  article {
-    max-width: var(--content-max);
-    margin: 0 auto;
+  .doc { max-width: var(--content-wide); margin: 0 auto; padding: var(--space-12) var(--space-6) var(--space-20); }
+  .doc-header { margin-bottom: var(--space-10); }
+  .doc-kicker {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-brass);
+    margin-bottom: var(--space-3);
   }
-  h1 { font-size: var(--text-3xl); margin-bottom: var(--space-6); }
-  h2 { margin-top: var(--space-8); }
+  .doc h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-forest);
+    margin: 0 0 var(--space-4);
+  }
+  .doc-lede {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--text-lg);
+    color: var(--color-muted);
+    margin: 0;
+    max-width: 56ch;
+  }
+  .doc h2 {
+    font-family: var(--font-serif);
+    font-size: var(--text-2xl);
+    color: var(--color-forest);
+    margin: var(--space-10) 0 var(--space-3);
+  }
+  .doc p { line-height: 1.7; margin: 0 0 var(--space-4); }
+  .doc ul { list-style: none; padding: 0; margin: var(--space-5) 0; }
+  .doc li {
+    padding: 16px 22px;
+    margin: 0 0 14px;
+    background: var(--color-cream);
+    border-left: 3px solid var(--color-brass);
+    border-radius: 0 10px 10px 0;
+    line-height: 1.6;
+  }
+  .doc li strong { color: var(--color-forest); }
 </style>

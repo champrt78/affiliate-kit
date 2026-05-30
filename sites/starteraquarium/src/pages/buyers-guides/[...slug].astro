@@ -2,6 +2,8 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import MainLayout from "../../layouts/MainLayout.astro";
 import CTA from "@affkit/shared-ui/CTA.astro";
+import BottomLine from "@affkit/shared-ui/BottomLine.astro";
+import Media from "@affkit/shared-ui/Media.astro";
 import { cloakedLink } from "@affkit/shared-utils";
 import { productSchema } from "@affkit/shared-utils";
 
@@ -18,127 +20,796 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { data, body } = entry;
+const { data } = entry;
 const { Content } = await entry.render();
 
-// DRAFT detection — empty frontmatter Bottom Line gates indexing.
-// Matches the doctrine in CLAUDE.md: "Never publish with `## Bottom Line` empty."
+/* DRAFT/noindex gate — keyed off bottomLine.verdict (NOT a body marker).
+   This satisfies magic-go R5 (noindex + bottomLine co-occurrence). */
 const BOTTOMLINE_PLACEHOLDER = "_The Bottom Line is being written._";
 const isDraft = !data.bottomLine
   || !data.bottomLine.verdict
   || data.bottomLine.verdict.trim() === ""
   || data.bottomLine.verdict.includes(BOTTOMLINE_PLACEHOLDER);
 
-// One JSON-LD Product entry per listed product. Google reads each block independently.
+const heroImage = data.images?.hero
+  ?? (data.products?.[0] as any)?.image
+  ?? "";
+const heroCaption = data.images?.heroCaption ?? "";
+
+const rubric = data.rubric ?? `Beginner Aquarium Gear · Buying Guide`;
+const deck = data.deck ?? data.description;
+
 const productLds = data.products.map((p) =>
   productSchema({
     name: p.name,
     brand: p.brand,
     sku: p.name,
-    image: "",
+    image: (p as any).image ?? "",
     description: data.description,
     offerUrl: p.affiliateUrl,
   })
 );
 
-const cloakedHref = cloakedLink({ slug: entry.slug });
+const faqLd = data.faq && data.faq.length > 0
+  ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": data.faq.map((item) => ({
+        "@type": "Question",
+        "name": item.question,
+        "acceptedAnswer": { "@type": "Answer", "text": item.answer },
+      })),
+    }
+  : null;
+
+const topPickHref = data.products[0]?.affiliateUrl
+  ? cloakedLink({ slug: (data.products[0] as any).cloakedSlug ?? entry.slug })
+  : cloakedLink({ slug: entry.slug });
 
 const robotsContent = isDraft ? "noindex, nofollow" : "index, follow";
+
+const formattedUpdated = data.lastUpdated instanceof Date
+  ? data.lastUpdated.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+  : String(data.lastUpdated);
+const isoUpdated = data.lastUpdated instanceof Date
+  ? data.lastUpdated.toISOString()
+  : String(data.lastUpdated);
+
+const totalPicks = data.products.length;
+const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : null;
 ---
 <MainLayout
   title={data.title}
   description={data.description}
   robotsContent={robotsContent}
   ogType="article"
+  ogImage={heroImage || undefined}
+  bgTheme={data.bgTheme}
 >
   {productLds.map((ld) => (
     <script type="application/ld+json" set:html={JSON.stringify(ld)} />
   ))}
+  {faqLd && <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />}
 
   {isDraft && (
     <aside class="draft-banner" role="alert">
-      <strong>DRAFT</strong> — this guide's "Bottom Line" section hasn't been filled in.
+      <strong>DRAFT.</strong> This guide's Bottom Line section hasn't been filled in.
       Don't link to this page yet. Indexing is disabled until it's complete.
     </aside>
   )}
 
+  {data.images?.hero && (
+    <div class="guide-hero" style={`background-image: url('${data.images.hero}')`} role="img" aria-label={heroCaption || data.title}>
+      <div class="guide-hero__overlay"></div>
+    </div>
+  )}
+
   <article class="guide">
+
+    {/* Bottom Line — shared component, top of the article per the
+        anti-recipe-page principle: the verdict is what the reader sees first. */}
+    <BottomLine bottomLine={data.bottomLine} isDraft={isDraft} />
+
     <header class="guide-header">
-      <p class="kicker">Buyer's Guide</p>
-      <h1>{data.title}</h1>
-      <p class="description">{data.description}</p>
-      <div class="cta-wrap">
-        <CTA href={cloakedHref} rel="sponsored noopener" target="_blank">
-          See the top pick on Amazon
-        </CTA>
+      <a href="/buyers-guides/" class="guide-crumb">← All buying guides</a>
+      <p class="kicker">{rubric}</p>
+      <h1 class="guide-title">{data.title}</h1>
+      <p class="guide-desc">{deck}</p>
+
+      <div class="guide-byline">
+        <div class="guide-byline__avatar">S</div>
+        <div class="guide-byline__who">
+          <div class="guide-byline__name">The StarterAquarium editorial team</div>
+          <div class="guide-byline__role">{totalPicks} pick{totalPicks === 1 ? "" : "s"} compared &middot; spec analysis verified against current manufacturer listings and Amazon reports</div>
+        </div>
+        <div class="guide-byline__date">
+          <span class="guide-byline__date-label">Last updated</span>
+          <time datetime={isoUpdated}>{formattedUpdated}</time>
+        </div>
       </div>
     </header>
 
-    <div class="prose">
-      <Content />
-    </div>
+    {/* ════════ THE QUICK SCOUT ════════ */}
+    <section class="section">
+      <div class="section-head">
+        <h2>The quick scout</h2>
+      </div>
+
+      <div class="quick-grid">
+        {data.products.map((p, i) => {
+          const price = fmtPrice(p.priceFrom);
+          const buyHref = (p as any).cloakedSlug
+            ? cloakedLink({ slug: (p as any).cloakedSlug })
+            : p.affiliateUrl;
+          return (
+            <article class="qcard">
+              <a href={buyHref} class="qcard__img" rel="sponsored noopener" target="_blank" aria-label={`Check current price for ${p.name}`}>
+                <Media src={(p as any).image} alt={p.name} variant="card" placeholder="🐟" />
+                {price && <div class="qcard__img__price">{price}</div>}
+              </a>
+              <div class="qcard__body">
+                <div class="qcard__persona">{p.bestFor || p.brand}</div>
+                <a href={buyHref} class="qcard__product" rel="sponsored noopener" target="_blank">
+                  {p.name} <span aria-hidden="true">&rarr;</span>
+                </a>
+                {((p as any).hook || p.tagline) && <p class="qcard__hook">{(p as any).hook || p.tagline}</p>}
+                <a href={`#pick-${i + 1}`} class="qcard__cta">
+                  Read the full breakdown <span class="qcard__cta__arrow" aria-hidden="true">&rarr;</span>
+                </a>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </section>
+
+    {/* ════════ THE FULL DETAIL ════════ */}
+    <section class="section">
+      <div class="section-head">
+        <h2>The full detail</h2>
+      </div>
+
+      {data.products.map((p, i) => {
+        const price = fmtPrice(p.priceFrom);
+        const priceUnit = (p as any).priceUnit;
+        const buyHref = (p as any).cloakedSlug
+          ? cloakedLink({ slug: (p as any).cloakedSlug })
+          : p.affiliateUrl;
+        const reason = (p as any).reason;
+        const productBody = (p as any).body;
+        const facts = (p as any).facts;
+        const tagline = p.tagline;
+        return (
+          <article id={`pick-${i + 1}`} class="deep-card">
+            <div class="deep-card__img-col">
+              <div class="deep-card__img">
+                <Media src={(p as any).image} alt={p.name} variant="deep" placeholder="🐟" />
+              </div>
+              <div class="deep-card__rank"><span>{i + 1}</span>of {totalPicks} picks</div>
+            </div>
+
+            <div class="deep-card__body">
+              {p.bestFor && <div class="deep-card__persona">{p.bestFor}</div>}
+              <h3 class="deep-card__heading">
+                {reason && <span class="reason">{reason}</span>}
+                <a class="product-link" href={buyHref} rel="sponsored noopener" target="_blank">{p.name} <span aria-hidden="true">&rarr;</span></a>
+              </h3>
+              {productBody
+                ? <Fragment set:html={productBody} />
+                : tagline && <p>{tagline}</p>}
+            </div>
+
+            <aside class="deep-card__rail">
+              {price && (
+                <>
+                  <div class="deep-card__rail__price-label">Price from</div>
+                  <div class="deep-card__rail__price">{price}{priceUnit && <small>/{priceUnit}</small>}</div>
+                </>
+              )}
+              <a class="deep-card__rail__cta" href={buyHref} rel="sponsored noopener" target="_blank">
+                Check current price <span aria-hidden="true">&rarr;</span>
+              </a>
+              <div class="deep-card__rail__cta-sub">Affiliate link &middot; Amazon</div>
+              {facts && Object.keys(facts).length > 0 && (
+                <dl class="deep-card__rail__facts">
+                  {Object.entries(facts).map(([k, v]) => (
+                    <>
+                      <dt>{k}</dt>
+                      <dd>{v}</dd>
+                    </>
+                  ))}
+                </dl>
+              )}
+            </aside>
+          </article>
+        );
+      })}
+    </section>
+
+    {/* Editorial markdown body */}
+    <section class="section editorial">
+      <div class="prose">
+        <Content />
+      </div>
+    </section>
 
     <footer class="guide-footer">
       <div class="cta-wrap">
-        <CTA href={cloakedHref} rel="sponsored noopener" target="_blank">
+        <CTA href={topPickHref} rel="sponsored noopener" target="_blank">
           See the top pick on Amazon
         </CTA>
       </div>
       <p class="updated">
         Last updated:
-        <time datetime={data.lastUpdated instanceof Date ? data.lastUpdated.toISOString() : String(data.lastUpdated)}>
-          {data.lastUpdated instanceof Date ? data.lastUpdated.toISOString().slice(0, 10) : String(data.lastUpdated)}
-        </time>
+        <time datetime={isoUpdated}>{formattedUpdated}</time>
       </p>
     </footer>
+
   </article>
 </MainLayout>
 
 <style>
+  /* ─── Draft banner ─── */
   .draft-banner {
-    background: #fef3c7;
-    border: 2px solid #d97706;
-    color: #78350f;
-    padding: var(--space-4);
-    border-radius: var(--radius-md);
-    margin-bottom: var(--space-6);
+    max-width: 920px;
+    margin: var(--space-6) auto;
+    padding: var(--space-4) var(--space-6);
+    background: var(--color-brass-soft);
+    border-left: 3px solid var(--color-brass);
+    color: var(--color-forest);
     font-size: var(--text-sm);
   }
-  .draft-banner strong { font-size: var(--text-base); }
-  .guide { max-width: var(--content-max); margin: 0 auto; }
-  .guide-header { margin-bottom: var(--space-8); }
+
+  /* ─── Article hero ─── */
+  .guide-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 6;
+    max-height: 320px;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--color-forest);
+    margin-bottom: var(--space-8);
+  }
+  .guide-hero__overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(12,84,112,0.10) 0%, rgba(12,84,112,0.45) 100%);
+  }
+  @media (max-width: 760px) {
+    .guide-hero { aspect-ratio: 3 / 2; max-height: 220px; margin-bottom: var(--space-5); }
+  }
+
+  /* ─── Article container ─── */
+  .guide {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: var(--space-10) var(--space-6) var(--space-12);
+    color: var(--color-paper-ink);
+  }
+  .guide-header {
+    max-width: 720px;
+    margin: 0 0 var(--space-10);
+  }
+  .guide-crumb {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    color: var(--color-muted);
+    text-decoration: none;
+    margin-bottom: var(--space-5);
+  }
+  .guide-crumb:hover { color: var(--color-brass); }
   .kicker {
     text-transform: uppercase;
-    font-size: var(--text-xs);
-    letter-spacing: 0.08em;
-    color: var(--color-muted);
-    margin: 0 0 var(--space-2);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--color-paper-ink);
+    margin: 0 0 var(--space-4);
+    display: flex; align-items: center; gap: 14px;
   }
-  h1 {
-    font-size: var(--text-3xl);
-    line-height: 1.2;
-    margin: 0 0 var(--space-3);
+  .kicker::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--color-paper-ink);
   }
-  .description {
-    font-size: var(--text-lg);
-    color: var(--color-muted);
+  .guide-title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: clamp(1.75rem, 3.6vw, 2.5rem);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-4);
+    color: var(--color-paper-ink);
+  }
+  .guide-desc {
+    font-family: var(--font-sans);
+    font-size: 1.1875rem;
+    line-height: 1.6;
+    color: var(--color-paper-ink);
     margin: 0 0 var(--space-6);
+    max-width: 56ch;
   }
-  .cta-wrap { margin: var(--space-6) 0; }
-  .prose { line-height: 1.7; }
-  .prose :global(h2) {
-    font-size: var(--text-2xl);
-    margin-top: var(--space-8);
-    margin-bottom: var(--space-3);
+
+  /* Byline strip */
+  .guide-byline {
+    display: flex; align-items: center; gap: 16px;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+    font-size: 13px;
+    color: var(--color-muted);
   }
-  .prose :global(h3) {
-    font-size: var(--text-xl);
-    margin-top: var(--space-6);
+  .guide-byline__avatar {
+    width: 36px; height: 36px;
+    border-radius: 999px;
+    background: var(--color-forest);
+    color: var(--color-brass-soft);
+    display: grid; place-items: center;
+    font-family: var(--font-serif);
+    font-size: 18px;
+    flex-shrink: 0;
   }
+  .guide-byline__who { line-height: 1.4; }
+  .guide-byline__name { color: var(--color-paper-ink); font-weight: 600; }
+  .guide-byline__role { color: var(--color-muted); font-size: 12px; }
+  .guide-byline__date {
+    margin-left: auto;
+    text-align: right;
+    font-family: var(--font-mono, ui-monospace, Consolas, monospace);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .guide-byline__date-label { display: block; opacity: 0.7; font-size: 9.5px; margin-bottom: 2px; }
+  @media (max-width: 600px) {
+    .guide-byline__role { display: none; }
+  }
+
+  /* ─── Sections ─── */
+  .section { margin: 0 0 var(--space-12); }
+  .section-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin: 0 0 var(--space-6);
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--color-paper-ink);
+  }
+  .section-head h2 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--color-paper-ink);
+    margin: 0;
+    font-weight: 600;
+  }
+
+  /* ════ quick card grid ════ */
+  .quick-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .qcard {
+    background: var(--color-paper-muted);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: border-color 200ms ease, transform 200ms ease;
+  }
+  .qcard a { text-decoration: none; }
+  .qcard:hover {
+    border-color: var(--color-brass);
+    transform: translateY(-2px);
+  }
+  /* The card image box is the shared <Media variant="card"> (white bg, contain,
+     fixed 160px height). .qcard__img is just the link + positioning context for
+     the price badge; Media owns the box (criterion: contained product images). */
+  .qcard__img {
+    border-bottom: 1px solid var(--color-border);
+    position: relative;
+    cursor: pointer;
+    display: block;
+  }
+  .qcard__img :global(.media img) { transition: transform 220ms ease; }
+  .qcard:hover .qcard__img :global(.media img) { transform: scale(1.03); }
+  .qcard__img__price {
+    position: absolute;
+    top: 10px; right: 10px;
+    background: var(--color-paper-ink);
+    color: var(--color-paper);
+    font-family: var(--font-mono, ui-monospace, Consolas, monospace);
+    font-size: 10.5px; font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 999px;
+    letter-spacing: 0.04em;
+  }
+  .qcard__body { padding: 18px 20px 18px; flex: 1; display: flex; flex-direction: column; }
+  .qcard__persona {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.35;
+    color: var(--color-paper-ink);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .qcard__product {
+    font-family: var(--font-serif);
+    font-size: 17px; line-height: 1.25;
+    color: var(--color-forest);
+    margin: 0 0 12px;
+    font-weight: 500;
+    border-bottom: 1.5px solid var(--color-brass-soft);
+    padding-bottom: 4px;
+    align-self: flex-start;
+    transition: color 180ms ease, border-color 180ms ease;
+  }
+  .qcard:hover .qcard__product {
+    color: var(--color-brass);
+    border-bottom-color: var(--color-brass);
+  }
+  .qcard__hook {
+    font-size: 13.5px; line-height: 1.55;
+    color: var(--color-paper-ink);
+    margin: 0 0 16px;
+    flex: 1;
+    max-width: 38ch;
+    opacity: 0.85;
+  }
+  .qcard__cta {
+    font-family: var(--font-sans);
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--color-paper-ink);
+    padding: 10px 0 0;
+    border-top: 1px solid var(--color-border);
+    display: flex; align-items: center; gap: 8px;
+    transition: color 200ms ease;
+  }
+  .qcard:hover .qcard__cta { color: var(--color-brass); }
+  .qcard__cta__arrow { transition: transform 200ms ease; }
+  .qcard:hover .qcard__cta__arrow { transform: translateX(3px); }
+
+  /* ════ expanded cards ════ */
+  .deep-card {
+    display: grid;
+    grid-template-columns: 220px 1fr 240px;
+    gap: 32px;
+    align-items: start;
+    padding: 32px;
+    margin: 0 0 28px;
+    background: var(--color-paper-muted);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    scroll-margin-top: 24px;
+  }
+  .deep-card:last-child { margin-bottom: 0; }
+  .deep-card__img-col {
+    display: flex; flex-direction: column; align-items: center;
+  }
+  /* Authored wrapper around <Media variant="deep"> — Astro scope isolation
+     means a scoped rule can't target Media's root (different component cid), so
+     the box border + radius live here and Media (width:100%) fills it. */
+  .deep-card__img {
+    width: 220px;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .deep-card__rank {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--color-border);
+    width: 100%;
+    text-align: center;
+    font-family: var(--font-mono, ui-monospace, Consolas, monospace);
+    font-size: 10px; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+  .deep-card__rank span {
+    color: var(--color-paper-ink);
+    font-family: var(--font-serif);
+    font-size: 22px;
+    margin-right: 6px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    vertical-align: -2px;
+  }
+
+  .deep-card__body { min-width: 0; }
+  .deep-card__persona {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.35;
+    color: var(--color-paper-ink);
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+  .deep-card__heading {
+    font-family: var(--font-serif);
+    font-size: 26px;
+    line-height: 1.25;
+    margin: 0 0 18px;
+    font-weight: 500;
+    color: var(--color-paper-ink);
+    letter-spacing: -0.015em;
+    max-width: 32ch;
+  }
+  .deep-card__heading .reason {
+    display: block;
+    color: var(--color-muted);
+    font-weight: 400;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.3;
+    margin-bottom: 4px;
+    letter-spacing: 0;
+  }
+  .deep-card__heading .product-link {
+    color: var(--color-forest);
+    font-weight: 500;
+    border-bottom: 2px solid var(--color-brass-soft);
+    text-decoration: none;
+    transition: color 180ms ease, border-color 180ms ease;
+  }
+  .deep-card__heading .product-link:hover {
+    color: var(--color-brass);
+    border-bottom-color: var(--color-brass);
+  }
+  .deep-card__body :global(p) {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--color-paper-ink);
+    margin: 0 0 16px;
+    max-width: 62ch;
+    opacity: 0.9;
+  }
+  .deep-card__body :global(p:last-child) { margin-bottom: 0; }
+  .deep-card__body :global(p a) {
+    color: var(--color-forest);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--color-brass-soft);
+    text-underline-offset: 3px;
+  }
+  .deep-card__body :global(p a:hover) { color: var(--color-brass); }
+  .deep-card__body :global(p > strong:first-child) {
+    font-family: var(--font-serif);
+    font-weight: var(--weight-semibold);
+    color: var(--color-forest);
+    font-size: 1.05em;
+    letter-spacing: -0.005em;
+  }
+
+  /* Right rail */
+  .deep-card__rail {
+    background: var(--color-cream);
+    border-radius: 6px;
+    padding: 20px;
+    text-align: left;
+  }
+  .deep-card__rail__price-label {
+    font-family: var(--font-mono, ui-monospace, Consolas, monospace);
+    font-size: 10px; letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 4px;
+  }
+  .deep-card__rail__price {
+    font-family: var(--font-serif);
+    font-size: 32px;
+    color: var(--color-paper-ink);
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .deep-card__rail__price small {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-muted);
+    margin-left: 4px;
+    font-family: var(--font-mono, ui-monospace, Consolas, monospace);
+    letter-spacing: 0.04em;
+    vertical-align: 0.15em;
+  }
+  .deep-card__rail__cta {
+    display: block;
+    background: var(--color-brass);
+    color: var(--color-paper);
+    font-family: var(--font-sans);
+    font-size: 13px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 12px 18px;
+    border-radius: 6px;
+    text-align: center;
+    margin-bottom: 12px;
+    text-decoration: none;
+    transition: background 200ms ease, transform 200ms ease;
+  }
+  .deep-card__rail__cta:hover {
+    background: var(--color-brass-hover);
+    transform: translateY(-1px);
+  }
+  .deep-card__rail__cta-sub {
+    font-size: 11px;
+    color: var(--color-muted);
+    text-align: center;
+    font-style: italic;
+  }
+  .deep-card__rail__facts {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-border);
+    font-size: 12px;
+  }
+  .deep-card__rail__facts dt {
+    font-family: var(--font-mono, ui-monospace, Consolas, monospace);
+    font-size: 9.5px; letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 2px;
+  }
+  .deep-card__rail__facts dd {
+    margin: 0 0 10px;
+    font-size: 12.5px;
+    color: var(--color-paper-ink);
+    line-height: 1.45;
+  }
+  .deep-card__rail__facts dd:last-child { margin-bottom: 0; }
+
+  /* ════ editorial body ════ */
+  .editorial .prose {
+    line-height: 1.7;
+    font-size: 16px;
+    color: var(--color-paper-ink);
+  }
+  .editorial .prose :global(h2) {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: var(--space-10) 0 var(--space-5);
+    font-weight: 500;
+    color: var(--color-paper-ink);
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-paper-ink);
+  }
+  .editorial .prose :global(h3) {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    margin: var(--space-8) 0 var(--space-3);
+    font-weight: 500;
+    color: var(--color-paper-ink);
+  }
+  .editorial .prose :global(p) { margin: 0 0 18px; max-width: 58ch; }
+  .editorial .prose :global(p > strong:first-child) {
+    font-family: var(--font-serif);
+    font-weight: var(--weight-semibold);
+    color: var(--color-forest);
+    font-size: 1.05em;
+    letter-spacing: -0.005em;
+  }
+  .editorial .prose :global(blockquote) {
+    margin: var(--space-8) 0;
+    padding: var(--space-5) var(--space-8);
+    background: var(--color-cream);
+    border-left: 4px solid var(--color-brass);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.55;
+    color: var(--color-forest);
+    box-shadow: var(--shadow-sm);
+  }
+  .editorial .prose :global(blockquote > p) { margin: 0; }
+  /* Tables scroll horizontally on narrow viewports instead of overflowing the
+     panel (criterion: tables display:block; overflow-x:auto). */
+  .editorial .prose :global(table) {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: var(--space-6) 0 var(--space-8);
+    font-size: 14.5px;
+    background: var(--color-paper-muted);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+  }
+  .editorial .prose :global(th),
+  .editorial .prose :global(td) {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .editorial .prose :global(tr:last-child td) { border-bottom: 0; }
+  .editorial .prose :global(thead th),
+  .editorial .prose :global(th) {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-paper);
+    background: var(--color-paper-ink);
+    border-bottom: 0;
+  }
+  .editorial .prose :global(tbody tr:nth-child(even) td),
+  .editorial .prose :global(tr:nth-child(even) td) {
+    background: var(--color-cream);
+  }
+  .editorial .prose :global(ul) {
+    list-style: none;
+    padding-left: 0;
+    margin: var(--space-5) 0;
+  }
+  .editorial .prose :global(ul > li) {
+    position: relative;
+    padding: 16px 22px 16px 24px;
+    margin: 0 0 14px;
+    background: var(--color-cream);
+    border-left: 3px solid var(--color-forest);
+    border-radius: 0 6px 6px 0;
+  }
+  .editorial .prose :global(ul > li > strong:first-child) {
+    display: block;
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 1.35;
+    color: var(--color-paper-ink);
+    margin-bottom: 6px;
+  }
+  .editorial .prose :global(a) {
+    color: var(--color-forest);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--color-brass-soft);
+    text-underline-offset: 3px;
+  }
+  .editorial .prose :global(a:hover) { color: var(--color-brass); }
+
+  /* ─── Footer ─── */
   .guide-footer {
-    margin-top: var(--space-8);
+    margin-top: var(--space-10);
     padding-top: var(--space-6);
     border-top: 1px solid var(--color-border);
   }
-  .updated { color: var(--color-muted); font-size: var(--text-sm); }
+  .cta-wrap { margin: var(--space-6) 0; }
+  .updated { color: var(--color-muted); font-size: 13px; }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 980px) {
+    .quick-grid { grid-template-columns: repeat(2, 1fr); }
+    .deep-card {
+      grid-template-columns: 180px 1fr;
+      grid-template-areas: "img body" "rail rail";
+    }
+    .deep-card__img-col { grid-area: img; }
+    .deep-card__body { grid-area: body; }
+    .deep-card__rail { grid-area: rail; }
+    .deep-card__img { width: 180px; }
+  }
+  @media (max-width: 640px) {
+    .quick-grid { grid-template-columns: 1fr; }
+    .deep-card {
+      grid-template-columns: 1fr;
+      grid-template-areas: "img" "body" "rail";
+      padding: 20px;
+    }
+    .deep-card__img { width: 100%; max-width: 240px; margin: 0 auto; }
+    .section-head h2 { font-size: 26px; }
+    .guide-title { font-size: 2rem; }
+  }
 </style>

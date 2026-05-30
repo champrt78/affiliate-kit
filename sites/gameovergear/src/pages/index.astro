@@ -1,73 +1,291 @@
 ---
 import { getCollection } from "astro:content";
 import MainLayout from "../layouts/MainLayout.astro";
-import Hero from "@affkit/shared-ui/Hero.astro";
-import ReviewCard from "@affkit/shared-ui/ReviewCard.astro";
+import siteConfig from "../data/site-config.json";
 
-const allReviews = await getCollection("reviews");
-const latest = allReviews
-  .sort((a, b) => {
-    const aTime = a.data.pubDate instanceof Date ? a.data.pubDate.getTime() : new Date(a.data.pubDate).getTime();
-    const bTime = b.data.pubDate instanceof Date ? b.data.pubDate.getTime() : new Date(b.data.pubDate).getTime();
-    return bTime - aTime;
-  })
-  .slice(0, 6);
+/* GameOverGear homepage — ports the locked attract-screen mockup
+   (docs/playgrounds/gameovergear-mockups/home.html): "Insert Coin" attract
+   hero with a pixel wordmark + neon offset shadows, "Select Your Gear"
+   game-select pillar tiles driven by navigation.pillars[], and a "High Scores"
+   top-rated strip. Bespoke retro chrome; body copy stays readable (Inter).
+   High-scores strip uses the kit's getCollection -> filter -> empty-state
+   pattern (NO baked placeholder products) so it shows the real top picks once
+   Magic Go publishes them. Voice-clean (no hands-on claims, no em dashes). */
+
+const reviews = await getCollection("reviews");
+const guides = await getCollection("buyers-guides");
+
+// Latest published (non-DRAFT) pieces across both collections for the strip.
+const hasVerdict = (e: any) =>
+  e.data.bottomLine && e.data.bottomLine.verdict && e.data.bottomLine.verdict.trim() !== "";
+const time = (d: any) => (d instanceof Date ? d.getTime() : new Date(d).getTime());
+
+const latest = [
+  ...reviews.map((e) => ({
+    kind: "Review",
+    href: `/reviews/${e.slug}/`,
+    title: e.data.title,
+    desc: e.data.description,
+    pillar: (e.data as any).pillar,
+    date: e.data.pubDate,
+    draft: !hasVerdict(e),
+  })),
+  ...guides.map((e) => ({
+    kind: "Guide",
+    href: `/buyers-guides/${e.slug}/`,
+    title: e.data.title,
+    desc: e.data.description,
+    pillar: (e.data as any).pillar,
+    date: e.data.pubDate,
+    draft: !hasVerdict(e),
+  })),
+]
+  .filter((p) => !p.draft)
+  .sort((a, b) => time(b.date) - time(a.date))
+  .slice(0, 3);
+
+// Game-select tiles: the four commercial pillars (controllers, arcade-sticks,
+// retro-handhelds, displays-and-scalers). Each gets an arcade glyph.
+const tileGlyphs: Record<string, string> = {
+  controllers: "🎮",
+  "arcade-sticks": "🕹️",
+  "retro-handhelds": "📟",
+  "displays-and-scalers": "📺",
+  "level-up": "🛠️",
+  "1-up": "🎁",
+};
+const tiles = siteConfig.navigation.pillars.filter((p) => p.type === "commercial");
+const rankWord = ["1ST", "2ND", "3RD"];
 ---
 <MainLayout
   title="GameOverGear"
-  description="GameOverGear. Spec-driven reviews and buyer's guides for retro gaming gear."
+  description="GameOverGear compares retro gaming gear by spec and use case: controllers, arcade sticks, emulation handhelds, displays, and scalers."
+  transparentHeader={true}
 >
-  <Hero
-    title="GameOverGear"
-    tagline="Retro gaming gear for people who remember the original hype."
-  />
-
-  <section>
-    <div class="section-head">
-      <h2>Latest reviews</h2>
-      {latest.length > 0 && <a href="/reviews/" class="see-all">See all reviews →</a>}
+  {/* ─── Attract-screen hero ─── */}
+  <section class="hero">
+    <div class="wrap hero-content">
+      <div class="coin">★ Insert Coin to Continue ★</div>
+      <h1 class="hero-title">GAME OVER GEAR</h1>
+      <p class="tag">
+        Retro gaming gear, ranked by the way you actually play. Spec-checked,
+        compatibility-first, nostalgia included.
+      </p>
+      <a class="cta" href="/buyers-guides/">▶ Press Start</a>
     </div>
-    {latest.length === 0 ? (
-      <p class="muted">No reviews published yet. New content lands every quarter.</p>
-    ) : (
-      <div class="grid">
-        {latest.map((entry) => <ReviewCard entry={entry} />)}
-      </div>
-    )}
   </section>
 
-  <section>
-    <div class="section-head">
-      <h2>Buyer's guides</h2>
-      <a href="/buyers-guides/" class="see-all">Browse guides →</a>
+  {/* ─── Select Your Gear — game-select pillar tiles ─── */}
+  <section class="wrap section">
+    <h2 class="section-title">&gt;&gt; Select Your Gear &lt;&lt;</h2>
+    <div class="grid">
+      {tiles.map((p) => (
+        <a class="tile" href={`/topics/${p.slug}/`}>
+          <div class="tile__ic" aria-hidden="true">{tileGlyphs[p.slug] ?? "🎮"}</div>
+          <div>
+            <h3 class="tile__title">{p.label}</h3>
+            <p class="tile__blurb">{p.blurb}</p>
+          </div>
+          <span class="tile__arrow" aria-hidden="true">▶ enter</span>
+        </a>
+      ))}
     </div>
-    <p class="muted">Comparative roundups of products we've researched but don't own.</p>
+  </section>
+
+  {/* ─── High Scores — top-rated strip ─── */}
+  <section class="wrap section">
+    <h2 class="section-title">&gt;&gt; High Scores: Top Rated &lt;&lt;</h2>
+    {latest.length === 0 ? (
+      <p class="scores-empty">
+        New comparisons land every quarter. The first pieces are in the works,
+        built from published specs, verified-buyer reviews, and use-case fit.
+      </p>
+    ) : (
+      <div class="scores">
+        {latest.map((p, i) => (
+          <a class="row" href={p.href}>
+            <span class="row__rank">{rankWord[i] ?? `${i + 1}TH`}</span>
+            <span class="row__name">{p.title}</span>
+            <span class="row__kind">{p.kind}</span>
+          </a>
+        ))}
+      </div>
+    )}
   </section>
 </MainLayout>
 
 <style>
-  section { margin: var(--space-12) 0; }
-  .section-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: var(--space-4);
+  .wrap { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--space-6); }
+  .section { padding: var(--space-12) var(--space-6) var(--space-8); }
+
+  /* ─── Hero / attract screen ─── */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 132px 0 64px;
+    background:
+      radial-gradient(120% 80% at 50% -10%, #241a4d 0%, #0e0b1c 58%);
   }
-  h2 {
-    font-size: var(--text-2xl);
-    margin: 0;
+  .hero-content { max-width: 760px; margin: 0 auto; }
+  .coin {
+    font-family: "VT323", monospace;
+    font-size: 22px;
+    color: #39ff14;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    animation: blink 1.1s steps(2, start) infinite;
   }
-  .see-all {
-    color: var(--color-brand);
+  @keyframes blink { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .coin { animation: none; }
+  }
+  .hero-title {
+    font-family: "Press Start 2P", monospace;
+    margin: 22px 0 14px;
+    line-height: 1.25;
+    font-size: clamp(20px, 5vw, 46px) !important;
+    color: #ffd23f;
+    text-shadow: 4px 4px 0 #ff2e88, 8px 8px 0 #2ee6ff;
+  }
+  .tag {
+    font-family: var(--font-sans);
+    font-size: 18px;
+    line-height: 1.6;
+    color: #c9c2f0;
+    max-width: 38em;
+    margin: 18px auto 28px;
+  }
+  .cta {
+    display: inline-block;
+    font-family: "Press Start 2P", monospace;
+    font-size: 12px;
+    color: #0b0a16;
+    background: #39ff14;
+    padding: 16px 22px;
     text-decoration: none;
-    font-size: var(--text-sm);
-    font-weight: 600;
+    border: 3px solid #0b0a16;
+    box-shadow: 5px 5px 0 #ff2e88;
+    text-transform: uppercase;
+    transition: transform 120ms ease, box-shadow 120ms ease;
   }
-  .see-all:hover { text-decoration: underline; }
-  .muted { color: var(--color-muted); }
+  .cta:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 #ff2e88;
+    color: #0b0a16;
+  }
+
+  /* ─── Section title ─── */
+  .section-title {
+    font-family: "Press Start 2P", monospace;
+    font-size: clamp(13px, 1.8vw, 16px) !important;
+    color: #2ee6ff;
+    text-shadow: 0 0 10px rgba(46, 230, 255, 0.5);
+    text-align: center;
+    line-height: 1.5;
+    margin: 0 0 var(--space-8);
+  }
+
+  /* ─── Game-select tiles ─── */
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: var(--space-6);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+  .tile {
+    background: #171331;
+    border: 3px solid #2c2752;
+    border-radius: 4px;
+    padding: 22px 18px;
+    min-height: 188px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+    transition: transform 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+  }
+  .tile:hover {
+    border-color: #ff2e88;
+    box-shadow: 0 0 0 3px rgba(255, 46, 136, 0.25), 0 0 24px rgba(255, 46, 136, 0.25);
+    transform: translateY(-4px);
+  }
+  .tile__ic { font-size: 40px; line-height: 1; }
+  .tile__title {
+    font-family: "Press Start 2P", monospace;
+    font-size: 11px !important;
+    color: #ffd23f;
+    margin: 16px 0 10px;
+    line-height: 1.5;
+  }
+  .tile__blurb {
+    font-family: var(--font-sans);
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: #9a93c7;
+    margin: 0;
+  }
+  .tile__arrow {
+    font-family: "VT323", monospace;
+    color: #2ee6ff;
+    font-size: 20px;
+    margin-top: 12px;
+  }
+
+  /* ─── High scores strip ─── */
+  .scores {
+    background: linear-gradient(180deg, #13112a, #171331);
+    border: 2px solid #2c2752;
+    border-radius: 6px;
+    padding: 8px 26px;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px dashed #2c2752;
+    text-decoration: none;
+    transition: background 140ms ease;
+  }
+  .row:last-child { border-bottom: none; }
+  .row:hover { background: rgba(46, 230, 255, 0.05); }
+  .row__rank {
+    font-family: "Press Start 2P", monospace;
+    font-size: 13px;
+    color: #ff2e88;
+    width: 48px;
+    flex-shrink: 0;
+  }
+  .row__name {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 600;
+    color: #ede9ff;
+    flex: 1;
+    line-height: 1.4;
+  }
+  .row__kind {
+    font-family: "VT323", monospace;
+    font-size: 20px;
+    color: #39ff14;
+    text-transform: uppercase;
+  }
+  .scores-empty {
+    font-family: var(--font-sans);
+    font-style: italic;
+    font-size: 17px;
+    color: #9a93c7;
+    max-width: 52ch;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 860px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .grid { grid-template-columns: 1fr; }
+    .hero { padding-top: 108px; }
+    .row__kind { display: none; }
   }
 </style>

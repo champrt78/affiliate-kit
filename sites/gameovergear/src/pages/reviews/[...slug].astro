@@ -1,9 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
 import MainLayout from "../../layouts/MainLayout.astro";
-import CTA from "@affkit/shared-ui/CTA.astro";
-import { cloakedLink } from "@affkit/shared-utils";
-import { productSchema } from "@affkit/shared-utils";
+import ReviewArticle from "@affkit/shared-ui/ReviewArticle.astro";
 
 export async function getStaticPaths() {
   const entries = await getCollection("reviews");
@@ -18,38 +16,20 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { data, body } = entry;
-const { Content } = await entry.render();
+const { data } = entry;
 
-// DRAFT detection — raw body contains the placeholder from review.md.tmpl
-const DRAFT_MARKER = "_The Bottom Line is being written._";
-const isDraft = typeof body === "string" && body.includes(DRAFT_MARKER);
-
-const pubDateIso = data.pubDate instanceof Date
-  ? data.pubDate.toISOString()
-  : new Date(data.pubDate).toISOString();
+/* DRAFT/noindex gate — keyed off bottomLine.verdict (NOT a body marker).
+   Empty/placeholder verdict => noindex,nofollow. This is what satisfies
+   magic-go R5 (noindex + bottomLine co-occurrence in the page template). */
+const BOTTOMLINE_PLACEHOLDER = "_The Bottom Line is being written._";
+const isDraft = !data.bottomLine
+  || !data.bottomLine.verdict
+  || data.bottomLine.verdict.trim() === ""
+  || data.bottomLine.verdict.includes(BOTTOMLINE_PLACEHOLDER);
 
 const heroImage = data.images?.hero && data.images.hero.length > 0
   ? data.images.hero
   : "";
-
-const offerUrl = data.product.affiliate?.amazon
-  ?? data.product.affiliate?.direct
-  ?? undefined;
-
-const productLd = productSchema({
-  name: data.product.name,
-  brand: data.product.brand,
-  sku: data.product.sku ?? entry.slug,
-  image: heroImage,
-  description: data.description,
-  offerUrl,
-  price: data.product.price,
-  currency: data.product.currency,
-});
-
-const cloakedHref = cloakedLink({ slug: entry.slug });
-
 const robotsContent = isDraft ? "noindex, nofollow" : "index, follow";
 ---
 <MainLayout
@@ -58,108 +38,20 @@ const robotsContent = isDraft ? "noindex, nofollow" : "index, follow";
   robotsContent={robotsContent}
   ogType="article"
   ogImage={heroImage || undefined}
+  bgTheme={data.bgTheme}
 >
-  <script type="application/ld+json" set:html={JSON.stringify(productLd)} />
-
-  {isDraft && (
-    <aside class="draft-banner" role="alert">
-      <strong>DRAFT</strong> — this review's "Bottom Line" section hasn't been filled in.
-      Don't link to this page yet. Indexing is disabled until it's complete.
-    </aside>
-  )}
-
-  <article class="review">
-    <header class="review-header">
-      <p class="kicker">{data.product.brand} · Review</p>
-      <h1>{data.title}</h1>
-      <p class="description">{data.description}</p>
-      {heroImage && (
-        <img src={heroImage} alt={data.product.name} width="1600" height="1000" class="hero" />
-      )}
-      <div class="cta-wrap">
-        <CTA href={cloakedHref} rel="sponsored noopener" target="_blank">
-          Check price on Amazon
-        </CTA>
-      </div>
-    </header>
-
-    <div class="prose">
-      <Content />
-    </div>
-
-    <footer class="review-footer">
-      <div class="cta-wrap">
-        <CTA href={cloakedHref} rel="sponsored noopener" target="_blank">
-          See it on Amazon
-        </CTA>
-      </div>
-      <p class="updated">
-        Last updated:
-        <time datetime={data.lastUpdated instanceof Date ? data.lastUpdated.toISOString() : String(data.lastUpdated)}>
-          {data.lastUpdated instanceof Date ? data.lastUpdated.toISOString().slice(0, 10) : String(data.lastUpdated)}
-        </time>
-      </p>
-    </footer>
-  </article>
+  <ReviewArticle
+    entry={entry}
+    siteName="GameOverGear"
+    crumbLabel="All reviews"
+    crumbHref="/reviews/"
+    defaultRubric="Retro Gaming Gear · Review"
+    methodologyHref="/how-we-evaluate/"
+    methodologyLabel="How we evaluate retro gear"
+    bottomCtaHeading="Ready to look?"
+    bottomCtaCopy="We use one cloaked link per product so we can swap retailers without breaking old pages. Click through goes to Amazon."
+    brandInitial="GO"
+    editorialTeamName="The GameOverGear desk"
+    credentialLine="Spec analysis & use-case framing · verified against current manufacturer listings and Amazon reports"
+  />
 </MainLayout>
-
-<style>
-  .draft-banner {
-    background: #fef3c7;
-    border: 2px solid #d97706;
-    color: #78350f;
-    padding: var(--space-4);
-    border-radius: var(--radius-md);
-    margin-bottom: var(--space-6);
-    font-size: var(--text-sm);
-  }
-  .draft-banner strong { font-size: var(--text-base); }
-  .review { max-width: var(--content-max); margin: 0 auto; }
-  .review-header { margin-bottom: var(--space-8); }
-  .kicker {
-    text-transform: uppercase;
-    font-size: var(--text-xs);
-    letter-spacing: 0.08em;
-    color: var(--color-muted);
-    margin: 0 0 var(--space-2);
-  }
-  h1 {
-    font-size: var(--text-3xl);
-    line-height: 1.2;
-    margin: 0 0 var(--space-3);
-  }
-  .description {
-    font-size: var(--text-lg);
-    color: var(--color-muted);
-    margin: 0 0 var(--space-6);
-  }
-  .hero {
-    width: 100%;
-    border-radius: var(--radius-md);
-    margin-bottom: var(--space-6);
-  }
-  .cta-wrap { margin: var(--space-6) 0; }
-  .prose { line-height: 1.7; }
-  .prose :global(h2) {
-    font-size: var(--text-2xl);
-    margin-top: var(--space-8);
-    margin-bottom: var(--space-3);
-  }
-  .prose :global(h3) {
-    font-size: var(--text-xl);
-    margin-top: var(--space-6);
-  }
-  .prose :global(blockquote) {
-    border-left: 4px solid var(--color-brand);
-    margin: var(--space-4) 0;
-    padding: var(--space-2) var(--space-4);
-    color: var(--color-muted);
-    background: var(--color-surface);
-  }
-  .review-footer {
-    margin-top: var(--space-8);
-    padding-top: var(--space-6);
-    border-top: 1px solid var(--color-border);
-  }
-  .updated { color: var(--color-muted); font-size: var(--text-sm); }
-</style>

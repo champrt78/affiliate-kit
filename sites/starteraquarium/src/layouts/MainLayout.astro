@@ -1,6 +1,24 @@
 ---
-import BaseLayout from "@affkit/shared-ui/BaseLayout.astro";
+import SiteShell from "@affkit/shared-ui/SiteShell.astro";
 import AffiliateDisclosure from "@affkit/shared-ui/AffiliateDisclosure.astro";
+import "../styles/site.css";
+import siteConfig from "../data/site-config.json";
+
+/* StarterAquarium MainLayout — renders through the shared <SiteShell> (the
+   "build once, skin per site" chrome). The bright aquatic identity comes from
+   src/styles/site.css token overrides + the chrome color tokens it sets
+   (--header-bg foam / --footer-bg deep teal / --nav-accent aqua / --media-bg
+   #fff); this layout supplies the per-site bits SiteShell slots/props in: the
+   StarterAquarium wordmark, pillar-derived nav, footer columns + blurb,
+   footer-legal disclosure, the Poppins + Nunito Sans fontsHref, and the
+   per-page aqua gutter background.
+
+   Header treatment:
+     - All pages use a light foam STICKY header (stickyHeader=true), matching
+       the mockup's translucent foam top bar. No dark photo-hero overlay, so
+       transparentHeader stays false (the v2 mockup has no photo hero — the
+       homepage paints its own aqua gradient in its scoped CSS). */
+type BgTheme = "reef" | "lagoon" | "deep" | "solid";
 
 interface Props {
   title: string;
@@ -9,12 +27,91 @@ interface Props {
   robotsContent?: string;
   ogType?: string;
   ogImage?: string;
+  bgTheme?: BgTheme;
 }
 
-const { title, description, canonical, robotsContent, ogType, ogImage } = Astro.props;
-const siteName = "StarterAquarium";
+const {
+  title,
+  description,
+  canonical,
+  robotsContent,
+  ogType,
+  ogImage,
+  bgTheme = "solid",
+} = Astro.props;
+
+const siteName = siteConfig.site.name;
+
+/* Poppins (headings → serif slot) + Nunito Sans (body → sans slot). */
+const fontsHref =
+  "https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap";
+
+/* Per-page gutter background. The aqua gradient is what shows beside the
+   floating panel on interior pages — it ties the bright-water feel into the
+   chrome without a photo. The map mirrors DTP/fussybean's seam so future
+   per-page water scenes can drop in without touching the shell. "solid" is the
+   default aqua-glass gutter gradient. */
+const themeBackgrounds: Record<BgTheme, string> = {
+  /* Scene gutters are a post-launch iteration; all keep an aqua wash so the
+     gutter never reads flat-gray. Atmosphere-only (image policy), never product
+     shots, hot-linked from Unsplash when added. For now they share the gradient. */
+  reef: "linear-gradient(160deg, #1f97ad 0%, #0c5470 100%) fixed",
+  lagoon: "linear-gradient(160deg, #2bb6a8 0%, #0f6585 100%) fixed",
+  deep: "linear-gradient(160deg, #0c5470 0%, #062d3d 100%) fixed",
+  solid: "linear-gradient(160deg, #1f97ad 0%, #0c5470 100%) fixed",
+};
+const pageBg = themeBackgrounds[bgTheme];
+
+/* Flat-color fallback painted under pageBg (and the gutter base color the shell
+   needs). Matches the deep end of the gradient. */
+const gutterColor = "#0c5470";
+
+/* Primary nav: Home + each pillar (/topics/<slug>/) + About. */
+const navItems = [
+  { href: "/", label: "Home" },
+  ...siteConfig.navigation.pillars.map((p) => ({
+    href: `/topics/${p.slug}/`,
+    label: p.label,
+  })),
+  { href: "/about/", label: "About" },
+];
+
+const footerBlurb =
+  "Friendly, beginner-first gear guides for your first freshwater tank. We match the filter, heater, and kit to your tank size so your first fish actually thrive, ranked by spec and use-case fit, then link out to where you can buy them.";
+
+/* StarterAquarium footer carries brand + 3 columns (4 grid items). SiteShell's
+   footer is column-count-driven, so passing 3 columns yields the deep-teal 4-up. */
+const footerColumns = [
+  {
+    heading: "Browse",
+    links: [
+      { href: "/topics/tanks-and-kits/", label: "Tanks &amp; Kits" },
+      { href: "/topics/filters/", label: "Filters" },
+      { href: "/topics/heaters/", label: "Heaters" },
+      { href: "/topics/lighting/", label: "Lighting" },
+    ],
+  },
+  {
+    heading: "Site",
+    links: [
+      { href: "/buyers-guides/", label: "Buying guides" },
+      { href: "/reviews/", label: "Reviews" },
+      { href: "/topics/tank-school/", label: "Tank School" },
+      { href: "/how-we-evaluate/", label: "How we evaluate" },
+    ],
+  },
+  {
+    heading: "Fine print",
+    links: [
+      { href: "/disclosure/", label: "Affiliate disclosure" },
+      { href: "/privacy/", label: "Privacy" },
+      { href: "/contact/", label: "Contact" },
+      { href: "/about/", label: "About" },
+    ],
+  },
+];
 ---
-<BaseLayout
+<SiteShell
   title={title}
   description={description}
   canonical={canonical}
@@ -22,61 +119,56 @@ const siteName = "StarterAquarium";
   robotsContent={robotsContent}
   ogType={ogType}
   ogImage={ogImage}
+  themeColor="#0c5470"
+  fontsHref={fontsHref}
+  navItems={navItems}
+  footerColumns={footerColumns}
+  footerBlurb={footerBlurb}
+  pageBg={pageBg}
+  gutterColor={gutterColor}
+  stickyHeader={true}
 >
-  <header class="site-header">
-    <a href="/" class="brand">StarterAquarium</a>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/about/">About</a>
-      <a href="/disclosure/">Disclosure</a>
-    </nav>
-  </header>
+  {/* Brand markup is authored HERE so StarterAquarium's scoped .brand* CSS
+      (below) matches it — Astro scopes slot styles to the authoring component,
+      not SiteShell. SiteShell only positions the brand slot as the first flex
+      child of .site-header__inner. */}
+  <a href="/" class="brand" slot="brand" aria-label={`${siteName} home`}>
+    <span class="brand__drop" aria-hidden="true"></span>
+    <span class="brand__name">Starter<span class="brand__accent">Aquarium</span></span>
+  </a>
 
-  <main>
-    <slot />
-  </main>
+  <AffiliateDisclosure slot="footer-legal" siteName={siteName} variant="footer" />
 
-  <AffiliateDisclosure siteName={siteName} />
-
-  <footer class="site-footer">
-    <nav>
-      <a href="/about/">About</a>
-      <a href="/disclosure/">Affiliate disclosure</a>
-      <a href="/privacy/">Privacy</a>
-      <a href="/contact/">Contact</a>
-    </nav>
-    <p>© {new Date().getFullYear()} {siteName}. All rights reserved.</p>
-  </footer>
-</BaseLayout>
+  <slot />
+</SiteShell>
 
 <style>
-  .site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--space-4) 0;
-    border-bottom: 1px solid var(--color-border);
-    margin-bottom: var(--space-8);
-  }
+  /* Brand — water-drop mark + Poppins wordmark. Lives in this layout (not
+     SiteShell) because the brand markup is slotted from here; Astro scopes
+     these styles to the markup THIS file authors. */
   .brand {
-    font-weight: 700;
-    font-size: var(--text-lg);
-    color: var(--color-fg);
+    display: flex;
+    align-items: center;
+    gap: 10px;
     text-decoration: none;
+    color: var(--color-forest);
   }
-  nav a {
-    color: var(--color-fg);
-    text-decoration: none;
-    margin-left: var(--space-4);
+  .brand:hover { color: var(--color-forest-light); }
+  .brand__drop {
+    width: 22px; height: 26px;
+    border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
+    background: radial-gradient(circle at 35% 30%, #5fd3c4, var(--color-forest-light));
+    transform: rotate(180deg);
+    box-shadow: inset 0 -3px 6px rgba(12, 84, 112, 0.35), 0 2px 6px rgba(12, 84, 112, 0.25);
+    flex-shrink: 0;
   }
-  nav a:hover { color: var(--color-brand); }
-  main { min-height: 60vh; }
-  .site-footer {
-    margin-top: var(--space-16);
-    padding: var(--space-6) 0;
-    border-top: 1px solid var(--color-border);
-    text-align: center;
-    color: var(--color-muted);
-    font-size: var(--text-sm);
+  .brand__name {
+    font-family: var(--font-serif);
+    font-weight: 800;
+    font-size: 23px;
+    letter-spacing: -0.02em;
+    color: inherit;
   }
+  .brand__accent { color: var(--color-forest-light); }
+  .brand:hover .brand__accent { color: var(--color-brass); }
 </style>
