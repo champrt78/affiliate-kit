@@ -253,7 +253,8 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
     /* 3-up forced on desktop (we have 3 reviews and Ray wants them
        on one row at typical desktop widths). The 960px collapse-to-2
        was kicking in too early on his viewport. Hold 3-up to 720px. */
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
+    justify-content: center;
     gap: var(--space-6);
   }
   @media (max-width: 720px) {

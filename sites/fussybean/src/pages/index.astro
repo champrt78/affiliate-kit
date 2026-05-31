@@ -191,7 +191,13 @@ const tileClass = (i: number) => (i === 0 ? "tile big" : i === 1 ? "tile med" : 
     text-shadow: 0 2px 30px rgba(0, 0, 0, 0.4);
     margin-bottom: 20px;
   }
-  .hero h1 em { font-style: italic; color: var(--color-brass); }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--color-brass);
+    /* Ray 2026-05-31: brass accent read low-contrast over the busy latte photo.
+       Tight dark halo (over the soft parent shadow) restores legibility. */
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6), 0 0 2px rgba(0, 0, 0, 0.5);
+  }
   .hero p {
     font-size: 19px;
     color: #f0e3cf;

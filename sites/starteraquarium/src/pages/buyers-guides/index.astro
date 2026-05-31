@@ -102,7 +102,8 @@ const sorted = entries.sort((a, b) => {
   .grid-section__inner { max-width: var(--container-max); margin: 0 auto; }
   .grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
+    justify-content: center;
     gap: var(--space-6);
   }
   .empty {

@@ -109,7 +109,8 @@ const sorted = entries.sort((a, b) => {
   /* Use the full container — fill rows of 3, not orphaned center column */
   .grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
+    justify-content: center;
     gap: var(--space-6);
   }
   .empty {
