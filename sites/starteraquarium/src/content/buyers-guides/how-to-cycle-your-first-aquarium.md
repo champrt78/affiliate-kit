@@ -66,12 +66,12 @@ products:
     reason: "The bacteria-in-a-bottle, option B:"
     facts:
       "Type": "Live nitrifying bacteria starter"
-      "Listing claim": "Rapidly establishes the biofilter; prevents new tank syndrome"
+      "Listing claim": "Rapidly establishes the biofilter. Prevents new tank syndrome"
       "Dose": "Listing states 5 mL per 10 US gallons on day one"
       "Approach": "Dosed daily over the first week"
     body: |
       <p>The <a href="https://www.amazon.com/dp/B0002APIIW?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">Seachem Stability</a> is the other bacteria starter beginners weigh against SafeStart, and the difference is mostly in how you use it. Per the listing it contains a blend of bacteria that break down ammonia, nitrite, and nitrate, and it is marketed to rapidly and safely establish the aquarium biofilter to prevent new tank syndrome, which the listing calls the number-one cause of fish death in new tanks.</p>
-      <p>Where SafeStart is built around a single fish-in dose, Stability's listing describes a schedule, an initial dose of 5 mL per 10 US gallons on the first day, repeated over roughly the first week. Neither is hands-on tested here; the choice between them comes down to whether you prefer a one-shot starter or a dose-it-daily routine. Either way, the same rule holds: a starter speeds the cycle, the test kit tells you when it is actually done.</p>
+      <p>Where SafeStart is built around a single fish-in dose, Stability's listing describes a schedule, an initial dose of 5 mL per 10 US gallons on the first day, repeated over roughly the first week. Neither is hands-on tested here. The choice between them comes down to whether you prefer a one-shot starter or a dose-it-daily routine. Either way, the same rule holds: a starter speeds the cycle, the test kit tells you when it is actually done.</p>
   - name: "Python Pro-Clean Gravel Washer & Siphon Kit (Small)"
     brand: "Python"
     affiliateUrl: "https://www.amazon.com/dp/B0002APRVK?tag=mystarteraquarium-20"
@@ -88,14 +88,14 @@ products:
       "Why it matters": "Water changes are how you control a fish-in cycle"
     body: |
       <p>The <a href="https://www.amazon.com/dp/B0002APRVK?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">Python Pro-Clean Gravel Washer & Siphon Kit (Small)</a> is the tool that makes water changes quick instead of a bucket-and-cup chore. Per the listing the Small size is aimed at 10 to 20 gallon tanks, and it works as a self-contained siphon: you start the flow, the wide tube pushes into the gravel to lift trapped waste, and the water drains out without you having to suck on a hose.</p>
-      <p>Water changes are not a side note to cycling; during a fish-in cycle they are your main lever for keeping ammonia and nitrite from reaching harmful levels while the bacteria catch up. After the tank is cycled, the same routine of partial water changes plus a gravel vacuum is the backbone of ongoing maintenance. A simple siphon kit like this is the version of the tool that fits a starter tank without the faucet hookup of the larger no-spill systems.</p>
+      <p>Water changes are not a side note to cycling. During a fish-in cycle they are your main lever for keeping ammonia and nitrite from reaching harmful levels while the bacteria catch up. After the tank is cycled, the same routine of partial water changes plus a gravel vacuum is the backbone of ongoing maintenance. A simple siphon kit like this is the version of the tool that fits a starter tank without the faucet hookup of the larger no-spill systems.</p>
 pubDate: 2026-05-30
 lastUpdated: 2026-05-30
 pillar: "tank-school"
 bgTheme: solid
 bottomLine:
-  verdict: ""
-  supporting: "Cycling is just growing the bacteria that turn fish waste into less toxic compounds; you can do it fishless (safest, slower) or fish-in (faster, riskier), it usually takes two to six weeks, and the cycle is done when ammonia and nitrite both read zero while nitrate appears. A liquid test kit is the one non-negotiable tool; a dechlorinator, an optional bacteria starter, and a gravel siphon round out the kit."
+  verdict: "Do not skip the cycle. A test kit, a dechlorinator, and a bacteria starter are the whole toolkit. The rest is patience while the bacteria catch up."
+  supporting: "Cycling is just growing the bacteria that turn fish waste into less toxic compounds. You can do it fishless (safest, slower) or fish-in (faster, riskier), it usually takes two to six weeks, and the cycle is done when ammonia and nitrite both read zero while nitrate appears. A liquid test kit is the one non-negotiable tool. A dechlorinator, an optional bacteria starter, and a gravel siphon round out the kit."
 ---
 
 ## What the nitrogen cycle actually is
@@ -114,7 +114,7 @@ The tank is "cycled" when you can add a source of ammonia and, within about 24 h
 
 There are two ways to grow those bacteria, and the choice is mostly about safety versus speed.
 
-**Fishless cycling** means cycling an empty tank by adding your own ammonia source instead of fish. You add a measured amount of ammonia (bottled pure ammonia, or in some methods a small amount of fish food left to decay), then test daily and wait for the three stages to complete. No fish are exposed to the toxic ammonia and nitrite spikes, because there are no fish in the tank yet. This is the method most experienced keepers recommend for beginners precisely because nothing can be harmed if it goes slowly. The trade-off is patience; you are staring at an empty tank for weeks.
+**Fishless cycling** means cycling an empty tank by adding your own ammonia source instead of fish. You add a measured amount of ammonia (bottled pure ammonia, or in some methods a small amount of fish food left to decay), then test daily and wait for the three stages to complete. No fish are exposed to the toxic ammonia and nitrite spikes, because there are no fish in the tank yet. This is the method most experienced keepers recommend for beginners precisely because nothing can be harmed if it goes slowly. The trade-off is patience. You are staring at an empty tank for weeks.
 
 **Fish-in cycling** means the fish are already in the tank while the cycle establishes. This is what happens by default when someone sets up a tank and adds fish the same day, often without knowing the cycle exists. It is faster to a stocked-looking tank, but the fish are living through the ammonia and nitrite spikes, which stresses or kills them if those levels are not controlled. If you cycle fish-in, you do it carefully: stock lightly, feed sparingly, test every day, do frequent partial water changes to knock down ammonia and nitrite, and use a conditioner that detoxifies ammonia between changes as a buffer.
 
@@ -126,7 +126,7 @@ A typical cycle takes roughly **two to six weeks**, and it is normal for it to l
 
 A few things move the timeline:
 
-- **Bacteria starters** like a bottled live-bacteria product can shorten it by seeding the colony instead of waiting for it to appear on its own. They speed the process; they do not make it instant, and you still confirm with testing.
+- **Bacteria starters** like a bottled live-bacteria product can shorten it by seeding the colony instead of waiting for it to appear on its own. They speed the process. They do not make it instant, and you still confirm with testing.
 - **Temperature** matters because the bacteria grow faster in warm water. A tank running at a normal tropical temperature cycles faster than a cold one, which is one reason the heater goes in before you start.
 - **Seeding from an established tank** is the fastest natural accelerant. A handful of gravel or a piece of filter media from a friend's healthy, disease-free tank carries living bacteria straight into yours. Most beginners do not have access to this, which is why bottled starters exist.
 
@@ -151,18 +151,18 @@ Most cycling disasters come from the same short list.
 - **Cycling without a test kit.** If you are not testing, you are guessing. You cannot see ammonia or nitrite, so you have no idea whether the tank is safe. The test kit is the one tool you genuinely cannot skip.
 - **Rinsing filter media in tap water.** The bacteria you spent weeks growing live largely in your filter media. Tap-water chlorine kills them, and a hot rinse damages them. When you clean filter media, rinse it gently in old tank water you removed during a water change, never under the tap.
 - **Overfeeding.** Excess food rots and feeds the ammonia problem. During cycling especially, feed lightly. Uneaten food is just ammonia on a delay.
-- **Doing huge water changes during a fishless cycle.** Big changes can strip out the ammonia and bacteria you are trying to build. During fishless cycling you generally leave it alone; the heavy-water-change advice belongs to fish-in cycling, where it protects living fish.
+- **Doing huge water changes during a fishless cycle.** Big changes can strip out the ammonia and bacteria you are trying to build. During fishless cycling you generally leave it alone. The heavy-water-change advice belongs to fish-in cycling, where it protects living fish.
 - **Declaring victory early.** A single zero reading is not a finished cycle. Wait for the full pattern, ammonia and nitrite both at zero with nitrate rising, confirmed more than once, before you fully stock the tank.
 
 ## The short version
 
-Cycling is not chemistry homework, it is bacteria gardening. Set the tank up, get it warm, add an ammonia source or a careful fish-in approach, optionally seed it with a bacteria starter, and test every day until ammonia and nitrite settle at zero while nitrate appears. Fishless is the safest way to learn it; fish-in done carefully is the rescue version. The single tool you cannot do without is a liquid test kit, because the entire cycle is invisible without one. Get the testing right and the rest of the hobby gets a lot less scary.
+Cycling is not chemistry homework, it is bacteria gardening. Set the tank up, get it warm, add an ammonia source or a careful fish-in approach, optionally seed it with a bacteria starter, and test every day until ammonia and nitrite settle at zero while nitrate appears. Fishless is the safest way to learn it. Fish-in done carefully is the rescue version. The single tool you cannot do without is a liquid test kit, because the entire cycle is invisible without one. Get the testing right and the rest of the hobby gets a lot less scary.
 
 ## How we put this together
 
 This guide is educational first. The nitrogen-cycle explanation, the fishless-versus-fish-in comparison, the timeline, and the common-mistakes list are general fishkeeping principles, not claims about any product we used. The five tools carried here are mapped to the actual cycling workflow: a test kit to watch the cycle, a dechlorinator for every water change, two bacteria starters as the choice for speeding a fish-in cycle, and a gravel siphon for the water changes the cycle depends on.
 
-Each product was located by its canonical Amazon product page and the listing title was read on 2026-05-30 to confirm it is the right model and a single buyable unit rather than a multipack or a replacement part. Every factual product claim here is attributed to that manufacturer or Amazon listing; where a listing does not publish a figure, none is asserted. Prices were not captured for this piece and the price fields are placeholders, so check the current price on Amazon before buying. No products were tested in-house; the recommendations come from spec analysis of the listings and general fishkeeping principles.
+Each product was located by its canonical Amazon product page and the listing title was read on 2026-05-30 to confirm it is the right model and a single buyable unit rather than a multipack or a replacement part. Every factual product claim here is attributed to that manufacturer or Amazon listing. Where a listing does not publish a figure, none is asserted. Prices were not captured for this piece and the price fields are placeholders, so check the current price on Amazon before buying. No products were tested in-house. The recommendations come from spec analysis of the listings and general fishkeeping principles.
 
 ## Who This Is For
 

@@ -117,7 +117,7 @@ lastUpdated: 2026-05-30
 pillar: "retro-handhelds"
 bgTheme: solid
 bottomLine:
-  verdict: "Match the handheld to the era you replay. For Game Boy up through PS1 on Linux, the RG40XX V and clamshell RG35XX SP are the sweet spot; for Android power up through tougher systems, step up to the RG406H or the AMOLED Retroid Pocket 5."
+  verdict: "Match the handheld to the era you replay. For Game Boy up through PS1 on Linux, the RG40XX V and clamshell RG35XX SP are the sweet spot. For Android power up through tougher systems, step up to the RG406H or the AMOLED Retroid Pocket 5."
   supporting: "Six spec-verified picks: four budget Linux handhelds chosen by form factor over one shared chip, plus two Android devices that climb the power ladder to GameCube and beyond."
 ---
 
@@ -129,10 +129,10 @@ bottomLine:
 | Anbernic RG35XX SP | 3.5-inch, 640x480 | Allwinner H700 | PS1, light Dreamcast (reviewer-reported) | Linux | $74.99 |
 | Anbernic RG40XX V | 4.0-inch, 640x480 | Allwinner H700 | PS1, light Dreamcast (reviewer-reported) | Linux | $86.99 |
 | Anbernic RG34XX | 3.4-inch, 720x480 (3:2) | Allwinner H700 | PS1, light Dreamcast (reviewer-reported) | Linux | $79.97 |
-| Anbernic RG406H | 4-inch, 960x720 | Unisoc T820 | PSP, Dreamcast solid; GameCube, PS2 with compromises (reviewer-reported) | Android 13 | $199.99 |
+| Anbernic RG406H | 4-inch, 960x720 | Unisoc T820 | PSP, Dreamcast solid. GameCube, PS2 with compromises (reviewer-reported) | Android 13 | $199.99 |
 | Retroid Pocket 5 | 5.5-inch AMOLED, 1080p | Snapdragon 865 | GameCube, PS2, some Switch (reviewer-reported) | Android 13 | $249.00 |
 
-Screen, SoC, RAM, OS and battery figures are read from each brand's product page (Anbernic and Retroid). Emulation-ceiling entries are reviewer-reported performance, attributed in each pick's write-up, not manufacturer claims. Prices are the Amazon buy-box at the time of writing and fluctuate; the Anbernic listings are third-party reseller offers priced above brand MSRP.
+Screen, SoC, RAM, OS and battery figures are read from each brand's product page (Anbernic and Retroid). Emulation-ceiling entries are reviewer-reported performance, attributed in each pick's write-up, not manufacturer claims. Prices are the Amazon buy-box at the time of writing and fluctuate. The Anbernic listings are third-party reseller offers priced above brand MSRP.
 
 ## The budget picks differ by shape, not power
 
@@ -155,6 +155,6 @@ Anbernic does not sell first-party on Amazon US. All four Anbernic picks here ar
 
 ## How we picked
 
-Every device here was located by its Amazon product page, and each listing was read to confirm the title, price, in-stock status and seller, and that it is a single buyable unit rather than a multi-pack or renamed variant. Hardware specs (screen, processor, RAM, OS, battery) are pulled directly from each brand's product page; where the brand page does not publish a figure, none is asserted here. Emulation-performance claims are kept separate from those specs and attributed to the reviewer who reported them, including Retro Dodo, Retro Handhelds, Time Extension, Joey's Retro Handhelds, Sypnotix, GamesRadar and DROIX, with Retro Game Corps cited for its RG35XX-family starter guide.
+Every device here was located by its Amazon product page, and each listing was read to confirm the title, price, in-stock status and seller, and that it is a single buyable unit rather than a multi-pack or renamed variant. Hardware specs (screen, processor, RAM, OS, battery) are pulled directly from each brand's product page. Where the brand page does not publish a figure, none is asserted here. Emulation-performance claims are kept separate from those specs and attributed to the reviewer who reported them, including Retro Dodo, Retro Handhelds, Time Extension, Joey's Retro Handhelds, Sypnotix, GamesRadar and DROIX, with Retro Game Corps cited for its RG35XX-family starter guide.
 
-The six picks were chosen to cover the category two ways. The four budget Linux devices span the form factors that drive the purchase decision at the entry level, since they share one chip and one emulation ceiling. The two Android devices then climb the power tiers, from the mid-range Unisoc T820 to the flagship Snapdragon 865. No products were tested in-house for this guide; the recommendations come from spec analysis and synthesis of credible third-party reviewer commentary. Product images and a price re-validation are pending a PA-API pass before publish.
+The six picks were chosen to cover the category two ways. The four budget Linux devices span the form factors that drive the purchase decision at the entry level, since they share one chip and one emulation ceiling. The two Android devices then climb the power tiers, from the mid-range Unisoc T820 to the flagship Snapdragon 865. No products were tested in-house for this guide. The recommendations come from spec analysis and synthesis of credible third-party reviewer commentary. Product images and a price re-validation are pending a PA-API pass before publish.

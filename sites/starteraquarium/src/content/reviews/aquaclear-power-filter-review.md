@@ -20,7 +20,7 @@ images:
 rating: 4.0
 bottomLine:
   verdict: "The AquaClear 50 is the filter most beginners should buy: a large media basket, a flow-control lever to dial down the current, and a refiltration design that does more biological filtration than its price suggests. The open intake is the main thing to watch with small fish."
-  supporting: "If you want one dependable hang-on-back filter that grows with your first tank and lets you customize the media, the AquaClear 50 is the boring-in-the-best-way pick; the one thing to plan for is the open intake if you keep tiny fish, fry, or shrimp."
+  supporting: "If you want one dependable hang-on-back filter that grows with your first tank and lets you customize the media, the AquaClear 50 is the boring-in-the-best-way pick. The one thing to plan for is the open intake if you keep tiny fish, fry, or shrimp."
 scorecard:
   axes:
     - { name: "Beginner-Friendliness", weight: 25, score: 8.0 }
@@ -28,7 +28,7 @@ scorecard:
     - { name: "Value", weight: 20, score: 9.0 }
     - { name: "Tank-Size Fit", weight: 15, score: 8.5 }
     - { name: "Ease of Maintenance", weight: 15, score: 8.0 }
-  note: "Editorial score derived from manufacturer specs cross-referenced with attributed sources: Amazon verified-buyer reviews (4.4 stars across 7,712 ratings on ASIN B000260FUM, verified 2026-05-30) and Aquarium Co-Op, which sells a dedicated AquaClear intake adapter and treats the line as a hobby staple. Not lab-measured. Reliability and Value score highest because the AquaClear's long track record and refillable, swappable media are what owners praise most; Beginner-Friendliness is moderated by the open intake and the fill-and-prime start-up step."
+  note: "Editorial score derived from manufacturer specs cross-referenced with attributed sources: Amazon verified-buyer reviews (4.4 stars across 7,712 ratings on ASIN B000260FUM, verified 2026-05-30) and Aquarium Co-Op, which sells a dedicated AquaClear intake adapter and treats the line as a hobby staple. Not lab-measured. Reliability and Value score highest because the AquaClear's long track record and refillable, swappable media are what owners praise most. Beginner-Friendliness is moderated by the open intake and the fill-and-prime start-up step."
 buyIf:
   buy:
     - "You want one hang-on-back filter that fits a 10, 20, or 29 gallon now and still has headroom up to 50 gallons later"
@@ -42,7 +42,7 @@ buyIf:
     - "You want a fully sealed canister filter for a heavily stocked tank, that is a different, pricier category than a hang-on-back"
 flaws:
   - title: "The intake is open, with no built-in pre-filter sponge or surface skimmer"
-    body: "The AquaClear's intake U-tube is a bare strainer. For most community fish that is fine, but for shrimp, fry, or very small fish it can be a hazard. This is well known enough in the hobby that Aquarium Co-Op sells a dedicated Fluval AquaClear Hang-On-Back Intake Adapter built so a pre-filter sponge fits snugly; a buyer review on that Co-Op product notes the stock inlet tube leaves a sponge loose enough to fall off. Plan to add a pre-filter sponge if you keep small or breeding tankmates."
+    body: "The AquaClear's intake U-tube is a bare strainer. For most community fish that is fine, but for shrimp, fry, or very small fish it can be a hazard. This is well known enough in the hobby that Aquarium Co-Op sells a dedicated Fluval AquaClear Hang-On-Back Intake Adapter built so a pre-filter sponge fits snugly. A buyer review on that Co-Op product notes the stock inlet tube leaves a sponge loose enough to fall off. Plan to add a pre-filter sponge if you keep small or breeding tankmates."
   - title: "Flow can feel modest at the very top of the tank range"
     body: "The AquaClear 50 is rated at 300 GPH for 20 to 50 gallon tanks. One Amazon verified buyer running a heavily stocked 29 gallon felt the real-world flow was on the low side for their bioload. For a lightly stocked beginner tank this is a non-issue, but if you plan to stock heavily near the top of the range, sizing up rather than down is the safer call."
   - title: "It is not strictly self-priming on first start-up"
@@ -57,7 +57,7 @@ faq:
   - question: "Is it hard to set up?"
     answer: "It is a quick install, but not fully plug-and-play. Per the listing's setup steps you fill the filter case with water and set the flow control lever to maximum for the initial start-up, then plug it in. After that first prime it runs on its own. The manufacturer also recommends cleaning it about every two weeks."
   - question: "How does AquaClear handle the nitrogen cycle?"
-    answer: "The AquaClear runs three-stage filtration, mechanical foam, chemical carbon, and biological BioMax, and ships with a Cycle Guard dose meant to protect the beneficial bacteria colony that drives the nitrogen cycle. The manufacturer also lists a filtration volume up to seven times larger than comparable hang-on-back filters, which means more room for that bacteria-hosting biological media. New tanks still need to cycle fully before adding fish; see our Tank School guides for how the nitrogen cycle works."
+    answer: "The AquaClear runs three-stage filtration, mechanical foam, chemical carbon, and biological BioMax, and ships with a Cycle Guard dose meant to protect the beneficial bacteria colony that drives the nitrogen cycle. The manufacturer also lists a filtration volume up to seven times larger than comparable hang-on-back filters, which means more room for that bacteria-hosting biological media. New tanks still need to cycle fully before adding fish. See our Tank School guides for how the nitrogen cycle works."
   - question: "Can I slow the flow down for a betta?"
     answer: "Yes. The AquaClear has an adjustable flow control lever on the intake U-tube, so you can turn the current down. Bettas and other small or long-finned fish often prefer gentler flow, and adding a pre-filter sponge on the intake softens it further while also protecting small tankmates."
 ---
@@ -81,7 +81,7 @@ It fits the betta and small-fish keeper too, because the flow is adjustable. The
 | Included media | AquaClear Foam, Activated Carbon, BioMax, plus Cycle Guard | AquaClear, Amazon |
 | Media volume | Up to 7x larger than comparable HOB filters | AquaClear |
 | Flow control | Adjustable lever on intake U-tube | Amazon listing |
-| Pre-filter sponge | Not included (open intake; aftermarket adapter exists) | Aquarium Co-Op |
+| Pre-filter sponge | Not included (open intake. Aftermarket adapter exists) | Aquarium Co-Op |
 | Start-up | Fill case with water, set lever to max for first prime | Amazon listing |
 | Recommended cleaning | About every 2 weeks | AquaClear |
 | Owner reviews | 4.4 stars across 7,712 ratings | Amazon (verified 2026-05-30) |
@@ -96,8 +96,8 @@ It fits the betta and small-fish keeper too, because the flow is adjustable. The
 
 ## Where It Falls Short
 
-- **The intake is open.** The AquaClear's intake is a bare strainer with no built-in pre-filter sponge or surface skimmer. For community fish that is fine, but shrimp, fry, and very small fish can be pulled toward it. This is common enough that Aquarium Co-Op sells a dedicated AquaClear intake adapter so owners can fit a pre-filter sponge; a buyer review on that product notes the stock inlet tube holds a sponge too loosely on its own. Budget a few dollars for a pre-filter sponge if you keep small or breeding tankmates.
-- **Flow can feel modest at the top of the range.** Rated at 300 GPH for up to 50 gallons, one Amazon verified buyer with a heavily stocked 29 gallon felt the real-world flow ran a little light for their bioload. For a lightly stocked beginner tank it is plenty; if you plan to stock heavily, size up rather than down.
+- **The intake is open.** The AquaClear's intake is a bare strainer with no built-in pre-filter sponge or surface skimmer. For community fish that is fine, but shrimp, fry, and very small fish can be pulled toward it. This is common enough that Aquarium Co-Op sells a dedicated AquaClear intake adapter so owners can fit a pre-filter sponge. A buyer review on that product notes the stock inlet tube holds a sponge too loosely on its own. Budget a few dollars for a pre-filter sponge if you keep small or breeding tankmates.
+- **Flow can feel modest at the top of the range.** Rated at 300 GPH for up to 50 gallons, one Amazon verified buyer with a heavily stocked 29 gallon felt the real-world flow ran a little light for their bioload. For a lightly stocked beginner tank it is plenty. If you plan to stock heavily, size up rather than down.
 - **It is not strictly self-priming.** Per the listing's setup steps, you fill the case with water and set the flow lever to maximum for the first start-up before plugging in. A one-time, two-minute step, but worth knowing.
 - **It is maintained, not set-and-forget.** The manufacturer recommends cleaning roughly every two weeks. Standard for any HOB filter, but honest to flag for anyone hoping to ignore it for months.
 
@@ -105,7 +105,7 @@ It fits the betta and small-fish keeper too, because the flow is adjustable. The
 
 The AquaClear 50 sits in the [Filters](/filters) pillar. A few natural points of comparison, all spec-sourced:
 
-**AquaClear 50 vs AquaClear 30.** Same filter, different size. The 30 (ASIN B00020SVDG) is rated for 10 to 30 gallon tanks; the 50 covers 20 to 50. If your first tank is a 5 or 10 gallon, the 30 is the cleaner match. If you are at a 20 or 29 gallon, or you suspect you will upgrade, the 50 gives you headroom without running a too-strong current thanks to the flow lever.
+**AquaClear 50 vs AquaClear 30.** Same filter, different size. The 30 (ASIN B00020SVDG) is rated for 10 to 30 gallon tanks. The 50 covers 20 to 50. If your first tank is a 5 or 10 gallon, the 30 is the cleaner match. If you are at a 20 or 29 gallon, or you suspect you will upgrade, the 50 gives you headroom without running a too-strong current thanks to the flow lever.
 
 **AquaClear vs a cartridge-style HOB filter.** A cartridge filter is simpler on day one: drop in a cartridge, replace it monthly. The AquaClear asks you to think a little more about your media, but in exchange you get a far larger media basket, separately swappable foam, carbon, and BioMax, and the option to skip the carbon. The trade-off is convenience now versus lower cost and more control later.
 

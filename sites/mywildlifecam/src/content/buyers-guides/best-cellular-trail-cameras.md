@@ -131,7 +131,7 @@ buyIf:
     - "You don't want any recurring cost and a local SD-card camera would serve you better"
 faq:
   - question: "What is a cellular trail camera, and how is it different from an SD-card one?"
-    answer: "A cellular trail camera has a built-in cellular modem and SIM that transmits photos (and sometimes short clips) to a phone app over a cell network, so you don't walk out to retrieve a memory card. SD-card cameras store images locally and require a retrieval trip. Cellular wins on convenience for far-flung deployments; SD-card cameras avoid recurring data plans. Every pick in this guide is cellular."
+    answer: "A cellular trail camera has a built-in cellular modem and SIM that transmits photos (and sometimes short clips) to a phone app over a cell network, so you don't walk out to retrieve a memory card. SD-card cameras store images locally and require a retrieval trip. Cellular wins on convenience for far-flung deployments. SD-card cameras avoid recurring data plans. Every pick in this guide is cellular."
   - question: "Do I need a monthly plan, and are there free options?"
     answer: "Most cellular cameras pair with a data plan to transmit images. Two picks here lower that cost: the Moultrie Edge 2 includes free unlimited cloud storage and free species-recognition tagging per its product page, and the Spypoint Flex-S Dark includes a free plan covering 100 photos a month per camera per Spypoint's page. Plan pricing changes over time, so confirm current tiers on the manufacturer site before buying."
   - question: "What does dual-SIM or auto carrier selection actually do?"
@@ -139,7 +139,7 @@ faq:
   - question: "Which pick has the best image quality, and which lasts longest on a charge?"
     answer: "On imaging, the Stealth Cam DS4K Transmit leads with a 32MP sensor and true 4K video at 30 FPS per its product page. On endurance, Trailcampro's staff review measured roughly 11 months of battery life on the Browning Defender Pro Scout Max HD. The Spypoint Flex-S Dark sidesteps the battery question with an integrated solar panel, and the GardePro X66 Pro uses a 7,800mAh rechargeable pack."
   - question: "Will these capture clear photos at night?"
-    answer: "All six use infrared night illumination. The Stealth Cam DS4K Transmit and Spypoint Flex-S Dark use no-glow IR (invisible flash) per their brand pages; the Tactacam Reveal X 3.0 and Moultrie Edge 2 use low-glow IR; the Spypoint also offers customizable low-glow or no-glow LEDs. Listed detection or flash ranges run from 96 ft (Tactacam) to 100 ft (Stealth Cam, Moultrie, Browning, GardePro). Clarity drops with distance, so place the camera within range of where animals actually pass."
+    answer: "All six use infrared night illumination. The Stealth Cam DS4K Transmit and Spypoint Flex-S Dark use no-glow IR (invisible flash) per their brand pages. The Tactacam Reveal X 3.0 and Moultrie Edge 2 use low-glow IR. The Spypoint also offers customizable low-glow or no-glow LEDs. Listed detection or flash ranges run from 96 ft (Tactacam) to 100 ft (Stealth Cam, Moultrie, Browning, GardePro). Clarity drops with distance, so place the camera within range of where animals actually pass."
 ---
 
 ## Verified product specs at a glance
@@ -153,7 +153,7 @@ faq:
 | Browning Defender Pro Scout Max HD | 24 MP | 0.25 sec | 100 ft, Illuma-Smart IR | Dual-SIM, AT&T and Verizon | 8 AA | $96.99 |
 | GardePro X66 Pro | 48 MP | Not listed | 100 ft, 36 IR LEDs | 4G LTE Multi-IMSI | 7,800mAh rechargeable | $89.99 |
 
-All specs verified directly from manufacturer product pages or the Amazon listing for each model on 2026-05-29. Cells marked "Not listed" are values the sources did not state; we don't fill them with category guesses.
+All specs verified directly from manufacturer product pages or the Amazon listing for each model on 2026-05-29. Cells marked "Not listed" are values the sources did not state. We don't fill them with category guesses.
 
 ## Cellular plans and carriers, in plain language
 

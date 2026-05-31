@@ -29,7 +29,7 @@ scorecard:
     - { name: "Build Quality", weight: 20, score: 8.0 }
     - { name: "Value", weight: 20, score: 9.0 }
     - { name: "Ease of Setup", weight: 10, score: 8.0 }
-  note: "Editorial score derived from manufacturer specs cross-referenced with attributed reviews (Amazon: 4.4 stars across 1,589 ratings on the Hall Effect listing; SlashGear's review by Eric Abent). Not lab-measured. Weights follow gameovergear's default axes; Authenticity and Value are weighted toward the d-pad and the $39.99 price, the two things this pad is repeatedly praised for."
+  note: "Editorial score derived from manufacturer specs cross-referenced with attributed reviews (Amazon: 4.4 stars across 1,589 ratings on the Hall Effect listing. SlashGear's review by Eric Abent). Not lab-measured. Weights follow gameovergear's default axes. Authenticity and Value are weighted toward the d-pad and the $39.99 price, the two things this pad is repeatedly praised for."
 buyIf:
   buy:
     - "You play retro, 2D, or fighting games and want a d-pad first, the feature SlashGear calls the best since the SNES days"
@@ -37,10 +37,10 @@ buyIf:
     - "You want back paddle buttons, three onboard profiles, and a 4-way hardware mode switch without paying flagship-pad prices"
     - "You are wary of stick drift and value the Hall Effect joystick design that uses magnetic sensors instead of contact potentiometers"
   skip:
-    - "You need to power on or wake a Switch from the couch; SlashGear notes the Pro 2 cannot do that the way a first-party Pro Controller can"
-    - "You want amiibo scanning (NFC) or true HD Rumble; 8BitDo states the Pro 2 supports neither"
-    - "You are a Mac-primary user who wants to customize via app; 8BitDo states Ultimate Software does not run in Mac mode"
-    - "You want 2.4GHz low-latency dongle wireless or a charging dock; that is the 8BitDo Ultimate line and the newer Pro 3, not the Pro 2"
+    - "You need to power on or wake a Switch from the couch. SlashGear notes the Pro 2 cannot do that the way a first-party Pro Controller can"
+    - "You want amiibo scanning (NFC) or true HD Rumble. 8BitDo states the Pro 2 supports neither"
+    - "You are a Mac-primary user who wants to customize via app. 8BitDo states Ultimate Software does not run in Mac mode"
+    - "You want 2.4GHz low-latency dongle wireless or a charging dock. That is the 8BitDo Ultimate line and the newer Pro 3, not the Pro 2"
 flaws:
   - title: "It cannot power on a Switch"
     body: "SlashGear's Eric Abent calls this the biggest consideration: unlike a first-party Switch Pro Controller, you cannot use the Pro 2 to turn the Switch on, which the reviewer describes as disappointing. You will still need a first-party pad or the console buttons to wake the system."
@@ -86,8 +86,8 @@ One thing to settle up front: this is the Hall Effect edition, not the original.
 | Mode switch | 4-way: Switch / X-input / D-input / macOS | 8BitDo, SlashGear |
 | Onboard profiles | 3 custom profiles, profile-switch button | 8BitDo, Amazon |
 | Back buttons | 2 Pro-level back paddle buttons | 8BitDo, Amazon |
-| Software | 8BitDo Ultimate Software (PC, Android, iOS); not Mac mode | 8BitDo |
-| Feedback | Rumble vibration (not HD Rumble); motion control (Switch only) | 8BitDo, Amazon |
+| Software | 8BitDo Ultimate Software (PC, Android, iOS). Not Mac mode | 8BitDo |
+| Feedback | Rumble vibration (not HD Rumble). Motion control (Switch only) | 8BitDo, Amazon |
 | NFC / amiibo | Not supported | 8BitDo |
 | Battery | 1000mAh Li-ion, ~20 play hours / ~4 hour charge | 8BitDo, Amazon |
 | Dimensions / weight | 153.6 x 100.6 x 64.5 mm, 228 g | 8BitDo |
@@ -101,14 +101,14 @@ One thing to settle up front: this is the Hall Effect edition, not the original.
 - **The d-pad is the standout.** SlashGear's Eric Abent calls it probably the best d-pad he has used since the SNES days and says retro and 2D players who need a good d-pad will not be disappointed. For gameovergear's audience that is the most relevant praise on the listing.
 - **The back paddle buttons are well placed.** SlashGear reports hitting the two rear buttons accidentally a shockingly low number of times, noting they sit far enough up the grip that the reviewer's middle fingers fall on them naturally rather than catching them by mistake.
 - **On-the-fly profile switching is the headline upgrade.** SlashGear frames the Pro 2 as a refinement of the SN30 Pro+ whose profile button lets you define three profiles once in the Ultimate Software app, sync them to the controller, and then swap through them at will, without reconnecting to software for every layout change.
-- **Hall Effect joysticks and broad reach for the price.** 8BitDo and Amazon list Hall Effect joysticks, a magnetic-sensor design marketed as drift-resistant, plus Bluetooth or USB-C connectivity and a 4-way mode switch spanning Switch and Switch 2, PC, Steam Deck, Android, Raspberry Pi, and Apple devices. Amazon verified buyers echo the value read: one writes that it blows away the Switch Pro and Xbox pads, is super easy to pair, and has three profiles; another says the motion controls work amazingly and the vibration is far better than their Nintendo Pro Controller.
+- **Hall Effect joysticks and broad reach for the price.** 8BitDo and Amazon list Hall Effect joysticks, a magnetic-sensor design marketed as drift-resistant, plus Bluetooth or USB-C connectivity and a 4-way mode switch spanning Switch and Switch 2, PC, Steam Deck, Android, Raspberry Pi, and Apple devices. Amazon verified buyers echo the value read: one writes that it blows away the Switch Pro and Xbox pads, is super easy to pair, and has three profiles. Another says the motion controls work amazingly and the vibration is far better than their Nintendo Pro Controller.
 
 ## Where It Falls Short
 
 - **It cannot power on a Switch.** SlashGear calls this the biggest consideration: unlike a first-party Pro Controller, the Pro 2 cannot wake the console, which the reviewer describes as disappointing.
-- **No NFC and no HD Rumble.** 8BitDo states the Pro 2 supports neither amiibo scanning nor HD rumble; it has regular rumble vibration. Standard for third-party Switch pads, but worth flagging if those features matter.
+- **No NFC and no HD Rumble.** 8BitDo states the Pro 2 supports neither amiibo scanning nor HD rumble. It has regular rumble vibration. Standard for third-party Switch pads, but worth flagging if those features matter.
 - **Switch 2 support is real but not bulletproof.** 8BitDo lists Switch 2 compatibility yet notes it needs system 20.1.1 or later and may require a firmware update from support, and at least one Amazon verified review on this SKU reports it would not connect to a Switch 2. Expect possible firmware steps and scattered failure reports.
-- **Mac users lose the app, and unit feel can vary.** 8BitDo says Ultimate Software does not run in Mac mode, so Mac-primary users get the pad but not the customization tools. Separately, one recent Amazon reviewer reported a defective unit and a replacement with a d-pad they found too stiff; a minority report against an otherwise well-praised d-pad, but a real one.
+- **Mac users lose the app, and unit feel can vary.** 8BitDo says Ultimate Software does not run in Mac mode, so Mac-primary users get the pad but not the customization tools. Separately, one recent Amazon reviewer reported a defective unit and a replacement with a d-pad they found too stiff. A minority report against an otherwise well-praised d-pad, but a real one.
 
 ## How It Compares
 
@@ -118,4 +118,4 @@ The Pro 2 sits in the [Controllers](/controllers) pillar. Three natural comparis
 
 **Pro 2 vs 8BitDo Ultimate.** The Ultimate line is the modern competitive pad: a 2.4GHz low-latency dongle, a charging dock, and often Hall Effect sticks. The Pro 2 is the retro-feel pad: the SNES-style body and standout d-pad, Bluetooth or USB-C only with no 2.4GHz dongle, and no dock in the box. Choose the Pro 2 for d-pad and retro feel, the Ultimate for wireless latency and dock convenience.
 
-**Pro 2 vs 8BitDo Pro 3.** Amazon labels the Pro 3 the newer version. At roughly $58 it adds TMR joysticks, swappable ABXY buttons, a charging dock, and Hall triggers. It is a different, pricier product; the Pro 2 is the value and retro pick at $39.99.
+**Pro 2 vs 8BitDo Pro 3.** Amazon labels the Pro 3 the newer version. At roughly $58 it adds TMR joysticks, swappable ABXY buttons, a charging dock, and Hall triggers. It is a different, pricier product. The Pro 2 is the value and retro pick at $39.99.

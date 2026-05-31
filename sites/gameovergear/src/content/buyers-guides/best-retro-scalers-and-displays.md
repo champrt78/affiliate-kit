@@ -18,7 +18,7 @@ products:
       Input: "Composite CVBS (yellow/white/red RCA), per the Amazon listing"
       Output: "HDMI, scaled to 720p or 1080p (switch-selectable)"
       Standards: "Supports both PAL and NTSC sources"
-      Power: "USB-powered; USB charge cable included in the box"
+      Power: "USB-powered. USB charge cable included in the box"
     body: |
       <p>The <a href="https://www.amazon.com/dp/B01L8GG6PW?tag=gameovergear-20" rel="sponsored noopener" target="_blank">GANA RCA to HDMI Converter</a> takes a standard composite signal, the yellow video plus white and red audio RCA plugs that ship on most cartridge-era consoles, and outputs HDMI scaled to 720p or 1080p, per the Amazon listing. It supports both PAL and NTSC sources and is USB-powered, with a USB charge cable in the box. This is a converter, not a line multiplier or FPGA device, so it does not deconstruct the original 240p signal the way the OSSC below does.</p>
       <p>Two things buyers should know up front. First, stock is thin: the listing read "Only 2 left in stock, order soon" when this guide was compiled on 2026-05-30, so confirm availability before purchase. Second, RetroRGB and other retro AV resources note that cheap composite-to-HDMI boxes are the lowest-fidelity path, since composite is already the softest analog signal, and they add their own processing lag, so they are best treated as a get-it-working starting point rather than a quality endpoint. That said, its 4.4-star rating across 47,571 Amazon ratings is by far the largest review base in this guide, and the roughly $14.99 price is the lowest here.</p>
@@ -35,7 +35,7 @@ products:
       "Consoles": "Super NES (SNES) and Super Famicom (SFC), per the listing"
       Signal: "Converts the console's analog RGB to digital HDMI"
       Output: "HDMI to HDTV, monitor or projector"
-      Install: "Plugs into the console's multi-out; no console modification"
+      Install: "Plugs into the console's multi-out. No console modification"
     body: |
       <p>The <a href="https://www.amazon.com/dp/B07MYX9JLM?tag=gameovergear-20" rel="sponsored noopener" target="_blank">LEVELHIKE SNES to HDMI Adapter</a> is built for one console family rather than being a universal box: it plugs into the Super NES or Super Famicom multi-out and converts the console's analog RGB signal to HDMI for a modern HDTV, monitor or projector, per the Amazon listing. Pulling RGB rather than composite is the key claim, since RGB carries more picture information than the composite or S-video output most older consoles default to, a point My Life in Gaming has covered at length in its analog-signal explainers.</p>
       <p>The trade-off versus a universal converter is right there in the name: this path serves the SNES and Super Famicom and nothing else, so a multi-console household needs one cable per system or a box like the OSSC below. For an SNES owner who wants a clean picture without modifying the console, it is the most targeted option in this guide. It was In Stock at about $29.99 on 2026-05-30, and carries a 4.3-star rating across 324 Amazon ratings.</p>
@@ -77,7 +77,7 @@ pubDate: 2026-05-30
 lastUpdated: 2026-05-30
 bgTheme: solid
 bottomLine:
-  verdict: ""
+  verdict: "Cheap converters (GANA, LEVELHIKE) solve the basic problem. The Marseille mClassic is the easy quality upgrade. The Kaico OSSC is the premium of what Amazon stocks. If you want a RetroTINK, buy it direct from retrotink.com."
   supporting: "Four picks span the clean-signal problem from both ends: a sub-$15 composite converter and a console-specific SNES RGB cable for getting a picture at all, an inline mClassic upscaler for a convenient quality pass, and the FPGA-based OSSC for enthusiasts who want sharp, low-latency output and have an RGB source to feed it."
 ---
 
@@ -105,11 +105,11 @@ There is no single correct approach. The right pick depends on what your console
 
 ## How we picked
 
-Every product here was located by its canonical Amazon product page, which was then scraped on 2026-05-30 so the title could be read to confirm it is the right product and a single buyable unit. In-stock state and the buy-box price string were captured from each page at the same time. Spec figures, including input types, output resolution, latency framing and supported consoles, are pulled from each manufacturer's page or the Amazon listing; where a listing does not publish a figure, none is asserted here.
+Every product here was located by its canonical Amazon product page, which was then scraped on 2026-05-30 so the title could be read to confirm it is the right product and a single buyable unit. In-stock state and the buy-box price string were captured from each page at the same time. Spec figures, including input types, output resolution, latency framing and supported consoles, are pulled from each manufacturer's page or the Amazon listing. Where a listing does not publish a figure, none is asserted here.
 
 This category has an unusually high Amazon rejection rate, so the lineup reflects what is actually buyable there rather than what is most famous. The widely praised RetroTINK 5X-Pro and RetroTINK-4K were considered but excluded: they sell direct through retrotink.com rather than as standard Amazon listings, with the 4K around $750 at the brand store, so neither passed the Amazon availability gate. A Tendak component converter was also checked and rejected after its page returned "Currently unavailable." That left four spec-verified picks across four distinct brands, from a roughly $14.99 composite converter to a roughly $169.99 FPGA line multiplier. Per the project's grid-balance rule, four validated picks is the supported fallback when six cannot be cleanly verified, which is the case for this niche, Amazon-thin category.
 
-Reviewer and community commentary is attributed to its source: RetroRGB on cheap composite converters, My Life in Gaming on RGB versus composite signal quality, and Modern Vintage Gamer plus My Life in Gaming on the OSSC, alongside Amazon aggregate ratings. No products were tested in-house for this guide; recommendations derive from spec analysis and synthesis of credible third-party reviewer commentary.
+Reviewer and community commentary is attributed to its source: RetroRGB on cheap composite converters, My Life in Gaming on RGB versus composite signal quality, and Modern Vintage Gamer plus My Life in Gaming on the OSSC, alongside Amazon aggregate ratings. No products were tested in-house for this guide. Recommendations derive from spec analysis and synthesis of credible third-party reviewer commentary.
 
 ## Who This Is For
 

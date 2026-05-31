@@ -80,7 +80,8 @@ Concrete phrases the AI must not produce and the lint must catch. Each bullet st
 
 **Style tells (AI fingerprints)** — formatting and word choices that read as machine-generated and erode trust:
 
-- `—` — em dashes scream AI. Use period, semicolon, comma, colon, or parenthetical. Hard ban in published content. (This rule applies to content body; voice-doctrine.md itself uses em dashes for internal structural readability.)
+- `—` — em dashes scream AI. Use a period, comma, colon, or parenthetical. Hard ban in published content. (This rule applies to content body. voice-doctrine.md itself uses em dashes for internal structural readability.)
+- Semicolons (the ; character) are **banned in content prose** (Vonnegut rule, locked 2026-05-31: "all they do is show you've been to college"). Split into two sentences, or use a comma or "and." Hard ban in published content body + frontmatter prose (verdict, supporting, facts). Enforced by a dedicated entity-safe check in `lint-voice.ps1` (it strips HTML entities first, then flags any remaining semicolon), deliberately NOT written as a backtick literal here, because the lint's literal parser would then substring-match it against every HTML entity terminator. Does NOT apply to `.astro` source (CSS/JS use semicolons legitimately) or to this doctrine file.
 
 ---
 

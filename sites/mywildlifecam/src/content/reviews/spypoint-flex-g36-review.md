@@ -28,7 +28,7 @@ scorecard:
     - { name: "Trigger & Detection", weight: 20, score: 8.0 }
     - { name: "Battery & Power", weight: 15, score: 7.0 }
     - { name: "Ease of Setup", weight: 20, score: 8.0 }
-  note: "Editorial score from spec analysis cross-referenced with Amazon verified-buyer reports (4.2 stars across roughly 1,038 ratings) and two independent owner field reviews on YouTube. Not lab-measured. Connectivity is weighted highest because dual-SIM auto-strongest carrier selection is the Flex G36's reason to exist; Battery & Power is moderated because runtime depends heavily on trigger volume and the broader Spypoint lineup carries an SD-card track record the G36 itself has so far avoided."
+  note: "Editorial score from spec analysis cross-referenced with Amazon verified-buyer reports (4.2 stars across roughly 1,038 ratings) and two independent owner field reviews on YouTube. Not lab-measured. Connectivity is weighted highest because dual-SIM auto-strongest carrier selection is the Flex G36's reason to exist. Battery & Power is moderated because runtime depends heavily on trigger volume and the broader Spypoint lineup carries an SD-card track record the G36 itself has so far avoided."
 buyIf:
   buy:
     - "Your property sits on patchy coverage and you want the camera to auto-pick the stronger of two carriers, not commit to one"
@@ -53,7 +53,7 @@ faq:
   - question: "Do I have to pick a carrier like AT&T or Verizon at setup?"
     answer: "No. The Flex G36 uses dual-SIM technology and automatically connects to the strongest of two cellular networks for its location. An 8-month owner field review calls this the standout feature, noting it is 'very rare that you find them with dual SIM technology where they're just going to find the strongest cell signal.'"
   - question: "Is there a subscription, or is it free?"
-    answer: "A free transmission plan is included per the 8-month owner review. That covers basic photo delivery; heavier volume moves you onto a paid Spypoint plan. Phone delivery still depends on cellular coverage at the camera's location, so the free tier is a starting point, not a guarantee of unlimited free use."
+    answer: "A free transmission plan is included per the 8-month owner review. That covers basic photo delivery. Heavier volume moves you onto a paid Spypoint plan. Phone delivery still depends on cellular coverage at the camera's location, so the free tier is a starting point, not a guarantee of unlimited free use."
   - question: "Does it use an SD card, and is that a problem?"
     answer: "Yes, it takes an external SD card, and you can switch off the cellular function to pull the card and copy photos manually. On reliability: a multi-camera reviewer warns that some Spypoint cameras (not the G36 specifically) have had SD-card failures that persisted through card swaps and reformatting. The G36 itself has not shown that issue in their testing, but it is a brand-level track record worth knowing."
 ---
@@ -81,14 +81,14 @@ Specs per the Amazon listing and Spypoint product documentation:
 | GPS | Yes | Amazon listing |
 | Storage | External SD card | Amazon listing |
 | Transmission plan | Free plan included (paid tiers for higher volume) | 8-month owner review |
-| Pricing | Twin pack around $219.99; single roughly $130-150; owner-cited range $90-120 | Amazon listing; owner review |
+| Pricing | Twin pack around $219.99. Single roughly $130-150. Owner-cited range $90-120 | Amazon listing. Owner review |
 | Buyer rating | 4.2 stars across roughly 1,038 ratings | Amazon (verified 2026-05-29) |
 
 A cellular plan beyond the included free tier is required for heavy photo volume. Plan cost is separate from the hardware.
 
 ## What It Does Well
 
-- **Dual-SIM auto-strongest carrier selection.** This is the real differentiator. Most cellular cameras in this price range ask you to pick AT&T or Verizon at setup; the Flex G36 carries two connections and locks onto the stronger signal for that location on its own. An 8-month owner calls this out as rare in the category and the main reason to choose it over clunkier competitors ([8 Months With the SpyPoint Flex G36](https://www.youtube.com/watch?v=-unkAQI01HA)).
+- **Dual-SIM auto-strongest carrier selection.** This is the real differentiator. Most cellular cameras in this price range ask you to pick AT&T or Verizon at setup. The Flex G36 carries two connections and locks onto the stronger signal for that location on its own. An 8-month owner calls this out as rare in the category and the main reason to choose it over clunkier competitors ([8 Months With the SpyPoint Flex G36](https://www.youtube.com/watch?v=-unkAQI01HA)).
 - **A quick 0.3-second trigger with 36MP stills.** The 0.3-second trigger is faster than the modest cellular cameras in the tier and is paired with 36MP photos and 1080p video with sound per the Amazon listing. For watching wildlife move through a frame, that trigger is quick enough to catch the animal rather than its tail end.
 - **Simple app and an included free transmission plan.** The same long-term owner describes the Spypoint app as very easy to use and notes a free transmission plan is included, which lowers the entry cost for a first-time cellular buyer. The external SD card also gives a manual fallback: switch off cellular, pull the card, copy photos directly.
 - **A field record that survived real abuse.** The 8-month owner review covers harsh weather and a bear attack and still ends with an endorsement of the product. A second multi-camera reviewer rates the G36 around 4/5 on whether you should buy it ([Spypoint Flex G36 COMPLETE REVIEW! (AND a Warning!)](https://www.youtube.com/watch?v=G6rPyTfyvvw)). Two independent owners landing positive is a meaningful signal at this price.

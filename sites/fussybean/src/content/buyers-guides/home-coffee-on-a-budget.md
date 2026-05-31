@@ -24,7 +24,7 @@ products:
       Adjustment: "Internal, double-bearing"
     body: >
       <p>The Amazon listing for the <a href="https://www.amazon.com/dp/B0CGTYT12R?tag=fussybean-20" rel="sponsored noopener" target="_blank">TIMEMORE Chestnut C2S</a> describes a CNC stainless steel S2C conical burr with double-bearing positioning for an even grind, a 25g capacity, and an internal adjustment dial, in a compact body Timemore markets for pour-over, French press, and travel. A burr grinder crushes beans to a consistent size you can choose, where a blade grinder chops them into a random mix that brews bitter and sour at once. Going manual skips the motor, which is most of the cost of an electric burr grinder.</p>
-      <p>It carries a 4.7 out of 5 rating across 930 Amazon ratings, the highest in this kit, and the listing shows "100+ bought in past month." The trade-off is honest: you turn a crank for every cup. For one or two cups a day that is a 30-second ritual; for a houseful of coffee drinkers an electric grinder eventually earns its place. As a first grinder on a budget, the hand grinder is the value play.</p>
+      <p>It carries a 4.7 out of 5 rating across 930 Amazon ratings, the highest in this kit, and the listing shows "100+ bought in past month." The trade-off is honest: you turn a crank for every cup. For one or two cups a day that is a 30-second ritual. For a houseful of coffee drinkers an electric grinder eventually earns its place. As a first grinder on a budget, the hand grinder is the value play.</p>
   - name: "Bodum Brazil 34oz French Press"
     brand: "Bodum"
     affiliateUrl: "https://www.amazon.com/dp/B000KEM4TQ?tag=fussybean-20"
@@ -58,7 +58,7 @@ products:
       Spout: "Gooseneck, pour control"
     body: >
       <p>The listing for the <a href="https://www.amazon.com/dp/B005YR0F40?tag=fussybean-20" rel="sponsored noopener" target="_blank">Bonavita 1L Variable-Temperature Gooseneck Kettle</a> describes a 1-liter, 1200-watt stainless steel kettle with six preset temperatures plus single-degree variable control and a gooseneck spout for a slow, aimed pour. This is the priciest piece in the kit at around $100, and the honest framing matters: you do not need it to start. A French press works with water from any kettle or even a pot off the stove. The gooseneck and the temperature dial earn their keep specifically once you move to pour-over, where pour rate and water temperature start to change the cup.</p>
-      <p>It carries a 4.4 out of 5 rating across 7,195 Amazon ratings. If you want pour-over control for less, a plain stovetop gooseneck kettle (no electronics) runs a fraction of this price; you give up the temperature presets and pour the water once it stops boiling. Treat the Bonavita as the upgrade you add when pour-over becomes the goal, not as a day-one requirement.</p>
+      <p>It carries a 4.4 out of 5 rating across 7,195 Amazon ratings. If you want pour-over control for less, a plain stovetop gooseneck kettle (no electronics) runs a fraction of this price. You give up the temperature presets and pour the water once it stops boiling. Treat the Bonavita as the upgrade you add when pour-over becomes the goal, not as a day-one requirement.</p>
   - name: "Greater Goods Coffee Scale with Timer"
     brand: "Greater Goods"
     affiliateUrl: "https://www.amazon.com/dp/B09B4CB7C1?tag=fussybean-20"
@@ -80,7 +80,7 @@ images:
   hero: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=2400&q=80"
   heroCaption: "A home brew setup on the counter. Photo: Unsplash."
 bottomLine:
-  verdict: ""
+  verdict: "Start with a good grinder and a French press, the two things that matter most for taste. The gooseneck kettle and scale are worthwhile upgrades, not day-one buys."
   supporting: "The real cost of home coffee versus a cafe habit, plus a four-piece cheap-start kit (manual grinder, French press, gooseneck kettle, scale) spec-verified and in stock as of 2026-05-30."
 buyIf:
   buy:
@@ -100,7 +100,7 @@ faq:
   - question: "Do I really need a gooseneck kettle?"
     answer: "Not to start. A French press works with water from any kettle or a pot off the stove. The gooseneck spout and temperature control on a kettle like the Bonavita earn their place once you move to pour-over, where pour rate and water temperature start to matter. It is the one piece in this kit you can defer the longest."
   - question: "Is a French press or pour-over cheaper to run?"
-    answer: "The French press is the lower ongoing cost because its steel mesh filter is reusable, so there is no paper to buy again. Pour-over uses paper filters, a small but recurring expense. For the cheapest possible per-cup math, the press wins; pour-over trades a little ongoing cost for a cleaner cup and more control."
+    answer: "The French press is the lower ongoing cost because its steel mesh filter is reusable, so there is no paper to buy again. Pour-over uses paper filters, a small but recurring expense. For the cheapest possible per-cup math, the press wins. Pour-over trades a little ongoing cost for a cleaner cup and more control."
   - question: "How fast does the kit pay for itself?"
     answer: "The full four-piece kit here totaled about $225 as observed on 2026-05-30. Against an average cafe habit near $1,100 a year in the cost comparisons we cite, that is roughly ten weeks to break even. A leaner press-only start (grinder, press, scale, skip the gooseneck) runs about $125 and pays back faster."
   - question: "Does this guide claim hands-on testing?"
@@ -136,9 +136,9 @@ The order you spend matters as much as the total. If the budget is tight, build 
 
 **Buy the grinder first.** It does more for the cup than anything else, and a good grind makes even a cheap brewer taste better. Pre-ground coffee goes stale fast and is ground for one method, so a grinder is also where freshness lives.
 
-**Add the brewer and scale together.** They are cheap, and they work as a pair. The brewer makes the coffee; the scale makes the recipe repeatable so you can actually improve it instead of guessing.
+**Add the brewer and scale together.** They are cheap, and they work as a pair. The brewer makes the coffee. The scale makes the recipe repeatable so you can actually improve it instead of guessing.
 
-**Defer the kettle the longest.** This is the one piece where cheap and good genuinely diverge, and it is the one you need least to get started. A French press is happy with water from anything. Add a variable-temperature gooseneck when, and only when, pour-over becomes the goal. If you want pour-over control for less, a plain stovetop gooseneck with no electronics costs a fraction of an electric one; you give up the temperature presets and pour once the water comes off the boil.
+**Defer the kettle the longest.** This is the one piece where cheap and good genuinely diverge, and it is the one you need least to get started. A French press is happy with water from anything. Add a variable-temperature gooseneck when, and only when, pour-over becomes the goal. If you want pour-over control for less, a plain stovetop gooseneck with no electronics costs a fraction of an electric one. You give up the temperature presets and pour once the water comes off the boil.
 
 The point of staging the buy is that you spend the least money on the things that matter most and defer the rest until you know you want them.
 
@@ -148,7 +148,7 @@ Here is the part that makes the up-front gear cost easy to swallow.
 
 Take the full $225 kit and a cafe habit averaging around $1,100 a year from the cost comparisons above. At roughly two to four dollars saved per cup, one cup a day, the kit pays for itself in the neighborhood of ten weeks. The leaner $125 press-only start pays back faster. After that break-even point, the ongoing cost is mostly just beans, and a home-brewed cup runs under fifty cents in the figures we cite.
 
-Ongoing cost is also where the brewer choice quietly shows up. The French press uses a reusable steel mesh filter, so there is nothing to buy again. Pour-over uses paper filters, a small recurring expense. For the lowest possible per-cup math, the press wins; pour-over trades a little ongoing cost for a cleaner cup and more control. Neither moves the big picture much against a four-dollar cafe drink.
+Ongoing cost is also where the brewer choice quietly shows up. The French press uses a reusable steel mesh filter, so there is nothing to buy again. Pour-over uses paper filters, a small recurring expense. For the lowest possible per-cup math, the press wins. Pour-over trades a little ongoing cost for a cleaner cup and more control. Neither moves the big picture much against a four-dollar cafe drink.
 
 ## How we put this together
 

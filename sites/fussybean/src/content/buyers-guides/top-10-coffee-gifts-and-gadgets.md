@@ -167,9 +167,9 @@ products:
       Includes: "Latte art pen"
     body: >
       <p>The <a href="https://www.amazon.com/dp/B07RQ54X63?tag=fussybean-20" rel="sponsored noopener" target="_blank">12 oz Milk Frothing Pitcher</a> is a 304 stainless steaming jug with a pour spout, bundled in this listing with a small latte-art decorating pen for drawing in the foam.</p>
-      <p>On its own a pitcher is the vessel you froth and pour from; paired with the frother and stencils above, it rounds out a tidy latte-art starter set for one gift recipient. The 12-ounce size suits one to two drinks at a time. As always with bundled budget listings, confirm the pen is still included before buying, since the combo can change.</p>
+      <p>On its own a pitcher is the vessel you froth and pour from. Paired with the frother and stencils above, it rounds out a tidy latte-art starter set for one gift recipient. The 12-ounce size suits one to two drinks at a time. As always with bundled budget listings, confirm the pen is still included before buying, since the combo can change.</p>
 bottomLine:
-  verdict: ""
+  verdict: "The handheld milk frother is the giftable crowd-pleaser. The novelty mug and the pour-over are the safe picks for any coffee person on your list."
   supporting: "Ten cheap, giftable coffee gadgets and novelties in the $10 to $40 band, lined up by who each one suits, from a sub-$15 frother to a knock box for a new espresso owner."
 ---
 

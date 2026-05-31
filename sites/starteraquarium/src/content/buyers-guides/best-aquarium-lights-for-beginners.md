@@ -17,7 +17,7 @@ products:
       "Fits tank length": "18 to 24 inches (extendable mounts)"
       "Spectrum": "6500K white, 450nm blue, 660nm red, green LEDs (CRI 91)"
       "Plant capability": "Low to medium light plants (per listing)"
-      "Timer / app": "Built-in timer, sunrise/sunset ramp; no app"
+      "Timer / app": "Built-in timer, sunrise/sunset ramp. No app"
       "Power": "15 watts"
     body: |
       <p>The <a href="https://www.amazon.com/dp/B07F7391M2?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">NICREW ClassicLED Plus (18 to 24 in)</a> is the easiest all-around starting point, and the spec list shows why. Per NICREW's listing it runs a full spectrum of 6500K white, 450nm blue, true 660nm deep red, and green LEDs at a high CRI of 91, which the brand says renders fish and plant colors accurately rather than washing them blue. It mounts with adjustable docking arms that extend to fit most rimmed or rimless tanks from 18 to 24 inches.</p>
@@ -88,7 +88,7 @@ products:
     facts:
       "Fits tank length": "24 inch model (also 18, 36, 48 in sizes)"
       "Spectrum": "High-efficiency white plus lunar blue LEDs"
-      "Plant capability": "Fish-only focus; not marketed for plants"
+      "Plant capability": "Fish-only focus. Not marketed for plants"
       "Modes": "Daylight shimmer mode and moonlight cycle"
       "Mount": "Adjustable mounting legs on each end"
     body: |
@@ -117,8 +117,8 @@ lastUpdated: 2026-05-30
 pillar: "lighting"
 bgTheme: solid
 bottomLine:
-  verdict: ""
-  supporting: "Six beginner lights span the real lighting decision a first-tank keeper faces: a budget all-around bar and a nano clip-on for most setups, two fish-display fixtures when plants are not the goal, and a slim low-light planted fixture plus a premium app-controlled one for growing live plants; the right pick depends on your tank length, whether you want plants, and how much you want to program."
+  verdict: "Match the light to your plans. For a fish-only tank the budget NICREW or Marineland strip is plenty. If you want live plants, step up to the Finnex Stingray for low-light or the Fluval Plant 3.0 for a planted showpiece."
+  supporting: "Six beginner lights span the real lighting decision a first-tank keeper faces: a budget all-around bar and a nano clip-on for most setups, two fish-display fixtures when plants are not the goal, and a slim low-light planted fixture plus a premium app-controlled one for growing live plants. The right pick depends on your tank length, whether you want plants, and how much you want to program."
 ---
 
 ## Verified specs at a glance
@@ -139,15 +139,15 @@ All specs are manufacturer or Amazon listing claims captured on 2026-05-30, and 
 Before brand or price, answer one thing: do you want live plants?
 
 - **Fish-only tanks** need a light mostly to see the fish and set a day/night rhythm. Almost any LED works, so you can pick on looks, price, and convenience. The Marineland strip and the Aqueon OptiBright MAX are display-first lights: bright white daytime, blue moonlight, and in the Aqueon's case a remote, with no need for a full plant spectrum.
-- **Planted tanks** need more light and the right spectrum, because plants photosynthesize most efficiently under specific wavelengths (notably the 660nm red that the Finnex Stingray emphasizes). The more demanding the plants, the more light they want. Hardy low-light beginner plants like anubias, java fern, and cryptocoryne grow under a modest fixture such as the NICREW, hygger, or Finnex; high-light carpeting plants want a stronger fixture like the Fluval Plant 3.0.
+- **Planted tanks** need more light and the right spectrum, because plants photosynthesize most efficiently under specific wavelengths (notably the 660nm red that the Finnex Stingray emphasizes). The more demanding the plants, the more light they want. Hardy low-light beginner plants like anubias, java fern, and cryptocoryne grow under a modest fixture such as the NICREW, hygger, or Finnex. High-light carpeting plants want a stronger fixture like the Fluval Plant 3.0.
 
 A common beginner mistake runs the other way too: a very bright light over a tank with few or no plants tends to fuel algae. Matching the light to whether you actually grow plants saves you that headache, which is why this guide splits the picks along exactly that line.
 
 ## How we picked
 
-Every light here was located by its canonical Amazon product page, which was then scraped on 2026-05-30 so the product title could be read to confirm it is the right model and size and a single buyable unit rather than a replacement part or multi-pack. In-stock status and the buy-box price were captured from each page at the same time; any listing that showed as unavailable was rejected. Spec figures, tank-length fit, LED spectrum and Kelvin, plant-capability claims, wattage, and timer or app features, are pulled from each manufacturer's listing; where a listing does not publish a figure, none is asserted here.
+Every light here was located by its canonical Amazon product page, which was then scraped on 2026-05-30 so the product title could be read to confirm it is the right model and size and a single buyable unit rather than a replacement part or multi-pack. In-stock status and the buy-box price were captured from each page at the same time. Any listing that showed as unavailable was rejected. Spec figures, tank-length fit, LED spectrum and Kelvin, plant-capability claims, wattage, and timer or app features, are pulled from each manufacturer's listing. Where a listing does not publish a figure, none is asserted here.
 
-Where a piece of analysis is not a published spec, it is framed as general lighting reasoning rather than attributed to a source we did not read, so no commentary here is put in the mouth of a named reviewer or owner. The six picks were chosen to span six distinct brands and the full beginner range, from low-light fish-only strips to a premium full-spectrum planted fixture, across roughly $30 to $150, sized for common 12 to 24 inch starter tanks. No products were tested in-house for this guide; the recommendations come from spec analysis of the manufacturer listings and general aquarium-lighting principles.
+Where a piece of analysis is not a published spec, it is framed as general lighting reasoning rather than attributed to a source we did not read, so no commentary here is put in the mouth of a named reviewer or owner. The six picks were chosen to span six distinct brands and the full beginner range, from low-light fish-only strips to a premium full-spectrum planted fixture, across roughly $30 to $150, sized for common 12 to 24 inch starter tanks. No products were tested in-house for this guide. The recommendations come from spec analysis of the manufacturer listings and general aquarium-lighting principles.
 
 ## Who This Is For
 

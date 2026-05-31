@@ -28,7 +28,7 @@ scorecard:
     - { name: "Trigger & Detection", weight: 20, score: 6.5 }
     - { name: "Battery & Power", weight: 15, score: 7.0 }
     - { name: "Ease of Setup", weight: 20, score: 8.5 }
-  note: "Editorial score from spec analysis cross-referenced with Amazon verified-buyer reports (4.1 stars across 1,000+ ratings) and the prior-generation EDGE's independent owner field record. Not lab-measured. Connectivity is weighted highest because nationwide multi-carrier auto-connect is the Edge 2's reason to exist; Trigger & Detection is moderated for the modest 0.4-second trigger and narrow 50-degree field of view."
+  note: "Editorial score from spec analysis cross-referenced with Amazon verified-buyer reports (4.1 stars across 1,000+ ratings) and the prior-generation EDGE's independent owner field record. Not lab-measured. Connectivity is weighted highest because nationwide multi-carrier auto-connect is the Edge 2's reason to exist. Trigger & Detection is moderated for the modest 0.4-second trigger and narrow 50-degree field of view."
 buyIf:
   buy:
     - "Your property sits on the edge of cell coverage and you want the camera to pick the carrier, not you"

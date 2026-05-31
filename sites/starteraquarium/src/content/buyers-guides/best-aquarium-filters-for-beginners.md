@@ -118,7 +118,7 @@ pillar: "filters"
 bgTheme: solid
 bottomLine:
   verdict: "Pick by tank and fuss level. AquaClear 30 for set-and-forget capacity, Tetra Whisper IQ for the quietest run, a hygger sponge for gentle betta-safe flow, and the Cascade internal when you would rather not see a filter on the back."
-  supporting: "Six beginner filters span the three styles a first-tank keeper will meet: hang-on-back workhorses for most setups, a gentle air-driven sponge for bettas and shrimp, and a fully submersible internal for spots where a HOB will not fit; the right one depends on your tank size, your fish, and where the tank sits."
+  supporting: "Six beginner filters span the three styles a first-tank keeper will meet: hang-on-back workhorses for most setups, a gentle air-driven sponge for bettas and shrimp, and a fully submersible internal for spots where a HOB will not fit. The right one depends on your tank size, your fish, and where the tank sits."
 ---
 
 ## Verified specs at a glance
@@ -138,7 +138,7 @@ All specs are manufacturer or Amazon listing claims captured on 2026-05-30, and 
 
 Beginner filters split into a few styles, and the difference matters more than the brand on the box.
 
-- **Hang-on-back (HOB).** Four of these six are HOB filters: they clip onto the rim and hang behind the tank, drawing water up an intake tube and spilling it back over a waterfall lip. They are the beginner default because they are easy to access for cleaning and combine mechanical, chemical, and biological filtration in one unit. The AquaClear, Tidal, QuietFlow, and Whisper IQ are all HOB; they differ on flow control, noise, and whether you use a refillable basket or replaceable cartridges.
+- **Hang-on-back (HOB).** Four of these six are HOB filters: they clip onto the rim and hang behind the tank, drawing water up an intake tube and spilling it back over a waterfall lip. They are the beginner default because they are easy to access for cleaning and combine mechanical, chemical, and biological filtration in one unit. The AquaClear, Tidal, QuietFlow, and Whisper IQ are all HOB. They differ on flow control, noise, and whether you use a refillable basket or replaceable cartridges.
 - **Sponge filters.** The hygger is air-driven, running on bubbles from a separate air pump rather than a motor. The flow is gentle, which is exactly why sponge filters are the standard pick for betta tanks, fry, and shrimp where a strong HOB intake can stress small or long-finned fish. The trade-off is that you also need an air pump and air hose to run it.
 - **Internal filters.** The Penn-Plax Cascade 400 mounts fully submerged inside the tank on suction cups. It is the answer when a tank sits flush against a wall or under a tight canopy where a hang-on-back simply will not fit, at the cost of taking up visible space inside the tank.
 
@@ -146,9 +146,9 @@ There is no single correct type. Match the filter to your tank size, your fish, 
 
 ## How we picked
 
-Every filter here was located by its canonical Amazon product page, which was then scraped on 2026-05-30 so the product title could be read to confirm it is the right model and a single buyable unit rather than a replacement cartridge or multi-pack. In-stock status and the buy-box price were captured from each page at the same time; any listing that showed as unavailable was rejected and replaced, which is why a Marina slim filter and two out-of-stock Penn-Plax Cascade sizes did not make the final six. Spec figures, flow rates, tank-size ratings, filtration stages, noise ratings, and media type, are pulled from each manufacturer's listing; where a listing does not publish a figure, none is asserted here.
+Every filter here was located by its canonical Amazon product page, which was then scraped on 2026-05-30 so the product title could be read to confirm it is the right model and a single buyable unit rather than a replacement cartridge or multi-pack. In-stock status and the buy-box price were captured from each page at the same time. Any listing that showed as unavailable was rejected and replaced, which is why a Marina slim filter and two out-of-stock Penn-Plax Cascade sizes did not make the final six. Spec figures, flow rates, tank-size ratings, filtration stages, noise ratings, and media type, are pulled from each manufacturer's listing. Where a listing does not publish a figure, none is asserted here.
 
-Where a piece of analysis is not a published spec, it is framed as general filtration reasoning rather than attributed to a source we did not read, so no commentary here is put in the mouth of a named reviewer or owner. The six picks were chosen to span six distinct brands and the three filter types a first-tank keeper actually has to choose between, across roughly $16 to $48, sized for common 5- to 30-gallon beginner setups. No products were tested in-house for this guide; the recommendations come from spec analysis of the manufacturer listings and general filtration principles.
+Where a piece of analysis is not a published spec, it is framed as general filtration reasoning rather than attributed to a source we did not read, so no commentary here is put in the mouth of a named reviewer or owner. The six picks were chosen to span six distinct brands and the three filter types a first-tank keeper actually has to choose between, across roughly $16 to $48, sized for common 5- to 30-gallon beginner setups. No products were tested in-house for this guide. The recommendations come from spec analysis of the manufacturer listings and general filtration principles.
 
 ## Who This Is For
 

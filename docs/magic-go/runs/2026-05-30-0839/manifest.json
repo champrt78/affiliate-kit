@@ -274,14 +274,15 @@
         "Match the stick to platform and budget. Mayflash F300 and F500 for mod-friendly value, 8BitDo for wireless convenience, Razer Kitsune for the modern leverless layout, and the Hori Fighting Stick Alpha for a premium Xbox-licensed build."
       ],
       "supporting": "Six spec-verified fight sticks span budget to premium, lever and leverless, so the right one depends on your platform, whether you plan to mod, and which input format you want to learn.",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "registered",
       "last_commit": "",
       "qa_status": "none",
       "qa_notes": "new this round; renders through the QA-approved guide template; needs a QA eyeball before publish",
-      "confidence": "solid"
+      "confidence": "solid",
+      "verdict": "For most retro fighters the Mayflash F300 is the value entry: it connects to nearly everything and takes Sanwa mods later. Step up to the 8BitDo Arcade Stick if you want wireless, or the Razer Kitsune if you have moved to leverless."
     },
     {
       "slug": "best-retro-scalers-and-displays",
@@ -298,7 +299,7 @@
         "Cheap converters (GANA, LEVELHIKE) solve the basic problem; the Marseille mClassic is the easy quality upgrade; the Kaico OSSC is the premium of what Amazon stocks. If you want a RetroTINK, buy it direct from retrotink.com."
       ],
       "supporting": "Four picks span the clean-signal problem from both ends: a sub-$15 composite converter and a console-specific SNES RGB cable for getting a picture at all, an inline mClassic upscaler for a convenient quality pass, and the FPGA-based OSSC for enthusiasts who want sharp, low-latency output and have an RGB source to feed it.",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "registered",
@@ -306,7 +307,8 @@
       "qa_status": "none",
       "qa_notes": "new this round; renders through the QA-approved guide template; needs a QA eyeball before publish",
       "confidence": "verify-first",
-      "confidence_note": "Niche category with thin Amazon stock: the GANA converter showed only 2 left, and the enthusiast-favorite RetroTINK units are not sold on Amazon (direct from retrotink.com). 4 clean picks rather than a forced 6. Re-check stock before the verdict goes live."
+      "confidence_note": "Niche category with thin Amazon stock: the GANA converter showed only 2 left, and the enthusiast-favorite RetroTINK units are not sold on Amazon (direct from retrotink.com). 4 clean picks rather than a forced 6. Re-check stock before the verdict goes live.",
+      "verdict": "Cheap converters (GANA, LEVELHIKE) solve the basic problem; the Marseille mClassic is the easy quality upgrade; the Kaico OSSC is the premium of what Amazon stocks. If you want a RetroTINK, buy it direct from retrotink.com."
     },
     {
       "slug": "best-aquarium-lights-for-beginners",
@@ -323,14 +325,15 @@
         "Fish-only or planted decides this. NICREW or Marineland for fish-only on a budget, the hygger clip for nano tanks, the Finnex Stingray for easy low-light plants, and the app-controlled Fluval Plant 3.0 when you want a real planted tank."
       ],
       "supporting": "Six beginner lights span the real lighting decision a first-tank keeper faces: a budget all-around bar and a nano clip-on for most setups, two fish-display fixtures when plants are not the goal, and a slim low-light planted fixture plus a premium app-controlled one for growing live plants; the right pick depends on your tank length, whether you want plants, and how much you want to program.",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "registered",
       "last_commit": "",
       "qa_status": "none",
       "qa_notes": "new this round; renders through the QA-approved guide template; needs a QA eyeball before publish",
-      "confidence": "solid"
+      "confidence": "solid",
+      "verdict": "Match the light to your plans. For a fish-only tank the budget NICREW or Marineland strip is plenty; if you want live plants, step up to the Finnex Stingray for low-light or the Fluval Plant 3.0 for a planted showpiece."
     },
     {
       "slug": "top-10-retro-gaming-gifts",
@@ -347,7 +350,7 @@
         "All impulse-buy safe under $30. Lead with the arcade keychain and the NES lamp; the rest are cheap add-ons to round out a gift."
       ],
       "supporting": "Ten cheap, giftable retro-gaming novelties ranked 1 to 10, spanning a keychain arcade, cartridge coasters, pixel and Tetris lights, enamel pins, and a Super Mario console lamp, almost all of it under $25.",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "registered",
@@ -355,7 +358,8 @@
       "qa_status": "none",
       "qa_notes": "new firecrawl-dry round; needs re-validation + authoritative-image pass + QA before publish",
       "confidence": "verify-first",
-      "confidence_note": "firecrawl was out of credits this round, so ASINs were validated by browser/WebSearch rather than the firecrawl /dp gate, and images are browser-grabbed og:image shots. Re-validate availability + run the authoritative-image pass when credits reset before publishing."
+      "confidence_note": "firecrawl was out of credits this round, so ASINs were validated by browser/WebSearch rather than the firecrawl /dp gate, and images are browser-grabbed og:image shots. Re-validate availability + run the authoritative-image pass when credits reset before publishing.",
+      "verdict": "If you only grab one, the keychain arcade is the crowd-pleaser; the NES console lamp and Game Boy heat-change mug are the safe gifts for any retro fan."
     },
     {
       "slug": "how-to-connect-a-retro-console-to-a-modern-tv",
@@ -372,7 +376,7 @@
         "Match the cable to your console's output, convert to HDMI, and only step up to a real scaler if the picture bothers you."
       ],
       "supporting": "The signal path runs in one direction: figure out what your console outputs, convert or cable it up to HDMI, optionally add a clean-up pass, and run a known-good HDMI cable to the TV. A GANA converter handles composite-only consoles, a LEVELHIKE cable pulls cleaner RGB on the SNES, the mClassic adds an optional quality pass, and a basic high-speed HDMI cable closes the loop.",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "registered",
@@ -380,7 +384,8 @@
       "qa_status": "none",
       "qa_notes": "new firecrawl-dry round; needs re-validation + authoritative-image pass + QA before publish",
       "confidence": "verify-first",
-      "confidence_note": "firecrawl was out of credits this round, so ASINs were validated by browser/WebSearch rather than the firecrawl /dp gate, and images are browser-grabbed og:image shots. Re-validate availability + run the authoritative-image pass when credits reset before publishing."
+      "confidence_note": "firecrawl was out of credits this round, so ASINs were validated by browser/WebSearch rather than the firecrawl /dp gate, and images are browser-grabbed og:image shots. Re-validate availability + run the authoritative-image pass when credits reset before publishing.",
+      "verdict": "Start cheap: a basic converter gets a retro console onto an HDMI TV for under $20. Add the mClassic for a real sharpness bump. Save the RetroTINK money until you know you want it."
     },
     {
       "slug": "top-10-fun-aquarium-finds",
@@ -397,7 +402,7 @@
         "All cheap impulse buys under $20. Lead with the moss balls and the sunken-ship bubbler; the thermometer, feeding ring, and scraper are practical add-ons."
       ],
       "supporting": "Ten cheap, giftable aquarium finds, all verified in stock on 2026-05-30 and priced from about $6 to $19: betta comforts, a bubbling shipwreck, no-fuss Marimo moss balls, glow-up pebbles, and a few small tools that make everyday fishkeeping easier.",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "registered",
@@ -405,7 +410,8 @@
       "qa_status": "none",
       "qa_notes": "new firecrawl-dry round; needs re-validation + authoritative-image pass + QA before publish",
       "confidence": "verify-first",
-      "confidence_note": "firecrawl was out of credits this round, so ASINs were validated by browser/WebSearch rather than the firecrawl /dp gate, and images are browser-grabbed og:image shots. Re-validate availability + run the authoritative-image pass when credits reset before publishing."
+      "confidence_note": "firecrawl was out of credits this round, so ASINs were validated by browser/WebSearch rather than the firecrawl /dp gate, and images are browser-grabbed og:image shots. Re-validate availability + run the authoritative-image pass when credits reset before publishing.",
+      "verdict": "If you want one fun add-on, the betta leaf hammock and the sunken-ship bubbler are the easy crowd-pleasers; the Marimo moss balls are the gift that keeps living."
     },
     {
       "slug": "how-to-cycle-your-first-aquarium",
@@ -422,7 +428,7 @@
         "Do not skip the cycle. A test kit, a dechlorinator, and a bacteria starter are the whole toolkit; the rest is patience while the bacteria catch up."
       ],
       "supporting": "Cycling is just growing the bacteria that turn fish waste into less toxic compounds; you can do it fishless (safest, slower) or fish-in (faster, riskier), it usually takes two to six weeks, and the cycle is done when ammonia and nitrite both read zero while nitrate appears. A liquid test kit is the one non-negotiable tool; a dechlorinator, an optional bacteria starter, and a gravel siphon round out the kit.",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "registered",
@@ -430,7 +436,8 @@
       "qa_status": "none",
       "qa_notes": "new firecrawl-dry round; needs re-validation + authoritative-image pass + QA before publish",
       "confidence": "verify-first",
-      "confidence_note": "firecrawl was out of credits this round, so ASINs were validated by browser/WebSearch rather than the firecrawl /dp gate, and images are browser-grabbed og:image shots. Re-validate availability + run the authoritative-image pass when credits reset before publishing."
+      "confidence_note": "firecrawl was out of credits this round, so ASINs were validated by browser/WebSearch rather than the firecrawl /dp gate, and images are browser-grabbed og:image shots. Re-validate availability + run the authoritative-image pass when credits reset before publishing.",
+      "verdict": "Do not skip the cycle. A test kit, a dechlorinator, and a bacteria starter are the whole toolkit; the rest is patience while the bacteria catch up."
     },
     {
       "slug": "top-10-coffee-gifts-and-gadgets",
@@ -447,7 +454,7 @@
         "All under $40 impulse buys. Lead with the milk frother and the reusable pour-over; the rest round out a gift basket."
       ],
       "supporting": "Ten cheap, giftable coffee gadgets and novelties in the $10 to $40 band, lined up by who each one suits, from a sub-$15 frother to a knock box for a new espresso owner.",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "registered",
@@ -455,7 +462,8 @@
       "qa_status": "none",
       "qa_notes": "new firecrawl-dry round; needs re-validation + authoritative-image pass + QA before publish",
       "confidence": "verify-first",
-      "confidence_note": "firecrawl was out of credits this round, so ASINs were validated by browser/WebSearch rather than the firecrawl /dp gate, and images are browser-grabbed og:image shots. Re-validate availability + run the authoritative-image pass when credits reset before publishing."
+      "confidence_note": "firecrawl was out of credits this round, so ASINs were validated by browser/WebSearch rather than the firecrawl /dp gate, and images are browser-grabbed og:image shots. Re-validate availability + run the authoritative-image pass when credits reset before publishing.",
+      "verdict": "The handheld milk frother is the giftable crowd-pleaser; the novelty mug and the pour-over are the safe picks for any coffee person on your list."
     },
     {
       "slug": "home-coffee-on-a-budget",
@@ -472,7 +480,7 @@
         "The math favors home: a one-time kit pays for itself fast. Buy the grinder first, brew in a French press, and upgrade the kettle and scale later."
       ],
       "supporting": "The real cost of home coffee versus a cafe habit, plus a four-piece cheap-start kit (manual grinder, French press, gooseneck kettle, scale) spec-verified and in stock as of 2026-05-30.",
-      "verdict_written": false,
+      "verdict_written": true,
       "failed_at": null,
       "error": null,
       "kv_status": "registered",
@@ -480,7 +488,8 @@
       "qa_status": "none",
       "qa_notes": "new firecrawl-dry round; needs re-validation + authoritative-image pass + QA before publish",
       "confidence": "verify-first",
-      "confidence_note": "firecrawl was out of credits this round, so ASINs were validated by browser/WebSearch rather than the firecrawl /dp gate, and images are browser-grabbed og:image shots. Re-validate availability + run the authoritative-image pass when credits reset before publishing."
+      "confidence_note": "firecrawl was out of credits this round, so ASINs were validated by browser/WebSearch rather than the firecrawl /dp gate, and images are browser-grabbed og:image shots. Re-validate availability + run the authoritative-image pass when credits reset before publishing.",
+      "verdict": "Start with a good grinder and a French press, the two things that matter most for taste. The gooseneck kettle and scale are worthwhile upgrades, not day-one buys."
     }
   ],
   "updated": "2026-05-30T08:39:50.5732912-04:00"

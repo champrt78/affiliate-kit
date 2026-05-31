@@ -2,7 +2,7 @@
 title: "Top 10 Fun Aquarium Finds"
 description: "Ten cheap, giftable aquarium finds under $20: betta hammocks, a sunken ship, Marimo moss balls, glow pebbles, and more playful gear for a first tank."
 rubric: "Fun Finds · Top 10"
-deck: "The serious gear keeps your fish alive; these are the bits that make the tank fun. Ten spec-verified impulse buys from about $6 to $19, covering decor, plants, novelties, and a few little tools that make daily fishkeeping easier, all checked in stock on 2026-05-30."
+deck: "The serious gear keeps your fish alive. These are the bits that make the tank fun. Ten spec-verified impulse buys from about $6 to $19, covering decor, plants, novelties, and a few little tools that make daily fishkeeping easier, all checked in stock on 2026-05-30."
 pillar: "fun-finds"
 products:
   - name: "Magnetic Betta Leaf Hammock"
@@ -49,7 +49,7 @@ products:
       Effect: "Streams bubbles when connected to an air pump"
       Needs: "A separate air pump and tubing, per listing"
     body: |
-      <p>The <a href="https://www.amazon.com/dp/B09YLYWXKQ?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">SLOCME Sunken Ship Air Bubbler Ornament</a> is the most kid-pleasing pick on this list. Per the listing it is an air-action decoration: hook it to an air pump and a steady stream of bubbles rises out of the wreck, which adds both motion and a bit of surface aeration. The one thing to know before you buy is that the bubble effect needs a separate air pump and tubing to work; without one, it is still a good-looking shipwreck.</p>
+      <p>The <a href="https://www.amazon.com/dp/B09YLYWXKQ?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">SLOCME Sunken Ship Air Bubbler Ornament</a> is the most kid-pleasing pick on this list. Per the listing it is an air-action decoration: hook it to an air pump and a steady stream of bubbles rises out of the wreck, which adds both motion and a bit of surface aeration. The one thing to know before you buy is that the bubble effect needs a separate air pump and tubing to work. Without one, it is still a good-looking shipwreck.</p>
   - name: "Live Marimo Moss Balls (4-Pack)"
     brand: "AwnsIMfreien"
     affiliateUrl: "https://www.amazon.com/dp/B0H1R3QC4L?tag=mystarteraquarium-20"
@@ -159,7 +159,7 @@ pubDate: 2026-05-30
 lastUpdated: 2026-05-30
 bgTheme: solid
 bottomLine:
-  verdict: ""
+  verdict: "If you want one fun add-on, the betta leaf hammock and the sunken-ship bubbler are the easy crowd-pleasers. The Marimo moss balls are the gift that keeps living."
   supporting: "Ten cheap, giftable aquarium finds, all verified in stock on 2026-05-30 and priced from about $6 to $19: betta comforts, a bubbling shipwreck, no-fuss Marimo moss balls, glow-up pebbles, and a few small tools that make everyday fishkeeping easier."
 ---
 

@@ -23,7 +23,7 @@ scorecard:
     - { name: "Image Quality", weight: 25, score: 5.5 }
     - { name: "Battery Life", weight: 20, score: 7.0 }
     - { name: "Ease of Setup", weight: 10, score: 8.0 }
-  note: "Editorial score with weights tuned for general backyard use including cellular convenience. The Vikeri is a sub-$80 SD-card camera with no cellular by design, so it scores zero on that axis. For budget buyers who don't need cellular, the effective score is meaningfully higher; the camera does its job at the price it's at. Score derived from spec analysis and verified-buyer Amazon reports."
+  note: "Editorial score with weights tuned for general backyard use including cellular convenience. The Vikeri is a sub-$80 SD-card camera with no cellular by design, so it scores zero on that axis. For budget buyers who don't need cellular, the effective score is meaningfully higher. The camera does its job at the price it's at. Score derived from spec analysis and verified-buyer Amazon reports."
 buyIf:
   buy:
     - "You want to find out if trail-cam photography is something you'd keep doing"
@@ -41,7 +41,7 @@ flaws:
   - title: "Sensor is 2.7K, marketed as 4K via interpolation"
     body: "Standard practice across the budget trail-cam tier (Spypoint and Browning do similar interpolation at higher tiers). What matters is what the captures actually look like, which is fine for backyard ID but not gallery-quality."
   - title: "Build quality is plasticky"
-    body: "Owner reviews repeatedly describe the body as 'fine but plasticky' versus the more solid feel of higher-tier cameras. For a backyard tree mount it's not a real problem; for high-traffic public areas you'd want sturdier hardware."
+    body: "Owner reviews repeatedly describe the body as 'fine but plasticky' versus the more solid feel of higher-tier cameras. For a backyard tree mount it's not a real problem. For high-traffic public areas you'd want sturdier hardware."
   - title: "Battery life under heavy trigger volume is shorter than marketed"
     body: "Verified-buyer reports note that the rated battery life assumes light trigger frequency. Heavy daily activity (an active deer trail, a backyard with multiple animals passing) shortens the cycle noticeably."
 faq:
@@ -65,7 +65,7 @@ The Vikeri is the budget pick in our buying guide [Best Trail Cameras for Backya
 
 | Spec | Value | Source |
 |---|---|---|
-| Photo resolution | 2.7K native; 4K interpolated | Vikeri Amazon listing |
+| Photo resolution | 2.7K native. 4K interpolated | Vikeri Amazon listing |
 | Video resolution | 1520P | Vikeri Amazon listing |
 | Trigger speed | 0.1s rated | Vikeri Amazon listing |
 | Detection range | 80ft rated motion detection | Vikeri Amazon listing |
@@ -82,13 +82,13 @@ The Vikeri is the budget pick in our buying guide [Best Trail Cameras for Backya
 
 - **The price-to-performance ratio is real.** Under $80 for a 2.7K SD-card cam with IP66 weatherproofing and 65ft night vision is a meaningful spec stack for the budget tier. Owner reviews repeatedly flag the Vikeri as "good enough" for casual backyard use, with no expectations set above what the camera delivers.
 - **Setup is friction-free.** Basic on-camera buttons, a small built-in screen for review, and a bundled strap and mount mean the unboxing-to-deployment time is short. First-time buyers and gift recipients consistently report being able to get the camera working without consulting a manual.
-- **The 120° wide detection angle is generous for the price.** Most higher-tier cameras run 42° to 50° angles; the Vikeri's wider field means a deployment doesn't need precise aiming to catch animals walking past. Trade-off: wider angle generally means shorter effective detection distance, which the 80ft rating reflects.
+- **The 120° wide detection angle is generous for the price.** Most higher-tier cameras run 42° to 50° angles. The Vikeri's wider field means a deployment doesn't need precise aiming to catch animals walking past. Trade-off: wider angle generally means shorter effective detection distance, which the 80ft rating reflects.
 - **No subscription, no app, no monthly bill.** SD-card-only operation means total cost of ownership is the camera plus batteries plus an SD card. Nothing recurring.
 
 ## Where It Falls Short
 
 - **Image quality is acceptable, not great.** The 2.7K native resolution is fine for identifying what walked past your backyard. It's not the camera for capturing photo-quality stills or for printing. Verified-buyer reviews consistently describe daytime captures as "clear enough" and nighttime captures as "grainy but identifiable."
-- **Detection range is shorter than the spec implies.** The 80ft rated range is the manufacturer claim; real-world performance is typically closer to 50-60ft for reliable triggering. For backyard deployments under 40ft, this is non-issue. For longer-range applications, look at the higher-tier picks.
+- **Detection range is shorter than the spec implies.** The 80ft rated range is the manufacturer claim. Real-world performance is typically closer to 50-60ft for reliable triggering. For backyard deployments under 40ft, this is non-issue. For longer-range applications, look at the higher-tier picks.
 - **Build quality is the most common critical theme.** Owner reviews describe the body as "fine but plasticky," with concerns about long-term durability in cold or wet conditions. For a backyard tree mount that's checked weekly, it's not a real problem. For a remote deployment you visit twice a year, the more solidly built options are worth the extra cost.
 - **Battery life claims are optimistic.** Manufacturer claims assume light trigger volume. Heavy daily activity (active deer trails, multi-animal backyards) shortens battery cycles noticeably versus the spec sheet.
 
@@ -96,9 +96,9 @@ The Vikeri is the budget pick in our buying guide [Best Trail Cameras for Backya
 
 The Vikeri is the budget pick in our buying guide [Best Trail Cameras for Backyard Wildlife](/buyers-guides/best-trail-cameras-for-backyard-wildlife). Two natural comparisons:
 
-**Vikeri vs Stealth Cam DS4K Ultimate (image-quality pick).** The DS4K Ultimate is roughly 2x the price and delivers meaningfully better image quality (94/100 Trailcampro picture-quality score vs the Vikeri's unrated-but-budget tier), longer night vision range (~100ft vs ~65ft), longer battery life (~14 months vs ~6-8 months in photo mode), and a more solid feel. Pick the Vikeri if budget is the constraint; pick the DS4K Ultimate if image quality is.
+**Vikeri vs Stealth Cam DS4K Ultimate (image-quality pick).** The DS4K Ultimate is roughly 2x the price and delivers meaningfully better image quality (94/100 Trailcampro picture-quality score vs the Vikeri's unrated-but-budget tier), longer night vision range (~100ft vs ~65ft), longer battery life (~14 months vs ~6-8 months in photo mode), and a more solid feel. Pick the Vikeri if budget is the constraint. Pick the DS4K Ultimate if image quality is.
 
-**Vikeri vs Spypoint Flex-M (cellular pick).** Completely different categories. The Vikeri is SD-card-only at under $80; the Flex-M is cellular at ~$150. If you want photos delivered to your phone, the Vikeri isn't the camera. If you want a sub-$80 SD-card cam to test the waters, the Flex-M isn't the camera.
+**Vikeri vs Spypoint Flex-M (cellular pick).** Completely different categories. The Vikeri is SD-card-only at under $80. The Flex-M is cellular at ~$150. If you want photos delivered to your phone, the Vikeri isn't the camera. If you want a sub-$80 SD-card cam to test the waters, the Flex-M isn't the camera.
 
 ## Verdict
 

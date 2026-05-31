@@ -101,7 +101,7 @@ products:
     body: |
       <p>Distinct from the other four (which are pH-neutral maintenance soaps), <a href="https://www.carsupplieswarehouse.com/products/clean-by-pan-the-organizer-demineralizing-shampoo-acidic-mineral-deposit-remover" rel="sponsored noopener" target="_blank">Pan's Demineralizing Shampoo</a> is an acidic-pH product designed for occasional use.</p>
       <p>The product page describes it as "acidic pH automotive shampoo designed to dissolve mineral deposits, water spots, and limescale while reviving ceramic coating hydrophobic properties." Foam-cannon dilution is 1:10. Recommended use is "every few months on coated vehicles to restore optimal hydrophobic performance."</p>
-      <p>Pair with one of the pH-neutral picks above for weekly washes; this product fills the "every-few-months reset" slot in the rotation. For owners in hard-water regions where mineral contamination is the main coating-degradation pathway, the Demineralizing Shampoo is the missing piece in a full ceramic-coat-care workflow.</p>
+      <p>Pair with one of the pH-neutral picks above for weekly washes. This product fills the "every-few-months reset" slot in the rotation. For owners in hard-water regions where mineral contamination is the main coating-degradation pathway, the Demineralizing Shampoo is the missing piece in a full ceramic-coat-care workflow.</p>
 pubDate: 2026-05-17
 lastUpdated: 2026-05-19
 bgTheme: suds-closeup
@@ -110,7 +110,7 @@ images:
   heroCaption: "Foam-covered car under contact wash. Photo: Unsplash."
 bottomLine:
   verdict: "Two top picks for ceramic-coated cars, three budget-tier options across mid- and entry-level, and one acidic shampoo for hard-water reset. Pick based on what your paint actually needs, not on hype."
-  supporting: "The car wash soap category has two opposed schools of thought on ceramic-coated paint: Dr. Beasley's says use a pure cleaner with no additives; The Rag Company says use a ceramic-infused protective soap to actively maintain the coating. Both schools agree on what to skip: alkaline strippers and 'wax-added' shampoos. Six spec-verified picks here cover both schools, a sub-ten-dollar grocery-aisle entry, and a hard-water-region acidic shampoo for the every-few-months reset."
+  supporting: "The car wash soap category has two opposed schools of thought on ceramic-coated paint: Dr. Beasley's says use a pure cleaner with no additives. The Rag Company says use a ceramic-infused protective soap to actively maintain the coating. Both schools agree on what to skip: alkaline strippers and 'wax-added' shampoos. Six spec-verified picks here cover both schools, a sub-ten-dollar grocery-aisle entry, and a hard-water-region acidic shampoo for the every-few-months reset."
 buyIf:
   buy:
     - "You have a ceramic-coated daily driver and want a soap that won't compromise the coating's chemistry"
@@ -123,7 +123,7 @@ buyIf:
     - "You want the cheapest possible wash regardless of additives"
 faq:
   - question: "What does 'pH neutral' actually mean for car shampoo?"
-    answer: "The Rag Company defines the pH-neutral window for protective car shampoos as roughly pH 5.5 to 8.5. Soaps in this range clean without stripping wax, sealant, or ceramic coating. Anything below 5.5 (acidic) is designed to remove mineral deposits or water spots; anything above 10 (alkaline) is designed for decontamination or wax stripping. Use a pH-neutral soap for weekly maintenance; reserve the others for specific use cases."
+    answer: "The Rag Company defines the pH-neutral window for protective car shampoos as roughly pH 5.5 to 8.5. Soaps in this range clean without stripping wax, sealant, or ceramic coating. Anything below 5.5 (acidic) is designed to remove mineral deposits or water spots. Anything above 10 (alkaline) is designed for decontamination or wax stripping. Use a pH-neutral soap for weekly maintenance. Reserve the others for specific use cases."
   - question: "Will any of these soaps damage my ceramic coating?"
     answer: "None of the five picks in this guide should damage a properly cured ceramic coating. Two distinct schools of thought exist on what's optimal: Dr. Beasley's recommends a 'pure soap' with no additives (which favors Labocosmetica SÈMPER or Phoenix E.O.D. Apex Auto Wash), while The Rag Company recommends a ceramic-infused protective shampoo for ongoing maintenance (which favors Gyeon Q²M Bathe or CLEAN. Shampoo). Both schools agree on what to avoid: alkaline strippers and anything with 'wax/sealant added.'"
   - question: "How often should I use the acidic Demineralizing Shampoo?"
@@ -150,13 +150,13 @@ All specs verified directly from manufacturer or authorized retailer product pag
 
 Two credible authorities give directly opposed advice on what to wash a ceramic-coated car with:
 
-- **Dr. Beasley's** (ceramic coating manufacturer) recommends a soap that does nothing but clean. No carnauba, no SiO2, no silicons, no glossing agents. Their reasoning: those additives might bond to the coating over time and interfere with the coating's own chemistry. The takeaway: trust the coating to do the protection; use the soap only to remove dirt.
+- **Dr. Beasley's** (ceramic coating manufacturer) recommends a soap that does nothing but clean. No carnauba, no SiO2, no silicons, no glossing agents. Their reasoning: those additives might bond to the coating over time and interfere with the coating's own chemistry. The takeaway: trust the coating to do the protection. Use the soap only to remove dirt.
 - **The Rag Company** recommends a ceramic-infused protective shampoo, positioning the soap as part of the ongoing coating maintenance system. Their reasoning: protective additives actively reinforce a coating that is already wearing, and most premium coating-safe shampoos are formulated to bond compatibly.
 
 Both schools agree on what to avoid: alkaline strippers, "added wax" products, and any shampoo that leaves a slimy or sticky film that resists free rinsing.
 
-Most premium coating manufacturers (Gtechniq, CarPro, and Gyeon itself in technical documentation) lean Dr. Beasley's direction for their own coatings: use a pure soap, let the coating do the work. Owners of cheaper or DIY-applied coatings often find The Rag Company's school more practical because the additive reinforcement helps a coating that is already losing protection. There is no universally correct answer; the right pick depends on which manufacturer's protocol the reader trusts.
+Most premium coating manufacturers (Gtechniq, CarPro, and Gyeon itself in technical documentation) lean Dr. Beasley's direction for their own coatings: use a pure soap, let the coating do the work. Owners of cheaper or DIY-applied coatings often find The Rag Company's school more practical because the additive reinforcement helps a coating that is already losing protection. There is no universally correct answer. The right pick depends on which manufacturer's protocol the reader trusts.
 
 ## How we picked
 
-Spec verification was done directly from manufacturer and authorized-retailer product pages on 2026-05-17. Tier and ranking commentary draws from Pan The Organizer's January 2026 car-shampoo tier-list video and his direct four-product comparison test, plus The Rag Company's pH-scale framework video and Dr. Beasley's ceramic-coating wash protocol video. Cited reviewers and their content are linked in the [editorial method page](/how-we-evaluate). No products were tested in-house for this guide; recommendations are derived from spec analysis and synthesis of credible third-party reviewer commentary.
+Spec verification was done directly from manufacturer and authorized-retailer product pages on 2026-05-17. Tier and ranking commentary draws from Pan The Organizer's January 2026 car-shampoo tier-list video and his direct four-product comparison test, plus The Rag Company's pH-scale framework video and Dr. Beasley's ceramic-coating wash protocol video. Cited reviewers and their content are linked in the [editorial method page](/how-we-evaluate). No products were tested in-house for this guide. Recommendations are derived from spec analysis and synthesis of credible third-party reviewer commentary.

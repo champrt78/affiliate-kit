@@ -20,7 +20,7 @@ products:
       Pressure: "1,100-5,000 PSI, 1.8-5.3 GPM"
     body: |
       <p>The <a href="https://www.amazon.com/Hydro-Foam-Cannon-Wand-Bottle/dp/B083QTGTBM?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">MTM PF22</a> (current version PF22.2 / PF22.3 depending on retailer revision) is positioned as "the new standard in the foaming industry" by Car Candy's product listing.</p>
-      <p>The head is a single-cast nickel-plated brass design, which resists the tarnishing that gradually dulls solid brass cannons over time. The fan-blade reinforcement is structural plastic around the fan area at the cannon tip; one reviewer reported bending the fan blades on a competitor cannon by cranking the adjustment too hard, which is mechanically not possible on the PF22 due to that reinforcement.</p>
+      <p>The head is a single-cast nickel-plated brass design, which resists the tarnishing that gradually dulls solid brass cannons over time. The fan-blade reinforcement is structural plastic around the fan area at the cannon tip. One reviewer reported bending the fan blades on a competitor cannon by cranking the adjustment too hard, which is mechanically not possible on the PF22 due to that reinforcement.</p>
       <p>Pressure-washer compatibility runs the full premium range: 1,100-5,000 PSI and 1.8-5.3 GPM, with a 140°F maximum temperature rating. Standard 1/4" stainless steel quick-connect fitting. Two-way adjustable spray pattern with adjustable fan blades from jet to wide. Bottle is a 1-litre wide-mouth top design for easy refill.</p>
       <p>Trade-off worth disclosing: MTM PF22 ships with no spare parts in the box. If you need a different orifice size for your specific pressure-washer GPM, that is an additional MJJC or MTM aftermarket purchase. For a cannon expected to last a decade, this is acceptable to most owners but not all. Available standalone (~$80-100 USD) or as part of the Magnum 28 Kit (~$210) with the SGS28 spray gun and SS quick-connect bundled.</p>
   - name: "Carbon Collective HD Snow Foam Cannon"
@@ -39,7 +39,7 @@ products:
     body: |
       <p>Carbon Collective's product page explicitly markets the weight advantage on the <a href="https://www.carboncollective.com/hd-snow-foam-cannon/" rel="sponsored noopener" target="_blank">HD Snow Foam Cannon</a>: "Aluminium construction reduces the weight dramatically, weighing in at 314 grams total, that's a saving of 341 grams over our original lance (655 grams)." That ratio puts the HD at roughly half the weight of competitor premium cannons in the 600-669g range.</p>
       <p>Other listed features: 8 foam-thickness settings (more granular than most competitors' continuous-adjustment design), stainless-steel weighted pick-up tube for stable suction in the bottle, large 46mm bottle opening for easy refill.</p>
-      <p>Trade-offs: aluminum body is more vulnerable to dents from drops or impacts than brass or stainless steel. The Carbon Collective is also a UK-based brand; US availability runs through their direct shop and selected retailers (Detail Division, Northampton Motorsport). Shipping and warranty support may take longer than for US-based brands.</p>
+      <p>Trade-offs: aluminum body is more vulnerable to dents from drops or impacts than brass or stainless steel. The Carbon Collective is also a UK-based brand. US availability runs through their direct shop and selected retailers (Detail Division, Northampton Motorsport). Shipping and warranty support may take longer than for US-based brands.</p>
   - name: "MJJC Foam Cannon Pro V3.0"
     brand: "MJJC"
     affiliateUrl: "https://www.amazon.com/MJJC-Ultimate-Cannon-Pressure-Washers/dp/B0FL17VGJF?tag=detailerpicks-20"
@@ -65,24 +65,24 @@ images:
   heroCaption: "Foam application before contact wash. Photo: Unsplash."
 bottomLine:
   verdict: "All seven premium foam cannons foam roughly the same. Buy MTM PF22 for build, Carbon Collective HD for weight, MJJC Pro V3.0 for spare parts. Skip if you don't already have a pressure washer worth pairing it with."
-  supporting: "A seven-cannon head-to-head comparison found foam production roughly equal across all premium picks at 1:20 dilution. What actually differentiates this tier is build quality (MTM PF22's reinforced fan blades and nickel-plated brass head), weight (Carbon Collective HD is 314 grams vs 600-669 grams for competitors), and what ships in the box (MJJC Pro V3.0 includes a spare filter, O-rings, and 1.1mm + 1.35mm orifices in addition to the stock 1.25mm). All three live in the $50-$110 range for the core unit; pick by the attribute that matters most for your use."
+  supporting: "A seven-cannon head-to-head comparison found foam production roughly equal across all premium picks at 1:20 dilution. What actually differentiates this tier is build quality (MTM PF22's reinforced fan blades and nickel-plated brass head), weight (Carbon Collective HD is 314 grams vs 600-669 grams for competitors), and what ships in the box (MJJC Pro V3.0 includes a spare filter, O-rings, and 1.1mm + 1.35mm orifices in addition to the stock 1.25mm). All three live in the $50-$110 range for the core unit. Pick by the attribute that matters most for your use."
 buyIf:
   buy:
-    - "You have a real pressure washer (1.8 GPM minimum, 2.1+ GPM ideal); foam cannons do not work on garden hoses"
+    - "You have a real pressure washer (1.8 GPM minimum, 2.1+ GPM ideal). Foam cannons do not work on garden hoses"
     - "You do contact washes with foam pre-soak (skip-foam plain-bucket wash is fine without one, but adds risk of dragging dirt into paint)"
     - "You want the next single-purchase upgrade after a basic plastic foam cannon and microfiber mitt"
     - "You wash multiple vehicles or do long detailing sessions where weight in hand actually matters"
   skip:
-    - "You only have a garden-hose-driven foam gun; that is a different product class and these cannons will not foam adequately at that pressure"
+    - "You only have a garden-hose-driven foam gun. That is a different product class and these cannons will not foam adequately at that pressure"
     - "You touchless-wash exclusively (different chemistry, different equipment)"
-    - "You want a budget-tier cannon under $30; these picks all live in the $40-$90 USD range for the core unit"
+    - "You want a budget-tier cannon under $30. These picks all live in the $40-$90 USD range for the core unit"
 faq:
   - question: "Does foam thickness actually matter?"
     answer: "Less than most beginners assume. The reviewer who tested seven high-end cannons found 'not a huge difference' in foam production at 1:20 dilution. What matters more is dwell time on the panel (does the foam stay long enough to soften dirt before rinse?) and lubricity from the soap itself. Build quality and ergonomics differentiate cannons more than peak foam output."
   - question: "What pressure washer do I need?"
     answer: "Minimum 1.2-1.3 GPM (gallons per minute) with foam-cannon-friendly pressure. Stronger machines (2.1+ GPM) produce visibly better foam with the same soap and orifice. The MTM PF22 specifications range 1,100-5,000 PSI and 1.8-5.3 GPM. Garden-hose pressure (~40-60 PSI, ~10 GPM at low pressure) will not produce real foam regardless of cannon."
   - question: "Why do orifice sizes matter?"
-    answer: "The orifice (also called the nozzle screw jet) controls how much pressurized water/soap mixture pushes through per second. Stock orifice is typically 1.25mm. Smaller orifices (1.1mm) increase pressure through the cannon and produce thicker foam, useful with weaker pressure washers. Larger orifices (1.35mm) reduce backpressure, useful with very high GPM washers. MJJC ships their Pro V3.0 with multiple orifices in the box; MTM PF22 does not."
+    answer: "The orifice (also called the nozzle screw jet) controls how much pressurized water/soap mixture pushes through per second. Stock orifice is typically 1.25mm. Smaller orifices (1.1mm) increase pressure through the cannon and produce thicker foam, useful with weaker pressure washers. Larger orifices (1.35mm) reduce backpressure, useful with very high GPM washers. MJJC ships their Pro V3.0 with multiple orifices in the box. MTM PF22 does not."
   - question: "Does build material affect foam quality?"
     answer: "Not directly. All seven cannons in the head-to-head comparison foamed similarly at the same dilution. But material matters for longevity: brass tarnishes (MJJC Pro V2, SV3), nickel-plated brass resists tarnishing (MTM PF22), full stainless steel resists corrosion (Active Foam, CarGuys), aluminum is lightest (Carbon Collective). For a tool that gets soaked in soap repeatedly, this matters over years."
   - question: "Should I get the MTM PF22 with the Magnum 28 kit, or standalone?"
@@ -106,11 +106,11 @@ The base research for this guide is a head-to-head comparison of seven high-end 
 Key findings paraphrased from the full transcript:
 
 - **Foam production.** "Not a huge difference" between the five actively compared at 1:20 dilution. On thin snow foam, MJJC Pro V3 dropped off the panel faster than the others. CarGuys produced thicker foam that stuck on the panel longer.
-- **Build quality.** MTM PF22 is the most reinforced (nickel-plated brass head, reinforced fan blades). Carbon Collective HD is the lightweight outlier at 314g vs 600-669g for the rest. Brass-bodied cannons tarnish over time but still perform; stainless and nickel-plated brass resist tarnishing.
+- **Build quality.** MTM PF22 is the most reinforced (nickel-plated brass head, reinforced fan blades). Carbon Collective HD is the lightweight outlier at 314g vs 600-669g for the rest. Brass-bodied cannons tarnish over time but still perform. Stainless and nickel-plated brass resist tarnishing.
 - **Spare parts in box.** MJJC Pro V3.0 leads with spare filter + O-rings + 1.1mm + 1.35mm orifices. Active Foam Cannon includes O-rings + 1.1mm + 1.35mm + 1.45mm orifices but no spare filter. Carbon Collective HD, CarGuys, MTM PF22 all ship bare with no spares.
 
-The reviewer's full transcript is linked in the research notes; this guide synthesizes the buying-relevant conclusions. Foam-output ranking matters less than build-quality differentiation for most home-detailing buyers, which is why the three picks here are segmented by build attribute rather than by foam-test results.
+The reviewer's full transcript is linked in the research notes. This guide synthesizes the buying-relevant conclusions. Foam-output ranking matters less than build-quality differentiation for most home-detailing buyers, which is why the three picks here are segmented by build attribute rather than by foam-test results.
 
 ## How we picked
 
-Three picks across three build-attribute priorities (durability, weight, parts-kit depth), each verified against manufacturer or authorized-retailer product pages on 2026-05-17. The seven-cannon head-to-head comparison provides the cross-reference for build-quality claims. No cannons were tested in-house for this guide; recommendations are derived from spec analysis and synthesis of credible third-party reviewer commentary. Source-attributed in the [editorial method page](/how-we-evaluate).
+Three picks across three build-attribute priorities (durability, weight, parts-kit depth), each verified against manufacturer or authorized-retailer product pages on 2026-05-17. The seven-cannon head-to-head comparison provides the cross-reference for build-quality claims. No cannons were tested in-house for this guide. Recommendations are derived from spec analysis and synthesis of credible third-party reviewer commentary. Source-attributed in the [editorial method page](/how-we-evaluate).

@@ -225,6 +225,32 @@ $findings += Find-Literals -Files ($mdTargets + $otherTargets) -Literals $unique
 # .astro page templates: letter-bearing literals only (skip the em-dash style-tell).
 $findings += Find-Literals -Files $astroTargets -Literals $letterLiterals
 
+# --- semicolon ban (Vonnegut rule, 2026-05-31) -------------------------------
+# Semicolons are banned in content prose, same tier as em dashes. A plain
+# substring match would flag every HTML entity (&amp; &rarr; &middot; all END in
+# a semicolon), so this is a dedicated check: strip HTML entities first, then
+# flag any remaining `;`. Markdown content bodies only (NOT .astro — that source
+# carries CSS/JS where `;` is legitimate). Frontmatter prose (verdict, supporting,
+# facts) is in-scope because that is content too.
+function Strip-Entities([string]$line) {
+    $s = $line -replace '&#\d+;', '' -replace '&#x[0-9a-fA-F]+;', '' -replace '&[a-zA-Z][a-zA-Z0-9]*;', ''
+    return $s
+}
+foreach ($mdFile in ($mdTargets + $otherTargets)) {
+    $lineNo = 0
+    foreach ($raw in (Get-Content -LiteralPath $mdFile)) {
+        $lineNo++
+        if ((Strip-Entities $raw).Contains(';')) {
+            $findings += [pscustomobject]@{
+                Literal    = "; (semicolon — Vonnegut rule)"
+                FilePath   = $mdFile
+                LineNumber = $lineNo
+                LineText   = $raw
+            }
+        }
+    }
+}
+
 # --- report ------------------------------------------------------------------
 
 Write-Verbose "Scanned $($targetFiles.Count) file(s)."

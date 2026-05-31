@@ -54,7 +54,7 @@ products:
       Wattage: "50W (Jager line ranges 25W to 300W)"
       Thermostat: "TruTemp dial, recalibratable for precise regulation (brand spec)"
       Safety: "Thermo safety control turns off automatically if water drops too low"
-      Body: "Shock-resistant, shatterproof glass; fresh or marine water"
+      Body: "Shock-resistant, shatterproof glass. Fresh or marine water"
       Reviews: "4.4 stars across 129 Amazon ratings"
     body: |
       <p>The <a href="https://www.amazon.com/dp/B003U82YEY?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">Eheim Jager Aquarium Thermostat Heater, 50W</a> is the pick for the beginner who wants the temperature exactly right rather than approximately right. Per Eheim's listing it uses a TruTemp dial that you can recalibrate, so if a thermometer tells you the water is sitting a degree off, you can correct the dial to match instead of living with the gap. It is built from shock-resistant, shatterproof glass and rated for both fresh and marine water.</p>
@@ -69,9 +69,9 @@ products:
     hook: "An electronic heater with an LCD that shows the live water temperature and flashes a color alert if it drifts, plus a built-in guard so fish cannot rest against the heating element."
     reason: "The display-and-guard pick:"
     facts:
-      Model: "E200 (Fluval E-series; model number tracks wattage)"
+      Model: "E200 (Fluval E-series. Model number tracks wattage)"
       "Tank size": "Up to 65 gallons (brand spec)"
-      Display: "LCD shows real-time temperature; color alert on fluctuation"
+      Display: "LCD shows real-time temperature. Color alert on fluctuation"
       Safety: "Safety shut-off plus integrated fish guard (brand spec)"
       Reviews: "4.4 stars across 5,580 Amazon ratings"
     body: |
@@ -88,9 +88,9 @@ products:
     reason: "The titanium digital pick:"
     facts:
       Wattage: "200W, for 20 to 45 gallon tanks (brand spec)"
-      Body: "Titanium tube, seawater-resistant; fresh or saltwater"
+      Body: "Titanium tube, seawater-resistant. Fresh or saltwater"
       Controller: "External IC thermostat with digital LED showing set and current temp"
-      Precision: "Settable in 1-degree steps; wide range per the controller"
+      Precision: "Settable in 1-degree steps. Wide range per the controller"
       Reviews: "4.4 stars across 87 Amazon ratings"
     body: |
       <p>The <a href="https://www.amazon.com/dp/B07H2ZCXS1?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">hygger 200W Titanium Aquarium Heater</a> splits the job in two: a titanium heating rod that goes in the water and a separate digital IC controller that stays outside the tank. Per hygger's listing the controller's LED shows both the current water temperature and your set temperature at the same time, with an indicator light for heating status, so you read and adjust everything at eye level instead of squinting at a tiny dial underwater.</p>
@@ -106,7 +106,7 @@ products:
     reason: "The budget all-rounder:"
     facts:
       Wattage: "Six sizes, 25W to 300W (pick by tank size)"
-      Thermostat: "Adjustable dial; stair-shape heating with red and green status lights"
+      Thermostat: "Adjustable dial. Stair-shape heating with red and green status lights"
       Body: "Heat-resistant ABS outer shell"
       Included: "Free thermometer in the box"
       Reviews: "4.5 stars across 4,128 Amazon ratings"
@@ -118,7 +118,7 @@ lastUpdated: 2026-05-30
 bgTheme: solid
 bottomLine:
   verdict: "For a worry-free first heater, the Aqueon Pro adjustable is the easy call: shatter-resistant with an auto-shutoff. Step up to the Fluval E200 if you want an LCD readout, or the hygger titanium if you have cracked a glass heater before."
-  supporting: "Six beginner heaters span the range a first tank needs, from a no-dial preset unit for a betta cube to a digital titanium controller for a 45 gallon community tank; the right one comes down to your tank size and whether you want simplicity, precision, or shatterproof durability."
+  supporting: "Six beginner heaters span the range a first tank needs, from a no-dial preset unit for a betta cube to a digital titanium controller for a 45 gallon community tank. The right one comes down to your tank size and whether you want simplicity, precision, or shatterproof durability."
 ---
 
 ## Verified specs at a glance
@@ -127,10 +127,10 @@ bottomLine:
 |---|---|---|---|---|---|
 | Tetra HT Submersible, 50W | $15.27 | 50W (30W also offered) | 2 to 10 gal | Preset ~78F, no dial | Auto shut-off on electrical short |
 | Aqueon Pro Adjustable, 100W | $62.95 | 100W (line 50 to 250W) | ~20 gal at 5W/gal | Adjustable electronic | Shatterproof body |
-| Eheim Jager, 50W | $31.99 | 50W (line 25 to 300W) | ~10 gal at 5W/gal | TruTemp recalibratable dial | Run-dry cutoff; shatterproof glass |
+| Eheim Jager, 50W | $31.99 | 50W (line 25 to 300W) | ~10 gal at 5W/gal | TruTemp recalibratable dial | Run-dry cutoff. Shatterproof glass |
 | Fluval E200 Electronic | $36.00 | 200W (E-series model = watts) | Up to 65 gal | LCD readout, color alert | Shut-off plus fish guard |
 | hygger 200W Titanium | $54.99 | 200W | 20 to 45 gal | External digital IC controller | Shatterproof titanium rod |
-| Orlushy Submersible | $18.68 | 25 to 300W (six sizes) | match to tank | Adjustable dial | Heat-resistant ABS; thermometer included |
+| Orlushy Submersible | $18.68 | 25 to 300W (six sizes) | match to tank | Adjustable dial | Heat-resistant ABS. Thermometer included |
 
 All specs are manufacturer or Amazon listing claims captured on 2026-05-30, and all six units were confirmed in stock with an active buy-box on that date. Prices are the buy-box at capture time and move often, so treat them as a starting point and check the live listing before buying. Wattage-to-tank-size figures marked "at 5W/gal" apply the roughly 5 watts per gallon rule of thumb described below, not a manufacturer claim.
 
@@ -142,9 +142,9 @@ That single rule is why this guide spans 50W to 200W across six picks. The prese
 
 ## How we picked
 
-Every heater here was located by its Amazon product page, which was scraped on 2026-05-30 so the listing title could be read to confirm it is the right product and a single buyable unit rather than an accessory or multi-pack. In-stock state and the buy-box price were captured from each page at the same time, and any listing that was unavailable was rejected before it made the list. Spec figures (wattage, tank-size rating, thermostat type, safety behavior, body material) are pulled from each manufacturer's listing or product page; where a listing does not publish a figure, none is asserted here, and where a listing contradicts itself, as the Fluval E200 title does on wattage, that is flagged openly in the pick rather than buried.
+Every heater here was located by its Amazon product page, which was scraped on 2026-05-30 so the listing title could be read to confirm it is the right product and a single buyable unit rather than an accessory or multi-pack. In-stock state and the buy-box price were captured from each page at the same time, and any listing that was unavailable was rejected before it made the list. Spec figures (wattage, tank-size rating, thermostat type, safety behavior, body material) are pulled from each manufacturer's listing or product page. Where a listing does not publish a figure, none is asserted here, and where a listing contradicts itself, as the Fluval E200 title does on wattage, that is flagged openly in the pick rather than buried.
 
-The roughly 5 watts per gallon sizing guidance is attributed to hobby sources such as Aquarium Co-Op and Prime Time Aquatics, not presented as a measurement of ours. Amazon aggregate star ratings and review counts are cited as published on the listings on the capture date. The six picks were chosen to span six distinct brands and the wattages a beginner actually encounters, from a 50W preset nano heater to a 200W titanium controller, with both shatterproof-body and precise-dial options represented. No products were tested in-house for this guide; the recommendations come from spec analysis and synthesis of manufacturer documentation, aggregated verified-buyer reviews, and cited hobby sources.
+The roughly 5 watts per gallon sizing guidance is attributed to hobby sources such as Aquarium Co-Op and Prime Time Aquatics, not presented as a measurement of ours. Amazon aggregate star ratings and review counts are cited as published on the listings on the capture date. The six picks were chosen to span six distinct brands and the wattages a beginner actually encounters, from a 50W preset nano heater to a 200W titanium controller, with both shatterproof-body and precise-dial options represented. No products were tested in-house for this guide. The recommendations come from spec analysis and synthesis of manufacturer documentation, aggregated verified-buyer reviews, and cited hobby sources.
 
 ## Who This Is For
 

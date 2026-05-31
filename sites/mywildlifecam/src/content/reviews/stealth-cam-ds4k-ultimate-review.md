@@ -68,14 +68,14 @@ The DS4K Ultimate is the SD-card pick in our buying guide [Best Trail Cameras fo
 
 | Spec | Value | Source |
 |---|---|---|
-| Photo resolution | 32MP (interpolated; native lower) | Stealth Cam listing |
+| Photo resolution | 32MP (interpolated. Native lower) | Stealth Cam listing |
 | Photo modes | 32MP / 16MP / 8MP / 4MP selectable | Stealth Cam listing |
 | Video | 4K / QHD / 1080 / 720 at 30fps, day & night | Stealth Cam listing |
-| Trigger speed | 0.2s rated; 0.48s independently measured | Stealth Cam; [Trailcampro testing](https://www.trailcampro.com/blogs/reviews/stealth-cam-ds4k-ultimate-review) |
-| Detection range | 100ft rated; 70ft measured @ 47.3° angle | Stealth Cam; Trailcampro |
+| Trigger speed | 0.2s rated. 0.48s independently measured | Stealth Cam. [Trailcampro testing](https://www.trailcampro.com/blogs/reviews/stealth-cam-ds4k-ultimate-review) |
+| Detection range | 100ft rated. 70ft measured @ 47.3° angle | Stealth Cam. Trailcampro |
 | Burst mode | 1 to 9 photos per trigger | Stealth Cam |
 | Flash | 6 x 850nm Power LEDs, "No Glare" matte finish | Stealth Cam |
-| Connectivity | SD card only; no cellular, no wi-fi | Stealth Cam |
+| Connectivity | SD card only. No cellular, no wi-fi | Stealth Cam |
 | Subscription | None | Stealth Cam |
 | Storage | Up to 128GB SD card (not included) | Stealth Cam |
 | Power | 12 AA batteries OR 12V DC external jack | Stealth Cam |
@@ -83,11 +83,11 @@ The DS4K Ultimate is the SD-card pick in our buying guide [Best Trail Cameras fo
 | Battery life (video mode) | ~2.6 months | Trailcampro |
 | Trailcampro overall score | 89/100 (vs Flex-M's 83) | Trailcampro |
 | Trailcampro picture-quality score | 94/100 (vs Flex-M's 79) | Trailcampro |
-| MSRP | $249.99; street price $119.99 to $220.69 | Stealth Cam; [Digital Camera World](https://www.digitalcameraworld.com/reviews/stealth-cam-ds4k-ultimate-trail-camera-review) |
+| MSRP | $249.99. Street price $119.99 to $220.69 | Stealth Cam. [Digital Camera World](https://www.digitalcameraworld.com/reviews/stealth-cam-ds4k-ultimate-trail-camera-review) |
 
 ## What It Does Well
 
-- **Image quality is the standout, and it's not close.** [Trailcampro's testing](https://www.trailcampro.com/blogs/reviews/stealth-cam-ds4k-ultimate-review) scored picture quality at 94/100, the highest in its category at this price point, and ranked it #1 in their 2022 Flash Range Test. Daytime photos are sharp with strong color reproduction; night shots in the No-Glo IR mode are repeatedly described as "security-camera grade" rather than the muddy black-and-white most budget trail cams produce. If image quality is the reason you're buying a trail cam, this is the pick.
+- **Image quality is the standout, and it's not close.** [Trailcampro's testing](https://www.trailcampro.com/blogs/reviews/stealth-cam-ds4k-ultimate-review) scored picture quality at 94/100, the highest in its category at this price point, and ranked it #1 in their 2022 Flash Range Test. Daytime photos are sharp with strong color reproduction. Night shots in the No-Glo IR mode are repeatedly described as "security-camera grade" rather than the muddy black-and-white most budget trail cams produce. If image quality is the reason you're buying a trail cam, this is the pick.
 - **Battery life is roughly 4x what cellular trail cams deliver.** Trailcampro measured ~14 months in photo mode on Energizer Ultimate Lithium AAs. That's the kind of "deploy in autumn, check in spring" deployment window cellular trail cams can't touch (the Spypoint Flex-M measured ~3.3 months on the same battery type). The trade-off is the 12-AA appetite, which is a real cost ceiling per replacement cycle.
 - **4K video at 30fps is a meaningful spec for the price.** Most trail cams in the $120 to $220 street price band cap at 1080p. The DS4K Ultimate's 4K mode produces noticeably more detail in daylight scenes and gives you headroom for cropping or zooming in post. Video at the highest resolution cuts into battery life (~2.6 months), so this is a "best video quality when you want it" feature, not a "leave it on 4K forever" feature.
 - **The No-Glo IR flash is doing real work.** The 6 x 850nm Power LEDs with the matte-finish PIR array means the camera doesn't visibly glow when triggered at night. For wildlife observation specifically, this matters because many animals notice and avoid Low-Glow or Red-Glow flash sources.
@@ -109,4 +109,4 @@ The DS4K Ultimate is the SD-card pick in our buying guide [Best Trail Cameras fo
 
 The DS4K Ultimate is the strongest pick when image quality is the deciding factor and a cellular subscription is a non-starter. The 94/100 picture quality score puts it ahead of every cellular competitor in its price tier, the 14-month battery life turns "set and forget" into an actual deployment pattern, and the absence of any subscription means the total cost of ownership is the camera price plus batteries.
 
-If you'd rather have photos on your phone than walk out to swap SD cards, this isn't the camera; the [Spypoint Flex-M](/reviews/spypoint-flex-m-review) is. If you want the best image you can get under $250 without a monthly bill, the DS4K Ultimate is.
+If you'd rather have photos on your phone than walk out to swap SD cards, this isn't the camera. The [Spypoint Flex-M](/reviews/spypoint-flex-m-review) is. If you want the best image you can get under $250 without a monthly bill, the DS4K Ultimate is.

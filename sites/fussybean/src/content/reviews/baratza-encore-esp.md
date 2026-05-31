@@ -19,7 +19,7 @@ product:
 
 ## Who this is for
 
-This is for a beginner who has settled on a non-pressurized portafilter machine (a modded Gaggia Classic Pro, a Breville Bambino, or similar) and needs a first grinder that can actually reach espresso fineness without jumping to a $400 unit. The original Encore was a pour-over and drip workhorse; the ESP variant is the one retuned to add finer steps for espresso.
+This is for a beginner who has settled on a non-pressurized portafilter machine (a modded Gaggia Classic Pro, a Breville Bambino, or similar) and needs a first grinder that can actually reach espresso fineness without jumping to a $400 unit. The original Encore was a pour-over and drip workhorse. The ESP variant is the one retuned to add finer steps for espresso.
 
 ## What the spec sheet says
 
@@ -27,7 +27,7 @@ The manufacturer lists the Encore ESP with 40mm conical burrs and a step adjustm
 
 ## How it compares
 
-**Encore ESP vs the original Encore.** The original Encore is rated for a coarser range aimed at pour-over, drip, and press. The ESP shifts the steps finer for espresso. If your brewing is mostly espresso, the ESP is the relevant one; if it is mostly pour-over, the cheaper original covers it.
+**Encore ESP vs the original Encore.** The original Encore is rated for a coarser range aimed at pour-over, drip, and press. The ESP shifts the steps finer for espresso. If your brewing is mostly espresso, the ESP is the relevant one. If it is mostly pour-over, the cheaper original covers it.
 
 **Encore ESP vs stepless espresso grinders.** Stepless and on-demand espresso grinders give finer control and dose-by-time convenience, at a higher price. The trade-off here: the Encore ESP gains affordability and a known-reliable burr set at the cost of the micro-adjustment a dedicated espresso grinder offers.
 

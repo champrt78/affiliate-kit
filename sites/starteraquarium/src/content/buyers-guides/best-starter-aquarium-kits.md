@@ -70,7 +70,7 @@ products:
     reason: "The design-forward nano:"
     facts:
       "Tank size": "5 gallon etched glass, aluminum trim"
-      Filter: "3-stage: foam block, activated carbon, BioMax rings; 55-80 GPH pump"
+      Filter: "3-stage: foam block, activated carbon, BioMax rings. 55-80 GPH pump"
       Lighting: "37-LED, 821 lumens, 7000K"
       Heater: "Not included (add for tropical fish)"
       "In the box": "Tank, integrated filter chamber + media, LED light"
@@ -118,7 +118,7 @@ lastUpdated: 2026-05-30
 bgTheme: solid
 bottomLine:
   verdict: "For a true grab-one-box start, the Aqueon 10 Gallon LED Kit is the only pick here that already includes a heater. If you want the best-looking tank and don't mind buying a small heater separately, the Fluval Flex 9 Gallon is the upgrade choice."
-  supporting: "Six all-in-one freshwater kits span five brands and 5 to 10 gallons; the right one comes down to budget, how much tank you want to manage, and whether you need the heater included in the box or are willing to add one."
+  supporting: "Six all-in-one freshwater kits span five brands and 5 to 10 gallons. The right one comes down to budget, how much tank you want to manage, and whether you need the heater included in the box or are willing to add one."
 ---
 
 ## Verified specs at a glance
@@ -136,9 +136,9 @@ All specs are manufacturer or Amazon listing claims captured on 2026-05-30. Pric
 
 ## How we picked
 
-Every kit here was located by its Amazon product page, scraped on 2026-05-30 so the product title could be read to confirm it is a complete all-in-one kit that includes the tank, and not an accessory or filter-only listing. In-stock state was confirmed from each page's buy box on the same date, and any product that showed as out of stock or unavailable was dropped rather than included. Spec figures (tank size, filter type, lighting, heater, and box contents) are pulled from each manufacturer's or seller's Amazon listing; where a listing does not publish a figure, none is asserted here.
+Every kit here was located by its Amazon product page, scraped on 2026-05-30 so the product title could be read to confirm it is a complete all-in-one kit that includes the tank, and not an accessory or filter-only listing. In-stock state was confirmed from each page's buy box on the same date, and any product that showed as out of stock or unavailable was dropped rather than included. Spec figures (tank size, filter type, lighting, heater, and box contents) are pulled from each manufacturer's or seller's Amazon listing. Where a listing does not publish a figure, none is asserted here.
 
-The six picks were chosen to span five brands, Marina, GloFish, Tetra, Fluval, and Aqueon, and the common beginner range of 5 to 10 gallons, across roughly $68 to $147. Amazon aggregate ratings are reported with their review counts so you can weigh average against volume. Independent beginner guidance, including Aquarium Co-Op's recurring advice to start at 10 gallons or larger and to run a heater for tropical fish, is attributed where it informs a pick. No products were tested in-house for this guide; recommendations derive from spec analysis and synthesis of published specifications and verified-buyer reviews.
+The six picks were chosen to span five brands, Marina, GloFish, Tetra, Fluval, and Aqueon, and the common beginner range of 5 to 10 gallons, across roughly $68 to $147. Amazon aggregate ratings are reported with their review counts so you can weigh average against volume. Independent beginner guidance, including Aquarium Co-Op's recurring advice to start at 10 gallons or larger and to run a heater for tropical fish, is attributed where it informs a pick. No products were tested in-house for this guide. Recommendations derive from spec analysis and synthesis of published specifications and verified-buyer reviews.
 
 ## Who This Is For
 

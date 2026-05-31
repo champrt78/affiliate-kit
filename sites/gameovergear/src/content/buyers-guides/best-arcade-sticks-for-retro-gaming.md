@@ -22,7 +22,7 @@ products:
       Rating: "4.5 / 5 across 6,861 ratings"
     body: |
       <p>The <a href="https://www.amazon.com/dp/B019MFPLC0?tag=gameovergear-20" rel="sponsored noopener" target="_blank">Mayflash F300</a> is the cheapest pick here and the one with the longest compatibility list. Its Amazon listing claims support across Switch and Switch 2, PS4, PS3, Xbox Series S/X, Xbox One, Xbox 360, PC Windows, macOS, Steam Deck, Android, and the NEOGEO mini, with PS5 reachable through a separate Mayflash adapter. It connects over wired USB and supports both XINPUT and DINPUT modes on PC.</p>
-      <p>The listing's headline feature for the retro crowd is that the F300 is built to take genuine Sanwa Denshi buttons and a Sanwa joystick, the parts most fight-stick modders swap to, though those parts are sold separately. It holds a 4.5 out of 5 rating across 6,861 Amazon ratings, the largest review sample in this guide, which marks it as a long-running budget staple rather than a new arrival. Amazon reviewers describe it as a good beginner stick and an easy modding base; the trade-off is that the stock parts are entry-level until you upgrade them.</p>
+      <p>The listing's headline feature for the retro crowd is that the F300 is built to take genuine Sanwa Denshi buttons and a Sanwa joystick, the parts most fight-stick modders swap to, though those parts are sold separately. It holds a 4.5 out of 5 rating across 6,861 Amazon ratings, the largest review sample in this guide, which marks it as a long-running budget staple rather than a new arrival. Amazon reviewers describe it as a good beginner stick and an easy modding base. The trade-off is that the stock parts are entry-level until you upgrade them.</p>
   - name: "Qanba N3 Drone 2"
     brand: "Qanba"
     affiliateUrl: "https://www.amazon.com/dp/B0BYBNGJH1?tag=gameovergear-20"
@@ -40,7 +40,7 @@ products:
       Rating: "4.6 / 5 across 199 ratings"
     body: |
       <p>The <a href="https://www.amazon.com/dp/B0BYBNGJH1?tag=gameovergear-20" rel="sponsored noopener" target="_blank">Qanba N3 Drone 2</a> is an officially licensed Sony product, and its listing positions it as an entry-level stick engineered to be lightweight and transportable. It connects over wired USB and lists compatibility with PlayStation 5, PlayStation 4, and PC. The brand describes a full control panel with a touchpad, Qanba 30mm B30 buttons, and a Qanba OV7 joystick built on OMRON switches.</p>
-      <p>It carries a 4.6 out of 5 rating across 199 Amazon ratings, a smaller sample than the Mayflash sticks but a high average. The listing frames it as the company's answer to players who want a cost-effective stick that still gives a real arcade feel, pitched at first-time buyers and travelers. Amazon reviewers report it works well on PS5 and PC and call it a decent starting stick; the framing throughout is entry-level rather than tournament hardware.</p>
+      <p>It carries a 4.6 out of 5 rating across 199 Amazon ratings, a smaller sample than the Mayflash sticks but a high average. The listing frames it as the company's answer to players who want a cost-effective stick that still gives a real arcade feel, pitched at first-time buyers and travelers. Amazon reviewers report it works well on PS5 and PC and call it a decent starting stick. The framing throughout is entry-level rather than tournament hardware.</p>
   - name: "Mayflash Universal Arcade Fighting Stick F500"
     brand: "Mayflash"
     affiliateUrl: "https://www.amazon.com/dp/B00QM7JUMY?tag=gameovergear-20"
@@ -54,7 +54,7 @@ products:
       Connection: "Wired USB"
       Layout: "Lever stick, larger chassis, Sanwa-compatible"
       Platforms: "Switch/Switch 2, Xbox Series/One/360, PS4, PS3, PC, macOS, Steam Deck, Android, NEOGEO mini, PS Classic"
-      Modding: "30mm snap-in buttons fit; octagonal gate included"
+      Modding: "30mm snap-in buttons fit. Octagonal gate included"
       Rating: "4.6 / 5 across 3,498 ratings"
     body: |
       <p>The <a href="https://www.amazon.com/dp/B00QM7JUMY?tag=gameovergear-20" rel="sponsored noopener" target="_blank">Mayflash F500</a> is effectively a larger sibling of the F300, with a bigger chassis that gives more room for hands and for parts swaps. The listing claims the same wide compatibility (Switch and Switch 2, Xbox Series S/X, Xbox One, Xbox 360, PS4, PS3, PC Windows, macOS, Android, Steam Deck, PS Classic, and NEOGEO mini), wired USB connection, XINPUT and DINPUT support, and turbo functions with adjustable speed settings.</p>
@@ -112,16 +112,16 @@ products:
       Rating: "4.1 / 5 across 414 ratings"
     body: |
       <p>The <a href="https://www.amazon.com/dp/B08NDVGXGB?tag=gameovergear-20" rel="sponsored noopener" target="_blank">Hori Fighting Stick Alpha</a> is the tournament-grade lever pick, officially licensed by Microsoft for Xbox Series X|S, Xbox One, and PC. The listing describes Hori's Hayabusa lever and matte Hayabusa buttons, brand-new replaceable artwork, and a body that opens for easy customization and maintenance. It connects over wired USB with a long cable that owners describe as roughly ten feet with a breakaway point, and it supports four custom profiles through Hori's companion app plus a hardware button lock and on-board audio and mic controls.</p>
-      <p>It carries a 4.1 out of 5 rating across 414 Amazon ratings, the lowest average in this set. That tracks with the Hayabusa parts being a different feel from the Sanwa hardware many players are used to, which the listing's own reviewers note as an acquired preference rather than a flaw. This is the Xbox-licensed model; Hori sells a separate PlayStation version of the Fighting Stick Alpha, which is a different product.</p>
+      <p>It carries a 4.1 out of 5 rating across 414 Amazon ratings, the lowest average in this set. That tracks with the Hayabusa parts being a different feel from the Sanwa hardware many players are used to, which the listing's own reviewers note as an acquired preference rather than a flaw. This is the Xbox-licensed model. Hori sells a separate PlayStation version of the Fighting Stick Alpha, which is a different product.</p>
 pubDate: 2026-05-30
 lastUpdated: 2026-05-30
 bgTheme: solid
 bottomLine:
-  verdict: ""
+  verdict: "For most retro fighters the Mayflash F300 is the value entry: it connects to nearly everything and takes Sanwa mods later. Step up to the 8BitDo Arcade Stick if you want wireless, or the Razer Kitsune if you have moved to leverless."
   supporting: "Six spec-verified fight sticks span budget to premium, lever and leverless, so the right one depends on your platform, whether you plan to mod, and which input format you want to learn."
 faq:
   - question: "What is the difference between a lever stick and a leverless (all-button) controller?"
-    answer: "A lever stick uses a traditional arcade joystick for movement, the format most retro arcade games and classic fighters were built around. Five of the six picks here are lever sticks. A leverless controller replaces the joystick with four movement buttons you press with your hand; the Razer Kitsune in this guide is leverless. Per its listing, the all-button layout is marketed for clean inputs and complex motions, but it is a distinct skill from a lever, so pick it only if you specifically want the all-button format."
+    answer: "A lever stick uses a traditional arcade joystick for movement, the format most retro arcade games and classic fighters were built around. Five of the six picks here are lever sticks. A leverless controller replaces the joystick with four movement buttons you press with your hand. The Razer Kitsune in this guide is leverless. Per its listing, the all-button layout is marketed for clean inputs and complex motions, but it is a distinct skill from a lever, so pick it only if you specifically want the all-button format."
   - question: "Which arcade sticks here can I mod with Sanwa parts?"
     answer: "Three picks are built to accept genuine Sanwa Denshi parts per their listings: the Mayflash F300, the Mayflash F500, and the 8BitDo Arcade Stick (via its universal mounting plate). The F500's listing also notes it takes standard 30mm snap-in buttons and ships with an octagonal gate. In every case the Sanwa parts themselves are sold separately. The Hori Fighting Stick Alpha uses Hori's own Hayabusa lever and buttons and opens for maintenance, but it is a different parts ecosystem from Sanwa."
   - question: "What is the cheapest good arcade stick in this guide?"
@@ -129,7 +129,7 @@ faq:
   - question: "Which arcade stick works on the most platforms?"
     answer: "The two Mayflash sticks list the broadest compatibility. The F300's listing claims Switch and Switch 2, PS4, PS3, Xbox Series S/X, Xbox One, Xbox 360, PC Windows, macOS, Steam Deck, Android, and NEOGEO mini, with PS5 through a separate Mayflash adapter. The F500 lists a similarly wide range plus PS Classic. By contrast the 8BitDo lists Switch and Windows only, the Razer Kitsune lists PS5 and PC, and the Hori Fighting Stick Alpha here is the Xbox and PC model."
   - question: "Are these arcade sticks wired or wireless?"
-    answer: "Five of the six are wired only: the Mayflash F300, Mayflash F500, Qanba Drone 2, Razer Kitsune, and Hori Fighting Stick Alpha all connect by cable per their listings. The 8BitDo Arcade Stick is the one wireless option, with three modes its listing describes as Bluetooth, a 2.4 GHz receiver, or wired USB-C. Wired sticks avoid pairing and charging; the 8BitDo trades that for cable-free play on Switch and Windows."
+    answer: "Five of the six are wired only: the Mayflash F300, Mayflash F500, Qanba Drone 2, Razer Kitsune, and Hori Fighting Stick Alpha all connect by cable per their listings. The 8BitDo Arcade Stick is the one wireless option, with three modes its listing describes as Bluetooth, a 2.4 GHz receiver, or wired USB-C. Wired sticks avoid pairing and charging. The 8BitDo trades that for cable-free play on Switch and Windows."
 ---
 
 ## Verified specs at a glance
@@ -147,9 +147,9 @@ All specs are manufacturer or listing claims verified directly from each product
 
 ## How we picked
 
-Every stick here was located by searching for its canonical Amazon product page, then the listing was scraped and the product title read to confirm it is the exact model rather than a reseller relisting, a multi-pack, or a renamed variant. Each listing was checked for live availability and in-stock status before inclusion. Spec figures (connection type, supported platforms, button and joystick layout, modding compatibility, and feature lists) are pulled directly from each manufacturer's Amazon listing on 2026-05-30; where a listing does not publish a figure, this guide does not assert one. Prices are the listed price at the time of writing and fluctuate.
+Every stick here was located by searching for its canonical Amazon product page, then the listing was scraped and the product title read to confirm it is the exact model rather than a reseller relisting, a multi-pack, or a renamed variant. Each listing was checked for live availability and in-stock status before inclusion. Spec figures (connection type, supported platforms, button and joystick layout, modding compatibility, and feature lists) are pulled directly from each manufacturer's Amazon listing on 2026-05-30. Where a listing does not publish a figure, this guide does not assert one. Prices are the listed price at the time of writing and fluctuate.
 
-The six picks were chosen to span the format and price range buyers actually face: budget wired sticks built as Sanwa mod platforms, a lightweight entry stick, a wireless option, a leverless all-button controller, and a premium tournament lever, across a range from about $54 to $250 and across Switch, PlayStation, Xbox, and PC. Reviewer color is attributed to its source: Amazon star ratings and rating counts, manufacturer "About this item" copy, and the customer-review summaries shown on each listing. No products were tested in-house for this guide; recommendations are derived from spec analysis and synthesis of published listing data and aggregated buyer reviews.
+The six picks were chosen to span the format and price range buyers actually face: budget wired sticks built as Sanwa mod platforms, a lightweight entry stick, a wireless option, a leverless all-button controller, and a premium tournament lever, across a range from about $54 to $250 and across Switch, PlayStation, Xbox, and PC. Reviewer color is attributed to its source: Amazon star ratings and rating counts, manufacturer "About this item" copy, and the customer-review summaries shown on each listing. No products were tested in-house for this guide. Recommendations are derived from spec analysis and synthesis of published listing data and aggregated buyer reviews.
 
 ## Who This Is For
 

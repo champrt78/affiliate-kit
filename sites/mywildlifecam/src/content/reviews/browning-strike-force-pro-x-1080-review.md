@@ -29,21 +29,21 @@ scorecard:
     - { name: "Image Quality (Day)", weight: 15, score: 7.0 }
     - { name: "Battery / Power (Picture Mode)", weight: 15, score: 8.5 }
     - { name: "Video Endurance", weight: 15, score: 6.0 }
-  note: "Editorial score derived from manufacturer specs cross-referenced with the independent trailcampro bench review (84/100 overall; 95/100 trigger and detection; 88/100 design) and Amazon verified-buyer ratings (4.1 stars across 20 ratings at the time of writing). Not lab-measured by us. Speed weight is high because that is where trailcampro rated it strongest; detection range is held down because trailcampro's bench-measured 50 ft fell well under the 80-100 ft advertised figures."
+  note: "Editorial score derived from manufacturer specs cross-referenced with the independent trailcampro bench review (84/100 overall. 95/100 trigger and detection. 88/100 design) and Amazon verified-buyer ratings (4.1 stars across 20 ratings at the time of writing). Not lab-measured by us. Speed weight is high because that is where trailcampro rated it strongest. Detection range is held down because trailcampro's bench-measured 50 ft fell well under the 80-100 ft advertised figures."
 buyIf:
   buy:
     - "You can physically reach the camera location to swap SD cards and batteries"
     - "You want zero recurring cellular-plan fees and no app to manage"
     - "You are scouting or watching property and a same-day phone alert is not required"
-    - "Trigger speed matters to you; trailcampro rated this camera's speed 95 out of 100"
+    - "Trigger speed matters to you. Trailcampro rated this camera's speed 95 out of 100"
   skip:
-    - "You need photos pushed to your phone over the air; this is an SD-card camera, so choose a cellular cam instead"
-    - "You want a covert setup; the flash is red-glow IR, which shows a faint visible glow at night per trailcampro"
-    - "You shoot heavy video; trailcampro projects only about 2.8 months of battery at 30 clips per day, and 1080p is the ceiling"
+    - "You need photos pushed to your phone over the air. This is an SD-card camera, so choose a cellular cam instead"
+    - "You want a covert setup. The flash is red-glow IR, which shows a faint visible glow at night per trailcampro"
+    - "You shoot heavy video. Trailcampro projects only about 2.8 months of battery at 30 clips per day, and 1080p is the ceiling"
     - "The mounting location is remote or hard to revisit, where pulling cards is impractical"
 flaws:
   - title: "trailcampro's bench-measured detection range came in well under marketing"
-    body: "The sources diverge sharply on detection range. Amazon's 'About this item' lists 80 ft and Browning's official spec lists 100 ft, while trailcampro's bench test measured about 50 ft at a 47.8 degree detection angle. trailcampro's own scorecard header cites 90 ft. We report all four rather than averaging them; if you are placing the camera to cover a wide trail at distance, plan around the tested figure, not the marketing one."
+    body: "The sources diverge sharply on detection range. Amazon's 'About this item' lists 80 ft and Browning's official spec lists 100 ft, while trailcampro's bench test measured about 50 ft at a 47.8 degree detection angle. trailcampro's own scorecard header cites 90 ft. We report all four rather than averaging them. If you are placing the camera to cover a wide trail at distance, plan around the tested figure, not the marketing one."
   - title: "Red-glow IR is not covert"
     body: "trailcampro labels the flash type as red-glow IR. Browning markets it as RADIANT 6 Night Illumination, which is the illumination technology, not a no-glow claim. A faint red glow is visible at night, so animals and people near the camera can notice it. If invisibility is the goal, this is the wrong model."
   - title: "The 24 MP headline is interpolated"
@@ -62,29 +62,29 @@ faq:
   - question: "How long do the batteries last?"
     answer: "It depends entirely on whether you shoot pictures or video. trailcampro projects roughly 22.5 months in picture mode (35 day plus 35 night photos per 24 hours on lithium AAs) and only about 2.8 months in video mode (15 day plus 15 night clips per day). Browning markets up to 1 year on 6 AA batteries. There is also a 12-volt external power jack for sites where you want to run off a larger source."
   - question: "Does the night flash glow?"
-    answer: "Yes, faintly. trailcampro classifies the flash as red-glow IR, which emits a low but visible red glow at night. Browning's RADIANT 6 branding refers to the illumination technology, not a no-glow design. If you specifically need a covert, invisible-flash camera, this is not it; a no-glow model is the right category instead."
+    answer: "Yes, faintly. trailcampro classifies the flash as red-glow IR, which emits a low but visible red glow at night. Browning's RADIANT 6 branding refers to the illumination technology, not a no-glow design. If you specifically need a covert, invisible-flash camera, this is not it. A no-glow model is the right category instead."
 ---
 
 ## Who This Is For
 
 The Browning Strike Force Pro X 1080 (model BTC-5PX-1080) is the single-lens, 1080p SD-card camera for buyers who can physically reach the camera location and would rather not pay a recurring cellular plan. It targets hunters and property owners doing scouting or wildlife watching where a same-day phone alert is not the point, and where pulling an SD card every few weeks is no obstacle.
 
-This is a non-cellular camera, and on a site focused on cellular trail cameras that frames a clear fit decision rather than a ranking. An SD-card camera like this one makes sense when you can reach the location to swap cards and batteries, when you want zero recurring fees, or when there is no cell signal where it is mounted. A cellular camera is the better fit when you need photos pushed to your phone in near-real-time, the location is remote or hard to revisit, or timeliness is the priority. Neither type is "better" in the abstract; they answer different needs.
+This is a non-cellular camera, and on a site focused on cellular trail cameras that frames a clear fit decision rather than a ranking. An SD-card camera like this one makes sense when you can reach the location to swap cards and batteries, when you want zero recurring fees, or when there is no cell signal where it is mounted. A cellular camera is the better fit when you need photos pushed to your phone in near-real-time, the location is remote or hard to revisit, or timeliness is the priority. Neither type is "better" in the abstract. They answer different needs.
 
 ## At a Glance
 
 | Spec | Value | Source |
 |---|---|---|
-| Image resolution | 24 MP (interpolated) | Browning, Amazon; interpolation per trailcampro |
+| Image resolution | 24 MP (interpolated) | Browning, Amazon. Interpolation per trailcampro |
 | Video resolution | 1080p Full HD with sound, 1920x1080 | Browning, trailcampro |
 | Trigger speed | 0.22 seconds | Browning, Amazon |
 | Recovery time | 0.35 seconds | Browning, Amazon |
 | Detection range | 80 ft (Amazon) / 100 ft (Browning) / 50 ft bench-tested (trailcampro) | see note below |
 | Flash range | 120 ft infrared | Browning, Amazon (consistent) |
-| Flash type | Red-glow IR (RADIANT 6 illumination) | trailcampro; Browning branding |
+| Flash type | Red-glow IR (RADIANT 6 illumination) | trailcampro. Browning branding |
 | Connectivity | None (SD-card, non-cellular) | trailcampro |
 | Storage | Up to 512GB SDXC (not included) | Browning, Amazon |
-| Power | 6x AA (not included); 12V external jack | Browning, Amazon |
+| Power | 6x AA (not included). 12V external jack | Browning, Amazon |
 | Battery life | Up to 1 year on 6 AA (picture-mode dependent) | Browning |
 | Display | 1.5-inch color view screen | Browning, Amazon |
 | Shooting modes | Delay 1 sec to 60 min, up to 8 multi-shot / 8 rapid-fire, Smart IR Video | Browning, Amazon |
@@ -105,12 +105,12 @@ The detection-range row deliberately lists more than one figure because the sour
 
 - **Bench-measured detection range fell well under the marketing figures.** This is the spec where the sources diverge, so we report all of them rather than picking one. Amazon's "About this item" lists 80 ft, Browning's official spec lists 100 ft, and trailcampro's scorecard header cites 90 ft, but trailcampro's bench test measured about 50 ft at a 47.8 degree detection angle (57.8 degree field of view). If you are covering a wide trail at distance, plan around the tested number, not the advertised one. The detection angle is also on the modest side compared with some competitors per trailcampro.
 - **The flash is red-glow, not covert.** trailcampro classifies the flash type as red-glow IR. Browning's RADIANT 6 branding is the illumination technology, not a no-glow claim. A faint red glow is visible at night, so animals and people near the camera can notice it. If a covert, invisible-flash setup is what you need, this model does not provide it.
-- **24 MP is interpolated, and 1080p is the video ceiling.** trailcampro notes the 24 MP headline is interpolated, so the native sensor resolution is lower. Video tops out at 1080p Full HD; there is no 4K here. Both are reasonable for the mid-range price, but they are worth knowing before you buy on the headline numbers.
+- **24 MP is interpolated, and 1080p is the video ceiling.** trailcampro notes the 24 MP headline is interpolated, so the native sensor resolution is lower. Video tops out at 1080p Full HD. There is no 4K here. Both are reasonable for the mid-range price, but they are worth knowing before you buy on the headline numbers.
 - **Video burns through batteries fast.** Against the strong picture-mode endurance, trailcampro projects only about 2.8 months of life at 15 day plus 15 night clips per day. trailcampro also lists "video mode also will have a photo thumbnail" as a con and notes the battery eject button "takes a bit of work to unlatch. Expect to use a sturdy fingernail." Heavy video users should plan for external power or frequent swaps.
 
 ## How It Compares
 
-The honest comparison for this camera is not against another specific model; it is the category-level choice between an SD-card camera and a cellular one. That is the decision that actually changes whether the Strike Force Pro X 1080 is right for you.
+The honest comparison for this camera is not against another specific model. It is the category-level choice between an SD-card camera and a cellular one. That is the decision that actually changes whether the Strike Force Pro X 1080 is right for you.
 
 **SD-card (this camera) vs cellular.** A non-cellular camera like this one writes to a 512GB-capable SDXC card, which you retrieve by walking out to the camera. The payoff is no SIM, no app, and no monthly data plan, which removes both a recurring cost and a setup step. A cellular camera instead pushes photos to your phone over the air and typically carries a monthly or per-photo plan plus a dependence on signal at the deployment site. Pick the SD-card route when you can reach the location to pull cards, when you want zero recurring fees, or when there is no cell signal where it is mounted. Pick a cellular camera when the location is remote or hard to revisit, or when near-real-time delivery to your phone is the point. This is a fit decision driven by access and timeliness, not a ranking of which type is better.
 

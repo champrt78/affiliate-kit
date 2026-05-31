@@ -20,7 +20,7 @@ products:
       Blend: "70% Polyester / 30% Polyamide"
     body: |
       <p>The Rag Company's product page lists <a href="https://www.amazon.com/dp/B083KPZR9C?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">The Gauntlet</a> at 900 GSM with a Twist Loop weave, a 70% polyester / 30% polyamide Korean split-microfiber blend, and a black ButterSoft suede edge with no tags. The Amazon listing's own title confirms the 900 GSM, 15x24-inch, 2-pack configuration linked here.</p>
-      <p>Amazon reviewers rate the Gauntlet 4.7 out of 5 across 6,011 ratings. The Rag Company positions it as a reference drying towel and shows it in their own demos drying a C8 Corvette and a restored Ford F100. The brand also offers 12x12, 20x30, and 30x36 sizes; this SKU is the 15x24 2-pack.</p>
+      <p>Amazon reviewers rate the Gauntlet 4.7 out of 5 across 6,011 ratings. The Rag Company positions it as a reference drying towel and shows it in their own demos drying a C8 Corvette and a restored Ford F100. The brand also offers 12x12, 20x30, and 30x36 sizes. This SKU is the 15x24 2-pack.</p>
   - name: "Chemical Guys Woolly Mammoth"
     brand: "Chemical Guys"
     affiliateUrl: "https://www.amazon.com/dp/B086M83K76?tag=detailerpicks-20"
@@ -88,7 +88,7 @@ products:
       Pack: "2-Pack, White"
     body: |
       <p>The Amazon listing for the <a href="https://www.amazon.com/dp/B07KMKHGQ7?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">Adam's Jumbo Plush Drying Towel</a> states 1500 GSM, 33 by 29 inches, sold as a 2-pack in white. The brand's about-this-item copy says the high GSM and large size let each towel "hold up to 1 gallon of water or up to 8 pounds of liquid." This is the highest published GSM in this lineup.</p>
-      <p>Amazon reviewers rate it 4.7 out of 5 across 454 ratings. The linked option is the $38.24 multipack; the same listing carries other size and pack options at different prices. For the home detailer who wants oversized, high-GSM towels with a spare on hand, the Jumbo Plush 2-pack is the premium multipack pick.</p>
+      <p>Amazon reviewers rate it 4.7 out of 5 across 454 ratings. The linked option is the $38.24 multipack. The same listing carries other size and pack options at different prices. For the home detailer who wants oversized, high-GSM towels with a spare on hand, the Jumbo Plush 2-pack is the premium multipack pick.</p>
   - name: "SMINDER 1200 GSM Car Drying Towels (36x24, 2-Pack)"
     brand: "SMINDER"
     affiliateUrl: "https://www.amazon.com/dp/B0DPZTLVHL?tag=detailerpicks-20"
@@ -132,7 +132,7 @@ faq:
   - question: "Twist-loop vs waffle-weave vs plush, which one do I actually buy?"
     answer: "Twist-loop towels (The Gauntlet) use long twisted fiber bundles that pull a large volume of water in one pass, the enthusiast default for drying a whole vehicle fast. Plush towels (Woolly Mammoth, Adam's Ultra Plush, Adam's Jumbo) use dense looped microfiber for soft, high-capacity drying. Waffle-weave towels (Dry Me A River) are thin with a grid texture that wicks quickly and lies flat, best for glass, mirrors, and final wipe-downs. Many home detailers keep one plush or twist-loop primary plus a waffle towel for glass."
   - question: "Is a single big towel enough, or should I buy a 2-pack?"
-    answer: "A single oversized plush or twist-loop towel (Woolly Mammoth, Adam's Ultra Plush) can dry a sedan, and the brands say as much. A 2-pack (SMINDER, Adam's Jumbo Plush, The Gauntlet) means a dry spare is always ready when the first towel is saturated, and a clean one is in the wash rotation. If you wash one car occasionally, a single towel is fine; if you wash often or do larger vehicles, the 2-packs are the practical buy."
+    answer: "A single oversized plush or twist-loop towel (Woolly Mammoth, Adam's Ultra Plush) can dry a sedan, and the brands say as much. A 2-pack (SMINDER, Adam's Jumbo Plush, The Gauntlet) means a dry spare is always ready when the first towel is saturated, and a clean one is in the wash rotation. If you wash one car occasionally, a single towel is fine. If you wash often or do larger vehicles, the 2-packs are the practical buy."
   - question: "Why is the Chemical Guys Woolly Mammoth listed with no GSM or weave?"
     answer: "Chemical Guys does not publish a GSM figure or a specific weave for the Woolly Mammoth on its Amazon listing. Rather than guess, both fields are recorded as not published. The listing does state it is a 36x25-inch ultra-plush microfiber towel and claims it absorbs over a gallon of water, which is what the recommendation here relies on."
   - question: "Do I need a separate towel for glass?"
@@ -158,10 +158,10 @@ Drying towels split into three constructions, and the right one depends on the j
 
 - **Twist-loop** towels, like The Rag Company's Gauntlet, use long bundles of twisted microfiber that pull a large volume of water in a single pass. This is the construction enthusiasts reach for to dry a whole vehicle quickly. They tend to run high in absorbency and price.
 - **Plush** towels, like the Chemical Guys Woolly Mammoth, Adam's Ultra Plush, and Adam's Jumbo Plush, use dense looped microfiber for a soft, high-capacity wipe. Adam's says a single Ultra Plush can dry a fullsize sedan. The high-GSM plush 2-packs (Adam's Jumbo at 1500 GSM, SMINDER at 1200 GSM) are the soak-it-all towels in this group.
-- **Waffle-weave** towels, like Dry Me A River at 390 GSM, are deliberately thin with a grid texture that wicks fast and lies flat. They are not meant to hold a gallon; they are meant for glass, mirrors, and final wipe-downs, and they pair with a plush or twist-loop primary towel rather than replacing it.
+- **Waffle-weave** towels, like Dry Me A River at 390 GSM, are deliberately thin with a grid texture that wicks fast and lies flat. They are not meant to hold a gallon. They are meant for glass, mirrors, and final wipe-downs, and they pair with a plush or twist-loop primary towel rather than replacing it.
 
 A common home-detailer setup is one plush or twist-loop primary towel plus a thin waffle towel for glass. Buying a 2-pack of the primary keeps a dry spare ready and a clean one in the wash rotation.
 
 ## How we picked
 
-Spec verification was done directly from each manufacturer's product page or the product's own Amazon listing on 2026-05-29. GSM, dimensions, weave, blend, and price were read from each product's own block, not from related-item carousels (Amazon listings embed neighboring products whose specs are easy to mis-attribute). Review data is reported as published: Amazon star ratings and rating counts for the Amazon picks, and the brand's own published review count for Adam's Ultra Plush. The Rag Company's "since 1999" positioning for Dry Me A River is attributed to the brand. Cited reviewers and the editorial method are described on the [editorial method page](/how-we-evaluate). No products were tested in-house for this guide; recommendations are derived from spec analysis and attributed third-party data.
+Spec verification was done directly from each manufacturer's product page or the product's own Amazon listing on 2026-05-29. GSM, dimensions, weave, blend, and price were read from each product's own block, not from related-item carousels (Amazon listings embed neighboring products whose specs are easy to mis-attribute). Review data is reported as published: Amazon star ratings and rating counts for the Amazon picks, and the brand's own published review count for Adam's Ultra Plush. The Rag Company's "since 1999" positioning for Dry Me A River is attributed to the brand. Cited reviewers and the editorial method are described on the [editorial method page](/how-we-evaluate). No products were tested in-house for this guide. Recommendations are derived from spec analysis and attributed third-party data.

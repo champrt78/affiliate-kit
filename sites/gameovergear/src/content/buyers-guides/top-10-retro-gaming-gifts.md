@@ -49,7 +49,7 @@ products:
     hook: "Pour the coffee and the Game Boy screen powers on. The boot-up screen runs on caffeine now."
     reason: "The heat-change mug:"
     facts:
-      Effect: "Heat-activated; screen appears with a hot drink"
+      Effect: "Heat-activated. Screen appears with a hot drink"
       Theme: "Classic Game Boy handheld design"
       Capacity: "About 10 ounces"
       Care: "Hand wash only, not microwave safe"
@@ -179,7 +179,7 @@ pubDate: 2026-05-30
 lastUpdated: 2026-05-30
 bgTheme: solid
 bottomLine:
-  verdict: ""
+  verdict: "If you only grab one, the keychain arcade is the crowd-pleaser. The NES console lamp and Game Boy heat-change mug are the safe gifts for any retro fan."
   supporting: "Ten cheap, giftable retro-gaming novelties ranked 1 to 10, spanning a keychain arcade, cartridge coasters, pixel and Tetris lights, enamel pins, and a Super Mario console lamp, almost all of it under $25."
 ---
 
@@ -189,4 +189,4 @@ This is a gift list, not a spec showdown, so we ranked it the way you would actu
 
 ## The list
 
-Ten picks, ranked one through ten. Number one is the no-brainer stocking stuffer; number ten is the splurge that anchors a shelf. Mix and match, or grab the whole power-up set for the retro fan who has every console but none of the fun stuff around it.
+Ten picks, ranked one through ten. Number one is the no-brainer stocking stuffer. Number ten is the splurge that anchors a shelf. Mix and match, or grab the whole power-up set for the retro fan who has every console but none of the fun stuff around it.

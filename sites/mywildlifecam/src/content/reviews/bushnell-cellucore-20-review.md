@@ -29,7 +29,7 @@ scorecard:
     - { name: "Build & Weatherproofing", weight: 15, score: 6.5 }
     - { name: "Battery / Power Flexibility", weight: 15, score: 6.5 }
     - { name: "Ease of Setup", weight: 15, score: 6.5 }
-  note: "Editorial score derived from Bushnell's published specs cross-referenced with TrailCamPro's independent test data (0.64s trigger, 40.3s recovery, ~50-60ft usable night range) and Amazon verified-buyer reviews (4.1 stars across 107 ratings at the time of writing). Not lab-measured by us. Weights reflect what matters for cellular backyard wildlife use; trigger-speed and night-vision scores are moderated because TrailCamPro's measured recovery is slow and practical illumination falls short of the 80ft headline."
+  note: "Editorial score derived from Bushnell's published specs cross-referenced with TrailCamPro's independent test data (0.64s trigger, 40.3s recovery, ~50-60ft usable night range) and Amazon verified-buyer reviews (4.1 stars across 107 ratings at the time of writing). Not lab-measured by us. Weights reflect what matters for cellular backyard wildlife use. Trigger-speed and night-vision scores are moderated because TrailCamPro's measured recovery is slow and practical illumination falls short of the 80ft headline."
 buyIf:
   buy:
     - "You have confirmed strong AT&T coverage at the exact spot you plan to mount the camera"
@@ -38,8 +38,8 @@ buyIf:
     - "You want a budget entry into cellular trail cameras and the AT&T variant's price undercuts the dual-SIM model"
   skip:
     - "You are in a Verizon-only or marginal-AT&T area (this unit is locked to AT&T and does not auto-switch carriers)"
-    - "You need a no-glow flash for pressured game or security; TrailCamPro classifies this as red-glow IR"
-    - "You want fast back-to-back captures; TrailCamPro measured 40.3 seconds of photo recovery between triggers"
+    - "You need a no-glow flash for pressured game or security. TrailCamPro classifies this as red-glow IR"
+    - "You want fast back-to-back captures. TrailCamPro measured 40.3 seconds of photo recovery between triggers"
     - "Responsive manufacturer support is a priority, given the sourced customer-service complaints"
 flaws:
   - title: "Single-carrier lock to AT&T"
@@ -56,7 +56,7 @@ faq:
   - question: "Is this the same as the CelluCORE 20 Dual SIM on Bushnell's website?"
     answer: "No. Bushnell.com currently lists a CelluCORE 20 Dual SIM (product ID 119904D) that automatically connects to the strongest of AT&T or Verizon. That is a different, newer model from the AT&T-locked 119904A sold on this Amazon listing. The dual-SIM auto-connect feature does not apply to the AT&T unit reviewed here."
   - question: "How fast is the trigger and how slow is the recovery?"
-    answer: "TrailCamPro measured a 0.64-second photo trigger speed, which matches Bushnell's sub-one-second marketing claim. The catch is recovery: TrailCamPro measured 40.3 seconds between triggers, and a 2.45-second video trigger. The fast first shot is good; the long gap before the next shot makes it weak for capturing action sequences."
+    answer: "TrailCamPro measured a 0.64-second photo trigger speed, which matches Bushnell's sub-one-second marketing claim. The catch is recovery: TrailCamPro measured 40.3 seconds between triggers, and a 2.45-second video trigger. The fast first shot is good. The long gap before the next shot makes it weak for capturing action sequences."
   - question: "What does the night range really cover?"
     answer: "Bushnell markets an 80-foot night and detection range. In TrailCamPro's testing, useful illumination was practical to roughly 50 to 60 feet. The Amazon listing calls the flash Low Glow, but TrailCamPro classifies it as red-glow IR, which emits a faint visible glow that some animals and people can notice at night."
   - question: "What about battery life and storage?"
@@ -73,21 +73,21 @@ The buyer this fits well is someone who values consistent daytime image quality 
 
 | Spec | Value | Source |
 |---|---|---|
-| Photo resolution | 20 megapixels (interpolated, native sensor lower) | Bushnell; TrailCamPro |
-| Photo trigger speed | 0.64 seconds (Bushnell markets sub 1 second) | TrailCamPro measured; Bushnell |
+| Photo resolution | 20 megapixels (interpolated, native sensor lower) | Bushnell. TrailCamPro |
+| Photo trigger speed | 0.64 seconds (Bushnell markets sub 1 second) | TrailCamPro measured. Bushnell |
 | Photo recovery speed | 40.3 seconds between triggers | TrailCamPro measured |
 | Video trigger speed | 2.45 seconds | TrailCamPro measured |
 | Video resolution | 1080p | Bushnell |
-| Detection range and angle | 80 ft at 33.8 degree detection angle (40.3 degree field of view) | TrailCamPro; Bushnell |
-| Flash type | Listing says Low Glow; TrailCamPro classifies it red-glow IR | Amazon; TrailCamPro |
+| Detection range and angle | 80 ft at 33.8 degree detection angle (40.3 degree field of view) | TrailCamPro. Bushnell |
+| Flash type | Listing says Low Glow. TrailCamPro classifies it red-glow IR | Amazon. TrailCamPro |
 | Night range | Useful illumination practical to roughly 50 to 60 ft in testing | TrailCamPro |
-| Battery | 12 AA (lithium recommended) | TrailCamPro; Bushnell |
+| Battery | 12 AA (lithium recommended) | TrailCamPro. Bushnell |
 | Battery life | Roughly 4.3 months (estimate) | TrailCamPro |
 | Storage | SD card up to 32GB | TrailCamPro |
-| Carrier | AT&T single-carrier (119904A; separate Verizon SKU exists) | Amazon |
+| Carrier | AT&T single-carrier (119904A. Separate Verizon SKU exists) | Amazon |
 | Connectivity | Cellular (4G LTE) | Bushnell |
 | Dimensions | 5.5 x 4.75 x 3 inches | TrailCamPro |
-| Warranty and plan | 2-year limited warranty; first 30 days of cell service free ($15 value) | Bushnell |
+| Warranty and plan | 2-year limited warranty. First 30 days of cell service free ($15 value) | Bushnell |
 | Owner reviews | 4.1 stars across 107 ratings | Amazon (verified 2026-05-29) |
 
 ## What It Does Well
@@ -103,7 +103,7 @@ The buyer this fits well is someone who values consistent daytime image quality 
 - **Slow recovery and app-only setup.** TrailCamPro measured 40.3 seconds of photo recovery between triggers, which is slow for action sequences, and a 2.45-second video trigger. TrailCamPro also flags that the camera has no internal viewer for getting it running, so aiming and setup are app-only, and rated the detection circuit as average.
 - **Customer service complaints and third-party fulfillment.** One Amazon reviewer described being on hold over an hour with no answer, and another cited zero support from the seller or Bushnell. The AT&T variant is sold by a third-party seller (toys texas), not Amazon-fulfilled, which can affect returns and service.
 - **Headline specs overstate real-world performance.** The 20MP figure is interpolated, not native, per TrailCamPro. The 80ft range is marketed, but TrailCamPro found useful illumination practical to roughly 50 to 60 feet. The Amazon title says Low Glow while TrailCamPro classifies the flash as red-glow IR, which is more visible to wildlife and people than a no-glow emitter.
-- **Reliability drift reports.** Several Amazon owners describe units that worked initially then began repeating frames or false-triggering. One bought a new one that worked for about three weeks then started sending the same picture over and over; another reported one stopping after a week and a half and sending random pics from days ago; a third reported false alarms during the heat of the day with pictures sent every couple of minutes of nothing.
+- **Reliability drift reports.** Several Amazon owners describe units that worked initially then began repeating frames or false-triggering. One bought a new one that worked for about three weeks then started sending the same picture over and over. Another reported one stopping after a week and a half and sending random pics from days ago. A third reported false alarms during the heat of the day with pictures sent every couple of minutes of nothing.
 - **Heavy battery appetite and thin stock.** One owner noted it uses a lot of batteries and suggested rechargeable, lithium, or solar. The AT&T variant also shows thin third-party inventory (only a couple of units in stock at the time of writing), which is worth noting if availability matters to you.
 
 ## How It Compares

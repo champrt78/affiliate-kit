@@ -29,7 +29,7 @@ scorecard:
     - { name: "Build & Weatherproofing", weight: 15, score: 7.0 }
     - { name: "Battery / Power Flexibility", weight: 15, score: 7.5 }
     - { name: "Ease of Setup", weight: 15, score: 9.0 }
-  note: "Editorial score derived from manufacturer specs cross-referenced with Amazon verified-buyer reviews (4.3 stars across 1,090+ reviews at the time of writing) and independent owner threads on Saddlehunter and r/trailcam. Not lab-measured. Weights reflect what matters for backyard wildlife use; image-quality weight is moderated because the E5 trades top-tier sensor performance for sub-$50 pricing."
+  note: "Editorial score derived from manufacturer specs cross-referenced with Amazon verified-buyer reviews (4.3 stars across 1,090+ reviews at the time of writing) and independent owner threads on Saddlehunter and r/trailcam. Not lab-measured. Weights reflect what matters for backyard wildlife use. Image-quality weight is moderated because the E5 trades top-tier sensor performance for sub-$50 pricing."
 buyIf:
   buy:
     - "You want a working trail cam without buying into apps, subscriptions, or carrier service"
@@ -37,15 +37,15 @@ buyIf:
     - "Your deployment location is close enough that walking out to pull the SD card every few weeks isn't a problem"
     - "You like the option of a solar panel upgrade path without committing to it on day one"
   skip:
-    - "You want photos delivered to your phone (you want a cellular cam; see the Spypoint Flex-M)"
+    - "You want photos delivered to your phone (you want a cellular cam. See the Spypoint Flex-M)"
     - "Image quality is the highest-priority axis. The DS4K Ultimate's larger sensor pulls ahead at this price tier's expense"
     - "You'll deploy somewhere retrieval is impractical (deep woods, back-of-property) and need cellular delivery"
     - "You want app-based remote configuration. The E5 has no app at all"
 flaws:
   - title: "Sensor performance trails the mid-tier at distance"
-    body: "The 48MP figure is interpolated, not native. Image clarity is competitive at close range (under ~40 feet) but degrades faster than the Stealth Cam DS4K Ultimate's native 4K sensor beyond that. For backyard distances this is rarely a problem; for cameras pointed across a field, it matters."
+    body: "The 48MP figure is interpolated, not native. Image clarity is competitive at close range (under ~40 feet) but degrades faster than the Stealth Cam DS4K Ultimate's native 4K sensor beyond that. For backyard distances this is rarely a problem. For cameras pointed across a field, it matters."
   - title: "8-AA battery life is shorter than marketed under heavy trigger volume"
-    body: "Recurring owner-review theme. GardePro markets long battery life and that holds in low-traffic deployments; the solar panel accessory (SP350, sold separately) is the common owner-recommended upgrade for high-volume sites."
+    body: "Recurring owner-review theme. GardePro markets long battery life and that holds in low-traffic deployments. The solar panel accessory (SP350, sold separately) is the common owner-recommended upgrade for high-volume sites."
   - title: "No app, no remote config, no cellular"
     body: "Whether this is a flaw depends on what you wanted. For the 'no subscription, no setup hassle' buyer, it's the feature. For anyone expecting smartphone alerts, it's a fundamental mismatch. Pick a cellular cam instead."
   - title: "Menu UI is dated"
@@ -58,9 +58,9 @@ faq:
   - question: "Will 8 AA batteries last a full season?"
     answer: "Depends on trigger volume. Low-traffic deployments (a quiet stretch of yard) routinely last 3-6 months on a set of high-quality lithium AAs. High-traffic deployments (an animal trail with constant motion) can run through batteries in 4-6 weeks. The GardePro SP350 solar panel accessory is the standard owner-recommended upgrade for high-volume sites."
   - question: "How does the E5 compare to a cellular trail camera?"
-    answer: "Different category, different buyer. Cellular cams deliver photos to your phone via cellular networks and typically cost $150-300 plus a monthly data plan. The E5 has no cellular hardware and costs about a third as much. Pick the E5 when retrieval is easy and you don't want a monthly bill; pick a cellular cam when the camera is far from the house and you want push notifications."
+    answer: "Different category, different buyer. Cellular cams deliver photos to your phone via cellular networks and typically cost $150-300 plus a monthly data plan. The E5 has no cellular hardware and costs about a third as much. Pick the E5 when retrieval is easy and you don't want a monthly bill. Pick a cellular cam when the camera is far from the house and you want push notifications."
   - question: "Is the 48MP photo claim real?"
-    answer: "Not in the way a smartphone's 48MP would be. The E5's image sensor is lower-resolution natively; the camera interpolates up to 48MP for the output file. This is industry-standard for budget trail cams. Image quality is determined by the lens and native sensor, not the interpolated megapixel count. For comparison purposes, look at sample images rather than the headline MP number."
+    answer: "Not in the way a smartphone's 48MP would be. The E5's image sensor is lower-resolution natively. The camera interpolates up to 48MP for the output file. This is industry-standard for budget trail cams. Image quality is determined by the lens and native sensor, not the interpolated megapixel count. For comparison purposes, look at sample images rather than the headline MP number."
 ---
 
 ## Who This Is For
@@ -81,7 +81,7 @@ The "no app, no signal, no subscription" framing is GardePro's central marketing
 | Connectivity | None (no cellular, no WiFi) | GardePro listing |
 | Subscription | None (SD-card only) | GardePro listing |
 | Storage | microSD up to 512GB (not included) | GardePro listing |
-| Power | 8x AA (not included); SP350 solar panel compatible | GardePro listing |
+| Power | 8x AA (not included). SP350 solar panel compatible | GardePro listing |
 | Weatherproofing | IP66 | GardePro listing |
 | Modes | Motion Detection, Time-Lapse, Hybrid | GardePro listing |
 | Mounting | Standard 1/4"-20 thread | GardePro listing |
@@ -97,9 +97,9 @@ The "no app, no signal, no subscription" framing is GardePro's central marketing
 
 ## Where It Falls Short
 
-- **Sensor quality trails the mid-tier non-cellular cameras at distance.** Image quality is competitive under ~40 feet but degrades faster than the Stealth Cam DS4K Ultimate's native 4K sensor beyond that range. The 48MP figure is interpolated, not native; image clarity is determined by the lens and underlying sensor, neither of which match a $150+ camera at the same focal distance. For backyard distances this is rarely a real problem; for longer-distance deployments, it matters.
+- **Sensor quality trails the mid-tier non-cellular cameras at distance.** Image quality is competitive under ~40 feet but degrades faster than the Stealth Cam DS4K Ultimate's native 4K sensor beyond that range. The 48MP figure is interpolated, not native. Image clarity is determined by the lens and underlying sensor, neither of which match a $150+ camera at the same focal distance. For backyard distances this is rarely a real problem. For longer-distance deployments, it matters.
 - **Battery life under heavy trigger volume is shorter than marketed.** A recurring owner-review theme across Amazon, Saddlehunter, and r/trailcam: marketed battery life assumes low-traffic deployments. Cameras pointed at animal trails or feeders can burn through 8 AAs in 4-6 weeks. The SP350 solar panel is the common owner-recommended fix.
-- **No app, no remote configuration, no cellular delivery, by design.** If you wanted smartphone alerts, the E5 is the wrong product. This isn't a flaw in the camera; it's a buyer-mismatch concern worth flagging because the spec sheet doesn't explicitly call out the absence of features that buyers from cellular brands might assume.
+- **No app, no remote configuration, no cellular delivery, by design.** If you wanted smartphone alerts, the E5 is the wrong product. This isn't a flaw in the camera. It's a buyer-mismatch concern worth flagging because the spec sheet doesn't explicitly call out the absence of features that buyers from cellular brands might assume.
 - **Menu UI is dated.** Configuration via on-camera buttons feels like 2018-era trail-cam UX. Functional, but the interface adds a couple of minutes to initial setup vs newer competitors with companion-app config.
 
 ## How It Compares

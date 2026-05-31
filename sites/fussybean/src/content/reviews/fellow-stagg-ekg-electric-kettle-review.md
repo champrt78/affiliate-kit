@@ -30,7 +30,7 @@ scorecard:
     - { name: "Value", weight: 20, score: 6.5 }
     - { name: "Ease of Use", weight: 20, score: 8.0 }
     - { name: "Footprint", weight: 15, score: 7.0 }
-  note: "Editorial score derived from manufacturer specs cross-referenced with attributed owner reviews (Amazon: 4.3 stars across 563 ratings on the Matte Black Pro listing; Fellow's own product page: 4.6 stars across 3,369 reviews) and the third-party Lowkey Coffee Snobs review. Not lab-measured. Weights follow the fussybean default axes; Temperature Stability is weighted high because precise, held temperature is this kettle's core job."
+  note: "Editorial score derived from manufacturer specs cross-referenced with attributed owner reviews (Amazon: 4.3 stars across 563 ratings on the Matte Black Pro listing. Fellow's own product page: 4.6 stars across 3,369 reviews) and the third-party Lowkey Coffee Snobs review. Not lab-measured. Weights follow the fussybean default axes. Temperature Stability is weighted high because precise, held temperature is this kettle's core job."
 buyIf:
   buy:
     - "You brew pour-over or specialty tea and want to-the-degree temperature control rather than a fixed-temp or eyeballed boil"
@@ -38,10 +38,10 @@ buyIf:
     - "You want the water to hold at target through a multi-step brew instead of drifting cold mid-pour"
     - "You treat the morning brew as a ritual and want gear that looks intentional on the counter"
   skip:
-    - "You want a cheap kettle that just boils water; this is a premium-priced precision tool"
-    - "You need large capacity; 0.9L is roughly three mugs, so look at Fellow's XL Clyde or a 1.5L-plus kettle"
-    - "You expect to control the kettle from your phone; the companion app is firmware-only and does not run the kettle remotely"
-    - "Raw boil speed matters more to you than design and precision; owners note it is not the fastest boiler"
+    - "You want a cheap kettle that just boils water. This is a premium-priced precision tool"
+    - "You need large capacity. 0.9L is roughly three mugs, so look at Fellow's XL Clyde or a 1.5L-plus kettle"
+    - "You expect to control the kettle from your phone. The companion app is firmware-only and does not run the kettle remotely"
+    - "Raw boil speed matters more to you than design and precision. Owners note it is not the fastest boiler"
 flaws:
   - title: "Priced like a design object"
     body: "At about $179.95 it sits well above commodity gooseneck kettles. Even a fan calls Fellow the BMW or Mercedes of gadgets, and the Lowkey Coffee Snobs review frames its comparison set as kettles a pour-over enthusiast would cross-shop, not budget models. You are paying for precision and aesthetics, not just hot water."
@@ -55,7 +55,7 @@ flaws:
     body: "At 0.9L (30 oz), an Amazon owner pegs it at about three 12 oz mugs. Fine for a solo ritual brew, tight for serving a group. For larger batches Fellow points buyers to the XL Clyde instead."
 faq:
   - question: "Is this the original Stagg EKG or the newer Pro?"
-    answer: "It is the Pro. The original standard Stagg EKG (monochrome screen, no scheduling, no app) has been discontinued; both Amazon and Fellow's own store now sell only the Pro generation under the Stagg EKG name. If you search for Fellow Stagg EKG, the kettle you will find and buy is the Pro reviewed here."
+    answer: "It is the Pro. The original standard Stagg EKG (monochrome screen, no scheduling, no app) has been discontinued. Both Amazon and Fellow's own store now sell only the Pro generation under the Stagg EKG name. If you search for Fellow Stagg EKG, the kettle you will find and buy is the Pro reviewed here."
   - question: "What temperatures can it hit, and how precise is it?"
     answer: "Fellow lists a range of 104 to 212 degrees Fahrenheit (40 to 100 Celsius) with to-the-degree control, so you can dial an exact target rather than picking from presets. Fellow describes a closed-loop system that sets your target temperature and then maintains it precisely, including re-stabilizing after you lift the kettle off the base and set it back down."
   - question: "How long does Hold Mode keep the water hot?"
@@ -78,13 +78,13 @@ One thing to settle up front: the kettle sold today as the Fellow Stagg EKG is t
 |---|---|---|
 | Generation | Stagg EKG Pro (original EKG discontinued) | Fellow / Amazon |
 | Capacity | 0.9L (30 oz) | Fellow listing |
-| Power | 110-120V, 1000-1200W; Amazon spec table lists 1200 watts | Fellow / Amazon |
+| Power | 110-120V, 1000-1200W. Amazon spec table lists 1200 watts | Fellow / Amazon |
 | Temperature range | 104 to 212 degrees F (40 to 100 C), to-the-degree control | Fellow / Amazon |
 | Hold Mode | 15, 30, 45, or 60 minutes | Fellow listing |
 | Spout | Precision gooseneck for slow controlled pouring | Fellow / Amazon |
 | Brew Stopwatch | Built-in timer for pour-over and steeping | Fellow / Amazon |
-| Body material | 304 18/8 stainless steel; BPA-free handle and lid pull | Fellow listing |
-| Base / cord | Cordless on a powered base; 2.5 ft cord; Type-B plug | Fellow listing |
+| Body material | 304 18/8 stainless steel. BPA-free handle and lid pull | Fellow listing |
+| Base / cord | Cordless on a powered base. 2.5 ft cord. Type-B plug | Fellow listing |
 | App | EKG Updater (firmware updates only, no remote control) | Fellow listing |
 | Amazon price | About $179.95 | Amazon (verified 2026-05-29) |
 | Owner reviews | 4.3 stars across 563 ratings (Amazon Pro listing) | Amazon (verified 2026-05-29) |
@@ -103,7 +103,7 @@ One thing to settle up front: the kettle sold today as the Fellow Stagg EKG is t
 - **The product line and the app cause confusion.** The lineup has churned through the discontinued standard EKG, this Pro, a Pro Studio Edition, and the unrelated Corvo and stovetop Stagg. Fellow's own note compounds it: the EKG Updater app is firmware-only and, in Fellow's words, does not currently support remote control of the kettle or its settings. Anyone expecting phone control will be let down.
 - **The flat lid can geyser if overfilled.** The Lowkey review reports that overfilling can push water out the vent holes, attributing it to the flat lid leaving roiling water nowhere to go. Staying under the fill line avoids it, but it is a quirk worth knowing before the first boil.
 - **The handle can run warm.** Lowkey notes the handle attaches through a metal ring next to the metal body, so a slipped finger can get uncomfortably hot. Not a defect, but a handling note on a kettle you lift mid-pour.
-- **Capacity is small and speed is not the point.** At 0.9L it is about three mugs, which is tight for serving a group; Fellow steers larger-batch buyers to its Clyde. And an owner observes it does not boil as fast as their Cuisinart, trading raw speed for design and precision.
+- **Capacity is small and speed is not the point.** At 0.9L it is about three mugs, which is tight for serving a group. Fellow steers larger-batch buyers to its Clyde. And an owner observes it does not boil as fast as their Cuisinart, trading raw speed for design and precision.
 
 ## How It Compares
 
@@ -111,6 +111,6 @@ The Stagg EKG Pro is the precision-and-design pick among home gooseneck kettles 
 
 **Pro vs the discontinued original EKG.** The original standard EKG had a monochrome screen and no scheduling or app, and it is no longer sold. The Pro adds a full-color screen, scheduling, Guide Mode, altitude adjustment, and WiFi firmware updates while keeping the same gooseneck-and-hold core. A note on third-party coverage: James Hoffmann has reviewed the original Stagg EKG generation, which predates the Pro, so treat that coverage as about the original kettle's pour control and design rather than the Pro's app and scheduling features.
 
-**Pro vs the Pro Studio Edition.** Fellow also sells a Pro Studio Edition with a reflective glass base and metal accents at a higher tier. It is the same precision kettle in a more premium finish; the standard Pro reviewed here is the lower-priced of the two model options on Fellow's page.
+**Pro vs the Pro Studio Edition.** Fellow also sells a Pro Studio Edition with a reflective glass base and metal accents at a higher tier. It is the same precision kettle in a more premium finish. The standard Pro reviewed here is the lower-priced of the two model options on Fellow's page.
 
-**Pro vs a higher-capacity kettle.** For multi-cup or batch brewing, 0.9L is the constraint. Fellow points larger-volume buyers to its XL Clyde, and at least one reviewer of a competing kettle explicitly wanted something bigger than Fellow's 900 mL. If capacity outranks pour precision for you, a 1.5L-plus kettle is the better fit; if the daily ritual brew is the use case, the small capacity is rarely the limiting factor.
+**Pro vs a higher-capacity kettle.** For multi-cup or batch brewing, 0.9L is the constraint. Fellow points larger-volume buyers to its XL Clyde, and at least one reviewer of a competing kettle explicitly wanted something bigger than Fellow's 900 mL. If capacity outranks pour precision for you, a 1.5L-plus kettle is the better fit. If the daily ritual brew is the use case, the small capacity is rarely the limiting factor.
