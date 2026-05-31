@@ -15,7 +15,12 @@
     "./BuyersGuideCard.astro": "./src/components/BuyersGuideCard.astro",
     "./ProductCard.astro": "./src/components/ProductCard.astro",
     "./ReviewArticle.astro": "./src/components/ReviewArticle.astro",
-    "./BottomLine.astro": "./src/components/BottomLine.astro"
+    "./BottomLine.astro": "./src/components/BottomLine.astro",
+    "./GuideHeader.astro": "./src/components/GuideHeader.astro",
+    "./QuickPickGrid.astro": "./src/components/QuickPickGrid.astro",
+    "./DeepPickCard.astro": "./src/components/DeepPickCard.astro",
+    "./FaqList.astro": "./src/components/FaqList.astro",
+    "./GuideArticle.astro": "./src/components/GuideArticle.astro"
   },
   "dependencies": {
     "@affkit/shared-styles": "workspace:*",

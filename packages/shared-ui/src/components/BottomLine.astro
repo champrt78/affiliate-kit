@@ -2,31 +2,66 @@
 /* Single source of truth for the Bottom Line render block. Used by:
    - packages/shared-ui/src/components/ReviewArticle.astro (review pages)
    - sites/mywildlifecam/src/pages/buyers-guides/[...slug].astro
-   - sites/detailerpicks/src/pages/buyers-guides/[...slug].astro
+   - sites/detailerpicks/src/components/GuideArticle.astro (guide pages)
 
-   Locked 2026-05-23 (commit 20dad94): the verdict is split on '. ' into a
-   two-line pivot (Buy / Skip). Primary line = forest semibold (the strong
-   recommendation). Counter line = muted ink, regular weight (the caveat).
+   TWO LAYOUTS, one component (component-library rebuild, 2026-05-31):
 
-   Bug that prompted this extraction (2026-05-24): the render block lived
-   ONLY in ReviewArticle.astro. The two guide page templates had the
-   frontmatter schema for bottomLine but NEVER rendered it — all 6 guide
-   Bottom Lines were invisible to users. Extracting to a shared component
-   means "one source, three callers" — drift becomes impossible. */
+   1. BUY-CARD layout (mockup docs/playgrounds/library/04-bottomline.html) — the
+      new design. A scannable Buy/Skip verdict on the LEFT and a self-contained
+      product buy-card on the RIGHT (image + price + See-on-Amazon button).
+      Activated when the additive `buyIf` prop (with .buy[] / .skip[]) is passed.
+
+   2. VERDICT layout (the original) — the verdict string split on '. ' into a
+      Buy / Skip pivot. Kept UNCHANGED so every existing caller (all the review
+      pages across 5 sites via ReviewArticle) renders exactly as before. This is
+      the fallback whenever `buyIf` is absent.
+
+   The buy-card inputs (buyImage / buyPrice / buyHref / etc.) are all OPTIONAL —
+   passing none keeps the original verdict layout. ReviewArticle does not pass
+   them, so reviews are untouched.
+
+   The DRAFT/noindex gate is position-independent: an empty verdict still gates
+   the whole block to nothing (caller computes isDraft from verdict).
+
+   Original lock 2026-05-23 (commit 20dad94); buy-card layout added 2026-05-31. */
 interface BottomLineData {
   verdict: string;
   supporting?: string | string[];
 }
 
+interface BuyIf {
+  buy: string[];
+  skip: string[];
+}
+
 interface Props {
   bottomLine: BottomLineData | undefined;
   isDraft: boolean;
+  /* Buy/Skip split — when present, renders the 04 buy-card layout. */
+  buyIf?: BuyIf;
+  /* Optional one-line caveat under the verdict (the "Heads up" line). */
+  headsUp?: string;
+  /* Buy-card (right rail) inputs — typically products[0]. */
+  buyImage?: string;
+  buyImageAlt?: string;
+  buyPrice?: string;
+  buyHref?: string;
+  buyLabel?: string;
 }
 
-const { bottomLine, isDraft } = Astro.props;
+const {
+  bottomLine,
+  isDraft,
+  buyIf,
+  headsUp,
+  buyImage,
+  buyImageAlt = "",
+  buyPrice,
+  buyHref,
+  buyLabel = "See it on Amazon",
+} = Astro.props;
 
-// Split verdict on '. ' (period + whitespace) into pivot sentences.
-// First sentence = primary (the "Buy" recommendation). Subsequent = counter.
+// VERDICT layout: split verdict on '. ' into pivot sentences.
 const verdictSentences = bottomLine?.verdict
   ? bottomLine.verdict.split(/\.\s+/).filter(Boolean).map((s, i, arr) =>
       i < arr.length - 1 || /\.$/.test(s) ? s + (s.endsWith('.') ? '' : '.') : s
@@ -34,8 +69,63 @@ const verdictSentences = bottomLine?.verdict
   : [];
 
 const supportingIsArray = Array.isArray(bottomLine?.supporting);
+
+// Use the buy-card layout only when there is a Buy/Skip split to show.
+const useBuyCard = !!(buyIf && buyIf.buy?.length && buyIf.skip?.length);
+const showCard = !!(buyHref || buyImage || buyPrice);
 ---
-{bottomLine && !isDraft && (
+{bottomLine && !isDraft && useBuyCard && (
+  <section class="bl" aria-label="Bottom Line">
+    <div class="bl__inner">
+      <div class="bl__main">
+        <p class="bl__eyebrow">The Bottom Line</p>
+        <div class="bl__row bl__row--buy">
+          <span class="bl__icon" aria-hidden="true">✓</span>
+          <div class="bl__statement">
+            <span class="bl__lead">Buy it if</span>
+            {buyIf!.buy.length === 1 ? (
+              <p class="bl__line">{buyIf!.buy[0]}</p>
+            ) : (
+              <ul class="bl__pts">{buyIf!.buy.map((b) => <li>{b}</li>)}</ul>
+            )}
+          </div>
+        </div>
+        <div class="bl__row bl__row--skip">
+          <span class="bl__icon" aria-hidden="true">✕</span>
+          <div class="bl__statement">
+            <span class="bl__lead">Skip it if</span>
+            {buyIf!.skip.length === 1 ? (
+              <p class="bl__line">{buyIf!.skip[0]}</p>
+            ) : (
+              <ul class="bl__pts">{buyIf!.skip.map((s) => <li>{s}</li>)}</ul>
+            )}
+          </div>
+        </div>
+        {headsUp && (
+          <p class="bl__caveat"><b>Heads up:</b> {headsUp}</p>
+        )}
+      </div>
+      {showCard && (
+        <div class="bl__card">
+          <div class="bl__img">
+            {buyImage
+              ? <img src={buyImage} alt={buyImageAlt} width="500" height="500" loading="eager" decoding="async" />
+              : <span class="bl__img__ph">product image</span>}
+          </div>
+          {buyPrice && <div class="bl__price">{buyPrice}</div>}
+          {buyHref && (
+            <a class="bl__buy" href={buyHref} rel="nofollow sponsored noopener" target="_blank">
+              <span>{buyLabel}</span>
+              <span class="bl__arr" aria-hidden="true">→</span>
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+  </section>
+)}
+
+{bottomLine && !isDraft && !useBuyCard && (
   <section class="bottom-line" aria-label="Bottom Line">
     <span class="bottom-line__label">Bottom Line</span>
     {verdictSentences.map((sentence, i) => (
@@ -54,6 +144,201 @@ const supportingIsArray = Array.isArray(bottomLine?.supporting);
 )}
 
 <style>
+  /* ════════════════════════════════════════════════════════════════
+     BUY-CARD LAYOUT (mockup 04). Full-bleed band; the section painting
+     happens here so the verdict reads as a distinct top-of-page band.
+     ════════════════════════════════════════════════════════════════ */
+  .bl {
+    background: var(--color-paper-muted);
+    color: var(--color-paper-ink);
+    border-top: 3px solid var(--color-brass);
+    padding: var(--pad-section, 2rem) var(--space-10, 2.5rem);
+  }
+  .bl__inner {
+    max-width: 1104px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 248px;
+    gap: var(--space-16, 4rem);
+    align-items: stretch;
+  }
+  .bl__main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .bl__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    font-family: var(--font-sans);
+    font-size: var(--text-xs, 0.75rem);
+    font-weight: var(--weight-bold, 700);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-accent, var(--color-brass));
+    margin: 0 0 var(--space-5, 1.25rem);
+  }
+  .bl__eyebrow::before {
+    content: "";
+    width: 26px;
+    height: 2px;
+    background: var(--color-accent, var(--color-brass));
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  .bl__row {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    margin-bottom: var(--space-4, 1rem);
+  }
+  .bl__row:last-of-type { margin-bottom: 0; }
+  .bl__row--buy {
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--space-4, 1rem);
+  }
+  .bl__icon {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: var(--radius-full, 999px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 1;
+    font-weight: var(--weight-bold, 700);
+    margin-top: 4px;
+  }
+  .bl__row--buy .bl__icon {
+    color: var(--color-accent-fg, #fff);
+    background: var(--color-accent, var(--color-brass));
+  }
+  .bl__row--skip .bl__icon {
+    color: var(--color-muted);
+    background: transparent;
+    border: 1.5px solid var(--color-border);
+  }
+  .bl__statement {
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--color-paper-ink);
+  }
+  .bl__lead {
+    font-family: var(--font-serif);
+    font-weight: var(--weight-bold, 700);
+    font-size: 23px;
+    letter-spacing: -0.01em;
+    display: inline-block;
+    margin-right: 8px;
+  }
+  .bl__row--buy .bl__lead { color: var(--color-accent, var(--color-brass)); }
+  .bl__row--skip .bl__lead { color: var(--color-muted); }
+  .bl__line { margin: 4px 0 0; }
+  .bl__pts {
+    margin: 6px 0 0;
+    padding-left: 1.1rem;
+  }
+  .bl__pts li { margin-bottom: 6px; }
+  .bl__pts li:last-child { margin-bottom: 0; }
+  .bl__caveat {
+    margin: var(--space-5, 1.25rem) 0 0;
+    padding-top: 15px;
+    border-top: 1px solid var(--color-border);
+    font-family: var(--font-sans);
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--color-muted);
+  }
+  .bl__caveat b { color: var(--color-paper-ink); font-weight: var(--weight-bold, 700); }
+
+  /* right rail: self-contained buy card */
+  .bl__card {
+    background: var(--color-paper);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card, 14px);
+    padding: 16px;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+  }
+  .bl__img {
+    width: 100%;
+    height: 158px;
+    background: var(--media-bg, #fff);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg, 10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .bl__img img {
+    max-width: 84%;
+    max-height: 84%;
+    min-width: 0;
+    min-height: 0;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+  .bl__img__ph {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: var(--color-muted-soft, #9aa0a6);
+    text-align: center;
+  }
+  .bl__price {
+    font-family: var(--font-serif);
+    font-size: 26px;
+    font-weight: var(--weight-bold, 700);
+    line-height: 1;
+    color: var(--color-paper-ink);
+    text-align: center;
+    letter-spacing: -0.01em;
+  }
+  .bl__buy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    background: var(--color-accent, var(--color-brass));
+    color: var(--color-accent-fg, #fff);
+    font-family: var(--font-sans);
+    font-weight: var(--weight-bold, 700);
+    font-size: 14px;
+    letter-spacing: 0.01em;
+    padding: 13px 20px;
+    border-radius: var(--radius-button, 8px);
+    text-decoration: none;
+    box-shadow: var(--shadow-button);
+    transition: filter var(--duration-fast) var(--ease-out),
+                transform var(--duration-fast) var(--ease-out),
+                box-shadow var(--duration-base) var(--ease-out);
+  }
+  .bl__buy:hover {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-button-hover);
+    color: var(--color-accent-fg, #fff);
+  }
+  .bl__arr { transition: transform var(--duration-fast) var(--ease-out); }
+  .bl__buy:hover .bl__arr { transform: translateX(3px); }
+
+  @media (max-width: 680px) {
+    .bl__inner { grid-template-columns: 1fr; gap: var(--space-6, 1.5rem); }
+    .bl__card { flex-direction: row; align-items: center; flex-wrap: wrap; }
+    .bl__img { height: 120px; width: 130px; }
+    .bl__price { margin-left: auto; }
+    .bl__buy { flex: 1 1 100%; }
+  }
+
+  /* ════════════════════════════════════════════════════════════════
+     ORIGINAL VERDICT LAYOUT — untouched (review pages depend on it).
+     ════════════════════════════════════════════════════════════════ */
   .bottom-line {
     background: var(--color-surface-alt, #FAF7EF);
     border-left: 4px solid var(--color-brass, #A07C3A);
@@ -81,12 +366,10 @@ const supportingIsArray = Array.isArray(bottomLine?.supporting);
   .bottom-line__verdict + .bottom-line__verdict {
     margin-top: var(--space-3, 0.75rem);
   }
-  /* Primary: the strong recommendation ("Buy it if you..."). Forest semibold. */
   .bottom-line__verdict--primary {
     color: var(--color-forest, var(--color-fg, #1F3D2F));
     font-weight: var(--weight-semibold, 600);
   }
-  /* Counter: the caveat ("Skip it if you..."). Muted ink, regular weight. */
   .bottom-line__verdict--counter {
     color: var(--color-paper-ink, var(--color-fg, #2A2A2A));
     font-weight: var(--weight-regular, 400);

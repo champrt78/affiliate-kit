@@ -1,0 +1,208 @@
+---
+/* <QuickPickGrid picks={...} /> — tier-1 "at a glance" pick grid.
+   Mockup: docs/playgrounds/library/05-pickcard-glance.html.
+
+   3-up grid of compact cards: capped white-bg product image (contain) · price
+   badge · award BANNER across the card top (award-compare lock: banner, not pill)
+   · who-it's-for persona · product name · one-line hook · obvious filled BUY
+   button · demoted "Read the full review" link.
+
+   Award is OPTIONAL per card — when a pick has no award, the banner is omitted
+   (we do not invent labels). Token-mapped so it auto-skins per site. */
+interface Pick {
+  name: string;
+  award?: string;
+  persona?: string;
+  hook?: string;
+  price?: string;
+  image?: string;
+  buyHref: string;
+  reviewHref?: string;
+}
+
+interface Props {
+  picks: Pick[];
+}
+
+const { picks } = Astro.props;
+---
+<div class="glance__grid">
+  {picks.map((p) => (
+    <article class="qcard">
+      <a class="qcard__img" href={p.buyHref} rel="nofollow sponsored noopener" target="_blank" aria-label={`See ${p.name} on Amazon`}>
+        {p.image
+          ? <img src={p.image} alt={p.name} width="500" height="500" loading="lazy" decoding="async" />
+          : <span class="qcard__img__ph">product image</span>}
+        {p.price && <div class="qcard__img__price">{p.price}</div>}
+      </a>
+      <div class="qcard__body">
+        {p.award && <div class="qcard__award">{p.award}</div>}
+        {p.persona && <div class="qcard__persona">{p.persona}</div>}
+        <a class="qcard__product" href={p.buyHref} rel="nofollow sponsored noopener" target="_blank">{p.name}</a>
+        {p.hook && <p class="qcard__hook">{p.hook}</p>}
+        <a class="qcard__cta" href={p.buyHref} rel="nofollow sponsored noopener" target="_blank">
+          See it on Amazon <span class="qcard__cta__arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        {p.reviewHref && (
+          <a class="qcard__review" href={p.reviewHref}>Read the full review &rarr;</a>
+        )}
+      </div>
+    </article>
+  ))}
+</div>
+
+<style>
+  .glance__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .qcard {
+    background: var(--color-paper);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card, 14px);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: border-color var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
+  }
+  .qcard a { text-decoration: none; }
+  .qcard:hover { border-color: var(--color-brass-soft); transform: translateY(-2px); }
+
+  /* Award banner pinned across the card TOP (above image) */
+  .qcard__award {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 3;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-accent, var(--color-brass));
+    color: var(--color-accent-fg, #fff);
+    font-family: var(--font-sans);
+    font-size: 11.5px;
+    font-weight: var(--weight-bold, 700);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+
+  .qcard__img {
+    border-bottom: 1px solid var(--color-border);
+    border-radius: var(--radius-lg, 10px);
+    position: relative;
+    margin-top: 32px; /* clear the award banner */
+    display: grid;
+    place-items: center;
+    height: 170px;
+    background: var(--media-bg, #fff);
+    padding: 14px;
+    cursor: pointer;
+  }
+  .qcard__img img {
+    max-width: 100%;
+    max-height: 100%;
+    min-width: 0;
+    min-height: 0;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+  .qcard:hover .qcard__img img { transform: scale(1.03); }
+  .qcard__img__ph {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: var(--weight-semibold, 600);
+    color: var(--color-muted-soft, #9aa0a6);
+    text-align: center;
+  }
+  .qcard__img__price {
+    position: absolute;
+    top: 10px; right: 10px;
+    background: var(--color-paper-ink);
+    color: var(--color-paper);
+    font-family: var(--font-sans);
+    font-size: 10.5px;
+    font-weight: var(--weight-semibold, 600);
+    padding: 3px 9px;
+    border-radius: var(--radius-full, 999px);
+    letter-spacing: 0.04em;
+  }
+
+  .qcard__body { padding: 16px 20px 18px; flex: 1; display: flex; flex-direction: column; }
+  .qcard__persona {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    line-height: 1.35;
+    color: var(--color-muted);
+    margin-bottom: 6px;
+    font-weight: var(--weight-semibold, 600);
+    text-align: center;
+  }
+  .qcard__product {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    line-height: 1.25;
+    color: var(--color-forest);
+    text-align: center;
+    margin: 0 -20px 14px;
+    padding: 0 20px 12px;
+    font-weight: var(--weight-medium, 500);
+    letter-spacing: -0.005em;
+    border-bottom: 1.5px solid var(--color-brass-soft);
+    transition: color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out);
+  }
+  .qcard:hover .qcard__product { color: var(--color-accent, var(--color-brass)); border-bottom-color: var(--color-accent, var(--color-brass)); }
+  .qcard__hook {
+    font-family: var(--font-sans);
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--color-paper-ink);
+    margin: 0 auto 16px;
+    flex: 1;
+    max-width: 38ch;
+    text-align: center;
+    opacity: 0.85;
+  }
+  .qcard__cta {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--color-accent, var(--color-brass));
+    color: var(--color-accent-fg, #fff);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: var(--weight-bold, 700);
+    letter-spacing: 0.01em;
+    padding: 13px 20px;
+    border-radius: var(--radius-button, 8px);
+    box-shadow: var(--shadow-button);
+    transition: filter var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+  }
+  .qcard__cta:hover { filter: brightness(1.08); transform: translateY(-1px); color: var(--color-accent-fg, #fff); }
+  .qcard__cta__arrow { transition: transform var(--duration-base) var(--ease-out); }
+  .qcard:hover .qcard__cta__arrow { transform: translateX(3px); }
+  .qcard__review {
+    display: block;
+    text-align: center;
+    margin-top: 9px;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: var(--weight-semibold, 600);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--color-muted);
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+  .qcard:hover .qcard__review { color: var(--color-accent, var(--color-brass)); }
+
+  @media (max-width: 980px) { .glance__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .glance__grid { grid-template-columns: 1fr; } }
+</style>

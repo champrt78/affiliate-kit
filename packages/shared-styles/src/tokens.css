@@ -155,7 +155,8 @@
      One source of truth so every shared component is visually cohesive across
      all 5 skins. Locked with Ray after the 12-component library review.
      Map note: the design mockups used flat tokens (--accent, --paper, --serif);
-     real components consume the --color-*/--font-*/--space-* tokens above + these.
+     real components consume the --color- / --font- / --space- tokens above plus
+     these.
      --------------------------------------------------------------------------- */
   --radius-card:    14px;   /* all cards: buy card, deep card, listing, at-a-glance */
   --radius-button:  8px;    /* all buttons / CTAs */

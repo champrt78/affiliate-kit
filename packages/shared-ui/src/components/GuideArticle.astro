@@ -1,0 +1,427 @@
+---
+/**
+ * <GuideArticle entry={entry} ... />
+ *
+ * Shared component for buying-guide detail pages — the DTP pilot of the
+ * component-library rebuild (2026-05-31). Assembles the full guide page from
+ * the shared, token-mapped library components so the rendered page matches the
+ * frozen mockups in docs/playgrounds/library/.
+ *
+ * Section order (matches the current DTP page + the BottomLine "verdict sits
+ * under the title block" lock):
+ *   hero band → GuideHeader (12) → BottomLine buy-card (04) → "The Once-Over"
+ *   quick-pick grid (05) → "The full detail" deep cards (06 + award banner) →
+ *   editorial <Content/> body (markdown: spec table, doctrine, how-we-picked) →
+ *   FAQ (09) → footer CTA (10).
+ *
+ * The site page (sites/<slug>/src/pages/buyers-guides/[...slug].astro) wraps
+ * this in its own <MainLayout> (per-site header/footer/palette + bgTheme +
+ * robotsContent), mirroring how ReviewArticle is used. isDraft is computed here
+ * and surfaced via a getter so the wrapper can flip robots to noindex.
+ *
+ * TWO CONTENT FORKS (Ray hasn't locked either — support both):
+ *  - Bottom Line: if frontmatter `buyIf{buy[],skip[]}` exists → buy-card layout;
+ *    else fall back to the verdict split (BottomLine handles the branch).
+ *  - Award: if a product has `award` → use it; else derive (1st = "Best
+ *    Overall", lowest priceFrom = "Best Value"). Rendered as the top BANNER.
+ *    Picks with no derivable award get no banner (we don't invent labels).
+ */
+import type { CollectionEntry } from "astro:content";
+import CTA from "./CTA.astro";
+import BottomLine from "./BottomLine.astro";
+import GuideHeader from "./GuideHeader.astro";
+import QuickPickGrid from "./QuickPickGrid.astro";
+import DeepPickCard from "./DeepPickCard.astro";
+import FaqList from "./FaqList.astro";
+import { cloakedLink } from "@affkit/shared-utils";
+
+interface Props {
+  entry: CollectionEntry<"buyers-guides">;
+  siteName?: string;
+  kicker?: string;
+  crumbLabel?: string;
+  crumbHref?: string;
+  editorialTeamName?: string;
+  credentialLine?: string;
+  bestForFact?: string;
+  bottomCtaLabel?: string;
+}
+
+const {
+  entry,
+  siteName = "DetailerPicks",
+  kicker,
+  crumbLabel = "All buying guides",
+  crumbHref = "/buyers-guides/",
+  editorialTeamName = "The DetailerPicks editorial team",
+  credentialLine = "Spec analysis · verified against current Amazon listings",
+  bestForFact = "Home detailing",
+  bottomCtaLabel = "See the top pick on Amazon",
+} = Astro.props;
+
+const { data } = entry;
+const { Content } = await entry.render();
+
+const BOTTOMLINE_PLACEHOLDER = "_The Bottom Line is being written._";
+const isDraft = !data.bottomLine
+  || !data.bottomLine.verdict
+  || data.bottomLine.verdict.trim() === ""
+  || data.bottomLine.verdict.includes(BOTTOMLINE_PLACEHOLDER);
+
+const products = data.products ?? [];
+const total = products.length;
+
+const fmtPrice = (n?: number) =>
+  (typeof n === "number" && n > 0)
+    ? `$${n.toLocaleString(undefined, { maximumFractionDigits: 2 })}`
+    : null;
+
+// Price range for the "What's inside" facts panel.
+const prices = products.map((p) => (p as any).priceFrom).filter((n): n is number => typeof n === "number" && n > 0);
+const minPrice = prices.length ? Math.min(...prices) : null;
+const maxPrice = prices.length ? Math.max(...prices) : null;
+const priceRange = (minPrice !== null && maxPrice !== null)
+  ? (minPrice === maxPrice ? `$${minPrice}` : `$${Math.round(minPrice)} &ndash; $${Math.round(maxPrice)}`)
+  : null;
+
+// Award derivation: explicit `award` wins; else #1 = "Best Overall", the lowest
+// priceFrom = "Best Value". Other picks get no award (no banner).
+const cheapestIdx = prices.length
+  ? products.reduce((best, p, i) => {
+      const v = (p as any).priceFrom;
+      if (typeof v !== "number" || v <= 0) return best;
+      const bestV = (products[best] as any).priceFrom;
+      return (typeof bestV !== "number" || v < bestV) ? i : best;
+    }, products.findIndex((p) => typeof (p as any).priceFrom === "number" && (p as any).priceFrom > 0))
+  : -1;
+
+function awardFor(p: any, i: number): string | undefined {
+  if (p.award) return p.award;
+  if (i === 0) return "Best Overall";
+  if (i === cheapestIdx) return "Best Value";
+  return undefined;
+}
+
+const buyHrefFor = (p: any) =>
+  p.cloakedSlug ? cloakedLink({ slug: p.cloakedSlug }) : p.affiliateUrl;
+
+// Bottom Line buy-card draws from the #1 product.
+const top: any = products[0] ?? {};
+const buyIf = (data as any).buyIf;
+const headsUp = typeof data.bottomLine?.supporting === "string"
+  ? undefined
+  : undefined; // no headsUp field in schema; leave to the verdict layout / supporting
+
+// Facts panel
+const facts = [
+  { k: "Picks compared", v: `${total} ${total === 1 ? "pick" : "picks"}` },
+  ...(priceRange ? [{ k: "Price range", v: priceRange }] : []),
+  { k: "Best for", v: bestForFact },
+];
+
+// Quick-pick grid data
+const quickPicks = products.map((p: any, i) => ({
+  name: p.name,
+  award: awardFor(p, i),
+  persona: p.bestFor || p.brand,
+  hook: p.hook,
+  price: fmtPrice(p.priceFrom) ?? undefined,
+  image: p.image,
+  buyHref: buyHrefFor(p),
+  reviewHref: `#pick-${i + 1}`,
+}));
+
+const formattedUpdated = data.lastUpdated instanceof Date
+  ? data.lastUpdated.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+  : String(data.lastUpdated);
+const isoUpdated = data.lastUpdated instanceof Date
+  ? data.lastUpdated.toISOString()
+  : String(data.lastUpdated);
+
+const cloakedHref = cloakedLink({ slug: entry.slug });
+const lede = data.deck || data.description;
+---
+{isDraft && (
+  <aside class="draft-banner" role="alert">
+    <strong>DRAFT</strong> — this guide's "Bottom Line" section hasn't been filled in.
+    Don't link to this page yet. Indexing is disabled until it's complete.
+  </aside>
+)}
+
+{data.images?.hero && (
+  <div class="guide-hero" style={`background-image: url('${data.images.hero}')`} role="img" aria-label={data.images.heroCaption || data.title}>
+    <div class="guide-hero__overlay"></div>
+  </div>
+)}
+
+<article class="guide">
+  {/* ── Editorial header (12) ── */}
+  <GuideHeader
+    kicker={kicker}
+    crumbLabel={crumbLabel}
+    title={data.title}
+    lede={lede}
+    facts={facts}
+    bylineName={editorialTeamName}
+    bylineRole={credentialLine}
+    updatedIso={isoUpdated}
+    updatedLabel={formattedUpdated}
+  />
+
+  {/* ── Bottom Line buy-card (04) — sits under the title block ── */}
+  <BottomLine
+    bottomLine={data.bottomLine}
+    isDraft={isDraft}
+    buyIf={buyIf}
+    headsUp={headsUp}
+    buyImage={top.image}
+    buyImageAlt={top.name}
+    buyPrice={fmtPrice(top.priceFrom) ?? undefined}
+    buyHref={buyHrefFor(top)}
+  />
+
+  {/* ── The Once-Over (05) ── */}
+  <section class="band">
+    <div class="band__inner">
+      <div class="section-head"><h2>The Once-Over</h2></div>
+      <QuickPickGrid picks={quickPicks} />
+    </div>
+  </section>
+
+  {/* ── The full detail (06 + award banner) ── */}
+  <section class="band band--muted">
+    <div class="band__inner">
+      <div class="section-head"><h2>The full detail</h2></div>
+      <div class="deep-stack">
+        {products.map((p: any, i) => (
+          <DeepPickCard
+            rank={i + 1}
+            total={total}
+            anchorId={`pick-${i + 1}`}
+            name={p.name}
+            award={awardFor(p, i)}
+            persona={p.bestFor}
+            reason={p.reason}
+            bodyHtml={p.body}
+            price={fmtPrice(p.priceFrom) ?? undefined}
+            priceUnit={p.priceUnit}
+            href={p.affiliateUrl}
+            facts={p.facts}
+            image={p.image}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ── Editorial body (markdown: spec table, doctrine, how-we-picked) ── */}
+  <section class="band">
+    <div class="band__inner">
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  {/* ── FAQ (09) — fed from frontmatter data.faq ── */}
+  {data.faq && data.faq.length > 0 && <FaqList faq={data.faq} />}
+
+  {/* ── Footer CTA (10) ── */}
+  <footer class="band guide-footer">
+    <div class="band__inner">
+      <div class="cta-wrap">
+        <CTA href={cloakedHref} rel="nofollow sponsored noopener" target="_blank">
+          {bottomCtaLabel}
+        </CTA>
+      </div>
+      <p class="updated">
+        Last updated: <time datetime={isoUpdated}>{formattedUpdated}</time>
+      </p>
+    </div>
+  </footer>
+</article>
+
+<style>
+  .draft-banner {
+    background: #fef3c7;
+    border: 2px solid #d97706;
+    color: #78350f;
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-6);
+    font-size: var(--text-sm);
+  }
+  .draft-banner strong { font-size: var(--text-base); }
+
+  /* Article hero — capped scene band, never fills the viewport */
+  .guide-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 6;
+    max-height: 320px;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--color-paper-ink);
+  }
+  .guide-hero__overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(20,24,28,0.10) 0%, rgba(20,24,28,0.45) 100%);
+  }
+  @media (max-width: 760px) {
+    .guide-hero { aspect-ratio: 3 / 2; max-height: 220px; }
+  }
+
+  /* The article is a stack of full-bleed bands; each band carries its own
+     surface + padding and constrains its inner content to the mockup measure.
+     This is what produces the full-width colored bands the mockups show. */
+  .guide { display: block; }
+  .band { padding: var(--space-12, 3rem) var(--space-8, 2rem); }
+  .band--muted { background: var(--color-paper-muted); }
+  .band__inner { max-width: 1104px; margin: 0 auto; }
+
+  /* Section header — eyebrow rule + serif heading on an ink underline */
+  .section-head {
+    margin: 0 0 var(--space-6, 1.5rem);
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--color-paper-ink);
+  }
+  .section-head h2 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--color-paper-ink);
+    margin: 0;
+    font-weight: var(--weight-medium, 500);
+  }
+
+  .deep-stack { display: block; }
+
+  /* ════ EDITORIAL BODY — ported from the bespoke DTP guide page so the
+     markdown spec table, chunked-bullet panels, and h2 dividers keep their
+     structured treatment. Token-mapped. ════ */
+  .prose {
+    line-height: 1.7;
+    font-size: 16px;
+    color: var(--color-paper-ink);
+  }
+  .prose :global(h2) {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: var(--space-10) 0 var(--space-5);
+    font-weight: var(--weight-medium, 500);
+    color: var(--color-paper-ink);
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-paper-ink);
+  }
+  .prose :global(h2:first-child) { margin-top: 0; }
+  .prose :global(h3) {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    margin: var(--space-8) 0 var(--space-3);
+    font-weight: var(--weight-medium, 500);
+    color: var(--color-paper-ink);
+  }
+  .prose :global(p) {
+    margin: 0 0 18px;
+    max-width: 58ch;
+  }
+  /* Tables — structured spec-sheet treatment */
+  .prose :global(table) {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: var(--space-6) 0 var(--space-8);
+    font-size: 14.5px;
+    background: var(--color-paper);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-button, 8px);
+    overflow-y: hidden;
+  }
+  .prose :global(th),
+  .prose :global(td) {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .prose :global(tr:last-child td) { border-bottom: 0; }
+  .prose :global(thead th),
+  .prose :global(th) {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: var(--weight-bold, 700);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-paper);
+    background: var(--color-paper-ink);
+    border-bottom: 0;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  .prose :global(tbody td:first-child),
+  .prose :global(tr td:first-child) {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    font-weight: var(--weight-semibold, 600);
+    color: var(--color-paper-ink);
+    letter-spacing: -0.005em;
+    line-height: 1.3;
+    min-width: 12rem;
+  }
+  .prose :global(tbody tr:nth-child(even) td),
+  .prose :global(tr:nth-child(even) td) {
+    background: var(--color-paper-muted);
+  }
+  .prose :global(tbody tr:hover td),
+  .prose :global(tr:hover td) {
+    background: var(--color-cream);
+  }
+  /* Bullet lists — chunked panel style, full width */
+  .prose :global(ul) {
+    list-style: none;
+    padding-left: 0;
+    margin: var(--space-5) 0;
+  }
+  .prose :global(ul > li) {
+    position: relative;
+    padding: 16px 22px 16px 24px;
+    margin: 0 0 14px;
+    background: var(--color-paper-muted);
+    border-left: 3px solid var(--color-forest);
+    border-radius: 0 var(--radius-md, 6px) var(--radius-md, 6px) 0;
+  }
+  .prose :global(ul > li > strong:first-child) {
+    display: block;
+    font-family: var(--font-serif);
+    font-weight: var(--weight-medium, 500);
+    font-size: 17px;
+    line-height: 1.35;
+    color: var(--color-paper-ink);
+    margin-bottom: 6px;
+  }
+  .prose :global(a) {
+    color: var(--color-forest);
+    font-weight: var(--weight-semibold, 600);
+    text-decoration: underline;
+    text-decoration-color: var(--color-brass-soft);
+    text-underline-offset: 3px;
+  }
+  .prose :global(a:hover) { color: var(--color-accent, var(--color-brass)); }
+
+  /* Footer */
+  .guide-footer { border-top: 1px solid var(--color-border); }
+  .cta-wrap { margin: 0 0 var(--space-6); }
+  .updated { color: var(--color-muted); font-size: 13px; margin: 0; }
+
+  @media (max-width: 760px) {
+    .band { padding: var(--space-10, 2.5rem) var(--space-5, 1.25rem); }
+    .section-head h2 { font-size: 1.35rem; }
+  }
+</style>

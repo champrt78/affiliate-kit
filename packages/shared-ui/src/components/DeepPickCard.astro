@@ -1,0 +1,352 @@
+---
+/* <DeepPickCard ... /> — tier-2 "full detail" pick block.
+   Mockup: docs/playgrounds/library/06-deepcard.html, with the award rendered as
+   the full-width top BANNER per docs/playgrounds/library/award-compare.html
+   (RIGHT side = the locked treatment; the pill in 06 is superseded).
+
+   Horizontal three-track inner layout: image column (left, contain-on-white,
+   height-capped) · body (middle: persona, product name w/ italic reason lead,
+   prose, optional key points) · price/facts rail (right). When an award exists,
+   the card becomes a flex column with the banner above the inner grid. When no
+   award, the inner grid renders directly (no banner). Token-mapped to auto-skin. */
+interface Props {
+  rank: number;
+  total: number;
+  name: string;
+  award?: string;
+  persona?: string;
+  reason?: string;
+  /** HTML prose for the body (per-pick paragraphs). */
+  bodyHtml?: string;
+  price?: string;
+  priceUnit?: string;
+  href: string;
+  facts?: Record<string, string>;
+  image?: string;
+  anchorId?: string;
+}
+
+const {
+  rank,
+  total,
+  name,
+  award,
+  persona,
+  reason,
+  bodyHtml,
+  price,
+  priceUnit,
+  href,
+  facts,
+  image,
+  anchorId,
+} = Astro.props;
+
+const factEntries = facts ? Object.entries(facts) : [];
+---
+<article class:list={["deep-card", award && "deep-card--banner"]} id={anchorId}>
+  {award && <div class="deep-card__banner">{award}</div>}
+  <div class="deep-card__inner">
+    <div class="deep-card__img-col">
+      <div class="deep-card__img">
+        {image
+          ? <img src={image} alt={name} width="500" height="500" loading="lazy" decoding="async" />
+          : <div class="deep-card__ph">product image</div>}
+      </div>
+      <div class="deep-card__rank"><span>{rank}</span>of {total} picks</div>
+    </div>
+
+    <div class="deep-card__body">
+      {persona && <div class="deep-card__persona">{persona}</div>}
+      <h3 class="deep-card__heading">
+        {reason && <span class="reason">{reason}</span>}
+        <a class="product-link" href={href} rel="nofollow sponsored noopener" target="_blank">{name} <span aria-hidden="true">&rarr;</span></a>
+      </h3>
+      {bodyHtml && <div class="deep-card__prose" set:html={bodyHtml}></div>}
+    </div>
+
+    <aside class="deep-card__rail">
+      {price && (
+        <>
+          <div class="deep-card__rail__price-label">Price from</div>
+          <div class="deep-card__rail__price">{price}{priceUnit && <small>/{priceUnit}</small>}</div>
+        </>
+      )}
+      <a class="deep-card__rail__cta" href={href} rel="nofollow sponsored noopener" target="_blank">
+        Check current price <span aria-hidden="true">&rarr;</span>
+      </a>
+      <div class="deep-card__rail__cta-sub">Affiliate link · Amazon</div>
+      {factEntries.length > 0 && (
+        <dl class="deep-card__rail__facts">
+          {factEntries.map(([k, v]) => (
+            <>
+              <dt>{k}</dt>
+              <dd>{v}</dd>
+            </>
+          ))}
+        </dl>
+      )}
+    </aside>
+  </div>
+</article>
+
+<style>
+  .deep-card {
+    background: var(--color-paper);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card, 14px);
+    box-shadow: var(--shadow-card);
+    scroll-margin-top: 24px;
+  }
+  .deep-card + :global(.deep-card) { margin-top: 24px; }
+
+  .deep-card__inner {
+    display: grid;
+    grid-template-columns: 240px 1fr 230px;
+    gap: 30px;
+    align-items: start;
+    padding: 24px;
+  }
+
+  /* Banner variant — flex column, banner across whole card top */
+  .deep-card--banner { display: flex; flex-direction: column; overflow: hidden; }
+  .deep-card__banner {
+    width: 100%;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-accent, var(--color-brass));
+    color: var(--color-accent-fg, #fff);
+    font-family: var(--font-sans);
+    font-size: 11.5px;
+    font-weight: var(--weight-bold, 700);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+
+  /* image column */
+  .deep-card__img-col { display: flex; flex-direction: column; align-items: center; }
+  .deep-card__img {
+    width: 100%;
+    height: 200px;
+    background: var(--media-bg, #fff);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg, 10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+    overflow: hidden;
+  }
+  .deep-card__img img {
+    max-width: 100%;
+    max-height: 100%;
+    min-width: 0;
+    min-height: 0;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+  .deep-card__ph {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-muted-soft, #9aa0a6);
+    font-family: var(--font-sans);
+    font-size: 12px;
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-md, 6px);
+  }
+  .deep-card__rank {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--color-border);
+    width: 100%;
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+  .deep-card__rank span {
+    color: var(--color-paper-ink);
+    font-family: var(--font-serif);
+    font-size: 22px;
+    margin-right: 6px;
+    font-weight: var(--weight-semibold, 600);
+    letter-spacing: 0;
+    text-transform: none;
+    vertical-align: -2px;
+  }
+
+  /* body */
+  .deep-card__body { min-width: 0; }
+  .deep-card__persona {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.35;
+    letter-spacing: -0.005em;
+    color: var(--color-paper-ink);
+    margin-bottom: 10px;
+    font-weight: var(--weight-bold, 700);
+  }
+  .deep-card__heading {
+    font-family: var(--font-serif);
+    font-size: 25px;
+    line-height: 1.25;
+    margin: 0 0 16px;
+    font-weight: var(--weight-medium, 500);
+    color: var(--color-paper-ink);
+    letter-spacing: -0.015em;
+    max-width: 32ch;
+  }
+  .deep-card__heading .reason {
+    display: block;
+    color: var(--color-muted);
+    font-weight: var(--weight-regular, 400);
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.3;
+    margin-bottom: 4px;
+    letter-spacing: 0;
+  }
+  .deep-card__heading .product-link {
+    color: var(--color-forest);
+    font-weight: var(--weight-medium, 500);
+    border-bottom: 2px solid var(--color-brass-soft);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out);
+  }
+  .deep-card__heading .product-link:hover {
+    color: var(--color-accent, var(--color-brass));
+    border-bottom-color: var(--color-accent, var(--color-brass));
+  }
+  .deep-card__prose :global(p) {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--color-paper-ink);
+    margin: 0 0 14px;
+    max-width: 62ch;
+    opacity: 0.9;
+    font-family: var(--font-sans);
+  }
+  .deep-card__prose :global(p:last-child) { margin-bottom: 0; }
+  .deep-card__prose :global(ul) { margin: 0.5rem 0 0.75rem; padding-left: 1.25rem; }
+  .deep-card__prose :global(li) { margin-bottom: 0.3rem; line-height: 1.55; font-size: 14px; }
+  .deep-card__prose :global(li::marker) { color: var(--color-accent, var(--color-brass)); }
+  .deep-card__prose :global(a) {
+    color: var(--color-forest);
+    font-weight: var(--weight-semibold, 600);
+    text-decoration: underline;
+    text-decoration-color: var(--color-brass-soft);
+    text-underline-offset: 3px;
+  }
+  .deep-card__prose :global(a:hover) { color: var(--color-accent, var(--color-brass)); }
+
+  /* rail */
+  .deep-card__rail {
+    background: var(--color-paper-muted);
+    border-radius: var(--radius-button, 8px);
+    padding: 20px;
+    text-align: left;
+  }
+  .deep-card__rail__price-label {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 4px;
+  }
+  .deep-card__rail__price {
+    font-family: var(--font-serif);
+    font-size: 30px;
+    color: var(--color-paper-ink);
+    font-weight: var(--weight-semibold, 600);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .deep-card__rail__price small {
+    font-size: 12px;
+    font-weight: var(--weight-medium, 500);
+    color: var(--color-muted);
+    margin-left: 4px;
+    font-family: var(--font-sans);
+    letter-spacing: 0.04em;
+    vertical-align: 0.15em;
+  }
+  .deep-card__rail__cta {
+    display: block;
+    background: var(--color-forest);
+    color: var(--color-brand-fg, var(--color-paper));
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: var(--weight-bold, 700);
+    letter-spacing: 0.01em;
+    padding: 13px 20px;
+    border-radius: var(--radius-button, 8px);
+    text-align: center;
+    margin-bottom: 10px;
+    text-decoration: none;
+    box-shadow: var(--shadow-button);
+    transition: filter var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
+  }
+  .deep-card__rail__cta:hover {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-button-hover);
+    color: var(--color-brand-fg, var(--color-paper));
+  }
+  .deep-card__rail__cta-sub {
+    font-size: 11px;
+    color: var(--color-muted);
+    text-align: center;
+    font-style: italic;
+  }
+  .deep-card__rail__facts {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-border);
+    font-size: 12px;
+  }
+  .deep-card__rail__facts dt {
+    font-family: var(--font-sans);
+    font-size: 9.5px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 2px;
+  }
+  .deep-card__rail__facts dd {
+    margin: 0 0 10px;
+    font-size: 12.5px;
+    color: var(--color-paper-ink);
+    font-weight: var(--weight-semibold, 600);
+    font-family: var(--font-sans);
+    line-height: 1.45;
+  }
+  .deep-card__rail__facts dd:last-child { margin-bottom: 0; }
+
+  @media (max-width: 980px) {
+    .deep-card__inner {
+      grid-template-columns: 200px 1fr;
+      grid-template-areas: "img body" "rail rail";
+    }
+    .deep-card__img-col { grid-area: img; }
+    .deep-card__body { grid-area: body; }
+    .deep-card__rail { grid-area: rail; }
+  }
+  @media (max-width: 640px) {
+    .deep-card__inner {
+      grid-template-columns: 1fr;
+      grid-template-areas: "img" "body" "rail";
+      padding: 20px;
+    }
+    .deep-card__img { max-width: 240px; margin: 0 auto; }
+  }
+</style>
