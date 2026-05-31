@@ -73,11 +73,11 @@ faq:
 
 ## Who This Is For
 
-If you want a first tank where the hard parts come matched in one box, the <a href="https://www.amazon.com/dp/B01MRIQW7K?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">Fluval Flex 9 Gallon</a> is built for exactly that. Fluval lists it as an all-in-one kit: a 9-gallon (34L) curved-front glass aquarium with the filtration, circulation pump, and LED lighting already integrated, so a beginner is not sourcing and balancing each piece separately. That is the whole appeal of a kit at this size, and it is the friendliest on-ramp for a first-tank-first buyer.
+If you want a first tank where the hard parts come matched in one box, the <a href="https://www.amazon.com/dp/B01MRIQW7K?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">Fluval Flex 9 Gallon</a> is built for exactly that. Fluval lists it as an **all-in-one kit**: a 9-gallon (34L) curved-front glass aquarium with the filtration, circulation pump, and LED lighting already integrated, so a beginner is not sourcing and balancing each piece separately. That is the whole appeal of a kit at this size, and it is the friendliest on-ramp for a first-tank-first buyer.
 
-It fits the betta keeper and the small planted-tank starter most cleanly. Owner reports surfaced on r/freshwateraquarium and r/bettafish describe the 9-gallon Flex as a great betta tank with enough free swimming room and space for a nice little aquascape. Fluval states the LED supports low-to-mid-light plant growth, and owner reports on r/Aquariums echo that it handles java fern, crypts, and anubias.
+It fits the **betta keeper and the small planted-tank starter** most cleanly. Owner reports surfaced on r/freshwateraquarium and r/bettafish describe the 9-gallon Flex as a great betta tank with enough free swimming room and space for a nice little aquascape. Fluval states the LED supports low-to-mid-light plant growth, and owner reports on r/Aquariums echo that it handles java fern, crypts, and anubias.
 
-It is less of a fit if you are picturing a busy community tank. Owner reports on r/freshwateraquarium suggest that if you want a school of fish like neon tetras, the 15-gallon Flex is the better call to avoid overstocking. At 9 gallons, the volume points toward a betta or light stocking, which is a fit question rather than a flaw.
+It is less of a fit if you are picturing a busy community tank. Owner reports on r/freshwateraquarium suggest that if you want a school of fish like neon tetras, the **15-gallon Flex is the better call** to avoid overstocking. At 9 gallons, the volume points toward a betta or light stocking, which is a fit question rather than a flaw.
 
 ## At a Glance
 
@@ -124,14 +124,22 @@ Fluval sells the Flex in both 9 US gallon and 15 US gallon sizes from the same p
 | Pump output | 61 US GPH / 230 LPH | 132 GPH (per Fluval) |
 | LED output | 1900 lumens | 2450 lux (per Fluval) |
 
-Owner reports on r/freshwateraquarium and r/Aquariums consistently steer buyers who want a school of fish toward the 15, and reserve the 9 for a betta or a light planted nano. The bigger pump and brighter light on the 15 follow from the larger water volume. Pick the 9 when a single betta or a small aquascape is the plan and a compact footprint matters. Pick the 15 when you want more stocking room, such as a small school, and are willing to give up the smaller footprint. Note that Fluval publishes the 9-gallon light as a lumen figure and the 15-gallon as lux, so the two LED numbers are not directly comparable, they are different units measuring different things.
+Owner reports on r/freshwateraquarium and r/Aquariums consistently steer buyers who want a school of fish toward the 15, and reserve the 9 for a betta or a light planted nano. The bigger pump and brighter light on the 15 follow from the larger water volume. **Pick the 9** when a single betta or a small aquascape is the plan and a compact footprint matters. **Pick the 15** when you want more stocking room, such as a small school, and are willing to give up the smaller footprint.
+
+Note that Fluval publishes the 9-gallon light as a lumen figure and the 15-gallon as lux, so the two LED numbers are not directly comparable, they are different units measuring different things.
 
 ## What can you keep in a Fluval Flex 9?
 
-At 9 gallons the Flex points toward a betta or a light nano stocking rather than a busy community tank, a framing owner reports on r/bettafish and r/freshwateraquarium repeat often. A single betta with the flow aimed gently is the most common setup those reports describe, since Fluval's multi-directional dual outputs let you soften the current a betta prefers. A small group of shrimp, such as cherry shrimp, is the other popular nano option, though the rear filter intake is worth pre-filtering for shrimp safety the way it is on any powered nano filter. Fluval states the LED supports low-to-mid-light plants, and owner reports echo java fern, crypts, and anubias growing well, so a planted betta or shrimp nano is well within the tank's range. For a school of active swimmers like neon tetras, those same owner reports point to the 15-gallon Flex instead to avoid overstocking.
+At 9 gallons the Flex points toward a betta or a light nano stocking rather than a busy community tank, a framing owner reports on r/bettafish and r/freshwateraquarium repeat often. The setups those reports describe most often:
+
+- **A single betta** with the flow aimed gently, the most common pick, since Fluval's multi-directional dual outputs let you soften the current a betta prefers.
+- **A small group of shrimp**, such as cherry shrimp, though the rear filter intake is worth pre-filtering for shrimp safety the way it is on any powered nano filter.
+- **A planted betta or shrimp nano**, since Fluval states the LED supports low-to-mid-light plants and owner reports echo java fern, crypts, and anubias growing well.
+
+For a school of active swimmers like neon tetras, those same owner reports point to the **15-gallon Flex instead** to avoid overstocking.
 
 ## How It Compares
 
 The Flex 9 sits in the [Tanks & Kits](/tanks-and-kits) pillar. One more natural comparison, fit-based:
 
-**Flex 9 vs a plain glass tank plus separate gear.** A bare tank with a separately bought filter, heater, and light can be cheaper and more customizable, but it asks the beginner to match components correctly. The Flex 9 trades that flexibility for an integrated, hidden-equipment kit where the filtration, pump, and LED are chosen for the tank. The trade-off is convenience and looks at the cost of part-by-part control, and you still add a heater either way.
+**Flex 9 vs a plain glass tank plus separate gear.** A bare tank with a separately bought filter, heater, and light can be **cheaper and more customizable**, but it asks the beginner to match components correctly. The Flex 9 trades that flexibility for an integrated, hidden-equipment kit where the filtration, pump, and LED are chosen for the tank. The trade-off is **convenience and looks at the cost of part-by-part control**, and you still add a heater either way.

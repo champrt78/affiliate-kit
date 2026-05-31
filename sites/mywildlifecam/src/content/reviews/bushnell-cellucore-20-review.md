@@ -69,7 +69,7 @@ faq:
 
 ## Who This Is For
 
-If you have confirmed strong AT&T coverage at the exact spot you plan to mount a camera, and you want an affordable way into cellular trail cameras, the Bushnell CelluCORE 20 reviewed here is calibrated for you. This is the AT&T-locked model 119904A, the budget single-carrier unit, not the newer Dual SIM model that auto-connects across networks.
+If you have **confirmed strong AT&T coverage at the exact spot** you plan to mount a camera, and you want an affordable way into cellular trail cameras, the Bushnell CelluCORE 20 reviewed here is calibrated for you. This is the AT&T-locked model 119904A, the budget single-carrier unit, not the newer Dual SIM model that auto-connects across networks.
 
 The buyer this fits well is someone who values consistent daytime image quality and an easy app-based setup, who wants Bushnell's data plans (TrailCamPro describes them as simple, affordable, with an unlimited option), and who is willing to trade away fast back-to-back captures and on-camera setup convenience for a lower price. The buyer who should look elsewhere is anyone unsure of their local carrier, anyone in a Verizon-strong or marginal-AT&T area, and anyone for whom responsive manufacturer support is a priority.
 

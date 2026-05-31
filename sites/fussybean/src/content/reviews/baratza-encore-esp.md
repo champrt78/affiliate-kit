@@ -26,15 +26,19 @@ faq:
 
 ## Who this is for
 
-This is for a beginner who has settled on a non-pressurized portafilter machine (a modded Gaggia Classic Pro, a Breville Bambino, or similar) and needs a first grinder that can actually reach espresso fineness without jumping to a $400 unit. The original Encore was a pour-over and drip workhorse. The ESP variant is the one retuned to add finer steps for espresso.
+This is for a **beginner who has settled on a non-pressurized portafilter machine** (a modded Gaggia Classic Pro, a Breville Bambino, or similar) and needs a first grinder that can actually reach espresso fineness without jumping to a $400 unit. The original Encore was a pour-over and drip workhorse. **The ESP variant is the one retuned to add finer steps for espresso.**
 
 ## What the spec sheet says
 
-The manufacturer lists the Encore ESP with 40mm conical burrs and a step adjustment retuned so that more of the range sits in the espresso zone than on the original Encore. Baratza positions it as an entry espresso grinder rather than an all-purpose one. Listed in the box: the grinder, a portafilter holder, and a grounds bin.
+The manufacturer lists the Encore ESP with **40mm conical burrs** and a step adjustment retuned so that more of the range sits in the espresso zone than on the original Encore. Baratza positions it as an **entry espresso grinder** rather than an all-purpose one. Listed in the box:
+
+- The grinder
+- A portafilter holder
+- A grounds bin
 
 ## Baratza Encore ESP vs the original Encore
 
-The original Encore is rated for a coarser range aimed at pour-over, drip, and press. The ESP shifts the steps finer for espresso. If your brewing is mostly espresso, the ESP is the relevant one. If it is mostly pour-over, the cheaper original covers it.
+The original Encore is rated for a coarser range aimed at pour-over, drip, and press. **The ESP shifts the steps finer for espresso.** If your brewing is mostly espresso, the ESP is the relevant one. If it is mostly pour-over, the cheaper original covers it.
 
 ## How it compares
 
@@ -42,7 +46,7 @@ The original Encore is rated for a coarser range aimed at pour-over, drip, and p
 
 ## What owner reports flag
 
-Across published owner reviews on Amazon, the recurring strength is value: a known burr platform at an entry price. The most common critical note is the step adjustment feeling coarse at the very fine end compared with stepless grinders, which is consistent with how the manufacturer positions it.
+Across published owner reviews on Amazon, the **recurring strength is value**: a known burr platform at an entry price. The most common critical note is the **step adjustment feeling coarse at the very fine end** compared with stepless grinders, which is consistent with how the manufacturer positions it.
 
 ## Bottom Line
 

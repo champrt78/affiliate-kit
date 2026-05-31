@@ -19,10 +19,16 @@ products:
       In box: "None (orifices sold separately)"
       Pressure: "1,100-5,000 PSI, 1.8-5.3 GPM"
     body: |
-      <p>The <a href="https://www.amazon.com/Hydro-Foam-Cannon-Wand-Bottle/dp/B083QTGTBM?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">MTM PF22</a> (current version PF22.2 / PF22.3 depending on retailer revision) is positioned as "the new standard in the foaming industry" by Car Candy's product listing.</p>
-      <p>The head is a single-cast nickel-plated brass design, which resists the tarnishing that gradually dulls solid brass cannons over time. The fan-blade reinforcement is structural plastic around the fan area at the cannon tip. One reviewer reported bending the fan blades on a competitor cannon by cranking the adjustment too hard, which is mechanically not possible on the PF22 due to that reinforcement.</p>
-      <p>Pressure-washer compatibility runs the full premium range: 1,100-5,000 PSI and 1.8-5.3 GPM, with a 140°F maximum temperature rating. Standard 1/4" stainless steel quick-connect fitting. Two-way adjustable spray pattern with adjustable fan blades from jet to wide. Bottle is a 1-litre wide-mouth top design for easy refill.</p>
-      <p>Trade-off worth disclosing: MTM PF22 ships with no spare parts in the box. If you need a different orifice size for your specific pressure-washer GPM, that is an additional MJJC or MTM aftermarket purchase. For a cannon expected to last a decade, this is acceptable to most owners but not all. Available standalone (~$80-100 USD) or as part of the Magnum 28 Kit (~$210) with the SGS28 spray gun and SS quick-connect bundled.</p>
+      <p>The <a href="https://www.amazon.com/Hydro-Foam-Cannon-Wand-Bottle/dp/B083QTGTBM?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">MTM PF22</a> (current version PF22.2 / PF22.3 depending on retailer revision) is positioned as <strong>"the new standard in the foaming industry"</strong> by Car Candy's product listing.</p>
+      <p>The head is a <strong>single-cast nickel-plated brass</strong> design, which resists the tarnishing that gradually dulls solid brass cannons over time. The fan-blade reinforcement is structural plastic around the fan area at the cannon tip. One reviewer reported bending the fan blades on a competitor cannon by cranking the adjustment too hard, which is <strong>mechanically not possible on the PF22</strong> due to that reinforcement.</p>
+      <p>Pressure-washer compatibility runs the full premium range:</p>
+      <ul>
+        <li><strong>1,100-5,000 PSI</strong> and <strong>1.8-5.3 GPM</strong>, with a 140°F maximum temperature rating</li>
+        <li>Standard 1/4" stainless steel quick-connect fitting</li>
+        <li>Two-way adjustable spray pattern with adjustable fan blades from jet to wide</li>
+        <li>1-litre wide-mouth top bottle for easy refill</li>
+      </ul>
+      <p><strong>Trade-off worth disclosing:</strong> MTM PF22 ships with no spare parts in the box. If you need a different orifice size for your specific pressure-washer GPM, that is an additional MJJC or MTM aftermarket purchase. For a cannon expected to last a decade, this is acceptable to most owners but not all. Available standalone (~$80-100 USD) or as part of the Magnum 28 Kit (~$210) with the SGS28 spray gun and SS quick-connect bundled.</p>
   - name: "Carbon Collective HD Snow Foam Cannon"
     brand: "Carbon Collective"
     affiliateUrl: "https://www.carboncollective.com/hd-snow-foam-cannon/"
@@ -37,9 +43,14 @@ products:
       In box: "None"
       Pressure: "Standard pressure-washer ranges"
     body: |
-      <p>Carbon Collective's product page explicitly markets the weight advantage on the <a href="https://www.carboncollective.com/hd-snow-foam-cannon/" rel="sponsored noopener" target="_blank">HD Snow Foam Cannon</a>: "Aluminium construction reduces the weight dramatically, weighing in at 314 grams total, that's a saving of 341 grams over our original lance (655 grams)." That ratio puts the HD at roughly half the weight of competitor premium cannons in the 600-669g range.</p>
-      <p>Other listed features: 8 foam-thickness settings (more granular than most competitors' continuous-adjustment design), stainless-steel weighted pick-up tube for stable suction in the bottle, large 46mm bottle opening for easy refill.</p>
-      <p>Trade-offs: aluminum body is more vulnerable to dents from drops or impacts than brass or stainless steel. The Carbon Collective is also a UK-based brand. US availability runs through their direct shop and selected retailers (Detail Division, Northampton Motorsport). Shipping and warranty support may take longer than for US-based brands.</p>
+      <p>Carbon Collective's product page explicitly markets the weight advantage on the <a href="https://www.carboncollective.com/hd-snow-foam-cannon/" rel="sponsored noopener" target="_blank">HD Snow Foam Cannon</a>: "Aluminium construction reduces the weight dramatically, weighing in at <strong>314 grams total</strong>, that's a saving of 341 grams over our original lance (655 grams)." That ratio puts the HD at <strong>roughly half the weight</strong> of competitor premium cannons in the 600-669g range.</p>
+      <p>Other listed features:</p>
+      <ul>
+        <li><strong>8 foam-thickness settings</strong> (more granular than most competitors' continuous-adjustment design)</li>
+        <li>Stainless-steel weighted pick-up tube for stable suction in the bottle</li>
+        <li>Large 46mm bottle opening for easy refill</li>
+      </ul>
+      <p><strong>Trade-offs:</strong> the aluminum body is more vulnerable to dents from drops or impacts than brass or stainless steel. Carbon Collective is also a UK-based brand. US availability runs through their direct shop and selected retailers (Detail Division, Northampton Motorsport), so shipping and warranty support may take longer than for US-based brands.</p>
   - name: "MJJC Foam Cannon Pro V3.0"
     brand: "MJJC"
     affiliateUrl: "https://www.amazon.com/MJJC-Ultimate-Cannon-Pressure-Washers/dp/B0FL17VGJF?tag=detailerpicks-20"
@@ -54,9 +65,15 @@ products:
       In box: "Filter + O-rings + 1.1mm + 1.35mm orifices"
       Pressure: "Standard pressure-washer ranges"
     body: |
-      <p>MJJC Foam Inc. ships the <a href="https://www.amazon.com/MJJC-Ultimate-Cannon-Pressure-Washers/dp/B0FL17VGJF?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">Pro V3.0</a> with the deepest spare-parts inventory in the lineup: spare filter, multiple O-rings, plus 1.1mm and 1.35mm orifice nozzles alongside the stock 1.25mm. For owners who want to tune their cannon for different pressure-washer GPMs or who are replacing parts on their existing MJJC cannon, this is the most cost-effective pick.</p>
-      <p>MJJC also sells every individual spare separately on their site (mjjc.com): spare bottles, individual orifice nozzles, O-ring kits, white-rubber gasket kits. If you plan to keep a cannon for many years and want first-party replacement parts to remain available, MJJC's parts catalog depth is best-in-class for this segment.</p>
-      <p>Trade-off: the Pro V3.0 bottle is V3.0-specific and is NOT cross-compatible with the older Pro V2.0 or the S V3.0 bottles. If you have multiple MJJC cannons in your inventory, expect to keep parts separate. This is a small issue for most home detailers (single cannon) but matters for shops with mixed inventory.</p>
+      <p>MJJC Foam Inc. ships the <a href="https://www.amazon.com/MJJC-Ultimate-Cannon-Pressure-Washers/dp/B0FL17VGJF?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">Pro V3.0</a> with the <strong>deepest spare-parts inventory in the lineup</strong>:</p>
+      <ul>
+        <li>Spare filter</li>
+        <li>Multiple O-rings</li>
+        <li><strong>1.1mm and 1.35mm orifice nozzles</strong> alongside the stock 1.25mm</li>
+      </ul>
+      <p>For owners who want to tune their cannon for different pressure-washer GPMs or who are replacing parts on their existing MJJC cannon, this is the <strong>most cost-effective pick</strong>.</p>
+      <p>MJJC also sells every individual spare separately on their site (mjjc.com): spare bottles, individual orifice nozzles, O-ring kits, white-rubber gasket kits. If you plan to keep a cannon for many years and want first-party replacement parts to remain available, MJJC's <strong>parts catalog depth is best-in-class</strong> for this segment.</p>
+      <p><strong>Trade-off:</strong> the Pro V3.0 bottle is V3.0-specific and is NOT cross-compatible with the older Pro V2.0 or the S V3.0 bottles. If you have multiple MJJC cannons in your inventory, expect to keep parts separate. This is a small issue for most home detailers (single cannon) but matters for shops with mixed inventory.</p>
 pubDate: 2026-05-17
 lastUpdated: 2026-05-19
 bgTheme: foam-cascade
@@ -115,15 +132,18 @@ The reviewer's full transcript is linked in the research notes. This guide synth
 
 ## Pressure washer vs garden hose: which foam cannon do you need
 
-This is the question that decides everything else, so settle it first. The three picks in this guide are pressure-washer foam cannons. They thread onto a pressure washer's lance with a quick-connect fitting and rely on the machine's pressure to draw soap and whip it into thick clinging foam. The MTM PF22's published range, 1,100 to 5,000 PSI and 1.8 to 5.3 GPM, is typical of the class. A garden hose delivers roughly 40 to 60 PSI, which is nowhere near enough to make one of these cannons foam. On a hose you would get a weak watery drizzle, not a foam blanket.
+This is the question that decides everything else, so settle it first. The three picks in this guide are **pressure-washer foam cannons**. They thread onto a pressure washer's lance with a quick-connect fitting and rely on the machine's pressure to draw soap and whip it into thick clinging foam. The MTM PF22's published range, 1,100 to 5,000 PSI and 1.8 to 5.3 GPM, is typical of the class. A garden hose delivers roughly 40 to 60 PSI, **nowhere near enough** to make one of these cannons foam. On a hose you would get a weak watery drizzle, not a foam blanket.
 
-There is a separate product class built for hoses, usually called a foam gun rather than a foam cannon, that trades foam thickness for not needing a pressure washer. That is a different tool with different SKUs and is not what the picks here are. The buyer decision is simple. If you own or plan to own a pressure washer, a foam cannon like the three here is the right buy and the right place to spend. If you only have a garden hose and no plans for a pressure washer, a pressure-washer foam cannon is the wrong tool no matter how good its build, and you want the hose-driven foam-gun category instead.
+There is a separate product class built for hoses, usually called a **foam gun** rather than a foam cannon, that trades foam thickness for not needing a pressure washer. That is a different tool with different SKUs and is not what the picks here are. The buyer decision is simple:
+
+- **If you own or plan to own a pressure washer**, a foam cannon like the three here is the right buy and the right place to spend.
+- **If you only have a garden hose** and no plans for a pressure washer, a pressure-washer foam cannon is the wrong tool no matter how good its build, and you want the hose-driven foam-gun category instead.
 
 ## Do you need special soap for a foam cannon
 
-Mostly no. Most pH-neutral car wash soaps foam well in a cannon, and foam thickness depends as much on your pressure washer's GPM and the cannon's orifice size as on the soap itself. A 2.1 GPM or stronger machine produces thick foam with most quality shampoos, while a weaker 1.2 to 1.3 GPM washer benefits from a smaller 1.1mm orifice in place of the standard 1.25mm. That is why the MJJC Pro V3.0's in-box 1.1mm and 1.35mm orifices matter for tuning foam to your specific machine.
+**Mostly no.** Most pH-neutral car wash soaps foam well in a cannon, and foam thickness depends as much on your pressure washer's GPM and the cannon's orifice size as on the soap itself. A 2.1 GPM or stronger machine produces thick foam with most quality shampoos, while a weaker 1.2 to 1.3 GPM washer benefits from a smaller 1.1mm orifice in place of the standard 1.25mm. That is why the MJJC Pro V3.0's in-box 1.1mm and 1.35mm orifices matter for tuning foam to your specific machine.
 
-Where dedicated foam soaps earn their place is cling and dwell. A high-foaming or foam-specific shampoo whips into a denser blanket that clings to vertical panels longer, which gives the soap more time to soften dirt before you rinse. That dwell time, not peak foam height, is what makes a pre-soak useful. For which shampoos publish foam-cannon dilution guidance and how they compare, see the [car wash soap buying guide](/buyers-guides/best-car-wash-soap-for-home-detailers).
+Where dedicated foam soaps earn their place is **cling and dwell**. A high-foaming or foam-specific shampoo whips into a denser blanket that clings to vertical panels longer, which gives the soap more time to soften dirt before you rinse. The win is **dwell time, not peak foam height**. For which shampoos publish foam-cannon dilution guidance and how they compare, see the [car wash soap buying guide](/buyers-guides/best-car-wash-soap-for-home-detailers).
 
 ## How we picked
 

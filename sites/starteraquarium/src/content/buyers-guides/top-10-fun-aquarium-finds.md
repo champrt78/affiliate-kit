@@ -19,7 +19,7 @@ products:
       "Best for": "Bettas (surface-resting fish)"
       Material: "Soft silicone, per listing"
     body: |
-      <p>The <a href="https://www.amazon.com/dp/B0BYWTFZ18?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">Magnetic Betta Leaf Hammock</a> is the classic first add-on for a betta tank. Bettas naturally rest on leaves near the surface, and per the listing this soft silicone leaf mounts high in the tank so your fish has a place to perch instead of always sinking to the bottom. It is about the price of a fancy coffee, which is part of why it shows up in so many beginner betta setups.</p>
+      <p>The <a href="https://www.amazon.com/dp/B0BYWTFZ18?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">Magnetic Betta Leaf Hammock</a> is the classic first add-on for a betta tank. Bettas naturally rest on leaves near the surface, and per the listing this <strong>soft silicone leaf mounts high in the tank</strong> so your fish has a place to perch instead of always sinking to the bottom. It is about the price of a fancy coffee, which is part of why it shows up in so many beginner betta setups.</p>
   - name: "ALEGI Ceramic Betta Log Cave"
     brand: "ALEGI"
     affiliateUrl: "https://www.amazon.com/dp/B09ZJ76YQ1?tag=mystarteraquarium-20"
@@ -34,7 +34,7 @@ products:
       "Best for": "Bettas, shrimp, small cichlids"
       Function: "Hiding and breeding hideout, per listing"
     body: |
-      <p>The <a href="https://www.amazon.com/dp/B09ZJ76YQ1?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">ALEGI Ceramic Betta Log Cave</a> solves a quiet beginner problem: a fish with nowhere to hide can stay stressed and stay hidden. Per the listing this ceramic log gives bettas, shrimp, and small cichlids a hideout to retreat into, and counterintuitively, fish that feel safe tend to spend more time out in the open. It looks like a natural piece of driftwood, so it earns its spot as decor too.</p>
+      <p>The <a href="https://www.amazon.com/dp/B09ZJ76YQ1?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">ALEGI Ceramic Betta Log Cave</a> solves a quiet beginner problem: a fish with nowhere to hide can stay stressed and stay hidden. Per the listing this ceramic log gives <strong>bettas, shrimp, and small cichlids a hideout</strong> to retreat into, and counterintuitively, fish that feel safe tend to spend more time out in the open. It looks like a natural piece of driftwood, so it earns its spot as decor too.</p>
   - name: "SLOCME Sunken Ship Air Bubbler Ornament"
     brand: "SLOCME"
     affiliateUrl: "https://www.amazon.com/dp/B09YLYWXKQ?tag=mystarteraquarium-20"
@@ -49,7 +49,7 @@ products:
       Effect: "Streams bubbles when connected to an air pump"
       Needs: "A separate air pump and tubing, per listing"
     body: |
-      <p>The <a href="https://www.amazon.com/dp/B09YLYWXKQ?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">SLOCME Sunken Ship Air Bubbler Ornament</a> is the most kid-pleasing pick on this list. Per the listing it is an air-action decoration: hook it to an air pump and a steady stream of bubbles rises out of the wreck, which adds both motion and a bit of surface aeration. The one thing to know before you buy is that the bubble effect needs a separate air pump and tubing to work. Without one, it is still a good-looking shipwreck.</p>
+      <p>The <a href="https://www.amazon.com/dp/B09YLYWXKQ?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">SLOCME Sunken Ship Air Bubbler Ornament</a> is the <strong>most kid-pleasing pick</strong> on this list. Per the listing it is an air-action decoration: hook it to an air pump and a steady stream of bubbles rises out of the wreck, which adds both motion and a bit of surface aeration. The one thing to know before you buy is that the bubble effect <strong>needs a separate air pump and tubing</strong> to work. Without one, it is still a good-looking shipwreck.</p>
   - name: "Live Marimo Moss Balls (4-Pack)"
     brand: "AwnsIMfreien"
     affiliateUrl: "https://www.amazon.com/dp/B0H1R3QC4L?tag=mystarteraquarium-20"
@@ -64,7 +64,7 @@ products:
       Quantity: "4 balls, 2.7 to 2.9 cm after soaking, per listing"
       Care: "Low light, no CO2 needed"
     body: |
-      <p>The <a href="https://www.amazon.com/dp/B0H1R3QC4L?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">Live Marimo Moss Balls</a> are the easiest way to get something genuinely alive into a first tank. Marimo are slow-growing balls of algae that, per the listing, ship as a 4-pack sized around 2.7 to 2.9 cm after soaking. They ask for very little: no special lights, no CO2, just gentle current and an occasional roll in your hand to keep them round. They look great and they double as a gentle introduction to live plants before you commit to a planted tank.</p>
+      <p>The <a href="https://www.amazon.com/dp/B0H1R3QC4L?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">Live Marimo Moss Balls</a> are the <strong>easiest way to get something genuinely alive</strong> into a first tank. Marimo are slow-growing balls of algae that, per the listing, ship as a 4-pack sized around 2.7 to 2.9 cm after soaking. They ask for very little: <strong>no special lights, no CO2</strong>, just gentle current and an occasional roll in your hand to keep them round. They look great and they double as a gentle introduction to live plants before you commit to a planted tank.</p>
   - name: "ZRDR Fish Feeding Ring (2-Pack)"
     brand: "ZRDR"
     affiliateUrl: "https://www.amazon.com/dp/B08HMTCTJ3?tag=mystarteraquarium-20"
@@ -79,7 +79,7 @@ products:
       Mount: "Suction cup with adjustable lever, per listing"
       Function: "Contains floating food, reduces waste"
     body: |
-      <p>The <a href="https://www.amazon.com/dp/B08HMTCTJ3?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">ZRDR Fish Feeding Ring</a> fixes a small daily annoyance for new keepers: flakes that drift everywhere and get pulled into the filter before the fish can eat them. Per the listing the ring floats on a suction-cup mount with an adjustable lever and keeps floating food contained in one spot, which cuts waste and keeps the water cleaner. It is a tiny tool, but it makes feeding time noticeably less messy, and you get two in the pack.</p>
+      <p>The <a href="https://www.amazon.com/dp/B08HMTCTJ3?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">ZRDR Fish Feeding Ring</a> fixes a small daily annoyance for new keepers: flakes that drift everywhere and get pulled into the filter before the fish can eat them. Per the listing the ring floats on a suction-cup mount with an adjustable lever and <strong>keeps floating food contained in one spot</strong>, which cuts waste and keeps the water cleaner. It is a tiny tool, but it makes feeding time noticeably less messy, and <strong>you get two in the pack</strong>.</p>
   - name: "Penn-Plax Floating Aquarium Thermometer"
     brand: "Penn-Plax"
     affiliateUrl: "https://www.amazon.com/dp/B0002568UE?tag=mystarteraquarium-20"
@@ -94,7 +94,7 @@ products:
       Mount: "Floats or attaches with suction cup, per listing"
       "Works in": "Freshwater and saltwater, per listing"
     body: |
-      <p>The <a href="https://www.amazon.com/dp/B0002568UE?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">Penn-Plax Floating Aquarium Thermometer</a> is the kind of basic that beginners skip and then wish they had. A heater sets a target temperature, but a thermometer is how you confirm the water is actually there. Per the listing this one is built to be easy to read, floats freely or attaches with an optional suction cup, and works in both freshwater and saltwater. For under ten dollars, it is cheap insurance for temperature-sensitive tropical fish.</p>
+      <p>The <a href="https://www.amazon.com/dp/B0002568UE?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">Penn-Plax Floating Aquarium Thermometer</a> is the kind of basic that beginners skip and then wish they had. A heater sets a target temperature, but a <strong>thermometer is how you confirm</strong> the water is actually there. Per the listing this one is built to be easy to read, floats freely or attaches with an optional suction cup, and works in both freshwater and saltwater. For under ten dollars, it is <strong>cheap insurance</strong> for temperature-sensitive tropical fish.</p>
   - name: "Pawfly Air Stone Disc Bubbler (4-Pack)"
     brand: "Pawfly"
     affiliateUrl: "https://www.amazon.com/dp/B01LYLNQWV?tag=mystarteraquarium-20"
@@ -109,7 +109,7 @@ products:
       Size: "1.5 inch discs, per listing"
       Needs: "A separate air pump and tubing"
     body: |
-      <p>The <a href="https://www.amazon.com/dp/B01LYLNQWV?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">Pawfly Air Stone Disc Bubbler</a> is the cheapest way to add that classic stream of fine bubbles to a tank. Per the listing these are 1.5 inch discs sold in a 4-pack, designed to diffuse air from a pump into many small bubbles rather than a few big ones. The effect is both functional, more bubbles means more surface agitation and oxygen exchange, and pleasant to watch. Like the shipwreck above, the discs need a separate air pump and tubing to run.</p>
+      <p>The <a href="https://www.amazon.com/dp/B01LYLNQWV?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">Pawfly Air Stone Disc Bubbler</a> is the <strong>cheapest way to add fine bubbles</strong> to a tank. Per the listing these are 1.5 inch discs sold in a 4-pack, designed to diffuse air from a pump into many small bubbles rather than a few big ones. The effect is both functional, more bubbles means more surface agitation and oxygen exchange, and pleasant to watch. Like the shipwreck above, the discs <strong>need a separate air pump and tubing</strong> to run.</p>
   - name: "Aqueon Magnetic Algae Scraper"
     brand: "Aqueon"
     affiliateUrl: "https://www.amazon.com/dp/B004BFE4EI?tag=mystarteraquarium-20"
@@ -124,7 +124,7 @@ products:
       "Works on": "Glass and acrylic, per listing"
       Size: "Small, for beginner tanks"
     body: |
-      <p>The <a href="https://www.amazon.com/dp/B004BFE4EI?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">Aqueon Magnetic Algae Scraper</a> is a small upgrade that makes a tedious chore almost fun. You drop one magnet inside the tank, hold its partner against the outside glass, and slide it around to wipe away the thin algae film that builds up on every tank. Per the listing it is rated for glass and acrylic, and the small size suits the 5 to 20 gallon tanks beginners usually start with. No more reaching elbow-deep into cold water to clean the front pane.</p>
+      <p>The <a href="https://www.amazon.com/dp/B004BFE4EI?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">Aqueon Magnetic Algae Scraper</a> is a small upgrade that makes a tedious chore almost fun. You drop one magnet inside the tank, hold its partner against the outside glass, and slide it around to wipe away the thin algae film. Per the listing it is rated for <strong>glass and acrylic</strong>, and the small size suits the <strong>5 to 20 gallon</strong> tanks beginners usually start with. No more reaching elbow-deep into cold water to clean the front pane.</p>
   - name: "FUTUREPLUSX Blue Glass Pebbles"
     brand: "FUTUREPLUSX"
     affiliateUrl: "https://www.amazon.com/dp/B07DPMBGL2?tag=mystarteraquarium-20"
@@ -139,7 +139,7 @@ products:
       Quantity: "About 1 pound, per listing"
       Use: "Scatter, vase filler, accent layer"
     body: |
-      <p>The <a href="https://www.amazon.com/dp/B07DPMBGL2?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">FUTUREPLUSX Blue Glass Pebbles</a> are the lazy way to make a plain tank look intentional. Per the listing you get about a pound of smooth flat glass marbles in mixed blues, which you can scatter across the substrate, pile around a centerpiece, or use as a thin accent layer. Rinse them first and they add a quick pop of color for the price of a sandwich. Smooth glass also will not snag long fins the way some sharp gravel can.</p>
+      <p>The <a href="https://www.amazon.com/dp/B07DPMBGL2?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">FUTUREPLUSX Blue Glass Pebbles</a> are the lazy way to make a plain tank look intentional. Per the listing you get about <strong>a pound of smooth flat glass marbles</strong> in mixed blues, which you can scatter across the substrate, pile around a centerpiece, or use as a thin accent layer. Rinse them first and they add a quick pop of color for the price of a sandwich. Smooth glass also <strong>will not snag long fins</strong> the way some sharp gravel can.</p>
   - name: "Penn-Plax Spongebob Pineapple House Ornament"
     brand: "Penn-Plax"
     affiliateUrl: "https://www.amazon.com/dp/B00BS9631C?tag=mystarteraquarium-20"
@@ -154,7 +154,7 @@ products:
       "Works in": "Fresh or saltwater, per listing"
       "Best for": "Kids' and family tanks, gifts"
     body: |
-      <p>The <a href="https://www.amazon.com/dp/B00BS9631C?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">Penn-Plax Spongebob Pineapple House Ornament</a> is the gift-buyer's easy win. Per the listing it is an officially licensed 2-piece set, safe for fresh or saltwater tanks, that drops a recognizable cartoon scene right into the aquarium. For a kid's first tank or a family setup, a familiar character does more to get a young keeper excited about fishkeeping than any spec ever will, and it is the kind of thing that gets a tank named.</p>
+      <p>The <a href="https://www.amazon.com/dp/B00BS9631C?tag=mystarteraquarium-20" rel="sponsored noopener" target="_blank">Penn-Plax Spongebob Pineapple House Ornament</a> is the <strong>gift-buyer's easy win</strong>. Per the listing it is an officially licensed 2-piece set, <strong>safe for fresh or saltwater</strong> tanks, that drops a recognizable cartoon scene right into the aquarium. For a kid's first tank or a family setup, a familiar character does more to get a young keeper excited about fishkeeping than any spec ever will, and it is the kind of thing that gets a tank named.</p>
 pubDate: 2026-05-30
 lastUpdated: 2026-05-30
 bgTheme: solid
@@ -167,6 +167,13 @@ Once your tank is filtered, heated, and lit, the fun part begins: making it your
 
 ## Best betta tank accessories
 
-If you are setting up a betta tank, a few of these finds are near-universal favorites. A leaf hammock, like the magnetic betta leaf here, gives a betta a spot to rest near the surface the way they do on leaves in the wild. A ceramic log cave gives a shy betta somewhere to hide, which counterintuitively means it spends more time out in the open. Live Marimo moss balls add a no-fuss touch of green that needs no special light or CO2, and a floating feeding ring keeps food in one corner so it is not pulled into the filter before your betta eats. All of them sit under $20, which makes them easy add-ons or a small gift for a new betta keeper. The one rule to keep in mind: bettas have delicate fins, so favor soft silicone and smooth surfaces over anything sharp.
+If you are setting up a betta tank, a few of these finds are near-universal favorites:
+
+- **A leaf hammock**, like the magnetic betta leaf here, gives a betta a spot to rest near the surface the way they do on leaves in the wild.
+- **A ceramic log cave** gives a shy betta somewhere to hide, which counterintuitively means it spends more time out in the open.
+- **Live Marimo moss balls** add a no-fuss touch of green that needs no special light or CO2.
+- **A floating feeding ring** keeps food in one corner so it is not pulled into the filter before your betta eats.
+
+All of them sit **under $20**, which makes them easy add-ons or a small gift for a new betta keeper. The one rule to keep in mind: bettas have delicate fins, so **favor soft silicone and smooth surfaces** over anything sharp.
 
 ## The list

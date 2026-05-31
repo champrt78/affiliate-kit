@@ -23,8 +23,8 @@ products:
       Type: "Electric"
       Espresso: "Marginal"
     body: >
-      <p>The Amazon listing for the <a href="https://www.amazon.com/dp/B0043095WW?tag=fussybean-20" rel="sponsored noopener" target="_blank">Bodum Bistro</a> describes stainless steel conical burrs that crush rather than chop to preserve aroma, plus a borosilicate glass catch container marketed to cut static cling and a preset timer. One thing to flag honestly: the product title says 12 grind settings while the listing bullets say "over 14," so treat it as roughly 12 to 14 stepped steps from coarse to fine.</p>
-      <p>It carries a 3.7 out of 5 rating across 8,351 Amazon ratings, a large but mixed sample that reflects the trade-off at this price. With an entry burr set and a short stepped range, true espresso fineness is a stretch, so we list espresso fitness as marginal rather than a selling point. The note bundles a similar-looking blade Bistro under a different listing, so make sure you are buying the burr version.</p>
+      <p>The Amazon listing for the <a href="https://www.amazon.com/dp/B0043095WW?tag=fussybean-20" rel="sponsored noopener" target="_blank">Bodum Bistro</a> describes <strong>stainless steel conical burrs</strong> that crush rather than chop to preserve aroma, plus a borosilicate glass catch container marketed to cut static cling and a preset timer. One thing to flag honestly: the product title says 12 grind settings while the listing bullets say "over 14," so treat it as <strong>roughly 12 to 14 stepped settings</strong> from coarse to fine.</p>
+      <p>It carries a <strong>3.7 out of 5 rating across 8,351 Amazon ratings</strong>, a large but mixed sample that reflects the trade-off at this price. With an entry burr set and a short stepped range, true espresso fineness is a stretch, so we list espresso fitness as marginal rather than a selling point. The note bundles a similar-looking blade Bistro under a different listing, so make sure you are buying the burr version.</p>
   - name: "SHARDOR Conical Burr"
     brand: "SHARDOR"
     affiliateUrl: "https://www.amazon.com/dp/B0CKYZLK9B?tag=fussybean-20"
@@ -40,8 +40,14 @@ products:
       Type: "Electric"
       Espresso: "Marginal"
     body: >
-      <p>The listing for the <a href="https://www.amazon.com/dp/B0CKYZLK9B?tag=fussybean-20" rel="sponsored noopener" target="_blank">SHARDOR Conical Burr</a> describes a conical burr running at low speed to limit heat, with 48 adjustable settings from espresso to French press. It adds a precision electronic timer adjustable in one-second steps up to 40 seconds, an LCD touchscreen panel, upgraded anti-static technology to keep grounds from clinging in the chamber, and a 9.7 ounce hopper with a locking lid.</p>
-      <p>It holds a 4.4 out of 5 rating across 1,437 Amazon ratings, and SHARDOR's grinder line shows strong budget-segment demand across its sibling models. As with most sub-$100 electrics, the listing claims espresso fineness is reachable, but the fine end is not the strength, so we keep espresso fitness at marginal. SHARDOR sells several near-identical units, so confirm you are on the 48-setting conical model.</p>
+      <p>The listing for the <a href="https://www.amazon.com/dp/B0CKYZLK9B?tag=fussybean-20" rel="sponsored noopener" target="_blank">SHARDOR Conical Burr</a> describes a conical burr running at low speed to limit heat, with <strong>48 adjustable settings</strong> from espresso to French press. It also adds:</p>
+      <ul>
+        <li>A precision electronic timer adjustable in one-second steps up to 40 seconds</li>
+        <li>An LCD touchscreen panel</li>
+        <li>Upgraded anti-static technology to keep grounds from clinging in the chamber</li>
+        <li>A 9.7 ounce hopper with a locking lid</li>
+      </ul>
+      <p>It holds a <strong>4.4 out of 5 rating across 1,437 Amazon ratings</strong>, and SHARDOR's grinder line shows strong budget-segment demand across its sibling models. As with most sub-$100 electrics, the listing claims espresso fineness is reachable, but the fine end is not the strength, so we keep espresso fitness at marginal. SHARDOR sells several near-identical units, so confirm you are on the 48-setting conical model.</p>
   - name: "Timemore Chestnut C3S Pro"
     brand: "Timemore"
     affiliateUrl: "https://www.amazon.com/dp/B0CC4Z32F8?tag=fussybean-20"
@@ -57,8 +63,8 @@ products:
       Type: "Manual"
       Espresso: "Yes, with effort"
     body: >
-      <p>The listing for the <a href="https://www.amazon.com/dp/B0CC4Z32F8?tag=fussybean-20" rel="sponsored noopener" target="_blank">Timemore Chestnut C3S Pro</a> describes an S2C660 hexagonal conical burr at 55 to 58 HRC hardness, 5-axis CNC machined for a uniform grind with minimal fines. The all-metal aluminum-alloy body is an upgrade from the plain C3, and roughly 36 coarseness levels are set through the adjustment nut. A foldable crank handle and a built-in bearing carry momentum to make the grinding less of a chore, in a compact body around 52mm wide.</p>
-      <p>It is the highest-rated pick here at 4.8 out of 5 across 1,644 Amazon ratings. The Chestnut C-series comes up often in community discussion as a budget-manual value benchmark, including r/espresso threads on dialing it in fine enough for espresso. The trade-off is the obvious one: espresso-fine grinding by hand is possible but effortful next to an electric.</p>
+      <p>The listing for the <a href="https://www.amazon.com/dp/B0CC4Z32F8?tag=fussybean-20" rel="sponsored noopener" target="_blank">Timemore Chestnut C3S Pro</a> describes an <strong>S2C660 hexagonal conical burr at 55 to 58 HRC hardness</strong>, 5-axis CNC machined for a uniform grind with minimal fines. The <strong>all-metal aluminum-alloy body</strong> is an upgrade from the plain C3, and <strong>roughly 36 coarseness levels</strong> are set through the adjustment nut. A foldable crank handle and a built-in bearing carry momentum to make the grinding less of a chore, in a compact body around 52mm wide.</p>
+      <p>It is the <strong>highest-rated pick here at 4.8 out of 5</strong> across 1,644 Amazon ratings. The Chestnut C-series comes up often in community discussion as a budget-manual value benchmark, including r/espresso threads on dialing it in fine enough for espresso. The trade-off is the obvious one: espresso-fine grinding by hand is possible but effortful next to an electric.</p>
   - name: "Fellow Opus"
     brand: "Fellow"
     affiliateUrl: "https://www.amazon.com/dp/B0BV92JN6Y?tag=fussybean-20"
@@ -74,8 +80,8 @@ products:
       Type: "Electric"
       Espresso: "Yes"
     body: >
-      <p>The listing for the <a href="https://www.amazon.com/dp/B0BV92JN6Y?tag=fussybean-20" rel="sponsored noopener" target="_blank">Fellow Opus</a> describes a 40mm six-blade stainless conical burr set with a motor rated at 6Nm of torque, 41 adjustable settings using the inner ring that span espresso to cold brew, anti-static technology, and a single-dose-friendly workflow. Coffeeness notes the housing is plastic rather than the metal of Fellow's pricier Ode, with conical burrs helping hold the price down.</p>
-      <p>It sits at 3.9 out of 5 across 1,780 Amazon ratings, solid but not stellar, which tracks the design-versus-performance debate around it. Coffeeness calls it "a game-changing burr grinder" that is "suitable for all brewing methods" and "great value," while flagging it as "rather messy." It is also frequently named among the lowest-cost grinders that can credibly reach espresso.</p>
+      <p>The listing for the <a href="https://www.amazon.com/dp/B0BV92JN6Y?tag=fussybean-20" rel="sponsored noopener" target="_blank">Fellow Opus</a> describes a <strong>40mm six-blade stainless conical burr set</strong> with a motor rated at 6Nm of torque, <strong>41 adjustable settings</strong> using the inner ring that span espresso to cold brew, anti-static technology, and a single-dose-friendly workflow. Coffeeness notes the housing is plastic rather than the metal of Fellow's pricier Ode, with conical burrs helping hold the price down.</p>
+      <p>It sits at <strong>3.9 out of 5 across 1,780 Amazon ratings</strong>, solid but not stellar, which tracks the design-versus-performance debate around it. Coffeeness calls it "a game-changing burr grinder" that is "suitable for all brewing methods" and "great value," while flagging it as "rather messy." It is also frequently named among the lowest-cost grinders that can credibly reach espresso.</p>
   - name: "Baratza Encore ESP"
     brand: "Baratza"
     affiliateUrl: "https://www.amazon.com/dp/B0BL9JC2DJ?tag=fussybean-20"
@@ -91,8 +97,13 @@ products:
       Type: "Electric"
       Espresso: "Yes, purpose-built"
     body: >
-      <p>The <a href="/reviews/baratza-encore-esp/">Baratza Encore ESP</a> is the one pick here we have written a full review of, so start there for the deeper look. The manufacturer page lists 40mm conical burrs with a dual-range stepped adjustment: steps 1 through 20 deliver high-resolution espresso grinds, while 21 through 40 cover filter, French press, and cold brew. A quick-release M2 conical steel burr makes cleaning easy, and a shim system lets you move the espresso range finer or coarser. It ships with a dosing cup. You can buy it on <a href="https://www.amazon.com/dp/B0BL9JC2DJ?tag=fussybean-20" rel="sponsored noopener" target="_blank">Amazon</a>.</p>
-      <p>One durability caveat is worth flagging: a Baratza-site owner review reports the ring burr holder breaking and needing repeated replacement, with Baratza responding that adjustments should be made while the grinder is running with coffee in the hopper. On the positive side, a YouTube reviewer frames it as "a great Home Option for $200," describing it as a capable, easy-to-clean espresso grinder at an economical price.</p>
+      <p>The <a href="/reviews/baratza-encore-esp/">Baratza Encore ESP</a> is the <strong>one pick here we have written a full review of</strong>, so start there for the deeper look. The manufacturer page lists <strong>40mm conical burrs with a dual-range stepped adjustment</strong>:</p>
+      <ul>
+        <li><strong>Steps 1 through 20</strong> deliver high-resolution espresso grinds</li>
+        <li><strong>Steps 21 through 40</strong> cover filter, French press, and cold brew</li>
+      </ul>
+      <p>A quick-release M2 conical steel burr makes cleaning easy, and a shim system lets you move the espresso range finer or coarser. It ships with a dosing cup. You can buy it on <a href="https://www.amazon.com/dp/B0BL9JC2DJ?tag=fussybean-20" rel="sponsored noopener" target="_blank">Amazon</a>.</p>
+      <p>One <strong>durability caveat</strong> is worth flagging: a Baratza-site owner review reports the ring burr holder breaking and needing repeated replacement, with Baratza responding that adjustments should be made while the grinder is running with coffee in the hopper. On the positive side, a YouTube reviewer frames it as "a great Home Option for $200," describing it as a capable, easy-to-clean espresso grinder at an economical price.</p>
   - name: "MiiCoffee DF54"
     brand: "MiiCoffee"
     affiliateUrl: "https://www.amazon.com/dp/B0D1NMR67G?tag=fussybean-20"
@@ -108,8 +119,13 @@ products:
       Type: "Electric"
       Espresso: "Yes, single-dose"
     body: >
-      <p>The MiiCoffee page for the <a href="https://www.amazon.com/dp/B0D1NMR67G?tag=fussybean-20" rel="sponsored noopener" target="_blank">MiiCoffee DF54</a> describes custom 54mm stainless flat burrs that bring DF64 II elements into a smaller package, stepless adjustment through a chrome-wrapped dial with a metal indicator, and a 150W AC motor in an aluminum body. The single-dose design uses a three-position seated upper burr carrier with a wave spring for a stable chamber and low retention, a plasma ionizer at the exit chute to kill static, and an anti-popcorn cover.</p>
-      <p>It holds a 3.7 out of 5 rating across 607 Amazon ratings. MiiCoffee positions it as an "entry level flat burr coffee grinder," explicitly a smaller, cheaper sibling to the DF64 II. Community threads note US distribution can lapse, so treat the Amazon listing as the canonical buy link and re-check stock before ordering.</p>
+      <p>The MiiCoffee page for the <a href="https://www.amazon.com/dp/B0D1NMR67G?tag=fussybean-20" rel="sponsored noopener" target="_blank">MiiCoffee DF54</a> describes <strong>custom 54mm stainless flat burrs</strong> that bring DF64 II elements into a smaller package, <strong>stepless adjustment</strong> through a chrome-wrapped dial with a metal indicator, and a 150W AC motor in an aluminum body. The single-dose design uses:</p>
+      <ul>
+        <li>A three-position seated upper burr carrier with a wave spring for a stable chamber and low retention</li>
+        <li>A plasma ionizer at the exit chute to kill static</li>
+        <li>An anti-popcorn cover</li>
+      </ul>
+      <p>It holds a <strong>3.7 out of 5 rating across 607 Amazon ratings</strong>. MiiCoffee positions it as an "entry level flat burr coffee grinder," explicitly a smaller, cheaper sibling to the DF64 II. Community threads note US distribution can lapse, so treat the Amazon listing as the canonical buy link and re-check stock before ordering.</p>
 images:
   hero: "https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?auto=format&fit=crop&w=2400&q=80"
   heroCaption: "Fresh grounds falling from a burr grinder. Photo: Unsplash."

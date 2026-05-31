@@ -20,8 +20,18 @@ products:
       Night vision: "~80 ft IR range"
       Best fit: "Property monitoring without retrieval trips"
     body: |
-      <p>The <a href="https://www.amazon.com/dp/B0DKRHHQ5P?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">Flex-M</a> sits at the intersection of "cellular convenience" and "approachable price point" for the backyard segment. Per Spypoint's product listing, the camera auto-connects to whichever cellular carrier has the strongest signal at the deployment location, which removes the carrier-selection guesswork that trips up first-time cellular-trail-cam buyers. The free Spypoint plan covers light photo volume, which is typically sufficient for occasional backyard checks. Heavy daily volume requires a paid plan.</p>
-      <p>Recurring positive themes in verified-buyer reviews on Amazon: setup is described as straightforward (typically a QR-code-driven app flow), and the auto-carrier-detection is repeatedly called out as the reason the camera worked where other cellular cams didn't. Recurring critical themes: photos sometimes lag on the app side (cellular trail cams aren't instant). Battery life under cold conditions is noted as shorter than the spec suggests. Some buyers report subscription-tier confusion (which features cost extra vs which are free).</p>
+      <p>The <a href="https://www.amazon.com/dp/B0DKRHHQ5P?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">Flex-M</a> sits at the <strong>intersection of cellular convenience and an approachable price point</strong> for the backyard segment. Per Spypoint's product listing, the camera auto-connects to whichever cellular carrier has the strongest signal at the deployment location, which removes the carrier-selection guesswork that trips up first-time cellular-trail-cam buyers. The free Spypoint plan covers light photo volume, which is typically sufficient for occasional backyard checks. Heavy daily volume requires a paid plan.</p>
+      <p>Recurring positive themes in verified-buyer reviews on Amazon:</p>
+      <ul>
+        <li><strong>Straightforward setup</strong>, typically a QR-code-driven app flow</li>
+        <li><strong>Auto-carrier-detection</strong> repeatedly called out as the reason the camera worked where other cellular cams didn't</li>
+      </ul>
+      <p>Recurring critical themes:</p>
+      <ul>
+        <li>Photos sometimes <strong>lag on the app side</strong> (cellular trail cams aren't instant)</li>
+        <li><strong>Battery life under cold conditions</strong> noted as shorter than the spec suggests</li>
+        <li><strong>Subscription-tier confusion</strong> over which features cost extra versus which are free</li>
+      </ul>
       <p>Pick the Flex-M when you want cellular delivery without diving deep into a subscription decision, and your photo volume is modest. See the <a href="/reviews/spypoint-flex-m-review/">full Spypoint Flex-M review</a> for the deeper breakdown.</p>
   - name: "Stealth Cam DS4K Ultimate"
     brand: "Stealth Cam"
@@ -38,7 +48,7 @@ products:
       Night vision: "~100 ft IR range"
       Best fit: "Image-quality buyers who skip subscriptions"
     body: |
-      <p>The <a href="https://www.amazon.com/dp/B09QBV2GP8?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">DS4K Ultimate</a> targets buyers who want the best image-quality experience without paying a cellular subscription. Per Stealth Cam's listing, the camera captures 4K video and high-resolution still photos to a local SD card. There's no app, no carrier dependency, no monthly fee. The trade-off is that you (or someone) walks out to the camera periodically to pull the SD card.</p>
+      <p>The <a href="https://www.amazon.com/dp/B09QBV2GP8?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">DS4K Ultimate</a> targets buyers who want the <strong>best image-quality experience without paying a cellular subscription</strong>. Per Stealth Cam's listing, the camera captures 4K video and high-resolution still photos to a local SD card. There's no app, no carrier dependency, no monthly fee. The trade-off is that you (or someone) walks out to the camera periodically to pull the SD card.</p>
       <p>Verified-buyer reviews consistently flag the image quality as the standout feature versus cellular competitors at similar price points. The most-upvoted critical reviews tend to focus on the operational tax of SD-card retrieval, particularly in winter, when batteries discharge faster and SD cards may need swapping more often.</p>
       <p>Pick the DS4K Ultimate when image quality is the primary axis and the SD-card retrieval trip isn't a dealbreaker for your deployment location. See the <a href="/reviews/stealth-cam-ds4k-ultimate-review/">full Stealth Cam DS4K Ultimate review</a> for the deeper breakdown.</p>
   - name: "GardePro E5 Trail Camera"
@@ -56,7 +66,7 @@ products:
       Night vision: "~100 ft no-glow IR"
       Best fit: "Gift buyers, first-time owners, high-loss-risk spots"
     body: |
-      <p>The <a href="https://www.amazon.com/dp/B08LGLJBNK?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">GardePro E5</a> is the budget pick. GardePro positions in the under-$80 tier of the trail-cam category with 48MP interpolated photos, 1296P HD video, a 0.1-second trigger speed, no-glow IR LEDs rated to roughly 100 feet, and IP66 weatherproofing per the Amazon listing. It's not trying to compete with cellular or 4K options. It's trying to be the camera that doesn't get returned by a first-time buyer.</p>
+      <p>The <a href="https://www.amazon.com/dp/B08LGLJBNK?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">GardePro E5</a> is the <strong>budget pick</strong>. GardePro positions in the under-$80 tier of the trail-cam category with 48MP interpolated photos, 1296P HD video, a 0.1-second trigger speed, no-glow IR LEDs rated to roughly 100 feet, and IP66 weatherproofing per the Amazon listing. It's not trying to compete with cellular or 4K options. It's trying to be the camera that doesn't get returned by a first-time buyer.</p>
       <p>Owner-review patterns on Amazon (4.3 stars across ~1,000+ reviews at the time of writing): buyers who'd never owned a trail camera before consistently report the E5 as easy to set up and "good enough" for casual backyard use. The no-glow IR (invisible to most animals and to people glancing past the camera at night) gets repeatedly called out as a differentiator at this price tier. Recurring critical themes: image quality in low light is competitive with mid-tier cameras but degrades faster than the DS4K Ultimate beyond ~60 feet. Battery life under heavy trigger volume is shorter than the marketing claims. The bundled mounting strap is described as "fine but minimal."</p>
       <p>Pick the GardePro E5 when you're buying as a gift, testing whether trail cameras are even your thing, or replacing a camera in a high-loss-risk location where you'd rather not spend $150-plus.</p>
 images:

@@ -66,7 +66,7 @@ faq:
 
 ## Who This Is For
 
-If your property sits on patchy cell coverage and you would rather the camera find the signal than have you guess at it, the Flex G36 is built for you. Its headline feature is dual-SIM technology: the camera carries two carrier connections and automatically uses whichever has the strongest signal at the camera's location, rather than asking you to commit to a single network at setup the way many cellular competitors do.
+If your property sits on patchy cell coverage and you would rather the camera find the signal than have you guess at it, the Flex G36 is built for you. Its headline feature is **dual-SIM technology**: the camera carries two carrier connections and automatically uses whichever has the strongest signal at the camera's location, rather than asking you to commit to a single network at setup the way many cellular competitors do.
 
 It also fits the first-time cellular buyer and the gift buyer. An owner who ran the camera for eight months describes the Spypoint app as simple enough that "even my dad can do it" ([8 Months With the SpyPoint Flex G36](https://www.youtube.com/watch?v=-unkAQI01HA)), and the frequent twin-pack pricing makes it an easy way to cover two spots at once. If your priority is delivered photos from uncertain-coverage land without a carrier decision, this is the strong pick because the dual-SIM hardware solves exactly that problem.
 

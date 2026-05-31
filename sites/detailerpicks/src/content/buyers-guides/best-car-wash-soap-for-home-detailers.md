@@ -18,8 +18,8 @@ products:
       Dilution: "1:800 to 1:1200"
       Sizes: "500ml, 4.5L"
     body: |
-      <p>Labocosmetica's product page explicitly states <a href="https://www.labocosmetica.store/products/labocosmetica-semper" rel="sponsored noopener" target="_blank">SÈMPER</a> is "free of waxes or gloss enhancers, ensuring a streak-free finish." That single claim is the strongest match in this lineup for Dr. Beasley's recommendation to use a "pure soap" that only cleans.</p>
-      <p>Dilution ratio runs from 1:800 to 1:1200, the highest concentration ratio in this lineup. The 500ml bottle ($21.95) yields more washes per ounce than competing options at similar price points. For owners who follow the Dr. Beasley's coating-care protocol of avoiding additive buildup on ceramic-coated paint, SÈMPER is the cleanest commercial pick currently sold in the US market.</p>
+      <p>Labocosmetica's product page explicitly states <a href="https://www.labocosmetica.store/products/labocosmetica-semper" rel="sponsored noopener" target="_blank">SÈMPER</a> is <strong>"free of waxes or gloss enhancers, ensuring a streak-free finish."</strong> That single claim is the strongest match in this lineup for Dr. Beasley's recommendation to use a "pure soap" that only cleans.</p>
+      <p>Dilution ratio runs from <strong>1:800 to 1:1200</strong>, the highest concentration ratio in this lineup. The 500ml bottle ($21.95) yields more washes per ounce than competing options at similar price points. For owners who follow the Dr. Beasley's coating-care protocol of avoiding additive buildup on ceramic-coated paint, SÈMPER is the <strong>cleanest commercial pick</strong> currently sold in the US market.</p>
   - name: "Gyeon Q²M Bathe"
     brand: "Gyeon"
     affiliateUrl: "https://www.amazon.com/GYEON-quartz-Cloth-Shampoo-1000ml/dp/B00OORQWSY?tag=detailerpicks-20"
@@ -34,8 +34,8 @@ products:
       Dilution: "Up to 500:1"
       Sizes: "500ml, 1L, 4L"
     body: |
-      <p>Gyeon's product page describes <a href="https://www.amazon.com/GYEON-quartz-Cloth-Shampoo-1000ml/dp/B00OORQWSY?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">Q²M Bathe</a> as "the best car soap designed specifically for maintaining a polished paint finish... highly lubricated ceramic coating wash soap." This puts it on the opposite side of the doctrine split from SÈMPER: instead of a pure cleaner, Q²M Bathe is positioned as a maintenance product for ceramic-coated cars.</p>
-      <p>At $15.99 for 500ml, it is the lowest entry-price pick in this guide. Pan The Organizer ranked it B-tier in a recent tier-list video, noting it works better in the bucket than in a foam cannon. For weekly maintenance on a coated daily driver where the owner trusts coating-safe protective additives, Q²M Bathe is the easiest entry pick.</p>
+      <p>Gyeon's product page describes <a href="https://www.amazon.com/GYEON-quartz-Cloth-Shampoo-1000ml/dp/B00OORQWSY?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">Q²M Bathe</a> as "the best car soap designed specifically for maintaining a polished paint finish... <strong>highly lubricated ceramic coating wash soap</strong>." This puts it on the opposite side of the doctrine split from SÈMPER: instead of a pure cleaner, Q²M Bathe is positioned as a maintenance product for ceramic-coated cars.</p>
+      <p>At <strong>$15.99 for 500ml</strong>, it is the lowest entry-price pick in this guide. Pan The Organizer ranked it B-tier in a recent tier-list video, noting it works better in the bucket than in a foam cannon. For weekly maintenance on a coated daily driver where the owner trusts coating-safe protective additives, Q²M Bathe is the <strong>easiest entry pick</strong>.</p>
   - name: "CLEAN. Shampoo by Pan The Organizer"
     brand: "Pan The Organizer"
     affiliateUrl: "https://cleanbypan.com/products/clean-shampoo"
@@ -51,7 +51,7 @@ products:
       Sizes: "16oz, gallon"
     body: |
       <p>Pan The Organizer's own shampoo lands at the intersection of both doctrines. <a href="https://cleanbypan.com/products/clean-shampoo" rel="sponsored noopener" target="_blank">CLEAN. Shampoo</a>'s product page lists pH neutral, "premium blend of cosmetic-grade surfactants," readily biodegradable, "excellent lubrication and cleaning power," and a wetting agent.</p>
-      <p>Pan demonstrates in his comparison videos that the formula does not strip wax during use. At $18.99 for 16 oz and $64.99 for a gallon (about $1 per wash at the gallon size), it is the volume pick for owners who want one bottle that handles coated and uncoated cars equivalently. The brand pairing with Pan's companion ceramic spray sealant and ceramic coating products is the system-integration play for owners already in his ecosystem.</p>
+      <p>Pan demonstrates in his comparison videos that the formula does not strip wax during use. At $18.99 for 16 oz and $64.99 for a gallon (<strong>about $1 per wash</strong> at the gallon size), it is the <strong>volume pick</strong> for owners who want one bottle that handles coated and uncoated cars equivalently. The brand pairing with Pan's companion ceramic spray sealant and ceramic coating products is the system-integration play for owners already in his ecosystem.</p>
   - name: "Phoenix E.O.D. Apex Auto Wash 3.0"
     brand: "Phoenix E.O.D."
     affiliateUrl: "https://www.amazon.com/Phoenix-D-Apex-Auto/dp/B0B2YGKKZB?tag=detailerpicks-20"
@@ -67,7 +67,7 @@ products:
       Sizes: "Pint, Gallon"
     body: |
       <p>Phoenix E.O.D. is a veteran-owned brand. The product page lists <a href="https://www.amazon.com/Phoenix-D-Apex-Auto/dp/B0B2YGKKZB?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">Apex Auto Wash</a> as "pH neutral... contains no dyes, fragrances, or 'optical' additives... thick, highly lubricious suds."</p>
-      <p>The no-additives positioning matches Dr. Beasley's pure-soap school at a lower price point ($17.99 for a pint vs SÈMPER's $21.95 for 500ml). Pan The Organizer ranked it S-tier in a recent tier-list video, noting it is also available on Amazon. For owners who follow the pure-soap doctrine but want the under-$20 entry price, Apex is the strongest commercial match.</p>
+      <p>The no-additives positioning matches Dr. Beasley's pure-soap school at a lower price point (<strong>$17.99 for a pint</strong> vs SÈMPER's $21.95 for 500ml). Pan The Organizer ranked it <strong>S-tier</strong> in a recent tier-list video, noting it is also available on Amazon. For owners who follow the pure-soap doctrine but want the under-$20 entry price, Apex is the <strong>strongest commercial match</strong>.</p>
   - name: "Chemical Guys Mr. Pink"
     brand: "Chemical Guys"
     affiliateUrl: "https://www.amazon.com/dp/B00AFBXQNC?tag=detailerpicks-20"
@@ -83,9 +83,13 @@ products:
       Sizes: "16 oz, 64 oz, 128 oz"
       Coating-safe: "Yes (no waxes / sealants added)"
     body: |
-      <p><a href="https://www.amazon.com/dp/B00AFBXQNC?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">Chemical Guys Mr. Pink</a> is the mass-retail entry point. The 16-ounce bottle runs around ten dollars on Amazon and is widely stocked at AutoZone, Walmart, and most parts-store chains. The product page describes it as "pH balanced, safe on wax, sealant, ceramic, and clear coat finishes" with high foam output for foam-cannon or bucket use.</p>
-      <p>Owner-review patterns: Mr. Pink shows up repeatedly as the first car wash soap detailing-curious buyers pick up at a parts store before committing to anything pricier. The recurring positive themes are "foams a ton" and "smells like bubblegum." The recurring critical themes are slickness-against-friction during contact wash (lower than the Labocosmetica/Gyeon tier) and the soap stripping any wax-style topper faster than a wax-infused shampoo would (which the detailing community considers a feature, not a bug, for owners on a coating-care path).</p>
-      <p>Pick Mr. Pink when the budget is tight, the use case is light (one car, washed every other week), or you want a starting-line shampoo before deciding whether ceramic-safe maintenance soap matters to your situation. It's not the absolute best wash for a coated car, but it's the right "first car wash soap" for the grocery-aisle buyer the existing five picks aren't sized for.</p>
+      <p><a href="https://www.amazon.com/dp/B00AFBXQNC?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">Chemical Guys Mr. Pink</a> is the <strong>mass-retail entry point</strong>. The 16-ounce bottle runs around ten dollars on Amazon and is widely stocked at AutoZone, Walmart, and most parts-store chains. The product page describes it as <strong>"pH balanced, safe on wax, sealant, ceramic, and clear coat finishes"</strong> with high foam output for foam-cannon or bucket use.</p>
+      <p>Owner-review patterns: Mr. Pink shows up repeatedly as the first car wash soap detailing-curious buyers pick up at a parts store before committing to anything pricier.</p>
+      <ul>
+        <li><strong>Recurring positives:</strong> "foams a ton" and "smells like bubblegum."</li>
+        <li><strong>Recurring critiques:</strong> slickness-against-friction during contact wash is lower than the Labocosmetica/Gyeon tier, and the soap strips any wax-style topper faster than a wax-infused shampoo would (which the detailing community considers a feature, not a bug, for owners on a coating-care path).</li>
+      </ul>
+      <p>Pick Mr. Pink when the budget is tight, the use case is light (one car, washed every other week), or you want a starting-line shampoo before deciding whether ceramic-safe maintenance soap matters to your situation. It's not the absolute best wash for a coated car, but it's the right <strong>"first car wash soap"</strong> for the grocery-aisle buyer the existing five picks aren't sized for.</p>
   - name: "Pan The Organizer Demineralizing Shampoo"
     brand: "Pan The Organizer"
     affiliateUrl: "https://www.carsupplieswarehouse.com/products/clean-by-pan-the-organizer-demineralizing-shampoo-acidic-mineral-deposit-remover"
@@ -100,8 +104,8 @@ products:
       Sizes: "(various via reseller)"
     body: |
       <p>Distinct from the other four (which are pH-neutral maintenance soaps), <a href="https://www.carsupplieswarehouse.com/products/clean-by-pan-the-organizer-demineralizing-shampoo-acidic-mineral-deposit-remover" rel="sponsored noopener" target="_blank">Pan's Demineralizing Shampoo</a> is an acidic-pH product designed for occasional use.</p>
-      <p>The product page describes it as "acidic pH automotive shampoo designed to dissolve mineral deposits, water spots, and limescale while reviving ceramic coating hydrophobic properties." Foam-cannon dilution is 1:10. Recommended use is "every few months on coated vehicles to restore optimal hydrophobic performance."</p>
-      <p>Pair with one of the pH-neutral picks above for weekly washes. This product fills the "every-few-months reset" slot in the rotation. For owners in hard-water regions where mineral contamination is the main coating-degradation pathway, the Demineralizing Shampoo is the missing piece in a full ceramic-coat-care workflow.</p>
+      <p>The product page describes it as <strong>"acidic pH automotive shampoo designed to dissolve mineral deposits, water spots, and limescale while reviving ceramic coating hydrophobic properties."</strong> Foam-cannon dilution is <strong>1:10</strong>. Recommended use is "every few months on coated vehicles to restore optimal hydrophobic performance."</p>
+      <p>Pair with one of the pH-neutral picks above for weekly washes. This product fills the <strong>"every-few-months reset"</strong> slot in the rotation. For owners in hard-water regions where mineral contamination is the main coating-degradation pathway, the Demineralizing Shampoo is the missing piece in a full ceramic-coat-care workflow.</p>
 pubDate: 2026-05-17
 lastUpdated: 2026-05-19
 bgTheme: suds-closeup
@@ -157,19 +161,19 @@ Two credible authorities give directly opposed advice on what to wash a ceramic-
 
 Both schools agree on what to avoid: alkaline strippers, "added wax" products, and any shampoo that leaves a slimy or sticky film that resists free rinsing.
 
-Most premium coating manufacturers (Gtechniq, CarPro, and Gyeon itself in technical documentation) lean Dr. Beasley's direction for their own coatings: use a pure soap, let the coating do the work. Owners of cheaper or DIY-applied coatings often find The Rag Company's school more practical because the additive reinforcement helps a coating that is already losing protection. There is no universally correct answer. The right pick depends on which manufacturer's protocol the reader trusts.
+Most premium coating manufacturers (Gtechniq, CarPro, and Gyeon itself in technical documentation) lean Dr. Beasley's direction for their own coatings: use a pure soap, let the coating do the work. Owners of cheaper or DIY-applied coatings often find The Rag Company's school more practical because the additive reinforcement helps a coating that is already losing protection. There is **no universally correct answer**. The right pick depends on which manufacturer's protocol the reader trusts.
 
 ## Is it pH-neutral, and why that matters on coated paint
 
-The single spec that matters most for a ceramic-coated car is pH. The Rag Company defines the pH-neutral window for protective car shampoos as roughly pH 5.5 to 8.5. A soap in that band lifts dirt without chemically attacking the wax, sealant, or ceramic coating underneath it. Step outside the band and the soap starts doing a different job: anything below 5.5 is acidic and built to dissolve mineral deposits and water spots, and anything above 10 is alkaline and built to strip wax or decontaminate before paint correction.
+The single spec that matters most for a ceramic-coated car is **pH**. The Rag Company defines the pH-neutral window for protective car shampoos as roughly **pH 5.5 to 8.5**. A soap in that band lifts dirt without chemically attacking the wax, sealant, or ceramic coating underneath it. Step outside the band and the soap starts doing a different job: anything below 5.5 is acidic and built to dissolve mineral deposits and water spots, and anything above 10 is alkaline and built to strip wax or decontaminate before paint correction.
 
-Five of the six picks here are pH-neutral per their manufacturer pages: Labocosmetica SÈMPER, Gyeon Q²M Bathe, CLEAN. Shampoo, Phoenix E.O.D. Apex, and Chemical Guys Mr. Pink all state neutral or pH-balanced chemistry safe on coated finishes. The sixth, Pan The Organizer's Demineralizing Shampoo, is intentionally acidic and is the exception that proves the rule. It is a periodic reset, not a weekly wash. For routine washing of a coated car, stay in the neutral band and reserve the acidic shampoo for the every-few-months mineral reset.
+Five of the six picks here are pH-neutral per their manufacturer pages: Labocosmetica SÈMPER, Gyeon Q²M Bathe, CLEAN. Shampoo, Phoenix E.O.D. Apex, and Chemical Guys Mr. Pink all state neutral or pH-balanced chemistry safe on coated finishes. The sixth, Pan The Organizer's Demineralizing Shampoo, is intentionally acidic and is the exception that proves the rule. It is a **periodic reset, not a weekly wash**. For routine washing of a coated car, stay in the neutral band and reserve the acidic shampoo for the every-few-months mineral reset.
 
 ## Which of these foam best in a foam cannon
 
 Foam thickness in a cannon comes down to three things working together: the soap's surfactant load, the pressure washer's GPM, and the foam-cannon orifice size. The soaps with published foam-cannon dilution guidance give the clearest read on cannon use. Chemical Guys lists Mr. Pink at 1 oz per 5 gallons for foam-cannon use and markets it for high foam output, Gyeon publishes dilution up to 500:1 for Q²M Bathe, and Pan's Demineralizing Shampoo lists a 1:10 foam-cannon ratio for its acidic reset role.
 
-Pan The Organizer's tier-list commentary notes Q²M Bathe foams better in the bucket than in a cannon, which is a useful flag for cannon-first detailers. The practical takeaway from the manufacturer guidance: a high-surfactant pH-neutral soap plus a 2.1 GPM or stronger pressure washer produces thick clinging foam, while a weaker 1.2 to 1.3 GPM washer benefits from a smaller 1.1mm orifice in place of the standard 1.25mm. For a deeper breakdown of cannon hardware, see the [foam cannon buying guide](/buyers-guides/best-foam-cannon-for-home-detailers).
+Pan The Organizer's tier-list commentary notes Q²M Bathe foams better in the bucket than in a cannon, which is a useful flag for cannon-first detailers. The practical takeaway from the manufacturer guidance: **a high-surfactant pH-neutral soap plus a 2.1 GPM or stronger pressure washer produces thick clinging foam**, while a weaker 1.2 to 1.3 GPM washer benefits from a smaller 1.1mm orifice in place of the standard 1.25mm. For a deeper breakdown of cannon hardware, see the [foam cannon buying guide](/buyers-guides/best-foam-cannon-for-home-detailers).
 
 ## How we picked
 

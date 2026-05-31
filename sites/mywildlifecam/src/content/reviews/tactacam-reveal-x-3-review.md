@@ -69,7 +69,7 @@ faq:
 
 The Reveal X 3.0 is the cellular pick for buyers who want reliable hardware at a budget-friendly price and are willing to accept moderate image quality and some pull-the-card friction for the cellular convenience. It targets homeowners, property owners, and seasonal hunters who want photos arriving on their phone from cameras up to 1.5+ hours away, without committing to a $300-$500 top-tier cellular cam.
 
-The plan flexibility is a load-bearing feature: $5 entry plans, cheap unlimited tier with multi-camera and annual discounts, and month-to-month suspend during off-season. This is the cellular cam to pick if budget control matters more than maxing out every feature.
+The plan flexibility is the **load-bearing feature**: $5 entry plans, cheap unlimited tier with multi-camera and annual discounts, and month-to-month suspend during off-season. This is the cellular cam to pick if budget control matters more than maxing out every feature.
 
 ## At a Glance
 
@@ -130,8 +130,14 @@ For most property owners the X 3.0 is the right call. Move to the Pro 3.0 when n
 
 ## How It Performs Over Time
 
-The longest publicly available owner-report window on the Reveal X family covers 4-5 years of seasonal deployment (mid-late summer to Feb-Mar) across multiple cameras. The reviewer reports the cameras "still work just as good as the day they were purchased" with no degradation in cellular reliability or image quality. The IP66 weatherproof rating is the spec doing most of the work here. Multi-month exposure to summer heat, rain, and bad storms appears to be tolerated well over multiple seasonal cycles.
+The longest publicly available owner-report window on the Reveal X family covers **4-5 years of seasonal deployment** (mid-late summer to Feb-Mar) across multiple cameras. The reviewer reports the cameras "still work just as good as the day they were purchased" with no degradation in cellular reliability or image quality. The IP66 weatherproof rating is the spec doing most of the work here. Multi-month exposure to summer heat, rain, and bad storms appears to be tolerated well over multiple seasonal cycles.
 
 True year-round multi-year performance is less well documented in public reviews. If you intend to leave the camera deployed 12 months of the year for multiple consecutive years (especially in extreme-temperature climates), the long-term data is thinner than the seasonal-use track record. Tactacam's manufacturer documentation supports year-round operation within the -25°C to 60°C range. The verification gap is in the public review corpus, not the spec sheet.
 
-The most-cited durability complaints across the full Reveal community are: (1) a small number of owners reporting "signal not as good as Gen 1" or "image quality not as good as Gen 1" subjective regressions. (2) general low-stock availability at launch (more a market issue than a hardware issue). (3) battery cost over years given the 12-AA-cartridge format. Lithium AA batteries (Energizer Ultimate Lithium) substantially improve battery life over alkaline at significant cost, or external 12V battery packs and solar panels are the long-term economy options.
+The most-cited durability complaints across the full Reveal community are:
+
+- **Subjective Gen-1 regressions.** A small number of owners report "signal not as good as Gen 1" or "image quality not as good as Gen 1."
+- **Low-stock availability at launch**, more a market issue than a hardware issue.
+- **Battery cost over years** given the 12-AA-cartridge format.
+
+Lithium AA batteries (Energizer Ultimate Lithium) substantially improve battery life over alkaline at significant cost, or external 12V battery packs and solar panels are the long-term economy options.

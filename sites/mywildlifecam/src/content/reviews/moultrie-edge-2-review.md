@@ -68,7 +68,7 @@ faq:
 
 ## Who This Is For
 
-If your property sits on the edge of cell coverage and you would rather the camera pick the carrier than guess for it, the Edge 2 is the strong pick in its price band. Its headline feature is nationwide auto-connect: per the Amazon listing and Moultrie's product page, the camera scans available carriers and locks onto the best one for that location, rather than asking you to commit to AT&T or Verizon at setup the way most dual-SIM competitors do.
+If your property sits on the edge of cell coverage and you would rather the camera pick the carrier than guess for it, the Edge 2 is the strong pick in its price band. Its headline feature is **nationwide auto-connect**: per the Amazon listing and Moultrie's product page, the camera scans available carriers and locks onto the best one for that location, rather than asking you to commit to AT&T or Verizon at setup the way most dual-SIM competitors do.
 
 It also fits the first-time cellular buyer and the gift buyer cleanly. Built-in memory means there is no class-10 SD card to buy, format, or troubleshoot, which removes the single most common setup headache new cellular-cam owners hit.
 

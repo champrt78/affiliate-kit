@@ -75,11 +75,11 @@ faq:
 
 ## Who This Is For
 
-This is for the player who wants a d-pad first. 8BitDo's Pro 2 is a SNES-style Bluetooth pad, and the single feature reviewers come back to is its d-pad: SlashGear's Eric Abent calls it probably the best d-pad he has used since the SNES days, and says fans of retro or 2D games who need a good d-pad will not be disappointed. If your library leans on retro, 2D, or fighting games, that is the headline.
+This is for the player who **wants a d-pad first**. 8BitDo's Pro 2 is a SNES-style Bluetooth pad, and the single feature reviewers come back to is its d-pad. SlashGear's Eric Abent calls it probably the best d-pad he has used since the SNES days, and says fans of retro or 2D games who need a good d-pad will not be disappointed. If your library leans on **retro, 2D, or fighting games**, that is the headline.
 
-It also fits the multi-platform player. 8BitDo lists support for Switch and Switch 2, Windows, SteamOS and Steam Deck, Android, Raspberry Pi, and Apple devices, with a 4-way hardware mode switch (Switch, X-input, D-input, macOS) to move between them. Add three onboard profiles, two back paddle buttons, deep remapping and macros via 8BitDo's Ultimate Software, and Hall Effect joysticks, and you get a lot of pad for the $39.99 listed price.
+It also fits the **multi-platform player**. 8BitDo lists support for Switch and Switch 2, Windows, SteamOS and Steam Deck, Android, Raspberry Pi, and Apple devices, with a 4-way hardware mode switch (Switch, X-input, D-input, macOS) to move between them. Add three onboard profiles, two back paddle buttons, deep remapping and macros via 8BitDo's Ultimate Software, and Hall Effect joysticks, and you get a lot of pad for the **$39.99** listed price.
 
-One thing to settle up front: this is the Hall Effect edition, not the original. The 2021 ALPS-joystick Pro 2 is shown as currently unavailable on Amazon. The version sold today uses Hall Effect joysticks (a magnetic-sensor design marketed as drift-resistant) and lists Switch 2 support, neither of which described the original. So this review covers the Hall Effect Black Edition.
+One thing to settle up front: this is the **Hall Effect edition, not the original**. The 2021 ALPS-joystick Pro 2 is shown as currently unavailable on Amazon. The version sold today uses Hall Effect joysticks (a magnetic-sensor design marketed as drift-resistant) and lists Switch 2 support, neither of which described the original. So this review covers the Hall Effect Black Edition.
 
 ## At a Glance
 
@@ -118,14 +118,16 @@ One thing to settle up front: this is the Hall Effect edition, not the original.
 
 ## Is the 8BitDo Pro 2 Worth It in 2026?
 
-For most retro and emulation players, the spec sheet says yes. At the $39.99 listed price, the Pro 2 packs a d-pad SlashGear calls the best since the SNES days, Hall Effect joysticks marketed against drift, two back paddle buttons, three onboard profiles with an on-the-fly switch, and a 4-way mode switch spanning Switch and Switch 2, Windows, Steam Deck, Android, Raspberry Pi, and Apple devices. Amazon verified buyers back the value read at 4.4 stars across 1,589 ratings. The case against it is specific rather than general: it cannot power on a Switch, it has no NFC or HD Rumble, and the newer Pro 3 exists at a higher price. None of those touch the things this pad is bought for, which are the d-pad, the price, and the breadth of platform support. The honest catch is timing, since the Pro 3 now sits above it, covered below, so the Pro 2 is worth it specifically as the value and retro-feel pick rather than the latest hardware.
+For most retro and emulation players, **the spec sheet says yes**. At the $39.99 listed price, the Pro 2 packs a d-pad SlashGear calls the best since the SNES days, Hall Effect joysticks marketed against drift, two back paddle buttons, three onboard profiles with an on-the-fly switch, and a 4-way mode switch spanning Switch and Switch 2, Windows, Steam Deck, Android, Raspberry Pi, and Apple devices. Amazon verified buyers back the value read at **4.4 stars across 1,589 ratings**.
+
+The case against it is specific rather than general. It cannot power on a Switch, it has no NFC or HD Rumble, and the newer Pro 3 exists at a higher price. None of those touch the things this pad is bought for, which are the **d-pad, the price, and the breadth of platform support**. The honest catch is timing, since the Pro 3 now sits above it, covered below, so the Pro 2 is worth it specifically as the **value and retro-feel pick** rather than the latest hardware.
 
 ## How It Compares
 
 The Pro 2 sits in the [Controllers](/controllers) pillar. Three natural comparisons, all spec-sourced:
 
-**Pro 2 vs 8BitDo SN30 Pro+ (the predecessor).** SlashGear frames the Pro 2 as a refinement of the SN30 Pro+. The Pro 2 adds the three-profile on-the-fly switch button, two rear paddle buttons, the 4-way hardware mode switch, an enhanced textured grip, and, in this edition, Hall Effect sticks, while keeping the same 1000mAh / roughly 20-hour battery. The key change SlashGear highlights is that the Pro 2 finally stores multiple profiles onboard rather than requiring a software reconnect for each layout change.
+**Pro 2 vs 8BitDo SN30 Pro+ (the predecessor).** SlashGear frames the Pro 2 as a refinement of the SN30 Pro+. The Pro 2 adds the three-profile on-the-fly switch button, two rear paddle buttons, the 4-way hardware mode switch, an enhanced textured grip, and, in this edition, Hall Effect sticks, while keeping the same 1000mAh / roughly 20-hour battery. The key change SlashGear highlights is that the Pro 2 **finally stores multiple profiles onboard** rather than requiring a software reconnect for each layout change.
 
-**Pro 2 vs 8BitDo Ultimate.** The Ultimate line is the modern competitive pad: a 2.4GHz low-latency dongle, a charging dock, and often Hall Effect sticks. The Pro 2 is the retro-feel pad: the SNES-style body and standout d-pad, Bluetooth or USB-C only with no 2.4GHz dongle, and no dock in the box. Choose the Pro 2 for d-pad and retro feel, the Ultimate for wireless latency and dock convenience.
+**Pro 2 vs 8BitDo Ultimate.** The Ultimate line is the modern competitive pad, with a 2.4GHz low-latency dongle, a charging dock, and often Hall Effect sticks. The Pro 2 is the retro-feel pad: the SNES-style body and standout d-pad, Bluetooth or USB-C only with no 2.4GHz dongle, and no dock in the box. Choose the **Pro 2 for d-pad and retro feel**, the **Ultimate for wireless latency and dock convenience**.
 
-**Pro 2 vs 8BitDo Pro 3.** Amazon labels the Pro 3 the newer version. At roughly $58 it adds TMR joysticks, swappable ABXY buttons, a charging dock, and Hall triggers. It is a different, pricier product. The Pro 2 is the value and retro pick at $39.99.
+**Pro 2 vs 8BitDo Pro 3.** Amazon labels the Pro 3 the newer version. At roughly $58 it adds TMR joysticks, swappable ABXY buttons, a charging dock, and Hall triggers. It is a different, pricier product. The **Pro 2 is the value and retro pick at $39.99**.

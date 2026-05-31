@@ -71,7 +71,7 @@ faq:
 
 If you want a working trail camera without buying into an app, a subscription, or a cellular plan, the GardePro E5 is calibrated for you. It targets first-time trail-cam buyers, gift buyers, and homeowners with a yard or small property who want to see what's walking through at night without committing to $150-300 worth of cellular hardware on day one.
 
-The "no app, no signal, no subscription" framing is GardePro's central marketing claim per the Amazon listing, and it accurately describes the trade-off: you give up smartphone delivery and remote configuration, you get a working camera for under $50 that anyone in your household can operate.
+The "no app, no signal, no subscription" framing is GardePro's central marketing claim per the Amazon listing, and it accurately describes the trade-off: you give up smartphone delivery and remote configuration, and you get a **working camera for under $50** that anyone in your household can operate.
 
 ## At a Glance
 

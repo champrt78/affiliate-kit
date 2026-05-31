@@ -19,8 +19,8 @@ products:
       Weave: "Twist Loop"
       Blend: "70% Polyester / 30% Polyamide"
     body: |
-      <p>The Rag Company's product page lists <a href="https://www.amazon.com/dp/B083KPZR9C?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">The Gauntlet</a> at 900 GSM with a Twist Loop weave, a 70% polyester / 30% polyamide Korean split-microfiber blend, and a black ButterSoft suede edge with no tags. The Amazon listing's own title confirms the 900 GSM, 15x24-inch, 2-pack configuration linked here.</p>
-      <p>Amazon reviewers rate the Gauntlet 4.7 out of 5 across 6,011 ratings. The Rag Company positions it as a reference drying towel and shows it in their own demos drying a C8 Corvette and a restored Ford F100. The brand also offers 12x12, 20x30, and 30x36 sizes. This SKU is the 15x24 2-pack.</p>
+      <p>The Rag Company's product page lists <a href="https://www.amazon.com/dp/B083KPZR9C?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">The Gauntlet</a> at <strong>900 GSM</strong> with a Twist Loop weave, a 70% polyester / 30% polyamide Korean split-microfiber blend, and a black ButterSoft suede edge with no tags. The Amazon listing's own title confirms the 900 GSM, 15x24-inch, 2-pack configuration linked here.</p>
+      <p>Amazon reviewers rate the Gauntlet <strong>4.7 out of 5 across 6,011 ratings</strong>. The Rag Company positions it as a <strong>reference drying towel</strong> and shows it in their own demos drying a C8 Corvette and a restored Ford F100. The brand also offers 12x12, 20x30, and 30x36 sizes. This SKU is the 15x24 2-pack.</p>
   - name: "Chemical Guys Woolly Mammoth"
     brand: "Chemical Guys"
     affiliateUrl: "https://www.amazon.com/dp/B086M83K76?tag=detailerpicks-20"
@@ -36,8 +36,8 @@ products:
       Weave: "Not published (plush microfiber)"
       Material: "Microfiber, Gray"
     body: |
-      <p><a href="https://www.amazon.com/dp/B086M83K76?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">Chemical Guys Woolly Mammoth</a> measures 36 by 25 inches in gray microfiber. Chemical Guys does not publish a GSM figure or a specific weave for this towel on the Amazon listing, so both are recorded as not published here. The brand's own description claims it "absorbs over a gallon of water off the surface of any vehicle for a streak-free shine after a wash."</p>
-      <p>Amazon reviewers rate it 4.6 out of 5 across 9,905 ratings, the highest review volume among the single towels in this lineup. It ships sold and shipped by Amazon.com. For the home detailer who wants a recognized brand name at a single-towel price, the Woolly Mammoth is the plush default.</p>
+      <p><a href="https://www.amazon.com/dp/B086M83K76?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">Chemical Guys Woolly Mammoth</a> measures 36 by 25 inches in gray microfiber. Chemical Guys does <strong>not publish a GSM figure or a specific weave</strong> for this towel on the Amazon listing, so both are recorded as not published here. The brand's own description claims it "absorbs over a gallon of water off the surface of any vehicle for a streak-free shine after a wash."</p>
+      <p>Amazon reviewers rate it <strong>4.6 out of 5 across 9,905 ratings</strong>, the highest review volume among the single towels in this lineup. It ships sold and shipped by Amazon.com. For the home detailer who wants a recognized brand name at a single-towel price, the Woolly Mammoth is the <strong>plush default</strong>.</p>
   - name: "The Rag Company Dry Me A River"
     brand: "The Rag Company"
     affiliateUrl: "https://theragcompany.com/products/dry-me-a-river"
@@ -53,8 +53,8 @@ products:
       Weave: "Waffle"
       Blend: "70% Polyester / 30% Polyamide"
     body: |
-      <p>The Rag Company's product page lists <a href="https://theragcompany.com/products/dry-me-a-river" rel="sponsored noopener" target="_blank">Dry Me A River</a> at 390 GSM with a non-abrasive waffle weave, a 70% polyester / 30% polyamide premium Korean split-microfiber blend, and a black ButterSoft suede edge it describes as 100% lint-free. The brand says it "soaks up 10x its weight in water for fast, streak-free drying."</p>
-      <p>The Rag Company positions Dry Me A River as a "trusted favorite among car enthusiasts, professionals, and manufacturers since 1999," and it is carried by detailing retailer Detailed Image. It is available from 16x16 up to 26x59 inches. As a thin, fast-wicking waffle towel, it complements a plush twist-loop primary towel rather than replacing it.</p>
+      <p>The Rag Company's product page lists <a href="https://theragcompany.com/products/dry-me-a-river" rel="sponsored noopener" target="_blank">Dry Me A River</a> at <strong>390 GSM</strong> with a non-abrasive waffle weave, a 70% polyester / 30% polyamide premium Korean split-microfiber blend, and a black ButterSoft suede edge it describes as <strong>100% lint-free</strong>. The brand says it "soaks up 10x its weight in water for fast, streak-free drying."</p>
+      <p>The Rag Company positions Dry Me A River as a "trusted favorite among car enthusiasts, professionals, and manufacturers since 1999," and it is carried by detailing retailer Detailed Image. It is available from 16x16 up to 26x59 inches. As a thin, fast-wicking waffle towel, it <strong>complements a plush twist-loop primary towel rather than replacing it</strong>.</p>
   - name: "Adam's Ultra Plush Drying Towel"
     brand: "Adam's Polishes"
     affiliateUrl: "https://adamspolishes.com/products/adam-s-ultra-plush-drying-towel"
@@ -70,8 +70,8 @@ products:
       Weave: "Thick-loop microfiber (plush)"
       Edge: "Scratch-free satin"
     body: |
-      <p>Adam's product page lists the <a href="https://adamspolishes.com/products/adam-s-ultra-plush-drying-towel" rel="sponsored noopener" target="_blank">Ultra Plush Drying Towel</a> at 540 GSM with an "all-new thick loop microfiber design" and a "large long fiber weave," finished with the same scratch-free soft satin edging as the rest of Adam's microfiber line. The page itself lists the size as both 28x36 and 29x36, so it is recorded here as 28-29 x 36 inches.</p>
-      <p>Adam's claims the towel absorbs "up to 2 times the amount of water as the Great White Drying Towel" and that "a single towel can dry a fullsize sedan." The brand frames it as the next upgrade over its long-standing Great White waffle towel, useful context for distinguishing plush from waffle within one line. Adam's product page shows 75 reviews on the Ultra Plush listing.</p>
+      <p>Adam's product page lists the <a href="https://adamspolishes.com/products/adam-s-ultra-plush-drying-towel" rel="sponsored noopener" target="_blank">Ultra Plush Drying Towel</a> at <strong>540 GSM</strong> with an "all-new thick loop microfiber design" and a "large long fiber weave," finished with the same scratch-free soft satin edging as the rest of Adam's microfiber line. The page itself lists the size as both 28x36 and 29x36, so it is recorded here as 28-29 x 36 inches.</p>
+      <p>Adam's claims the towel absorbs "up to 2 times the amount of water as the Great White Drying Towel" and that <strong>"a single towel can dry a fullsize sedan."</strong> The brand frames it as the next upgrade over its long-standing Great White waffle towel, useful context for distinguishing plush from waffle within one line. Adam's product page shows 75 reviews on the Ultra Plush listing.</p>
   - name: "Adam's Jumbo Plush Drying Towel (33x29, 2-Pack)"
     brand: "Adam's Polishes"
     affiliateUrl: "https://www.amazon.com/dp/B07KMKHGQ7?tag=detailerpicks-20"
@@ -87,8 +87,8 @@ products:
       Weave: "Plush microfiber"
       Pack: "2-Pack, White"
     body: |
-      <p>The Amazon listing for the <a href="https://www.amazon.com/dp/B07KMKHGQ7?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">Adam's Jumbo Plush Drying Towel</a> states 1500 GSM, 33 by 29 inches, sold as a 2-pack in white. The brand's about-this-item copy says the high GSM and large size let each towel "hold up to 1 gallon of water or up to 8 pounds of liquid." This is the highest published GSM in this lineup.</p>
-      <p>Amazon reviewers rate it 4.7 out of 5 across 454 ratings. The linked option is the $38.24 multipack. The same listing carries other size and pack options at different prices. For the home detailer who wants oversized, high-GSM towels with a spare on hand, the Jumbo Plush 2-pack is the premium multipack pick.</p>
+      <p>The Amazon listing for the <a href="https://www.amazon.com/dp/B07KMKHGQ7?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">Adam's Jumbo Plush Drying Towel</a> states <strong>1500 GSM</strong>, 33 by 29 inches, sold as a 2-pack in white. The brand's about-this-item copy says the high GSM and large size let each towel "hold up to 1 gallon of water or up to 8 pounds of liquid." This is the <strong>highest published GSM in this lineup</strong>.</p>
+      <p>Amazon reviewers rate it <strong>4.7 out of 5 across 454 ratings</strong>. The linked option is the $38.24 multipack. The same listing carries other size and pack options at different prices. For the home detailer who wants oversized, high-GSM towels with a spare on hand, the Jumbo Plush 2-pack is the <strong>premium multipack pick</strong>.</p>
   - name: "SMINDER 1200 GSM Car Drying Towels (36x24, 2-Pack)"
     brand: "SMINDER"
     affiliateUrl: "https://www.amazon.com/dp/B0DPZTLVHL?tag=detailerpicks-20"
@@ -104,8 +104,8 @@ products:
       Weave: "Double-twist pile, edgeless"
       Pack: "2-Pack"
     body: |
-      <p>The Amazon listing for the <a href="https://www.amazon.com/dp/B0DPZTLVHL?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">SMINDER 1200 GSM Car Drying Towels</a> states 1200 GSM, 36 by 24 inches, with a double-twist pile and edgeless design, sold as a 2-pack. At $22.99 ($11.50 per towel), it is the lowest price in this lineup.</p>
-      <p>Amazon reviewers rate it 4.7 out of 5 across 1,447 ratings, the highest rating count among the six picks. For the home detailer who wants twist-pile absorbency and a spare towel without brand-premium pricing, SMINDER is the budget multipack.</p>
+      <p>The Amazon listing for the <a href="https://www.amazon.com/dp/B0DPZTLVHL?tag=detailerpicks-20" rel="sponsored noopener" target="_blank">SMINDER 1200 GSM Car Drying Towels</a> states <strong>1200 GSM</strong>, 36 by 24 inches, with a double-twist pile and edgeless design, sold as a 2-pack. At <strong>$22.99 ($11.50 per towel)</strong>, it is the lowest price in this lineup.</p>
+      <p>Amazon reviewers rate it <strong>4.7 out of 5 across 1,447 ratings</strong>, the highest rating count among the six picks. For the home detailer who wants twist-pile absorbency and a spare towel without brand-premium pricing, SMINDER is the <strong>budget multipack</strong>.</p>
 pubDate: 2026-05-29
 lastUpdated: 2026-05-29
 bgTheme: foam-cascade
@@ -164,19 +164,26 @@ Drying towels split into three constructions, and the right one depends on the j
 - **Plush** towels, like the Chemical Guys Woolly Mammoth, Adam's Ultra Plush, and Adam's Jumbo Plush, use dense looped microfiber for a soft, high-capacity wipe. Adam's says a single Ultra Plush can dry a fullsize sedan. The high-GSM plush 2-packs (Adam's Jumbo at 1500 GSM, SMINDER at 1200 GSM) are the soak-it-all towels in this group.
 - **Waffle-weave** towels, like Dry Me A River at 390 GSM, are deliberately thin with a grid texture that wicks fast and lies flat. They are not meant to hold a gallon. They are meant for glass, mirrors, and final wipe-downs, and they pair with a plush or twist-loop primary towel rather than replacing it.
 
-A common home-detailer setup is one plush or twist-loop primary towel plus a thin waffle towel for glass. Buying a 2-pack of the primary keeps a dry spare ready and a clean one in the wash rotation.
+A common home-detailer setup is **one plush or twist-loop primary towel plus a thin waffle towel for glass**. Buying a 2-pack of the primary keeps a dry spare ready and a clean one in the wash rotation.
 
 ## Drying a ceramic-coated car: why lower-pile and twist-loop matter
 
-A ceramic coating changes the drying job. Water beads and sheets off a coated surface instead of clinging, so the towel does not need to absorb a gallon. It needs to glide with as little friction as possible across a finish you are trying to protect. That points away from the thickest, deepest-pile towels and toward a controlled twist-loop or a thin waffle-weave.
+A ceramic coating changes the drying job. Water beads and sheets off a coated surface instead of clinging, so the towel does not need to absorb a gallon. It needs to **glide with as little friction as possible** across a finish you are trying to protect. That points away from the thickest, deepest-pile towels and toward a controlled twist-loop or a thin waffle-weave.
 
-Two specs tell the story. Weave first: the twist-loop construction on The Rag Company Gauntlet uses long twisted fiber bundles that lift water in a single pass, so the towel spends less time in contact with the coating. The waffle-weave Dry Me A River, at 390 GSM, is deliberately low-pile and flat, which is why The Rag Company calls it lint-free and positions it for fast, streak-free wicking. Blend second: both Rag Company towels list a 70% polyester and 30% polyamide Korean split-microfiber blend, the construction enthusiasts associate with a soft, low-snag face on coated paint. The point is not the biggest GSM number. It is the fewest passes and the lowest drag, which a twist-loop or a quality waffle delivers better than a dense plush brick.
+Two specs tell the story:
+
+- **Weave.** The twist-loop construction on The Rag Company Gauntlet uses long twisted fiber bundles that lift water in a single pass, so the towel spends less time in contact with the coating. The waffle-weave Dry Me A River, at 390 GSM, is deliberately low-pile and flat, which is why The Rag Company calls it lint-free and positions it for fast, streak-free wicking.
+- **Blend.** Both Rag Company towels list a 70% polyester and 30% polyamide Korean split-microfiber blend, the construction enthusiasts associate with a soft, low-snag face on coated paint.
+
+The point is not the biggest GSM number. It is the **fewest passes and the lowest drag**, which a twist-loop or a quality waffle delivers better than a dense plush brick.
 
 ## Best size and GSM for black paint and the marring risk
 
-Black and other dark colors show fine scratches and wash marring that lighter paint hides, so the drying towel is a real swirl risk if you pick wrong. The goal is fewer passes, more glide, and an edge that never drags. That argues for a high-GSM plush or twist-loop towel sized large enough to cover a panel in one or two sweeps.
+Black and other dark colors show fine scratches and wash marring that lighter paint hides, so the drying towel is a real swirl risk if you pick wrong. The goal is **fewer passes, more glide, and an edge that never drags**. That argues for a high-GSM plush or twist-loop towel sized large enough to cover a panel in one or two sweeps.
 
-The high-density picks here fit that brief: Adam's Jumbo Plush at 1500 GSM, SMINDER at 1200 GSM, and The Gauntlet at 900 GSM all carry enough water on a deep, soft face that the towel rides on its own water layer rather than scrubbing the paint. Size helps too. The oversized 33x29 inch Jumbo Plush and 36x24 inch SMINDER cover more area per pass, so your hands touch the finish less often. Edge construction is the detail people miss on dark paint: the Gauntlet's tagless ButterSoft suede edge and Adam's scratch-free satin edging exist specifically to keep a hard seam or a sewn-in tag from leaving a fine scratch that a black hood will broadcast in the sun. Pair a high-GSM primary with a clean wash routine and grit-free storage, because a dropped towel that picks up sand undoes all of it.
+The high-density picks here fit that brief: Adam's Jumbo Plush at 1500 GSM, SMINDER at 1200 GSM, and The Gauntlet at 900 GSM all carry enough water on a deep, soft face that the towel rides on its own water layer rather than scrubbing the paint. Size helps too. The oversized 33x29 inch Jumbo Plush and 36x24 inch SMINDER cover more area per pass, so your hands touch the finish less often.
+
+**Edge construction is the detail people miss on dark paint:** the Gauntlet's tagless ButterSoft suede edge and Adam's scratch-free satin edging exist specifically to keep a hard seam or a sewn-in tag from leaving a fine scratch that a black hood will broadcast in the sun. Pair a high-GSM primary with a clean wash routine and grit-free storage, because a dropped towel that picks up sand undoes all of it.
 
 ## How we picked
 

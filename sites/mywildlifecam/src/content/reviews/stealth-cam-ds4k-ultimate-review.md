@@ -62,7 +62,7 @@ faq:
 
 ## Who This Is For
 
-If you want the sharpest trail-cam photos available without paying a monthly cellular bill, the DS4K Ultimate is calibrated for you. It targets homeowners and property owners who care more about image fidelity than convenience, who don't mind walking out to swap an SD card every few weeks, and who'd rather pay once for the hardware than commit to a recurring subscription.
+If you want the **sharpest trail-cam photos available without paying a monthly cellular bill**, the DS4K Ultimate is calibrated for you. It targets homeowners and property owners who care more about image fidelity than convenience, who don't mind walking out to swap an SD card every few weeks, and who'd rather pay once for the hardware than commit to a recurring subscription.
 
 The DS4K Ultimate is the SD-card pick in our buying guide [Best Trail Cameras for Backyard Wildlife](/buyers-guides/best-trail-cameras-for-backyard-wildlife). The cellular alternative is the [Spypoint Flex-M](/reviews/spypoint-flex-m-review), which trades image quality for app delivery.
 

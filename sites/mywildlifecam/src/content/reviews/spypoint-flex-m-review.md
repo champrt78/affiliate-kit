@@ -71,7 +71,7 @@ faq:
 
 If you want cellular trail-cam photos showing up on your phone from a back-of-the-property deployment, and you don't want to dive into a subscription decision before the camera even arrives, the Flex-M is calibrated for you. It targets homeowners, property owners, first-time cellular buyers, and gift buyers who want the convenience of "set it on a tree, check the app" without committing to a recurring fee on day one.
 
-The free 100-photo-per-month plan covers light backyard use without any monthly commitment. If you only care about what's walking past once or twice a day, you may never need a paid tier. Heavy daily volume changes the calculation, which is covered below.
+The **free 100-photo-per-month plan** covers light backyard use without any monthly commitment. If you only care about what's walking past once or twice a day, you may never need a paid tier. Heavy daily volume changes the calculation, which is covered below.
 
 ## At a Glance
 

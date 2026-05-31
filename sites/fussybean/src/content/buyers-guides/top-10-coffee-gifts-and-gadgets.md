@@ -22,8 +22,8 @@ products:
       Use: "Milk, matcha, protein, dressings"
       Includes: "Stand"
     body: >
-      <p>The <a href="https://www.amazon.com/dp/B09D8T11YS?tag=fussybean-20" rel="sponsored noopener" target="_blank">Zulay Original Milk Frother Wand</a> is the classic giftable frother: a slim battery-powered whisk with a stainless coil head that the listing rates at a high-RPM spin to whip cold or warm milk into foam in well under a minute. It comes with a small stand so it is not rolling around a drawer.</p>
-      <p>This is the lowest-friction way to make a drink feel like a cafe order without buying a machine. The same wand handles matcha, hot chocolate, protein shakes, and salad dressing, which is part of why it reads as a safe gift for almost any coffee drinker. Treat it as a foam toy, not a substitute for a steam wand: it aerates milk rather than texturing it for latte art.</p>
+      <p>The <a href="https://www.amazon.com/dp/B09D8T11YS?tag=fussybean-20" rel="sponsored noopener" target="_blank">Zulay Original Milk Frother Wand</a> is the <strong>classic giftable frother</strong>: a slim battery-powered whisk with a stainless coil head that the listing rates at a high-RPM spin to whip cold or warm milk into <strong>foam in well under a minute</strong>. It comes with a small stand so it is not rolling around a drawer.</p>
+      <p>This is the <strong>lowest-friction way to make a drink feel like a cafe order</strong> without buying a machine. The same wand handles matcha, hot chocolate, protein shakes, and salad dressing, which is part of why it reads as a safe gift for almost any coffee drinker. Treat it as a foam toy, not a substitute for a steam wand: it aerates milk rather than texturing it for latte art.</p>
   - name: "BigMouth Inc. Prescription Coffee Mug"
     brand: "BigMouth Inc."
     affiliateUrl: "https://www.amazon.com/dp/B0085MQPSG?tag=fussybean-20"
@@ -38,7 +38,7 @@ products:
       Material: "Ceramic"
       Care: "Dishwasher safe"
     body: >
-      <p>The <a href="https://www.amazon.com/dp/B0085MQPSG?tag=fussybean-20" rel="sponsored noopener" target="_blank">BigMouth Inc. Prescription Coffee Mug</a> leans into the office-gift joke without falling apart after a week: it is a real 12-ounce ceramic mug styled as a pharmacy pill-bottle label, and the listing notes it is dishwasher safe rather than hand-wash-only print.</p>
+      <p>The <a href="https://www.amazon.com/dp/B0085MQPSG?tag=fussybean-20" rel="sponsored noopener" target="_blank">BigMouth Inc. Prescription Coffee Mug</a> leans into the office-gift joke without falling apart after a week: it is a <strong>real 12-ounce ceramic mug</strong> styled as a pharmacy pill-bottle label, and the listing notes it is <strong>dishwasher safe</strong> rather than hand-wash-only print.</p>
       <p>Novelty mugs live or die on whether the recipient keeps using them, and a sturdy dishwasher-safe ceramic clears that bar where a cheap printed one would not. It is the obvious white-elephant or stocking choice for the caffeine-as-medicine crowd. Confirm the printed label and capacity on the listing before buying, since gag-gift listings rotate variants often.</p>
   - name: "KISEER Coffee Scoop Clip, Set of 3"
     brand: "KISEER"
@@ -54,7 +54,7 @@ products:
       Capacity: "1 tablespoon"
       Count: "3"
     body: >
-      <p>The <a href="https://www.amazon.com/dp/B07KS47CXD?tag=fussybean-20" rel="sponsored noopener" target="_blank">KISEER Coffee Scoop Clip</a> is a two-in-one: a 1-tablespoon stainless scoop on a long handle, with a spring clip on the other end to reseal the bag. The set listed includes three, so one goes by the beans and the spares end up clipping every other bag in the kitchen.</p>
+      <p>The <a href="https://www.amazon.com/dp/B07KS47CXD?tag=fussybean-20" rel="sponsored noopener" target="_blank">KISEER Coffee Scoop Clip</a> is a <strong>two-in-one</strong>: a 1-tablespoon stainless scoop on a long handle, with a spring clip on the other end to reseal the bag. The <strong>set listed includes three</strong>, so one goes by the beans and the spares end up clipping every other bag in the kitchen.</p>
       <p>It is the kind of small fix people never buy for themselves, which is exactly what makes it a good cheap gift. The long handle reaches the bottom of a deep bag or canister without dunking your hand. As a per-unit value, a three-pack under ten dollars is hard to beat at this end of the list.</p>
   - name: "OVALWARE Paperless Pour Over Filter"
     brand: "OVALWARE"
@@ -70,8 +70,8 @@ products:
       Filter: "Laser-cut dual mesh"
       Fits: "Chemex, Hario, carafes"
     body: >
-      <p>The <a href="https://www.amazon.com/dp/B01G2LO1OG?tag=fussybean-20" rel="sponsored noopener" target="_blank">OVALWARE Paperless Pour Over Filter</a> is a 18/8 stainless cone with a laser-cut dual-mesh wall that the listing describes as letting the coffee oils through rather than trapping them in paper. It is sized to sit on carafes and mugs, including Chemex and Hario-style brewers.</p>
-      <p>The pitch is simple economics and a different cup: no more paper to buy, and a heavier-bodied brew because the oils a paper filter would absorb stay in the pot. The trade-off is more fines in the cup and a rinse-and-dry cleanup after each brew. For a pour-over regular, it is a satisfying gift that pays for itself over a year of skipped filters.</p>
+      <p>The <a href="https://www.amazon.com/dp/B01G2LO1OG?tag=fussybean-20" rel="sponsored noopener" target="_blank">OVALWARE Paperless Pour Over Filter</a> is a <strong>18/8 stainless cone</strong> with a laser-cut dual-mesh wall that the listing describes as letting the coffee oils through rather than trapping them in paper. It is sized to sit on carafes and mugs, <strong>including Chemex and Hario-style brewers</strong>.</p>
+      <p>The pitch is simple economics and a different cup: <strong>no more paper to buy</strong>, and a heavier-bodied brew because the oils a paper filter would absorb stay in the pot. The trade-off is more fines in the cup and a rinse-and-dry cleanup after each brew. For a pour-over regular, it is a satisfying gift that pays for itself over a year of skipped filters.</p>
   - name: "Aerolatte Cappuccino Stencil Set"
     brand: "Aerolatte"
     affiliateUrl: "https://www.amazon.com/dp/B004MXU5QU?tag=fussybean-20"
@@ -86,7 +86,7 @@ products:
       Material: "BPA-free plastic"
       Storage: "Brushed tin"
     body: >
-      <p>The <a href="https://www.amazon.com/dp/B004MXU5QU?tag=fussybean-20" rel="sponsored noopener" target="_blank">Aerolatte Cappuccino Stencil Set</a> is six BPA-free plastic stencils, listed with heart, leaf, snowflake, spiral, star, and wink shapes, that come in a brushed tin so they store neatly. You hold one level over the foam and sift cocoa or cinnamon through it.</p>
+      <p>The <a href="https://www.amazon.com/dp/B004MXU5QU?tag=fussybean-20" rel="sponsored noopener" target="_blank">Aerolatte Cappuccino Stencil Set</a> is <strong>six BPA-free plastic stencils</strong>, listed with heart, leaf, snowflake, spiral, star, and wink shapes, that come in a brushed tin so they store neatly. You hold one level over the foam and sift cocoa or cinnamon through it.</p>
       <p>This is decoration for people who do not want to practice free-pour latte art, which is most people. It is a low-stakes, photogenic gift that pairs naturally with a frother or a bag of cocoa. The listing notes results are best when the stencil sits close and level to the surface, so a steadier foam helps the pattern land cleanly.</p>
   - name: "Coffee Gator Stainless Canister, 22 oz"
     brand: "Coffee Gator"
@@ -102,7 +102,7 @@ products:
       Valve: "One-way CO2 release"
       Extras: "Date tracker, scoop"
     body: >
-      <p>The <a href="https://www.amazon.com/dp/B01H38T2FK?tag=fussybean-20" rel="sponsored noopener" target="_blank">Coffee Gator Stainless Canister</a> is a 22-ounce airtight steel container whose listing highlights a one-way valve that lets roasting CO2 escape while keeping oxygen out, plus a date-tracker dial on the lid and an included scoop.</p>
+      <p>The <a href="https://www.amazon.com/dp/B01H38T2FK?tag=fussybean-20" rel="sponsored noopener" target="_blank">Coffee Gator Stainless Canister</a> is a <strong>22-ounce airtight steel container</strong> whose listing highlights a <strong>one-way CO2 valve</strong> that lets roasting gas escape while keeping oxygen out, plus a date-tracker dial on the lid and an included scoop.</p>
       <p>Whole beans go stale from oxygen and light, and a sealed opaque canister with a CO2 valve is the standard fix. The date wheel is a small touch that helps a gift recipient actually rotate their beans. It sits a step up in price from the trinkets on this list but stays comfortably giftable, and the brand is a well-known one in this category.</p>
   - name: "Apexstone Espresso Knock Box"
     brand: "Apexstone"
@@ -118,7 +118,7 @@ products:
       Bar: "Padded knock bar"
       Care: "Dishwasher safe"
     body: >
-      <p>The <a href="https://www.amazon.com/dp/B07BDK71TR?tag=fussybean-20" rel="sponsored noopener" target="_blank">Apexstone Espresso Knock Box</a> is a small stainless bin with a padded central bar you tap the portafilter against to drop the spent puck, sized in the listing for most home machines and called dishwasher safe.</p>
+      <p>The <a href="https://www.amazon.com/dp/B07BDK71TR?tag=fussybean-20" rel="sponsored noopener" target="_blank">Apexstone Espresso Knock Box</a> is a <strong>small stainless bin with a padded knock bar</strong> you tap the portafilter against to drop the spent puck, sized in the listing for most home machines and called <strong>dishwasher safe</strong>.</p>
       <p>It is the unglamorous accessory nobody puts on their own wish list and everybody needs the moment they start pulling shots, which makes it a sharp gift for a recent espresso convert. The compact size suits a home counter rather than a busy bar. Bigger bins exist for higher volume, but for one or two drinkers the small box is the right call.</p>
   - name: "Cool Socks No Coffee No Workee Crew Socks"
     brand: "Cool Socks"
@@ -134,7 +134,7 @@ products:
       Size: "Unisex medium"
       Style: "Crew"
     body: >
-      <p>The <a href="https://www.amazon.com/dp/B08FRTCG2W?tag=fussybean-20" rel="sponsored noopener" target="_blank">Cool Socks No Coffee No Workee Crew Socks</a> are a combed-cotton-blend crew sock with an all-over coffee-themed print, listed in a unisex medium fit. It is an officially branded novelty rather than a thin one-print throwaway.</p>
+      <p>The <a href="https://www.amazon.com/dp/B08FRTCG2W?tag=fussybean-20" rel="sponsored noopener" target="_blank">Cool Socks No Coffee No Workee Crew Socks</a> are a <strong>combed-cotton-blend crew sock</strong> with an all-over coffee-themed print, listed in a <strong>unisex medium fit</strong>. It is an officially branded novelty rather than a thin one-print throwaway.</p>
       <p>Not every coffee gift needs to brew anything. For the person who already owns the frother and the canister, a wearable joke is the easy add-on or stocking-stuffer. Check the sizing note on the listing, since the unisex medium covers a specific shoe-size range rather than one-size-fits-all.</p>
   - name: "Mixpresso Manual Coffee Grinder"
     brand: "Mixpresso"
@@ -150,7 +150,7 @@ products:
       Adjust: "Adjustable, stepped"
       Drive: "Hand crank"
     body: >
-      <p>The <a href="https://www.amazon.com/dp/B074RD3JW5?tag=fussybean-20" rel="sponsored noopener" target="_blank">Mixpresso Manual Coffee Grinder</a> is a budget hand-crank mill with a ceramic conical burr and glass jars, listed with an adjustable grind and a removable crank that drops most of the noise of an electric.</p>
+      <p>The <a href="https://www.amazon.com/dp/B074RD3JW5?tag=fussybean-20" rel="sponsored noopener" target="_blank">Mixpresso Manual Coffee Grinder</a> is a <strong>budget hand-crank mill with a ceramic conical burr</strong> and glass jars, listed with an adjustable grind and a removable crank that drops most of the noise of an electric.</p>
       <p>This is the gift version of a grinder, not the upgrade path: it is the cheapest way to put a real burr in someone's hands so they can grind fresh, and it travels well for camping or a hotel room. For anyone getting serious about espresso, point them to our full grinder guide instead. As a low-cost intro or a second travel grinder, the ceramic-burr Mixpresso does the job.</p>
   - name: "Milk Frothing Pitcher, 12 oz, with Art Pen"
     brand: "Generic"
@@ -166,7 +166,7 @@ products:
       Material: "304 stainless steel"
       Includes: "Latte art pen"
     body: >
-      <p>The <a href="https://www.amazon.com/dp/B07RQ54X63?tag=fussybean-20" rel="sponsored noopener" target="_blank">12 oz Milk Frothing Pitcher</a> is a 304 stainless steaming jug with a pour spout, bundled in this listing with a small latte-art decorating pen for drawing in the foam.</p>
+      <p>The <a href="https://www.amazon.com/dp/B07RQ54X63?tag=fussybean-20" rel="sponsored noopener" target="_blank">12 oz Milk Frothing Pitcher</a> is a <strong>304 stainless steaming jug</strong> with a pour spout, bundled in this listing with a <strong>small latte-art decorating pen</strong> for drawing in the foam.</p>
       <p>On its own a pitcher is the vessel you froth and pour from. Paired with the frother and stencils above, it rounds out a tidy latte-art starter set for one gift recipient. The 12-ounce size suits one to two drinks at a time. As always with bundled budget listings, confirm the pen is still included before buying, since the combo can change.</p>
 bottomLine:
   verdict: "The handheld milk frother is the giftable crowd-pleaser. The novelty mug and the pour-over are the safe picks for any coffee person on your list."
@@ -186,14 +186,14 @@ The picks above are the full lineup, lined up by who each one suits. If you are 
 
 ## Coffee gifts for the person who has a machine
 
-For someone who already owns an espresso machine, the best gifts are the accessories they skipped. The Apexstone knock box at $19.99 is the one new espresso owners need the moment they start pulling shots, since it gives the spent puck somewhere to go besides the trash. The Coffee Gator canister at $23.97 keeps their beans fresh after the bag is opened, with a one-way CO2 valve and a date wheel. Round out a latte-art starter set with the milk frothing pitcher and pen at $12.99 and the cappuccino stencils at $12.99.
+For someone who already owns an espresso machine, the best gifts are the accessories they skipped. The **Apexstone knock box at $19.99** is the one new espresso owners need the moment they start pulling shots, since it gives the spent puck somewhere to go besides the trash. The **Coffee Gator canister at $23.97** keeps their beans fresh after the bag is opened, with a one-way CO2 valve and a date wheel. Round out a latte-art starter set with the **milk frothing pitcher and pen at $12.99** and the **cappuccino stencils at $12.99**.
 
 ## Coffee gifts for the pod-and-drip drinker
 
-For someone still on pods or a drip machine, the gift that lands is the one that adds a cafe feel cheaply. The Zulay milk frother at $13.99 is the headline here, turning ordinary coffee into a foamy latte feel in seconds, and it doubles for matcha, hot chocolate, and protein shakes. The OVALWARE paperless pour-over filter at $18.95 nudges a curious drip drinker toward a richer cup with no paper to restock, and the Mixpresso hand grinder at $18.99 is the cheapest way to put fresh-ground coffee in their hands.
+For someone still on pods or a drip machine, the gift that lands is the one that adds a cafe feel cheaply. The **Zulay milk frother at $13.99** is the headline here, turning ordinary coffee into a foamy latte feel in seconds, and it doubles for matcha, hot chocolate, and protein shakes. The **OVALWARE paperless pour-over filter at $18.95** nudges a curious drip drinker toward a richer cup with no paper to restock, and the **Mixpresso hand grinder at $18.99** is the cheapest way to put fresh-ground coffee in their hands.
 
 ## Coffee gifts for the person who has everything
 
-For the coffee obsessive who already owns every gadget, the move is a wearable joke or a desk piece rather than more gear. The Cool Socks coffee-print crew socks at $11.99 are the pure stocking-stuffer, and the BigMouth prescription coffee mug at $14.95 is the gag gift that still gets daily desk use because it is a real dishwasher-safe ceramic. The KISEER scoop-and-clip set at $9.99 is the small fix nobody buys for themselves, which is exactly what makes it a good cheap add-on.
+For the coffee obsessive who already owns every gadget, the move is a wearable joke or a desk piece rather than more gear. The **Cool Socks coffee-print crew socks at $11.99** are the pure stocking-stuffer, and the **BigMouth prescription coffee mug at $14.95** is the gag gift that still gets daily desk use because it is a real dishwasher-safe ceramic. The **KISEER scoop-and-clip set at $9.99** is the small fix nobody buys for themselves, which is exactly what makes it a good cheap add-on.
 
 ## The list

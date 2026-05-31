@@ -23,8 +23,8 @@ products:
       Type: "Manual hand grinder"
       Adjustment: "Internal, double-bearing"
     body: >
-      <p>The Amazon listing for the <a href="https://www.amazon.com/dp/B0CGTYT12R?tag=fussybean-20" rel="sponsored noopener" target="_blank">TIMEMORE Chestnut C2S</a> describes a CNC stainless steel S2C conical burr with double-bearing positioning for an even grind, a 25g capacity, and an internal adjustment dial, in a compact body Timemore markets for pour-over, French press, and travel. A burr grinder crushes beans to a consistent size you can choose, where a blade grinder chops them into a random mix that brews bitter and sour at once. Going manual skips the motor, which is most of the cost of an electric burr grinder.</p>
-      <p>It carries a 4.7 out of 5 rating across 930 Amazon ratings, the highest in this kit, and the listing shows "100+ bought in past month." The trade-off is honest: you turn a crank for every cup. For one or two cups a day that is a 30-second ritual. For a houseful of coffee drinkers an electric grinder eventually earns its place. As a first grinder on a budget, the hand grinder is the value play.</p>
+      <p>The Amazon listing for the <a href="https://www.amazon.com/dp/B0CGTYT12R?tag=fussybean-20" rel="sponsored noopener" target="_blank">TIMEMORE Chestnut C2S</a> describes a <strong>CNC stainless steel S2C conical burr</strong> with double-bearing positioning for an even grind, a <strong>25g capacity</strong>, and an internal adjustment dial, in a compact body Timemore markets for pour-over, French press, and travel. A burr grinder crushes beans to a consistent size you can choose, where a blade grinder chops them into a random mix that brews bitter and sour at once. <strong>Going manual skips the motor</strong>, which is most of the cost of an electric burr grinder.</p>
+      <p>It carries a <strong>4.7 out of 5 rating across 930 Amazon ratings</strong>, the highest in this kit, and the listing shows "100+ bought in past month." The trade-off is honest: you turn a crank for every cup. For one or two cups a day that is a 30-second ritual. For a houseful of coffee drinkers an electric grinder eventually earns its place. As a first grinder on a budget, the hand grinder is the value play.</p>
   - name: "Bodum Brazil 34oz French Press"
     brand: "Bodum"
     affiliateUrl: "https://www.amazon.com/dp/B000KEM4TQ?tag=fussybean-20"
@@ -40,8 +40,8 @@ products:
       Filter: "Reusable steel mesh"
       Origin: "Made in Portugal"
     body: >
-      <p>The listing for the <a href="https://www.amazon.com/dp/B000KEM4TQ?tag=fussybean-20" rel="sponsored noopener" target="_blank">Bodum Brazil 34oz French Press</a> describes a borosilicate glass carafe, a three-part stainless steel mesh plunger, and 34oz capacity, made in Portugal. Bodum's own copy leans into the budget angle: "good design doesn't have to be expensive." The press needs nothing you buy again. Coarse grounds, hot water, four minutes, press. The reusable steel filter means no paper to restock, which keeps the per-cup cost as low as it goes.</p>
-      <p>It holds a 4.5 out of 5 rating across 19,834 Amazon ratings, one of the largest samples in any fussybean guide, with "700+ bought in past month" on the listing. If you brew one cup at a time rather than a batch, an AeroPress is the common alternative at a similar price. This kit picks the press for its batch capacity and its near-zero learning curve at the lowest cost.</p>
+      <p>The listing for the <a href="https://www.amazon.com/dp/B000KEM4TQ?tag=fussybean-20" rel="sponsored noopener" target="_blank">Bodum Brazil 34oz French Press</a> describes a borosilicate glass carafe, a three-part stainless steel mesh plunger, and <strong>34oz capacity</strong>, made in Portugal. Bodum's own copy leans into the budget angle: "good design doesn't have to be expensive." The press needs nothing you buy again. Coarse grounds, hot water, four minutes, press. The <strong>reusable steel filter means no paper to restock</strong>, which keeps the per-cup cost as low as it goes.</p>
+      <p>It holds a <strong>4.5 out of 5 rating across 19,834 Amazon ratings</strong>, one of the largest samples in any fussybean guide, with "700+ bought in past month" on the listing. If you brew one cup at a time rather than a batch, an AeroPress is the common alternative at a similar price. This kit picks the press for its batch capacity and its near-zero learning curve at the lowest cost.</p>
   - name: "Bonavita 1L Variable-Temperature Gooseneck Kettle"
     brand: "Bonavita"
     affiliateUrl: "https://www.amazon.com/dp/B005YR0F40?tag=fussybean-20"
@@ -57,8 +57,8 @@ products:
       Temp control: "6 presets plus 1-degree variable"
       Spout: "Gooseneck, pour control"
     body: >
-      <p>The listing for the <a href="https://www.amazon.com/dp/B005YR0F40?tag=fussybean-20" rel="sponsored noopener" target="_blank">Bonavita 1L Variable-Temperature Gooseneck Kettle</a> describes a 1-liter, 1200-watt stainless steel kettle with six preset temperatures plus single-degree variable control and a gooseneck spout for a slow, aimed pour. This is the priciest piece in the kit at around $100, and the honest framing matters: you do not need it to start. A French press works with water from any kettle or even a pot off the stove. The gooseneck and the temperature dial earn their keep specifically once you move to pour-over, where pour rate and water temperature start to change the cup.</p>
-      <p>It carries a 4.4 out of 5 rating across 7,195 Amazon ratings. If you want pour-over control for less, a plain stovetop gooseneck kettle (no electronics) runs a fraction of this price. You give up the temperature presets and pour the water once it stops boiling. Treat the Bonavita as the upgrade you add when pour-over becomes the goal, not as a day-one requirement.</p>
+      <p>The listing for the <a href="https://www.amazon.com/dp/B005YR0F40?tag=fussybean-20" rel="sponsored noopener" target="_blank">Bonavita 1L Variable-Temperature Gooseneck Kettle</a> describes a <strong>1-liter, 1200-watt</strong> stainless steel kettle with <strong>six preset temperatures plus single-degree variable control</strong> and a gooseneck spout for a slow, aimed pour. This is the <strong>priciest piece in the kit at around $100</strong>, and the honest framing matters: you do not need it to start. A French press works with water from any kettle or even a pot off the stove. The gooseneck and the temperature dial earn their keep specifically once you move to pour-over, where pour rate and water temperature start to change the cup.</p>
+      <p>It carries a <strong>4.4 out of 5 rating across 7,195 Amazon ratings</strong>. If you want pour-over control for less, a plain stovetop gooseneck kettle (no electronics) runs a fraction of this price. You give up the temperature presets and pour the water once it stops boiling. Treat the Bonavita as the upgrade you add when pour-over becomes the goal, not as a day-one requirement.</p>
   - name: "Greater Goods Coffee Scale with Timer"
     brand: "Greater Goods"
     affiliateUrl: "https://www.amazon.com/dp/B09B4CB7C1?tag=fussybean-20"
@@ -74,8 +74,15 @@ products:
       Timer: "Built-in, count up or down"
       Cover: "Heat-resistant silicone"
     body: >
-      <p>The listing for the <a href="https://www.amazon.com/dp/B09B4CB7C1?tag=fussybean-20" rel="sponsored noopener" target="_blank">Greater Goods Coffee Scale with Timer</a> describes 0.1g precision, a 3kg capacity, a built-in count-up and count-down timer, support for grams, ounces, pounds, milliliters, and fluid ounces, and a heat-resistant silicone cover. The scale is the quiet piece that makes everything else repeatable. Weighing the dose and the water, instead of guessing by scoops, removes the single biggest source of cup-to-cup inconsistency for a beginner.</p>
-      <p>It holds a 4.4 out of 5 rating across 2,370 Amazon ratings. At around $30 it is the cheapest item here after the press, and it does more for consistency than its price suggests. A kitchen scale you already own can stand in to start, but a coffee scale with an integrated timer makes dialing in a recipe much easier to follow and repeat.</p>
+      <p>The listing for the <a href="https://www.amazon.com/dp/B09B4CB7C1?tag=fussybean-20" rel="sponsored noopener" target="_blank">Greater Goods Coffee Scale with Timer</a> describes:</p>
+      <ul>
+        <li><strong>0.1g precision</strong> and a 3kg capacity</li>
+        <li>A built-in count-up and count-down timer</li>
+        <li>Support for grams, ounces, pounds, milliliters, and fluid ounces</li>
+        <li>A heat-resistant silicone cover</li>
+      </ul>
+      <p>The scale is the quiet piece that makes everything else repeatable. <strong>Weighing the dose and the water</strong>, instead of guessing by scoops, removes the single biggest source of cup-to-cup inconsistency for a beginner.</p>
+      <p>It holds a <strong>4.4 out of 5 rating across 2,370 Amazon ratings</strong>. At <strong>around $30</strong> it is the cheapest item here after the press, and it does more for consistency than its price suggests. A kitchen scale you already own can stand in to start, but a coffee scale with an integrated timer makes dialing in a recipe much easier to follow and repeat.</p>
 images:
   hero: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=2400&q=80"
   heroCaption: "A home brew setup on the counter. Photo: Unsplash."

@@ -23,7 +23,12 @@ products:
       Frother: "Manual milk frother / steam wand"
       Price: "$149.95 list"
     body: |
-      <p>The <a href="https://www.amazon.com/dp/B08C96BG9H?tag=fussybean-20" rel="sponsored noopener" target="_blank">De'Longhi Stilosa</a> is the gentlest place to start. Amazon's own listing puts it at 15-bar pump pressure with a manual milk frother steam wand, and it ships with a portafilter, a measuring scoop and tamper, and two filters for single or double shots. The list price runs $149.95 per camelcamelcamel's product record, and it is commonly found below that.</p>
+      <p>The <a href="https://www.amazon.com/dp/B08C96BG9H?tag=fussybean-20" rel="sponsored noopener" target="_blank">De'Longhi Stilosa</a> is the <strong>gentlest place to start</strong>. Amazon's own listing puts it at <strong>15-bar pump pressure</strong> with a manual milk frother steam wand. The list price runs <strong>$149.95</strong> per camelcamelcamel's product record, and it is commonly found below that. In the box:</p>
+      <ul>
+        <li>A portafilter</li>
+        <li>A measuring scoop and tamper</li>
+        <li>Two filters for single or double shots</li>
+      </ul>
       <p>Beginner roundups from caffeineadvisor and onehundredcoffee describe it as "the simplest, honest start... designed for beginners who want simplicity and affordability." One Gaggia owner, weighing value out loud in a review, put it plainly: "If you want tasty espresso without much thought, get a De'Longhi Stilosa and save yourself hundreds of dollars."</p>
   - name: "De'Longhi Dedica Arte (EC885)"
     brand: "De'Longhi"
@@ -40,7 +45,7 @@ products:
       Frother: "My LatteArt manual steam wand"
       Price: "$299.95"
     body: |
-      <p>The <a href="https://www.amazon.com/dp/B09HLB4DP4?tag=fussybean-20" rel="sponsored noopener" target="_blank">De'Longhi Dedica Arte</a> is the pick for a kitchen where counter space is the constraint. The listing pairs a 15-bar pump with the "My LatteArt" manual steam wand, a real wand for texturing milk rather than the pannarello frother found on cheaper Dedicas, plus three-level temperature selection and a 35 oz tank. Retailers cite a regular price of $299.95.</p>
+      <p>The <a href="https://www.amazon.com/dp/B09HLB4DP4?tag=fussybean-20" rel="sponsored noopener" target="_blank">De'Longhi Dedica Arte</a> is the pick for a kitchen where <strong>counter space is the constraint</strong>. The listing pairs a 15-bar pump with the <strong>"My LatteArt" manual steam wand</strong>, a real wand for texturing milk rather than the pannarello frother found on cheaper Dedicas, plus three-level temperature selection and a 35 oz tank. Retailers cite a regular price of <strong>$299.95</strong>.</p>
       <p>Seattle Coffee Gear's crew review frames the Dedica line as "big things come in small packages," calling out the small footprint that stands out among compact machines. caffeineadvisor positions it as "a slim, stylish espresso machine designed for beginners who want professional-style results in a compact package."</p>
   - name: "Breville Bambino (BES450)"
     brand: "Breville"
@@ -57,7 +62,7 @@ products:
       Frother: "Manual steam wand"
       Price: "$249.95"
     body: |
-      <p>The <a href="https://www.amazon.com/dp/B0B1JPPG2L?tag=fussybean-20" rel="sponsored noopener" target="_blank">Breville Bambino</a> is small but serious. Its ThermoJet system heats up in seconds, and the 54mm portafilter and 19g dose are shared with Breville's more expensive machines. The water tank holds 47 fl oz, and the body is a compact single-boiler footprint at roughly 13.7 by 6.3 by 12 inches. It carries a manual steam wand, not an automatic one. The price was $249.95 as observed on the live listing.</p>
+      <p>The <a href="https://www.amazon.com/dp/B0B1JPPG2L?tag=fussybean-20" rel="sponsored noopener" target="_blank">Breville Bambino</a> is <strong>small but serious</strong>. Its <strong>ThermoJet system heats up in seconds</strong>, and the <strong>54mm portafilter</strong> and 19g dose are shared with Breville's more expensive machines. The water tank holds 47 fl oz, and the body is a compact single-boiler footprint at roughly 13.7 by 6.3 by 12 inches. It carries a manual steam wand, not an automatic one. The price was <strong>$249.95</strong> as observed on the live listing.</p>
       <p>Whole Latte Love describes the Bambino family as "a fun single-boiler espresso machine that offers an excellent starting point for exploring espresso at home." onehundredcoffee calls it best suited for "beginners who want speed and simplicity without sacrificing espresso quality," noting that spending a little more here rewards you over the cheapest steam machines.</p>
   - name: "Breville Barista Express (BES870XL)"
     brand: "Breville"
@@ -74,8 +79,8 @@ products:
       Grinder: "Integrated conical burr"
       Price: "Approx $700 to $750 (re-confirm)"
     body: |
-      <p>The <a href="https://www.amazon.com/dp/B00CH9QWOU?tag=fussybean-20" rel="sponsored noopener" target="_blank">Breville Barista Express</a> folds the grinder into the machine. Its built-in conical burr grinder grinds directly into the 54mm stainless portafilter, which makes it the only pick here that does not require buying a separate grinder on day one. It carries a steam wand for milk texturing, and the body measures roughly 13.8 by 12.5 by 15.9 inches.</p>
-      <p>Pricing did not render cleanly on the live listing, and it has historically retailed in the $700 to $750 range, so treat that as a figure to re-confirm before you buy. Beginner roundups from espressoadvice and coffeebrewshub repeatedly cite the Barista Express as the "more forgiving" all-in-one benchmark that other machines get compared against.</p>
+      <p>The <a href="https://www.amazon.com/dp/B00CH9QWOU?tag=fussybean-20" rel="sponsored noopener" target="_blank">Breville Barista Express</a> <strong>folds the grinder into the machine</strong>. Its built-in conical burr grinder grinds directly into the 54mm stainless portafilter, which makes it the <strong>only pick here that does not require a separate grinder</strong> on day one. It carries a steam wand for milk texturing, and the body measures roughly 13.8 by 12.5 by 15.9 inches.</p>
+      <p>Pricing did not render cleanly on the live listing, and it has historically retailed in the <strong>$700 to $750 range</strong>, so treat that as a figure to re-confirm before you buy. Beginner roundups from espressoadvice and coffeebrewshub repeatedly cite the Barista Express as the <strong>"more forgiving" all-in-one benchmark</strong> that other machines get compared against.</p>
   - name: "Gaggia Classic Evo Pro (RI9380/46)"
     brand: "Gaggia"
     affiliateUrl: "https://www.amazon.com/dp/B07RQ3NL76?tag=fussybean-20"
@@ -92,7 +97,7 @@ products:
       PID: "No (popular aftermarket mod)"
       Price: "$453.79"
     body: |
-      <p>The <a href="https://www.amazon.com/dp/B07RQ3NL76?tag=fussybean-20" rel="sponsored noopener" target="_blank">Gaggia Classic Evo Pro</a> is the one you grow into. It uses a 58mm commercial portafilter and a three-way solenoid valve in a metal-bodied machine made in Italy, and an updated OPV brings extractions to the 9-bar pressure the Specialty Coffee Association recommends. It does not ship with a PID, though adding one is a well-known aftermarket mod in the enthusiast community. The Brushed Stainless variant was $453.79 as observed.</p>
+      <p>The <a href="https://www.amazon.com/dp/B07RQ3NL76?tag=fussybean-20" rel="sponsored noopener" target="_blank">Gaggia Classic Evo Pro</a> is <strong>the one you grow into</strong>. It uses a <strong>58mm commercial portafilter</strong> and a three-way solenoid valve in a metal-bodied machine made in Italy, and an updated OPV brings extractions to the <strong>9-bar pressure</strong> the Specialty Coffee Association recommends. It does not ship with a PID, though adding one is a well-known aftermarket mod in the enthusiast community. The Brushed Stainless variant was <strong>$453.79</strong> as observed.</p>
       <p>Verified-purchase reviewers call it "an excellent entry-level home espresso maker" that rewards a short learning curve: "there's a tiny learning curve but I was making great espressos after watching a few YouTube videos." coffeebrewshub describes the Classic as "a legendary entry-level espresso machine... best suited for beginners who want to grow their skills," while flagging it as "less forgiving than machines like the Breville Barista Express or Bambino Plus."</p>
   - name: "Casabrews 3700 Essential"
     brand: "Casabrews"
@@ -110,7 +115,14 @@ products:
       PID: "Yes (PID temperature control)"
       Price: "$139.99 (was $179.99)"
     body: |
-      <p>The <a href="https://www.amazon.com/dp/B0CG5N4ZC6?tag=fussybean-20" rel="sponsored noopener" target="_blank">Casabrews 3700 Essential</a> is the budget all-in-one that lets this guide acknowledge the popular Amazon-native brand. The listing pairs a 51mm portafilter with a 20-bar Italian pump, PID temperature control, a powerful steam wand, a stainless housing, a 43.9 oz tank, and a cup warmer on top. It was $139.99, down from $179.99, as observed.</p>
+      <p>The <a href="https://www.amazon.com/dp/B0CG5N4ZC6?tag=fussybean-20" rel="sponsored noopener" target="_blank">Casabrews 3700 Essential</a> is the <strong>budget all-in-one</strong> that lets this guide acknowledge the popular Amazon-native brand. It was <strong>$139.99, down from $179.99</strong>, as observed. The listing pairs:</p>
+      <ul>
+        <li>A 51mm portafilter</li>
+        <li>A 20-bar Italian pump</li>
+        <li>PID temperature control</li>
+        <li>A powerful steam wand and stainless housing</li>
+        <li>A 43.9 oz tank and a cup warmer on top</li>
+      </ul>
       <p>Sentiment is the contested part here, so both sides belong on the page. Amazon's review summary skews strongly positive: of 333 customers mentioning espresso quality, 294 are positive and 39 negative, with buyers calling it an "efficient compact espresso machine for beginners." A dissenting verified reviewer cautions the opposite for true novices: "the machine is extremely finicky about grind size and offers very little tolerance for experimentation... I would not recommend this machine to new home baristas." Several others note it "doesn't get hot enough" and suggest running it empty first to pre-heat.</p>
 images:
   hero: "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?auto=format&fit=crop&w=2400&q=80"

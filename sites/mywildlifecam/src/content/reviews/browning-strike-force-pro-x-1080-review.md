@@ -69,7 +69,7 @@ faq:
 
 ## Who This Is For
 
-The Browning Strike Force Pro X 1080 (model BTC-5PX-1080) is the single-lens, 1080p SD-card camera for buyers who can physically reach the camera location and would rather not pay a recurring cellular plan. It targets hunters and property owners doing scouting or wildlife watching where a same-day phone alert is not the point, and where pulling an SD card every few weeks is no obstacle.
+The Browning Strike Force Pro X 1080 (model BTC-5PX-1080) is the **single-lens, 1080p SD-card camera for buyers who can physically reach the camera location** and would rather not pay a recurring cellular plan. It targets hunters and property owners doing scouting or wildlife watching where a same-day phone alert is not the point, and where pulling an SD card every few weeks is no obstacle.
 
 This is a non-cellular camera, and on a site focused on cellular trail cameras that frames a clear fit decision rather than a ranking. An SD-card camera like this one makes sense when you can reach the location to swap cards and batteries, when you want zero recurring fees, or when there is no cell signal where it is mounted. A cellular camera is the better fit when you need photos pushed to your phone in near-real-time, the location is remote or hard to revisit, or timeliness is the priority. Neither type is "better" in the abstract. They answer different needs.
 

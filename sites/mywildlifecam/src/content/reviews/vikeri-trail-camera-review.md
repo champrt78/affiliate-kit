@@ -63,7 +63,7 @@ faq:
 
 ## Who This Is For
 
-If you've never owned a trail camera and you're not sure if you'd actually use one regularly, the Vikeri is calibrated for you. It's also the right pick if you're buying as a gift for someone who might or might not get into trail-cam photography, or if you want a camera you wouldn't lose sleep over if it disappeared from a high-traffic backyard location.
+If you've never owned a trail camera and you're not sure if you'd actually use one regularly, the Vikeri is calibrated for you. It's also the right pick if you're **buying as a gift** for someone who might or might not get into trail-cam photography, or if you want a camera you wouldn't lose sleep over if it disappeared from a high-traffic backyard location.
 
 The Vikeri is the budget pick in our buying guide [Best Trail Cameras for Backyard Wildlife](/buyers-guides/best-trail-cameras-for-backyard-wildlife). The higher-tier alternatives are the [Stealth Cam DS4K Ultimate](/reviews/stealth-cam-ds4k-ultimate-review) (image-quality pick, no monthly fees) and the [Spypoint Flex-M](/reviews/spypoint-flex-m-review) (cellular convenience pick). Pick the Vikeri when the budget ceiling is the constraint and you want to find out if you care about trail cameras before committing to a real one.
 
