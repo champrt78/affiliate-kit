@@ -120,13 +120,39 @@ durability; a crash resumes from the manifest):
      this never binds late.
    - **`## Bottom Line` / `bottomLine.verdict` STAYS EMPTY** (the placeholder).
      This keeps the page noindex'd and is Ray's gate.
+   - **FRONTMATTER HARD REQUIREMENTS (auto-enforced by `lint-content-frontmatter.ps1`, 2026-05-30):**
+     - `pillar:` MUST be set to a valid nav-pillar slug from the site's
+       `site-config.json` `navigation.pillars[].slug`. Content without a matching
+       `pillar:` is filtered out of its section hub → the hub renders "coming
+       soon" even though the article exists. This is the bug that stranded the gog
+       consoles + handhelds guides 2026-05-30. The lint blocks the commit if it is
+       missing/invalid (on hub sites: gog/SA/fussybean; MWC/DTP have no hubs).
+     - `description:` MUST be <=160 chars (the schema cap; over-length passes
+       voice-lint but FAILS `astro build`).
+   - **VOICE: no em dashes AND no semicolons** (Vonnegut rule, 2026-05-31) in any
+     prose — body, verdict, supporting, facts. `lint-voice.ps1` enforces both
+     (semicolons via an entity-safe check). Split into sentences or use a comma.
+   - **SECTION COVERAGE:** every commercial nav pillar should end a run with >=1
+     article (Ray: no "coming soon" pages). The cockpit dashboard's coverage panel
+     surfaces empties; allocate a piece to any empty commercial pillar.
+   - **IMAGES when firecrawl is down:** `fix-product-images.ps1` needs firecrawl
+     credits. If exhausted, the body-fill/validation step should grab the real
+     `og:image` (`I/<id>`) URL via a browser during /dp validation — do NOT leave
+     a `P/<ASIN>` placeholder (it returns a 43-byte stub for ~half of ASINs and
+     fails the image lint). For tall products (heaters, light bars, bottles) whose
+     main shot is a sliver, run `scripts/pick-square-image.ps1` to pick the
+     closest-to-square candidate. The guide template now hides any `$0`/missing
+     price, so a missing price renders as "Check current price" not "$0".
    Run `lint-voice.ps1` on the result. Status `body-filled`.
 5. **options-draft (plan v2 V15)** — read `bottom-line-helper.md` inline (Mode
    B) for this piece → 3 verdict options + supporting. Store them in the
    manifest (`bottom_line_options`, `supporting`). The queue render reads these;
    it does NOT re-invoke Claude. Status `options-drafted`.
-6. **safety net** — in order: `lint-voice.ps1`, `lint-product-images.ps1`,
-   `lint-affiliate-tags.ps1`, then `pnpm --filter <site> build`.
+6. **safety net** — in order: `lint-voice.ps1` (forbidden phrases + em dashes +
+   semicolons), `lint-content-frontmatter.ps1` (pillar present/valid +
+   description <=160), `lint-product-images.ps1`, `lint-affiliate-tags.ps1`, then
+   `pnpm --filter <site> build`. (The last three + frontmatter are also in the
+   pre-commit hook, so they double as the commit gate.)
    (`audit-product-images.ps1` is NOT per-piece — it runs ONCE at run end, plan
    v2 V11.) On ALL pass → status `ready`. On ANY failure → **quarantine**:
    - **lint-class** (voice/image/tag finding): leave the `.md` in place

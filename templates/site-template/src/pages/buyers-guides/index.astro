@@ -35,7 +35,11 @@ const sorted = entries.sort((a, b) => {
   .empty { color: var(--color-muted); }
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    /* capped + centered: caps card width so a few guides don't balloon to
+       full-width, and centers the row so a partial last row has no dead-space.
+       (Matches the 2026-05-30 fix rolled across all 5 live sites.) */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
+    justify-content: center;
     gap: var(--space-6);
   }
 </style>
