@@ -60,6 +60,10 @@ faq:
     answer: "The AquaClear runs three-stage filtration, mechanical foam, chemical carbon, and biological BioMax, and ships with a Cycle Guard dose meant to protect the beneficial bacteria colony that drives the nitrogen cycle. The manufacturer also lists a filtration volume up to seven times larger than comparable hang-on-back filters, which means more room for that bacteria-hosting biological media. New tanks still need to cycle fully before adding fish. See our Tank School guides for how the nitrogen cycle works."
   - question: "Can I slow the flow down for a betta?"
     answer: "Yes. The AquaClear has an adjustable flow control lever on the intake U-tube, so you can turn the current down. Bettas and other small or long-finned fish often prefer gentler flow, and adding a pre-filter sponge on the intake softens it further while also protecting small tankmates."
+  - question: "What size AquaClear do I need for a 20 gallon tank?"
+    answer: "A 20 gallon tank sits right in the overlap between the two sizes. The AquaClear 30 is rated for 10 to 30 gallons and the AquaClear 50 for 20 to 50, so both cover a 20. The 50 (ASIN B000260FUM) is the more future-proof pick because its larger media basket and 300 GPH flow leave headroom if you stock the tank more heavily later, and the flow lever lets you dial the current back down for a lightly stocked or betta setup. The 30 is the tidier match if you are sure the tank stays lightly stocked."
+  - question: "Do AquaClear filters use cartridges?"
+    answer: "No, and that is one of the AquaClear's defining differences. Instead of a sealed monthly cartridge, it holds AquaClear Foam, Activated Carbon, and BioMax as three separate media pieces in a refillable basket. You rinse and reuse the foam and replace each media on its own schedule rather than buying a single throwaway cartridge, which lowers the long-run media cost. One Amazon verified buyer notes you can even run it without the activated carbon, something a forced-cartridge filter will not allow."
 ---
 
 ## Who This Is For
@@ -101,11 +105,25 @@ It fits the betta and small-fish keeper too, because the flow is adjustable. The
 - **It is not strictly self-priming.** Per the listing's setup steps, you fill the case with water and set the flow lever to maximum for the first start-up before plugging in. A one-time, two-minute step, but worth knowing.
 - **It is maintained, not set-and-forget.** The manufacturer recommends cleaning roughly every two weeks. Standard for any HOB filter, but honest to flag for anyone hoping to ignore it for months.
 
+## AquaClear 30 vs 50: which should you buy?
+
+This is the same filter in two sizes, so the decision comes down to your tank and your headroom. Both figures below are the brand and listing specs, not a hands-on measurement.
+
+| Spec | AquaClear 30 | AquaClear 50 |
+|---|---|---|
+| Tank size (rated) | 10 to 30 gallons | 20 to 50 gallons |
+| Flow | Up to about 100 GPH | 300 GPH |
+| Flow control | Adjustable lever | Adjustable lever |
+| Media | Refillable foam, carbon, BioMax | Refillable foam, carbon, BioMax |
+| ASIN | B00020SVDG | B000260FUM |
+
+The 30 (ASIN B00020SVDG) is rated for 10 to 30 gallon tanks. The 50 covers 20 to 50. If your first tank is a 5 or 10 gallon, the 30 is the cleaner match and the lighter flow is easier to tame for a betta. If you are at a 20 or 29 gallon, or you suspect you will upgrade, the 50 gives you headroom, and because both share the flow-control lever you can dial the 50 down rather than running a too-strong current in a smaller tank. The two sizes overlap at the 20 to 30 gallon band. There the 50 is the more flexible pick, since its larger basket and higher rated flow give headroom you can still dial back with the flow lever. When you are between sizes, sizing up to the 50 is the safer call for the same reason it is with heaters: a filter running comfortably beats one straining at its limit.
+
 ## How It Compares
 
-The AquaClear 50 sits in the [Filters](/filters) pillar. A few natural points of comparison, all spec-sourced:
+The AquaClear 50 sits in the [Filters](/filters) pillar. A few more natural points of comparison, all spec-sourced:
 
-**AquaClear 50 vs AquaClear 30.** Same filter, different size. The 30 (ASIN B00020SVDG) is rated for 10 to 30 gallon tanks. The 50 covers 20 to 50. If your first tank is a 5 or 10 gallon, the 30 is the cleaner match. If you are at a 20 or 29 gallon, or you suspect you will upgrade, the 50 gives you headroom without running a too-strong current thanks to the flow lever.
+**AquaClear vs Seachem Tidal.** The Seachem Tidal is the other large-basket hang-on-back beginners weigh against the AquaClear, and the spec differences are the whole story. Per Seachem's listing the Tidal 35 is self-priming and adds a surface skimmer and a maintenance-alert indicator, where the AquaClear asks you to fill and prime it on first start-up and has no skimmer. The Tidal's flow dial spans roughly 90 to 450 GPH against the AquaClear 50's fixed-pump-with-lever 300 GPH. Both run a refillable media basket rather than throwaway cartridges, so the choice is really self-priming convenience and a skimmer (Tidal) versus a longer, cheaper track record and the larger Cycle-Guard-seeded media volume (AquaClear). The Tidal usually carries the higher price of the two.
 
 **AquaClear vs a cartridge-style HOB filter.** A cartridge filter is simpler on day one: drop in a cartridge, replace it monthly. The AquaClear asks you to think a little more about your media, but in exchange you get a far larger media basket, separately swappable foam, carbon, and BioMax, and the option to skip the carbon. The trade-off is convenience now versus lower cost and more control later.
 

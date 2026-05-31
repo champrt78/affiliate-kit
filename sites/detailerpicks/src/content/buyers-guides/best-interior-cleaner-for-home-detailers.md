@@ -1,6 +1,6 @@
 ---
-title: "Best Interior Cleaner for Home Detailers"
-description: "Six interior cleaners, picked by who you are, not by feature count. InnerClean covers most cars. 303 adds UV defense."
+title: "Best Car Interior Cleaner (Leather, Upholstery and Plastic)"
+description: "Six interior cleaners segmented by surface: leather seats, cloth upholstery, dashboard and plastic. InnerClean covers most cars, 303 adds UV defense."
 rubric: "Interior Cleaner · Buying Guide"
 deck: "Two products handle 90% of weekly maintenance for most home detailers. The other four cover edge cases the first two cannot."
 products:
@@ -136,6 +136,10 @@ faq:
     answer: "PERL is a concentrate, which means a 500ml bottle at $17.59 yields roughly 3 liters of usable interior product at the recommended 1:5 dilution. Per-ounce-of-usable-product cost is lower than nearly any RTU competitor. The trade-off is the dilution prep step, which adds about 30 seconds to setup per session. Show-car owners and frequent cleaners absorb that easily. Weekend-once-a-month detailers may prefer the RTU convenience of Chemical Guys InnerClean or Meguiar's Quik Interior Detailer."
   - question: "Why is P&S Xpress the 'kid and pet' pick if it has no protectant?"
     answer: "Frequent cleaners do not benefit much from a long-duration protectant because the protectant is wiped or rubbed off before its claim window closes. The economy of a pure cleaner sold by the gallon ($10.28 per pint, much less per ounce at gallon size) pencils out better for cleaning a back seat 3 to 4 times a week than a combo product would. Pair P&S Xpress for cleaning with 303 Aerospace as a periodic standalone UV step on the dashboard only."
+  - question: "Can I use the same cleaner on leather and cloth?"
+    answer: "Often yes, if you pick an all-surface combo product. Chemical Guys InnerClean lists leather, cloth, vinyl, plastic, and upholstery among its compatible surfaces per its product page, and Meguiar's Quik Interior Detailer (D157) and Adam's Total Interior cover a similarly broad surface range, which is what makes a one-bottle workflow possible. The exceptions are the specialists: 303 Aerospace is a protectant for vinyl, plastic, and finished leather and explicitly excludes fabrics and canvas, so it is not a cloth-upholstery product. CarPro PERL is for vinyl, plastic, and finished leather and not suede. When you want one bottle for both leather seats and cloth seats, choose an all-surface combo and check that the listing names both surfaces."
+  - question: "Is APC safe for car interiors?"
+    answer: "All-purpose cleaner can clean interiors, but it is a different and more aggressive category than the dedicated interior cleaners in this guide, and the risk is dilution and surface match. Diluted properly an APC handles carpet, cloth, and hard plastic, but used too strong it can dry out or discolor leather and sensitive trim, which is why pro-shop products like P&S Xpress are formulated as surface-safe interior cleaners rather than general degreasers. For leather, screens, and finished surfaces, a purpose-made interior cleaner removes the guesswork on dilution and compatibility. Reserve APC for heavy carpet and floor-mat jobs, and test any APC on a hidden spot before using it on leather or trim."
 ---
 
 ## Verified product specs at a glance
@@ -159,6 +163,18 @@ Two design philosophies divide this category, and both have credible reviewer su
 - **Cleaner-only plus separate protectant step (P&S Xpress for cleaning + 303 Aerospace for protection).** Two products, two steps. Each product is optimized for its specific job. Best for owners who clean very frequently (kid and pet daily drivers), park in high-UV conditions (303's SPF 40 outperforms any combo product's UV claim), or want the polished result of professional-tier dedicated chemistry.
 
 A secondary doctrine split runs through every product in this category: **matte versus glossy finish.** Across AutoGeek and Autopia forum threads, the community strongly favors matte and OEM-natural finishes. Glossy "dressed" interiors are read as a dated aesthetic. Every product in this guide defaults to matte or natural OEM appearance. No doctrine fight to navigate here, but worth saying explicitly so the reader does not oversell themselves on "shine" from a combo product. The shine you want from interior detailing in 2026 is, mostly, no shine at all.
+
+## Best for leather seats
+
+Leather is the highest-value and highest-anxiety interior surface, so the priority is a product that cleans gently and, ideally, leaves a non-greasy protective layer rather than a slick sheen. For routine cleaning, Chemical Guys InnerClean lists leather among its compatible surfaces and finishes matte, which makes it the safe one-bottle default. For owners who want longer-lasting protection on finished leather, CarPro PERL is a concentrate that documents a 1:5 dilution for leather, vinyl, and dashboard and claims up to 3 months of protection per application, the longest claim in this lineup. Both call for finished leather only. The important limitation is suede and unfinished leather: CarPro PERL and 303 Aerospace both exclude it per their product pages, so neither is the right pick for a suede or nubuck seat. Whichever you choose, clean first and protect second, and keep aggressive all-purpose cleaners off leather entirely.
+
+## Best for cloth upholstery
+
+Cloth and fabric upholstery is the surface where the all-surface combo products and the protectant specialists part ways. Chemical Guys InnerClean lists carpet, cloth, and upholstery among its compatible surfaces, and Adam's Total Interior describes a foaming action on textiles, which makes both workable choices for routine seat and carpet wipe-downs. For high-frequency cleaning on a kid-and-pet daily driver, P&S Xpress is the pure cleaner sold by the gallon, with the lowest per-ounce cost for cleaning fabric often. The clear exclusion to remember is 303 Aerospace, which explicitly excludes fabrics and canvas because it is a vinyl-and-leather protectant, not a fabric cleaner. For set-in stains in fabric, none of these replaces a dedicated upholstery extractor, which is a separate category outside this guide.
+
+## Best for dashboard and plastic trim
+
+The dashboard and plastic trim are about two things: a matte OEM look with no glossy sheen, and UV defense for the sun-baked top of the dash. For the cleaning and matte finish, Meguiar's Quik Interior Detailer (D157) and Chemical Guys InnerClean both clean plastic and vinyl and finish matte, with D157 the under-$10 mass-retail default and InnerClean the all-surface workflow pick. Both list LCD and navigation screens as safe per their pages, which matters for the dash cluster. For UV protection on a dark dashboard in high sun, 303 Aerospace is the benchmark, with Gold Eagle documenting SPF 40 and up to 98 percent UV block, applied to a clean dash after the cleaning step. Note that 303 excludes gauge panels and clear plastics, so keep it off instrument lenses. CarPro PERL is the durable trim-and-plastic option with its 3-month protection claim for owners who prefer one concentrate across vinyl and plastic.
 
 ## How we picked
 

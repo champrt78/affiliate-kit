@@ -190,3 +190,9 @@ This is a gift list, not a spec showdown, so we ranked it the way you would actu
 ## The list
 
 Ten picks, ranked one through ten. Number one is the no-brainer stocking stuffer. Number ten is the splurge that anchors a shelf. Mix and match, or grab the whole power-up set for the retro fan who has every console but none of the fun stuff around it.
+
+## FAQ
+
+**What is the best retro gaming gift under $25?** Most of this list lands under $25, so the answer is about the person. For a stocking stuffer, the keychain arcade is the crowd-pleaser. For a desk, the NES controller stress toy at $9.99 is the cheapest and most universally giftable. For something that sits out as decor, the Game Boy heat-change mug. If you want one safe pick that almost any retro fan likes, the keychain arcade is the easy call, with the NES console lamp as the step-up splurge for $29.99 when you want a centerpiece rather than a stocking filler.
+
+**What do you get someone who is into emulation handhelds?** If your giftee is past novelties and actually plays, the gift they will use is a handheld itself or an accessory for one. A budget emulation handheld covers everything up through PS1 for well under $100, and our [best retro handhelds guide](/buyers-guides/best-retro-handhelds/) breaks down which shape fits which player, from a pocketable pick to a clamshell to an Android powerhouse. For a handheld owner who has the device already, a high-capacity microSD card or a quality USB-C charger is the practical add-on. Pair a small novelty from this list with a real handheld and you cover both the fun and the function.

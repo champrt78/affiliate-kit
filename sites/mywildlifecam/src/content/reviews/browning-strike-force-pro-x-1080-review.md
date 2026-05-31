@@ -63,6 +63,8 @@ faq:
     answer: "It depends entirely on whether you shoot pictures or video. trailcampro projects roughly 22.5 months in picture mode (35 day plus 35 night photos per 24 hours on lithium AAs) and only about 2.8 months in video mode (15 day plus 15 night clips per day). Browning markets up to 1 year on 6 AA batteries. There is also a 12-volt external power jack for sites where you want to run off a larger source."
   - question: "Does the night flash glow?"
     answer: "Yes, faintly. trailcampro classifies the flash as red-glow IR, which emits a low but visible red glow at night. Browning's RADIANT 6 branding refers to the illumination technology, not a no-glow design. If you specifically need a covert, invisible-flash camera, this is not it. A no-glow model is the right category instead."
+  - question: "Browning Strike Force Pro X vs Pro XD vs FHDR, which one?"
+    answer: "These are siblings in Browning's Strike Force line, and buyers conflate them because the names run close. The Pro X 1080 reviewed here (model BTC-5PX-1080) is the 1080p single-lens SD-card model built around a fast 0.22-second trigger, a 120-foot infrared flash, and a 1.5-inch color screen per Browning and Amazon. Browning positions the Pro XD as the dual-lens variant in the same family, and the FHDR (Full HD Recovery) tier emphasizes video recovery and recording. Because the model numbers and feature splits shift across Browning's lineup, confirm the exact spec sheet for each on Browning's product page before buying. Pick the Pro X 1080 when a fast trigger, long flash range, and no monthly fee on a reachable property are what you want, and you do not need dual-lens imaging or 4K."
 ---
 
 ## Who This Is For
@@ -115,3 +117,13 @@ The honest comparison for this camera is not against another specific model. It 
 **SD-card (this camera) vs cellular.** A non-cellular camera like this one writes to a 512GB-capable SDXC card, which you retrieve by walking out to the camera. The payoff is no SIM, no app, and no monthly data plan, which removes both a recurring cost and a setup step. A cellular camera instead pushes photos to your phone over the air and typically carries a monthly or per-photo plan plus a dependence on signal at the deployment site. Pick the SD-card route when you can reach the location to pull cards, when you want zero recurring fees, or when there is no cell signal where it is mounted. Pick a cellular camera when the location is remote or hard to revisit, or when near-real-time delivery to your phone is the point. This is a fit decision driven by access and timeliness, not a ranking of which type is better.
 
 **Where this Browning sits within the SD-card category.** Among non-cellular cameras, trailcampro's 84 out of 100 overall score, with 95 out of 100 on trigger and detection and 88 on design, positions it as a fast, well-built mid-range option at about $119. Its relative weak point within the category is the gap between advertised and bench-tested detection range, so a buyer who prioritizes long-distance detection over trigger speed should weigh that divergence carefully.
+
+## Strike Force Pro X vs Pro XD vs FHDR
+
+Browning's Strike Force line carries several close model names, and buyers routinely mix them up. Here is the practical disambiguation.
+
+The **Strike Force Pro X 1080** reviewed here (BTC-5PX-1080) is the single-lens 1080p SD-card model. Its case for itself is speed and reach: a 0.22-second trigger, a 120-foot infrared flash, a 1.5-inch color screen, and long picture-mode battery life per Browning and the trailcampro bench review.
+
+The **Strike Force Pro XD** is Browning's dual-lens variant in the same family, where a second lens is used to improve image capture across day and night conditions. The **Strike Force FHDR** (Full HD Recovery) tier leans on video recovery and recording rather than the Pro X's still-photo speed focus.
+
+Because the model numbers and feature splits change across Browning's lineup over time, confirm the exact spec sheet for each on Browning's product page before buying. For the buyer who wants a fast, compact, no-subscription SD-card camera on a property they can reach, the Pro X 1080 is the right pick in the line. Step up to the Pro XD or FHDR only when dual-lens imaging or the heavier video feature set answers a specific need.

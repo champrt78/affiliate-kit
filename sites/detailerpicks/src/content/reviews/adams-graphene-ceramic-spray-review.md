@@ -66,6 +66,10 @@ faq:
     answer: "Adam's says yes. Its product page states the coating is 'Great as a stand-alone product or topper for your current Ceramic Coating,' and says it can be applied over the top of an existing standard ceramic coating. In a maintenance rhythm, that means a coated car gets its routine wash, then a periodic reapplication of this spray to restore beading and slickness as the base coating ages."
   - question: "How many cars will one bottle do?"
     answer: "Adam's does not publish a per-bottle coverage figure in the sourced material. One Amazon owner reported that 'one bottle can easily provide upwards of 10 full car coverages, including exterior glass.' That is a single owner's attributed estimate, not a manufacturer specification."
+  - question: "What is the cure time?"
+    answer: "Adam's describes a two-stage timeline. During application you spray into a microfiber applicator, wipe onto the panel, let it sit 1 to 2 minutes, then buff to a shine. After application Adam's recommends allowing about 4 hours to cure before exposing the car to the elements such as rain. If you apply more than one layer, Adam's suggests roughly 1 hour between layers. These are the manufacturer's stated times, not an independently verified figure."
+  - question: "What is the shelf life once the bottle is opened?"
+    answer: "Adam's does not publish a specific opened-bottle shelf-life figure in the sourced material, so none is asserted here. As a general practice for spray graphene and ceramic products, makers advise storing the bottle sealed, out of direct sunlight, and away from freezing temperatures, and shaking well before use. One handling note Adam's does state for ordering direct is that the product cannot ship via air, a clue to treat it as a chemistry worth storing carefully. For an exact shelf-life number, check the current bottle label or Adam's support, since published figures can change by formula revision."
 ---
 
 ## Who This Is For
@@ -112,6 +116,12 @@ It also fits a reader who already runs a ceramic-coated car. Adam's positions th
 - **Prep is non-negotiable.** Adam's leads its instructions with clay-bar decontamination and surface prep. The coating bonds to a clean, decontaminated surface, so skipping prep undercuts both durability and finish.
 - **It is a spray, not a professional multi-year coating.** An owner described it as "not a heavy-duty true ceramic coating," and Adam's durability claim of "1+ years or more" sits below a professional installed coating's multi-year service life.
 - **No air shipping when ordered direct.** Adam's states the product cannot be shipped via air, including overnight, 2-day, priority, or international. Buying via Amazon avoids that constraint.
+
+## Graphene Spray vs Graphene Advanced: what is the difference?
+
+This is the most common buyer fork in Adam's graphene lineup, because the two products share almost the same name. This review covers the original Graphene Ceramic Spray Coating in the 12oz size (ASIN B08CPDDGZZ). Adam's separately sells a higher-tier Advanced Graphene Ceramic Spray Coating at a higher price, and a third, non-spray professional Graphene Ceramic Coating sold as a 60mL bottle kit. All three are distinct products.
+
+The honest answer on the spec difference is that Adam's positions the Advanced spray as the step-up of the two sprays, but the specific durability and hydrophobic figures belong to each listing individually, and the numbers quoted in this review (>9H hardness, 1+ years or more of protection, contact angles averaging 110 to 118 degrees) are from the original 12oz spray's own listing only. A buyer weighing original against Advanced should compare the two listings side by side rather than assume this review's figures carry over, since the Advanced version is a separate formula at a separate price. The non-spray professional coating is a different class again, aimed at owners who want a longer-service-life installed coating and will take on the working time and leveling it requires. If you want the fast spray-and-wipe layer roughly rated for a year, the original spray reviewed here is the product. If you want more, compare the Advanced listing or step up to the professional coating.
 
 ## How It Compares
 

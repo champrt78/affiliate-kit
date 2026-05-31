@@ -1,6 +1,6 @@
 ---
-title: "Best Car Wash Soap for Home Detailers"
-description: "Five soaps across the pH scale. SÈMPER for pure-soap school, Q²M Bathe for protective school, plus three more for budget + hard-water cases."
+title: "Best Car Wash Soap for Ceramic-Coated Cars (and Foam Cannons)"
+description: "Six spec-verified soaps for ceramic-coated paint and foam-cannon use. Picks across the pH scale, two doctrines, budget to pro, plus a hard-water reset."
 rubric: "Car Wash Soap · Buying Guide"
 deck: "Two genuinely opposed doctrines on what to put on a coated car. Five spec-verified picks across both schools and one acidic reset shampoo."
 products:
@@ -132,6 +132,8 @@ faq:
     answer: "Higher dilution ratios mean less product per gallon of water. A 1:500 dilution (Gyeon, CLEAN. Shampoo) uses about 1 oz of product per 4 gallons of water. A 1:1200 dilution (Labocosmetica SÈMPER) uses less than half that. Hyper-concentrated soaps look more expensive per bottle but yield more washes per ounce, often costing less per wash than products with lower dilution ratios."
   - question: "Do these soaps work in a foam cannon?"
     answer: "Yes, all five work in a foam cannon. Foam output depends as much on pressure-washer GPM, foam-cannon orifice size, and dilution as on the soap itself. Pan The Organizer's testing notes that a 2.1 GPM pressure washer produces strong foam with most pH-neutral soaps, while weaker washers (1.2-1.3 GPM) may need a smaller orifice (1.1mm instead of the standard 1.25mm) to get equivalent foam thickness."
+  - question: "Can I use dish soap to wash my car?"
+    answer: "It is not recommended. Dish soaps like Dawn are formulated as alkaline degreasers to cut cooking grease, and that same chemistry strips wax, sealant, and the oils that keep trim and rubber from drying out. Car-care brands such as Chemical Guys and The Rag Company warn against household dish soap for exactly this reason and point to a pH-neutral car shampoo instead. A dedicated car wash soap cleans without stripping the protection you paid for, which is the whole point of the picks in this guide."
 ---
 
 ## Verified product specs at a glance
@@ -156,6 +158,18 @@ Two credible authorities give directly opposed advice on what to wash a ceramic-
 Both schools agree on what to avoid: alkaline strippers, "added wax" products, and any shampoo that leaves a slimy or sticky film that resists free rinsing.
 
 Most premium coating manufacturers (Gtechniq, CarPro, and Gyeon itself in technical documentation) lean Dr. Beasley's direction for their own coatings: use a pure soap, let the coating do the work. Owners of cheaper or DIY-applied coatings often find The Rag Company's school more practical because the additive reinforcement helps a coating that is already losing protection. There is no universally correct answer. The right pick depends on which manufacturer's protocol the reader trusts.
+
+## Is it pH-neutral, and why that matters on coated paint
+
+The single spec that matters most for a ceramic-coated car is pH. The Rag Company defines the pH-neutral window for protective car shampoos as roughly pH 5.5 to 8.5. A soap in that band lifts dirt without chemically attacking the wax, sealant, or ceramic coating underneath it. Step outside the band and the soap starts doing a different job: anything below 5.5 is acidic and built to dissolve mineral deposits and water spots, and anything above 10 is alkaline and built to strip wax or decontaminate before paint correction.
+
+Five of the six picks here are pH-neutral per their manufacturer pages: Labocosmetica SÈMPER, Gyeon Q²M Bathe, CLEAN. Shampoo, Phoenix E.O.D. Apex, and Chemical Guys Mr. Pink all state neutral or pH-balanced chemistry safe on coated finishes. The sixth, Pan The Organizer's Demineralizing Shampoo, is intentionally acidic and is the exception that proves the rule. It is a periodic reset, not a weekly wash. For routine washing of a coated car, stay in the neutral band and reserve the acidic shampoo for the every-few-months mineral reset.
+
+## Which of these foam best in a foam cannon
+
+Foam thickness in a cannon comes down to three things working together: the soap's surfactant load, the pressure washer's GPM, and the foam-cannon orifice size. The soaps with published foam-cannon dilution guidance give the clearest read on cannon use. Chemical Guys lists Mr. Pink at 1 oz per 5 gallons for foam-cannon use and markets it for high foam output, Gyeon publishes dilution up to 500:1 for Q²M Bathe, and Pan's Demineralizing Shampoo lists a 1:10 foam-cannon ratio for its acidic reset role.
+
+Pan The Organizer's tier-list commentary notes Q²M Bathe foams better in the bucket than in a cannon, which is a useful flag for cannon-first detailers. The practical takeaway from the manufacturer guidance: a high-surfactant pH-neutral soap plus a 2.1 GPM or stronger pressure washer produces thick clinging foam, while a weaker 1.2 to 1.3 GPM washer benefits from a smaller 1.1mm orifice in place of the standard 1.25mm. For a deeper breakdown of cannon hardware, see the [foam cannon buying guide](/buyers-guides/best-foam-cannon-for-home-detailers).
 
 ## How we picked
 

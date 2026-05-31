@@ -1,6 +1,6 @@
 ---
-title: "Top 10 Fun Aquarium Finds"
-description: "Ten cheap, giftable aquarium finds under $20: betta hammocks, a sunken ship, Marimo moss balls, glow pebbles, and more playful gear for a first tank."
+title: "Fun & Giftable Aquarium Finds Under $20"
+description: "Ten cheap, giftable aquarium finds under $20: betta tank accessories, a sunken ship, Marimo moss balls, glow pebbles, and playful gear for a first tank."
 rubric: "Fun Finds · Top 10"
 deck: "The serious gear keeps your fish alive. These are the bits that make the tank fun. Ten spec-verified impulse buys from about $6 to $19, covering decor, plants, novelties, and a few little tools that make daily fishkeeping easier, all checked in stock on 2026-05-30."
 pillar: "fun-finds"
@@ -164,5 +164,9 @@ bottomLine:
 ---
 
 Once your tank is filtered, heated, and lit, the fun part begins: making it yours. These are the cheap, giftable extras that turn a glass box into a little world, from a betta lounging on a leaf to a shipwreck blowing bubbles in the corner. None of it is essential gear, and that is exactly the point. Everything here was checked in stock on 2026-05-30 and runs from about $6 to $19, so it is easy to grab one or three on impulse.
+
+## Best betta tank accessories
+
+If you are setting up a betta tank, a few of these finds are near-universal favorites. A leaf hammock, like the magnetic betta leaf here, gives a betta a spot to rest near the surface the way they do on leaves in the wild. A ceramic log cave gives a shy betta somewhere to hide, which counterintuitively means it spends more time out in the open. Live Marimo moss balls add a no-fuss touch of green that needs no special light or CO2, and a floating feeding ring keeps food in one corner so it is not pulled into the filter before your betta eats. All of them sit under $20, which makes them easy add-ons or a small gift for a new betta keeper. The one rule to keep in mind: bettas have delicate fins, so favor soft silicone and smooth surfaces over anything sharp.
 
 ## The list

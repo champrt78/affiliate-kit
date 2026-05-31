@@ -130,6 +130,10 @@ faq:
     answer: "The two Mayflash sticks list the broadest compatibility. The F300's listing claims Switch and Switch 2, PS4, PS3, Xbox Series S/X, Xbox One, Xbox 360, PC Windows, macOS, Steam Deck, Android, and NEOGEO mini, with PS5 through a separate Mayflash adapter. The F500 lists a similarly wide range plus PS Classic. By contrast the 8BitDo lists Switch and Windows only, the Razer Kitsune lists PS5 and PC, and the Hori Fighting Stick Alpha here is the Xbox and PC model."
   - question: "Are these arcade sticks wired or wireless?"
     answer: "Five of the six are wired only: the Mayflash F300, Mayflash F500, Qanba Drone 2, Razer Kitsune, and Hori Fighting Stick Alpha all connect by cable per their listings. The 8BitDo Arcade Stick is the one wireless option, with three modes its listing describes as Bluetooth, a 2.4 GHz receiver, or wired USB-C. Wired sticks avoid pairing and charging. The 8BitDo trades that for cable-free play on Switch and Windows."
+  - question: "Mayflash F300 vs F500, what is the real difference?"
+    answer: "Per their listings, the F500 is the larger sibling of the F300: a bigger chassis with more room for hands and for parts swaps, standard 30mm snap-in button sizing, and an octagonal gate included in the box. The F300 is the smaller, cheaper starter at $53.99 versus the F500 at $59.99, and it lists the widest platform compatibility here. Both are wired USB and both accept genuine Sanwa Denshi parts sold separately, so the choice is chassis size and the bundled gate, not platform support or core capability."
+  - question: "What is the best stick for a MiSTer or arcade cabinet?"
+    answer: "For a MiSTer FPGA or a DIY arcade cabinet, the two Mayflash sticks are the strongest fit in this guide. Both are wired USB, list PC support, and are built as Sanwa mod platforms, so they connect cleanly to a MiSTer and accept the authentic Sanwa parts cabinet builders prefer. The larger F500 is the easier base to mod thanks to the roomier chassis and the octagonal gate in the box. Wired connection suits a fixed cabinet, which is why the wireless 8BitDo, although also Sanwa-moddable, is less ideal for this use."
 ---
 
 ## Verified specs at a glance
@@ -144,6 +148,18 @@ faq:
 | Hori Fighting Stick Alpha | Wired USB | Lever, Hayabusa parts | Xbox Series/One, PC | $249.99 |
 
 All specs are manufacturer or listing claims verified directly from each product's Amazon listing on 2026-05-30. Prices are the listed price at the time of writing and fluctuate.
+
+## Mayflash F300 vs F500: which mod base?
+
+These two Mayflash sticks are the budget modding on-ramps buyers cross-shop most, and both are in this guide. Per their listings, the F300 is the smaller, cheaper chassis at $53.99 with the longest platform list here, while the F500 is the larger sibling at $59.99 with a bigger body that gives more room for hands and for parts swaps. The practical difference for modders is space and what ships in the box: the F500's listing notes standard 30mm snap-in button sizing and an included octagonal gate, where the F300 is the leaner starter. Both are built to accept genuine Sanwa Denshi buttons and joysticks, sold separately, so either can become a Sanwa stick later. Choose the F300 to spend the least and get the widest compatibility, or the F500 for the roomier chassis and the bundled gate when you know you plan to mod.
+
+## Best arcade stick for MiSTer FPGA and arcade cabinets
+
+For a MiSTer FPGA setup or a DIY arcade cabinet, the spec that matters is a clean wired connection and Sanwa-compatible parts, since a MiSTer reads standard USB controllers and cabinet builders want authentic arcade hardware. The Mayflash F300 and F500 are the natural fits here: both are wired USB, both list PC and broad platform support, and both are built as Sanwa mod platforms, so they drop into a MiSTer or cabinet setup and accept the same Sanwa parts an arcade purist would fit. The larger F500 is the easier one to mod thanks to the roomier chassis and included octagonal gate. Wired is the right call for a fixed cabinet anyway, which rules out the wireless 8BitDo for this use even though it is also Sanwa-moddable.
+
+## Best stick for shmups and vertical play
+
+Shoot-em-up players have a specific need: a tight, accurate lever (or an all-button layout) and low-latency wired input for the precise dodging shmups demand. Among the lever picks, the Sanwa-moddable Mayflash F300 and F500 are the value route, since a Sanwa lever swap is the upgrade most shmup players make for a crisper restrictor-gate feel, and the F500 ships an octagonal gate in the box. For players who have moved to the all-button format, the leverless Razer Kitsune is the premium shmup-friendly option, with low-profile optical switches its listing markets as short-actuation and fast, though leverless is a distinct skill from a lever. All of these are wired, which is what shmups want for latency. The wireless 8BitDo is better kept for casual play than for high-precision vertical shooters.
 
 ## How we picked
 

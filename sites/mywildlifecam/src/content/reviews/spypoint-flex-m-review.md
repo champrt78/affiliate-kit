@@ -61,6 +61,10 @@ faq:
     answer: "Non-cellular cams generally win on image quality at the same price tier (no cellular hardware to budget for) and require zero monthly considerations. The trade-off is you have to walk to the camera to see what it caught. If you're choosing convenience over image clarity, cellular is the call."
   - question: "How long do the batteries last?"
     answer: "Independent testing by Trailcampro measured roughly 3.3 months in photo mode using Energizer Ultimate Lithium AAs. Video mode cuts that to roughly 1.9 months. Cold-weather use shortens battery life noticeably. If you want set-and-forget for a full season, consider the LIT-22 rechargeable pack or external 12V DC power."
+  - question: "Is the Spypoint Flex-M worth it?"
+    answer: "For a first-time cellular buyer who wants to avoid a monthly commitment, yes. The free 100-photo-per-month plan and the dual-SIM auto-carrier-detection are the two reasons it earns its place, and independent testing by Trailcampro put trigger speed and detection range ahead of the spec sheet. The honest caveat is image quality under motion, which Trailcampro scored 79 of 100 against an 83 overall. If gallery-quality stills matter more than phone delivery, the Stealth Cam DS4K Ultimate is the better spend. If cellular convenience on a free tier is the goal, the Flex-M is worth it."
+  - question: "Spypoint Flex-M vs Flex G36, which one?"
+    answer: "Same Spypoint ecosystem and app, two tiers. The Flex-M is the budget model: 28 megapixels, 720p video, and a rated 0.4-second trigger (0.35 measured), with the free 100-photo plan. The Flex G36 steps up to 36 megapixels, 1080p video with sound, and a quicker 0.3-second trigger, and it adds GPS, though it sells mostly as a roughly $220 twin pack. Pick the Flex-M when the lower single-unit price and the free tier matter most. Step up to the G36 when you want the faster trigger and higher resolution and can use the twin-pack value. The full Spypoint Flex G36 review covers the deeper breakdown."
 ---
 
 ## Who This Is For
@@ -105,6 +109,22 @@ The Flex-M is the cellular pick in our buying guide [Best Trail Cameras for Back
 **Flex-M vs Stealth Cam DS4K Ultimate (SD-card alternative).** The DS4K Ultimate has the better imaging story on paper: 32MP native sensor, 4K video at 30fps, longer night-vision range, and zero subscription. It also has none of the cellular convenience. Pick the Flex-M when you want photos delivered to your phone and don't want to walk out to swap SD cards. Pick the DS4K Ultimate when image quality is the priority and the retrieval trip isn't a problem.
 
 **Flex-M vs Bushnell CelluCORE 20 (another cellular option).** Both are mainstream cellular cameras targeting the same buyer. The Flex-M's dual-SIM auto-carrier-detection is the key differentiator. Bushnell's subscription model is generally described as simpler-but-required (no free tier). Pick the Flex-M if you want the cheaper monthly bill (or zero) and accept some subscription-tier complexity. Pick the Bushnell if brand familiarity matters more than monthly cost.
+
+## Spypoint Flex-M vs Spypoint Flex G36
+
+These are the budget and step-up tiers of the same Spypoint cellular line, sharing the app and the dual-SIM approach, so the decision comes down to imaging and trigger speed against price.
+
+The Flex-M lists 28 megapixels, 720p video, and a 0.4-second rated trigger (0.35 measured by Trailcampro), and it leads with the free 100-photo-per-month plan and the lower single-unit price. The [Flex G36](/reviews/spypoint-flex-g36-review) raises that to 36 megapixels, 1080p video with sound, and a quicker 0.3-second trigger per the Amazon listing, and it adds GPS. The trade is price: the G36 sells mostly as a roughly $220 twin pack rather than a cheap single unit.
+
+Pick the Flex-M when the low entry price and the free tier are what matter and 720p video and 28MP stills are acceptable. Step up to the [Flex G36](/reviews/spypoint-flex-g36-review) when you want the faster trigger, the higher resolution, and the twin-pack value to cover two spots at once.
+
+## Spypoint Flex-M vs Tactacam Reveal X 3.0
+
+Both are sub-$150 cellular cameras aimed at the same first-cellular buyer, and they split on plan structure and carrier handling.
+
+The Flex-M uses dual-SIM auto-carrier-detection, so the camera picks the stronger of two networks for you, and it includes the free 100-photo-per-month plan with no commitment. The [Tactacam Reveal X 3.0](/reviews/tactacam-reveal-x-3-review) asks you to choose AT&T or Verizon at purchase instead, but it counters with the cheapest unlimited plan tier, multi-camera and annual discounts, and the ability to suspend month-to-month during the off-season. On imaging, the Reveal X lists 4K or 2.5K selectable stills against the Flex-M's 28MP, though both cap at modest video for cellular transmission.
+
+Pick the Flex-M for trying cellular without a monthly bill and for the auto-carrier convenience on uncertain-coverage land. Pick the [Reveal X 3.0](/reviews/tactacam-reveal-x-3-review) when predictable plan economics and the cheap unlimited tier matter more, and you already know which carrier is strong at the site.
 
 ## Verdict
 

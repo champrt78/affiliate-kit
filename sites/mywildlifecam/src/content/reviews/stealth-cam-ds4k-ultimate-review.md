@@ -56,6 +56,8 @@ faq:
     answer: "Depends on settings. A 128GB card holds roughly 25,000+ photos at 32MP or roughly 4 to 6 hours of 4K video. For light backyard use (a dozen triggers per day, photo mode only), one card lasts the full battery life of ~14 months. Heavy video use is the limiting case: a daily 30-second 4K clip eats roughly 1GB per day."
   - question: "How does it compare to a cellular trail cam?"
     answer: "Different categories answering different questions. The DS4K Ultimate beats the Spypoint Flex-M on every imaging axis (94/100 vs 79/100 picture quality, 4K vs 720p video, 14 vs 3.3 months battery). The Flex-M beats it on convenience: photos sent to your phone, no SD-card retrieval. Pick by which trade-off matters more for you."
+  - question: "DS4K Ultimate vs DS4K Transmit vs the Max models, which one?"
+    answer: "Buyers confuse these because the DS4K name carries across them. The DS4K Ultimate reviewed here is the SD-card 4K flagship: 32MP, 4K at 30 FPS, a rated 0.2-second trigger, 850nm low-glow IR, no cellular, and no monthly fee, with a roughly 14-month photo-mode battery life. The DS4K Transmit takes that same imaging stack and adds dual-SIM AT&T and Verizon cellular plus GPS, so photos reach your phone, at the cost of a $5 to $20 monthly Command Pro plan. It also uses 850nm low-glow IR, not no-glow. The Max-series naming people search for points to Stealth Cam's cellular line (the Deceptor MAX and Fusion MAX), which are separate cellular models, not an SD-card DS4K variant. Pick the Ultimate for the best image with zero subscription, and the Transmit when you want that imaging delivered to your phone. See the Stealth Cam buying guide for the full lineup."
 ---
 
 ## Who This Is For
@@ -104,6 +106,18 @@ The DS4K Ultimate is the SD-card pick in our buying guide [Best Trail Cameras fo
 **DS4K Ultimate vs Spypoint Flex-M (cellular alternative).** Different categories of camera answering different questions. The DS4K Ultimate beats the Flex-M on every imaging axis: 94/100 vs 79/100 picture quality per Trailcampro, 4K vs 720p video, 100ft (rated) vs 90ft detection range, 14 months vs 3.3 months battery life. The Flex-M beats it on convenience: photos sent to your phone, no SD-card retrieval trips, dual-SIM cellular that works in spotty-coverage areas. Pick the DS4K Ultimate when image quality and battery life matter more than convenience.
 
 **DS4K Ultimate vs Bushnell CORE DS-4K (closer SD-card competitor).** Both are 4K SD-card trail cameras at roughly the same price point. Per Digital Camera World, the Bushnell wins on trigger speed (0.15s vs 0.2s) and styling. The DS4K Ultimate matches or beats on battery life and image quality. If you've narrowed the decision to 4K SD-card cameras, this is the comparison that matters most.
+
+## DS4K Ultimate vs DS4K Transmit vs the Max models
+
+The DS4K name spans more than one camera, so buyers often arrive unsure which they actually want. The disambiguation is clean once the connectivity split is clear. For the full Stealth Cam range, the [Best Stealth Cam Trail Cameras by Use Case](/buyers-guides/best-stealth-cam-trail-camera-by-use-case) guide maps every model.
+
+The **DS4K Ultimate** reviewed here is the SD-card 4K flagship. 32MP interpolated stills, 4K video at 30 FPS, a rated 0.2-second trigger, 850nm low-glow IR, and roughly 14 months of photo-mode battery life on lithium AAs per Trailcampro, with no cellular hardware and no monthly fee. Walk out and swap the card.
+
+The **DS4K Transmit** carries the same imaging stack and bolts a cellular pipeline onto it: dual-SIM AT&T and Verizon with automatic network coverage, plus GPS, so photos reach your phone. The trade is a Command Pro data plan that runs about $5 to $20 a month. It also uses 850nm low-glow IR, not no-glow, so it is not the covert cellular pick.
+
+The **Max** naming that buyers search for points to Stealth Cam's cellular line, the Deceptor MAX and Fusion MAX, which are separate cellular models rather than an SD-card DS4K variant. If a search for "DS4K Max" led you here, the cellular MAX cameras are covered in the Stealth Cam guide linked above.
+
+Pick the Ultimate for the sharpest image with zero subscription. Pick the Transmit when you want that same 4K imaging delivered to your phone and can accept the monthly plan.
 
 ## Verdict
 

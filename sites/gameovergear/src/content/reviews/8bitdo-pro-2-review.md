@@ -65,6 +65,12 @@ faq:
     answer: "8BitDo's Ultimate Software (on PC, Android, and iOS) remaps buttons, adjusts stick and trigger sensitivity, tunes vibration, and builds macros. The Pro 2 stores three custom profiles onboard and adds a profile-switch button to swap between them on the fly. Note that 8BitDo says Ultimate Software does not run in Mac mode."
   - question: "How long does the battery last?"
     answer: "8BitDo lists a 1000mAh rechargeable Li-ion pack rated at roughly 20 play hours on about a 4-hour charge. The 8BitDo includes list for this edition shows the gamepad, USB cable, and manual, and does not confirm the AA-battery swap that the original ALPS Pro 2 offered, so do not count on AA support here."
+  - question: "Is the Pro 2 still worth it with the Pro 3 out?"
+    answer: "For most retro players, yes, as the value pick. Amazon labels the Pro 3 the newer version, and at roughly $58 it adds TMR joysticks, swappable ABXY buttons, a charging dock, and Hall triggers per its listing. Those are upgrades for players who want the newest hardware. The Pro 2 keeps the same praised SNES-style d-pad, Hall Effect sticks, back paddles, three profiles, and broad platform support at the lower $39.99 price. If you mainly want a retro-feel pad with a great d-pad and do not need the dock or the newer sticks, the Pro 2 remains the value choice."
+  - question: "Pro 2 vs Ultimate, which is better for retro?"
+    answer: "For retro and 2D games, the Pro 2 is the better fit on the specs. It is the SNES-style body with the d-pad SlashGear singles out, which is what retro libraries lean on. The 8BitDo Ultimate line is the modern competitive pad: a 2.4GHz low-latency dongle and a charging dock, but a conventional modern-pad shape and d-pad. Choose the Pro 2 for d-pad and retro feel, the Ultimate for low-latency wireless and dock convenience. The Pro 2 connects over Bluetooth or USB-C only, with no 2.4GHz dongle."
+  - question: "Does the 8BitDo Pro 2 have stick drift?"
+    answer: "The buyable Pro 2 today is the Hall Effect edition, which uses magnetic-sensor joysticks that 8BitDo and Amazon market as drift-resistant, since there is no physical contact to wear down the way conventional potentiometer sticks do. The original 2021 Pro 2 used ALPS potentiometer sticks instead and is shown as currently unavailable on Amazon. So the version sold now is built specifically to resist the drift problem, though no stick design is a guaranteed lifetime fix."
 ---
 
 ## Who This Is For
@@ -109,6 +115,10 @@ One thing to settle up front: this is the Hall Effect edition, not the original.
 - **No NFC and no HD Rumble.** 8BitDo states the Pro 2 supports neither amiibo scanning nor HD rumble. It has regular rumble vibration. Standard for third-party Switch pads, but worth flagging if those features matter.
 - **Switch 2 support is real but not bulletproof.** 8BitDo lists Switch 2 compatibility yet notes it needs system 20.1.1 or later and may require a firmware update from support, and at least one Amazon verified review on this SKU reports it would not connect to a Switch 2. Expect possible firmware steps and scattered failure reports.
 - **Mac users lose the app, and unit feel can vary.** 8BitDo says Ultimate Software does not run in Mac mode, so Mac-primary users get the pad but not the customization tools. Separately, one recent Amazon reviewer reported a defective unit and a replacement with a d-pad they found too stiff. A minority report against an otherwise well-praised d-pad, but a real one.
+
+## Is the 8BitDo Pro 2 Worth It in 2026?
+
+For most retro and emulation players, the spec sheet says yes. At the $39.99 listed price, the Pro 2 packs a d-pad SlashGear calls the best since the SNES days, Hall Effect joysticks marketed against drift, two back paddle buttons, three onboard profiles with an on-the-fly switch, and a 4-way mode switch spanning Switch and Switch 2, Windows, Steam Deck, Android, Raspberry Pi, and Apple devices. Amazon verified buyers back the value read at 4.4 stars across 1,589 ratings. The case against it is specific rather than general: it cannot power on a Switch, it has no NFC or HD Rumble, and the newer Pro 3 exists at a higher price. None of those touch the things this pad is bought for, which are the d-pad, the price, and the breadth of platform support. The honest catch is timing, since the Pro 3 now sits above it, covered below, so the Pro 2 is worth it specifically as the value and retro-feel pick rather than the latest hardware.
 
 ## How It Compares
 

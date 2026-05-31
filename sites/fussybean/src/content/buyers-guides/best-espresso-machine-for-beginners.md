@@ -5,7 +5,7 @@ rubric: "Home Coffee Gear · Buying Guide"
 deck: "Your first machine is a trade between how much you learn and how much you spend. Here is how six popular starters line up on the specs that actually decide the buy."
 pillar: "espresso-machines"
 pubDate: 2026-05-29
-lastUpdated: 2026-05-29
+lastUpdated: 2026-05-30
 bgTheme: "solid"
 products:
   - name: "De'Longhi Stilosa (EC260BK)"
@@ -118,6 +118,15 @@ images:
 bottomLine:
   verdict: "For most first-time buyers, the Breville Bambino hits the sweet spot of small footprint, fast heat-up, and real espresso, and the De'Longhi Stilosa proves you can start under $150. Step up to the Barista Express only if you want the grinder built in, and choose the Gaggia Classic Evo Pro if modding and longevity matter more than convenience."
   supporting: "Six spec-verified beginner machines span an ultra-budget entry, a slim semi-auto for small counters, two Breville semi-autos, the modder's-classic Gaggia, and a budget all-in-one, with every spec drawn from the manufacturer listing or an attributed reviewer."
+faq:
+  - question: "De'Longhi Stilosa vs Dedica Arte: which first machine?"
+    answer: "Per the listings, the Stilosa is the ultra-budget start at $149.95 list, with a 15-bar pump and a manual frother steam wand. The Dedica Arte runs $299.95, adds the My LatteArt manual steam wand for texturing milk rather than a pannarello frother, three-level temperature selection, and a 35 oz tank, all in a slim body about six inches wide. Buy the Stilosa to find out whether home espresso is for you at the lowest cost. Choose the Dedica if counter space is tight and you want a real steam wand and temperature control from day one."
+  - question: "What is a good beginner espresso machine under $200, $250, or $300?"
+    answer: "Per the prices observed on 2026-05-29, the under $200 pick is the De'Longhi Stilosa at $149.95 list, the cheapest honest way onto a real portafilter. Around $250 the Breville Bambino at $249.95 adds seconds-fast ThermoJet heat-up and a 54mm portafilter shared with pricier Breville machines. At $299.95 the slim De'Longhi Dedica Arte fits a small counter and brings a proper steam wand and three-level temperature control."
+  - question: "What is a good complete beginner espresso setup?"
+    answer: "A machine, a grinder, and a way to heat and pour water. Pair a first machine from this guide with a burr grinder that reaches espresso fineness, since grind quality matters as much as the machine. Our best coffee grinder for beginners guide walks the grinder options, and the Fellow Stagg EKG Pro review covers a precision kettle if you also brew pour-over. The all-in-one Breville Barista Express folds the grinder into the machine if you would rather buy one box."
+  - question: "Does this guide claim hands-on testing?"
+    answer: "No. This is comparison-and-fit analysis built from current manufacturer and Amazon listings plus attributed third-party reviewer sentiment, not in-house testing. Where we cite a price, rating, or reviewer, the source is named. See how we evaluate for the full method."
 ---
 
 ## Verified specs at a glance
@@ -144,6 +153,24 @@ A **semi-automatic** machine is the heart of the category. The Dedica Arte, the 
 An **all-in-one** machine like the Barista Express builds the grinder into the body, so coffee goes from beans to portafilter in one box. The Casabrews 3700 is the budget take on that idea. The appeal is obvious for a first machine: one purchase, less counter clutter, no separate grinder to research. The trade is that the built-in grinder is part of the machine's fate rather than something you can swap on its own later.
 
 One more thing worth knowing as a beginner: a **PID** is a temperature controller that holds brew water steadier shot to shot. Among these six, only the Casabrews lists PID temperature control. The Gaggia does not ship with one, though adding a PID is one of the most popular aftermarket mods owners make. The others do not advertise it. It is a nice-to-have for consistency, not a requirement for a good first cup.
+
+## De'Longhi Stilosa vs Dedica Arte: which first machine?
+
+These two De'Longhi machines are the most cross-shopped pair in this guide, so here is the head-to-head on the specs the listings actually state. The Stilosa (EC260BK) is the ultra-budget entry at $149.95 list. It pairs a 15-bar pump with a manual milk frother steam wand and ships with a portafilter, scoop and tamper, and single and double filters. It is the gentlest, lowest-commitment way onto a real portafilter machine.
+
+The Dedica Arte (EC885) runs $299.95 and trades up on three counts the listing names. It carries the My LatteArt manual steam wand, a real wand for texturing milk rather than the pannarello frother on cheaper Dedicas, adds three-level temperature selection, and packs all of it into a slim body about six inches wide with a 35 oz tank. Both use a 15-bar pump.
+
+The plain read: buy the Stilosa to find out whether home espresso is for you at the lowest possible cost. Choose the Dedica when counter space is the constraint and you want a proper steam wand and temperature control from the first day rather than the bare minimum. The roughly $150 gap between them buys milk-texturing capability, temperature selection, and a smaller footprint, not a different category of machine.
+
+## Best beginner espresso machine under $200, $250, and $300
+
+If you are shopping by budget, here is how the lineup maps to the price bands beginners actually search, using the prices observed on 2026-05-29.
+
+**Under $200.** The De'Longhi Stilosa at $149.95 list is the pick, the cheapest honest way onto a real portafilter with a 15-bar pump and a manual steam wand. The Casabrews 3700 Essential at $139.99 is the budget all-in-one alternative in this band, with sentiment that splits, so read its entry above before buying.
+
+**Around $250.** The Breville Bambino at $249.95 is the enthusiast entry, with seconds-fast ThermoJet heat-up and a 54mm portafilter shared with Breville's pricier machines.
+
+**Up to $300.** The slim De'Longhi Dedica Arte at $299.95 fits a small counter and adds the My LatteArt steam wand and three-level temperature control. Above this band sit the Gaggia Classic Evo Pro at $453.79 for those growing into the hobby and the all-in-one Breville Barista Express in the $700 to $750 range.
 
 ## How we picked
 

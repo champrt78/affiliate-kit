@@ -6,7 +6,7 @@ deck: "Fellow's iconic gooseneck kettle, now sold only in the Pro generation. He
 pillar: "manual-brewing"
 classification: "review"
 pubDate: 2026-05-29
-lastUpdated: 2026-05-29
+lastUpdated: 2026-05-30
 bgTheme: "solid"
 product:
   name: "Fellow Stagg EKG Pro Electric Kettle"
@@ -64,6 +64,8 @@ faq:
     answer: "Per Fellow, the EKG Updater app delivers firmware updates over WiFi. Fellow explicitly states the app does not currently support remote control of the kettle or its settings, so it is a maintenance tool, not a way to start your kettle from bed."
   - question: "Is 0.9L enough capacity?"
     answer: "It is 0.9L (30 oz), roughly three 12 oz mugs per an Amazon owner. That suits a solo or two-person ritual brew. For larger batches Fellow points buyers to its higher-capacity Clyde kettle instead."
+  - question: "Is the Fellow Stagg EKG Pro worth it?"
+    answer: "At about $179.95 it is a genuine want rather than a need, and our scorecard scores Value 6.5 out of 10 to say so plainly. It earns the premium if you brew pour-over or specialty tea and want to-the-degree control, a true gooseneck, and a hold mode that keeps water on target through a multi-step brew. If you just want a kettle that boils water, a commodity gooseneck costs a fraction and the Pro is hard to justify. You are paying for precision and design, not for hotter water."
 ---
 
 ## Who This Is For
@@ -114,3 +116,13 @@ The Stagg EKG Pro is the precision-and-design pick among home gooseneck kettles 
 **Pro vs the Pro Studio Edition.** Fellow also sells a Pro Studio Edition with a reflective glass base and metal accents at a higher tier. It is the same precision kettle in a more premium finish. The standard Pro reviewed here is the lower-priced of the two model options on Fellow's page.
 
 **Pro vs a higher-capacity kettle.** For multi-cup or batch brewing, 0.9L is the constraint. Fellow points larger-volume buyers to its XL Clyde, and at least one reviewer of a competing kettle explicitly wanted something bigger than Fellow's 900 mL. If capacity outranks pour precision for you, a 1.5L-plus kettle is the better fit. If the daily ritual brew is the use case, the small capacity is rarely the limiting factor.
+
+## Fellow Stagg EKG vs EKG Pro: what changed and is it worth it?
+
+This is the question most searches on this kettle are really asking, so here is the plain answer. The original standard Stagg EKG, the one with a monochrome screen and no scheduling or app, has been discontinued on both Amazon and Fellow's own store. The kettle sold today under the Stagg EKG name is the Pro. So in practice you are not choosing between the two. The EKG you can buy new is the Pro reviewed here.
+
+What the Pro adds on top of the original gooseneck-and-hold core, per Fellow's listing, is a full-color screen, scheduling, Guide Mode presets, altitude adjustment, and WiFi firmware updates. The precision, the true gooseneck, and the adjustable hold mode that defined the kettle carry over. Is the upgrade worth it? The question is mostly moot now that the original is gone, but the Pro extras genuinely help a newer brewer build a repeatable routine, and the brew stopwatch and presets lower the friction of dialing in a consistent pour. One sourcing note: James Hoffmann's well-known review covers the original EKG generation, which predates the Pro, so treat that coverage as about pour control and design rather than the Pro's app and scheduling features.
+
+## Fellow Stagg EKG Pro vs the Timemore Fish: do you need to spend $180?
+
+The honest objection on a $180 kettle is whether a far cheaper gooseneck does the core job, and the Timemore Fish is the budget alternative readers most often cross-shop. We do not have the Fish on the site to spec out side by side, so we will not pretend to. The framing that the spec sheet supports is this. The Stagg EKG Pro buys you to-the-degree temperature control, a closed-loop system that holds your exact target through a brew, and a finished steel-and-wood design object, which is why our scorecard scores it Value 6.5 out of 10 and Temperature Stability 9.0 out of 10. A budget stovetop or fixed-temp gooseneck pours a controlled stream too, and for many beginners that is enough. The Stagg premium is precision and aesthetics, not pour control alone. If held temperature and the look on the counter matter to you, the Pro earns the spend. If you mainly need a controlled pour, a cheaper gooseneck gets you most of the way for far less money.

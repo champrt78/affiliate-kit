@@ -116,6 +116,13 @@ pubDate: 2026-05-30
 lastUpdated: 2026-05-30
 pillar: "filters"
 bgTheme: solid
+faq:
+  - question: "Do I need a filter for a betta?"
+    answer: "In almost every case, yes. Bettas are often sold in tiny bowls, but a filtered, heated tank keeps the water far more stable and is much easier to maintain. The one thing to get right is flow. Bettas have long fins and prefer calm water, so pick a filter with adjustable flow like the AquaClear, or a gentle air-driven sponge filter like the hygger, rather than a strong fixed-current unit."
+  - question: "What size filter for a 10 gallon tank?"
+    answer: "A filter rated for 10 gallons or a little above is the target, so it turns the water over enough times per hour without overwhelming the tank. The AquaClear 30 (10 to 30 gallons), the Tetra Whisper IQ 30, and the Aqueon QuietFlow 10 LED PRO (up to 20 gallons) all fit a 10 gallon well. A common rule of thumb is a filter that moves roughly four times the tank volume per hour, which all three clear easily."
+  - question: "Is a sponge filter or a HOB better for beginners?"
+    answer: "It depends on the tank and the fish. A hang-on-back (HOB) is the all-around default for most community tanks, easy to access and combining mechanical, chemical, and biological filtration in one unit. A sponge filter is the better pick for bettas, fry, and shrimp because its air-driven flow is gentle and there is almost nothing to clog or break. The trade-off is that a sponge filter needs a separate air pump and hose to run, while a HOB plugs straight into the wall."
 bottomLine:
   verdict: "Pick by tank and fuss level. AquaClear 30 for set-and-forget capacity, Tetra Whisper IQ for the quietest run, a hygger sponge for gentle betta-safe flow, and the Cascade internal when you would rather not see a filter on the back."
   supporting: "Six beginner filters span the three styles a first-tank keeper will meet: hang-on-back workhorses for most setups, a gentle air-driven sponge for bettas and shrimp, and a fully submersible internal for spots where a HOB will not fit. The right one depends on your tank size, your fish, and where the tank sits."
@@ -155,3 +162,23 @@ Where a piece of analysis is not a published spec, it is framed as general filtr
 This guide is for someone setting up a first freshwater tank in the 5 to 30 gallon range who wants the filter decision made simple and honest. If you want one filter that handles most starter tanks without fuss, the AquaClear 30 and its refillable basket are the safe default, and the Seachem Tidal 35 is the step-up when you want self-priming convenience and a flow dial. On a tight budget, the Aqueon QuietFlow 10 LED PRO is the cheapest hang-on-back, and the Tetra Whisper IQ 30 is the one to reach for when the tank lives somewhere quiet.
 
 If your first tank is a betta, a shrimp tank, or a fry setup, the gentle current of the hygger sponge filter is the better match, just remember it needs a separate air pump to run. And if your tank sits in a spot where nothing can hang off the back, the fully submersible Penn-Plax Cascade 400 is the internal that fits where a HOB cannot. Whichever you pick, size the filter to your tank, give the beneficial bacteria a few weeks to establish, and the filter stops being the scary part of the hobby.
+
+## Best filter for a 5 gallon tank
+
+A 5 gallon tank is small, so the goal is enough biological filtration without a current that blasts a small fish around. Two of the picks here fit best. The hygger Double Sponge Filter is the gentle-flow choice, ideal for a small betta or shrimp setup, and at the lowest price in the guide, just budget for the air pump it needs. If you would rather run a powered filter, the Aqueon QuietFlow 10 LED PRO is rated up to 20 gallons, so it has plenty of capacity for a 5 gallon and self-primes for easy start-up. On any powered intake in a tank this small, aim for a model where you can soften or pre-sponge the flow.
+
+## Best filter for a 10 gallon tank
+
+A 10 gallon is the most common beginner size, and every powered filter here covers it. The AquaClear 30 (rated 10 to 30 gallons) is the set-and-forget default, with a refillable basket and roughly 100 GPH that comfortably handles a 10. For the quietest run in a bedroom, the Tetra Whisper IQ 30 pairs a sound shield under 40 dB with a 10-gallon-friendly rating. On a tighter budget, the Aqueon QuietFlow 10 LED PRO is the cheapest powered pick and is sized right at this volume. A 10 gallon gives you the widest choice of any size in this guide.
+
+## Best filter for a 20 gallon tank
+
+At 20 gallons you want a filter rated at or above that volume so it is not straining. The AquaClear 30 reaches to 30 gallons and the Tetra Whisper IQ 30 covers up to 30, both comfortable on a 20. The Seachem Tidal 35 is the step-up here, rated to 35 gallons with self-priming start-up and an adjustable 90 to 450 GPH dial, which is useful headroom if you plan to stock the tank more heavily. As with heaters, when you are between sizes on a 20, sizing the filter up rather than down is the safer call.
+
+## FAQ
+
+**Do I need a filter for a betta?** In almost every case, yes. Bettas are often sold in tiny bowls, but a filtered, heated tank keeps the water far more stable and is much easier to maintain. The one thing to get right is flow. Bettas have long fins and prefer calm water, so pick a filter with adjustable flow like the AquaClear, or a gentle air-driven sponge filter like the hygger, rather than a strong fixed-current unit.
+
+**What size filter for a 10 gallon tank?** A filter rated for 10 gallons or a little above is the target, so it turns the water over enough times per hour without overwhelming the tank. The AquaClear 30 (10 to 30 gallons), the Tetra Whisper IQ 30, and the Aqueon QuietFlow 10 LED PRO (up to 20 gallons) all fit a 10 gallon well. A common rule of thumb is a filter that moves roughly four times the tank volume per hour, which all three clear easily.
+
+**Is a sponge filter or a HOB better for beginners?** It depends on the tank and the fish. A hang-on-back (HOB) is the all-around default for most community tanks, easy to access and combining mechanical, chemical, and biological filtration in one unit. A sponge filter is the better pick for bettas, fry, and shrimp because its air-driven flow is gentle and there is almost nothing to clog or break. The trade-off is that a sponge filter needs a separate air pump and hose to run, while a HOB plugs straight into the wall.

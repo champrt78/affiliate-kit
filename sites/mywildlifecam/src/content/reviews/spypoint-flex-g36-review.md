@@ -56,6 +56,10 @@ faq:
     answer: "A free transmission plan is included per the 8-month owner review. That covers basic photo delivery. Heavier volume moves you onto a paid Spypoint plan. Phone delivery still depends on cellular coverage at the camera's location, so the free tier is a starting point, not a guarantee of unlimited free use."
   - question: "Does it use an SD card, and is that a problem?"
     answer: "Yes, it takes an external SD card, and you can switch off the cellular function to pull the card and copy photos manually. On reliability: a multi-camera reviewer warns that some Spypoint cameras (not the G36 specifically) have had SD-card failures that persisted through card swaps and reformatting. The G36 itself has not shown that issue in their testing, but it is a brand-level track record worth knowing."
+  - question: "Spypoint Flex G36 vs Flex-M, which one?"
+    answer: "Same Spypoint ecosystem and dual-SIM approach, two tiers. The G36 is the value step-up: 36 megapixels, 1080p video with sound, and a quicker 0.3-second trigger per the Amazon listing, plus GPS, and it sells mostly as a roughly $220 twin pack that brings the per-camera cost down. The Flex-M is the cheaper single unit at 28 megapixels, 720p video, and a 0.4-second trigger with the free 100-photo plan. Pick the G36 when you want the faster trigger, higher resolution, and the twin-pack value to cover two spots. Pick the Flex-M when the lowest single-unit price and the free tier matter most and you can give up resolution."
+  - question: "Is the Spypoint Flex G36 worth it?"
+    answer: "As a value cellular pick past the budget tier, yes. The combination that earns it is dual-SIM auto-strongest-carrier selection, a 0.3-second trigger, and 36MP stills, with one owner running it through eight months of harsh weather and a bear attack and still endorsing it. The honest caveats are brand-level: the wider Spypoint lineup has a documented SD-card-failure track record (the G36 itself has not shown it in independent testing), support calls work but take time, and it sells mostly as a roughly $220 twin pack. If you want no SD card at all, no recurring cost, or top-tier image quality, the Edge 2, a non-cellular cam, or the DS4K Ultimate fit better."
 ---
 
 # Spypoint Flex G36 Review: Dual-SIM Auto-Connect, a Quick Trigger, and One Brand-Level Caveat
@@ -110,6 +114,14 @@ A cellular plan beyond the included free tier is required for heavy photo volume
 | **Moultrie Edge 2** | Nationwide auto-connect (multi-carrier) | Built-in, no SD card | 0.4s | You want zero carrier decisions and no SD card at all |
 
 The Flex G36's edge in this group is the combination of dual-SIM auto-strongest carrier selection, a 0.3-second trigger, and 36MP stills. Pick the [Spypoint Flex-M](/reviews/spypoint-flex-m-review) when you want the same app ecosystem at a lower price and can accept its lower 28MP resolution. Pick the [Tactacam Reveal X](/reviews/tactacam-reveal-x-3-review) when budget is the priority and you do not mind picking a single carrier and managing a strict SD-card requirement. Pick the [Moultrie Edge 2](/reviews/moultrie-edge-2-review) when you want the carrier decision removed entirely and no SD card to manage, and you can live with its slower 0.4-second trigger. Pick the [Stealth Cam DS4K Ultimate](/reviews/stealth-cam-ds4k-ultimate-review) instead when you want the sharpest image with no monthly plan and can walk out to swap a card.
+
+## Spypoint Flex G36 vs Flex-M
+
+The G36 and the Flex-M are the value step-up and the budget entry of the same Spypoint cellular line, so the choice is a value calculation rather than an ecosystem switch. Both share the app and the dual-SIM auto-carrier approach.
+
+The G36 is where the value framing lives. For roughly $220 as a twin pack, you get two cameras at 36 megapixels, 1080p video with sound, a quick 0.3-second trigger, and GPS per the Amazon listing, which works out to an attractive per-camera cost for covering two spots at once. The [Flex-M](/reviews/spypoint-flex-m-review) is the cheaper way in as a single unit: 28 megapixels, 720p video, a 0.4-second trigger, and the free 100-photo-per-month plan, at the cost of resolution and trigger speed.
+
+Pick the G36 when you want the faster trigger and higher resolution and can use the twin-pack value to blanket more of the property. Pick the [Flex-M](/reviews/spypoint-flex-m-review) when a single low-priced unit on the free tier is all you need and the lower resolution is acceptable.
 
 ## Verdict
 

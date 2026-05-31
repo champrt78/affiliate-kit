@@ -137,6 +137,10 @@ faq:
     answer: "Chemical Guys does not publish a GSM figure or a specific weave for the Woolly Mammoth on its Amazon listing. Rather than guess, both fields are recorded as not published. The listing does state it is a 36x25-inch ultra-plush microfiber towel and claims it absorbs over a gallon of water, which is what the recommendation here relies on."
   - question: "Do I need a separate towel for glass?"
     answer: "It helps. Thick plush and twist-loop towels can leave streaks or trap residue on glass because of how much they hold. A thin waffle-weave towel like Dry Me A River wicks quickly and lies flat, which makes it well suited to glass, mirrors, and the final wipe-down. Pairing a plush primary towel with a waffle towel for glass is a common home-detailer setup."
+  - question: "What is the best drying towel for a ceramic-coated car?"
+    answer: "A coated car sheets water rather than holding it, so the towel does less work and the priority shifts from raw capacity to a gentle, low-drag surface. A premium twist-loop like The Rag Company Gauntlet (900 GSM, 70/30 polyester-polyamide split microfiber) or a quality waffle-weave like Dry Me A River (390 GSM) both pull water in few passes with a plush low-friction face. The blend matters here: the Korean split-microfiber 70/30 blends both Rag Company towels publish are the same construction enthusiasts cite as coating-friendly. Whatever you pick, keep it clean and free of grit, because the coating is what you are trying to protect."
+  - question: "What size and GSM towel is best for black or dark paint?"
+    answer: "Dark paint shows marring and swirls more than any other color, so the safest choice is a high-GSM plush or twist-loop towel with a soft suede or satin edge and no abrasive tags. A dense face like the 1500 GSM Adam's Jumbo Plush, the 1200 GSM SMINDER, or the 900 GSM Gauntlet glides on its own water cushion and pulls water in fewer passes, which means less rubbing on the finish. The edge construction matters as much as GSM here: The Gauntlet's tagless ButterSoft suede edge and Adam's scratch-free satin edging are specifically designed to avoid the edge-drag that leaves fine scratches on dark panels. Size up so one pass covers more area and you touch the paint less."
 ---
 
 ## Verified product specs at a glance
@@ -161,6 +165,18 @@ Drying towels split into three constructions, and the right one depends on the j
 - **Waffle-weave** towels, like Dry Me A River at 390 GSM, are deliberately thin with a grid texture that wicks fast and lies flat. They are not meant to hold a gallon. They are meant for glass, mirrors, and final wipe-downs, and they pair with a plush or twist-loop primary towel rather than replacing it.
 
 A common home-detailer setup is one plush or twist-loop primary towel plus a thin waffle towel for glass. Buying a 2-pack of the primary keeps a dry spare ready and a clean one in the wash rotation.
+
+## Drying a ceramic-coated car: why lower-pile and twist-loop matter
+
+A ceramic coating changes the drying job. Water beads and sheets off a coated surface instead of clinging, so the towel does not need to absorb a gallon. It needs to glide with as little friction as possible across a finish you are trying to protect. That points away from the thickest, deepest-pile towels and toward a controlled twist-loop or a thin waffle-weave.
+
+Two specs tell the story. Weave first: the twist-loop construction on The Rag Company Gauntlet uses long twisted fiber bundles that lift water in a single pass, so the towel spends less time in contact with the coating. The waffle-weave Dry Me A River, at 390 GSM, is deliberately low-pile and flat, which is why The Rag Company calls it lint-free and positions it for fast, streak-free wicking. Blend second: both Rag Company towels list a 70% polyester and 30% polyamide Korean split-microfiber blend, the construction enthusiasts associate with a soft, low-snag face on coated paint. The point is not the biggest GSM number. It is the fewest passes and the lowest drag, which a twist-loop or a quality waffle delivers better than a dense plush brick.
+
+## Best size and GSM for black paint and the marring risk
+
+Black and other dark colors show fine scratches and wash marring that lighter paint hides, so the drying towel is a real swirl risk if you pick wrong. The goal is fewer passes, more glide, and an edge that never drags. That argues for a high-GSM plush or twist-loop towel sized large enough to cover a panel in one or two sweeps.
+
+The high-density picks here fit that brief: Adam's Jumbo Plush at 1500 GSM, SMINDER at 1200 GSM, and The Gauntlet at 900 GSM all carry enough water on a deep, soft face that the towel rides on its own water layer rather than scrubbing the paint. Size helps too. The oversized 33x29 inch Jumbo Plush and 36x24 inch SMINDER cover more area per pass, so your hands touch the finish less often. Edge construction is the detail people miss on dark paint: the Gauntlet's tagless ButterSoft suede edge and Adam's scratch-free satin edging exist specifically to keep a hard seam or a sewn-in tag from leaving a fine scratch that a black hood will broadcast in the sun. Pair a high-GSM primary with a clean wash routine and grit-free storage, because a dropped towel that picks up sand undoes all of it.
 
 ## How we picked
 

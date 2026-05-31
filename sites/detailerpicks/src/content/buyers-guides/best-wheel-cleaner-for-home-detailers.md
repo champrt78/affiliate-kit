@@ -1,6 +1,6 @@
 ---
-title: "Best Wheel Cleaner for Home Detailers"
-description: "Five wheel cleaners, picked by what your wheels actually need. Brake Buster for daily-driver dust. Sonax for the iron-killer reference."
+title: "Best Wheel Cleaner for Brake Dust"
+description: "Six wheel cleaners for brake dust, picked by finish safety. Brake Buster for daily-driver dust, Sonax for the iron-killer reference, plus coated-wheel picks."
 rubric: "Wheel Cleaner · Buying Guide"
 deck: "Two products carry most of the wheel-cleaning workload. A third handles periodic iron decon. The other two cover mass-retail and gel-format slots."
 products:
@@ -135,6 +135,10 @@ faq:
     answer: "Iron X is a periodic-use product, not a weekly maintenance cleaner. Pan The Organizer's 2023 awards recommend it specifically as the iron-decontamination reference for paint and wheels both, applied quarterly or seasonally rather than every wash. The thiocarbamate chemistry bonds to embedded iron particles that routine soap cannot reach. Frequent use is unnecessary chemistry cycling. Use a routine wheel cleaner (Brake Buster or Sonax) for weekly washes. Use Iron X two to four times a year on the wheels and on paint that lives near high-iron contamination zones."
   - question: "What's the deal with Meguiar's 'Hot Rims' vs 'Ultimate All Wheel Cleaner'?"
     answer: "Meguiar's makes two wheel cleaners that sit at very different ends of the safety spectrum. Hot Rims (G9524) is a high-alkaline formula NOT safe on polished aluminum, anodized, or powder-coated finishes, and has no iron-reactive chemistry. Ultimate All Wheel Cleaner (G180124) is iron-reactive (purple on iron, brown on grime), all-finish safe, and similarly priced at mass retail. For nearly every home detailer, the Ultimate is the correct Meguiar's pick. Hot Rims is best left for painted-only wheels and tire-cleaning combo use cases that are outside the scope of this guide."
+  - question: "Will wheel cleaner damage my clear coat?"
+    answer: "A pH-neutral or acid-free wheel cleaner will not, which is the entire reason this guide screens for that chemistry. The damage risk comes from two product types kept out of this guide: acid wheel brighteners, which can etch clear-coated and painted wheels, and high-alkaline formulas like Meguiar's Hot Rims, which the maker states is not safe on polished, anodized, or powder-coated finishes. Every routine pick here documents pH-neutral or pH-balanced chemistry safe on clear-coated wheels. The one rule that holds across all of them is dwell time: do not let any wheel cleaner dry on the surface, especially in direct sun, because dried product is harder to remove and works against you. Spray, let it dwell the stated time, agitate, and rinse before it dries."
+  - question: "What is the difference between an acid-free and a pH-neutral wheel cleaner?"
+    answer: "The terms overlap but are not identical, and both signal a finish-safe cleaner. pH-neutral means the formula sits near pH 7, neither acidic nor alkaline, which is the safest band for coated, anodized, and polished wheels. Acid-free means the maker has left out the aggressive acids found in old-school wheel brighteners, though an acid-free product can still be mildly alkaline. In practice the picks here use both labels to mean the same thing: safe on sensitive finishes. Sonax documents pH-neutral and acid-free, CarPro Iron X documents pH 6 to 7, and Adam's documents acid-free and pH-balanced. Avoid anything labeled an acid wheel brightener if you care about clear coat, anodizing, or a ceramic coating, and prefer products that state pH-neutral outright over ones that only say 'safe on most finishes.'"
 ---
 
 ## Verified product specs at a glance
@@ -158,7 +162,24 @@ Two design philosophies split the wheel cleaner category, and both have credible
 
 A secondary doctrine split runs through the gel-versus-spray format choice. Gel concentrates (Diablo, Brake Buster) cling to vertical wheel surfaces longer, reducing chemistry waste and increasing dwell time on barrel and spoke surfaces. Spray RTU formulas (Sonax Full Effect, Iron X, Meguiar's Ultimate) are faster and require no dilution prep, but may run off vertical surfaces before full dwell completes. For a dedicated wheel-cleaning session with a brush, gel format is the better technical pick. For quick maintenance washes or foam-cannon use, diluted spray concentrate wins.
 
-The third doctrine line is the coated-wheels-safety filter. Every product in this guide is pH-neutral or pH-balanced and safe on coated, anodized, polished, and powder-coated finishes per manufacturer documentation. Avoid products with acid components (acid wheel brighteners are a different category not covered here) and avoid high-alkaline formulas like Meguiar's Hot Rims for anything other than painted-only wheels.
+The third doctrine line is the coated-wheels-safety filter. Every product in this guide is pH-neutral or pH-balanced and safe on coated, anodized, polished, and powder-coated finishes per manufacturer documentation, with one finish caveat noted in the safety section below. Avoid products with acid components (acid wheel brighteners are a different category not covered here) and avoid high-alkaline formulas like Meguiar's Hot Rims for anything other than painted-only wheels.
+
+## Iron removers vs acid cleaners: what actually dissolves brake dust
+
+Brake dust is not just grime. It is largely ferrous iron particles shed by the brake rotors and embedded into the wheel finish, which is why a plain soap leaves wheels looking dirty no matter how hard you scrub. Two chemistries attack it, and only one is finish-safe enough to recommend for routine use.
+
+Iron removers use thiocarbamate compounds that chemically bond to the iron particles and convert them into water-soluble complexes that rinse away. Sonax Full Effect, Meguiar's Ultimate, and CarPro Iron X all work this way, and the purple or red color change you see is the chemistry reacting with the dissolved iron. Because these formulas are pH-neutral or acid-free, they dissolve embedded brake dust without the etching risk of the old approach. That old approach is acid cleaners and wheel brighteners, which strip contamination fast but can etch clear coat, dull anodizing, and damage coated finishes. This guide deliberately excludes acid brighteners for that reason. For dissolving brake dust safely, an acid-free iron remover for periodic decon plus a pH-neutral maintenance cleaner like P&S Brake Buster for weekly washing covers the job without the finish risk.
+
+## Is it safe for my wheel finish?
+
+Finish safety is the line that separates a smart wheel-cleaner buy from an expensive mistake, because the wrong chemistry on the wrong finish causes permanent damage. Here is how the picks sort by finish, all per manufacturer documentation.
+
+- **Black, painted, and clear-coated wheels.** Every routine pick here is safe. Sonax Full Effect, Adam's, P&S Brake Buster, Chemical Guys Diablo, and Meguiar's Ultimate all document pH-neutral or pH-balanced chemistry safe on painted and clear-coated wheels.
+- **Polished aluminum and chrome.** Sonax, Adam's, Meguiar's Ultimate, and CarPro Iron X all list polished aluminum, alloy, or chrome as compatible. The hard exclusion is high-alkaline Hot Rims, which is not in this guide.
+- **Anodized wheels.** Most picks list anodized as safe, but CarPro Iron X is the exception. CarPro's own documentation warns NOT to use Iron X on anodized surfaces. Use Iron X only on clear-coated, aluminum, chrome, and alloy wheels, and reach for Sonax or Adam's on anodized finishes.
+- **Ceramic-coated wheels.** Sonax Full Effect and Adam's both carry explicit ceramic-coat-safe language and pair pH-neutral or acid-free chemistry, which makes them the safest picks for a coated wheel. The rule for coated wheels is to favor a pH-neutral non-acidic cleaner and to skip aggressive iron-remover decon as a weekly habit, using it only for occasional resets per the manufacturer's guidance.
+
+The single most common shopping mistake in this category is grabbing an acid wheel brightener or a high-alkaline formula for a sensitive finish. Read the pH claim, look for the specific finish named on the label, and treat any product that only says 'safe on most surfaces' as a reason to keep looking.
 
 ## How we picked
 

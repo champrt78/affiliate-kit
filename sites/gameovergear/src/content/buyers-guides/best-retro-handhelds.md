@@ -149,6 +149,32 @@ Pick the shape that matches how and where you want to play. The power is the sam
 
 The power only starts climbing once you leave Linux for Android. The RG406H on the Unisoc T820 with 8GB of RAM reaches PSP and Dreamcast comfortably and takes on GameCube and PS2 with compromises, per reviewer reports. The Retroid Pocket 5 on the Snapdragon 865 sits at the top, with reviewers reporting GameCube, PS2 and some Switch. Those two cost two to five times what the budget picks do, and that money is buying power, not just a different shell.
 
+## Best retro handheld for PS1 emulation
+
+PS1 is the dividing line this whole category is built around, and the good news for buyers is that every pick here clears it. All four budget Linux devices, the RG28XX, RG35XX SP, RG40XX V, and RG34XX, run PS1 well per their reviewers, since PS1 is exactly where the shared Allwinner H700 tops out. That makes the cheapest one that fits your hand the value answer for PS1: the tiny RG28XX if you want pocketable, the RG40XX V if you want the largest 4-inch screen. If you also want light Dreamcast through Flycast on top of PS1, the same four still apply, with the reviewers noting demanding Dreamcast titles need tweaking. Spend up only if you want PS1 to sit alongside PSP, GameCube, or PS2, which is where the Android RG406H and Retroid Pocket 5 come in.
+
+## Best retro handheld under $100
+
+Four of the six picks land under $100 at the prices captured here: the RG28XX at $46.99, the RG35XX SP at $74.99, the RG34XX at $79.97, and the RG40XX V at $86.99. They share one chip and one PS1-with-light-Dreamcast ceiling, so under $100 you are buying a form factor, not more power. The honest ceiling to know going in is that nothing in this price band reaches PSP, GameCube, or PS2 reliably, per the reviewers cited in each pick. For the most screen under $100, the RG40XX V. For the cleanest GBA scaling, the 3:2 RG34XX. For pocketability, the RG28XX. The Android RG406H and Retroid Pocket 5 both sit well above $100 because that is what the jump in power costs.
+
+## Best handheld for GBA and DS
+
+Game Boy Advance runs comfortably across every device here, since GBA sits below the PS1 ceiling all six clear. The 3:2 RG34XX is the standout for GBA specifically: Retro Dodo found its 720x480 3:2 panel scales GBA visuals more cleanly than the squarer 640x480 screens, calling it a better GBA replica than the RG35XX SP. Nintendo DS is the harder half of this pairing because of its dual-screen layout. Per the RG40XX H review companion to this guide, GBAtemp found DS ran well with zero configuration on the H700 platform, so the budget Linux picks handle DS, though the single-screen layout means DS is emulated onto one display rather than two physical screens. If a true clamshell feel matters for DS-style play, the RG35XX SP is the flip-shut option, with the same DS-capable internals.
+
+## Best handheld for PSP emulation
+
+PSP is where the budget tier ends and the Android tier begins. None of the four Linux picks run PSP reliably, since the shared H700 and 1 GB of RAM stop at PS1 with light Dreamcast per their reviewers. For PSP you want the Android step up. The RG406H on the Unisoc T820 with 8 GB of RAM reaches PSP comfortably per Retro Handhelds, which also logged solid Dreamcast and N64. The Retroid Pocket 5 on the Snapdragon 865 sits above it, with Joey's Retro Handhelds reporting PPSSPP able to max settings at 1080p alongside GameCube and PS2. If PSP is the system you care about most, treat the RG406H as the entry answer and the Retroid Pocket 5 as the do-everything answer.
+
+## FAQ
+
+**What is the cheapest handheld that plays PS1 well?** The Anbernic RG28XX at $46.99 is the cheapest pick here, and Retro Dodo reported PS1 ran perfectly on it, with Flycast handling Dreamcast and Naomi titles. It is also the smallest, with no analog stick, which that review flagged as awkward for N64 and Dreamcast. If you want PS1 plus a fuller layout, step up to the RG40XX V or the clamshell RG35XX SP.
+
+**Can any budget handheld run PS2 or GameCube?** Not the budget Linux ones here. The RG28XX, RG35XX SP, RG40XX V, and RG34XX all share the Allwinner H700 and top out around PS1 with light Dreamcast per their reviewers, with PS2 and GameCube out of reach. For those systems you need the Android picks: the RG406H takes on GameCube and PS2 with compromises per Retro Handhelds, and the Retroid Pocket 5 reaches GameCube, PS2, and some Switch per Joey's Retro Handhelds.
+
+**GBA vs DS, which handhelds do both?** All six clear GBA, since it sits below the shared PS1 ceiling. The 3:2 RG34XX scales GBA most cleanly per Retro Dodo. For DS, the companion RG40XX H review notes GBAtemp found DS ran well with zero configuration on the same H700 platform, so the budget Linux picks cover DS too, on a single screen rather than two physical panels.
+
+**Is $100 enough for a good retro handheld in 2026?** Yes for everything up to PS1 and light Dreamcast. Four picks here come in under $100 and cover NES through PS1 well, so $100 buys a genuinely capable 2D-through-PS1 handheld in the shape you prefer. What $100 does not buy is reliable PSP, GameCube, or PS2, which is the Android tier above $100. Set expectations at the PS1 ceiling and the budget band is strong value.
+
 ## A note on availability
 
 Anbernic does not sell first-party on Amazon US. All four Anbernic picks here are third-party reseller listings (sellers such as Voacle and BAORUITENG), several of which bundle a microSD card, and their buy-box prices run above the brand's own MSRP. For example, the RG40XX V is listed at $86.99 on Amazon against a $66.99 brand MSRP, and the RG28XX at $46.99 against $39.99. The Retroid Pocket 5 is the one first-party listing in this guide, sold by the Retroid Pocket brand store. All six were confirmed as a single buyable unit and in stock at the time of writing, but these listings churn quickly, so stock and price are worth re-checking before purchase.

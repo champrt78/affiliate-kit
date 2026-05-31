@@ -1,6 +1,6 @@
 ---
 title: "Best Aquarium Lights for Beginners (2026)"
-description: "Six spec-verified beginner aquarium lights: budget LED bars, a nano clip-on, fish-only strips, and planted-tank fixtures, sized for 12 to 24 inch tanks."
+description: "Six beginner aquarium lights, including budget planted-tank and nano picks: LED bars, a clip-on, fish-only strips, and a full-spectrum fixture."
 rubric: "Aquarium Lighting · Buying Guide"
 deck: "Your light does two jobs: it shows off the fish and, if you grow plants, it keeps them alive. Six spec-verified picks from six brands, spanning low-light fish-only strips to full-spectrum planted fixtures, sized for common 12 to 24 inch starter tanks, with prices from about $30 to $150."
 products:
@@ -116,6 +116,13 @@ pubDate: 2026-05-30
 lastUpdated: 2026-05-30
 pillar: "lighting"
 bgTheme: solid
+faq:
+  - question: "How much light do low-light plants need?"
+    answer: "Hardy low-light plants like anubias, java fern, and cryptocoryne grow under a modest fixture rather than a high-output one. A budget LED bar such as the NICREW or a slim fixture like the Finnex Stingray, run on a consistent daily schedule, is enough. These plants are forgiving, which is exactly why they are the standard beginner recommendation. The bigger risk is too much light over too few plants, which feeds algae."
+  - question: "Do I need a special light to grow aquarium plants?"
+    answer: "You need a light with enough output and the right spectrum, but for easy beginner plants that does not mean an expensive fixture. A light that includes the red wavelengths plants photosynthesize under, like the 660nm red the Finnex Stingray emphasizes, grows low-light species well. A plain fish-only daylight strip with no plant spectrum, such as the Marineland here, is the one type to skip if growing plants is the goal. Demanding high-light carpeting plants are where a stronger fixture like the Fluval Plant 3.0 earns its price."
+  - question: "How many hours should the aquarium light be on?"
+    answer: "A common beginner starting point is around 6 to 8 hours a day on a consistent schedule, which an outlet timer or a fixture with a built-in timer makes easy. A steady day and night rhythm matters more than the exact number. Leaving the light on too long, especially over a sparsely planted tank, tends to encourage algae, so if you see algae creeping in, shortening the photoperiod is one of the first levers to pull."
 bottomLine:
   verdict: "Match the light to your plans. For a fish-only tank the budget NICREW or Marineland strip is plenty. If you want live plants, step up to the Finnex Stingray for low-light or the Fluval Plant 3.0 for a planted showpiece."
   supporting: "Six beginner lights span the real lighting decision a first-tank keeper faces: a budget all-around bar and a nano clip-on for most setups, two fish-display fixtures when plants are not the goal, and a slim low-light planted fixture plus a premium app-controlled one for growing live plants. The right pick depends on your tank length, whether you want plants, and how much you want to program."
@@ -154,3 +161,19 @@ Where a piece of analysis is not a published spec, it is framed as general light
 This guide is for someone setting up a first freshwater tank who wants the lighting decision made simple and honest. If you want one light that handles fish and easy plants without fuss, the NICREW ClassicLED Plus and its built-in timer are the safe default, and the hygger Clip On is the better fit when the tank is a small nano or a rimless cube a full bar will not sit on. If you are not growing plants and just want the fish to pop, the Marineland strip keeps it simple and the Aqueon OptiBright MAX adds a remote and extra brightness.
 
 If you do want live plants, match the light to your ambition: the Finnex Stingray is the slim, plug-and-play way into a low-light planted tank with hardy species, and the Fluval Plant 3.0 is the app-controlled fixture to buy if you already know you want a fuller planted setup and would rather not upgrade later. Whichever you pick, size the light to your tank length, run it on a consistent day/night schedule, and keep the brightness in line with how many plants you actually have so algae stays in check.
+
+## Best budget light for a beginner planted tank
+
+If you want live plants without spending like the Fluval Plant 3.0, two picks here cover a low-tech planted tank on a budget. The Finnex Stingray is the standout. Per Finnex's listing its 20 inch model packs true 660nm red LEDs alongside 7000K white and actinic blue, and 660nm is the wavelength plants use most for photosynthesis, which is why this slim fixture has a reputation for growing hardy low-light plants like anubias, java fern, and cryptocoryne without injected CO2. It is plug-and-play with no app to learn. The NICREW ClassicLED Plus is the other value option, rated for low-to-medium light plants with a built-in sunrise and sunset timer. Both keep a beginner planted tank in the roughly $30 to $50 range. The thing to avoid on a budget planted tank is running a strong light over few plants, which tends to fuel algae, so match the light to how many plants you actually keep.
+
+## Best nano and small-tank light
+
+For a small nano or rimless cube, a full-length bar is the wrong shape, and a smaller fixture fits better. The hygger Clip On 24/7 is the nano specialist here. Per hygger's listing it clamps onto tank walls under 0.9 inches thick and the body detaches so you can mount it horizontally or vertically, sized for tanks 12 to 20 inches long. Its 24/7 mode runs an automatic sunrise, daylight, and moonlight cycle, and the brand markets it as planted-capable for hardy low-light species, though at 14 watts over a clip it suits anubias and java fern rather than a demanding carpet. The trade-off is reach. A single clip light covers a small footprint, so it is a small-tank pick, not a fixture for a wide 24 inch tank. For a slightly larger nano where you want low-light plants, the Finnex Stingray on its extendable legs is the small-fixture alternative.
+
+## FAQ
+
+**How much light do low-light plants need?** Hardy low-light plants like anubias, java fern, and cryptocoryne grow under a modest fixture rather than a high-output one. A budget LED bar such as the NICREW or a slim fixture like the Finnex Stingray, run on a consistent daily schedule, is enough. These plants are forgiving, which is exactly why they are the standard beginner recommendation. The bigger risk is too much light over too few plants, which feeds algae.
+
+**Do I need a special light to grow aquarium plants?** You need a light with enough output and the right spectrum, but for easy beginner plants that does not mean an expensive fixture. A light that includes the red wavelengths plants photosynthesize under, like the 660nm red the Finnex Stingray emphasizes, grows low-light species well. A plain fish-only daylight strip with no plant spectrum, such as the Marineland here, is the one type to skip if growing plants is the goal. Demanding high-light carpeting plants are where a stronger fixture like the Fluval Plant 3.0 earns its price.
+
+**How many hours should the aquarium light be on?** A common beginner starting point is around 6 to 8 hours a day on a consistent schedule, which an outlet timer or a fixture with a built-in timer makes easy. A steady day and night rhythm matters more than the exact number. Leaving the light on too long, especially over a sparsely planted tank, tends to encourage algae, so if you see algae creeping in, shortening the photoperiod is one of the first levers to pull.

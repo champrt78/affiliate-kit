@@ -61,6 +61,10 @@ faq:
     answer: "Different category, different buyer. Cellular cams deliver photos to your phone via cellular networks and typically cost $150-300 plus a monthly data plan. The E5 has no cellular hardware and costs about a third as much. Pick the E5 when retrieval is easy and you don't want a monthly bill. Pick a cellular cam when the camera is far from the house and you want push notifications."
   - question: "Is the 48MP photo claim real?"
     answer: "Not in the way a smartphone's 48MP would be. The E5's image sensor is lower-resolution natively. The camera interpolates up to 48MP for the output file. This is industry-standard for budget trail cams. Image quality is determined by the lens and native sensor, not the interpolated megapixel count. For comparison purposes, look at sample images rather than the headline MP number."
+  - question: "Is the GardePro E5 worth it?"
+    answer: "For the buyer it targets, yes. The E5 sits in the under-$50 SD-card tier, and the structural features that justify the price are the three-PIR detection array and the no-glow IR, which most genuinely-cheap sub-$30 cameras lack. The honest caveat from owner reports is detection and clarity at distance. Several owners note the real usable range runs shorter than the headline figure, so it is strongest at backyard distances under roughly 40 feet rather than across a field. If image quality at distance is your deciding axis, the Stealth Cam DS4K Ultimate is the better spend. If a no-hassle first camera under $50 is the goal, the E5 earns it."
+  - question: "GardePro E5 vs E5S vs A3S, which one?"
+    answer: "These are three tiers of the same GardePro family, and buyers conflate them. The E5 reviewed here is the no-glow SD-card model positioned in the under-$50 band. The E5S is the step-up variant in the same SD-card line that GardePro markets with upgraded imaging and connectivity features, and the A3S is a separate lower-cost entry in the GardePro range. Confirm the exact spec sheet for each on GardePro's product page before buying, because the model numbers are close and the listings change over time. Pick the E5 when you want the no-glow, three-PIR, no-subscription combination at the lowest price that still clears the genuinely-cheap tier."
 ---
 
 ## Who This Is For
@@ -109,6 +113,16 @@ The GardePro E5 is the budget/entry-level pick in our [Best Trail Cameras for Ba
 **E5 vs Stealth Cam DS4K Ultimate (mid-tier non-cellular).** The DS4K Ultimate has a native 4K sensor, longer effective night-vision range under load, and meaningfully better image quality at distance, at roughly 3x the price. Pick the E5 when you're new to trail cams or buying as a gift and want to find out if this is even your thing before spending $150+. Pick the [DS4K Ultimate](/reviews/stealth-cam-ds4k-ultimate-review) when image quality is the priority axis and the budget supports it.
 
 **E5 vs Spypoint Flex-M (cellular alternative).** The Flex-M delivers photos to your phone via cellular and includes a free 100-photo-per-month plan, but adds a per-image cost above that tier and depends on cellular coverage at the deployment location. The E5 has no cellular hardware and no monthly commitment. Pick the E5 when retrieval is convenient (close to the house, easy access) and you don't want any recurring service. Pick the [Flex-M](/reviews/spypoint-flex-m-review) when the camera is far from where you spend your time and the convenience of phone delivery is worth the per-photo cost.
+
+## GardePro E5 vs E5S vs A3S
+
+Buyers shopping the GardePro range run into three close model numbers and conflate them. Here is the practical disambiguation.
+
+The **E5** reviewed here is the no-glow SD-card model in the under-$50 band, built around a three-PIR detection array, 48MP interpolated photos, 1296P video, a 0.1-second trigger, and IP66 weatherproofing per the Amazon listing. No app, no SIM, no subscription.
+
+The **E5S** is the step-up variant in the same SD-card line. GardePro markets it with upgraded imaging and added connectivity features over the base E5, so a buyer who wants more than the plain SD-card workflow looks here. The **A3S** sits as a separate lower-cost entry in the range for the buyer chasing the cheapest GardePro that still carries the brand name.
+
+Because the model numbers are close and the listings shift over time, confirm the exact spec sheet for each on GardePro's product page before buying. For the reader this review targets, a no-hassle, no-glow, no-subscription first camera at the lowest price that still clears the genuinely-cheap tier, the E5 is the right pick in the family. Step up to the E5S only if its added features answer a need you actually have.
 
 ## Verdict
 

@@ -1,5 +1,5 @@
 ---
-title: "Best Retro Game Controllers"
+title: "Best Controllers for Retro Gaming and Emulation (2026)"
 description: "Six spec-verified retro controllers across every classic layout and connection type, from a $28 wired SNES pad to an $80 arcade stick."
 rubric: "Retro Controllers · Buying Guide"
 deck: "One do-everything all-rounder plus five layout specialists. Six spec-verified picks spanning SNES, N64, Sega, and arcade silhouettes, and every connection type from wired to Bluetooth to 2.4 GHz."
@@ -130,6 +130,10 @@ faq:
     answer: "The Retro-Bit Tribute 64 V2 holds a 4.1 out of 5 Amazon rating across 1,080 ratings, the lowest in this set. That is consistent with the well-documented difficulty of cloning the original N64 analog-stick feel, which is the hard problem every N64-style controller faces. Authenticity is the honest framing for an N64 pad rather than a flawless recreation, and the Tribute 64's standout advantage is its real N64 port for original hardware."
   - question: "What is the cheapest good retro controller here?"
     answer: "The 8BitDo SN30 Pro USB Wired is the cheapest pick at $27.99 and has the largest review sample in this guide, a 4.5 out of 5 rating across 3,064 Amazon ratings. It is a wired-only SNES-style pad with rumble and turbo, compatible with Switch, Windows, and Raspberry Pi. Prices fluctuate, so confirm the current figure on the listing."
+  - question: "What is the best controller for emulation on PC?"
+    answer: "Per the specs in this guide, the 8BitDo Pro 2 is the strongest PC-emulation pick. Its listing covers Windows over both Bluetooth and wired USB-C, includes a 4-way mode switch with an X-input mode that Windows reads as a standard Xbox-style pad, and adds two programmable back paddles plus three onboard profiles you set in 8BitDo Ultimate Software. An r/SBCGaming community thread cited above argues the Pro 2 is still the controller to beat for emulation handhelds, and the SNES-style d-pad praised by Inverse suits the 2D and arcade libraries most PC emulators run. For a wired-only PC setup with nothing to charge or pair, the SN30 Pro USB Wired is the budget alternative."
+  - question: "Will an 8BitDo pad work on Steam Deck and Raspberry Pi?"
+    answer: "Per the 8BitDo listings in this guide, yes for several picks. The 8BitDo Pro 2 lists Steam Deck and Raspberry Pi support directly, the SN30 Pro Wireless lists Steam, and the SN30 Pro USB Wired and M30 both list Raspberry Pi. The Pro 2 carries the widest platform list of the set, which is why it doubles as a single pad across a Steam Deck, a Pi emulation box, and a desktop PC. Confirm the exact platform line on the current listing, since 8BitDo revises compatibility across firmware updates."
 ---
 
 ## Specs at a glance
@@ -154,6 +158,10 @@ Retro controllers reach your device three ways, and the right one depends on wha
 - **Wired USB.** A direct cable, no battery, no pairing. The 8BitDo SN30 Pro USB is wired only, which is exactly why it is the cheapest pick and a strong choice for an emulation cabinet or a permanently docked PC. The tether is the cost. Instant, lag-free, charge-free play is the payoff.
 
 A few picks blur these lines on purpose. The Pro 2, SN30 Pro, and M30 run Bluetooth or wired, and the Arcade Stick covers all three modes. The one connection that stands apart is the Tribute 64's real N64 port, which is not a modern connection at all but a plug for original Nintendo 64 hardware.
+
+## Best for PC emulation and Steam Deck
+
+For a controller aimed at PC emulators rather than a single console, the spec that matters most is a clean X-input (Xbox-style) mode, which is what RetroArch, standalone emulators, and Steam read with zero remapping. The 8BitDo Pro 2 is the pick here on the listing specs: its 4-way mode switch includes an X-input position, it connects to Windows over Bluetooth or wired USB-C, and it lists Steam Deck and Raspberry Pi support, so one pad covers a desktop PC, a Steam Deck, and a Pi emulation box. The two programmable back paddles and three onboard profiles map well to save-state and fast-forward hotkeys that PC emulation leans on. An r/SBCGaming thread cited in the picks above still rates the Pro 2 the controller to beat for emulation handhelds, and Inverse named it the best controller for retro gaming. If you want a fixed desktop or cabinet pad with nothing to charge, the wired-only SN30 Pro USB is the budget route on Windows, Switch, and Raspberry Pi.
 
 ## How we picked
 

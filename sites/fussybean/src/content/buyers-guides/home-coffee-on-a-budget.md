@@ -95,6 +95,10 @@ buyIf:
 faq:
   - question: "What does home coffee actually cost per cup?"
     answer: "Published cost comparisons commonly put a home-brewed cup under fifty cents, against roughly three to five dollars for cafe drip and six to eight for a specialty drink. Your figure moves with bean choice and how much milk you use, but the gap is consistently two to four dollars a cup in home's favor across the sources we cite below."
+  - question: "Is making coffee at home cheaper than Starbucks?"
+    answer: "Yes, by a wide margin in the published 2025 cost comparisons we cite. They put a home-brewed cup under fifty cents against roughly three to five dollars for cafe drip and six to eight for a specialty drink, so the gap is consistently two to four dollars a cup in home's favor. The full four-piece kit here totaled about $225 as observed on 2026-05-30, which pays for itself in the neighborhood of ten weeks against an average cafe habit near $1,100 a year."
+  - question: "What is the best coffee maker for one person?"
+    answer: "For a solo drinker the honest answer is a manual burr grinder plus a single-cup brewer, no machine required. The Timemore Chestnut C2S grinds about 25g at a time, enough for a generous cup, and a French press or an AeroPress brews with coarse grounds, hot water, and a timer. The press here batches up to eight cups, so an AeroPress is the common swap if you only ever brew one. Add a scale to keep each cup repeatable. That core suits one person far better than a pod machine and costs less to run."
   - question: "What should I buy first if I can only buy one thing?"
     answer: "A burr grinder. It changes the cup more than the brewer does, because consistent grind size is what lets coffee extract evenly. A manual burr grinder like the Timemore Chestnut C2S is the cheapest path to real grind quality since you are not paying for a motor. Brewer, kettle, and scale can come later."
   - question: "Do I really need a gooseneck kettle?"
@@ -107,7 +111,7 @@ faq:
     answer: "No. This is comparison-and-fit analysis built from current manufacturer and retailer listings plus attributed third-party cost figures, not in-house testing. Every price, rating, and cost claim names its source. See how we evaluate for the full method."
 ---
 
-## Cafe versus home: the actual math
+## Is making coffee at home actually cheaper than a cafe?
 
 The pitch for home coffee is usually some version of "you will save so much money," with no numbers attached. Here are the numbers, attributed.
 
@@ -129,6 +133,12 @@ You do not need an espresso machine to drink good coffee at home, and starting w
 The full four-piece kit above totaled about $225 as observed on 2026-05-30. A leaner press-only version (grinder, press, scale, no gooseneck) runs closer to $125. Both are below a single month of a daily cafe habit.
 
 All four picks were checked for stock on their Amazon listings on 2026-05-30, and all four showed an active add-to-cart buybox at that time. Prices drift, so confirm the current figure on each product page before buying.
+
+## The cheapest good coffee setup for one person
+
+If you are brewing for one and tired of pods, this kit scales down cleanly to a single-serve setup. The two pieces that matter most for taste, a manual burr grinder and a brewer, are also the two that suit a solo drinker best. The Timemore Chestnut C2S grinds 25g at a time, enough for a generous single cup, and a hand grinder makes sense for one person precisely because you are not paying for a motor you barely use.
+
+For the brewer, the French press here batches up to eight cups, which is more than a solo drinker needs day to day, so a single-cup brewer like an AeroPress is the common swap at a similar price. Both brew with coarse grounds, hot water, and a timer, with no paper to restock on the press. Add the scale to keep each cup repeatable, and you have a genuinely good single-serve setup for well under the cost of a month of cafe runs. The gooseneck kettle stays optional until pour-over becomes the goal, the same as it is for the full kit. For one person sick of pods, that grinder-plus-brewer core is the honest answer, no machine required.
 
 ## What to upgrade first
 

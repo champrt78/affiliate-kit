@@ -5,7 +5,7 @@ rubric: "Home Coffee Gear · Buying Guide"
 deck: "A good burr grinder changes your cup more than the machine does. Here is how six beginner-friendly picks line up across the specs that actually decide the buy."
 pillar: "grinders"
 pubDate: 2026-05-29
-lastUpdated: 2026-05-29
+lastUpdated: 2026-05-30
 bgTheme: "solid"
 products:
   - name: "Bodum Bistro"
@@ -135,6 +135,8 @@ faq:
     answer: "Stepped grinders click between fixed settings, which makes them easy to repeat but can leave you between two settings for espresso. Stepless grinders, like the DF54, adjust continuously for finer control. The Timemore C3S Pro sits near-stepless with around 36 levels. For everything but espresso, stepped is fine. Espresso is where stepless control starts to pay off."
   - question: "Manual or electric for a first grinder?"
     answer: "An electric grinder is faster and easier for daily use. A manual grinder like the Timemore Chestnut C3S Pro costs less for the grind quality, takes no counter space, and travels well, but you turn a crank for every cup. Espresso-fine grinding by hand is possible but effortful, so manual suits pour-over and press drinkers best."
+  - question: "Is a burr grinder worth it for a beginner?"
+    answer: "Yes, and it is usually the upgrade a beginner feels first in the cup. A blade grinder chops beans into an uneven mix of dust and chunks that brews bitter and sour at once, while a burr grinder crushes them to a consistent size you can dial in. That consistency is what lets coffee extract evenly, which is why every pick in this guide is a burr grinder. A real burr set starts around $50 here with the Bodum Bistro, so the cost of entry is low."
   - question: "Does this guide claim hands-on testing?"
     answer: "No. This is comparison-and-fit analysis built from current manufacturer specifications and attributed third-party reviewer sentiment, not in-house testing. Where we cite a rating or a reviewer, the source is named. See how we evaluate for the full method."
 ---
@@ -163,6 +165,16 @@ The grinder terminology sounds fussier than it is. Three plain distinctions cove
 **Stepped vs stepless.** This is how the grinder changes coarseness. A stepped grinder clicks between fixed positions, which makes a setting easy to return to but can leave you stuck between two clicks when chasing a precise espresso grind. A stepless grinder, like the DF54, slides continuously for fine control. The Timemore C3S Pro lands in between with roughly 36 levels, close enough to stepless for most uses. Outside espresso, stepped is perfectly fine. Espresso is the one job where stepless control starts to earn its keep.
 
 A note on authorities: James Hoffmann's "A Beginner's Guide to Coffee Grinders" is a useful primer, and it is worth being precise about what it does. He walks through representative grinder categories and states he does not necessarily recommend specific models, so we cite him for the category framing above, not for any single product pick.
+
+## The best coffee grinders under $50, $100, and $250
+
+If you are shopping by budget, here is how the lineup maps to the price bands beginners actually search, using the prices observed on 2026-05-29.
+
+**Under $50.** The Bodum Bistro at $49.99 is the cheapest real burr grinder here, the single biggest upgrade for someone still on a blade grinder. Espresso fineness is a stretch at this price, so treat it as a filter and press grinder.
+
+**Under $100.** The SHARDOR Conical Burr at $69.98 adds the widest setting range in the lineup at 48 steps for a budget electric. The Timemore Chestnut C3S Pro at $95.00 is the best manual pick, with notably better grind quality than a budget electric for anyone who does not mind cranking by hand. Both sit comfortably under $100.
+
+**Up to $250.** This is the espresso-capable band. The Fellow Opus at $199.95 is the design-forward all-rounder that stretches to espresso, the Baratza Encore ESP at $199.00 is the entry-standard grinder purpose-tuned for espresso, and the MiiCoffee DF54 at $249.00 is the flat-burr single-dose step up for someone going deep on espresso. If you pull espresso, this is the band to shop.
 
 ## How we picked
 

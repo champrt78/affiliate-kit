@@ -59,6 +59,10 @@ faq:
     answer: "Tactacam's manufacturer spec sheet states a class 10 U3 16-32GB SD card with minimum 90 MB/sec write speed is required. Reviewer reports of using other cards include 'half pictures or quarter pictures' from camera-side write failures. The 8GB internal storage handles minimal use without a card, but external storage is necessary for any meaningful volume."
   - question: "Will the low-glow flash spook deer or other wildlife?"
     answer: "Probably yes, especially at close range. A reviewer with 4+ years of experience across multiple Tactacam cameras notes: 'After doing this for five years and hundreds of thousands of pictures, [people who think red flash scares animals] are probably right, especially when the camera is closer to the animal.' For backyard wildlife watching where the camera is close to feeders or game trails, consider stepping up to the Reveal Pro 3.0 with no-glow IR."
+  - question: "Is the Tactacam Reveal X worth it?"
+    answer: "For a budget-conscious cellular buyer, it is the strongest value in the $100 to $150 band per the cross-confirmed reviewer record. The reasons are the cheap unlimited plan tier, the month-to-month suspend option for off-season, and the multi-year durability that a 4-plus-year owner sample backs up. The honest trade-offs are that only the second photo of a five-shot burst transmits over cellular, video does not transmit at all, and the flash is low-glow not no-glow. If those limits matter, the Reveal Pro 3.0 or a higher-tier cellular cam is the better spend. If reliable budget cellular is the goal, the X 3.0 earns it."
+  - question: "Reveal X 3.0 vs Pro 3.0 vs Ultra, which one?"
+    answer: "All three share the same Reveal cellular platform and differ by feature tier. The X 3.0 is the entry pick: low-glow IR flash, 3-shot burst, lowest price. The Pro 3.0 steps up to no-glow IR and a 5-shot burst at a moderate price increase, which matters when the camera sits close to wildlife and a faint red glow is a concern. The Ultra is the feature-complete top tier, adding active GPS with 72-hour after-power-off tracking, selectable low or no glow, a 9-shot burst, and optional live view at about $6 a month extra. For straightforward backyard wildlife watching the X 3.0 is usually the right pick. Step up to the Pro 3.0 for covert no-glow, or the Ultra only if you need its specific extras."
 ---
 
 ## Who This Is For
@@ -111,6 +115,18 @@ The Reveal X 3.0 lives in a specific cellular trail-cam price tier ($100-$150) w
 Compared to the Spypoint Flex-M reviewed elsewhere on this site: Spypoint wins on the free 100-photos-per-month plan (no required commitment), dual-SIM auto-carrier-detection (instead of choose-at-purchase), and faster trigger plus better detection range in independent testing. Tactacam wins on cellular plan flexibility (cheap unlimited, multi-camera discounts, month-to-month suspend), multi-year durability track record, and lower cellular complexity (one carrier, one plan, less subscription confusion). Pick Spypoint for "let me try cellular without committing to a monthly bill". Pick Tactacam for "I want a reliable budget cellular with predictable plan economics."
 
 Within the Tactacam Reveal lineup: X 3.0 is the entry. Pro 3.0 adds no-glow flash and 5-shot burst at a moderate step-up. Ultra is the feature-complete top tier with active GPS, selectable flash, 9-shot burst, and optional live view at $6/month.
+
+## Reveal X 3.0 vs Pro 3.0 vs Ultra
+
+The three current Reveal cellular cameras share one platform and split on feature tier, and buyers routinely confuse which one they actually need. The disambiguation is straightforward once the deltas are laid out.
+
+The **Reveal X 3.0** is the entry pick. Low-glow IR flash, a 3-shot burst, and the lowest price in the line. It is the right default for backyard wildlife watching where the camera is not pressed up against a feeder.
+
+The **Reveal Pro 3.0** is the covert step-up. It swaps the low-glow flash for no-glow IR and raises the burst to 5 shots at a moderate price increase. The no-glow flash is the load-bearing difference: it removes the faint red glow that the X 3.0 can show at close range, which matters when the camera sits near wildlife or a neighbor-visible property edge.
+
+The **Reveal Ultra** is the feature-complete tier. It adds active GPS with 72-hour after-power-off tracking, selectable low or no glow, a 9-shot burst, and optional live view at about $6 a month on top of the data plan. It is the pick only when those specific features answer a need, because the cost climbs accordingly.
+
+For most property owners the X 3.0 is the right call. Move to the Pro 3.0 when no-glow stealth is the priority, and reserve the Ultra for buyers who will actually use the GPS, the larger burst, or live view.
 
 ## How It Performs Over Time
 

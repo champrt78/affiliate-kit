@@ -1,6 +1,6 @@
 ---
-title: "Best Foam Cannon for Home Detailers"
-description: "Three foam cannons across the spec spectrum. MTM for build, Carbon Collective for weight, MJJC for the parts kit."
+title: "Best Foam Cannon for Pressure Washers"
+description: "Three pressure-washer foam cannons across the spec spectrum. MTM for build, Carbon Collective for weight, MJJC for the parts kit."
 rubric: "Foam Cannon · Buying Guide"
 deck: "When seven cannons foam roughly the same, the differentiators are build quality, weight, and what's in the box."
 products:
@@ -87,6 +87,8 @@ faq:
     answer: "Not directly. All seven cannons in the head-to-head comparison foamed similarly at the same dilution. But material matters for longevity: brass tarnishes (MJJC Pro V2, SV3), nickel-plated brass resists tarnishing (MTM PF22), full stainless steel resists corrosion (Active Foam, CarGuys), aluminum is lightest (Carbon Collective). For a tool that gets soaked in soap repeatedly, this matters over years."
   - question: "Should I get the MTM PF22 with the Magnum 28 kit, or standalone?"
     answer: "Depends on what you already own. The Magnum 28 Kit at around $210 includes the PF22 foam cannon, SGS28 spray gun, and stainless steel quick connect. If you already have a quality spray gun and quick-connect fittings, get the PF22 standalone (~$80-100). If you are starting from a bare pressure washer or upgrading from a cheap factory wand, the kit is worth the bundle savings."
+  - question: "Is a foam cannon worth it?"
+    answer: "If you already own a pressure washer, yes, for one reason: a thick foam pre-soak softens and lifts grit before your wash mitt touches the paint, which lowers the swirl risk of a contact wash. That is the main case for the upgrade. The honest caveat is that the cannons in this guide all foam roughly the same at the same dilution, so the worth is in the pre-soak step itself, not in chasing the thickest foam. If you do not own a pressure washer, the math changes, because a foam cannon needs real pressure-washer pressure to work and will not foam adequately on a garden hose. For a home detailer who already has the pressure washer and washes more than occasionally, a cannon is one of the higher-value single upgrades you can make."
 ---
 
 ## Verified product specs at a glance
@@ -110,6 +112,18 @@ Key findings paraphrased from the full transcript:
 - **Spare parts in box.** MJJC Pro V3.0 leads with spare filter + O-rings + 1.1mm + 1.35mm orifices. Active Foam Cannon includes O-rings + 1.1mm + 1.35mm + 1.45mm orifices but no spare filter. Carbon Collective HD, CarGuys, MTM PF22 all ship bare with no spares.
 
 The reviewer's full transcript is linked in the research notes. This guide synthesizes the buying-relevant conclusions. Foam-output ranking matters less than build-quality differentiation for most home-detailing buyers, which is why the three picks here are segmented by build attribute rather than by foam-test results.
+
+## Pressure washer vs garden hose: which foam cannon do you need
+
+This is the question that decides everything else, so settle it first. The three picks in this guide are pressure-washer foam cannons. They thread onto a pressure washer's lance with a quick-connect fitting and rely on the machine's pressure to draw soap and whip it into thick clinging foam. The MTM PF22's published range, 1,100 to 5,000 PSI and 1.8 to 5.3 GPM, is typical of the class. A garden hose delivers roughly 40 to 60 PSI, which is nowhere near enough to make one of these cannons foam. On a hose you would get a weak watery drizzle, not a foam blanket.
+
+There is a separate product class built for hoses, usually called a foam gun rather than a foam cannon, that trades foam thickness for not needing a pressure washer. That is a different tool with different SKUs and is not what the picks here are. The buyer decision is simple. If you own or plan to own a pressure washer, a foam cannon like the three here is the right buy and the right place to spend. If you only have a garden hose and no plans for a pressure washer, a pressure-washer foam cannon is the wrong tool no matter how good its build, and you want the hose-driven foam-gun category instead.
+
+## Do you need special soap for a foam cannon
+
+Mostly no. Most pH-neutral car wash soaps foam well in a cannon, and foam thickness depends as much on your pressure washer's GPM and the cannon's orifice size as on the soap itself. A 2.1 GPM or stronger machine produces thick foam with most quality shampoos, while a weaker 1.2 to 1.3 GPM washer benefits from a smaller 1.1mm orifice in place of the standard 1.25mm. That is why the MJJC Pro V3.0's in-box 1.1mm and 1.35mm orifices matter for tuning foam to your specific machine.
+
+Where dedicated foam soaps earn their place is cling and dwell. A high-foaming or foam-specific shampoo whips into a denser blanket that clings to vertical panels longer, which gives the soap more time to soften dirt before you rinse. That dwell time, not peak foam height, is what makes a pre-soak useful. For which shampoos publish foam-cannon dilution guidance and how they compare, see the [car wash soap buying guide](/buyers-guides/best-car-wash-soap-for-home-detailers).
 
 ## How we picked
 
