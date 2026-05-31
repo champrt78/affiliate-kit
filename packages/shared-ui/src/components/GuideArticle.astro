@@ -122,8 +122,11 @@ const facts = [
 // Quick-pick grid data
 const quickPicks = products.map((p: any, i) => ({
   name: p.name,
-  award: awardFor(p, i),
-  persona: p.bestFor || p.brand,
+  // Banner every card: short derived tier (Best Overall/Value) when available,
+  // else the product's own "Best for ..." line. Only show the separate in-body
+  // persona when the banner is a short tier, so it never duplicates the banner.
+  award: awardFor(p, i) ?? p.bestFor,
+  persona: awardFor(p, i) ? (p.bestFor || p.brand) : undefined,
   hook: p.hook,
   price: fmtPrice(p.priceFrom) ?? undefined,
   image: p.image,
@@ -199,8 +202,8 @@ const lede = data.deck || data.description;
             total={total}
             anchorId={`pick-${i + 1}`}
             name={p.name}
-            award={awardFor(p, i)}
-            persona={p.bestFor}
+            award={awardFor(p, i) ?? p.bestFor}
+            persona={awardFor(p, i) ? p.bestFor : undefined}
             reason={p.reason}
             bodyHtml={p.body}
             price={fmtPrice(p.priceFrom) ?? undefined}
