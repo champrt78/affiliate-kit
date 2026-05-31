@@ -118,4 +118,9 @@ const sorted = entries.sort((a, b) => {
     .grid-section { padding: var(--space-10) var(--space-4) var(--space-16); }
     .grid { grid-template-columns: 1fr; }
   }
+
+  /* Ray 2026-05-31: listing/topic page-header was a split grid (2-col, or a card-grid that trapped the H1). Single-column full-width, left-aligned, matches DTP's correct version. */
+  .page-header__inner { display: block; }
+  .page-header__lede { align-self: auto; padding-bottom: 0; }
+
 </style>

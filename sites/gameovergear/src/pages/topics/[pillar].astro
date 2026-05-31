@@ -167,4 +167,9 @@ const isEmpty = guides.length === 0 && reviews.length === 0;
   /* Ray 2026-05-31: topic-hub card grids were uncapped repeat(N,1fr), so a lone card ballooned. Cap + center. */
   .grid--guides, .grid--reviews { grid-template-columns: repeat(auto-fit, minmax(240px, 300px)); justify-content: center; }
 
+
+  /* Ray 2026-05-31: listing/topic page-header was a split grid (2-col, or a card-grid that trapped the H1). Single-column full-width, left-aligned, matches DTP's correct version. */
+  .page-header__inner { display: block; }
+  .page-header__lede { align-self: auto; padding-bottom: 0; }
+
 </style>
