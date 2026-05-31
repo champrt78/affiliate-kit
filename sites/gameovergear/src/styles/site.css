@@ -123,6 +123,14 @@
 
   /* Slightly smaller floating-panel zoom is unnecessary on a dark skin; keep
      the kit default so the panel matches the others. */
+
+  /* Hero escape-hatch tokens (consumed by the shared Hero component). PS2P at the
+     kit's Fraunces-tuned hero clamp (2.5-4.5rem) blows out the band and the italic
+     pixel lede is unreadable. Cap the pixel title to the attract-screen size and
+     switch the lede to readable Inter. Other 4 skins ignore these (defaults hold). */
+  --hero-title-size:    clamp(17px, 3vw, 30px);
+  --hero-title-leading: 1.45;
+  --hero-lede-font:     "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 /* =============================================================================
@@ -243,6 +251,26 @@ body::after {
   background: #1d1840 !important;
   color: #5cf0ff !important;
 }
+
+/* Guide-card recovery (homepage + listings). The shared BuyersGuideCard paints
+   its body `background: var(--color-forest); color: var(--color-paper)` — on gog
+   that maps to LIGHT lavender on near-black ink, so the card reads as a pale box
+   sitting next to the dark review cards (the inconsistency the polarity note
+   warned about, now that homepage content has landed). Repaint the body to the
+   same deep-indigo panel as review cards (#171331) with a neon hairline so it
+   reads as arcade chrome, and flip the inner text back to light / neon. Scoped to
+   body — the shared component is NOT edited (other 4 sites untouched). The 4:3
+   photo box (.guide-card__media) sits above the body and is unaffected. */
+.guide-card {
+  background: #171331 !important;
+  color: #ede9ff !important;
+  border: 1px solid #2c2752 !important;
+}
+.guide-card__title { color: #ede9ff !important; }
+.guide-card__desc,
+.guide-card__meta { color: #c9c2f0 !important; opacity: 1 !important; }
+.guide-card__kicker { color: #2ee6ff !important; }
+.guide-card__meta { border-top-color: rgba(46, 230, 255, 0.18) !important; }
 
 /* Neon focus ring on the dark skin (kit default brass is now cyan — fine). */
 ::selection { background: #ff2e88; color: #0b0a16; }

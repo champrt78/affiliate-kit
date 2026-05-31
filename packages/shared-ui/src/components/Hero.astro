@@ -128,8 +128,11 @@ const hasImage = Boolean(image);
   .hero__title {
     font-family: var(--font-serif);
     font-weight: var(--weight-semibold);
-    font-size: clamp(2.5rem, 5.5vw, 4.5rem);
-    line-height: 1.05;
+    /* Per-skin escape hatch: pixel-font skins (gog) set --hero-title-size +
+       --hero-title-leading in their site.css so Press Start 2P doesn't blow out.
+       The default preserves every other skin's rendering exactly (zero blast). */
+    font-size: var(--hero-title-size, clamp(2.5rem, 5.5vw, 4.5rem));
+    line-height: var(--hero-title-leading, 1.05);
     letter-spacing: var(--tracking-display);
     margin: 0 0 var(--space-5);
     max-width: 22ch;
@@ -144,7 +147,9 @@ const hasImage = Boolean(image);
   }
 
   .hero__tagline {
-    font-family: var(--font-serif);
+    /* --hero-lede-font lets pixel-font skins (gog) swap the italic serif lede
+       to a readable sans. Defaults to the serif so all other skins are unchanged. */
+    font-family: var(--hero-lede-font, var(--font-serif));
     font-style: italic;
     font-weight: var(--weight-regular);
     font-size: clamp(1.125rem, 1.6vw, 1.4rem);
