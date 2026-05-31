@@ -163,4 +163,8 @@ const isEmpty = guides.length === 0 && reviews.length === 0;
     .grid-section { padding: var(--space-10) var(--space-4) var(--space-16); }
     .grid--reviews, .grid--guides { grid-template-columns: 1fr; }
   }
+
+  /* Ray 2026-05-31: topic-hub card grids were uncapped repeat(N,1fr), so a lone card ballooned. Cap + center. */
+  .grid--guides, .grid--reviews { grid-template-columns: repeat(auto-fit, minmax(240px, 300px)); justify-content: center; }
+
 </style>

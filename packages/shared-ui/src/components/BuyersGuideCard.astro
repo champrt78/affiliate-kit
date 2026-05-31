@@ -164,4 +164,9 @@ const useMag = featured && heroImages && heroImages.length >= 3;
     background-size: cover;
     background-position: center;
   }
+
+  /* Ray 2026-05-31: hard cap so the card image box can never balloon, regardless of grid context. */
+  .guide-card__media { max-height: 280px; }
+  .review-card__media, .review-card__image, .product-card__media { max-height: 280px; }
+
 </style>

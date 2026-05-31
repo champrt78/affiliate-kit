@@ -786,4 +786,10 @@ const fmtPrice = (n?: number) => (typeof n === "number" && n > 0) ? `$${n.toLoca
     }
     .deep-card__img { width: 100%; max-width: 240px; margin: 0 auto; }
   }
+
+  /* Ray 2026-05-31: header was boxed into the left 720px while content below is full-width. Center the block. */
+  .guide-header { max-width: 960px; margin-left: auto; margin-right: auto; text-align: center; }
+  .guide-header .guide-desc { margin-left: auto; margin-right: auto; }
+  .guide-header .kicker { justify-content: center; }
+
 </style>
