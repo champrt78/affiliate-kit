@@ -52,6 +52,12 @@ Frontmatter: `title, description, rubric, deck, bottomLine{verdict,supporting}, 
 ### Sequence (depth-first, pilot = DTP)
 freeze mockups (harmonize + #4 applied + verified) → add real tokens → port shared components (token-mapped) → GuideArticle extraction → DTP wired 100% + screenshot-verified vs mockups → roll to 4 → Magic Go last. STOP + write decisions sheet if a content migration fork is large.
 
+### FROZEN-SPEC deltas to implement in the REAL components (not re-mocked, by design)
+- **#4 deep-card award = full-width top banner** (Ray chose banner). Mockup 06 still shows the old rounded PILL — do NOT trust 06's award; the real deep-card component renders the banner matching at-a-glance (05) / `award-compare.html` (RIGHT side = the approved banner). Banner metrics = at-a-glance: accent bar across full card top, 11.5px/700/.14em, white text (gog dark #07101a).
+- **08 comparison table CTA** got fattened by the button-harmonization (full 14px/13×20 in a table row). In the real ComparisonTable, keep it button-styled but more compact in-cell (≈13px / 8×14) so rows don't bloat.
+- **09 FAQ** eyebrow is now left-aligned with the leading rule while "Common questions" heading stays centered — asymmetry. In the real FAQ component, align them (left-align the heading to match the eyebrow, or center both).
+- Harmonization otherwise applied across 01-12 (radius 14 cards / 10 img-box, button 8px+shadow, one card shadow, fb --accent #b06f2c, gog --brass-soft restored, spacing→32/20). Mockups are the frozen visual spec; real components must MATCH them (proportions = acceptance test).
+
 ## Working method
 One component at a time. Claude mocks it up (standalone HTML, all 5 skins side by side) →
 Ray bangs on it until he likes it → it goes in the library → next. Mockups live in

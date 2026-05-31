@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library · Cohesion Audit — OLD vs NEW</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,400&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Press+Start+2P&family=Poppins:wght@500;600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #c8ccd0; font-family: "Inter", system-ui, sans-serif; color: #1a1a1a; padding: 28px 0 96px; }
+
+  /* ── page chrome ── */
+  .page-head { max-width: 1180px; margin: 0 auto 26px; padding: 0 24px; }
+  .page-head h1 { font-size: 22px; font-weight: 700; letter-spacing: -.01em; }
+  .page-head p { font-size: 14px; color: #44484c; margin-top: 6px; max-width: 80ch; line-height: 1.55; }
+  .page-head .verdict { margin-top: 14px; font-size: 14px; color: #21331f; background: #fff; border-left: 4px solid #3f6e4e; padding: 14px 18px; border-radius: 0 8px 8px 0; line-height: 1.6; max-width: 80ch; }
+  .page-head .verdict b { color: #14181c; }
+
+  /* ── canonical token panel ── */
+  .tokens { max-width: 1180px; margin: 0 auto 34px; padding: 22px 24px; background: #14181c; color: #e8eaec; border-radius: 14px; }
+  .tokens h2 { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #8fb89c; margin-bottom: 4px; }
+  .tokens p { font-size: 13px; color: #aab0b6; max-width: 78ch; line-height: 1.55; margin-bottom: 16px; }
+  .tokens__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .tok { background: #1d2329; border: 1px solid #2b333a; border-radius: 10px; padding: 12px 14px; }
+  .tok__name { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12px; color: #6fd3ff; }
+  .tok__val { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 13px; font-weight: 600; color: #f4f6f7; margin-top: 3px; }
+  .tok__note { font-size: 11.5px; color: #9aa0a6; margin-top: 6px; line-height: 1.45; }
+
+  /* ── finding sections ── */
+  .finding { max-width: 1180px; margin: 0 auto 30px; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 14px rgba(0,0,0,.12); }
+  .finding__head { padding: 20px 26px 18px; border-bottom: 1px solid #e6e8ea; }
+  .finding__rank { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #fff; background: #3f6e4e; padding: 4px 10px; border-radius: 999px; margin-bottom: 10px; }
+  .finding__rank.is-minor { background: #6a7079; }
+  .finding__title { font-size: 19px; font-weight: 700; letter-spacing: -.01em; color: #14181c; }
+  .finding__meta { font-size: 12.5px; color: #6a7079; margin-top: 4px; }
+  .finding__body { padding: 16px 26px 6px; }
+  .finding__body .what, .finding__body .why { font-size: 13.5px; line-height: 1.6; color: #2b3138; max-width: 92ch; }
+  .finding__body .what { margin-bottom: 8px; }
+  .finding__body .what b, .finding__body .why b { color: #14181c; }
+  .finding__affected { font-size: 12px; color: #6a7079; margin-top: 12px; line-height: 1.5; }
+  .finding__affected b { color: #2b3138; }
+
+  /* ── side-by-side compare rail ── */
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding: 18px 26px 26px; }
+  @media (max-width: 860px) { .compare { grid-template-columns: 1fr; } }
+  .compare__col { min-width: 0; }
+  .compare__tag { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 9px; display: flex; align-items: center; gap: 8px; }
+  .compare__tag .skinlabel { font-weight: 500; color: #9aa0a6; letter-spacing: 0; text-transform: none; }
+  .compare__col--old .compare__tag { color: #b4493b; }
+  .compare__col--new .compare__tag { color: #3f6e4e; }
+  .stage { border-radius: 12px; overflow: hidden; border: 1px solid #e6e8ea; }
+  .compare__col--old .stage { box-shadow: inset 0 0 0 2px rgba(180,73,59,.10); }
+  .compare__col--new .stage { box-shadow: inset 0 0 0 2px rgba(63,110,78,.12); }
+
+  /* ──────────────────────────────────────────────────────────────────────
+     SHARED SKIN TOKEN BLOCKS — copied verbatim from the library files so the
+     specimens below render in their real palettes. (Per-site colour + font
+     are intentional and stay untouched. Cohesion = shared structure only.)
+     One correction baked into NEW only: FussyBean --accent and gog
+     --brass-soft are normalised to their plurality values (see findings 6 + 7).
+     ─────────────────────────────────────────────────────────────────────── */
+  .skin--mwc {
+    --paper:#FAF7EF; --paper-muted:#F2EBDC; --ink:#1C1C1A; --forest:#1F3D2F; --brass:#A07C3A;
+    --brass-soft:#D9C29B; --muted:#5C5A4F; --border:#E5DDC9; --accent:#A07C3A; --accent-ink:#FAF7EF;
+    --serif:"Fraunces",serif; --sans:"Inter Tight",sans-serif; }
+  .skin--dtp {
+    --paper:#F4F2EE; --paper-muted:#ECEAE4; --ink:#14181C; --forest:#2C5E8C; --brass:#2C5E8C;
+    --brass-soft:#F7E9C8; --muted:#6A7079; --border:#D6D2C8; --accent:#2C5E8C; --accent-ink:#FFFFFF;
+    --serif:"Instrument Serif",serif; --sans:"Inter Tight",sans-serif; --word-wt:400; --word-ls:0; }
+  .skin--fb {
+    --paper:#f4e8d4; --paper-muted:#f8efe0; --ink:#2c2018; --forest:#241710; --brass:#b06f2c;
+    --brass-soft:#ecd4a8; --muted:#7c6750; --border:#e3d4bd; --accent:#b06f2c; --accent-ink:#241710;
+    --serif:"Fraunces",serif; --sans:"Inter",sans-serif; }
+  .skin--gog {
+    --paper:#0e0b1c; --paper-muted:#171331; --card-bg:#1f1a45; --ink:#ede9ff; --forest:#ede9ff; --brass:#2ee6ff;
+    --brass-soft:#2c2752; --muted:#9a93c7; --border:#3a3470; --accent:#2ee6ff; --accent-ink:#0e0b1c;
+    --serif:"Press Start 2P",monospace; --sans:"Inter",sans-serif; }
+  .skin--sa {
+    --paper:#f6fcfd; --paper-muted:#ffffff; --ink:#103642; --forest:#0c5470; --brass:#e0573a;
+    --brass-soft:#bfe9ef; --muted:#557079; --border:#cfeaef; --accent:#e0573a; --accent-ink:#ffffff;
+    --serif:"Poppins",sans-serif; --sans:"Nunito Sans",sans-serif; --word-wt:700; }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     FINDING 1 — Card corner radius
+     OLD: qcard 6px · deep-card 12px · bl/guide/review 14px
+     NEW: --radius-card: 14px everywhere (qcard 6 was the lone outlier)
+     ════════════════════════════════════════════════════════════════════════ */
+  .f1-stage { background: var(--paper-muted); padding: 22px; display: flex; gap: 16px; }
+  .f1-card { flex: 1; background: var(--paper); border: 1px solid var(--border); padding: 16px; }
+  .f1-card .lbl { font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .f1-card .ph { margin-top: 10px; height: 64px; background: #fff; border: 1px solid var(--border); display: grid; place-items: center; font-family: var(--sans); font-size: 11px; color: #9aa0a6; }
+  /* OLD radii — the three different real values */
+  .old .f1-card--qcard { border-radius: 6px; }
+  .old .f1-card--qcard .ph { border-radius: 0; }
+  .old .f1-card--deep  { border-radius: 12px; }
+  .old .f1-card--deep .ph { border-radius: 10px; }
+  .old .f1-card--rev   { border-radius: 14px; }
+  .old .f1-card--rev .ph { border-radius: 0; }
+  /* NEW radii — one card radius, one inner-image radius */
+  .new .f1-card { border-radius: 14px; }
+  .new .f1-card .ph { border-radius: 10px; }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     FINDING 2 — Button radius + button-text size
+     OLD: radii 2 / 6 / 8 / 9 px and text 11 / 12 / 13 / 13.5 / 15 px
+     NEW: radius 8px, text 14px, one resting shadow
+     ════════════════════════════════════════════════════════════════════════ */
+  .f2-stage { background: var(--paper); padding: 26px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .f2-btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--sans); font-weight: 700; color: var(--accent-ink, #fff); background: var(--accent); text-decoration: none; white-space: nowrap; }
+  .skin--gog .f2-btn { color: #07101a; }
+  .f2-cap { width: 100%; font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+  /* OLD — each button keeps its file's own radius + text size + (in)shadow */
+  .old .f2-btn--qp   { border-radius: 2px;  font-size: 12px;   padding: 12px 18px; text-transform: uppercase; letter-spacing: .04em; }
+  .old .f2-btn--deep { border-radius: 6px;  font-size: 13px;   padding: 12px 18px; text-transform: uppercase; letter-spacing: .06em; }
+  .old .f2-btn--cmp  { border-radius: 8px;  font-size: 11px;   padding: 8px 16px;  text-transform: uppercase; letter-spacing: .08em; }
+  .old .f2-btn--qcard{ border-radius: 8px;  font-size: 13.5px; padding: 12px 16px; box-shadow: 0 2px 9px rgba(0,0,0,.18); }
+  .old .f2-btn--bl   { border-radius: 9px;  font-size: 15px;   padding: 14px 18px; box-shadow: 0 4px 14px rgba(0,0,0,.22); }
+  /* NEW — one radius, one text size, one resting shadow, one padding */
+  .new .f2-btn { border-radius: 8px; font-size: 14px; padding: 13px 20px; box-shadow: 0 2px 9px rgba(0,0,0,.18); letter-spacing: .01em; }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     FINDING 3 — Section eyebrow / kicker treatment (tier-1)
+     OLD: bl uses SERIF + brass + 22px rule; faq is a centred, rule-less variant;
+          hero + section-header already settled on sans + accent + 26px rule.
+     NEW: every section eyebrow = sans · 12px · .16em · accent · 26×2 leading rule
+     ════════════════════════════════════════════════════════════════════════ */
+  .f3-stage { background: var(--paper); padding: 26px 28px; }
+  .f3-block + .f3-block { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--border); }
+  .f3-src { font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #b1462f; margin-bottom: 10px; }
+  .new .f3-src { color: #3f6e4e; }
+  /* OLD eyebrow variants, verbatim from their files */
+  .old .f3-eye--bl { display: inline-flex; align-items: center; gap: 9px; font-family: var(--serif); font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--brass); }
+  .old .f3-eye--bl::before { content: ""; width: 22px; height: 2px; background: var(--brass); border-radius: 2px; }
+  .skin--gog.old .f3-eye--bl, .old .skin--gog .f3-eye--bl { font-size: 11px; letter-spacing: 0; }
+  .old .f3-eye--faq { display: block; font-family: var(--sans); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--accent); }
+  .old .f3-eye--hero { display: inline-flex; align-items: center; gap: 11px; font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+  .old .f3-eye--hero::before { content: ""; width: 26px; height: 2px; background: var(--accent); display: inline-block; }
+  /* NEW — single canonical section eyebrow */
+  .new .f3-eye { display: inline-flex; align-items: center; gap: 11px; font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+  .new .f3-eye::before { content: ""; width: 26px; height: 2px; background: var(--accent); display: inline-block; flex-shrink: 0; }
+  .skin--gog .new .f3-eye, .new .skin--gog .f3-eye { font-size: 9.5px; letter-spacing: .08em; }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     FINDING 4 — Award label treatment
+     OLD: glance = full-width banner (radius 0) · deep-card = rounded pill (999px)
+     NEW: pick ONE. Canonical = the pill (works inline + as a corner tag),
+          banner kept only as the at-a-glance hero-card variant.
+     ════════════════════════════════════════════════════════════════════════ */
+  .f4-stage { background: var(--paper-muted); padding: 22px; display: flex; gap: 16px; }
+  .f4-card { flex: 1; background: var(--paper); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; position: relative; }
+  .f4-card .body { padding: 16px; }
+  .f4-card .name { font-family: var(--serif); font-size: 17px; color: var(--forest); font-weight: var(--word-wt, 500); }
+  .skin--gog .f4-card .name { font-size: 11px; line-height: 1.5; }
+  /* OLD — banner vs pill, side by side inside the OLD column */
+  .old .f4-banner { position: absolute; top: 0; left: 0; right: 0; height: 32px; display: flex; align-items: center; justify-content: center; background: var(--accent); color: var(--accent-ink, #fff); font-family: var(--sans); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; }
+  .old .f4-card--banner .body { margin-top: 32px; }
+  .skin--gog .old .f4-banner, .old .skin--gog .f4-banner { color: #07101a; }
+  .old .f4-pill { display: inline-block; font-family: var(--sans); font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-ink, #fff); background: var(--accent); padding: 4px 10px; border-radius: 999px; margin-bottom: 10px; }
+  .skin--gog .old .f4-pill, .old .skin--gog .f4-pill { color: #07101a; }
+  /* NEW — pill is canonical for both card types */
+  .new .f4-pill { display: inline-block; font-family: var(--sans); font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-ink, #fff); background: var(--accent); padding: 4px 11px; border-radius: 999px; margin-bottom: 10px; }
+  .skin--gog .new .f4-pill, .new .skin--gog .f4-pill { color: #07101a; }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     FINDING 5 — Card resting shadow
+     OLD: content cards are flat (border only); bl__card alone has a soft shadow
+     NEW: one canonical resting card shadow so cards read as raised consistently
+     ════════════════════════════════════════════════════════════════════════ */
+  .f5-stage { background: var(--paper-muted); padding: 26px; display: flex; gap: 18px; }
+  .f5-card { flex: 1; background: var(--paper); border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
+  .f5-card .name { font-family: var(--serif); font-size: 17px; color: var(--forest); font-weight: var(--word-wt, 500); }
+  .skin--gog .f5-card .name { font-size: 11px; line-height: 1.5; }
+  .f5-card .sub { font-family: var(--sans); font-size: 13px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+  /* OLD — listing card flat, bl card has its own deeper shadow */
+  .old .f5-card--flat { box-shadow: none; }
+  .old .f5-card--bl { box-shadow: 0 6px 22px rgba(0,0,0,.10); }
+  /* NEW — both get the single canonical resting shadow */
+  .new .f5-card { box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     FINDING 6 + 7 — Token typos (FussyBean accent, gog brass-soft)
+     Shown as swatch pairs, not full components.
+     ════════════════════════════════════════════════════════════════════════ */
+  .swatch-stage { background: #fff; padding: 22px 26px; display: flex; flex-wrap: wrap; gap: 26px; }
+  .swatch { display: flex; flex-direction: column; gap: 8px; }
+  .swatch__chip { width: 132px; height: 56px; border-radius: 10px; border: 1px solid #e6e8ea; }
+  .swatch__name { font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: #14181c; }
+  .swatch__val { font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; color: #6a7079; }
+  .swatch__where { font-size: 11px; color: #9aa0a6; max-width: 22ch; line-height: 1.4; }
+</style>
+</head>
+<body>
+  <div class="page-head">
+    <h1>Component library — cross-component cohesion audit</h1>
+    <p>OLD (current, left) versus NEW (harmonised, right) for each drifted design primitive across the 12 mockups. Per-site colour and font are intentional and untouched. This pass only harmonises the shared structure: corner radius, button shape and text size, the section eyebrow treatment, the award label, card shadow, and two stray token values. Each row renders the real component CSS so you can compare directly.</p>
+    <p class="verdict"><b>Honest headline: the library is already largely one product.</b> Every component lives in its own file with a single structural definition skinned by the same five token blocks, on the same scaffold. The drift is all in polish primitives, not in layout or identity. Seven findings below, ranked by how much each one hurts the "one product" feel. Fixing the top three (radius, buttons, the Bottom Line eyebrow) closes most of the gap.</p>
+  </div>
+
+  <!-- ── CANONICAL TOKEN TABLE ───────────────────────────────────────────── -->
+  <section class="tokens">
+    <h2>Proposed shared design tokens</h2>
+    <p>The convergence target. Add these to every component file as structural tokens that sit alongside the existing per-site colour and font tokens. The skins keep changing colour and typeface. These keep the bones identical.</p>
+    <div class="tokens__grid">
+      <div class="tok"><div class="tok__name">--radius-card</div><div class="tok__val">14px</div><div class="tok__note">Plurality across shipping cards (Bottom Line card, guide, review). Deep card nudges up from 12, at-a-glance card up from 6.</div></div>
+      <div class="tok"><div class="tok__name">--radius-img</div><div class="tok__val">10px</div><div class="tok__note">Inner white product boxes. Deep card already at 10. Bottom Line up from 9, Quick Picks up from 4.</div></div>
+      <div class="tok"><div class="tok__name">--radius-btn</div><div class="tok__val">8px</div><div class="tok__note">Five of seven buttons already here. Kills the 2px Quick Picks, 6px deep rail, 9px Bottom Line outliers.</div></div>
+      <div class="tok"><div class="tok__name">--radius-pill</div><div class="tok__val">999px</div><div class="tok__note">Icons, price badges, award pills. Already consistent. Codifying it.</div></div>
+      <div class="tok"><div class="tok__name">--btn-text</div><div class="tok__val">14px / 700</div><div class="tok__note">Mid-point of the current 11 to 15px spread. One weight, one size for every primary buy button.</div></div>
+      <div class="tok"><div class="tok__name">--shadow-card</div><div class="tok__val">0 2px 10px rgba(0,0,0,.06)</div><div class="tok__note">One soft resting shadow so cards read as raised. Replaces flat-border cards plus the deeper Bottom Line shadow.</div></div>
+      <div class="tok"><div class="tok__name">--shadow-btn</div><div class="tok__val">0 2px 9px rgba(0,0,0,.18)</div><div class="tok__note">Resting button. Hover lifts to 0 6px 16px. Three shadows total across the system.</div></div>
+      <div class="tok"><div class="tok__name">--pad-section</div><div class="tok__val">32px</div><div class="tok__note">Section band padding on a 4px grid. Replaces the 28 / 30 / 36 / 40 / 44 / 48 / 56 spread.</div></div>
+      <div class="tok"><div class="tok__name">--pad-card</div><div class="tok__val">20px (24 for tall cards)</div><div class="tok__note">Card inner padding. Replaces the 16 / 18 / 22 / 26 mix.</div></div>
+      <div class="tok"><div class="tok__name">eyebrow (section)</div><div class="tok__val">sans · 12px · .16em · accent · 26×2 rule</div><div class="tok__note">Tier-1. Hero and section-header already here. Bottom Line and FAQ join.</div></div>
+      <div class="tok"><div class="tok__name">eyebrow (card micro)</div><div class="tok__val">sans · 11px · .12em · muted</div><div class="tok__note">Tier-2 sibling for card category labels. Legitimately smaller, not the section treatment.</div></div>
+      <div class="tok"><div class="tok__name">award label</div><div class="tok__val">pill 999px</div><div class="tok__note">One award shape. Banner kept only as the at-a-glance hero-card variant.</div></div>
+    </div>
+  </section>
+
+  <!-- ════ FINDING 1 — CARD RADIUS ════════════════════════════════════════ -->
+  <section class="finding">
+    <div class="finding__head">
+      <span class="finding__rank">Rank 1 · highest impact</span>
+      <div class="finding__title">Card corner radius is three different values</div>
+      <div class="finding__meta">at-a-glance card 6px · deep card 12px · Bottom Line, guide and review cards 14px</div>
+    </div>
+    <div class="finding__body">
+      <p class="what"><b>What changes:</b> every content card converges on <b>14px</b>, the value three of the five shipping cards already use. The at-a-glance card jumps from a much tighter 6px (the lone outlier that reads as a different product), and the deep card nudges up from 12.</p>
+      <p class="why"><b>Why:</b> radius is one of the first things the eye reads as "same family or not." A 6px card next to a 14px card looks like two different sites. Inner white product boxes get their own canonical 10px so the image corner relates to the card corner without matching it.</p>
+      <p class="finding__affected"><b>Affected:</b> 05 at-a-glance (6 → 14), 06 deep card (12 → 14), 04 Bottom Line card, 07 guide and review cards (already 14, kept). Image boxes in 04, 05, 06, 11 normalise to 10px.</p>
+    </div>
+    <div class="compare">
+      <div class="compare__col compare__col--old">
+        <div class="compare__tag">Old <span class="skinlabel">MyWildlifeCam · three real radii</span></div>
+        <div class="stage skin--mwc old">
+          <div class="f1-stage">
+            <div class="f1-card f1-card--qcard"><span class="lbl">at-a-glance · 6px</span><div class="ph">product image</div></div>
+            <div class="f1-card f1-card--deep"><span class="lbl">deep card · 12px</span><div class="ph">product image</div></div>
+            <div class="f1-card f1-card--rev"><span class="lbl">review card · 14px</span><div class="ph">product image</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="compare__col compare__col--new">
+        <div class="compare__tag">New <span class="skinlabel">one card radius · one image radius</span></div>
+        <div class="stage skin--mwc new">
+          <div class="f1-stage">
+            <div class="f1-card"><span class="lbl">at-a-glance · 14px</span><div class="ph">product image</div></div>
+            <div class="f1-card"><span class="lbl">deep card · 14px</span><div class="ph">product image</div></div>
+            <div class="f1-card"><span class="lbl">review card · 14px</span><div class="ph">product image</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ FINDING 2 — BUTTONS ════════════════════════════════════════════ -->
+  <section class="finding">
+    <div class="finding__head">
+      <span class="finding__rank">Rank 2 · highest impact</span>
+      <div class="finding__title">Buy buttons drift on radius, text size and shadow</div>
+      <div class="finding__meta">radius 2 / 6 / 8 / 9 px · text 11 / 12 / 13 / 13.5 / 15 px · some flat, some shadowed</div>
+    </div>
+    <div class="finding__body">
+      <p class="what"><b>What changes:</b> one button shape everywhere. Radius <b>8px</b>, text <b>14px / 700</b>, padding 13px by 20px, and a single resting shadow. The Quick Picks button (2px, near-square) and the deep-card rail button (6px, uppercase 13px) were the furthest off.</p>
+      <p class="why"><b>Why:</b> the buy button is the single most-repeated interactive element and the one users click. It should be muscle-memory identical on every page. Today the same action looks like five slightly different controls. Button text size drifting from 11 to 15px is as visible as the radius.</p>
+      <p class="finding__affected"><b>Affected:</b> 03 hero, 04 Bottom Line (9 → 8, 15 → 14), 05 at-a-glance (13.5 → 14), 06 deep rail (6 → 8, uppercase dropped), 08 comparison (11 → 14), 10 CTA (canonical reference, kept), 11 Quick Picks (2 → 8, 12 → 14).</p>
+    </div>
+    <div class="compare">
+      <div class="compare__col compare__col--old">
+        <div class="compare__tag">Old <span class="skinlabel">DetailerPicks · five button shapes</span></div>
+        <div class="stage skin--dtp old">
+          <div class="f2-stage">
+            <span class="f2-cap">each button keeps its own file's radius, text size and shadow</span>
+            <a class="f2-btn f2-btn--qp">Buy on Amazon →</a>
+            <a class="f2-btn f2-btn--deep">Check current price →</a>
+            <a class="f2-btn f2-btn--cmp">Check price</a>
+            <a class="f2-btn f2-btn--qcard">See it on Amazon →</a>
+            <a class="f2-btn f2-btn--bl">See it on Amazon →</a>
+          </div>
+        </div>
+      </div>
+      <div class="compare__col compare__col--new">
+        <div class="compare__tag">New <span class="skinlabel">one shape · 8px · 14px · one shadow</span></div>
+        <div class="stage skin--dtp new">
+          <div class="f2-stage">
+            <span class="f2-cap">every buy button identical</span>
+            <a class="f2-btn">Buy on Amazon →</a>
+            <a class="f2-btn">Check current price →</a>
+            <a class="f2-btn">Check price →</a>
+            <a class="f2-btn">See it on Amazon →</a>
+            <a class="f2-btn">See it on Amazon →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ FINDING 3 — SECTION EYEBROW ════════════════════════════════════ -->
+  <section class="finding">
+    <div class="finding__head">
+      <span class="finding__rank">Rank 3 · high impact</span>
+      <div class="finding__title">The Bottom Line eyebrow uses a different recipe than every other section</div>
+      <div class="finding__meta">Bottom Line: serif + brass + 22px rule · FAQ: rule-less centred · hero and section-header: sans + accent + 26px rule</div>
+    </div>
+    <div class="finding__body">
+      <p class="what"><b>What changes:</b> all section-level eyebrows use the recipe the hero and section-header already settled on: <b>sans · 12px · .16em · accent colour · a 26 by 2px leading rule</b>. The Bottom Line eyebrow drops its serif face and brass colour. The FAQ eyebrow gains the leading rule instead of floating centred.</p>
+      <p class="why"><b>Why:</b> the eyebrow is a recurring signpost. When the same semantic element (a small label above a block) is serif-brass in one place and sans-accent in another, the page loses its rhythm. Card category labels stay a separate, smaller tier-2 treatment on purpose, so this is not "make every label identical," only the section-level ones.</p>
+      <p class="finding__affected"><b>Affected:</b> 04 Bottom Line (serif → sans, brass → accent, 22 → 26 rule), 09 FAQ (add rule, left-align with block). Already canonical: 03 hero, 12 section-header. Untouched: 07 listing kicker and 11 Quick Picks category (tier-2 micro-kicker).</p>
+    </div>
+    <div class="compare">
+      <div class="compare__col compare__col--old">
+        <div class="compare__tag">Old <span class="skinlabel">DetailerPicks · three recipes</span></div>
+        <div class="stage skin--dtp old">
+          <div class="f3-stage">
+            <div class="f3-block"><div class="f3-src">04 Bottom Line</div><p class="f3-eye--bl">The Bottom Line</p></div>
+            <div class="f3-block"><div class="f3-src">09 FAQ</div><p class="f3-eye--faq">FAQ</p></div>
+            <div class="f3-block"><div class="f3-src">03 hero / 12 section-header</div><p class="f3-eye--hero">Buying Guide · Cellular Cams</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="compare__col compare__col--new">
+        <div class="compare__tag">New <span class="skinlabel">one section eyebrow</span></div>
+        <div class="stage skin--dtp new">
+          <div class="f3-stage">
+            <div class="f3-block"><div class="f3-src">04 Bottom Line</div><p class="f3-eye">The Bottom Line</p></div>
+            <div class="f3-block"><div class="f3-src">09 FAQ</div><p class="f3-eye">FAQ</p></div>
+            <div class="f3-block"><div class="f3-src">03 hero / 12 section-header</div><p class="f3-eye">Buying Guide · Cellular Cams</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ FINDING 4 — AWARD LABEL ════════════════════════════════════════ -->
+  <section class="finding">
+    <div class="finding__head">
+      <span class="finding__rank">Rank 4 · medium impact</span>
+      <div class="finding__title">Award labels are a banner in one card and a pill in another</div>
+      <div class="finding__meta">at-a-glance card: full-width top banner · deep card: rounded inline pill</div>
+    </div>
+    <div class="finding__body">
+      <p class="what"><b>What changes:</b> the rounded <b>pill</b> becomes the canonical award shape. It works inline at the top of a body and as a corner tag, and it matches the price-badge pill already in use. The full-width banner is kept only as a deliberate variant for the at-a-glance hero card, not as a second default.</p>
+      <p class="why"><b>Why:</b> "Best Overall / Best Value / Best Budget" is the same label doing the same job in both card tiers. Two different physical shapes for one semantic award make the two card types feel authored separately. Picking one shape lets the award read as a system element.</p>
+      <p class="finding__affected"><b>Affected:</b> 05 at-a-glance (banner → pill, banner retained as opt-in hero variant), 06 deep card (pill, kept). Price badge in 05 already a pill, reinforcing the choice.</p>
+    </div>
+    <div class="compare">
+      <div class="compare__col compare__col--old">
+        <div class="compare__tag">Old <span class="skinlabel">StarterAquarium · banner vs pill</span></div>
+        <div class="stage skin--sa old">
+          <div class="f4-stage">
+            <div class="f4-card f4-card--banner"><div class="f4-banner">Best Overall</div><div class="body"><div class="name">Fluval Flex 15</div></div></div>
+            <div class="f4-card"><div class="body"><span class="f4-pill">Best Overall</span><div class="name">Fluval Flex 15</div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="compare__col compare__col--new">
+        <div class="compare__tag">New <span class="skinlabel">pill is canonical for both</span></div>
+        <div class="stage skin--sa new">
+          <div class="f4-stage">
+            <div class="f4-card"><div class="body"><span class="f4-pill">Best Overall</span><div class="name">Fluval Flex 15</div></div></div>
+            <div class="f4-card"><div class="body"><span class="f4-pill">Best Overall</span><div class="name">Fluval Flex 15</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ FINDING 5 — CARD SHADOW ════════════════════════════════════════ -->
+  <section class="finding">
+    <div class="finding__head">
+      <span class="finding__rank">Rank 5 · medium impact</span>
+      <div class="finding__title">Cards are flat-with-border except the Bottom Line card, which floats</div>
+      <div class="finding__meta">at-a-glance, deep, guide, review: no shadow · Bottom Line card: 0 6px 22px</div>
+    </div>
+    <div class="finding__body">
+      <p class="what"><b>What changes:</b> one canonical resting shadow on all content cards: <b>0 2px 10px rgba(0,0,0,.06)</b>. The Bottom Line card steps down from its deeper 0 6px 22px so it sits in the same plane as everything else. Buttons keep their own slightly stronger shadow, giving the system three shadows total: card rest, button rest, button hover.</p>
+      <p class="why"><b>Why:</b> elevation is a depth signal. When most cards are flat and one card visibly floats, that one card reads as more important than it is, and the page depth feels uneven. A single quiet card shadow makes every card sit at the same height.</p>
+      <p class="finding__affected"><b>Affected:</b> 04 Bottom Line card (deeper → canonical), 05 at-a-glance, 06 deep card, 07 guide and review cards (flat → canonical rest shadow). 01 frame shadow is gallery chrome and does not ship.</p>
+    </div>
+    <div class="compare">
+      <div class="compare__col compare__col--old">
+        <div class="compare__tag">Old <span class="skinlabel">FussyBean · flat card vs floating card</span></div>
+        <div class="stage skin--fb old">
+          <div class="f5-stage">
+            <div class="f5-card f5-card--flat"><div class="name">Breville Bambino</div><div class="sub">Listing card — flat, border only</div></div>
+            <div class="f5-card f5-card--bl"><div class="name">Breville Bambino</div><div class="sub">Bottom Line card — deep shadow, floats</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="compare__col compare__col--new">
+        <div class="compare__tag">New <span class="skinlabel">one resting shadow, same plane</span></div>
+        <div class="stage skin--fb new">
+          <div class="f5-stage">
+            <div class="f5-card"><div class="name">Breville Bambino</div><div class="sub">Listing card — canonical rest shadow</div></div>
+            <div class="f5-card"><div class="name">Breville Bambino</div><div class="sub">Bottom Line card — same rest shadow</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ FINDING 6 — FUSSYBEAN ACCENT TOKEN ════════════════════════════ -->
+  <section class="finding">
+    <div class="finding__head">
+      <span class="finding__rank is-minor">Rank 6 · token bug</span>
+      <div class="finding__title">FussyBean accent colour disagrees between files</div>
+      <div class="finding__meta">navbar, footer, hero use #d59b54 · the other nine files use #b06f2c</div>
+    </div>
+    <div class="finding__body">
+      <p class="what"><b>What changes:</b> pick one FussyBean accent. The plurality is <b>#b06f2c</b> (the caramel that also doubles as the brass token in those files), used in nine of twelve. The three early files (navbar, footer, hero) and one file with no accent at all (CTA) get reconciled to it.</p>
+      <p class="why"><b>Why:</b> the accent drives the buy button, the eyebrow, and link hovers. Two caramels across the same site means the call-to-action colour shifts page to page. This is a copy-paste skew from the files being built by separate agents, not a design intent. One value, applied everywhere.</p>
+      <p class="finding__affected"><b>Affected:</b> 01 navbar, 02 footer, 03 hero (#d59b54 → #b06f2c), 10 CTA (no accent defined → add #b06f2c). The lighter #d59b54 can stay as a brass-soft style highlight if wanted, but not as --accent.</p>
+    </div>
+    <div class="compare">
+      <div class="compare__col compare__col--old">
+        <div class="compare__tag">Old <span class="skinlabel">two accents on one site</span></div>
+        <div class="stage">
+          <div class="swatch-stage">
+            <div class="swatch"><div class="swatch__chip" style="background:#d59b54"></div><div class="swatch__name">--accent</div><div class="swatch__val">#d59b54</div><div class="swatch__where">navbar, footer, hero</div></div>
+            <div class="swatch"><div class="swatch__chip" style="background:#b06f2c"></div><div class="swatch__name">--accent</div><div class="swatch__val">#b06f2c</div><div class="swatch__where">glance, deep, listing, table, faq, quick picks, section-header</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="compare__col compare__col--new">
+        <div class="compare__tag">New <span class="skinlabel">one accent</span></div>
+        <div class="stage">
+          <div class="swatch-stage">
+            <div class="swatch"><div class="swatch__chip" style="background:#b06f2c"></div><div class="swatch__name">--accent</div><div class="swatch__val">#b06f2c</div><div class="swatch__where">all twelve files</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ FINDING 7 — GOG BRASS-SOFT TOKEN ══════════════════════════════ -->
+  <section class="finding">
+    <div class="finding__head">
+      <span class="finding__rank is-minor">Rank 7 · token bug</span>
+      <div class="finding__title">GameOverGear brass-soft is overridden in one file</div>
+      <div class="finding__meta">eleven files: #2c2752 (deep indigo) · listing-cards: #9a93c7 (lavender)</div>
+    </div>
+    <div class="finding__body">
+      <p class="what"><b>What changes:</b> restore the canonical gog <b>--brass-soft: #2c2752</b> in the listing-cards file. The lavender #9a93c7 there was a local patch so the dark guide card's kicker stayed legible, but it silently redefines a shared token.</p>
+      <p class="why"><b>Why:</b> brass-soft is used for hairline accents and the FAQ icon background. A one-file override means the same token paints two different colours depending on which component you land on. Fix the legibility need at the component level (set the kicker colour directly on the dark guide card) rather than by bending the shared token.</p>
+      <p class="finding__affected"><b>Affected:</b> 07 listing-cards (#9a93c7 → #2c2752, with the guide-card kicker recoloured locally so it stays readable on the dark card).</p>
+    </div>
+    <div class="compare">
+      <div class="compare__col compare__col--old">
+        <div class="compare__tag">Old <span class="skinlabel">token redefined in one file</span></div>
+        <div class="stage">
+          <div class="swatch-stage">
+            <div class="swatch"><div class="swatch__chip" style="background:#2c2752"></div><div class="swatch__name">--brass-soft</div><div class="swatch__val">#2c2752</div><div class="swatch__where">eleven files</div></div>
+            <div class="swatch"><div class="swatch__chip" style="background:#9a93c7"></div><div class="swatch__name">--brass-soft</div><div class="swatch__val">#9a93c7</div><div class="swatch__where">07 listing-cards only</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="compare__col compare__col--new">
+        <div class="compare__tag">New <span class="skinlabel">one value, legibility fixed locally</span></div>
+        <div class="stage">
+          <div class="swatch-stage">
+            <div class="swatch"><div class="swatch__chip" style="background:#2c2752"></div><div class="swatch__name">--brass-soft</div><div class="swatch__val">#2c2752</div><div class="swatch__where">all twelve files</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

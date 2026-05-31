@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library · 11 · Quick Picks row — 5 skins</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Press+Start+2P&family=Poppins:wght@500;600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #c8ccd0; font-family: "Inter", system-ui, sans-serif; color: #1a1a1a; padding: 28px 0 80px; }
+  .page-head { max-width: 1200px; margin: 0 auto 22px; padding: 0 24px; }
+  .page-head h1 { font-size: 19px; font-weight: 700; }
+  .page-head p { font-size: 14px; color: #44484c; margin-top: 4px; max-width: 72ch; }
+  .page-head .hint { margin-top: 8px; font-size: 13px; color: #555; background: #fff; border-left: 3px solid #888; padding: 8px 12px; border-radius: 0 6px 6px 0; }
+
+  .specimen { max-width: 1200px; margin: 0 auto 26px; }
+  .specimen__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #4a4e52; margin: 0 4px 7px; display: flex; justify-content: space-between; }
+  .specimen__label span:last-child { font-weight: 500; color: #70757a; letter-spacing: 0; text-transform: none; }
+  .frame { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 14px rgba(0,0,0,.14); }
+
+  /* ── THE QUICK PICKS ROW (wide + short — the answer to tall cards) ── */
+  .qp { background: var(--paper); padding: 32px; }
+  .qp__rows { max-width: 1040px; margin: 0 auto; }
+  .qp-pick {
+    display: grid;
+    grid-template-columns: 72px 1fr 110px auto;
+    gap: 28px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+  }
+  .qp-pick:first-child { padding-top: 0; }
+  .qp-pick:last-child { border-bottom: 0; }
+
+  .qp-pick__num {
+    font-family: var(--serif);
+    font-size: 60px;
+    font-style: var(--num-style, italic);
+    font-weight: var(--word-wt, 400);
+    color: var(--forest);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    align-self: start;
+    padding-top: 6px;
+  }
+  .qp-pick__body { min-width: 0; }
+  .qp-pick__cat {
+    font-family: var(--sans);
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .qp-pick__name {
+    font-family: var(--serif);
+    font-size: 26px; line-height: 1.15;
+    letter-spacing: -0.012em;
+    color: var(--ink);
+    margin: 0 0 8px;
+    font-weight: var(--word-wt, 400);
+  }
+  .qp-pick__blurb {
+    font-family: var(--sans);
+    font-size: 14px; line-height: 1.55;
+    color: var(--ink);
+    margin: 0;
+    max-width: 56ch;
+    opacity: .9;
+  }
+  /* Image box: hardcoded white, fixed square, self-capping. Never balloons. */
+  .qp-pick__img {
+    width: 110px; height: 110px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    display: grid; place-items: center;
+    padding: 8px;
+  }
+  .qp-pick__img img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+  .qp-pick__img__ph {
+    font-family: var(--sans); font-size: 10px; font-weight: 600;
+    color: #9aa0a6; text-align: center; line-height: 1.4;
+  }
+  .qp-pick__buy {
+    font-family: var(--sans);
+    font-size: 14px; font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--paper);
+    background: var(--ink);
+    padding: 13px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    white-space: nowrap;
+    box-shadow: 0 2px 9px rgba(0,0,0,.18);
+    transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+  }
+  .qp-pick__buy:hover { background: var(--forest); transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,.22); }
+
+  /* gog: pixel font would obliterate the 60px number + 26px name — shrink, kill italic */
+  .skin--gog .qp-pick__num { font-size: 22px; font-style: normal; line-height: 1.3; padding-top: 10px; }
+  .skin--gog .qp-pick__name { font-family: var(--serif); font-size: 13px; line-height: 1.6; letter-spacing: 0; }
+  .skin--gog .qp-pick__buy { color: var(--paper); background: var(--brass); }
+  .skin--gog .qp-pick__buy:hover { background: var(--brass); opacity: .85; }
+
+  /* ── SKINS (generic tokens: 8 colors + accent/serif/sans) ── */
+  .skin--mwc {
+    --paper:#FAF7EF; --paper-muted:#F2EBDC; --ink:#1C1C1A; --forest:#1F3D2F; --brass:#A07C3A;
+    --brass-soft:#D9C29B; --muted:#5C5A4F; --border:#E5DDC9; --accent:#A07C3A;
+    --serif:"Fraunces",serif; --sans:"Inter Tight",sans-serif; }
+  .skin--dtp {
+    --paper:#F4F2EE; --paper-muted:#ECEAE4; --ink:#14181C; --forest:#2C5E8C; --brass:#2C5E8C;
+    --brass-soft:#F7E9C8; --muted:#6A7079; --border:#D6D2C8; --accent:#2C5E8C;
+    --serif:"Instrument Serif",serif; --sans:"Inter Tight",sans-serif; --word-wt:400; --num-style:italic; }
+  .skin--fb {
+    --paper:#f4e8d4; --paper-muted:#f8efe0; --ink:#2c2018; --forest:#241710; --brass:#b06f2c;
+    --brass-soft:#ecd4a8; --muted:#7c6750; --border:#e3d4bd; --accent:#b06f2c;
+    --serif:"Fraunces",serif; --sans:"Inter",sans-serif; }
+  .skin--gog {
+    --paper:#0e0b1c; --paper-muted:#171331; --ink:#ede9ff; --forest:#ede9ff; --brass:#2ee6ff;
+    --brass-soft:#2c2752; --muted:#9a93c7; --border:#3a3470; --accent:#2ee6ff;
+    --serif:"Press Start 2P",monospace; --sans:"Inter",sans-serif; }
+  .skin--sa {
+    --paper:#f6fcfd; --paper-muted:#ffffff; --ink:#103642; --forest:#0c5470; --brass:#e0573a;
+    --brass-soft:#bfe9ef; --muted:#557079; --border:#cfeaef; --accent:#e0573a;
+    --serif:"Poppins",sans-serif; --sans:"Nunito Sans",sans-serif; --word-wt:700; --num-style:normal; }
+</style>
+</head>
+<body>
+  <div class="page-head">
+    <h1>Component 11 — Quick Picks row</h1>
+    <p>The horizontal "wider and shorter" answer to tall cards, from the DetailerPicks Quick Picks page. Each row is a 4-column layout: big number (01 / 02 / 03) · body (category + name + blurb) · capped white-bg product image · buy button. Three numbered rows shown per skin, all 5 skins.</p>
+    <p class="hint">Bang on the <b>row rhythm</b> — number size/style, the body column width, how big the image square is, where the buy button sits, row padding and the divider line. Image squares are hardcoded white and capped so nothing balloons. Tell me what to change and I'll redraw.</p>
+  </div>
+
+  <!-- MyWildlifeCam -->
+  <div class="specimen">
+    <div class="specimen__label"><span>MyWildlifeCam</span><span>forest + cream + brass · Fraunces / Inter Tight</span></div>
+    <div class="frame skin--mwc"><div class="qp"><div class="qp__rows">
+      <article class="qp-pick">
+        <div class="qp-pick__num">01</div>
+        <div class="qp-pick__body">
+          <div class="qp-pick__cat">Cellular trail cam</div>
+          <h2 class="qp-pick__name">Tactacam Reveal X Pro</h2>
+          <p class="qp-pick__blurb">Sharp night photos and a data plan that doesn't punish heavy senders. The one to get if you only buy one.</p>
+        </div>
+        <div class="qp-pick__img"><span class="qp-pick__img__ph">product image<br>(contain, capped)</span></div>
+        <a class="qp-pick__buy">Buy on Amazon <span aria-hidden="true">&rarr;</span></a>
+      </article>
+      <article class="qp-pick">
+        <div class="qp-pick__num">02</div>
+        <div class="qp-pick__body">
+          <div class="qp-pick__cat">Budget non-cellular</div>
+          <h2 class="qp-pick__name">Stealth Cam DS4K</h2>
+          <p class="qp-pick__blurb">Prove a spot has traffic before you spend on cellular. Cheap, simple, swap the SD card weekly.</p>
+        </div>
+        <div class="qp-pick__img"><span class="qp-pick__img__ph">product image<br>(contain, capped)</span></div>
+        <a class="qp-pick__buy">Buy on Amazon <span aria-hidden="true">&rarr;</span></a>
+      </article>
+      <article class="qp-pick">
+        <div class="qp-pick__num">03</div>
+        <div class="qp-pick__body">
+          <div class="qp-pick__cat">Mounting kit</div>
+          <h2 class="qp-pick__name">Tactacam Tree Mount</h2>
+          <p class="qp-pick__blurb">A ball-head mount that aims the camera exactly where you want without wrestling a strap.</p>
+        </div>
+        <div class="qp-pick__img"><span class="qp-pick__img__ph">product image<br>(contain, capped)</span></div>
+        <a class="qp-pick__buy">Buy on Amazon <span aria-hidden="true">&rarr;</span></a>
+      </article>
+    </div></div></div>
+  </div>
+
+  <!-- DetailerPicks (real Amazon product images via in-repo ASINs) -->
+  <div class="specimen">
+    <div class="specimen__label"><span>DetailerPicks</span><span>slate blue + paper · Instrument Serif / Inter Tight</span></div>
+    <div class="frame skin--dtp"><div class="qp"><div class="qp__rows">
+      <article class="qp-pick">
+        <div class="qp-pick__num">01</div>
+        <div class="qp-pick__body">
+          <div class="qp-pick__cat">Car wash soap</div>
+          <h2 class="qp-pick__name">Chemical Guys Mr. Pink</h2>
+          <p class="qp-pick__blurb">Pink, foamy, gentle on paint. Pour a cap into a bucket, mix with your hose, you're done. No dilution math.</p>
+        </div>
+        <div class="qp-pick__img"><img src="https://images-na.ssl-images-amazon.com/images/P/B07Q2HST9N.01.LZZZZZZZ.jpg" alt="Chemical Guys Mr. Pink" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="qp-pick__img__ph" style="display:none">product image<br>(contain, capped)</span></div>
+        <a class="qp-pick__buy">Buy on Amazon <span aria-hidden="true">&rarr;</span></a>
+      </article>
+      <article class="qp-pick">
+        <div class="qp-pick__num">02</div>
+        <div class="qp-pick__body">
+          <div class="qp-pick__cat">Wheel cleaner</div>
+          <h2 class="qp-pick__name">Meguiar's Ultimate All Wheel</h2>
+          <p class="qp-pick__blurb">Ten bucks at AutoZone. Turns purple on brake dust so you can see it working. Safe on every wheel finish.</p>
+        </div>
+        <div class="qp-pick__img"><img src="https://images-na.ssl-images-amazon.com/images/P/B072FCF2ZF.01.LZZZZZZZ.jpg" alt="Meguiar's Ultimate All Wheel Cleaner" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="qp-pick__img__ph" style="display:none">product image<br>(contain, capped)</span></div>
+        <a class="qp-pick__buy">Buy on Amazon <span aria-hidden="true">&rarr;</span></a>
+      </article>
+      <article class="qp-pick">
+        <div class="qp-pick__num">03</div>
+        <div class="qp-pick__body">
+          <div class="qp-pick__cat">Detailing rags</div>
+          <h2 class="qp-pick__name">Meguiar's Supreme Microfiber</h2>
+          <p class="qp-pick__blurb">Three 16x16 towels. One for soap, one for drying, rotate clean ones in. Drop one on the ground and it's dead.</p>
+        </div>
+        <div class="qp-pick__img"><img src="https://images-na.ssl-images-amazon.com/images/P/B0009IQZH0.01.LZZZZZZZ.jpg" alt="Meguiar's Supreme Shine Microfiber Towels" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="qp-pick__img__ph" style="display:none">product image<br>(contain, capped)</span></div>
+        <a class="qp-pick__buy">Buy on Amazon <span aria-hidden="true">&rarr;</span></a>
+      </article>
+    </div></div></div>
+  </div>
+
+  <!-- FussyBean -->
+  <div class="specimen">
+    <div class="specimen__label"><span>FussyBean</span><span>espresso + cream + caramel · Fraunces / Inter</span></div>
+    <div class="frame skin--fb"><div class="qp"><div class="qp__rows">
+      <article class="qp-pick">
+        <div class="qp-pick__num">01</div>
+        <div class="qp-pick__body">
+          <div class="qp-pick__cat">Espresso machine</div>
+          <h2 class="qp-pick__name">Breville Barista Express</h2>
+          <p class="qp-pick__blurb">Grinder, steam wand, and real control in one box. The machine most people should actually start on.</p>
+        </div>
+        <div class="qp-pick__img"><span class="qp-pick__img__ph">product image<br>(contain, capped)</span></div>
+        <a class="qp-pick__buy">Buy on Amazon <span aria-hidden="true">&rarr;</span></a>
+      </article>
+      <article class="qp-pick">
+        <div class="qp-pick__num">02</div>
+        <div class="qp-pick__body">
+          <div class="qp-pick__cat">Burr grinder</div>
+          <h2 class="qp-pick__name">Baratza Encore ESP</h2>
+          <p class="qp-pick__blurb">Consistent grind from espresso to drip. The upgrade that improves every brew method you own.</p>
+        </div>
+        <div class="qp-pick__img"><span class="qp-pick__img__ph">product image<br>(contain, capped)</span></div>
+        <a class="qp-pick__buy">Buy on Amazon <span aria-hidden="true">&rarr;</span></a>
+      </article>
+      <article class="qp-pick">
+        <div class="qp-pick__num">03</div>
+        <div class="qp-pick__body">
+          <div class="qp-pick__cat">Gooseneck kettle</div>
+          <h2 class="qp-pick__name">Fellow Stagg EKG</h2>
+          <p class="qp-pick__blurb">Variable temperature and a spout that pours exactly where you aim. Pour-over gets a lot easier.</p>
+        </div>
+        <div class="qp-pick__img"><span class="qp-pick__img__ph">product image<br>(contain, capped)</span></div>
+        <a class="qp-pick__buy">Buy on Amazon <span aria-hidden="true">&rarr;</span></a>
+      </article>
+    </div></div></div>
+  </div>
+
+  <!-- GameOverGear (pixel-font stress test) -->
+  <div class="specimen">
+    <div class="specimen__label"><span>GameOverGear</span><span>dark + neon cyan · Press Start 2P / Inter</span></div>
+    <div class="frame skin--gog"><div class="qp"><div class="qp__rows">
+      <article class="qp-pick">
+        <div class="qp-pick__num">01</div>
+        <div class="qp-pick__body">
+          <div class="qp-pick__cat">FPGA handheld</div>
+          <h2 class="qp-pick__name">Analogue Pocket</h2>
+          <p class="qp-pick__blurb">Plays original Game Boy carts with hardware-accurate timing and zero emulation lag. The premium pick.</p>
+        </div>
+        <div class="qp-pick__img"><span class="qp-pick__img__ph">product image<br>(contain, capped)</span></div>
+        <a class="qp-pick__buy">Buy on Amazon <span aria-hidden="true">&rarr;</span></a>
+      </article>
+      <article class="qp-pick">
+        <div class="qp-pick__num">02</div>
+        <div class="qp-pick__body">
+          <div class="qp-pick__cat">Wireless controller</div>
+          <h2 class="qp-pick__name">8BitDo SN30 Pro</h2>
+          <p class="qp-pick__blurb">A classic SNES shell with modern sticks and triggers. Pairs with Switch, PC, and your phone.</p>
+        </div>
+        <div class="qp-pick__img"><span class="qp-pick__img__ph">product image<br>(contain, capped)</span></div>
+        <a class="qp-pick__buy">Buy on Amazon <span aria-hidden="true">&rarr;</span></a>
+      </article>
+      <article class="qp-pick">
+        <div class="qp-pick__num">03</div>
+        <div class="qp-pick__body">
+          <div class="qp-pick__cat">Budget handheld</div>
+          <h2 class="qp-pick__name">Anbernic RG35XX H</h2>
+          <p class="qp-pick__blurb">Runs everything up to the PS1 era for the price of a single new game. The easy way to try the hobby.</p>
+        </div>
+        <div class="qp-pick__img"><span class="qp-pick__img__ph">product image<br>(contain, capped)</span></div>
+        <a class="qp-pick__buy">Buy on Amazon <span aria-hidden="true">&rarr;</span></a>
+      </article>
+    </div></div></div>
+  </div>
+
+  <!-- StarterAquarium -->
+  <div class="specimen">
+    <div class="specimen__label"><span>StarterAquarium</span><span>aqua teal + coral pop · Poppins / Nunito Sans</span></div>
+    <div class="frame skin--sa"><div class="qp"><div class="qp__rows">
+      <article class="qp-pick">
+        <div class="qp-pick__num">01</div>
+        <div class="qp-pick__body">
+          <div class="qp-pick__cat">All-in-one tank kit</div>
+          <h2 class="qp-pick__name">Fluval Flex 15 Gallon</h2>
+          <p class="qp-pick__blurb">Filter and light built in, so a beginner can set it up in an afternoon. The easy first tank.</p>
+        </div>
+        <div class="qp-pick__img"><span class="qp-pick__img__ph">product image<br>(contain, capped)</span></div>
+        <a class="qp-pick__buy">Buy on Amazon <span aria-hidden="true">&rarr;</span></a>
+      </article>
+      <article class="qp-pick">
+        <div class="qp-pick__num">02</div>
+        <div class="qp-pick__body">
+          <div class="qp-pick__cat">Hang-on-back filter</div>
+          <h2 class="qp-pick__name">AquaClear 50</h2>
+          <p class="qp-pick__blurb">The filter experienced keepers recommend first. Quiet, easy to clean, and you can tune the flow.</p>
+        </div>
+        <div class="qp-pick__img"><span class="qp-pick__img__ph">product image<br>(contain, capped)</span></div>
+        <a class="qp-pick__buy">Buy on Amazon <span aria-hidden="true">&rarr;</span></a>
+      </article>
+      <article class="qp-pick">
+        <div class="qp-pick__num">03</div>
+        <div class="qp-pick__body">
+          <div class="qp-pick__cat">Aquarium heater</div>
+          <h2 class="qp-pick__name">Eheim Jager 100W</h2>
+          <p class="qp-pick__blurb">Accurate, reliable, and it won't overheat the tank if the dial gets bumped. Keeps tropical fish safe.</p>
+        </div>
+        <div class="qp-pick__img"><span class="qp-pick__img__ph">product image<br>(contain, capped)</span></div>
+        <a class="qp-pick__buy">Buy on Amazon <span aria-hidden="true">&rarr;</span></a>
+      </article>
+    </div></div></div>
+  </div>
+</body>
+</html>

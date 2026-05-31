@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library · 05 · At-a-glance pick card — 5 skins</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Press+Start+2P&family=Poppins:wght@500;600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #c8ccd0; font-family: "Inter", system-ui, sans-serif; color: #1a1a1a; padding: 28px 0 80px; }
+  .page-head { max-width: 1200px; margin: 0 auto 22px; padding: 0 24px; }
+  .page-head h1 { font-size: 19px; font-weight: 700; }
+  .page-head p { font-size: 14px; color: #44484c; margin-top: 4px; max-width: 72ch; }
+  .page-head .hint { margin-top: 8px; font-size: 13px; color: #555; background: #fff; border-left: 3px solid #888; padding: 8px 12px; border-radius: 0 6px 6px 0; }
+
+  .specimen { max-width: 1200px; margin: 0 auto 26px; }
+  .specimen__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #4a4e52; margin: 0 4px 7px; display: flex; justify-content: space-between; }
+  .specimen__label span:last-child { font-weight: 500; color: #70757a; letter-spacing: 0; text-transform: none; }
+  .frame { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 14px rgba(0,0,0,.14); }
+
+  /* ── THE AT-A-GLANCE GRID (tier-1 of the two-tier pick system) ── */
+  .glance { background: var(--paper-muted); padding: 32px; }
+  .glance__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
+
+  .qcard {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    overflow: hidden;
+    position: relative;
+    display: flex; flex-direction: column;
+    transition: border-color 200ms ease, transform 200ms ease;
+  }
+  .qcard a { text-decoration: none; }
+  .qcard:hover { border-color: var(--brass-soft); transform: translateY(-2px); }
+
+  /* Image box: hardcoded white, fixed height, self-capping. Image can NEVER balloon. */
+  .qcard__img {
+    border-bottom: 1px solid var(--border);
+    border-radius: 10px;
+    position: relative;
+    margin-top: 32px; /* clear the award banner pinned to the card top */
+    display: grid; place-items: center;
+    height: 170px;
+    background: #fff;
+    padding: 14px;
+  }
+  /* min-* : 0 lets contain cap a tall/wide real PNG inside the grid cell; without it the grid
+     item's min-height:auto floor lets a tall bottle balloon out the box bottom over the body */
+  .qcard__img img { max-width: 100%; max-height: 100%; min-width: 0; min-height: 0; object-fit: contain; display: block; }
+  .qcard__img__ph {
+    font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .03em;
+    color: #9aa0a6; text-align: center; line-height: 1.4;
+  }
+  .qcard__img__price {
+    position: absolute;
+    top: 10px; right: 10px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--sans);
+    font-size: 10.5px; font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 999px;
+    letter-spacing: 0.04em;
+  }
+
+  .qcard__body { padding: 16px 20px 18px; flex: 1; display: flex; flex-direction: column; }
+  /* Award label — the tier-1 "BEST OVERALL / VALUE / BUDGET" badge */
+  /* Award — prominent banner across the TOP of the card (Ray: make it the title up top) */
+  .qcard__award {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 3;
+    height: 32px; display: flex; align-items: center; justify-content: center;
+    background: var(--accent); color: #fff;
+    font-family: var(--sans); font-size: 11.5px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.14em; margin: 0;
+  }
+  .skin--gog .qcard__award { color: #07101a; }
+  .qcard__persona {
+    font-family: var(--sans);
+    font-size: 13px; line-height: 1.35;
+    color: var(--muted);
+    margin-bottom: 6px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .qcard__product {
+    font-family: var(--serif);
+    font-size: 18px; line-height: 1.25;
+    color: var(--forest);
+    /* centered name with a full-card-width underline; persona + hook centered to match */
+    text-align: center;
+    margin: 0 -20px 14px;
+    padding: 0 20px 12px;
+    font-weight: var(--word-wt, 500);
+    letter-spacing: -0.005em;
+    border-bottom: 1.5px solid var(--brass-soft);
+    transition: color 180ms ease, border-color 180ms ease;
+  }
+  .qcard:hover .qcard__product { color: var(--brass); border-bottom-color: var(--brass); }
+  .qcard__hook {
+    font-family: var(--sans);
+    font-size: 13.5px; line-height: 1.55;
+    color: var(--ink);
+    margin: 0 auto 16px;
+    flex: 1;
+    max-width: 38ch;
+    text-align: center;
+    opacity: 0.85;
+  }
+  /* Obvious BUY button — this card may be all someone reads, so the buy action
+     is a filled, can't-miss button (Ray's note). The review link is demoted below. */
+  .qcard__cta {
+    margin-top: auto;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--accent); color: #fff;
+    font-family: var(--sans); font-size: 14px; font-weight: 700; letter-spacing: 0.01em;
+    padding: 13px 20px; border-radius: 8px; text-decoration: none;
+    box-shadow: 0 2px 9px rgba(0,0,0,.18);
+    transition: filter 150ms ease, transform 150ms ease;
+  }
+  .qcard__cta:hover { filter: brightness(1.08); transform: translateY(-1px); }
+  .qcard__cta__arrow { transition: transform 200ms ease; }
+  .qcard:hover .qcard__cta__arrow { transform: translateX(3px); }
+  .qcard__review {
+    display: block; text-align: center; margin-top: 9px;
+    font-family: var(--sans); font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.07em;
+    color: var(--muted); text-decoration: none; transition: color 150ms ease;
+  }
+  .qcard:hover .qcard__review { color: var(--accent); }
+  /* gog cyan button needs dark text */
+  .skin--gog .qcard__cta { color: #07101a; }
+
+  /* gog: Press Start 2P would blow out the product name — cap it, keep body on Inter */
+  .skin--gog .qcard__product { font-family: var(--serif); font-size: 12px; line-height: 1.5; letter-spacing: 0; border-bottom-width: 2px; }
+  .skin--gog .qcard__award { font-size: 10px; letter-spacing: .1em; }
+
+  /* ── SKINS (generic tokens: 8 colors + accent/serif/sans) ── */
+  .skin--mwc {
+    --paper:#FAF7EF; --paper-muted:#F2EBDC; --ink:#1C1C1A; --forest:#1F3D2F; --brass:#A07C3A;
+    --brass-soft:#D9C29B; --muted:#5C5A4F; --border:#E5DDC9; --accent:#A07C3A;
+    --serif:"Fraunces",serif; --sans:"Inter Tight",sans-serif; }
+  .skin--dtp {
+    --paper:#F4F2EE; --paper-muted:#ECEAE4; --ink:#14181C; --forest:#2C5E8C; --brass:#2C5E8C;
+    --brass-soft:#F7E9C8; --muted:#6A7079; --border:#D6D2C8; --accent:#2C5E8C;
+    --serif:"Instrument Serif",serif; --sans:"Inter Tight",sans-serif; --word-wt:400; }
+  .skin--fb {
+    --paper:#f4e8d4; --paper-muted:#f8efe0; --ink:#2c2018; --forest:#241710; --brass:#b06f2c;
+    --brass-soft:#ecd4a8; --muted:#7c6750; --border:#e3d4bd; --accent:#b06f2c;
+    --serif:"Fraunces",serif; --sans:"Inter",sans-serif; }
+  .skin--gog {
+    --paper:#0e0b1c; --paper-muted:#171331; --ink:#ede9ff; --forest:#ede9ff; --brass:#2ee6ff;
+    --brass-soft:#2c2752; --muted:#9a93c7; --border:#3a3470; --accent:#2ee6ff;
+    --serif:"Press Start 2P",monospace; --sans:"Inter",sans-serif; }
+  .skin--sa {
+    --paper:#f6fcfd; --paper-muted:#ffffff; --ink:#103642; --forest:#0c5470; --brass:#e0573a;
+    --brass-soft:#bfe9ef; --muted:#557079; --border:#cfeaef; --accent:#e0573a;
+    --serif:"Poppins",sans-serif; --sans:"Nunito Sans",sans-serif; --word-wt:700; }
+</style>
+</head>
+<body>
+  <div class="page-head">
+    <h1>Component 05 — At-a-glance pick card</h1>
+    <p>Tier-1 of the two-tier pick system from the DetailerPicks buying guides. A compact card: capped white-bg product image · award label · who-it's-for persona · product name · one-line why · price badge · small CTA into the full review. Shown as a 3-up grid (Best Overall / Best Value / Best Budget) in all 5 skins.</p>
+    <p class="hint">Bang on the <b>structure</b> — image cap height, where the award label sits, persona vs product-name hierarchy, the price-badge placement, the CTA wording. Image boxes are hardcoded white and height-capped so nothing balloons. Tell me what to change and I'll redraw.</p>
+  </div>
+
+  <!-- MyWildlifeCam -->
+  <div class="specimen">
+    <div class="specimen__label"><span>MyWildlifeCam</span><span>forest + cream + brass · Fraunces / Inter Tight</span></div>
+    <div class="frame skin--mwc"><div class="glance"><div class="glance__grid">
+      <article class="qcard">
+        <div class="qcard__img"><span class="qcard__img__ph">product image<br>(contain, capped)</span><div class="qcard__img__price">$159</div></div>
+        <div class="qcard__body">
+          <div class="qcard__award">Best Overall</div>
+          <div class="qcard__persona">For serious property scouting</div>
+          <a class="qcard__product">Tactacam Reveal X Pro</a>
+          <p class="qcard__hook">Best-in-class image clarity and a cellular plan that doesn't punish heavy users.</p>
+          <a class="qcard__cta">See it on Amazon <span class="qcard__cta__arrow" aria-hidden="true">&rarr;</span></a>
+          <a class="qcard__review">Read the full review &rarr;</a>
+        </div>
+      </article>
+      <article class="qcard">
+        <div class="qcard__img"><span class="qcard__img__ph">product image<br>(contain, capped)</span><div class="qcard__img__price">$99</div></div>
+        <div class="qcard__body">
+          <div class="qcard__award">Best Value</div>
+          <div class="qcard__persona">For most backyard watchers</div>
+          <a class="qcard__product">Moultrie Edge 2</a>
+          <p class="qcard__hook">Nearly the same nighttime detail for two-thirds the price, with simpler setup.</p>
+          <a class="qcard__cta">See it on Amazon <span class="qcard__cta__arrow" aria-hidden="true">&rarr;</span></a>
+          <a class="qcard__review">Read the full review &rarr;</a>
+        </div>
+      </article>
+      <article class="qcard">
+        <div class="qcard__img"><span class="qcard__img__ph">product image<br>(contain, capped)</span><div class="qcard__img__price">$59</div></div>
+        <div class="qcard__body">
+          <div class="qcard__award">Best Budget</div>
+          <div class="qcard__persona">For first-time buyers</div>
+          <a class="qcard__product">Stealth Cam DS4K</a>
+          <p class="qcard__hook">A no-frills non-cellular cam that proves the spot before you spend more.</p>
+          <a class="qcard__cta">See it on Amazon <span class="qcard__cta__arrow" aria-hidden="true">&rarr;</span></a>
+          <a class="qcard__review">Read the full review &rarr;</a>
+        </div>
+      </article>
+    </div></div></div>
+  </div>
+
+  <!-- DetailerPicks (real Amazon product images via in-repo ASINs) -->
+  <div class="specimen">
+    <div class="specimen__label"><span>DetailerPicks</span><span>slate blue + paper · Instrument Serif / Inter Tight</span></div>
+    <div class="frame skin--dtp"><div class="glance"><div class="glance__grid">
+      <article class="qcard">
+        <div class="qcard__img"><img src="https://images-na.ssl-images-amazon.com/images/P/B07Q2HST9N.01.LZZZZZZZ.jpg" alt="Chemical Guys Mr. Pink" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="qcard__img__ph" style="display:none">product image<br>(contain, capped)</span><div class="qcard__img__price">$13</div></div>
+        <div class="qcard__body">
+          <div class="qcard__award">Best Overall</div>
+          <div class="qcard__persona">For weekly maintenance washes</div>
+          <a class="qcard__product">Chemical Guys Mr. Pink</a>
+          <p class="qcard__hook">Gentle on paint and ceramic coatings, foams well, no dilution math required.</p>
+          <a class="qcard__cta">See it on Amazon <span class="qcard__cta__arrow" aria-hidden="true">&rarr;</span></a>
+          <a class="qcard__review">Read the full review &rarr;</a>
+        </div>
+      </article>
+      <article class="qcard">
+        <div class="qcard__img"><img src="https://images-na.ssl-images-amazon.com/images/P/B072FCF2ZF.01.LZZZZZZZ.jpg" alt="Meguiar's Ultimate All Wheel Cleaner" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="qcard__img__ph" style="display:none">product image<br>(contain, capped)</span><div class="qcard__img__price">$10</div></div>
+        <div class="qcard__body">
+          <div class="qcard__award">Best Value</div>
+          <div class="qcard__persona">For wheels of any finish</div>
+          <a class="qcard__product">Meguiar's Ultimate Wheel</a>
+          <p class="qcard__hook">Turns purple on brake dust so you can see it working, safe on every finish.</p>
+          <a class="qcard__cta">See it on Amazon <span class="qcard__cta__arrow" aria-hidden="true">&rarr;</span></a>
+          <a class="qcard__review">Read the full review &rarr;</a>
+        </div>
+      </article>
+      <article class="qcard">
+        <div class="qcard__img"><img src="https://images-na.ssl-images-amazon.com/images/P/B0009IQZH0.01.LZZZZZZZ.jpg" alt="Meguiar's Supreme Shine Microfiber Towels" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="qcard__img__ph" style="display:none">product image<br>(contain, capped)</span><div class="qcard__img__price">$9</div></div>
+        <div class="qcard__body">
+          <div class="qcard__award">Best Budget</div>
+          <div class="qcard__persona">For drying and buffing</div>
+          <a class="qcard__product">Meguiar's Microfiber 3-pack</a>
+          <p class="qcard__hook">Three 16x16 towels: one for soap, one for drying, rotate the clean one in.</p>
+          <a class="qcard__cta">See it on Amazon <span class="qcard__cta__arrow" aria-hidden="true">&rarr;</span></a>
+          <a class="qcard__review">Read the full review &rarr;</a>
+        </div>
+      </article>
+    </div></div></div>
+  </div>
+
+  <!-- FussyBean -->
+  <div class="specimen">
+    <div class="specimen__label"><span>FussyBean</span><span>espresso + cream + caramel · Fraunces / Inter</span></div>
+    <div class="frame skin--fb"><div class="glance"><div class="glance__grid">
+      <article class="qcard">
+        <div class="qcard__img"><span class="qcard__img__ph">product image<br>(contain, capped)</span><div class="qcard__img__price">$699</div></div>
+        <div class="qcard__body">
+          <div class="qcard__award">Best Overall</div>
+          <div class="qcard__persona">For the daily-driver espresso fan</div>
+          <a class="qcard__product">Breville Barista Express</a>
+          <p class="qcard__hook">Built-in grinder, steam wand, and enough control to actually dial in a shot.</p>
+          <a class="qcard__cta">See it on Amazon <span class="qcard__cta__arrow" aria-hidden="true">&rarr;</span></a>
+          <a class="qcard__review">Read the full review &rarr;</a>
+        </div>
+      </article>
+      <article class="qcard">
+        <div class="qcard__img"><span class="qcard__img__ph">product image<br>(contain, capped)</span><div class="qcard__img__price">$99</div></div>
+        <div class="qcard__body">
+          <div class="qcard__award">Best Value</div>
+          <div class="qcard__persona">For pour-over and drip drinkers</div>
+          <a class="qcard__product">Baratza Encore ESP</a>
+          <p class="qcard__hook">Consistent grind across brew methods at the price most people should start at.</p>
+          <a class="qcard__cta">See it on Amazon <span class="qcard__cta__arrow" aria-hidden="true">&rarr;</span></a>
+          <a class="qcard__review">Read the full review &rarr;</a>
+        </div>
+      </article>
+      <article class="qcard">
+        <div class="qcard__img"><span class="qcard__img__ph">product image<br>(contain, capped)</span><div class="qcard__img__price">$45</div></div>
+        <div class="qcard__body">
+          <div class="qcard__award">Best Budget</div>
+          <div class="qcard__persona">For the just-getting-started cup</div>
+          <a class="qcard__product">Fellow Stagg Pour-Over</a>
+          <p class="qcard__hook">A precise pour-over kit that upgrades drip coffee without a machine.</p>
+          <a class="qcard__cta">See it on Amazon <span class="qcard__cta__arrow" aria-hidden="true">&rarr;</span></a>
+          <a class="qcard__review">Read the full review &rarr;</a>
+        </div>
+      </article>
+    </div></div></div>
+  </div>
+
+  <!-- GameOverGear (pixel-font stress test) -->
+  <div class="specimen">
+    <div class="specimen__label"><span>GameOverGear</span><span>dark + neon cyan · Press Start 2P / Inter</span></div>
+    <div class="frame skin--gog"><div class="glance"><div class="glance__grid">
+      <article class="qcard">
+        <div class="qcard__img"><span class="qcard__img__ph">product image<br>(contain, capped)</span><div class="qcard__img__price">$199</div></div>
+        <div class="qcard__body">
+          <div class="qcard__award">Best Overall</div>
+          <div class="qcard__persona">For the all-in-one retro setup</div>
+          <a class="qcard__product">Analogue Pocket</a>
+          <p class="qcard__hook">FPGA-accurate handheld that plays original carts with zero emulation lag.</p>
+          <a class="qcard__cta">See it on Amazon <span class="qcard__cta__arrow" aria-hidden="true">&rarr;</span></a>
+          <a class="qcard__review">Read the full review &rarr;</a>
+        </div>
+      </article>
+      <article class="qcard">
+        <div class="qcard__img"><span class="qcard__img__ph">product image<br>(contain, capped)</span><div class="qcard__img__price">$80</div></div>
+        <div class="qcard__body">
+          <div class="qcard__award">Best Value</div>
+          <div class="qcard__persona">For couch co-op nights</div>
+          <a class="qcard__product">8BitDo SN30 Pro</a>
+          <p class="qcard__hook">A modern-feel D-pad on a classic shell that pairs with everything you own.</p>
+          <a class="qcard__cta">See it on Amazon <span class="qcard__cta__arrow" aria-hidden="true">&rarr;</span></a>
+          <a class="qcard__review">Read the full review &rarr;</a>
+        </div>
+      </article>
+      <article class="qcard">
+        <div class="qcard__img"><span class="qcard__img__ph">product image<br>(contain, capped)</span><div class="qcard__img__price">$35</div></div>
+        <div class="qcard__body">
+          <div class="qcard__award">Best Budget</div>
+          <div class="qcard__persona">For trying the hobby out</div>
+          <a class="qcard__product">RG35XX H</a>
+          <p class="qcard__hook">A pocket emulation handheld that runs everything up to the PS1 era cheaply.</p>
+          <a class="qcard__cta">See it on Amazon <span class="qcard__cta__arrow" aria-hidden="true">&rarr;</span></a>
+          <a class="qcard__review">Read the full review &rarr;</a>
+        </div>
+      </article>
+    </div></div></div>
+  </div>
+
+  <!-- StarterAquarium -->
+  <div class="specimen">
+    <div class="specimen__label"><span>StarterAquarium</span><span>aqua teal + coral pop · Poppins / Nunito Sans</span></div>
+    <div class="frame skin--sa"><div class="glance"><div class="glance__grid">
+      <article class="qcard">
+        <div class="qcard__img"><span class="qcard__img__ph">product image<br>(contain, capped)</span><div class="qcard__img__price">$129</div></div>
+        <div class="qcard__body">
+          <div class="qcard__award">Best Overall</div>
+          <div class="qcard__persona">For a first community tank</div>
+          <a class="qcard__product">Fluval Flex 15 Gallon</a>
+          <p class="qcard__hook">All-in-one kit with filtration and light built in, so setup is genuinely easy.</p>
+          <a class="qcard__cta">See it on Amazon <span class="qcard__cta__arrow" aria-hidden="true">&rarr;</span></a>
+          <a class="qcard__review">Read the full review &rarr;</a>
+        </div>
+      </article>
+      <article class="qcard">
+        <div class="qcard__img"><span class="qcard__img__ph">product image<br>(contain, capped)</span><div class="qcard__img__price">$45</div></div>
+        <div class="qcard__body">
+          <div class="qcard__award">Best Value</div>
+          <div class="qcard__persona">For upgrading a starter tank</div>
+          <a class="qcard__product">AquaClear 50 Filter</a>
+          <p class="qcard__hook">The hang-on-back filter most experienced keepers quietly recommend first.</p>
+          <a class="qcard__cta">See it on Amazon <span class="qcard__cta__arrow" aria-hidden="true">&rarr;</span></a>
+          <a class="qcard__review">Read the full review &rarr;</a>
+        </div>
+      </article>
+      <article class="qcard">
+        <div class="qcard__img"><span class="qcard__img__ph">product image<br>(contain, capped)</span><div class="qcard__img__price">$22</div></div>
+        <div class="qcard__body">
+          <div class="qcard__award">Best Budget</div>
+          <div class="qcard__persona">For keeping fish warm safely</div>
+          <a class="qcard__product">Eheim Jager 100W Heater</a>
+          <p class="qcard__hook">A reliable, accurate heater that won't cook the tank if the dial gets bumped.</p>
+          <a class="qcard__cta">See it on Amazon <span class="qcard__cta__arrow" aria-hidden="true">&rarr;</span></a>
+          <a class="qcard__review">Read the full review &rarr;</a>
+        </div>
+      </article>
+    </div></div></div>
+  </div>
+</body>
+</html>
