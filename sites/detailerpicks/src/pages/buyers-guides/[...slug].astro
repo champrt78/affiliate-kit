@@ -51,7 +51,7 @@ const isoUpdated = data.lastUpdated instanceof Date
   : String(data.lastUpdated);
 
 const totalPicks = data.products.length;
-const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : null;
+const fmtPrice = (n?: number) => (typeof n === "number" && n > 0) ? `$${n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : null;
 ---
 <MainLayout
   title={data.title}
@@ -548,6 +548,9 @@ const fmtPrice = (n?: number) => typeof n === "number" ? `$${n.toLocaleString(un
     opacity: 0.9;
   }
   .deep-card__body :global(p:last-child) { margin-bottom: 0; }
+  .deep-card__body :global(ul) { margin: 0.5rem 0 0.75rem; padding-left: 1.25rem; }
+  .deep-card__body :global(li) { margin-bottom: 0.3rem; line-height: 1.55; }
+  .deep-card__body :global(li::marker) { color: var(--color-brass); }
   .deep-card__body :global(p a) {
     color: var(--color-forest);
     font-weight: 600;
