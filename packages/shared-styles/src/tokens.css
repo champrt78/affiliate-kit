@@ -151,6 +151,22 @@
   --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.4);
 
   /* ---------------------------------------------------------------------------
+     Component library — harmonized primitives (cohesion pass, 2026-05-31).
+     One source of truth so every shared component is visually cohesive across
+     all 5 skins. Locked with Ray after the 12-component library review.
+     Map note: the design mockups used flat tokens (--accent, --paper, --serif);
+     real components consume the --color-*/--font-*/--space-* tokens above + these.
+     --------------------------------------------------------------------------- */
+  --radius-card:    14px;   /* all cards: buy card, deep card, listing, at-a-glance */
+  --radius-button:  8px;    /* all buttons / CTAs */
+  /* inner product-image boxes use --radius-lg (10px) */
+  --shadow-card:        0 2px 10px rgba(31, 61, 47, 0.06);  /* one resting card elevation */
+  --shadow-button:      0 2px 9px rgba(0, 0, 0, 0.18);      /* button resting */
+  --shadow-button-hover: 0 6px 16px rgba(0, 0, 0, 0.22);    /* button hover lift */
+  --pad-section:    var(--space-8);   /* 32px — section padding */
+  --pad-card:       var(--space-5);   /* 20px — card padding (24px tall: --space-6) */
+
+  /* ---------------------------------------------------------------------------
      Motion — restrained, editorial
      --------------------------------------------------------------------------- */
 
