@@ -141,4 +141,10 @@ const robotsContent = isDraft ? "noindex, nofollow" : "index, follow";
     border-top: 1px solid var(--color-border);
   }
   .updated { color: var(--color-muted); font-size: var(--text-sm); }
+
+  /* Ray 2026-05-31: center the article header (matches the 5 live sites) so new sites
+     inherit a centered, full-width-not-left-half guide header. */
+  .guide-header { max-width: 960px; margin-left: auto; margin-right: auto; text-align: center; }
+  .guide-header .guide-desc, .guide-header .deck { margin-left: auto; margin-right: auto; }
+
 </style>
