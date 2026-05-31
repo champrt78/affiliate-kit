@@ -48,10 +48,6 @@ const sorted = entries.sort((a, b) => {
   .page-header__inner {
     max-width: var(--container-max);
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    column-gap: var(--space-10);
-    align-items: end;
   }
   .page-header__kicker {
     display: inline-block;
@@ -90,8 +86,6 @@ const sorted = entries.sort((a, b) => {
     color: var(--color-muted);
     margin: 0;
     max-width: 56ch;
-    align-self: end;
-    padding-bottom: 4px;
   }
 
   .grid-section {
@@ -113,7 +107,6 @@ const sorted = entries.sort((a, b) => {
 
   @media (max-width: 760px) {
     .page-header { padding: var(--space-10) var(--space-4) var(--space-5); }
-    .page-header__inner { grid-template-columns: 1fr; row-gap: var(--space-3); }
     .page-header__lede { padding-bottom: 0; }
     .grid-section { padding: var(--space-10) var(--space-4) var(--space-16); }
   }
@@ -121,8 +114,5 @@ const sorted = entries.sort((a, b) => {
     .grid { grid-template-columns: 1fr; }
   }
 
-  /* Ray 2026-05-31: listing/topic page-header was a split grid (2-col, or a card-grid that trapped the H1). Single-column full-width, left-aligned, matches DTP's correct version. */
-  .page-header__inner { display: block; }
-  .page-header__lede { align-self: auto; padding-bottom: 0; }
 
 </style>

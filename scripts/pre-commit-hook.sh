@@ -10,6 +10,9 @@
 #   - lint-content-frontmatter.ps1 if any content markdown is staged
 #       (pillar: presence/validity on hub sites + description <=160)
 #   - lint-affiliate-tags.ps1      if any .md or .astro under sites/ is staged
+#   - lint-page-header.ps1         if any .astro under sites/ is staged
+#       (blocks display:grid / grid-template-columns on .page-header__inner —
+#        the header-split regression)
 # Exits non-zero on any failure, blocking the commit.
 
 set -e
@@ -28,6 +31,7 @@ fi
 NEEDS_IMAGE_LINT=0
 NEEDS_TAG_LINT=0
 NEEDS_FM_LINT=0
+NEEDS_PAGEHEADER_LINT=0
 
 while IFS= read -r f; do
   case "$f" in
@@ -38,6 +42,7 @@ while IFS= read -r f; do
       ;;
     sites/*/src/*.astro|sites/*/src/**/*.astro)
       NEEDS_TAG_LINT=1
+      NEEDS_PAGEHEADER_LINT=1
       ;;
     sites/*/src/data/site-config.json)
       NEEDS_TAG_LINT=1
@@ -67,6 +72,14 @@ if [ "$NEEDS_TAG_LINT" = "1" ]; then
   echo ""
   echo ">> Running affiliate-tag lint on staged content..."
   if ! pwsh -NoProfile -File scripts/lint-affiliate-tags.ps1; then
+    EXIT=1
+  fi
+fi
+
+if [ "$NEEDS_PAGEHEADER_LINT" = "1" ]; then
+  echo ""
+  echo ">> Running page-header layout lint (no grid on .page-header__inner)..."
+  if ! pwsh -NoProfile -File scripts/lint-page-header.ps1; then
     EXIT=1
   fi
 fi
