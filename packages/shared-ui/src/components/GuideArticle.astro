@@ -143,7 +143,16 @@ const isoUpdated = data.lastUpdated instanceof Date
 
 const cloakedHref = cloakedLink({ slug: entry.slug });
 const lede = data.deck || data.description;
+
+// FAQPage structured data — restores the SEO schema the bespoke pages emitted,
+// now in the shared component so it can't drift per-site again.
+const faqLd = data.faq && data.faq.length > 0
+  ? { "@context": "https://schema.org", "@type": "FAQPage",
+      mainEntity: data.faq.map((f: any) => ({ "@type": "Question", name: f.question,
+        acceptedAnswer: { "@type": "Answer", text: f.answer } })) }
+  : null;
 ---
+{faqLd && <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />}
 {isDraft && (
   <aside class="draft-banner" role="alert">
     <strong>DRAFT</strong> — this guide's "Bottom Line" section hasn't been filled in.
@@ -161,6 +170,7 @@ const lede = data.deck || data.description;
   {/* ── Editorial header (12) ── */}
   <GuideHeader
     kicker={kicker}
+    crumbHref={crumbHref}
     crumbLabel={crumbLabel}
     title={data.title}
     lede={lede}
