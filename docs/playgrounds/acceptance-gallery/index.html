@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rebuild Acceptance Gallery — component library</title>
+<style>
+  :root{
+    --bg:#0f1311; --panel:#171c1a; --panel2:#1e2522; --ink:#e8eae7; --muted:#9aa49f;
+    --line:#2a322e; --brass:#c9a227; --forest:#7fb38a; --good:#5fb877; --warn:#e0a24a;
+    --radius:14px; --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --serif:Georgia,"Times New Roman",serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;}
+  .wrap{max-width:1180px;margin:0 auto;padding:40px 28px 120px;}
+  header.top{border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:8px;}
+  h1{font-family:var(--serif);font-size:34px;margin:0 0 6px;letter-spacing:-.01em;}
+  .sub{color:var(--muted);font-size:15px;max-width:70ch;}
+  .stamp{display:inline-block;margin-top:14px;font-size:12.5px;color:var(--brass);
+    border:1px solid var(--brass);border-radius:999px;padding:4px 12px;letter-spacing:.04em;}
+  h2{font-family:var(--serif);font-size:24px;margin:46px 0 4px;}
+  h2 .skin{font-family:var(--sans);font-size:12px;color:var(--muted);font-weight:600;
+    text-transform:uppercase;letter-spacing:.1em;margin-left:10px;}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 24px;margin:18px 0;}
+  .panel h3{margin:0 0 10px;font-size:16px;}
+  .lead{color:var(--muted);font-size:14.5px;margin:0 0 14px;}
+  ul.tight{margin:8px 0 0;padding-left:20px;} ul.tight li{margin-bottom:7px;font-size:14.5px;}
+  .ok{color:var(--good);font-weight:700} .warnc{color:var(--warn);font-weight:700}
+  code{background:var(--panel2);padding:1.5px 6px;border-radius:5px;font-size:12.5px;color:#cfe0d6;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin-top:16px;}
+  figure{margin:0;background:var(--panel2);border:1px solid var(--line);border-radius:10px;overflow:hidden;
+    cursor:zoom-in;transition:border-color .15s,transform .15s;}
+  figure:hover{border-color:var(--brass);transform:translateY(-2px);}
+  figure img{display:block;width:100%;height:170px;object-fit:cover;object-position:top center;background:#0b0e0d;}
+  figure.missing{cursor:default;}
+  figure.missing .ph{height:170px;display:flex;align-items:center;justify-content:center;
+    color:var(--muted);font-size:12.5px;text-align:center;padding:0 14px;}
+  figcaption{padding:9px 12px;font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;gap:8px;}
+  figcaption b{color:var(--ink);font-weight:600;}
+  .vp{font-size:10.5px;color:var(--brass);border:1px solid var(--line);border-radius:5px;padding:1px 6px;align-self:center;}
+  .mobile figure img{object-fit:contain;background:#0b0e0d;height:230px;}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media (max-width:740px){.row2{grid-template-columns:1fr}}
+  .decide{background:linear-gradient(180deg,#1c241f,#161b18);border:1px solid var(--brass);}
+  .links a{color:var(--forest);}
+  /* lightbox */
+  #lb{position:fixed;inset:0;background:rgba(5,8,7,.94);display:none;align-items:center;justify-content:center;
+    z-index:50;padding:24px;cursor:zoom-out;}
+  #lb img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.6);}
+  #lb .cap{position:fixed;top:18px;left:0;right:0;text-align:center;color:var(--ink);font-size:14px;}
+  footer{margin-top:60px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:13px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <h1>Rebuild — Acceptance Gallery</h1>
+  <p class="sub">Every page on all 5 sites was nuked and rebuilt from the shared component library — no custom per-page layout left, just skin + content. This sheet is for your sign-off on the <b>new page compositions</b> you haven't seen assembled yet. Guide &amp; review pages use the components you already approved. <b>Nothing is merged to <code>main</code> / live yet</b> — it's all on branch <code>rebuild/component-library</code>, holding for your yes.</p>
+  <span class="stamp">Held for acceptance · main + live sites untouched</span>
+</header>
+
+<div class="panel decide">
+  <h3>What I need from you</h3>
+  <p class="lead">Scan each site below. If the new compositions look right, say <b>"merge it"</b> and the branch goes to <code>main</code> (auto-deploys all 5 in ~3 min). If anything's off, tell me which site + page and I fix on the branch first.</p>
+  <ul class="tight">
+    <li><b>New page compositions to accept</b> (you approved the components individually; these are them assembled into full pages): <b>homepages</b>, <b>buyers-guides index</b>, <b>reviews index</b>, <b>topic hubs</b> (fussybean/gog/SA), <b>about/legal</b>, <b>404</b>.</li>
+    <li><b>3 new shared components</b> built during the rebuild (your "build it and present it for acceptance" rule): <code>PageHeader</code> (the index/hub page banner), <code>ProsePage</code> (about + legal), <code>NotFound</code> (404).</li>
+    <li><b>Gold "Best Overall" + buy/skip Bottom Line</b> — your two latest decisions, visible on the guide-detail shots.</li>
+  </ul>
+</div>
+
+<div class="panel">
+  <h3>Merge-safety: the noindex gate survived the rebuild <span class="ok">✓ verified</span></h3>
+  <p class="lead">The biggest risk of nuking every page template is silently dropping the DRAFT/noindex gate, which would push unfinished content into Google on merge. I proved on the <b>actual built HTML</b> (not just source) that it still works on both page types:</p>
+  <ul class="tight">
+    <li>Review path — DRAFT piece (empty verdict) → <code>&lt;meta name="robots" content="noindex, nofollow"&gt;</code>; shipped piece → <code>index, follow</code>. <span class="ok">✓</span></li>
+    <li>Guide path — synthetic test (blanked a guide's verdict, rebuilt, grepped, restored clean) → DRAFT guide emits <code>noindex, nofollow</code>. <span class="ok">✓</span></li>
+    <li>All 5 sites build green; <code>pnpm lint:images</code> passes; FAQ JSON-LD + breadcrumbs restored (caught + fixed earlier this session).</li>
+  </ul>
+</div>
+
+<div class="panel">
+  <h3>2 things consciously left bespoke — your call <span class="warnc">⚠ decide</span></h3>
+  <ul class="tight">
+    <li><b><code>how-we-evaluate</code></b> (all 5 sites) — renders a config-driven weighted-rubric component (bars from <code>site-config.json</code>), not flowing prose. Converting to the shared <code>ProsePage</code> would lose the rubric. <b>Left as-is.</b> OK, or want it folded in?</li>
+    <li><b>DTP <code>quick-picks</code></b> — a numbered-row layout + pro-tip card. The shared <code>QuickPickGrid</code> is a 3-up card grid, so swapping would regress it. <b>Left DTP-only + bespoke.</b> OK, or rebuild it on the grid?</li>
+  </ul>
+  <p class="lead links">Also see the decisions sheet: <a href="../../../REBUILD-DECISIONS.html">REBUILD-DECISIONS.html</a> (if present) and the spec at <code>docs/brainstorms/2026-05-31-piece-library-spec.md</code>.</p>
+</div>
+
+<!-- Per-site sections injected by JS -->
+<div id="sites"></div>
+
+<footer>
+  Branch <code>rebuild/component-library</code> · pushed, not merged · screenshots are the rebuilt pages served from each site's <code>dist/</code> at 1440 (desktop) and 390 (mobile). Click any shot to enlarge.
+</footer>
+
+</div>
+
+<div id="lb"><div class="cap"></div><img alt=""/></div>
+
+<script>
+const SITES = [
+  {slug:"detailerpicks", name:"DetailerPicks", skin:"steel-blue / cream — car detailing", topic:false},
+  {slug:"mywildlifecam", name:"MyWildlifeCam", skin:"forest / brass — trail cameras (HERO)", topic:false},
+  {slug:"fussybean", name:"FussyBean", skin:"espresso / crema — coffee gear", topic:true},
+  {slug:"starteraquarium", name:"StarterAquarium", skin:"aqua / warm pop — beginner aquariums", topic:true},
+  {slug:"gameovergear", name:"GameOverGear", skin:"dark + neon, pixel font — retro gaming (inverted skin)", topic:true},
+];
+// type stem -> label  (desktop set)
+const DESK = [
+  ["home","Homepage"],
+  ["guides-index","Buyers-guides index"],
+  ["reviews-index","Reviews index"],
+  ["guide-detail","Guide detail (gold + buy/skip)"],
+  ["review-detail","Review detail"],
+  ["topic-hub","Topic hub"],
+  ["about","About (ProsePage)"],
+  ["404","404 (NotFound)"],
+];
+const MOB = [
+  ["home","Homepage"],
+  ["guide-detail","Guide detail"],
+];
+const root = document.getElementById("sites");
+function fig(site, stem, label, vp){
+  const src = `shots/${site}__${stem}__${vp}.png`;
+  const f = document.createElement("figure");
+  const img = new Image();
+  img.alt = `${site} ${label} ${vp}`;
+  img.src = src;
+  img.onerror = ()=>{ f.classList.add("missing"); f.innerHTML =
+    `<div class="ph">— not captured —<br>${label}</div>` +
+    `<figcaption><b>${label}</b><span class="vp">${vp}</span></figcaption>`; };
+  img.onclick = ()=>{ const lb=document.getElementById("lb");
+    lb.querySelector("img").src=src; lb.querySelector(".cap").textContent=`${site} · ${label} · ${vp}`;
+    lb.style.display="flex"; };
+  f.appendChild(img);
+  const cap = document.createElement("figcaption");
+  cap.innerHTML = `<b>${label}</b><span class="vp">${vp}px</span>`;
+  f.appendChild(cap);
+  return f;
+}
+SITES.forEach(s=>{
+  const h = document.createElement("h2");
+  h.innerHTML = `${s.name} <span class="skin">${s.skin}</span>`;
+  root.appendChild(h);
+  const g = document.createElement("div"); g.className="grid";
+  DESK.forEach(([stem,label])=>{
+    if(stem==="topic-hub" && !s.topic) return;
+    g.appendChild(fig(s.slug, stem, label, "1440"));
+  });
+  root.appendChild(g);
+  const mh = document.createElement("div"); mh.style.cssText="color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin:18px 0 0;";
+  mh.textContent="Mobile · 390px";
+  root.appendChild(mh);
+  const mg = document.createElement("div"); mg.className="grid mobile";
+  MOB.forEach(([stem,label])=> mg.appendChild(fig(s.slug, stem, label, "390")));
+  root.appendChild(mg);
+});
+document.getElementById("lb").onclick = function(){ this.style.display="none"; };
+</script>
+</body>
+</html>
