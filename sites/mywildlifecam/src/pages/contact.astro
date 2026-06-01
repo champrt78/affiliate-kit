@@ -1,50 +1,20 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import ProsePage from "@affkit/shared-ui/ProsePage.astro";
 ---
 <MainLayout
   title="Contact"
   description="Get in touch with MyWildlifeCam."
 >
-  <article>
-    <h1>Contact</h1>
-
+  <ProsePage title="Contact">
     <p>
       Have a correction, a product suggestion, or feedback on a review?
       Send a note to <a href="mailto:hello@mywildlifecam.com">hello@mywildlifecam.com</a>.
     </p>
 
     <p>
-      We read everything but can't always reply. Genuine corrections
+      We read everything but cannot always reply. Genuine corrections
       get fixed quickly.
     </p>
-  </article>
+  </ProsePage>
 </MainLayout>
-
-<style>
-  article {
-    max-width: var(--content-max);
-    margin: 0 auto;
-    padding: var(--space-16) var(--space-6) var(--space-20);
-    font-family: var(--font-sans);
-    font-size: var(--text-base);
-    line-height: var(--leading-normal);
-    color: var(--color-paper-ink);
-  }
-  article h1 {
-    font-family: var(--font-serif);
-    font-size: clamp(2rem, 4vw, 3rem);
-    color: var(--color-forest);
-    margin: 0 0 var(--space-6);
-    letter-spacing: var(--tracking-display);
-  }
-  article p { margin: 0 0 var(--space-5); }
-  article p:first-of-type {
-    font-family: var(--font-serif);
-    font-size: var(--text-lg);
-    line-height: var(--leading-snug);
-    color: var(--color-forest);
-  }
-  @media (max-width: 760px) {
-    article { padding: var(--space-12) var(--space-4) var(--space-16); }
-  }
-</style>

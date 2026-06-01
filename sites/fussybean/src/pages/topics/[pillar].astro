@@ -1,14 +1,23 @@
 ---
 import { getCollection } from "astro:content";
 import MainLayout from "../../layouts/MainLayout.astro";
+import PageHeader from "@affkit/shared-ui/PageHeader.astro";
 import ReviewCard from "@affkit/shared-ui/ReviewCard.astro";
 import BuyersGuideCard from "@affkit/shared-ui/BuyersGuideCard.astro";
 import siteConfig from "../../data/site-config.json";
 
-/* Pillar hubs — one page per navigation.pillars[] entry (commercial +
-   informational). Lists the spokes whose `pillar` FK matches, grouped by
-   collection. Empty pillars render a friendly placeholder so nav never 404s.
-   Banks plan R7/R8 (pillar IA + hub route), entirely inside sites/fussybean. */
+/* ============================================================================
+   CANONICAL TOPIC HUB — rebuilt from the shared component library.
+   One page per navigation.pillars[] entry. Lists the spokes whose `pillar` FK
+   matches, grouped by collection (guides + reviews), each in a locked-rule
+   centered card grid. Empty pillars render a friendly placeholder so nav never
+   404s. Header is the shared <PageHeader>.
+
+   This file is byte-identical across the 3 sites that have topics (fussybean /
+   gameovergear / starteraquarium) — it reads each site's site-config pillars +
+   content collections, so identical code auto-personalizes. (Not in the
+   site-template: the template ships no site-config.json to drive getStaticPaths.)
+   ========================================================================== */
 
 export async function getStaticPaths() {
   return siteConfig.navigation.pillars.map((pillar) => ({
@@ -41,17 +50,8 @@ const guides = allGuides.filter((e) => (e.data as any).pillar === pillar.slug).s
 const reviews = allReviews.filter((e) => (e.data as any).pillar === pillar.slug).sort(byDate);
 const isEmpty = guides.length === 0 && reviews.length === 0;
 ---
-<MainLayout
-  title={pillar.label}
-  description={pillar.blurb}
->
-  <header class="page-header">
-    <div class="page-header__inner">
-      <span class="page-header__kicker">{pillar.hubKicker}</span>
-      <h1 class="page-header__title">{pillar.label}</h1>
-      <p class="page-header__lede">{pillar.blurb}</p>
-    </div>
-  </header>
+<MainLayout title={pillar.label} description={pillar.blurb}>
+  <PageHeader kicker={pillar.hubKicker} title={pillar.label} lede={pillar.blurb} />
 
   <section class="grid-section">
     <div class="grid-section__inner">
@@ -65,7 +65,7 @@ const isEmpty = guides.length === 0 && reviews.length === 0;
           {guides.length > 0 && (
             <div class="block">
               <h2 class="block__title">Buying guides</h2>
-              <div class="grid grid--guides">
+              <div class="grid">
                 {guides.map((entry) => <BuyersGuideCard entry={entry} />)}
               </div>
             </div>
@@ -73,7 +73,7 @@ const isEmpty = guides.length === 0 && reviews.length === 0;
           {reviews.length > 0 && (
             <div class="block">
               <h2 class="block__title">Reviews</h2>
-              <div class="grid grid--reviews">
+              <div class="grid">
                 {reviews.map((entry) => <ReviewCard entry={entry} />)}
               </div>
             </div>
@@ -85,53 +85,6 @@ const isEmpty = guides.length === 0 && reviews.length === 0;
 </MainLayout>
 
 <style>
-  .page-header {
-    background: var(--color-bg);
-    padding: var(--space-10) var(--space-6) var(--space-6);
-    border-bottom: 1px solid var(--color-border);
-  }
-  .page-header__inner {
-    max-width: var(--container-max);
-    margin: 0 auto;
-  }
-  .page-header__kicker {
-    display: inline-block;
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: var(--weight-semibold);
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--color-brass);
-    margin-bottom: var(--space-2);
-  }
-  .page-header__kicker::before {
-    content: "";
-    display: inline-block;
-    width: 24px; height: 1px;
-    background: var(--color-brass);
-    vertical-align: middle;
-    margin-right: 10px;
-    transform: translateY(-2px);
-  }
-  .page-header__title {
-    font-family: var(--font-serif);
-    font-size: clamp(1.625rem, 2.6vw, 2.125rem);
-    line-height: 1.1;
-    color: var(--color-forest);
-    letter-spacing: var(--tracking-display);
-    margin: 0;
-    font-weight: var(--weight-semibold);
-  }
-  .page-header__lede {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
-    line-height: 1.5;
-    color: var(--color-muted);
-    margin: 0;
-    max-width: 56ch;
-  }
-
   .grid-section {
     padding: var(--space-12) var(--space-6) var(--space-20);
     background: var(--color-bg);
@@ -145,9 +98,13 @@ const isEmpty = guides.length === 0 && reviews.length === 0;
     color: var(--color-forest);
     margin: 0 0 var(--space-6);
   }
-  .grid { display: grid; gap: var(--space-6); justify-content: center; }
-  .grid--reviews { grid-template-columns: repeat(auto-fit, minmax(240px, 300px)); }
-  .grid--guides { grid-template-columns: repeat(auto-fit, minmax(240px, 300px)); }
+  /* Locked grid rule: capped + centered, no orphan-row stretch. */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
+    justify-content: center;
+    gap: var(--space-6);
+  }
   .empty {
     color: var(--color-muted);
     font-family: var(--font-serif);
@@ -156,14 +113,9 @@ const isEmpty = guides.length === 0 && reviews.length === 0;
   }
 
   @media (max-width: 760px) {
-    .page-header { padding: var(--space-10) var(--space-4) var(--space-5); }
-    .page-header__lede { padding-bottom: 0; }
     .grid-section { padding: var(--space-10) var(--space-4) var(--space-16); }
-    .grid--reviews, .grid--guides { grid-template-columns: 1fr; }
   }
-
-  .grid--guides, .grid--reviews { grid-template-columns: repeat(auto-fit, minmax(240px, 300px)); justify-content: center; }
-
-
-
+  @media (max-width: 720px) {
+    .grid { grid-template-columns: 1fr; }
+  }
 </style>

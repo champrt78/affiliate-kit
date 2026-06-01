@@ -1,19 +1,22 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import ProsePage from "@affkit/shared-ui/ProsePage.astro";
 ---
 <MainLayout
   title="About"
   description="About MyWildlifeCam. Who we are and how we research."
   bgTheme="pine"
 >
-  <article>
-    <h1>About MyWildlifeCam</h1>
-
+  <ProsePage
+    kicker="About"
+    title="About MyWildlifeCam"
+    lede="MyWildlifeCam is a small, independent site covering trail cameras and wildlife cams. We rank the camera by spec and use case, not by who we are."
+  >
     <p>
       MyWildlifeCam is a small, independent site covering trail cameras and
       wildlife cams. We research products thoroughly so you don't have to.
       Spec sheets, owner reviews, third-party teardowns, and use-case fit
-      analysis. That's the research stack we run for every recommendation.
+      analysis. That is the research stack we run for every recommendation.
     </p>
 
     <h2>How we research</h2>
@@ -50,50 +53,10 @@ import MainLayout from "../layouts/MainLayout.astro";
     <h2>How we make money</h2>
     <p>
       We earn affiliate commissions when you buy through our links. It
-      doesn't change the price you pay. We don't accept payment in exchange
-      for positive coverage and we'll flag any product where we have a
+      does not change the price you pay. We do not accept payment in exchange
+      for positive coverage and we will flag any product where we have a
       conflict of interest. Full details in our
       <a href="/disclosure/">affiliate disclosure</a>.
     </p>
-  </article>
+  </ProsePage>
 </MainLayout>
-
-<style>
-  article {
-    max-width: var(--content-max);
-    margin: 0 auto;
-    padding: var(--space-16) var(--space-6) var(--space-20);
-    font-family: var(--font-sans);
-    font-size: var(--text-base);
-    line-height: var(--leading-normal);
-    color: var(--color-paper-ink);
-  }
-  article h1 {
-    font-family: var(--font-serif);
-    font-size: clamp(2rem, 4vw, 3rem);
-    color: var(--color-forest);
-    margin: 0 0 var(--space-8);
-    letter-spacing: var(--tracking-display);
-  }
-  article h2 {
-    font-family: var(--font-serif);
-    font-size: var(--text-2xl);
-    color: var(--color-forest);
-    margin: var(--space-10) 0 var(--space-4);
-  }
-  article p {
-    margin: 0 0 var(--space-5);
-  }
-  article p:first-of-type {
-    font-family: var(--font-serif);
-    font-size: var(--text-lg);
-    line-height: var(--leading-snug);
-    color: var(--color-forest);
-  }
-  article ul { padding-left: var(--space-6); margin: 0 0 var(--space-5); }
-  article li { margin-bottom: var(--space-3); }
-  article strong { color: var(--color-forest); }
-  @media (max-width: 760px) {
-    article { padding: var(--space-12) var(--space-4) var(--space-16); }
-  }
-</style>

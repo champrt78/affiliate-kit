@@ -1,7 +1,30 @@
 ---
 import { getCollection } from "astro:content";
 import MainLayout from "../../layouts/MainLayout.astro";
+import PageHeader from "@affkit/shared-ui/PageHeader.astro";
 import BuyersGuideCard from "@affkit/shared-ui/BuyersGuideCard.astro";
+
+/* ============================================================================
+   CANONICAL BUYING-GUIDES INDEX — rebuilt from the shared component library.
+   Byte-identical across template + all 5 sites EXCEPT the PAGE block below
+   (per-site copy, the homepage rebuild model). Header is the shared <PageHeader>;
+   the grid follows the locked rule (auto-fit, minmax 240..300, centered) so a
+   partial last row never stretches to fill. Reads the site's buyers-guides
+   collection, so the same code auto-personalizes.
+   ========================================================================== */
+
+/* ─── PER-SITE CONTENT (the only block that differs between sites) ─── */
+const PAGE = {
+  seoTitle: "Buying guides",
+  seoDescription:
+    "Comparative roundups for trail cameras and wildlife cameras, by use case: which one to buy for which scenario.",
+  kicker: "Buying guides",
+  title: "Comparative roundups, by use case.",
+  lede:
+    "The field lines up differently depending on the job. These guides compare a handful of products for one well-defined use case, then name the pick we think most readers should default to.",
+  empty: "No buying guides yet. New ones land every quarter.",
+};
+/* ─────────────────────────────────────────────────────────────────── */
 
 const entries = await getCollection("buyers-guides");
 const sorted = entries.sort((a, b) => {
@@ -10,26 +33,13 @@ const sorted = entries.sort((a, b) => {
   return bTime - aTime;
 });
 ---
-<MainLayout
-  title="Buying guides"
-  description="Comparative roundups of trail cameras for specific use cases: backyard, property, cellular, image quality, budget."
->
-  <header class="page-header">
-    <div class="page-header__inner">
-      <span class="page-header__kicker">Buying guides</span>
-      <h1 class="page-header__title">Comparative roundups, by use case.</h1>
-      <p class="page-header__lede">
-        Trail cameras line up differently depending on the job. These guides
-        compare a handful of cameras for one well-defined use case, then name
-        the pick we think most readers should default to.
-      </p>
-    </div>
-  </header>
+<MainLayout title={PAGE.seoTitle} description={PAGE.seoDescription}>
+  <PageHeader kicker={PAGE.kicker} title={PAGE.title} lede={PAGE.lede} />
 
   <section class="grid-section">
     <div class="grid-section__inner">
       {sorted.length === 0 ? (
-        <p class="empty">No buying guides yet. New ones land every quarter.</p>
+        <p class="empty">{PAGE.empty}</p>
       ) : (
         <div class="grid">
           {sorted.map((entry) => <BuyersGuideCard entry={entry} />)}
@@ -40,67 +50,12 @@ const sorted = entries.sort((a, b) => {
 </MainLayout>
 
 <style>
-  /* Compact section-header row — title left, kicker + lede stack, no big brown panel */
-  .page-header {
-    background: var(--color-bg);
-    padding: var(--space-10) var(--space-6) var(--space-6);
-    border-bottom: 1px solid var(--color-border);
-  }
-  .page-header__inner {
-    max-width: var(--container-max);
-    margin: 0 auto;
-  }
-  .page-header__kicker {
-    display: inline-block;
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: var(--weight-semibold);
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--color-brass);
-    margin-bottom: var(--space-2);
-  }
-  .page-header__kicker::before {
-    content: "";
-    display: inline-block;
-    width: 24px;
-    height: 1px;
-    background: var(--color-brass);
-    vertical-align: middle;
-    margin-right: 10px;
-    transform: translateY(-2px);
-  }
-  .page-header__title {
-    font-family: var(--font-serif);
-    font-size: clamp(1.625rem, 2.6vw, 2.125rem);
-    line-height: 1.1;
-    color: var(--color-forest);
-    letter-spacing: var(--tracking-display);
-    margin: 0;
-    font-weight: var(--weight-semibold);
-    font-variation-settings: "opsz" 60;
-    text-transform: capitalize;
-  }
-  .page-header__lede {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
-    line-height: 1.5;
-    color: var(--color-muted);
-    margin: 0;
-    max-width: 56ch;
-    font-variation-settings: "opsz" 30;
-  }
-
   .grid-section {
     padding: var(--space-12) var(--space-6) var(--space-20);
     background: var(--color-bg);
   }
-  .grid-section__inner {
-    max-width: var(--container-max);
-    margin: 0 auto;
-  }
-  /* Use the full container — fill rows of 2 (guide cards are denser than review cards) */
+  .grid-section__inner { max-width: var(--container-max); margin: 0 auto; }
+  /* Locked grid rule: capped + centered, no orphan-row stretch. */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
@@ -114,11 +69,9 @@ const sorted = entries.sort((a, b) => {
   }
 
   @media (max-width: 760px) {
-    .page-header { padding: var(--space-10) var(--space-4) var(--space-5); }
-    .page-header__lede { padding-bottom: 0; }
     .grid-section { padding: var(--space-10) var(--space-4) var(--space-16); }
+  }
+  @media (max-width: 720px) {
     .grid { grid-template-columns: 1fr; }
   }
-
-
 </style>

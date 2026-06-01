@@ -1,20 +1,16 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import ProsePage from "@affkit/shared-ui/ProsePage.astro";
 ---
 <MainLayout
   title="About GameOverGear"
   description="How GameOverGear researches retro gaming gear: published specs, aggregated verified-buyer reviews, independent testing, and use-case fit."
 >
-  <article class="doc">
-    <header class="doc-header">
-      <span class="doc-kicker">About</span>
-      <h1>About GameOverGear</h1>
-      <p class="doc-lede">
-        GameOverGear is an independent site that compares retro gaming gear by
-        spec and use case, so the setup you rebuild is the one that feels right.
-      </p>
-    </header>
-
+  <ProsePage
+    kicker="About"
+    title="About GameOverGear"
+    lede="GameOverGear is an independent site that compares retro gaming gear by spec and use case, so the setup you rebuild is the one that feels right."
+  >
     <h2>What we do</h2>
     <p>
       We cover the hardware: controllers, arcade sticks, emulation handhelds,
@@ -67,54 +63,5 @@ import MainLayout from "../layouts/MainLayout.astro";
       Specs change and listings drift. If something is out of date or wrong, tell
       us on the <a href="/contact/">contact</a> page and we will fix it.
     </p>
-  </article>
+  </ProsePage>
 </MainLayout>
-
-<style>
-  .doc { max-width: var(--content-wide); margin: 0 auto; padding: var(--space-12) var(--space-6) var(--space-20); }
-  .doc-header { margin-bottom: var(--space-10); }
-  .doc-kicker {
-    display: inline-block;
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: var(--weight-semibold);
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--color-brass);
-    margin-bottom: var(--space-3);
-  }
-  .doc h1 {
-    font-family: var(--font-serif);
-    color: var(--color-paper-ink);
-    margin: 0 0 var(--space-4);
-    line-height: 1.45;
-  }
-  .doc-lede {
-    font-family: var(--font-sans);
-    font-size: var(--text-lg);
-    color: var(--color-muted);
-    margin: 0;
-    max-width: 56ch;
-    line-height: 1.6;
-  }
-  .doc h2 {
-    font-family: var(--font-serif);
-    color: var(--color-brass);
-    margin: var(--space-10) 0 var(--space-3);
-    line-height: 1.55;
-  }
-  .doc p { font-family: var(--font-sans); line-height: 1.7; margin: 0 0 var(--space-4); color: var(--color-paper-ink); }
-  .doc ul { list-style: none; padding: 0; margin: var(--space-5) 0; }
-  .doc li {
-    font-family: var(--font-sans);
-    padding: 16px 22px;
-    margin: 0 0 14px;
-    background: var(--color-cream);
-    border-left: 3px solid var(--color-brass);
-    border-radius: 0 6px 6px 0;
-    line-height: 1.6;
-    color: var(--color-paper-ink);
-  }
-  .doc li strong { color: var(--color-brass); }
-  .doc a { color: var(--color-brass); }
-</style>

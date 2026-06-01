@@ -1,13 +1,12 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import ProsePage from "@affkit/shared-ui/ProsePage.astro";
 ---
 <MainLayout
   title="Affiliate disclosure"
   description="Affiliate disclosure for GameOverGear."
 >
-  <article class="doc">
-    <h1>Affiliate disclosure</h1>
-
+  <ProsePage title="Affiliate disclosure">
     <p><strong>Last updated:</strong> {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</p>
 
     <p>
@@ -47,14 +46,5 @@ import MainLayout from "../layouts/MainLayout.astro";
       from affiliated retailers when readers click affiliate links and
       make purchases.
     </p>
-  </article>
+  </ProsePage>
 </MainLayout>
-
-<style>
-  .doc { max-width: var(--content-max); margin: 0 auto; padding: var(--space-12) var(--space-6) var(--space-20); }
-  .doc h1 { font-family: var(--font-serif); color: var(--color-paper-ink); margin-bottom: var(--space-6); line-height: 1.45; }
-  .doc h2 { font-family: var(--font-serif); color: var(--color-brass); margin-top: var(--space-8); line-height: 1.55; }
-  .doc p { font-family: var(--font-sans); line-height: 1.7; margin: 0 0 var(--space-4); color: var(--color-paper-ink); }
-  .doc a { color: var(--color-brass); }
-  .doc code { font-family: var(--font-mono, monospace); background: var(--color-cream); color: var(--color-brass); padding: 0 var(--space-1); border-radius: var(--radius-sm); }
-</style>

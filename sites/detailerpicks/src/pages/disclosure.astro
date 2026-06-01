@@ -1,14 +1,13 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import ProsePage from "@affkit/shared-ui/ProsePage.astro";
 ---
 <MainLayout
   title="Affiliate disclosure"
   description="Affiliate disclosure for DetailerPicks."
   bgTheme="solid"
 >
-  <article>
-    <h1>Affiliate disclosure</h1>
-
+  <ProsePage title="Affiliate disclosure">
     <p><strong>Last updated:</strong> {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</p>
 
     <p>
@@ -48,12 +47,5 @@ import MainLayout from "../layouts/MainLayout.astro";
       from affiliated retailers when readers click affiliate links and
       make purchases.
     </p>
-  </article>
+  </ProsePage>
 </MainLayout>
-
-<style>
-  article { max-width: var(--content-max); margin: 0 auto; }
-  h1 { font-size: var(--text-3xl); margin-bottom: var(--space-6); }
-  h2 { margin-top: var(--space-8); }
-  code { background: var(--color-surface); padding: 0 var(--space-1); border-radius: var(--radius-sm); }
-</style>

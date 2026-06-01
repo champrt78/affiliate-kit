@@ -1,14 +1,13 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import ProsePage from "@affkit/shared-ui/ProsePage.astro";
 ---
 <MainLayout
   title="Affiliate disclosure"
   description="Affiliate disclosure for MyWildlifeCam."
   bgTheme="solid"
 >
-  <article>
-    <h1>Affiliate disclosure</h1>
-
+  <ProsePage title="Affiliate disclosure">
     <p><strong>Last updated:</strong> {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</p>
 
     <p>
@@ -29,7 +28,7 @@ import MainLayout from "../layouts/MainLayout.astro";
     <h2>Other affiliate relationships</h2>
     <p>
       We may also participate in affiliate programs with other retailers
-      and manufacturers relevant to trail cameras / wildlife cams. These relationships
+      and manufacturers relevant to trail cameras and wildlife cameras. These relationships
       do not influence our editorial recommendations.
     </p>
 
@@ -48,42 +47,5 @@ import MainLayout from "../layouts/MainLayout.astro";
       from affiliated retailers when readers click affiliate links and
       make purchases.
     </p>
-  </article>
+  </ProsePage>
 </MainLayout>
-
-<style>
-  article {
-    max-width: var(--content-max);
-    margin: 0 auto;
-    padding: var(--space-16) var(--space-6) var(--space-20);
-    font-family: var(--font-sans);
-    font-size: var(--text-base);
-    line-height: var(--leading-normal);
-    color: var(--color-paper-ink);
-  }
-  article h1 {
-    font-family: var(--font-serif);
-    font-size: clamp(2rem, 4vw, 3rem);
-    color: var(--color-forest);
-    margin: 0 0 var(--space-6);
-    letter-spacing: var(--tracking-display);
-  }
-  article h2 {
-    font-family: var(--font-serif);
-    font-size: var(--text-2xl);
-    color: var(--color-forest);
-    margin: var(--space-10) 0 var(--space-4);
-  }
-  article p { margin: 0 0 var(--space-5); }
-  article strong { color: var(--color-forest); }
-  code {
-    background: var(--color-surface);
-    color: var(--color-forest);
-    padding: 0.1em 0.4em;
-    border-radius: var(--radius-sm);
-    font-size: 0.9em;
-  }
-  @media (max-width: 760px) {
-    article { padding: var(--space-12) var(--space-4) var(--space-16); }
-  }
-</style>
