@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Comparison pages — decisions</title>
+<style>
+  :root{--bg:#0f1311;--panel:#171c1a;--panel2:#1e2522;--ink:#e8eae7;--muted:#9aa49f;--line:#2a322e;--brass:#c9a227;--good:#5fb877;--bad:#e0625f;--warn:#e0a24a;--radius:14px;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;--serif:Georgia,serif;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px 140px;}
+  header.top{padding:32px 0 8px;}
+  h1{font-family:var(--serif);font-size:30px;margin:0 0 6px;}
+  .sub{color:var(--muted);font-size:14.5px;max-width:78ch;}
+  .bar{position:sticky;top:0;z-index:20;background:rgba(15,19,17,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 0;margin-bottom:18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .tally{display:flex;gap:14px;font-size:14px;}.tally b{font-size:17px}
+  .t-go b{color:var(--good)} .t-no b{color:var(--bad)} .t-un b{color:var(--muted)}
+  .bar button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);border-radius:8px;padding:7px 14px;cursor:pointer;}
+  .bar button:hover{border-color:var(--brass)} .bar .spacer{flex:1}
+  h2{font-family:var(--serif);font-size:22px;margin:38px 0 6px;}
+  h2 .skin{font-family:var(--sans);font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-left:8px;}
+  .note{background:var(--panel);border:1px solid var(--brass);border-radius:var(--radius);padding:15px 18px;margin:14px 0;font-size:14px;color:var(--muted);}
+  .note b{color:var(--ink)} .note a{color:var(--good);}
+  .bylines{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin:14px 0;}
+  .bylines label{display:block;font-size:13px;color:var(--muted);margin:10px 0 4px;}
+  .bylines input{width:100%;font:inherit;font-size:14px;background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:9px;}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;margin:12px 0;}
+  .card.go{border-color:var(--good)} .card.no{border-color:var(--bad)} .card.rec{box-shadow:0 0 0 1px var(--brass) inset;}
+  .card__head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .card__title{font-size:16px;font-weight:700;}
+  .card__slug{font-size:12px;color:var(--muted);font-family:ui-monospace,monospace;}
+  .pill{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:2px 8px;border-radius:999px;}
+  .pill.hi{background:rgba(95,184,119,.18);color:var(--good);}
+  .pill.med{background:rgba(224,162,74,.18);color:var(--warn);}
+  .pill.rec{background:var(--brass);color:#2a2008;}
+  .why{font-size:13px;color:var(--muted);margin:7px 0 0;}
+  .seg{display:flex;gap:10px;margin-top:12px;align-items:center;}
+  .seg button{font:inherit;font-size:13px;font-weight:700;border:1px solid var(--line);background:var(--panel2);color:var(--ink);border-radius:8px;padding:8px 20px;cursor:pointer;}
+  .seg button.on-go{background:var(--good);color:#06270f;border-color:var(--good);}
+  .seg button.on-no{background:var(--bad);color:#2a0707;border-color:var(--bad);}
+  .seg input{flex:1;font:inherit;font-size:12.5px;background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px;}
+  code{background:var(--panel2);padding:1px 6px;border-radius:5px;font-size:12px;color:#cfe0d6;}
+  #ex{position:fixed;inset:0;background:rgba(5,8,7,.9);display:none;align-items:center;justify-content:center;z-index:60;padding:24px;}
+  #ex .box{background:var(--panel);border:1px solid var(--brass);border-radius:12px;padding:18px;max-width:680px;width:100%;}
+  #ex textarea{min-height:300px;width:100%;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px;}
+  #ex .x{float:right;cursor:pointer;color:var(--muted);font-size:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <h1>Comparison pages — what to build</h1>
+  <p class="sub">The comparison content type is live (table + verdict + per-product cards). Pick which head-to-head "X vs Y" pages to build, ranked by buyer search demand from the research. <b>Brass-outlined = the 3 proof picks I recommend first.</b> Set your author bylines up top. Then <b>Copy decisions</b> and paste back — I scaffold the Go's as drafts and you write each winner-call verdict (your gate).</p>
+</header>
+
+<div class="bar">
+  <div class="tally"><span class="t-go">Build <b id="nGo">0</b></span><span class="t-no">No <b id="nNo">0</b></span><span class="t-un">Undecided <b id="nUn">0</b></span></div>
+  <span class="spacer"></span>
+  <button onclick="copyDecisions(event)">Copy decisions</button>
+  <button onclick="showExport()">View / export</button>
+</div>
+
+<div class="note">
+  <b>Proof piece is already live as a draft (noindex):</b> MWC "Spypoint Flex vs Tactacam Reveal X" — the table, per-product "Buy X if" cards, and gate all work. It needs your <b>winner-call verdict</b> + a research pass for real product images/links before it publishes. Preview locally: <code>pnpm --filter mywildlifecam preview</code> → <code>/comparisons/spypoint-flex-vs-tactacam-reveal/</code>.
+</div>
+
+<h2>Author bylines <span class="skin">EEAT — credible author per site</span></h2>
+<div class="bylines">
+  <p style="font-size:13px;color:var(--muted);margin:0;">Google rewards a credible author. Defaults are per-site personas (no fake testing claims). Edit to your real name/initials or a persona you like — these appear on every guide/review/comparison.</p>
+  <label>MyWildlifeCam byline</label><input id="by_mwc" value="The MyWildlifeCam field desk" />
+  <label>DetailerPicks byline</label><input id="by_dtp" value="The DetailerPicks editorial team" />
+</div>
+
+<div id="mwc"></div>
+<div id="dtp"></div>
+</div>
+
+<div id="ex"><div class="box"><span class="x" onclick="document.getElementById('ex').style.display='none'">✕</span>
+  <h3 style="margin:2px 0 10px;font-family:var(--serif)">Decisions — paste back to Claude</h3>
+  <textarea id="exTxt" readonly></textarea></div></div>
+
+<script>
+const LSK="cmp-decisions-v1";
+const MWC=[
+  {id:"mwc-spypoint-flex-vs-tactacam-reveal",t:"Spypoint Flex vs Tactacam Reveal X",slug:"spypoint-flex-vs-tactacam-reveal",d:"hi",rec:true,why:"The clearest two-horse race in cellular cams. Dual-SIM + trigger speed vs battery + daytime image. Proof piece already built."},
+  {id:"mwc-spypoint-flex-vs-moultrie-edge",t:"Spypoint Flex vs Moultrie Edge",slug:"spypoint-flex-vs-moultrie-edge",d:"hi",why:"Exact-match YouTube + articles. Dual-SIM vs Moultrie's AI-tagging/GPS/battery."},
+  {id:"mwc-spypoint-flex-vs-bushnell-cellucore",t:"Spypoint Flex vs Bushnell CelluCORE",slug:"spypoint-flex-vs-bushnell-cellucore",d:"hi",why:"B&H runs a compare tool for exactly these. CelluCORE is the ~$100 best-buy vs Flex dual-SIM."},
+  {id:"mwc-cellular-vs-sd-card",t:"Cellular vs SD-card trail cameras",slug:"cellular-vs-sd-card-trail-cameras",d:"hi",why:"Top-of-funnel question every first-timer asks. Category vs category — high traffic, links into the product matchups."},
+  {id:"mwc-browning-vs-stealth",t:"Browning Strike Force vs Stealth Cam",slug:"browning-strike-force-vs-stealth-cam",d:"med",why:"Mid-range SD brand rivalry, huge Walmart/Amazon overlap audience. Fewer editorial head-to-heads = gap."},
+  {id:"mwc-gardepro-vs-browning",t:"GardePro vs Browning Strike Force",slug:"gardepro-vs-browning-strike-force",d:"med",why:"Budget-vs-mid value question ('do I need the $150 one?'). Amazon budget shoppers are exactly this audience."},
+  {id:"mwc-spypoint-vs-tactacam-plans",t:"Spypoint vs Tactacam cellular PLAN cost",slug:"spypoint-vs-tactacam-cellular-plan",d:"med",why:"Plan cost is the recurring sore point. Spypoint free tier is a real hook most editorial underplays."},
+  {id:"mwc-browning-defender-vs-bushnell-core",t:"Browning Defender Pro Scout vs Bushnell Core DS-4K",slug:"browning-defender-pro-scout-vs-bushnell-core-ds",d:"med",why:"Two premium no-glow SD 'best overall' picks, head-to-head."},
+];
+const DTP=[
+  {id:"dtp-adams-wheel-vs-diablo",t:"Adam's Wheel Cleaner vs Chemical Guys Diablo",slug:"adams-wheel-cleaner-vs-chemical-guys-diablo",d:"hi",rec:true,why:"Exact-match YouTube head-to-head. Color-change iron-detection vs degreaser. High-repurchase = recurring value. Adam's already in our orbit."},
+  {id:"dtp-ironx-vs-adams-iron",t:"CarPro IronX vs Adam's Iron Remover",slug:"carpro-ironx-vs-adams-iron-remover",d:"hi",rec:true,why:"Budget-vs-pro decision with a clear winner (Adam's: comparable, cheaper). Searcher already sold on the category — just picking. Self-qualifying audience."},
+  {id:"dtp-adams-vs-cg-brand",t:"Adam's Polishes vs Chemical Guys (brand-level)",slug:"adams-polishes-vs-chemical-guys",d:"hi",why:"The dominant brand rivalry; tons of articles/forums. High traffic, lower per-click intent — best as a hub linking to the specific-product pages."},
+  {id:"dtp-cg-vs-meguiars-wash",t:"Chemical Guys vs Meguiar's (car wash soap)",slug:"chemical-guys-vs-meguiars-car-wash",d:"hi",why:"Mr. Pink vs Gold Class — widest mainstream recognition, reaches the biggest buyer audience."},
+  {id:"dtp-mtm-vs-torq-foam",t:"MTM PF22 vs Chemical Guys TORQ (foam cannon)",slug:"mtm-hydro-foam-cannon-vs-chemical-guys-torq",d:"hi",why:"'Should I upgrade?' hobbyist-vs-enthusiast. NOTE: verify MTM is on Amazon first-party, else frame as MTM vs Adam's foam cannon."},
+  {id:"dtp-adams-ceramic-vs-hydroslick",t:"Adam's Ceramic Spray vs Chemical Guys HydroSlick",slug:"adams-ceramic-spray-vs-chemical-guys-hydroslick",d:"med",why:"High-consideration ceramic purchase: durability vs ease of application."},
+  {id:"dtp-ragco-vs-cg-towel",t:"Rag Company vs Chemical Guys (drying towel)",slug:"rag-company-vs-chemical-guys-microfiber-towel",d:"med",why:"Amazon-default (CG) vs forum-favorite (Rag Co). 'Is it worth spending more?' step-up."},
+  {id:"dtp-sonax-vs-v7",t:"Sonax Brilliant Shine vs Chemical Guys Hybrid V7",slug:"sonax-brilliant-shine-vs-chemical-guys-hybrid-v7",d:"med",why:"Quick-detailer hydrophobic longevity vs familiarity. Niche but high-intent."},
+];
+const state=JSON.parse(localStorage.getItem(LSK)||"{}");
+// pre-mark recommended as Build
+[...MWC,...DTP].forEach(m=>{ if(m.rec && state[m.id]===undefined && !state["_s_"+m.id]){ state[m.id]={v:"go",note:""}; state["_s_"+m.id]=true; }});
+function save(){ localStorage.setItem(LSK,JSON.stringify(state)); render(); }
+function row(m){
+  const cur=state[m.id]||{v:"",note:""};
+  const c=document.createElement("div"); c.className="card"+(cur.v==="go"?" go":cur.v==="no"?" no":"")+(m.rec?" rec":"");
+  let pills=`<span class="pill ${m.d}">${m.d==="hi"?"High demand":"Med demand"}</span>`;
+  if(m.rec) pills+=` <span class="pill rec">Proof pick</span>`;
+  c.innerHTML=`<div class="card__head"><span class="card__title">${m.t}</span> ${pills}</div>`
+    +`<div class="card__slug">/comparisons/${m.slug}/</div>`
+    +`<div class="why">${m.why}</div>`;
+  const seg=document.createElement("div"); seg.className="seg";
+  const g=document.createElement("button"); g.textContent="Build"; if(cur.v==="go")g.className="on-go";
+  const n=document.createElement("button"); n.textContent="Not now"; if(cur.v==="no")n.className="on-no";
+  g.onclick=()=>{state[m.id]={v:cur.v==="go"?"":"go",note:(state[m.id]||{}).note||""};save();};
+  n.onclick=()=>{state[m.id]={v:cur.v==="no"?"":"no",note:(state[m.id]||{}).note||""};save();};
+  const inp=document.createElement("input"); inp.placeholder="note (optional)"; inp.value=cur.note||"";
+  inp.oninput=()=>{state[m.id]={v:(state[m.id]||{}).v||"",note:inp.value};localStorage.setItem(LSK,JSON.stringify(state));};
+  seg.append(g,n,inp); c.appendChild(seg); return c;
+}
+function render(){
+  const mwc=document.getElementById("mwc"), dtp=document.getElementById("dtp");
+  mwc.innerHTML='<h2>MyWildlifeCam — trail-cam matchups <span class="skin">8 ranked by demand</span></h2>';
+  MWC.forEach(m=>mwc.appendChild(row(m)));
+  dtp.innerHTML='<h2>DetailerPicks — detailing matchups <span class="skin">8 ranked by demand</span></h2>';
+  DTP.forEach(m=>dtp.appendChild(row(m)));
+  let go=0,no=0,un=0;
+  [...MWC,...DTP].forEach(m=>{const v=(state[m.id]||{}).v;if(v==="go")go++;else if(v==="no")no++;else un++;});
+  nGo.textContent=go;nNo.textContent=no;nUn.textContent=un;
+}
+function decisionText(){
+  const out=["COMPARISON BUILD DECISIONS",""];
+  out.push("BYLINES:","  MWC: "+document.getElementById("by_mwc").value,"  DTP: "+document.getElementById("by_dtp").value,"");
+  const build=[];
+  [...MWC,...DTP].forEach(m=>{const d=state[m.id]||{};if(d.v==="go")build.push(`  BUILD  ${m.slug}${d.note?"  — "+d.note:""}`);});
+  out.push(`BUILD (${build.length}):`); out.push(...build);
+  return out.join("\n");
+}
+function copyDecisions(e){navigator.clipboard.writeText(decisionText()).then(()=>{const b=e.target,t=b.textContent;b.textContent="Copied ✓";setTimeout(()=>b.textContent=t,1400);});}
+function showExport(){document.getElementById("exTxt").value=decisionText();document.getElementById("ex").style.display="flex";}
+render();
+</script>
+</body>
+</html>
