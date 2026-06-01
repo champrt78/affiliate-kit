@@ -12,6 +12,7 @@
 interface Pick {
   name: string;
   award?: string;
+  gold?: boolean;
   persona?: string;
   hook?: string;
   price?: string;
@@ -36,7 +37,7 @@ const { picks } = Astro.props;
         {p.price && <div class="qcard__img__price">{p.price}</div>}
       </a>
       <div class="qcard__body">
-        {p.award && <div class="qcard__award">{p.award}</div>}
+        {p.award && <div class:list={["qcard__award", p.gold && "qcard__award--gold"]}>{p.award}</div>}
         {p.persona && <div class="qcard__persona">{p.persona}</div>}
         <a class="qcard__product" href={p.buyHref} rel="nofollow sponsored noopener" target="_blank">{p.name}</a>
         {p.hook && <p class="qcard__hook">{p.hook}</p>}
@@ -89,6 +90,8 @@ const { picks } = Astro.props;
     text-transform: uppercase;
     letter-spacing: 0.14em;
   }
+  /* Best Overall winner — gold, stands out from the per-skin accent */
+  .qcard__award--gold { background: var(--award-gold); color: var(--award-gold-ink); }
 
   .qcard__img {
     border-bottom: 1px solid var(--color-border);

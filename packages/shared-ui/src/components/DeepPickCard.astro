@@ -14,6 +14,7 @@ interface Props {
   total: number;
   name: string;
   award?: string;
+  gold?: boolean;
   persona?: string;
   reason?: string;
   /** HTML prose for the body (per-pick paragraphs). */
@@ -31,6 +32,7 @@ const {
   total,
   name,
   award,
+  gold,
   persona,
   reason,
   bodyHtml,
@@ -45,7 +47,7 @@ const {
 const factEntries = facts ? Object.entries(facts) : [];
 ---
 <article class:list={["deep-card", award && "deep-card--banner"]} id={anchorId}>
-  {award && <div class="deep-card__banner">{award}</div>}
+  {award && <div class:list={["deep-card__banner", gold && "deep-card__banner--gold"]}>{award}</div>}
   <div class="deep-card__inner">
     <div class="deep-card__img-col">
       <div class="deep-card__img">
@@ -124,6 +126,8 @@ const factEntries = facts ? Object.entries(facts) : [];
     text-transform: uppercase;
     letter-spacing: 0.14em;
   }
+  /* Best Overall winner — gold, stands out from the per-skin accent */
+  .deep-card__banner--gold { background: var(--award-gold); color: var(--award-gold-ink); }
 
   /* image column */
   .deep-card__img-col { display: flex; flex-direction: column; align-items: center; }

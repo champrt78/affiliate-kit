@@ -126,6 +126,7 @@ const quickPicks = products.map((p: any, i) => ({
   // else the product's own "Best for ..." line. Only show the separate in-body
   // persona when the banner is a short tier, so it never duplicates the banner.
   award: awardFor(p, i) ?? p.bestFor,
+  gold: awardFor(p, i) === "Best Overall",
   persona: awardFor(p, i) ? (p.bestFor || p.brand) : undefined,
   hook: p.hook,
   price: fmtPrice(p.priceFrom) ?? undefined,
@@ -213,6 +214,7 @@ const faqLd = data.faq && data.faq.length > 0
             anchorId={`pick-${i + 1}`}
             name={p.name}
             award={awardFor(p, i) ?? p.bestFor}
+            gold={awardFor(p, i) === "Best Overall"}
             persona={awardFor(p, i) ? p.bestFor : undefined}
             reason={p.reason}
             bodyHtml={p.body}

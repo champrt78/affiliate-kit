@@ -166,6 +166,9 @@
   --shadow-button-hover: 0 6px 16px rgba(0, 0, 0, 0.22);    /* button hover lift */
   --pad-section:    var(--space-8);   /* 32px — section padding */
   --pad-card:       var(--space-5);   /* 20px — card padding (24px tall: --space-6) */
+  /* "Best Overall" winner banner — gold, stands out from the per-skin accent (Ray 2026-05-31) */
+  --award-gold:     #C9A227;
+  --award-gold-ink: #2A2008;
 
   /* ---------------------------------------------------------------------------
      Motion — restrained, editorial
