@@ -118,6 +118,12 @@ durability; a crash resumes from the manifest):
      either find a defensible 6th or drop to 4 — do not ship a 5- or
      3-plus-1-shaped guide. Research (step 2) should target 6 validated picks so
      this never binds late.
+     PLUS frontmatter `buyIf` (buy[]/skip[]) — the Bottom Line card now renders
+     the buy/skip structure (Ray, 2026-05-31: "migrate to buy/skip"), so emit 2-4
+     `buy:` reasons and 1-3 `skip:` reasons grounded in the products[]. This is the
+     SAME additive `buyIfSchema` reviews use; it does NOT replace `verdict` (the
+     verdict stays empty as the gate — see next bullet). BottomLine.astro falls
+     back to the verdict prose layout only when `buyIf` is absent, so always emit it.
    - **`## Bottom Line` / `bottomLine.verdict` STAYS EMPTY** (the placeholder).
      This keeps the page noindex'd and is Ray's gate.
    - **FRONTMATTER HARD REQUIREMENTS (auto-enforced by `lint-content-frontmatter.ps1`, 2026-05-30):**
