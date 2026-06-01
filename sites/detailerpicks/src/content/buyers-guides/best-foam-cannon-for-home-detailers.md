@@ -78,7 +78,7 @@ pubDate: 2026-05-17
 lastUpdated: 2026-05-19
 bgTheme: foam-cascade
 images:
-  hero: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=2400&q=80"
+  hero: "https://images.unsplash.com/photo-1565689876697-e467b6c54da2?auto=format&fit=crop&w=2400&q=80"
   heroCaption: "Foam application before contact wash. Photo: Unsplash."
 bottomLine:
   verdict: "All seven premium foam cannons foam roughly the same. Buy MTM PF22 for build, Carbon Collective HD for weight, MJJC Pro V3.0 for spare parts. Skip if you don't already have a pressure washer worth pairing it with."

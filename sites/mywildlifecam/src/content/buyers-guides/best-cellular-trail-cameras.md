@@ -119,6 +119,9 @@ products:
     body: |
       <p>The <a href="https://www.amazon.com/dp/B0FHKMDMZQ?tag=mywildlifecam-20" rel="sponsored noopener" target="_blank">GardePro X66 Pro</a> packs the <strong>most features per dollar in this guide</strong>. Per GardePro's product page, it captures 48MP stills, runs a 7,800mAh rechargeable battery instead of recurring AA cells, and uses a 4G LTE Multi-IMSI SIM that auto-connects to the strongest of AT&T, Verizon, or T-Mobile across North America. It offers on-demand live-view video sessions, built-in GPS with daily auto-sync, 36 IR LEDs rated up to 100 ft, and a shared data plan across cameras. The Amazon listing notes a 64GB SD card is included.</p>
       <p>A HuntXP review reported consistent motion-triggered image alerts "within 10-15 seconds," which it called "about as fast as any cellular trail cam we've tested," praised the audio clarity on video playback, and noted GardePro provides free full-length video previews rather than three-second clips. Its verdict called the camera "a workhorse with standout battery life, fast notifications, crisp video." The same review and the brand page caution that live-stream use "drains the battery quickly," with GardePro recommending the optional SP1000 solar panel for winter.</p>
+images:
+  hero: "https://images.unsplash.com/photo-1545063914-a1a6ec821c88?auto=format&fit=crop&w=2400&q=80"
+  heroCaption: "White-tailed deer at the forest edge. Photo: Unsplash."
 pubDate: 2026-05-29
 lastUpdated: 2026-05-29
 bgTheme: canopy
