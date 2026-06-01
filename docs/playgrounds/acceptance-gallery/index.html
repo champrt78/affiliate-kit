@@ -82,7 +82,18 @@
 </div>
 
 <div class="note-readme">
-  <b>1 No-Go already flagged for you</b> — DTP <b>buyers-guides index</b>: Ceramic Coating + Drying Towel + Foam Cannon cards all show the <b>same car-rear scene photo</b> (3 guides share one Unsplash hero). Pre-marked No-Go. Fix = distinct scene photos on those three.
+  <b>✅ All 13 of your No-Gos are fixed</b> — the <b>After</b> column now shows the fixes (re-captured). Re-check each and flip it to Go if you're happy. What changed:
+  <ul style="margin:8px 0 0;padding-left:20px;line-height:1.7;">
+    <li><b>DTP guides index</b> — 3 cards now have distinct scene photos (no more shared car-rear).</li>
+    <li><b>MWC guides index</b> — cellular-trail-cams card now uses a landscape wildlife photo (deer at forest edge), no crop.</li>
+    <li><b>FB reviews index</b> — the imageless Baratza DRAFT is now filtered out of the public index (drafts are noindex).</li>
+    <li><b>FB review detail</b> — Baratza now has a product image. It keeps the DRAFT banner until you write its Bottom Line (that banner IS the noindex gate). Write the verdict and it clears + rejoins the index.</li>
+    <li><b>SA review detail</b> — "what's with the bottom line": reviews now use the SAME buy/skip card as guides (the split section is gone). Bottom Line is identical across all 10 page types.</li>
+    <li><b>gog homepage</b> — added a big pixel "GAME OVER GEAR" brand band under the hero.</li>
+    <li><b>gog reviews index</b> — product images now sit on white (dark controllers were vanishing on the dark cards).</li>
+    <li><b>gog guide detail</b> — long pixel title now wraps instead of running off the page.</li>
+    <li><b>5× 404</b> — the real dead links (3 inline pillar links) are fixed + a new build-time guard blocks them; the branded 404 page stays (it's an upgrade over your live soft-404).</li>
+  </ul>
 </div>
 
 <div id="units"></div>
@@ -113,8 +124,9 @@ const TYPES = [
   ["about","About",false,"Rebuilt on the shared <b>ProsePage</b> component (consistent legal/editorial text layout across all sites)."],
   ["404","404 page",false,"NEW shared <b>NotFound</b> component — on-brand 404 with nav back. Before = whatever the host served."],
 ];
-const FLAGS = { "detailerpicks/guides-index": "3 guide cards share the same Unsplash scene hero (Ceramic / Drying Towel / Foam Cannon). Needs distinct photos." };
-const SEED_NO = { "detailerpicks/guides-index": "Duplicate scene hero on 3 cards — distinct photos needed." };
+// Pre-flags cleared 2026-06-01 — the DTP dupe-hero issue is fixed (distinct photos).
+const FLAGS = {};
+const SEED_NO = {};
 
 const state = JSON.parse(localStorage.getItem(LSK) || "{}");
 function save(){ localStorage.setItem(LSK, JSON.stringify(state)); render(); }
