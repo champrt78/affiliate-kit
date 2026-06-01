@@ -26,7 +26,7 @@ const { faq, heading = "Common questions", eyebrow = "FAQ" } = Astro.props;
       <h2 class="faq__heading">{heading}</h2>
       <div class="faq__list">
         {faq.map((item) => (
-          <details class="faq__item" open>
+          <details class="faq__item">
             <summary class="faq__q">
               <span class="faq__q-text">{item.question}</span>
               <span class="faq__icon" aria-hidden="true"></span>
