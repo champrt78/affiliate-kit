@@ -42,7 +42,7 @@
   /* Coral / sun — warm accent (maps onto --color-brass slot).
      Coral is deepened from the mockup's #ef6f53 to #e0573a so it clears AA
      contrast when the kit uses it as a button background under white text. */
-  --color-brass:        #e0573a;  /* deep coral — primary CTA / accent */
+  --color-brass:        #bc4930;  /* deep coral — primary CTA / accent */
   --color-brass-hover:  #c8472d;  /* deeper coral — hover state */
   --color-brass-soft:   #bfe9ef;  /* sky — soft backgrounds, tags, underlines */
 

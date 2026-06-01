@@ -36,7 +36,7 @@
   --color-forest-light: #4a2f1e;  /* lighter roast — secondary accent */
 
   /* Caramel / brass — refined accent (maps onto --color-brass slot) */
-  --color-brass:        #b06f2c;  /* caramel-deep — primary CTA / accent */
+  --color-brass:        #8c5823;  /* caramel-deep — primary CTA / accent */
   --color-brass-hover:  #95591f;  /* deeper caramel — hover state */
   --color-brass-soft:   #ecd4a8;  /* crema — backgrounds, tags, soft accents */
 
@@ -47,7 +47,7 @@
   /* Semantic re-derivations (so component vars pick up the coffee tones) */
   --color-bg:           var(--color-paper);
   --color-fg:           var(--color-paper-ink);
-  --color-muted:        #7c6750;  /* warm coffee gray — secondary text */
+  --color-muted:        #756150;  /* warm coffee gray — secondary text */
   --color-muted-soft:   #9b8468;  /* lighter warm gray — tertiary text */
   --color-border:       var(--color-sage-light);
   --color-border-strong: var(--color-sage);

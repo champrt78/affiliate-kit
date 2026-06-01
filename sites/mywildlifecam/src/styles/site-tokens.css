@@ -22,6 +22,12 @@
      white; a colored tint clashes. The shared <Media> component reads this. */
   --media-bg: #ffffff;
 
+  /* Brass accent darkened for WCAG AA on the primary CTA buttons. The shared
+     default #A07C3A gives white-label buttons only 3.86:1 (fail); #8b6b32 →
+     4.94:1 (pass) while staying clearly brass. Also lifts the brass eyebrow
+     labels above AA. (Readability review 2026-06-01.) */
+  --color-brass: #8b6b32;
+
   /* === Footer chrome — forest band, cream text === */
   --footer-bg:      var(--color-forest);          /* #1F3D2F deep forest */
   --footer-fg:      var(--color-paper);           /* cream body text */

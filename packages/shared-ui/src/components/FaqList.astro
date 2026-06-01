@@ -68,7 +68,9 @@ const { faq, heading = "Common questions", eyebrow = "FAQ" } = Astro.props;
   .faq__heading {
     font-family: var(--font-serif);
     font-weight: var(--weight-semibold, 600);
-    font-size: 36px;
+    /* 26px (was 36px) — 36 read as 1.5x the 24px section heads elsewhere and
+       looked oversized (readability review). */
+    font-size: 26px;
     letter-spacing: -0.015em;
     color: var(--color-forest);
     text-align: center;

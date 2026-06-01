@@ -79,7 +79,7 @@ const total = products.length;
 
 const fmtPrice = (n?: number) =>
   (typeof n === "number" && n > 0)
-    ? `$${n.toLocaleString(undefined, { maximumFractionDigits: 2 })}`
+    ? `$${n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
     : null;
 
 // Price range for the "What's inside" facts panel.
@@ -330,7 +330,7 @@ const faqLd = data.faq && data.faq.length > 0
        paragraphs capped at 58ch and left-aligned, leaving a large empty right
        gutter (Ray "it's all left justified" 2026-06-01). The container now sets
        the measure and centers; paragraphs fill it (cap removed below). */
-    max-width: 760px;
+    max-width: 680px;
     margin-inline: auto;
   }
   .prose :global(h2) {
@@ -453,5 +453,13 @@ const faqLd = data.faq && data.faq.length > 0
   @media (max-width: 760px) {
     .band { padding: var(--space-10, 2.5rem) var(--space-5, 1.25rem); }
     .section-head h2 { font-size: 1.35rem; }
+    /* Force the multi-column spec table to OVERFLOW (so its own overflow-x:auto
+       scrolls) instead of squeezing/wrapping columns until the rightmost clips
+       off-screen — the mobile-clip bug the readability review caught on DTP + SA.
+       min-width guarantees the scroll affordance; first-col min-width relaxes so
+       it doesn't eat the row. */
+    .prose :global(table) { min-width: 540px; }
+    .prose :global(tbody td:first-child),
+    .prose :global(tr td:first-child) { min-width: 9rem; }
   }
 </style>

@@ -201,12 +201,32 @@ h4, h5, h6 {
 .product-card__media {
   background: var(--media-bg, #fff) !important;
 }
-/* BottomLine verdict — pixel font at prose size would be unreadable; the verdict
-   is a short headline so a small pixel size reads as an arcade callout. */
+/* Prose-length text must be Inter, NOT Press Start 2P. The kit uses --font-serif
+   (= PS2P on gog) for the Bottom Line verdict, the article dek, FAQ question text,
+   and supporting copy — all of which are full sentences, not short labels, so they
+   render as unreadable walls of pixel glyphs (readability review 2026-06-01,
+   worst on mobile). Pixel font stays on short display headings/eyebrows only. */
+.bottomline__verdict,
+.bottom-line__verdict,
+.bottom-line__supporting,
+.bottom-line__list,
+.article-deck,
+.gh__deck,
+.faq__q-text {
+  font-family: var(--font-sans) !important;
+  letter-spacing: 0 !important;
+}
 .bottomline__verdict,
 .bottom-line__verdict {
-  font-size: 14px !important;
-  line-height: 1.55 !important;
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+}
+.faq__q-text { font-size: 17px !important; line-height: 1.5 !important; }
+.article-deck, .gh__deck { font-size: 18px !important; line-height: 1.55 !important; }
+/* Brighten the dim lavender used on personas + "Skip it if" so they don't recede
+   (was rgb(154,147,199) ≈ too dim for prose). */
+.qcard__persona, .deep-card__persona, .bl__row--skip .bl__lead {
+  color: var(--color-paper-ink) !important;
 }
 
 /* =============================================================================
