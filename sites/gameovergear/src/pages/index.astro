@@ -83,6 +83,16 @@ const otherGuides = latestGuides.slice(1, 4);
     </div>
   </Hero>
 
+  {/* Pixel brand wordmark — Ray wants GAME OVER GEAR in big PS2P on the home
+      page (2026-06-01). Full-width neon band under the hero. */}
+  <section class="brand-marquee" aria-label="Game Over Gear">
+    <div class="brand-marquee__inner">
+      <span class="brand-marquee__word">GAME</span>
+      <span class="brand-marquee__word">OVER</span>
+      <span class="brand-marquee__word brand-marquee__word--accent">GEAR</span>
+    </div>
+  </section>
+
   <section class="lead">
     <div class="lead__inner">
       <p>{PAGE.leadBody}</p>
@@ -169,6 +179,36 @@ const otherGuides = latestGuides.slice(1, 4);
 </MainLayout>
 
 <style>
+  /* Pixel brand wordmark band (GAME OVER GEAR) under the hero. */
+  .brand-marquee {
+    background: var(--color-bg, #0d0d1a);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    padding: clamp(26px, 5vw, 52px) var(--space-6, 24px);
+    overflow: hidden;
+  }
+  .brand-marquee__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    gap: clamp(10px, 2.2vw, 26px);
+    max-width: var(--container-max, 1180px);
+    margin: 0 auto;
+  }
+  .brand-marquee__word {
+    font-family: var(--font-serif); /* Press Start 2P */
+    font-size: clamp(22px, 6.4vw, 60px);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: var(--color-paper-ink, #e8eaf0);
+    text-shadow: 0 0 6px rgba(120, 200, 255, 0.35), 0 0 18px rgba(120, 200, 255, 0.18);
+  }
+  .brand-marquee__word--accent {
+    color: var(--color-accent, #ff3db1);
+    text-shadow: 0 0 8px var(--color-accent, #ff3db1), 0 0 22px var(--color-accent, #ff3db1);
+  }
+
   /* Hero CTAs — ghost button needs paper outline on the dark veil */
   .hero-actions {
     display: flex;
