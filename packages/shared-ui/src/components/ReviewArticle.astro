@@ -180,7 +180,15 @@ const flaws = (data as any).flaws as Array<{ title: string; body: string }> | un
 
   <div class="article-body">
 
-    <BottomLine bottomLine={bottomLine} isDraft={isDraft} />
+    <BottomLine
+      bottomLine={bottomLine}
+      isDraft={isDraft}
+      buyIf={buyIf}
+      buyImage={heroImage}
+      buyImageAlt={data.product.name}
+      buyHref={cloakedHref}
+      buyPrice={data.product.price ? `$${data.product.price}` : undefined}
+    />
 
     {scorecard && composite !== null && (
       <section class="scorecard" aria-label="Editorial scorecard">
@@ -209,18 +217,9 @@ const flaws = (data as any).flaws as Array<{ title: string; body: string }> | un
       </section>
     )}
 
-    {buyIf && (
-      <section class="buyif" aria-label="Buy it if / Don't buy it if">
-        <div class="buyif__card buyif__card--buy">
-          <h3 class="buyif__heading">Buy it if</h3>
-          <ul>{buyIf.buy.map((item) => <li>{item}</li>)}</ul>
-        </div>
-        <div class="buyif__card buyif__card--skip">
-          <h3 class="buyif__heading">Don't buy it if</h3>
-          <ul>{buyIf.skip.map((item) => <li>{item}</li>)}</ul>
-        </div>
-      </section>
-    )}
+    {/* buy/skip now renders inside <BottomLine> (the buy/skip card, unified with
+        guides per Ray's migrate-to-buy/skip, 2026-06-01). The old standalone
+        .buyif section was removed to avoid showing buy/skip twice. */}
 
     <AffiliateDisclosure siteName={siteName} variant="inline" />
 

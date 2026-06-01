@@ -26,7 +26,12 @@ const PAGE = {
 };
 /* ─────────────────────────────────────────────────────────────────── */
 
-const entries = await getCollection("buyers-guides");
+const __BL_PH = "_The Bottom Line is being written._";
+// Drafts are noindex; keep them out of the public index (no imageless/draft cards).
+const entries = (await getCollection("buyers-guides")).filter((e) => {
+  const v = e.data.bottomLine?.verdict ?? "";
+  return v.trim() !== "" && !v.includes(__BL_PH);
+});
 const sorted = entries.sort((a, b) => {
   const aTime = a.data.pubDate instanceof Date ? a.data.pubDate.getTime() : new Date(a.data.pubDate).getTime();
   const bTime = b.data.pubDate instanceof Date ? b.data.pubDate.getTime() : new Date(b.data.pubDate).getTime();
