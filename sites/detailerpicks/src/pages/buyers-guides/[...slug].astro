@@ -51,5 +51,9 @@ const productLds = data.products.map((p) =>
     <script type="application/ld+json" set:html={JSON.stringify(ld)} />
   ))}
 
-  <GuideArticle entry={entry} />
+  <GuideArticle
+    entry={entry}
+    quickLabel="The Walk-Around"
+    deepLabel="The Full Detail"
+  />
 </MainLayout>

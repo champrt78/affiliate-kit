@@ -76,7 +76,9 @@ const useMag = featured && heroImages && heroImages.length >= 3;
   }
 
   .guide-card__media {
-    aspect-ratio: 4 / 3;
+    /* 16/9 (was 4/3) — the 4/3 photo made the whole card too tall to fit on
+       screen in a 3-up grid (Ray 2026-06-01). Shorter scene band, card fits. */
+    aspect-ratio: 16 / 9;
     overflow: hidden;
     background: var(--color-paper-muted);
   }
@@ -124,6 +126,11 @@ const useMag = featured && heroImages && heroImages.length >= 3;
     line-height: var(--leading-normal);
     margin: 0 0 var(--space-4);
     flex: 1;
+    /* Cap at 3 lines so a long description can't balloon the card height. */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .guide-card__meta {

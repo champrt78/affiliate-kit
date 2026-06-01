@@ -45,6 +45,10 @@ interface Props {
   credentialLine?: string;
   bestForFact?: string;
   bottomCtaLabel?: string;
+  /* Per-site section headings (plays-on-words). Defaults are the generic kit
+     labels; each site overrides them in its guide wrapper (Ray 2026-06-01). */
+  quickLabel?: string;
+  deepLabel?: string;
 }
 
 const {
@@ -57,6 +61,8 @@ const {
   credentialLine = "Spec analysis · verified against current Amazon listings",
   bestForFact = "Home detailing",
   bottomCtaLabel = "See the top pick on Amazon",
+  quickLabel = "The Once-Over",
+  deepLabel = "The full detail",
 } = Astro.props;
 
 const { data } = entry;
@@ -122,12 +128,13 @@ const facts = [
 // Quick-pick grid data
 const quickPicks = products.map((p: any, i) => ({
   name: p.name,
-  // Banner every card: short derived tier (Best Overall/Value) when available,
-  // else the product's own "Best for ..." line. Only show the separate in-body
-  // persona when the banner is a short tier, so it never duplicates the banner.
-  award: awardFor(p, i) ?? p.bestFor,
+  // Banner carries ONLY a short tier label (Best Overall / Best Value / explicit
+  // award). The long "Best for ..." persona is never in the banner — uppercase
+  // letter-spaced banners are for short labels, long personas overflow + look bad
+  // (Ray 2026-06-01). Persona always renders as its own line below.
+  award: awardFor(p, i),
   gold: awardFor(p, i) === "Best Overall",
-  persona: awardFor(p, i) ? (p.bestFor || p.brand) : undefined,
+  persona: p.bestFor,
   hook: p.hook,
   price: fmtPrice(p.priceFrom) ?? undefined,
   image: p.image,
@@ -197,7 +204,7 @@ const faqLd = data.faq && data.faq.length > 0
   {/* ── The Once-Over (05) ── */}
   <section class="band">
     <div class="band__inner">
-      <div class="section-head"><h2>The Once-Over</h2></div>
+      <div class="section-head"><h2>{quickLabel}</h2></div>
       <QuickPickGrid picks={quickPicks} />
     </div>
   </section>
@@ -205,7 +212,7 @@ const faqLd = data.faq && data.faq.length > 0
   {/* ── The full detail (06 + award banner) ── */}
   <section class="band band--muted">
     <div class="band__inner">
-      <div class="section-head"><h2>The full detail</h2></div>
+      <div class="section-head"><h2>{deepLabel}</h2></div>
       <div class="deep-stack">
         {products.map((p: any, i) => (
           <DeepPickCard
@@ -213,9 +220,9 @@ const faqLd = data.faq && data.faq.length > 0
             total={total}
             anchorId={`pick-${i + 1}`}
             name={p.name}
-            award={awardFor(p, i) ?? p.bestFor}
+            award={awardFor(p, i)}
             gold={awardFor(p, i) === "Best Overall"}
-            persona={awardFor(p, i) ? p.bestFor : undefined}
+            persona={p.bestFor}
             reason={p.reason}
             bodyHtml={p.body}
             price={fmtPrice(p.priceFrom) ?? undefined}
@@ -319,6 +326,12 @@ const faqLd = data.faq && data.faq.length > 0
     line-height: 1.7;
     font-size: 16px;
     color: var(--color-paper-ink);
+    /* Centered reading column. Without this the prose sat full-band-width with
+       paragraphs capped at 58ch and left-aligned, leaving a large empty right
+       gutter (Ray "it's all left justified" 2026-06-01). The container now sets
+       the measure and centers; paragraphs fill it (cap removed below). */
+    max-width: 760px;
+    margin-inline: auto;
   }
   .prose :global(h2) {
     font-family: var(--font-serif);
@@ -341,7 +354,9 @@ const faqLd = data.faq && data.faq.length > 0
   }
   .prose :global(p) {
     margin: 0 0 18px;
-    max-width: 58ch;
+    /* measure is controlled by the centered .prose container (760px), not a
+       per-paragraph cap — a cap here re-creates the left-justified empty gutter. */
+    max-width: none;
   }
   /* Tables — structured spec-sheet treatment */
   .prose :global(table) {
