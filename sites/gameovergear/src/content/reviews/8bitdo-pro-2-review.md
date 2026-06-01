@@ -124,7 +124,7 @@ The case against it is specific rather than general. It cannot power on a Switch
 
 ## How It Compares
 
-The Pro 2 sits in the [Controllers](/controllers) pillar. Three natural comparisons, all spec-sourced:
+The Pro 2 sits in the [Controllers](/topics/controllers/) pillar. Three natural comparisons, all spec-sourced:
 
 **Pro 2 vs 8BitDo SN30 Pro+ (the predecessor).** SlashGear frames the Pro 2 as a refinement of the SN30 Pro+. The Pro 2 adds the three-profile on-the-fly switch button, two rear paddle buttons, the 4-way hardware mode switch, an enhanced textured grip, and, in this edition, Hall Effect sticks, while keeping the same 1000mAh / roughly 20-hour battery. The key change SlashGear highlights is that the Pro 2 **finally stores multiple profiles onboard** rather than requiring a software reconnect for each layout change.
 
