@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Comparison verdicts — write the winner calls</title>
+<style>
+  :root{--bg:#0f1311;--panel:#171c1a;--panel2:#1e2522;--ink:#e8eae7;--muted:#9aa49f;--line:#2a322e;--brass:#c9a227;--good:#5fb877;--radius:14px;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;--serif:Georgia,serif;}
+  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px 140px;}
+  header.top{padding:32px 0 8px;} h1{font-family:var(--serif);font-size:30px;margin:0 0 6px;}
+  .sub{color:var(--muted);font-size:14.5px;max-width:74ch;}
+  .bar{position:sticky;top:0;z-index:20;background:rgba(15,19,17,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 0;margin-bottom:18px;display:flex;align-items:center;gap:16px;}
+  .bar b{font-size:17px;color:var(--good)} .bar .spacer{flex:1}
+  .bar button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);border-radius:8px;padding:7px 14px;cursor:pointer;} .bar button:hover{border-color:var(--brass)}
+  h2{font-family:var(--serif);font-size:20px;margin:34px 0 4px;} h2 .s{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-left:8px;font-family:var(--sans);}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin:14px 0;}
+  .card.done{border-color:var(--good)}
+  .card__t{font-size:16px;font-weight:700;margin-bottom:3px;}
+  .card__slug{font-size:11.5px;color:var(--muted);font-family:ui-monospace,monospace;}
+  .win{display:flex;gap:8px;margin:12px 0 6px;flex-wrap:wrap;} .win .lab{font-size:12px;color:var(--muted);align-self:center;margin-right:4px;}
+  .win button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer;}
+  .win button.on{background:var(--good);color:#06270f;border-color:var(--good);font-weight:700;}
+  label{display:block;font-size:12px;color:var(--muted);margin:8px 0 3px;}
+  textarea{width:100%;font:inherit;font-size:13.5px;background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:9px;resize:vertical;}
+  .verdict{min-height:54px;} .supp{min-height:38px;}
+  code{background:var(--panel2);padding:1px 6px;border-radius:5px;font-size:11.5px;color:#cfe0d6;}
+  .note{background:var(--panel);border:1px solid var(--brass);border-radius:var(--radius);padding:14px 18px;margin:14px 0;font-size:13.5px;color:var(--muted);} .note b{color:var(--ink)}
+  #ex{position:fixed;inset:0;background:rgba(5,8,7,.9);display:none;align-items:center;justify-content:center;z-index:60;padding:24px;}
+  #ex .box{background:var(--panel);border:1px solid var(--brass);border-radius:12px;padding:18px;max-width:700px;width:100%;}
+  #ex textarea{min-height:340px;font-family:ui-monospace,Menlo,monospace;font-size:12px;} #ex .x{float:right;cursor:pointer;color:var(--muted);font-size:18px;}
+</style></head>
+<body><div class="wrap">
+<header class="top">
+  <h1>Comparison verdicts — write the winner calls</h1>
+  <p class="sub">All 12 comparison pages are built and live as <b>noindex drafts</b>. Each needs its <b>winner call</b> (your gate) before it publishes. For each: tap the winner, write a 1-2 sentence verdict (and an optional supporting line). Then <b>Copy</b> and paste back — I write them into the pages (flips them index-eligible) and run a pass to swap the placeholder links to cloaked <code>/go/</code> ones before they go live.</p>
+</header>
+<div class="bar"><span>Verdicts written: <b id="done">0</b> / 12</span><span class="spacer"></span>
+  <button onclick="copyV(event)">Copy verdicts</button><button onclick="showEx()">View / export</button></div>
+<div class="note"><b>Preview any draft locally:</b> <code>pnpm --filter mywildlifecam preview</code> (or <code>detailerpicks</code>) then open <code>/comparisons/&lt;slug&gt;/</code>. The table + per-product cards render now; the verdict block appears once you write it.</div>
+<div id="mwc"></div><div id="dtp"></div>
+</div>
+<div id="ex"><div class="box"><span class="x" onclick="ex.style.display='none'">✕</span><h3 style="margin:2px 0 10px;font-family:var(--serif)">Verdicts — paste back to Claude</h3><textarea id="exT" readonly></textarea></div></div>
+<script>
+const LSK="cmp-verdicts-v1";
+const C=[
+ {g:"mwc",slug:"spypoint-flex-vs-tactacam-reveal",t:"Spypoint Flex vs Tactacam Reveal X",a:"Spypoint Flex",b:"Tactacam Reveal X"},
+ {g:"mwc",slug:"spypoint-flex-vs-moultrie-edge",t:"Spypoint Flex vs Moultrie Edge 2",a:"Spypoint Flex",b:"Moultrie Edge 2"},
+ {g:"mwc",slug:"spypoint-flex-vs-bushnell-cellucore",t:"Spypoint Flex vs Bushnell CelluCORE 20",a:"Spypoint Flex",b:"Bushnell CelluCORE 20"},
+ {g:"mwc",slug:"browning-strike-force-vs-stealth-cam",t:"Browning Strike Force Pro X vs Stealth Cam DS4K",a:"Browning Strike Force Pro X",b:"Stealth Cam DS4K Ultimate"},
+ {g:"mwc",slug:"cellular-vs-sd-card-trail-cameras",t:"Cellular vs SD-card trail cameras",a:"Spypoint Flex (cellular)",b:"Browning Strike Force Pro X (SD-card)"},
+ {g:"dtp",slug:"adams-wheel-cleaner-vs-chemical-guys-diablo",t:"Adam's Deep Wheel Cleaner vs Chemical Guys Diablo",a:"Adam's Deep Wheel Cleaner",b:"Chemical Guys Diablo Gel"},
+ {g:"dtp",slug:"carpro-ironx-vs-adams-iron-remover",t:"CarPro IronX vs Adam's Iron Remover",a:"CarPro IronX",b:"Adam's Iron Remover"},
+ {g:"dtp",slug:"adams-polishes-vs-chemical-guys",t:"Adam's vs Chemical Guys (brand / car wash)",a:"Adam's Car Wash Shampoo",b:"Chemical Guys Mr. Pink"},
+ {g:"dtp",slug:"chemical-guys-vs-meguiars-car-wash",t:"Chemical Guys Mr. Pink vs Meguiar's Gold Class",a:"Chemical Guys Mr. Pink",b:"Meguiar's Gold Class"},
+ {g:"dtp",slug:"mtm-hydro-foam-cannon-vs-chemical-guys-torq",t:"MTM Hydro PF22 vs Chemical Guys TORQ (foam cannon)",a:"MTM Hydro PF22",b:"Chemical Guys TORQ"},
+ {g:"dtp",slug:"adams-ceramic-spray-vs-chemical-guys-hydroslick",t:"Adam's Graphene Ceramic Spray vs Chemical Guys HydroSlick",a:"Adam's Graphene Ceramic Spray",b:"Chemical Guys HydroSlick HyperWax"},
+ {g:"dtp",slug:"rag-company-vs-chemical-guys-microfiber-towel",t:"Rag Company Gauntlet vs Chemical Guys Woolly Mammoth",a:"The Rag Company Gauntlet",b:"Chemical Guys Woolly Mammoth"},
+];
+const st=JSON.parse(localStorage.getItem(LSK)||"{}");
+function save(){localStorage.setItem(LSK,JSON.stringify(st));render();}
+function card(c){
+  const s=st[c.slug]||{w:"",v:"",sup:""};
+  const el=document.createElement("div");el.className="card"+(s.v&&s.w?" done":"");
+  el.innerHTML=`<div class="card__t">${c.t}</div><div class="card__slug">/comparisons/${c.slug}/</div>`;
+  const win=document.createElement("div");win.className="win";win.innerHTML='<span class="lab">Winner:</span>';
+  [["a",c.a],["b",c.b]].forEach(([k,nm])=>{const btn=document.createElement("button");btn.textContent=nm;if(s.w===nm)btn.className="on";btn.onclick=()=>{st[c.slug]={...s,w:s.w===nm?"":nm};save();};win.appendChild(btn);});
+  el.appendChild(win);
+  const vl=document.createElement("label");vl.textContent="Verdict (the winner call, 1-2 sentences)";el.appendChild(vl);
+  const vt=document.createElement("textarea");vt.className="verdict";vt.value=s.v||"";vt.placeholder="e.g. For most hunters the "+c.a+" is the pick: ...";vt.oninput=()=>{st[c.slug]={...st[c.slug],w:(st[c.slug]||{}).w||"",v:vt.value,sup:(st[c.slug]||{}).sup||""};localStorage.setItem(LSK,JSON.stringify(st));el.classList.toggle("done",!!(vt.value&&(st[c.slug]||{}).w));};el.appendChild(vt);
+  const sl=document.createElement("label");sl.textContent="Supporting line (optional)";el.appendChild(sl);
+  const sp=document.createElement("textarea");sp.className="supp";sp.value=s.sup||"";sp.oninput=()=>{st[c.slug]={...st[c.slug],sup:sp.value};localStorage.setItem(LSK,JSON.stringify(st));};el.appendChild(sp);
+  return el;
+}
+function render(){
+  const m=document.getElementById("mwc"),d=document.getElementById("dtp");
+  m.innerHTML='<h2>MyWildlifeCam <span class="s">5 trail-cam comparisons</span></h2>';
+  d.innerHTML='<h2>DetailerPicks <span class="s">7 detailing comparisons</span></h2>';
+  C.forEach(c=>(c.g==="mwc"?m:d).appendChild(card(c)));
+  document.getElementById("done").textContent=C.filter(c=>{const s=st[c.slug]||{};return s.v&&s.w;}).length;
+}
+function vtext(){const o=["COMPARISON VERDICTS",""];C.forEach(c=>{const s=st[c.slug]||{};if(s.v&&s.w){o.push(`${c.slug}`,`  WINNER: ${s.w}`,`  VERDICT: ${s.v}`);if(s.sup)o.push(`  SUPPORTING: ${s.sup}`);o.push("");}});return o.join("\n");}
+function copyV(e){navigator.clipboard.writeText(vtext()).then(()=>{const b=e.target,t=b.textContent;b.textContent="Copied ✓";setTimeout(()=>b.textContent=t,1400);});}
+function showEx(){document.getElementById("exT").value=vtext();document.getElementById("ex").style.display="flex";}
+render();
+</script></body></html>
