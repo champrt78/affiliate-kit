@@ -3,198 +3,178 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Rebuild — Before / After Go-No-Go</title>
+<title>Rebuild — Decisions only</title>
 <style>
   :root{
     --bg:#0f1311; --panel:#171c1a; --panel2:#1e2522; --ink:#e8eae7; --muted:#9aa49f;
-    --line:#2a322e; --brass:#c9a227; --forest:#7fb38a; --good:#5fb877; --bad:#e0625f; --warn:#e0a24a;
+    --line:#2a322e; --brass:#c9a227; --good:#5fb877; --bad:#e0625f; --warn:#e0a24a;
     --radius:14px; --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; --serif:Georgia,serif;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;}
-  .wrap{max-width:1240px;margin:0 auto;padding:0 24px 160px;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px 160px;}
   header.top{padding:32px 0 8px;}
   h1{font-family:var(--serif);font-size:30px;margin:0 0 6px;}
-  .sub{color:var(--muted);font-size:14.5px;max-width:78ch;}
+  .sub{color:var(--muted);font-size:14.5px;max-width:80ch;}
   .bar{position:sticky;top:0;z-index:20;background:rgba(15,19,17,.94);backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);padding:12px 0;margin-bottom:16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
-  .tally{display:flex;gap:14px;font-size:14px;}
-  .tally b{font-size:17px}
+    border-bottom:1px solid var(--line);padding:12px 0;margin-bottom:18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .tally{display:flex;gap:14px;font-size:14px;}.tally b{font-size:17px}
   .t-go b{color:var(--good)} .t-no b{color:var(--bad)} .t-un b{color:var(--muted)}
   .bar button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);border-radius:8px;padding:7px 14px;cursor:pointer;}
   .bar button:hover{border-color:var(--brass)} .bar .spacer{flex:1}
-  h2{font-family:var(--serif);font-size:22px;margin:38px 0 2px;}
-  h2 .skin{font-family:var(--sans);font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-left:8px;}
-  .unit{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin:16px 0;}
-  .unit.go{border-color:var(--good)} .unit.no{border-color:var(--bad)}
-  .uhead{display:flex;align-items:baseline;gap:10px;margin-bottom:4px;}
-  .uhead .lbl{font-size:15px;font-weight:700;}
-  .uhead .site{font-size:12px;color:var(--muted);}
-  .changed{font-size:13px;color:var(--ink);background:var(--panel2);border-left:3px solid var(--brass);
-    border-radius:6px;padding:8px 12px;margin:8px 0 14px;}
-  .changed b{color:var(--brass);font-weight:700;}
-  .flag{font-size:12.5px;color:var(--warn);background:rgba(224,162,74,.1);border:1px solid var(--warn);border-radius:7px;padding:7px 10px;margin:0 0 12px;}
+  .heads{background:var(--panel);border:1px solid var(--brass);border-radius:var(--radius);padding:14px 18px;margin:0 0 20px;font-size:13.5px;color:var(--muted);}
+  .heads b{color:var(--ink)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin:16px 0;}
+  .card.go{border-color:var(--good)} .card.no{border-color:var(--bad)}
+  .card__head{display:flex;align-items:baseline;gap:10px;margin-bottom:4px;flex-wrap:wrap;}
+  .card__n{font-family:var(--serif);font-size:13px;color:var(--brass);}
+  .card__title{font-size:16px;font-weight:700;}
+  .card__site{font-size:12px;color:var(--muted);}
+  .said{font-size:13px;color:var(--muted);margin:6px 0 2px;}
+  .said b{color:var(--bad);font-weight:600;}
+  .did{font-size:13.5px;background:var(--panel2);border-left:3px solid var(--good);border-radius:6px;padding:9px 12px;margin:8px 0 12px;}
+  .did b{color:var(--good);}
   .compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
   @media (max-width:860px){.compare{grid-template-columns:1fr}}
-  .side{}
   .side .tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:5px;}
   .side.before .tag{color:var(--muted)} .side.after .tag{color:var(--good)}
   figure{margin:0;background:var(--panel2);border:1px solid var(--line);border-radius:9px;overflow:hidden;cursor:zoom-in;}
-  figure img{width:100%;max-height:420px;object-fit:cover;object-position:top center;background:#0b0e0d;display:block;}
-  figure.missing{cursor:default;}
-  figure.missing .ph{height:200px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12.5px;padding:0 18px;text-align:center;}
-  .mob{display:flex;gap:10px;margin-top:8px;}
-  .mob figure img{width:110px;height:200px;object-fit:contain;}
+  figure img{width:100%;max-height:380px;object-fit:cover;object-position:top center;background:#0b0e0d;display:block;}
+  figure.missing{cursor:default;} figure.missing .ph{height:160px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12.5px;padding:0 16px;text-align:center;}
+  .extra{margin-top:12px;}
   .seg{display:flex;gap:10px;margin-top:14px;align-items:center;}
   .seg button{font:inherit;font-size:13px;font-weight:700;border:1px solid var(--line);background:var(--panel2);color:var(--ink);border-radius:8px;padding:9px 22px;cursor:pointer;}
   .seg button.on-go{background:var(--good);color:#06270f;border-color:var(--good);}
   .seg button.on-no{background:var(--bad);color:#2a0707;border-color:var(--bad);}
   .seg textarea{flex:1;font:inherit;font-size:12.5px;min-height:38px;resize:vertical;background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px;}
-  .note-readme{background:var(--panel);border:1px solid var(--brass);border-radius:var(--radius);padding:15px 18px;margin:14px 0 4px;font-size:14px;color:var(--muted);}
-  .note-readme b{color:var(--ink)}
   code{background:var(--panel2);padding:1px 6px;border-radius:5px;font-size:12px;color:#cfe0d6;}
   #lb{position:fixed;inset:0;background:rgba(5,8,7,.96);display:none;align-items:center;justify-content:center;z-index:50;padding:18px;cursor:zoom-out;}
-  #lb img{max-width:100%;max-height:100%;border-radius:8px;}
-  #lb .cap{position:fixed;top:14px;left:0;right:0;text-align:center;font-size:13px;color:var(--ink);}
+  #lb img{max-width:100%;max-height:100%;border-radius:8px;} #lb .cap{position:fixed;top:14px;left:0;right:0;text-align:center;font-size:13px;color:var(--ink);}
   #ex{position:fixed;inset:0;background:rgba(5,8,7,.9);display:none;align-items:center;justify-content:center;z-index:60;padding:24px;}
   #ex .box{background:var(--panel);border:1px solid var(--brass);border-radius:12px;padding:18px;max-width:680px;width:100%;}
-  #ex textarea{min-height:300px;width:100%;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px;}
+  #ex textarea{min-height:280px;width:100%;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px;}
   #ex .x{float:right;cursor:pointer;color:var(--muted);font-size:18px;}
 </style>
 </head>
 <body>
 <div class="wrap">
 <header class="top">
-  <h1>Rebuild — Before / After</h1>
-  <p class="sub">Left = <b>what's live right now</b>. Right = the <b>rebuilt</b> version on branch <code>rebuild/component-library</code> (<b>not live</b>). For each page: is the new one OK? Click <b>Go</b> to keep it or <b>No-Go</b> + a note on what to fix. Then <b>Copy decisions</b> and paste back to me. Click any image to enlarge. Your marks auto-save in this browser.</p>
+  <h1>Rebuild — decisions only</h1>
+  <p class="sub">The 25 pages you Go'd are hidden — they're good. Below are <b>only the items you flagged</b>, each one now <b>fixed</b>: what you said, what I changed, and before → after. Confirm each <b>Go</b> (or <b>No-Go</b> + a note if it's still off). Then <b>Copy decisions</b> and paste back. Click any image to enlarge.</p>
 </header>
 
 <div class="bar">
-  <div class="tally">
-    <span class="t-go">Go <b id="nGo">0</b></span>
-    <span class="t-no">No-Go <b id="nNo">0</b></span>
-    <span class="t-un">Undecided <b id="nUn">0</b></span>
-  </div>
+  <div class="tally"><span class="t-go">Go <b id="nGo">0</b></span><span class="t-no">No-Go <b id="nNo">0</b></span><span class="t-un">Left <b id="nUn">0</b></span></div>
   <span class="spacer"></span>
   <button onclick="copyDecisions(event)">Copy decisions</button>
   <button onclick="showExport()">View / export</button>
-  <button onclick="if(confirm('Clear all your marks?')){localStorage.removeItem(LSK);location.reload();}">Reset</button>
 </div>
 
-<div class="note-readme">
-  <b>✅ All 13 of your No-Gos are fixed</b> — the <b>After</b> column now shows the fixes (re-captured). Re-check each and flip it to Go if you're happy. What changed:
-  <ul style="margin:8px 0 0;padding-left:20px;line-height:1.7;">
-    <li><b>DTP guides index</b> — 3 cards now have distinct scene photos (no more shared car-rear).</li>
-    <li><b>MWC guides index</b> — cellular-trail-cams card now uses a landscape wildlife photo (deer at forest edge), no crop.</li>
-    <li><b>FB reviews index</b> — the imageless Baratza DRAFT is now filtered out of the public index (drafts are noindex).</li>
-    <li><b>FB review detail</b> — Baratza now has a product image. It keeps the DRAFT banner until you write its Bottom Line (that banner IS the noindex gate). Write the verdict and it clears + rejoins the index.</li>
-    <li><b>SA review detail</b> — "what's with the bottom line": reviews now use the SAME buy/skip card as guides (the split section is gone). Bottom Line is identical across all 10 page types.</li>
-    <li><b>gog homepage</b> — added a big pixel "GAME OVER GEAR" brand band under the hero.</li>
-    <li><b>gog reviews index</b> — product images now sit on white (dark controllers were vanishing on the dark cards).</li>
-    <li><b>gog guide detail</b> — long pixel title now wraps instead of running off the page.</li>
-    <li><b>5× 404</b> — the real dead links (3 inline pillar links) are fixed + a new build-time guard blocks them; the branded 404 page stays (it's an upgrade over your live soft-404).</li>
-  </ul>
+<div class="heads">
+  <b>One heads-up before you start:</b> fixing the SA Bottom Line meant editing the shared review template, so <b>DTP, MWC, and gog review pages also switched to the buy/skip card</b> (not just SA). Those may have been in your Go's — they're more consistent now, but re-glance them if you want. They're not in this list because you didn't flag them.
 </div>
 
-<div id="units"></div>
+<div id="cards"></div>
 </div>
 
 <div id="lb"><div class="cap"></div><img alt=""/></div>
 <div id="ex"><div class="box"><span class="x" onclick="document.getElementById('ex').style.display='none'">✕</span>
-  <h3 style="margin:2px 0 10px;font-family:var(--serif)">Decisions — copy &amp; paste back to Claude</h3>
+  <h3 style="margin:2px 0 10px;font-family:var(--serif)">Decisions — paste back to Claude</h3>
   <textarea id="exTxt" readonly></textarea></div></div>
 
 <script>
-const LSK = "rebuild-beforeafter-v1";
-const SITES = [
-  {slug:"detailerpicks", name:"DetailerPicks", skin:"steel-blue / cream — car detailing", topic:false},
-  {slug:"mywildlifecam", name:"MyWildlifeCam", skin:"forest / brass — trail cameras (HERO)", topic:false},
-  {slug:"fussybean", name:"FussyBean", skin:"espresso / crema — coffee gear", topic:true},
-  {slug:"starteraquarium", name:"StarterAquarium", skin:"aqua / warm pop — beginner aquariums", topic:true},
-  {slug:"gameovergear", name:"GameOverGear", skin:"dark + neon, pixel font — retro (inverted)", topic:true},
+const LSK = "rebuild-decisions-v2";
+// before dir = shots-live, after dir = shots
+const CARDS = [
+  { id:"dtp-guides", site:"DetailerPicks", title:"Buyers-guides index",
+    said:"Duplicate scene hero on 3 cards.",
+    did:"Gave Drying Towel + Foam Cannon distinct detailing scene photos. All 6 cards are now different.",
+    shot:"detailerpicks__guides-index__1440" },
+  { id:"mwc-guides", site:"MyWildlifeCam", title:"Buyers-guides index",
+    said:"First image cropped badly — wanted a wildlife pic like the others.",
+    did:"The cellular-cameras card had no hero (fell back to a cropping product shot). Added a landscape wildlife photo (deer at forest edge).",
+    shot:"mywildlifecam__guides-index__1440" },
+  { id:"sa-review", site:"StarterAquarium", title:"Review detail — “what’s with the bottom line?”",
+    said:"The Bottom Line was a split / different thing.",
+    did:"Reviews used the OLD verdict paragraph plus a separate buy/skip block. Now they use the SAME buy/skip card the guides use — Bottom Line is identical across every page type.",
+    shot:"starteraquarium__review-detail__1440" },
+  { id:"gog-home", site:"GameOverGear", title:"Homepage",
+    said:"Want GAME OVER GEAR in big pixely text on the home page.",
+    did:"Added a full-width neon pixel “GAME OVER GEAR” band right under the hero.",
+    shot:"gameovergear__home__1440" },
+  { id:"gog-reviews", site:"GameOverGear", title:"Reviews index",
+    said:"Images too dark.",
+    did:"The dark cards hid the dark controllers. Product images now sit on white (matching the guide cards).",
+    shot:"gameovergear__reviews-index__1440" },
+  { id:"gog-guide", site:"GameOverGear", title:"Guide detail",
+    said:"Title text runs off the page.",
+    did:"The pixel title was locked to one line at a big size. It now scales down and wraps, so it stays on the page.",
+    shot:"gameovergear__guide-detail__1440" },
+  { id:"fb-baratza", site:"FussyBean", title:"Baratza review (index + DRAFT banner)",
+    said:"Need an image for Baratza; and the DRAFT banner is showing.",
+    did:"Baratza is an unfinished DRAFT (no Bottom Line = your gate, I can’t write it). I gave it a real product image AND pulled it from the public index until you write the verdict. <b>Net effect: the FussyBean reviews index shows 1 card for now.</b> Write its Bottom Line and it rejoins the index with its image and loses the banner. Your call if you’d rather show it now.",
+    shot:"fussybean__reviews-index__1440", shot2:"fussybean__review-detail__1440", shot2label:"Baratza page (has image, keeps DRAFT banner)" },
+  { id:"the-404", site:"All 5 sites", title:"404 page (“fix 404s”)",
+    said:"Fix 404s.",
+    did:"This row is just the <b>error page</b> a visitor sees IF they hit a bad URL — not a broken page. Nothing on your sites is 404ing (I fixed the 3 real dead links + added a guard). Today your LIVE sites dump bad URLs onto the homepage (a “soft 404,” bad for SEO); the rebuild adds a real branded 404 instead. <b>Recommend Go.</b> The before-shots for DTP/MWC/FB look like your homepage because that’s exactly the current soft-404 behavior.",
+    shot:"detailerpicks__404__1440", beforeNote:"Before = the homepage (current soft-404)" },
 ];
-// stem, label, hasMobile, whatChanged
-const TYPES = [
-  ["home","Homepage",true,"Now built from the shared <b>SiteShell</b>: full-width header (logo far-left, nav far-right), shared hero, component-based sections. DTP: hero pill removed; footer Amazon-Associate line no longer wraps."],
-  ["guides-index","Buyers-guides index",false,"Shared <b>PageHeader</b> + the locked grid rule (centered, capped cards, no orphan-row stretch). Same cards, consistent header across all sites."],
-  ["reviews-index","Reviews index",false,"Shared <b>PageHeader</b> + the same locked centered grid. DTP's old reviews index used the wrong grid; now matches."],
-  ["guide-detail","Guide detail",true,"The big one. Two-tier pick system: <b>at-a-glance</b> grid + <b>full-detail</b> cards. NEW: <b>gold “Best Overall” banner</b>, <b>buy/skip Bottom Line</b> card with product image, comparison table, FAQ. Product images contained on white."],
-  ["review-detail","Review detail",false,"Shared <b>ReviewArticle</b> (scorecard, buy/skip, flaws, FAQ). Prose capped ~70ch for readability."],
-  ["topic-hub","Topic hub",false,"Shared <b>PageHeader</b> banner; lists the section's articles. Same content, consistent chrome."],
-  ["about","About",false,"Rebuilt on the shared <b>ProsePage</b> component (consistent legal/editorial text layout across all sites)."],
-  ["404","404 page",false,"NEW shared <b>NotFound</b> component — on-brand 404 with nav back. Before = whatever the host served."],
-];
-// Pre-flags cleared 2026-06-01 — the DTP dupe-hero issue is fixed (distinct photos).
-const FLAGS = {};
-const SEED_NO = {};
 
 const state = JSON.parse(localStorage.getItem(LSK) || "{}");
 function save(){ localStorage.setItem(LSK, JSON.stringify(state)); render(); }
-const root = document.getElementById("units");
+const root = document.getElementById("cards");
 
-function fig(dir, site, stem, vp){
-  const src = `${dir}/${site}__${stem}__${vp}.png`;
-  const f = document.createElement("figure");
-  const img = new Image(); img.src = src; img.alt = `${site} ${stem} ${vp}`;
-  img.onerror = ()=>{ f.classList.add("missing");
-    f.innerHTML = `<div class="ph">${dir==="shots-live"?"new in rebuild —<br>no before-state":"— not captured —"}</div>`; };
-  img.onclick = ()=>{ const lb=document.getElementById("lb"); lb.querySelector("img").src=src;
-    lb.querySelector(".cap").textContent=`${dir==="shots-live"?"LIVE":"REBUILT"} · ${site} · ${stem} · ${vp}px`; lb.style.display="flex"; };
-  f.appendChild(img);
-  return f;
-}
-function buildUnit(site, stem, label, hasMobile, changed){
-  const key = `${site.slug}/${stem}`;
-  if(state[key]===undefined && SEED_NO[key]!==undefined && !state["_s_"+key]){ state[key]={v:"no",note:SEED_NO[key]}; state["_s_"+key]=true; }
-  const cur = state[key] || {v:"",note:""};
-  const u=document.createElement("div"); u.className="unit"+(cur.v==="go"?" go":cur.v==="no"?" no":"");
-  u.innerHTML = `<div class="uhead"><span class="lbl">${label}</span><span class="site">${site.name}</span></div>`;
-  if(FLAGS[key]) u.innerHTML += `<div class="flag">⚠ ${FLAGS[key]}</div>`;
-  u.innerHTML += `<div class="changed"><b>What changed:</b> ${changed}</div>`;
-  const cmp=document.createElement("div"); cmp.className="compare";
-  const before=document.createElement("div"); before.className="side before";
-  before.innerHTML=`<div class="tag">Before — live now</div>`;
-  before.appendChild(fig("shots-live", site.slug, stem, "1440"));
-  const after=document.createElement("div"); after.className="side after";
-  after.innerHTML=`<div class="tag">After — rebuilt</div>`;
-  after.appendChild(fig("shots", site.slug, stem, "1440"));
-  if(hasMobile){
-    const mb=document.createElement("div"); mb.className="mob"; mb.appendChild(fig("shots-live",site.slug,stem,"390")); before.appendChild(mb);
-    const ma=document.createElement("div"); ma.className="mob"; ma.appendChild(fig("shots",site.slug,stem,"390")); after.appendChild(ma);
-  }
-  cmp.appendChild(before); cmp.appendChild(after); u.appendChild(cmp);
-  const seg=document.createElement("div"); seg.className="seg";
-  const bGo=document.createElement("button"); bGo.textContent="Go"; if(cur.v==="go")bGo.className="on-go";
-  const bNo=document.createElement("button"); bNo.textContent="No-Go"; if(cur.v==="no")bNo.className="on-no";
-  bGo.onclick=()=>{ state[key]={v:cur.v==="go"?"":"go",note:(state[key]||{}).note||""}; save(); };
-  bNo.onclick=()=>{ state[key]={v:cur.v==="no"?"":"no",note:(state[key]||{}).note||""}; save(); };
-  const ta=document.createElement("textarea"); ta.placeholder="Note (what to fix on a No-Go)…"; ta.value=cur.note||"";
-  ta.oninput=()=>{ state[key]={v:(state[key]||{}).v||"",note:ta.value}; localStorage.setItem(LSK,JSON.stringify(state)); };
-  seg.appendChild(bGo); seg.appendChild(bNo); seg.appendChild(ta); u.appendChild(seg);
-  return u;
+function fig(dir, stem, missingMsg){
+  const src = `${dir}/${stem}.png`;
+  const f=document.createElement("figure");
+  const img=new Image(); img.src=src; img.alt=stem;
+  img.onerror=()=>{ f.classList.add("missing"); f.innerHTML=`<div class="ph">${missingMsg||"—"}</div>`; };
+  img.onclick=()=>{ const lb=document.getElementById("lb"); lb.querySelector("img").src=src;
+    lb.querySelector(".cap").textContent=`${dir==="shots-live"?"BEFORE (live)":"AFTER (rebuilt)"} · ${stem}`; lb.style.display="flex"; };
+  f.appendChild(img); return f;
 }
 function render(){
   root.innerHTML=""; let go=0,no=0,un=0;
-  SITES.forEach(s=>{
-    const h=document.createElement("h2"); h.innerHTML=`${s.name} <span class="skin">${s.skin}</span>`; root.appendChild(h);
-    TYPES.forEach(([stem,label,mob,changed])=>{
-      if(stem==="topic-hub" && !s.topic) return;
-      root.appendChild(buildUnit(s,stem,label,mob,changed));
-      const v=(state[`${s.slug}/${stem}`]||{}).v;
-      if(v==="go")go++; else if(v==="no")no++; else un++;
-    });
+  CARDS.forEach((c,i)=>{
+    const cur=state[c.id]||{v:"",note:""};
+    const card=document.createElement("div"); card.className="card"+(cur.v==="go"?" go":cur.v==="no"?" no":"");
+    card.innerHTML=`<div class="card__head"><span class="card__n">${i+1}/${CARDS.length}</span>`
+      +`<span class="card__title">${c.title}</span><span class="card__site">${c.site}</span></div>`
+      +`<div class="said">You said: <b>${c.said}</b></div>`
+      +`<div class="did"><b>Fixed:</b> ${c.did}</div>`;
+    const cmp=document.createElement("div"); cmp.className="compare";
+    const before=document.createElement("div"); before.className="side before";
+    before.innerHTML=`<div class="tag">Before${c.beforeNote?" — "+c.beforeNote:""}</div>`;
+    before.appendChild(fig("shots-live", c.shot, "new — no before-state"));
+    const after=document.createElement("div"); after.className="side after";
+    after.innerHTML=`<div class="tag">After — fixed</div>`;
+    after.appendChild(fig("shots", c.shot, "—"));
+    cmp.appendChild(before); cmp.appendChild(after); card.appendChild(cmp);
+    if(c.shot2){
+      const ex=document.createElement("div"); ex.className="extra";
+      ex.innerHTML=`<div class="tag" style="color:var(--good);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:0 0 5px;">${c.shot2label||"Also"}</div>`;
+      ex.appendChild(fig("shots", c.shot2, "—")); card.appendChild(ex);
+    }
+    const seg=document.createElement("div"); seg.className="seg";
+    const bGo=document.createElement("button"); bGo.textContent="Go"; if(cur.v==="go")bGo.className="on-go";
+    const bNo=document.createElement("button"); bNo.textContent="No-Go"; if(cur.v==="no")bNo.className="on-no";
+    bGo.onclick=()=>{ state[c.id]={v:cur.v==="go"?"":"go",note:(state[c.id]||{}).note||""}; save(); };
+    bNo.onclick=()=>{ state[c.id]={v:cur.v==="no"?"":"no",note:(state[c.id]||{}).note||""}; save(); };
+    const ta=document.createElement("textarea"); ta.placeholder="Note (only if still off)…"; ta.value=cur.note||"";
+    ta.oninput=()=>{ state[c.id]={v:(state[c.id]||{}).v||"",note:ta.value}; localStorage.setItem(LSK,JSON.stringify(state)); };
+    seg.appendChild(bGo); seg.appendChild(bNo); seg.appendChild(ta); card.appendChild(seg);
+    root.appendChild(card);
+    if(cur.v==="go")go++; else if(cur.v==="no")no++; else un++;
   });
   document.getElementById("nGo").textContent=go; document.getElementById("nNo").textContent=no; document.getElementById("nUn").textContent=un;
 }
 function decisionText(){
-  let no=[],go=0;
-  SITES.forEach(s=>TYPES.forEach(([stem,label])=>{
-    if(stem==="topic-hub"&&!s.topic)return;
-    const d=state[`${s.slug}/${stem}`]||{};
-    if(d.v==="no")no.push(`NO-GO  ${s.name} / ${label}${d.note?"  —  "+d.note:""}`);
-    else if(d.v==="go")go++;
-  }));
-  let out=["REBUILD BEFORE/AFTER DECISIONS","",`GO: ${go} pages.`,"",no.length?`NO-GO (${no.length}):`:"NO-GO: none — ship it."];
+  let out=["REBUILD — DECISION RE-CHECK",""]; let go=0,no=[];
+  CARDS.forEach(c=>{ const d=state[c.id]||{};
+    if(d.v==="go")go++; else if(d.v==="no")no.push(`STILL NO-GO  ${c.site} / ${c.title}${d.note?"  —  "+d.note:""}`);
+  });
+  out.push(`CONFIRMED GO: ${go} / ${CARDS.length}.`,"");
+  out.push(no.length?`STILL NO-GO (${no.length}):`:"All confirmed — merge it.");
   return out.concat(no).join("\n");
 }
 function copyDecisions(e){ navigator.clipboard.writeText(decisionText()).then(()=>{ const b=e.target,t=b.textContent; b.textContent="Copied ✓"; setTimeout(()=>b.textContent=t,1400); }); }
