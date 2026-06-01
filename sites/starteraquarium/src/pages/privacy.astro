@@ -1,18 +1,17 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import ProsePage from "@affkit/shared-ui/ProsePage.astro";
 ---
 <MainLayout
   title="Privacy policy"
-  description="Privacy policy for StarterAquarium."
+  description="Privacy policy for Starter Aquarium."
 >
-  <article>
-    <h1>Privacy policy</h1>
-
+  <ProsePage title="Privacy policy">
     <p><strong>Last updated:</strong> {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</p>
 
     <h2>What we collect</h2>
     <p>
-      StarterAquarium uses Cloudflare Web Analytics, which is privacy-friendly
+      Starter Aquarium uses Cloudflare Web Analytics, which is privacy-friendly
       by design: no cookies, no fingerprinting, and no personal data is
       collected or sold. We see aggregate stats like page views and
       referrers, never individual visitors.
@@ -28,22 +27,15 @@ import MainLayout from "../layouts/MainLayout.astro";
 
     <h2>What happens after you click</h2>
     <p>
-      Once you leave StarterAquarium via an affiliate link, you're on the
+      Once you leave Starter Aquarium via an affiliate link, you are on the
       destination retailer's site under their privacy policy (Amazon, the
       brand's direct site, etc.). We have no control over their tracking.
     </p>
 
     <h2>Cookies</h2>
-    <p>StarterAquarium does not set any first-party tracking cookies.</p>
+    <p>Starter Aquarium does not set any first-party tracking cookies.</p>
 
     <h2>Contact</h2>
     <p>Questions about this policy? See the <a href="/contact/">contact</a> page.</p>
-  </article>
+  </ProsePage>
 </MainLayout>
-
-<style>
-  article { max-width: var(--content-max); margin: 0 auto; }
-  h1 { font-size: var(--text-3xl); margin-bottom: var(--space-6); }
-  h2 { margin-top: var(--space-8); }
-  code { background: var(--color-surface); padding: 0 var(--space-1); border-radius: var(--radius-sm); }
-</style>

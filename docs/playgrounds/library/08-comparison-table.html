@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library · 08 · Comparison Table — 5 skins</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Press+Start+2P&family=Poppins:wght@500;600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #c8ccd0; font-family: "Inter", system-ui, sans-serif; color: #1a1a1a; padding: 28px 0 80px; }
+  .page-head { max-width: 1200px; margin: 0 auto 22px; padding: 0 24px; }
+  .page-head h1 { font-size: 19px; font-weight: 700; }
+  .page-head p { font-size: 14px; color: #44484c; margin-top: 4px; max-width: 72ch; }
+  .page-head .hint { margin-top: 8px; font-size: 13px; color: #555; background: #fff; border-left: 3px solid #888; padding: 8px 12px; border-radius: 0 6px 6px 0; }
+
+  .specimen { max-width: 1200px; margin: 0 auto 26px; }
+  .specimen__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #4a4e52; margin: 0 4px 7px; display: flex; justify-content: space-between; }
+  .specimen__label span:last-child { font-weight: 500; color: #70757a; letter-spacing: 0; text-transform: none; }
+  .frame { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 14px rgba(0,0,0,.14); }
+
+  /* ── THE COMPARISON-TABLE COMPONENT (one definition, skinned by vars) ── */
+  .cmp { background: var(--paper); padding: 32px; }
+  .cmp__scroll { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--border); border-radius: 12px; }
+  .cmp__table { width: 100%; border-collapse: collapse; min-width: 640px;
+    font-family: var(--sans); font-size: 14px; color: var(--ink); }
+
+  /* header row — dark forest bg, paper text, accent label tucked above the best col */
+  .cmp__th { background: var(--forest); color: var(--th-fg, var(--paper));
+    font-family: var(--sans); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: 11.5px; padding: 14px 16px; text-align: left; white-space: nowrap; }
+  .cmp__th--product { min-width: 13rem; }
+  .cmp__th--best { background: var(--accent); color: var(--th-best-fg, var(--paper)); position: relative; }
+
+  /* zebra striping on rows */
+  .cmp__row:nth-child(even) { background: var(--paper-muted); }
+  .cmp__cell { padding: 13px 16px; border-bottom: 1px solid var(--border);
+    vertical-align: middle; color: var(--ink); line-height: 1.4; white-space: nowrap; }
+  .cmp__row:last-child .cmp__cell { border-bottom: 0; }
+
+  /* first-column product: thumb + serif name */
+  .cmp__cell--product { white-space: normal; }
+  .cmp__product { display: flex; align-items: center; gap: 12px; }
+  .cmp__thumb { width: 46px; height: 46px; flex-shrink: 0; border-radius: 8px;
+    background: var(--thumb-bg, #fff); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; font-size: 20px; }
+  .cmp__name { font-family: var(--serif); font-weight: var(--word-wt, 600); font-size: 16px;
+    letter-spacing: var(--word-ls, -.01em); color: var(--forest); line-height: 1.15; }
+  .cmp__sub { display: block; font-family: var(--sans); font-size: 11.5px; font-weight: 500;
+    letter-spacing: 0; color: var(--muted); margin-top: 2px; }
+
+  /* highlighted 'best' column */
+  .cmp__cell--best { background: var(--best-tint); }
+  .cmp__row:nth-child(even) .cmp__cell--best { background: var(--best-tint-alt); }
+  .cmp__badge { display: inline-block; margin-top: 6px; font-family: var(--sans);
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em;
+    color: var(--accent); }
+
+  /* buy link in last column */
+  .cmp__cta { display: inline-flex; align-items: center; padding: 13px 20px; background: var(--brass);
+    color: var(--cta-fg, var(--paper)); border-radius: 8px; font-family: var(--sans); font-weight: 700;
+    text-decoration: none; font-size: 14px; letter-spacing: .01em;
+    white-space: nowrap; box-shadow: 0 2px 9px rgba(0,0,0,.18); transition: filter .15s, transform .15s, box-shadow .15s; }
+  .cmp__cta:hover { filter: brightness(1.08); transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,.22); }
+
+  /* gog pixel font: only the brand-y name uses Press Start; keep it tiny + legible */
+  .skin--gog .cmp__name { font-family: "Press Start 2P", monospace; font-size: 10.5px; letter-spacing: 0; line-height: 1.5; color: var(--ink); }
+
+  /* ── SKINS (color + font only) ── */
+  .skin--mwc {
+    --paper:#FAF7EF; --paper-muted:#F2EBDC; --ink:#1C1C1A; --forest:#1F3D2F; --brass:#A07C3A;
+    --brass-soft:#D9C29B; --muted:#5C5A4F; --border:#E5DDC9; --accent:#A07C3A;
+    --serif:"Fraunces",serif; --sans:"Inter Tight",sans-serif;
+    --best-tint:rgba(160,124,58,.10); --best-tint-alt:rgba(160,124,58,.16); --thumb-bg:#fff; }
+  .skin--dtp {
+    --paper:#F4F2EE; --paper-muted:#ECEAE4; --ink:#14181C; --forest:#2C5E8C; --brass:#2C5E8C;
+    --brass-soft:#F7E9C8; --muted:#6A7079; --border:#D6D2C8; --accent:#2C5E8C;
+    --serif:"Instrument Serif",serif; --sans:"Inter Tight",sans-serif; --word-wt:400; --word-ls:0;
+    --best-tint:rgba(44,94,140,.08); --best-tint-alt:rgba(44,94,140,.14); --th-best-fg:#fff; --thumb-bg:#fff; }
+  .skin--fb {
+    --paper:#f4e8d4; --paper-muted:#f8efe0; --ink:#2c2018; --forest:#241710; --brass:#b06f2c;
+    --brass-soft:#ecd4a8; --muted:#7c6750; --border:#e3d4bd; --accent:#b06f2c;
+    --serif:"Fraunces",serif; --sans:"Inter",sans-serif;
+    --best-tint:rgba(176,111,44,.10); --best-tint-alt:rgba(176,111,44,.17); --thumb-bg:#fffaf2; }
+  .skin--gog {
+    --paper:#0e0b1c; --paper-muted:#171331; --ink:#ede9ff; --forest:#171331; --brass:#2ee6ff;
+    --brass-soft:#2c2752; --muted:#9a93c7; --border:#3a3470; --accent:#2ee6ff;
+    --serif:"Press Start 2P",monospace; --sans:"Inter",sans-serif;
+    --best-tint:rgba(46,230,255,.10); --best-tint-alt:rgba(46,230,255,.16);
+    --th-best-fg:#0e0b1c; --th-fg:#ede9ff; --cta-fg:#0e0b1c; --thumb-bg:#221c44; }
+  .skin--sa {
+    --paper:#f6fcfd; --paper-muted:#ffffff; --ink:#103642; --forest:#0c5470; --brass:#e0573a;
+    --brass-soft:#bfe9ef; --muted:#557079; --border:#cfeaef; --accent:#e0573a;
+    --serif:"Poppins",sans-serif; --sans:"Nunito Sans",sans-serif; --word-wt:700;
+    --best-tint:rgba(224,87,58,.08); --best-tint-alt:rgba(224,87,58,.14); --th-best-fg:#fff; --thumb-bg:#fff; }
+</style>
+</head>
+<body>
+  <div class="page-head">
+    <h1>Component 08 — Comparison table</h1>
+    <p>The spec-comparison table (4 products × 5 specs) rendered in all 5 skins. Dark header row, zebra striping, one highlighted "best value" column, product thumbnail + serif name in column one, and a buy link in the last column. Scrolls horizontally on narrow screens.</p>
+    <p class="hint">Bang on the <b>structure</b> — header treatment, which column gets the highlight, the thumb size, zebra contrast, where the buy button sits, the "best" badge. The skins follow automatically. Tell me what to change and I'll redraw.</p>
+  </div>
+
+  <!-- ── MWC ─────────────────────────────────────────── -->
+  <div class="specimen">
+    <div class="specimen__label"><span>MyWildlifeCam</span><span>forest + cream + brass · Fraunces / Inter Tight</span></div>
+    <div class="frame skin--mwc"><div class="cmp"><div class="cmp__scroll">
+      <table class="cmp__table">
+        <thead><tr>
+          <th class="cmp__th cmp__th--product">Trail camera</th>
+          <th class="cmp__th cmp__th--best">Detection range</th>
+          <th class="cmp__th">Trigger speed</th>
+          <th class="cmp__th">Resolution</th>
+          <th class="cmp__th">Battery life</th>
+          <th class="cmp__th">Where to buy</th>
+        </tr></thead>
+        <tbody>
+          <tr class="cmp__row">
+            <td class="cmp__cell cmp__cell--product"><span class="cmp__product"><span class="cmp__thumb">📷</span><span><span class="cmp__name">Ridgeline Pro 4K</span><span class="cmp__sub">Cellular · LTE</span></span></span></td>
+            <td class="cmp__cell cmp__cell--best">100 ft <span class="cmp__badge">Best range</span></td>
+            <td class="cmp__cell">0.2 s</td>
+            <td class="cmp__cell">4K / 32 MP</td>
+            <td class="cmp__cell">~8 months</td>
+            <td class="cmp__cell"><a class="cmp__cta" href="#" rel="nofollow sponsored noopener">Check price</a></td>
+          </tr>
+          <tr class="cmp__row">
+            <td class="cmp__cell cmp__cell--product"><span class="cmp__product"><span class="cmp__thumb">📷</span><span><span class="cmp__name">Timberwolf Cell</span><span class="cmp__sub">Cellular · LTE</span></span></span></td>
+            <td class="cmp__cell cmp__cell--best">90 ft</td>
+            <td class="cmp__cell">0.3 s</td>
+            <td class="cmp__cell">1080p / 24 MP</td>
+            <td class="cmp__cell">~6 months</td>
+            <td class="cmp__cell"><a class="cmp__cta" href="#" rel="nofollow sponsored noopener">Check price</a></td>
+          </tr>
+          <tr class="cmp__row">
+            <td class="cmp__cell cmp__cell--product"><span class="cmp__product"><span class="cmp__thumb">📷</span><span><span class="cmp__name">Birchwood Mini</span><span class="cmp__sub">No-glow · SD card</span></span></span></td>
+            <td class="cmp__cell cmp__cell--best">70 ft</td>
+            <td class="cmp__cell">0.4 s</td>
+            <td class="cmp__cell">1080p / 20 MP</td>
+            <td class="cmp__cell">~12 months</td>
+            <td class="cmp__cell"><a class="cmp__cta" href="#" rel="nofollow sponsored noopener">Check price</a></td>
+          </tr>
+          <tr class="cmp__row">
+            <td class="cmp__cell cmp__cell--product"><span class="cmp__product"><span class="cmp__thumb">📷</span><span><span class="cmp__name">Outpost Budget</span><span class="cmp__sub">Low-glow · SD card</span></span></span></td>
+            <td class="cmp__cell cmp__cell--best">55 ft</td>
+            <td class="cmp__cell">0.6 s</td>
+            <td class="cmp__cell">720p / 16 MP</td>
+            <td class="cmp__cell">~5 months</td>
+            <td class="cmp__cell"><a class="cmp__cta" href="#" rel="nofollow sponsored noopener">Check price</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div></div></div>
+  </div>
+
+  <!-- ── DTP ─────────────────────────────────────────── -->
+  <div class="specimen">
+    <div class="specimen__label"><span>DetailerPicks</span><span>slate blue + paper · Instrument Serif / Inter Tight</span></div>
+    <div class="frame skin--dtp"><div class="cmp"><div class="cmp__scroll">
+      <table class="cmp__table">
+        <thead><tr>
+          <th class="cmp__th cmp__th--product">Foam cannon</th>
+          <th class="cmp__th cmp__th--best">Foam thickness</th>
+          <th class="cmp__th">Tank size</th>
+          <th class="cmp__th">Connector</th>
+          <th class="cmp__th">PSI range</th>
+          <th class="cmp__th">Where to buy</th>
+        </tr></thead>
+        <tbody>
+          <tr class="cmp__row">
+            <td class="cmp__cell cmp__cell--product"><span class="cmp__product"><span class="cmp__thumb">🧴</span><span><span class="cmp__name">MaxSuds Pro</span><span class="cmp__sub">Brass body</span></span></span></td>
+            <td class="cmp__cell cmp__cell--best">Thick <span class="cmp__badge">Best foam</span></td>
+            <td class="cmp__cell">1 L</td>
+            <td class="cmp__cell">1/4&quot; QC</td>
+            <td class="cmp__cell">1000–3000</td>
+            <td class="cmp__cell"><a class="cmp__cta" href="#" rel="nofollow sponsored noopener">Check price</a></td>
+          </tr>
+          <tr class="cmp__row">
+            <td class="cmp__cell cmp__cell--product"><span class="cmp__product"><span class="cmp__thumb">🧴</span><span><span class="cmp__name">SudStorm Mk II</span><span class="cmp__sub">Anodized</span></span></span></td>
+            <td class="cmp__cell cmp__cell--best">Thick</td>
+            <td class="cmp__cell">1.1 L</td>
+            <td class="cmp__cell">1/4&quot; QC</td>
+            <td class="cmp__cell">1200–3200</td>
+            <td class="cmp__cell"><a class="cmp__cta" href="#" rel="nofollow sponsored noopener">Check price</a></td>
+          </tr>
+          <tr class="cmp__row">
+            <td class="cmp__cell cmp__cell--product"><span class="cmp__product"><span class="cmp__thumb">🧴</span><span><span class="cmp__name">FoamLite Compact</span><span class="cmp__sub">Polymer</span></span></span></td>
+            <td class="cmp__cell cmp__cell--best">Medium</td>
+            <td class="cmp__cell">0.7 L</td>
+            <td class="cmp__cell">M22</td>
+            <td class="cmp__cell">800–2600</td>
+            <td class="cmp__cell"><a class="cmp__cta" href="#" rel="nofollow sponsored noopener">Check price</a></td>
+          </tr>
+          <tr class="cmp__row">
+            <td class="cmp__cell cmp__cell--product"><span class="cmp__product"><span class="cmp__thumb">🧴</span><span><span class="cmp__name">BudgetBlaster</span><span class="cmp__sub">Plastic</span></span></span></td>
+            <td class="cmp__cell cmp__cell--best">Light</td>
+            <td class="cmp__cell">0.5 L</td>
+            <td class="cmp__cell">M22</td>
+            <td class="cmp__cell">600–2200</td>
+            <td class="cmp__cell"><a class="cmp__cta" href="#" rel="nofollow sponsored noopener">Check price</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div></div></div>
+  </div>
+
+  <!-- ── FB ──────────────────────────────────────────── -->
+  <div class="specimen">
+    <div class="specimen__label"><span>FussyBean</span><span>espresso + cream + caramel · Fraunces / Inter</span></div>
+    <div class="frame skin--fb"><div class="cmp"><div class="cmp__scroll">
+      <table class="cmp__table">
+        <thead><tr>
+          <th class="cmp__th cmp__th--product">Espresso machine</th>
+          <th class="cmp__th cmp__th--best">Boiler type</th>
+          <th class="cmp__th">Pressure</th>
+          <th class="cmp__th">Heat-up</th>
+          <th class="cmp__th">Water tank</th>
+          <th class="cmp__th">Where to buy</th>
+        </tr></thead>
+        <tbody>
+          <tr class="cmp__row">
+            <td class="cmp__cell cmp__cell--product"><span class="cmp__product"><span class="cmp__thumb">☕</span><span><span class="cmp__name">Crema Dual</span><span class="cmp__sub">Dual boiler</span></span></span></td>
+            <td class="cmp__cell cmp__cell--best">Dual <span class="cmp__badge">Best for milk</span></td>
+            <td class="cmp__cell">9 bar</td>
+            <td class="cmp__cell">~6 min</td>
+            <td class="cmp__cell">2.5 L</td>
+            <td class="cmp__cell"><a class="cmp__cta" href="#" rel="nofollow sponsored noopener">Check price</a></td>
+          </tr>
+          <tr class="cmp__row">
+            <td class="cmp__cell cmp__cell--product"><span class="cmp__product"><span class="cmp__thumb">☕</span><span><span class="cmp__name">Barista Heat-X</span><span class="cmp__sub">Heat exchanger</span></span></span></td>
+            <td class="cmp__cell cmp__cell--best">Heat-X</td>
+            <td class="cmp__cell">9 bar</td>
+            <td class="cmp__cell">~9 min</td>
+            <td class="cmp__cell">1.8 L</td>
+            <td class="cmp__cell"><a class="cmp__cta" href="#" rel="nofollow sponsored noopener">Check price</a></td>
+          </tr>
+          <tr class="cmp__row">
+            <td class="cmp__cell cmp__cell--product"><span class="cmp__product"><span class="cmp__thumb">☕</span><span><span class="cmp__name">Morning Single</span><span class="cmp__sub">Single boiler</span></span></span></td>
+            <td class="cmp__cell cmp__cell--best">Single</td>
+            <td class="cmp__cell">9 bar</td>
+            <td class="cmp__cell">~3 min</td>
+            <td class="cmp__cell">1.4 L</td>
+            <td class="cmp__cell"><a class="cmp__cta" href="#" rel="nofollow sponsored noopener">Check price</a></td>
+          </tr>
+          <tr class="cmp__row">
+            <td class="cmp__cell cmp__cell--product"><span class="cmp__product"><span class="cmp__thumb">☕</span><span><span class="cmp__name">Pod Starter</span><span class="cmp__sub">Thermoblock</span></span></span></td>
+            <td class="cmp__cell cmp__cell--best">Thermoblock</td>
+            <td class="cmp__cell">15 bar</td>
+            <td class="cmp__cell">~30 s</td>
+            <td class="cmp__cell">0.9 L</td>
+            <td class="cmp__cell"><a class="cmp__cta" href="#" rel="nofollow sponsored noopener">Check price</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div></div></div>
+  </div>
+
+  <!-- ── GOG ─────────────────────────────────────────── -->
+  <div class="specimen">
+    <div class="specimen__label"><span>GameOverGear</span><span>dark + neon cyan · Press Start 2P / Inter</span></div>
+    <div class="frame skin--gog"><div class="cmp"><div class="cmp__scroll">
+      <table class="cmp__table">
+        <thead><tr>
+          <th class="cmp__th cmp__th--product">Retro handheld</th>
+          <th class="cmp__th cmp__th--best">Screen</th>
+          <th class="cmp__th">Emulation</th>
+          <th class="cmp__th">Battery</th>
+          <th class="cmp__th">Storage</th>
+          <th class="cmp__th">Where to buy</th>
+        </tr></thead>
+        <tbody>
+          <tr class="cmp__row">
+            <td class="cmp__cell cmp__cell--product"><span class="cmp__product"><span class="cmp__thumb">🎮</span><span><span class="cmp__name">PixelPocket X</span><span class="cmp__sub">Up to PS1</span></span></span></td>
+            <td class="cmp__cell cmp__cell--best">4.0&quot; IPS <span class="cmp__badge">Best screen</span></td>
+            <td class="cmp__cell">Up to PSP</td>
+            <td class="cmp__cell">~6 hrs</td>
+            <td class="cmp__cell">128 GB</td>
+            <td class="cmp__cell"><a class="cmp__cta" href="#" rel="nofollow sponsored noopener">Check price</a></td>
+          </tr>
+          <tr class="cmp__row">
+            <td class="cmp__cell cmp__cell--product"><span class="cmp__product"><span class="cmp__thumb">🎮</span><span><span class="cmp__name">RetroDeck Lite</span><span class="cmp__sub">Up to N64</span></span></span></td>
+            <td class="cmp__cell cmp__cell--best">3.5&quot; IPS</td>
+            <td class="cmp__cell">Up to N64</td>
+            <td class="cmp__cell">~5 hrs</td>
+            <td class="cmp__cell">64 GB</td>
+            <td class="cmp__cell"><a class="cmp__cta" href="#" rel="nofollow sponsored noopener">Check price</a></td>
+          </tr>
+          <tr class="cmp__row">
+            <td class="cmp__cell cmp__cell--product"><span class="cmp__product"><span class="cmp__thumb">🎮</span><span><span class="cmp__name">8-Bit Mini</span><span class="cmp__sub">Up to SNES</span></span></span></td>
+            <td class="cmp__cell cmp__cell--best">2.8&quot; TFT</td>
+            <td class="cmp__cell">Up to GBA</td>
+            <td class="cmp__cell">~8 hrs</td>
+            <td class="cmp__cell">32 GB</td>
+            <td class="cmp__cell"><a class="cmp__cta" href="#" rel="nofollow sponsored noopener">Check price</a></td>
+          </tr>
+          <tr class="cmp__row">
+            <td class="cmp__cell cmp__cell--product"><span class="cmp__product"><span class="cmp__thumb">🎮</span><span><span class="cmp__name">CoinOp Keychain</span><span class="cmp__sub">Up to NES</span></span></span></td>
+            <td class="cmp__cell cmp__cell--best">2.0&quot; LCD</td>
+            <td class="cmp__cell">Up to NES</td>
+            <td class="cmp__cell">~3 hrs</td>
+            <td class="cmp__cell">8 GB</td>
+            <td class="cmp__cell"><a class="cmp__cta" href="#" rel="nofollow sponsored noopener">Check price</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div></div></div>
+  </div>
+
+  <!-- ── SA ──────────────────────────────────────────── -->
+  <div class="specimen">
+    <div class="specimen__label"><span>StarterAquarium</span><span>aqua teal + coral pop · Poppins / Nunito Sans</span></div>
+    <div class="frame skin--sa"><div class="cmp"><div class="cmp__scroll">
+      <table class="cmp__table">
+        <thead><tr>
+          <th class="cmp__th cmp__th--product">Starter kit</th>
+          <th class="cmp__th cmp__th--best">Tank size</th>
+          <th class="cmp__th">Filtration</th>
+          <th class="cmp__th">Lighting</th>
+          <th class="cmp__th">Heater</th>
+          <th class="cmp__th">Where to buy</th>
+        </tr></thead>
+        <tbody>
+          <tr class="cmp__row">
+            <td class="cmp__cell cmp__cell--product"><span class="cmp__product"><span class="cmp__thumb">🐠</span><span><span class="cmp__name">ReefStart 20</span><span class="cmp__sub">Glass · curved</span></span></span></td>
+            <td class="cmp__cell cmp__cell--best">20 gal <span class="cmp__badge">Best starter</span></td>
+            <td class="cmp__cell">HOB included</td>
+            <td class="cmp__cell">LED full</td>
+            <td class="cmp__cell">100 W</td>
+            <td class="cmp__cell"><a class="cmp__cta" href="#" rel="nofollow sponsored noopener">Check price</a></td>
+          </tr>
+          <tr class="cmp__row">
+            <td class="cmp__cell cmp__cell--product"><span class="cmp__product"><span class="cmp__thumb">🐠</span><span><span class="cmp__name">AquaCube 10</span><span class="cmp__sub">Glass · rimless</span></span></span></td>
+            <td class="cmp__cell cmp__cell--best">10 gal</td>
+            <td class="cmp__cell">Internal</td>
+            <td class="cmp__cell">LED basic</td>
+            <td class="cmp__cell">50 W</td>
+            <td class="cmp__cell"><a class="cmp__cta" href="#" rel="nofollow sponsored noopener">Check price</a></td>
+          </tr>
+          <tr class="cmp__row">
+            <td class="cmp__cell cmp__cell--product"><span class="cmp__product"><span class="cmp__thumb">🐠</span><span><span class="cmp__name">NanoBow 5</span><span class="cmp__sub">Acrylic · bow</span></span></span></td>
+            <td class="cmp__cell cmp__cell--best">5 gal</td>
+            <td class="cmp__cell">Sponge</td>
+            <td class="cmp__cell">Clip LED</td>
+            <td class="cmp__cell">25 W</td>
+            <td class="cmp__cell"><a class="cmp__cta" href="#" rel="nofollow sponsored noopener">Check price</a></td>
+          </tr>
+          <tr class="cmp__row">
+            <td class="cmp__cell cmp__cell--product"><span class="cmp__product"><span class="cmp__thumb">🐠</span><span><span class="cmp__name">DeskBetta 3</span><span class="cmp__sub">Acrylic · cube</span></span></span></td>
+            <td class="cmp__cell cmp__cell--best">3 gal</td>
+            <td class="cmp__cell">Sponge</td>
+            <td class="cmp__cell">Clip LED</td>
+            <td class="cmp__cell">25 W</td>
+            <td class="cmp__cell"><a class="cmp__cta" href="#" rel="nofollow sponsored noopener">Check price</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div></div></div>
+  </div>
+</body>
+</html>

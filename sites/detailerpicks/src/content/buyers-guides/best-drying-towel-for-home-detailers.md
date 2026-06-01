@@ -110,8 +110,8 @@ pubDate: 2026-05-29
 lastUpdated: 2026-05-29
 bgTheme: foam-cascade
 images:
-  hero: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=2400&q=80"
-  heroCaption: "Microfiber drying after a contact wash. Photo: Unsplash."
+  hero: "https://images.unsplash.com/photo-1633014041037-f5446fb4ce99?auto=format&fit=crop&w=2400&q=80"
+  heroCaption: "Foam-covered car in the wash bay before the dry-down. Photo: Unsplash."
 bottomLine:
   verdict: "You do not need to spend $30 on a towel. The SMINDER and Adam's Jumbo multipacks dry most cars well for about half the price of the premium picks. Step up to the Rag Company Gauntlet or a waffle-weave only if you want the plushest feel or the safest finish on soft, dark paint."
   supporting: "Six spec-verified drying towels across three weaves (twist-loop, waffle, plush) and two channels (single towels and value 2-packs), with GSM and size recorded from each product's own page."

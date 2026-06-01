@@ -1,0 +1,101 @@
+---
+/* <NotFound /> — shared on-brand 404 body. Used by every site's 404.astro
+   (Astro emits 404.html; Cloudflare Pages serves it automatically on unknown
+   routes). The page sets robots noindex in its MainLayout call. Token-mapped so
+   it auto-skins per site, including the inverted gog skin.
+
+   Centered editorial block: kicker rule + big serif "404" + headline + lede +
+   links back to the two card-grid hubs and home. No images, so nothing to size. */
+---
+<section class="nf">
+  <div class="nf__inner">
+    <span class="nf__kicker">Page not found</span>
+    <p class="nf__code">404</p>
+    <h1 class="nf__title">This page wandered off.</h1>
+    <p class="nf__lede">
+      The link is broken or the page moved. Nothing here, but the good stuff is
+      one click away.
+    </p>
+    <nav class="nf__links" aria-label="Recover">
+      <a href="/buyers-guides/" class="nf__link">Browse buying guides</a>
+      <a href="/reviews/" class="nf__link">Browse reviews</a>
+      <a href="/" class="nf__link nf__link--ghost">Back to home</a>
+    </nav>
+  </div>
+</section>
+
+<style>
+  .nf {
+    background: var(--color-bg);
+    padding: var(--space-20) var(--space-6);
+  }
+  .nf__inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    text-align: center;
+  }
+  .nf__kicker {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-brass);
+    margin-bottom: var(--space-4);
+  }
+  .nf__code {
+    font-family: var(--font-serif);
+    font-size: clamp(4rem, 12vw, 7rem);
+    line-height: 0.9;
+    color: var(--color-forest);
+    letter-spacing: var(--tracking-display);
+    margin: 0 0 var(--space-4);
+    font-weight: var(--weight-semibold);
+  }
+  .nf__title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 3vw, 2.125rem);
+    line-height: 1.15;
+    color: var(--color-forest);
+    margin: 0 0 var(--space-3);
+    letter-spacing: var(--tracking-display);
+    font-weight: var(--weight-semibold);
+  }
+  .nf__lede {
+    font-family: var(--font-sans);
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    color: var(--color-muted);
+    margin: 0 auto var(--space-8);
+    max-width: 48ch;
+  }
+  .nf__links {
+    display: inline-flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nf__link {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--color-brand-fg, var(--color-paper));
+    background: var(--color-forest);
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-card, 8px);
+    text-decoration: none;
+    border: 1px solid var(--color-forest);
+  }
+  .nf__link:hover { background: var(--color-brass); border-color: var(--color-brass); color: var(--color-accent-fg, var(--color-paper)); }
+  .nf__link--ghost {
+    background: transparent;
+    color: var(--color-forest);
+    border-color: var(--color-border);
+  }
+  .nf__link--ghost:hover { background: transparent; color: var(--color-brass); border-color: var(--color-brass); }
+
+  @media (max-width: 760px) {
+    .nf { padding: var(--space-16) var(--space-4); }
+  }
+</style>

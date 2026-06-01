@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rebuild — decisions for Ray</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #14171a; color: #e8e6e1; font: 15px/1.55 "Inter", system-ui, sans-serif; padding: 40px 24px 90px; }
+  .wrap { max-width: 860px; margin: 0 auto; }
+  h1 { font-size: 25px; margin-bottom: 4px; }
+  .sub { color: #9aa0a6; font-size: 14px; margin-bottom: 8px; }
+  .status { background: #1d2832; border: 1px solid #2a3a47; border-radius: 8px; padding: 12px 16px; font-size: 13.5px; color: #b9c4cc; margin: 18px 0 26px; }
+  .status b { color: #7fcf95; }
+  .card { background: #1e2226; border: 1px solid #333941; border-radius: 12px; padding: 22px 24px; margin: 0 0 18px; }
+  .card.dec { border-left: 4px solid #d8a23a; }
+  .card.fyi { border-left: 4px solid #4a9a5e; }
+  .q { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+  .ctx { font-size: 14px; color: #b9c4cc; margin-bottom: 14px; }
+  .opt { background: #24292e; border: 1px solid #353c43; border-radius: 8px; padding: 12px 15px; margin: 8px 0; }
+  .opt.rec { border-color: #4a9a5e; }
+  .opt .lbl { font-weight: 700; font-size: 14px; }
+  .opt .lbl .pill { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; background: #1f3d2a; color: #7fcf95; padding: 2px 8px; border-radius: 999px; margin-left: 8px; }
+  .opt p { font-size: 13.5px; color: #aeb8c0; margin-top: 4px; }
+  .ans { font-size: 13px; color: #d8a23a; margin-top: 12px; font-weight: 600; }
+  .links a { color: #6aa0d8; font-size: 13px; }
+</style></head>
+<body><div class="wrap">
+  <h1>Rebuild — two decisions for you</h1>
+  <p class="sub">Component library is locked + frozen. These two are content-contract calls — they decide how Magic Go and the existing content behave. I'm building the components to support <em>both</em> options either way, so I'm not blocked; your answer just decides whether we enrich the content.</p>
+  <div class="status">
+    <b>Progress while you're out:</b> rebuild branch created · harmonized design tokens added to the real token system · 12 mockups frozen + committed as the spec · porting the real components next (DTP first, screenshot-verified against the mockups). Live sites untouched.
+  </div>
+
+  <div class="card dec">
+    <div class="q">1. Bottom Line — migrate content to the Buy / Skip split?</div>
+    <p class="ctx">The Bottom Line you approved shows a big <b>Buy it if…</b> / <b>Skip it if…</b> / Heads-up structure. But the existing ~40 pieces store the Bottom Line as a single <code>verdict</code> sentence. To get the scannable split you designed on the existing content, the content has to carry separate buy/skip lines.</p>
+    <div class="opt rec"><div class="lbl">A — Migrate to buy/skip <span class="pill">my rec</span></div><p>Add <code>buyIf</code> / <code>skipIf</code> / <code>headsUp</code> to the schema; Magic Go generates them for new pieces; I rewrite the existing ~40 Bottom Lines into the split (you approve them as they flip live, same gate as before). Delivers the design you actually approved.</p></div>
+    <div class="opt"><div class="lbl">B — Graceful (no content change)</div><p>Keep the single verdict sentence, render it in the new buy-card layout without the Buy/Skip split. Less work, but loses the scannable split that was the whole point of the redesign.</p></div>
+    <p class="ans">Your call: ___  (I'll build the component to support both; A just means we populate the new fields.)</p>
+    <p class="links">Reference: <a href="04-bottomline.html">04-bottomline.html</a></p>
+  </div>
+
+  <div class="card dec">
+    <div class="q">2. Award label (BEST OVERALL / VALUE / BUDGET) — auto or manual?</div>
+    <p class="ctx">The pick cards + deep cards show an award banner. The content has no explicit award field today.</p>
+    <div class="opt rec"><div class="lbl">A — Derive automatically from rank <span class="pill">my rec</span></div><p>1st pick = Best Overall, lowest price = Best Value, etc. Zero content work, always consistent. Magic Go needs no new field.</p></div>
+    <div class="opt"><div class="lbl">B — Add an <code>award</code> field per product</div><p>You control the exact label per pick (e.g. "Best for big tanks"). More control, but it's content work + Magic Go must set it.</p></div>
+    <p class="ans">Your call: ___  (component supports both; absent field → auto-derive.)</p>
+    <p class="links">Reference: <a href="05-pickcard-glance.html">05 at-a-glance</a> · <a href="award-compare.html">award-compare (deep card)</a></p>
+  </div>
+
+  <div class="card fyi">
+    <div class="q">FYI — no decision needed, I'll handle these</div>
+    <p class="ctx">Minor cohesion byproducts I'll fix when building the real components: the comparison-table button got a little fat in-row (I'll keep it compact), and the FAQ eyebrow/heading alignment (I'll align them). Cleaned up a duplicate #4 example file. Deep-card award will be the full-width banner you chose (mockup 06 still shows the old pill — the real component uses the banner).</p>
+  </div>
+</div></body></html>

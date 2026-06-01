@@ -6,6 +6,40 @@ import ReviewCard from "@affkit/shared-ui/ReviewCard.astro";
 import BuyersGuideCard from "@affkit/shared-ui/BuyersGuideCard.astro";
 import CTA from "@affkit/shared-ui/CTA.astro";
 
+/* ============================================================================
+   CANONICAL HOMEPAGE — rebuilt from the shared component library.
+   This file is byte-identical across the template and all 5 sites EXCEPT the
+   PAGE block below. Structure, layout, and CSS are shared; only the per-site
+   hero copy + scene photo + SEO strings change (that is the allowed per-site
+   "content"). The page reads each site's content collections + tokens, so the
+   skin (colors/fonts) and the cards auto-personalize with zero code change.
+
+   Sections (the FussyBean gold-standard set):
+     1. Hero            — scene photo + kicker rule + serif headline + 2 CTAs
+     2. Lead            — one-paragraph editorial intro (drop cap)
+     3. Featured pick   — this-month's guide (featured BuyersGuideCard)
+     4. Latest reviews  — centered card grid (locked grid rule)
+     5. More guides     — centered card grid
+     6. Manifesto       — tokenized contrast band ("how we work")
+   ========================================================================== */
+
+/* ─── PER-SITE CONTENT (the only block that differs between sites) ─── */
+const PAGE = {
+  seoTitle: "DetailerPicks",
+  seoDescription:
+    "Cross-brand car-detailing picks for home detailers. Spec-driven buying guides and single-product reviews, by use case.",
+  heroKicker: "Car detailing · cross-brand picks",
+  heroTitle: "The paint, protected.",
+  heroLede:
+    "We line up the major brands by use case so the right pick is obvious. Spec, fit, and paint safety. The one you would actually use this weekend.",
+  heroImage:
+    "https://images.unsplash.com/photo-1605164598708-25701594473e?auto=format&fit=crop&w=2400&q=80",
+  heroImageAlt: "Foam over chrome, the moment before the rinse",
+  leadBody:
+    "Most car-detailing content is either a retailer pitching its own brand or a major publisher rehashing a generic Top 10. We do the boring work of comparing across brands by use case, naming the trade-offs, and saying honestly when the cheaper option is the right one.",
+};
+/* ─────────────────────────────────────────────────────────────────── */
+
 function sortByDateDesc<T extends { data: { pubDate: Date | string } }>(arr: T[]) {
   return [...arr].sort((a, b) => {
     const aTime = a.data.pubDate instanceof Date ? a.data.pubDate.getTime() : new Date(a.data.pubDate).getTime();
@@ -14,25 +48,27 @@ function sortByDateDesc<T extends { data: { pubDate: Date | string } }>(arr: T[]
   });
 }
 
-const allReviews = await getCollection("reviews");
-const allGuides = await getCollection("buyers-guides");
+// Only published pieces reach the homepage. A piece is published once its
+// Bottom Line verdict is filled (the repo's DRAFT/noindex gate). This predicate
+// works across all 5 sites because every content schema shares bottomLine.verdict.
+const isPublished = (e: any) =>
+  e.data.bottomLine && typeof e.data.bottomLine.verdict === "string" && e.data.bottomLine.verdict.trim() !== "";
+
+const allReviews = (await getCollection("reviews")).filter(isPublished);
+const allGuides = (await getCollection("buyers-guides")).filter(isPublished);
 
 const latestReviews = sortByDateDesc(allReviews).slice(0, 6);
 const latestGuides = sortByDateDesc(allGuides);
 const featuredGuide = latestGuides[0];
-
-const heroImage = "https://images.unsplash.com/photo-1605164598708-25701594473e?auto=format&fit=crop&w=2400&q=80";
+const otherGuides = latestGuides.slice(1, 4);
 ---
-<MainLayout
-  title="DetailerPicks"
-  description="Cross-brand car-detailing picks for home detailers. Spec-driven buying guides and single-product reviews, by use case."
->
+<MainLayout title={PAGE.seoTitle} description={PAGE.seoDescription}>
   <Hero
-    title="The paint, protected."
-    kicker="Car detailing · cross-brand picks"
-    tagline="We line up the major brands by use case so the right pick is obvious. Spec, fit, and paint safety. The one you'd actually use this weekend."
-    image={heroImage}
-    imageAlt="Foam over chrome, the moment before the rinse"
+    title={PAGE.heroTitle}
+    kicker={PAGE.heroKicker}
+    tagline={PAGE.heroLede}
+    image={PAGE.heroImage}
+    imageAlt={PAGE.heroImageAlt}
     size="full"
   >
     <div class="hero-actions">
@@ -47,28 +83,13 @@ const heroImage = "https://images.unsplash.com/photo-1605164598708-25701594473e?
     </div>
   </Hero>
 
-  <a href="/quick-picks/" class="qp-banner">
-    <div class="qp-banner__inner">
-      <div class="qp-banner__text">
-        <span class="qp-banner__eyebrow">No time to read?</span>
-        <span class="qp-banner__title">These six products are inexpensive and work perfectly for a weekend driveway wash.</span>
-      </div>
-      <span class="qp-banner__cta">Quick Picks <span class="qp-banner__arrow" aria-hidden="true">&rarr;</span></span>
-    </div>
-  </a>
-
   <section class="lead">
     <div class="lead__inner">
-      <p>
-        Most car-detailing content is either a retailer pitching its own brand
-        or a major publisher rehashing a generic Top 10. We do the boring work
-        of comparing across brands by use case, naming the trade-offs, and
-        saying honestly when the cheaper option is the right one.
-      </p>
+      <p>{PAGE.leadBody}</p>
     </div>
   </section>
 
-  {featuredGuide ? (
+  {featuredGuide && (
     <section class="featured">
       <div class="featured__inner">
         <header class="section-head">
@@ -81,23 +102,6 @@ const heroImage = "https://images.unsplash.com/photo-1605164598708-25701594473e?
         <div class="featured__card">
           <BuyersGuideCard entry={featuredGuide} featured />
         </div>
-      </div>
-    </section>
-  ) : (
-    <section class="featured featured--coming-soon">
-      <div class="featured__inner">
-        <header class="section-head">
-          <div>
-            <span class="section-head__kicker">First buying guide</span>
-            <h2 class="section-head__title">Coming soon</h2>
-          </div>
-        </header>
-        <p class="muted">
-          We're drafting the first cross-brand guide — Best Car Wash Soap for the
-          Backyard Detailer. Comparing Chemical Guys, Adam's, Griot's, Meguiar's,
-          and Mothers on paint safety, foam-cannon compatibility, and ceramic-coating
-          friendliness. Live in the next week or two.
-        </p>
       </div>
     </section>
   )}
@@ -115,11 +119,7 @@ const heroImage = "https://images.unsplash.com/photo-1605164598708-25701594473e?
       </header>
 
       {latestReviews.length === 0 ? (
-        <p class="muted">
-          First single-product reviews are being scaffolded. Each piece compares
-          a product against the best alternatives in its category, names the
-          trade-offs, and points to who it's right for.
-        </p>
+        <p class="empty">New single-product reviews land every quarter. The first pieces are in the works, built from published specs, verified-buyer reports, and use-case fit.</p>
       ) : (
         <div class="reviews__grid">
           {latestReviews.map((entry) => <ReviewCard entry={entry} />)}
@@ -128,18 +128,35 @@ const heroImage = "https://images.unsplash.com/photo-1605164598708-25701594473e?
     </div>
   </section>
 
+  {otherGuides.length > 0 && (
+    <section class="more-guides">
+      <div class="more-guides__inner">
+        <header class="section-head">
+          <div>
+            <span class="section-head__kicker">By use case</span>
+            <h2 class="section-head__title">More buying guides</h2>
+          </div>
+        </header>
+        <div class="more-guides__grid">
+          {otherGuides.map((entry) => <BuyersGuideCard entry={entry} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
   <section class="manifesto">
     <div class="manifesto__inner">
       <span class="manifesto__kicker">How we work</span>
       <h2 class="manifesto__title">Cross-brand and honest, by design.</h2>
       <p>
-        We don't sell detailing products and we don't own a workshop. We read
-        manufacturer specs, aggregate verified-buyer reports, watch independent
-        reviewer testing, and ask: for the person reading this, which product
-        actually fits? When the cheaper option is the right answer, we say so.
+        We do not sell the products and we do not run a workshop. We read
+        manufacturer spec sheets, aggregate verified-buyer reports, watch
+        independent reviewer testing, and ask one question: for the person
+        reading this, which pick actually fits? When the cheaper option is the
+        right answer, we say so.
       </p>
       <p>
-        Every "buy" link goes through our own redirect so we can swap retailers
+        Every buy link goes through our own redirect so we can swap retailers
         without breaking older posts. We earn a commission on Amazon purchases
         at no extra cost to you.
       </p>
@@ -152,6 +169,7 @@ const heroImage = "https://images.unsplash.com/photo-1605164598708-25701594473e?
 </MainLayout>
 
 <style>
+  /* Hero CTAs — ghost button needs paper outline on the dark veil */
   .hero-actions {
     display: flex;
     gap: var(--space-3);
@@ -159,15 +177,15 @@ const heroImage = "https://images.unsplash.com/photo-1605164598708-25701594473e?
     margin-top: var(--space-3);
   }
   :global(.hero--with-image) .hero-actions :global(.cta--ghost) {
-    color: var(--color-paper-ink);
-    border-color: var(--color-paper-ink);
+    color: var(--color-paper);
+    border-color: var(--color-paper);
   }
   :global(.hero--with-image) .hero-actions :global(.cta--ghost:hover) {
-    background: var(--color-paper-ink);
-    color: var(--color-paper);
+    background: var(--color-paper);
+    color: var(--color-forest);
   }
 
-  /* Lead — single column, sans body with Fraunces-equivalent drop cap (Space Grotesk display) */
+  /* Lead — single column, sans body with serif drop cap */
   .lead {
     background: var(--color-bg);
     padding: var(--space-10) var(--space-6) var(--space-8);
@@ -180,20 +198,21 @@ const heroImage = "https://images.unsplash.com/photo-1605164598708-25701594473e?
     font-family: var(--font-sans);
     font-size: 18px;
     line-height: 1.6;
-    color: var(--color-paper-ink);
+    color: var(--color-fg);
     margin: 0;
-    font-weight: 400;
+    font-weight: var(--weight-regular);
   }
   .lead p::first-letter {
     font-family: var(--font-serif);
     font-size: 64px;
-    font-weight: 600;
+    font-weight: var(--weight-semibold);
     color: var(--color-forest);
     float: left;
     line-height: 0.9;
     margin: 6px 12px 0 0;
   }
 
+  /* Section heads — shared */
   .section-head {
     display: flex;
     justify-content: space-between;
@@ -216,20 +235,21 @@ const heroImage = "https://images.unsplash.com/photo-1605164598708-25701594473e?
     font-family: var(--font-serif);
     font-size: clamp(1.875rem, 3.2vw, 2.5rem);
     margin: 0;
-    color: var(--color-paper-ink);
-    letter-spacing: -0.012em;
+    color: var(--color-forest);
+    letter-spacing: var(--tracking-display);
   }
   .section-head__link {
     font-family: var(--font-sans);
     font-size: var(--text-sm);
     font-weight: var(--weight-semibold);
-    color: var(--color-forest-light);
+    color: var(--color-forest);
     text-decoration: none;
     padding: var(--space-2) 0;
     border-bottom: 1px solid var(--color-brass);
   }
   .section-head__link:hover { color: var(--color-brass); }
 
+  /* Featured — single guide call-out */
   .featured {
     background: var(--color-bg);
     padding: var(--space-16) var(--space-6);
@@ -242,15 +262,10 @@ const heroImage = "https://images.unsplash.com/photo-1605164598708-25701594473e?
     max-width: var(--content-wide);
     margin: 0 auto;
   }
-  .featured--coming-soon .muted {
-    max-width: 60ch;
-    font-family: var(--font-serif);
-    font-style: italic;
-    color: var(--color-muted);
-  }
 
+  /* Reviews — centered card grid (locked grid rule: no orphan-row stretch) */
   .reviews {
-    background: var(--color-paper-mid);
+    background: var(--color-paper-muted);
     padding: var(--space-16) var(--space-6);
   }
   .reviews__inner {
@@ -266,18 +281,37 @@ const heroImage = "https://images.unsplash.com/photo-1605164598708-25701594473e?
   @media (max-width: 720px) {
     .reviews__grid { grid-template-columns: 1fr; }
   }
-  .muted {
+  .empty {
     color: var(--color-muted);
-    font-family: var(--font-serif);
     font-style: italic;
-    line-height: 1.6;
+    font-family: var(--font-serif);
+    max-width: 60ch;
   }
 
-  /* Manifesto — ink-dark contrast band: the page's one inversion. */
+  /* More guides — centered card grid (locked grid rule) */
+  .more-guides {
+    background: var(--color-bg);
+    padding: var(--space-16) var(--space-6);
+  }
+  .more-guides__inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+  .more-guides__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 320px));
+    justify-content: center;
+    gap: var(--space-6);
+  }
+  @media (max-width: 720px) {
+    .more-guides__grid { grid-template-columns: 1fr; }
+  }
+
+  /* Manifesto — tokenized contrast band (forest), the page's one inversion.
+     Fully token-driven so it reads correctly on every skin. */
   .manifesto {
-    background: #14181C;
+    background: var(--color-forest);
     padding: var(--space-20) var(--space-6);
-    border-top: 1px solid #2A2F35;
   }
   .manifesto__inner {
     max-width: var(--content-max);
@@ -290,7 +324,7 @@ const heroImage = "https://images.unsplash.com/photo-1605164598708-25701594473e?
     font-weight: var(--weight-semibold);
     letter-spacing: var(--tracking-wide);
     text-transform: uppercase;
-    color: var(--color-highlight);
+    color: var(--color-brass-soft);
     margin-bottom: var(--space-4);
     display: inline-block;
   }
@@ -298,25 +332,27 @@ const heroImage = "https://images.unsplash.com/photo-1605164598708-25701594473e?
     font-family: var(--font-serif);
     font-size: clamp(2rem, 3.4vw, 2.75rem);
     margin: 0 0 var(--space-6);
-    color: #FBFAF7;
+    color: var(--color-paper);
     letter-spacing: -0.018em;
-    font-weight: 400;
+    font-weight: var(--weight-semibold);
   }
   .manifesto p {
     font-family: var(--font-sans);
     font-size: var(--text-lg);
     line-height: var(--leading-normal);
-    color: #BFC5CC;
-    margin: 0 0 var(--space-4);
+    color: var(--color-paper);
+    opacity: 0.82;
+    margin: 0 auto var(--space-4);
+    max-width: 60ch;
   }
   .manifesto :global(.cta--ghost) {
-    color: var(--color-highlight);
-    border-color: rgba(247, 233, 200, 0.4);
+    color: var(--color-brass-soft);
+    border-color: var(--color-brass-soft);
   }
   .manifesto :global(.cta--ghost:hover) {
-    background: var(--color-highlight);
-    color: #14181C;
-    border-color: var(--color-highlight);
+    background: var(--color-brass-soft);
+    color: var(--color-forest);
+    border-color: var(--color-brass-soft);
   }
   .manifesto__actions {
     display: inline-flex;
@@ -327,88 +363,10 @@ const heroImage = "https://images.unsplash.com/photo-1605164598708-25701594473e?
   }
 
   @media (max-width: 760px) {
-    .lead { padding: var(--space-8) var(--space-4) var(--space-6); }
+    .lead { padding: var(--space-10) var(--space-4) var(--space-8); }
     .featured,
-    .reviews { padding: var(--space-12) var(--space-4); }
+    .reviews,
+    .more-guides { padding: var(--space-12) var(--space-4); }
     .manifesto { padding: var(--space-16) var(--space-4); }
-  }
-
-  /* Quick Picks banner — sits below the hero, before the lead */
-  .qp-banner {
-    display: block;
-    background: var(--color-paper-ink);
-    color: var(--color-cream);
-    text-decoration: none;
-    border-top: 1px solid var(--color-paper-ink);
-    border-bottom: 1px solid var(--color-paper-ink);
-    transition: background 200ms ease;
-  }
-  .qp-banner:hover {
-    background: #1F262D;
-  }
-  .qp-banner__inner {
-    max-width: var(--container-max, 1240px);
-    margin: 0 auto;
-    padding: var(--space-5) var(--space-6);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--space-4);
-  }
-  .qp-banner__text {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .qp-banner__eyebrow {
-    font-family: var(--font-sans);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #F7E9C8;
-  }
-  .qp-banner__title {
-    font-family: var(--font-serif);
-    font-size: clamp(1.1rem, 2vw, 1.35rem);
-    line-height: 1.3;
-    color: var(--color-cream);
-    font-style: italic;
-  }
-  .qp-banner__cta {
-    font-family: var(--font-sans);
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #F7E9C8;
-    border: 1px solid #F7E9C8;
-    padding: 10px 18px;
-    border-radius: 2px;
-    white-space: nowrap;
-    transition: background 200ms ease, color 200ms ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .qp-banner:hover .qp-banner__cta {
-    background: #F7E9C8;
-    color: var(--color-paper-ink);
-  }
-  .qp-banner__arrow {
-    transition: transform 180ms ease;
-  }
-  .qp-banner:hover .qp-banner__arrow {
-    transform: translateX(3px);
-  }
-
-  @media (max-width: 760px) {
-    .qp-banner__inner {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--space-3);
-      padding: var(--space-4);
-    }
-    .qp-banner__title { font-size: 1rem; }
   }
 </style>

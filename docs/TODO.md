@@ -17,6 +17,20 @@
 
 ---
 
+## 🔧 REBUILD — all 5 sites on the component library (branch `rebuild/component-library`, AWAITING ACCEPTANCE)
+
+**Open `docs/playgrounds/acceptance-gallery/index.html`** — screenshots of every rebuilt page type per site (desktop + mobile), the merge-safety proof, and the 2 bespoke items needing your call.
+
+- [ ] **ACCEPT THE REBUILD → merge.** Every page on all 5 sites was nuked + rebuilt from the shared component library (no custom per-page layout left). Guide/review pages = approved components; the NEW compositions (homepages, listing indexes, topic hubs, about/legal, 404) + 3 new components (`PageHeader`, `ProsePage`, `NotFound`) need your sign-off per your "present for acceptance" rule. Say "merge it" → branch → `main` → auto-deploys all 5. **Nothing live yet.**
+- [ ] **2 bespoke-item calls** (in the gallery): keep `how-we-evaluate` as the config-driven rubric (vs folding into ProsePage)? keep DTP `quick-picks` as the numbered-row layout (vs QuickPickGrid)? Both left as-is pending your word.
+- [x] 2026-05-31 — Gold "Best Overall" banner + buy/skip Bottom Line wired (your two latest decisions); magic-go emits buyIf for guides too.
+- [x] 2026-05-31 — **Merge-safety verified:** DRAFT/noindex gate survived the rebuild on both review + guide paths (built-HTML grep + synthetic DRAFT-guide test). All 5 build green, lint:images passes.
+- [x] 2026-06-01 — **Before/after review: 25 Go, 13 No-Go → all 13 fixed** (commits `6abbf53` dead links, `da0adc7` review buy/skip unify + draft-filter indexes, `cef0d3c` gog white images/title-wrap/pixel brand, `5335e72` distinct DTP+MWC+baratza images, `36bc6b2` dead-link guard). Re-screenshotted; doc's After column refreshed. **Re-check the After column + flip your 13 No-Gos to Go, then merge.**
+- [ ] **baratza-encore-esp still needs a Bottom Line** (FB) — it's a noindex DRAFT with an image now, filtered from the index; write the verdict to publish + clear its DRAFT banner. (One of the 3 stranded drafts, #93.)
+- [ ] After merge: the ~40 existing Bottom Lines still render the verdict-prose fallback; migrating them into buy/skip is editorial (your gate content), a Ray-driven task — NOT auto-done.
+
+---
+
 ## North Star — Magic Go (locked 2026-05-28)
 
 `/aff magic-go <N>` produces N DRAFT-ready pieces overnight with no human intervention until Ray writes the Bottom Line verdicts the next morning. Full plan + reasoning in `docs/brainstorms/2026-05-28-magic-go-vision.md`. Every item below is either a Magic Go prerequisite or post-launch instrumentation. **Don't freelance scope beyond what's in the brainstorm.**

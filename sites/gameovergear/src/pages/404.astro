@@ -1,0 +1,16 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import NotFound from "@affkit/shared-ui/NotFound.astro";
+
+/* CANONICAL 404 — Astro emits this as 404.html; Cloudflare Pages serves it on
+   unknown routes automatically. noindex via robotsContent. Body is the shared,
+   token-mapped <NotFound> block, so it auto-skins per site. Byte-identical
+   across template + all 5 sites. */
+---
+<MainLayout
+  title="Page not found"
+  description="The page you were looking for could not be found."
+  robotsContent="noindex, follow"
+>
+  <NotFound />
+</MainLayout>

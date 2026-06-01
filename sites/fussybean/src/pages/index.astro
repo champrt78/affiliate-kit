@@ -1,366 +1,372 @@
 ---
 import { getCollection } from "astro:content";
 import MainLayout from "../layouts/MainLayout.astro";
-import siteConfig from "../data/site-config.json";
+import Hero from "@affkit/shared-ui/Hero.astro";
+import ReviewCard from "@affkit/shared-ui/ReviewCard.astro";
+import BuyersGuideCard from "@affkit/shared-ui/BuyersGuideCard.astro";
+import CTA from "@affkit/shared-ui/CTA.astro";
 
-/* FussyBean homepage - ports the locked Variant-C design
-   (docs/playgrounds/fussybean-mockups/variant-c.html): full-bleed dark-roast
-   hero with golden-glow overlay, "Find your lane" photo pillar tiles driven
-   by navigation.pillars[], and a "Latest reviews & guides" espresso band.
-   Photography-forward, voice-clean (no hands-on claims). Every <img> carries
-   width+height aspect hints per the web-vitals rule in CLAUDE.md. */
+/* ============================================================================
+   CANONICAL HOMEPAGE — rebuilt from the shared component library.
+   This file is byte-identical across the template and all 5 sites EXCEPT the
+   PAGE block below. Structure, layout, and CSS are shared; only the per-site
+   hero copy + scene photo + SEO strings change (that is the allowed per-site
+   "content"). The page reads each site's content collections + tokens, so the
+   skin (colors/fonts) and the cards auto-personalize with zero code change.
 
-const reviews = await getCollection("reviews");
-const guides = await getCollection("buyers-guides");
+   Sections (the FussyBean gold-standard set):
+     1. Hero            — scene photo + kicker rule + serif headline + 2 CTAs
+     2. Lead            — one-paragraph editorial intro (drop cap)
+     3. Featured pick   — this-month's guide (featured BuyersGuideCard)
+     4. Latest reviews  — centered card grid (locked grid rule)
+     5. More guides     — centered card grid
+     6. Manifesto       — tokenized contrast band ("how we work")
+   ========================================================================== */
 
-// Latest published (non-DRAFT) pieces across both collections for the band.
-const hasVerdict = (e: any) =>
-  e.data.bottomLine && e.data.bottomLine.verdict && e.data.bottomLine.verdict.trim() !== "";
-const time = (d: any) => (d instanceof Date ? d.getTime() : new Date(d).getTime());
-
-const latest = [
-  ...reviews.map((e) => ({
-    kind: "Review",
-    href: `/reviews/${e.slug}/`,
-    title: e.data.title,
-    desc: e.data.description,
-    pillar: (e.data as any).pillar,
-    date: e.data.pubDate,
-    draft: !hasVerdict(e),
-  })),
-  ...guides.map((e) => ({
-    kind: "Guide",
-    href: `/buyers-guides/${e.slug}/`,
-    title: e.data.title,
-    desc: e.data.description,
-    pillar: (e.data as any).pillar,
-    date: e.data.pubDate,
-    draft: !hasVerdict(e),
-  })),
-]
-  .filter((p) => !p.draft)
-  .sort((a, b) => time(b.date) - time(a.date))
-  .slice(0, 3);
-
-const pillars = siteConfig.navigation.pillars;
-
-// Scene/context photos per pillar (Unsplash, scene-only per image policy -
-// never product hero shots). Sizes are aspect hints, not display sizes.
-const tileImages: Record<string, { src: string; alt: string }> = {
-  "espresso-machines": {
-    src: "https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?auto=format&fit=crop&w=1600&q=80",
-    alt: "Chrome espresso machine on a cafe counter with steam rising",
-  },
-  grinders: {
-    src: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1600&q=80",
-    alt: "Loading a portafilter on an espresso machine",
-  },
-  "manual-brewing": {
-    src: "https://images.unsplash.com/photo-1442550528053-c431ecb55509?auto=format&fit=crop&w=1600&q=80",
-    alt: "Gooseneck kettle pouring over a dripper",
-  },
-  "coffee-costs": {
-    src: "https://images.unsplash.com/photo-1453614512568-c4024d13c247?auto=format&fit=crop&w=1600&q=80",
-    alt: "Brewing tools and coffee beans laid out on a wood surface",
-  },
-  "fun-stuff": {
-    src: "https://images.unsplash.com/photo-1521302080334-4bebac2763a6?auto=format&fit=crop&w=1600&q=80",
-    alt: "Coffee mugs and accessories on a warm shelf",
-  },
+/* ─── PER-SITE CONTENT (the only block that differs between sites) ─── */
+const PAGE = {
+  seoTitle: "FussyBean",
+  seoDescription:
+    "FussyBean compares home coffee gear by spec and use case: espresso machines, grinders, gooseneck kettles, and scales.",
+  heroKicker: "Home coffee gear · what’s worth it",
+  heroTitle: "The good cup, at home.",
+  heroLede:
+    "Espresso machines, grinders, kettles and scales matched to how you actually brew. The kit, the cost, and the upgrades that pay off.",
+  heroImage:
+    "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=2400&q=80",
+  heroImageAlt: "Espresso pulling into a cup on a cafe counter",
+  leadBody:
+    "Most coffee-gear content is either a retailer pushing its own machine or a roundup that ranks the roast instead of the hardware. We comb the spec sheets, compare across brands by how you actually brew, and say honestly when the cheaper machine is the smarter buy.",
 };
+/* ─────────────────────────────────────────────────────────────────── */
 
-// Tile size classes mirroring Variant C: first tile big, second med, rest third.
-const tileClass = (i: number) => (i === 0 ? "tile big" : i === 1 ? "tile med" : "tile third");
+function sortByDateDesc<T extends { data: { pubDate: Date | string } }>(arr: T[]) {
+  return [...arr].sort((a, b) => {
+    const aTime = a.data.pubDate instanceof Date ? a.data.pubDate.getTime() : new Date(a.data.pubDate).getTime();
+    const bTime = b.data.pubDate instanceof Date ? b.data.pubDate.getTime() : new Date(b.data.pubDate).getTime();
+    return bTime - aTime;
+  });
+}
+
+// Only published pieces reach the homepage. A piece is published once its
+// Bottom Line verdict is filled (the repo's DRAFT/noindex gate). This predicate
+// works across all 5 sites because every content schema shares bottomLine.verdict.
+const isPublished = (e: any) =>
+  e.data.bottomLine && typeof e.data.bottomLine.verdict === "string" && e.data.bottomLine.verdict.trim() !== "";
+
+const allReviews = (await getCollection("reviews")).filter(isPublished);
+const allGuides = (await getCollection("buyers-guides")).filter(isPublished);
+
+const latestReviews = sortByDateDesc(allReviews).slice(0, 6);
+const latestGuides = sortByDateDesc(allGuides);
+const featuredGuide = latestGuides[0];
+const otherGuides = latestGuides.slice(1, 4);
 ---
-<MainLayout
-  title="FussyBean"
-  description="FussyBean compares home coffee gear by spec and use case: espresso machines, grinders, gooseneck kettles, and scales."
-  transparentHeader={true}
->
-  {/* ─── Full-bleed dark-roast hero ─── */}
-  <section class="hero">
-    <div class="wrap hero-content">
-      <div class="kicker">Home Coffee Gear · Honest Comparisons</div>
-      <h1>Brew like the cafe you <em>keep going back to.</em></h1>
-      <p>
-        Espresso machines, burr grinders, gooseneck kettles, scales, and the gift-y
-        extras. We comb the spec sheets so your counter ends up warm, capable, and
-        yours.
-      </p>
-      <div class="chips">
-        <span>Espresso machines</span><span>Grinders</span><span>Kettles &amp; scales</span><span>Setup costs</span><span>Gifts &amp; novelties</span>
-      </div>
+<MainLayout title={PAGE.seoTitle} description={PAGE.seoDescription}>
+  <Hero
+    title={PAGE.heroTitle}
+    kicker={PAGE.heroKicker}
+    tagline={PAGE.heroLede}
+    image={PAGE.heroImage}
+    imageAlt={PAGE.heroImageAlt}
+    size="full"
+  >
+    <div class="hero-actions">
+      {featuredGuide && (
+        <CTA href={`/buyers-guides/${featuredGuide.slug}/`} variant="primary" size="lg" external={false}>
+          Start with the buying guide
+        </CTA>
+      )}
+      <CTA href="/reviews/" variant="ghost" size="lg" external={false}>
+        Browse single-product reviews
+      </CTA>
+    </div>
+  </Hero>
+
+  <section class="lead">
+    <div class="lead__inner">
+      <p>{PAGE.leadBody}</p>
     </div>
   </section>
 
-  {/* ─── Browse by topic - photo pillar tiles ─── */}
-  <section class="wrap section">
-    <div class="shead">
-      <div>
-        <div class="eyebrow">Browse by topic</div>
-        <h2>Find your lane</h2>
-      </div>
-      <a href="/buyers-guides/" class="shead__more">All guides &rarr;</a>
-    </div>
-
-    <div class="grid">
-      {pillars.map((p, i) => {
-        const img = tileImages[p.slug];
-        return (
-          <a class={tileClass(i)} href={`/topics/${p.slug}/`}>
-            {img && (
-              <img src={img.src} width="1600" height="1067" alt={img.alt} loading={i === 0 ? "eager" : "lazy"} decoding="async" />
-            )}
-            <div class="scrim"></div>
-            <div class="t-body">
-              <div class="lab">{p.label}</div>
-              <h3>{p.blurb}</h3>
-            </div>
-          </a>
-        );
-      })}
-    </div>
-  </section>
-
-  {/* ─── Latest reviews & guides - espresso band ─── */}
-  <section class="band">
-    <div class="wrap section">
-      <div class="shead">
-        <div>
-          <div class="eyebrow">Fresh off the desk</div>
-          <h2>Latest reviews &amp; guides</h2>
+  {featuredGuide && (
+    <section class="featured">
+      <div class="featured__inner">
+        <header class="section-head">
+          <div>
+            <span class="section-head__kicker">This month's pick</span>
+            <h2 class="section-head__title">Start here</h2>
+          </div>
+          <a href="/buyers-guides/" class="section-head__link">All buying guides</a>
+        </header>
+        <div class="featured__card">
+          <BuyersGuideCard entry={featuredGuide} featured />
         </div>
-        <a href="/reviews/" class="shead__more">All reviews &amp; guides &rarr;</a>
       </div>
+    </section>
+  )}
 
-      {latest.length === 0 ? (
-        <p class="band-empty">
-          New comparisons land every quarter. The first pieces are in the works,
-          built from published specs, verified-buyer reviews, and use-case fit.
-        </p>
+  <section class="reviews">
+    <div class="reviews__inner">
+      <header class="section-head">
+        <div>
+          <span class="section-head__kicker">Single-product deep dives</span>
+          <h2 class="section-head__title">Latest reviews</h2>
+        </div>
+        {latestReviews.length > 0 && (
+          <a href="/reviews/" class="section-head__link">All reviews</a>
+        )}
+      </header>
+
+      {latestReviews.length === 0 ? (
+        <p class="empty">New single-product reviews land every quarter. The first pieces are in the works, built from published specs, verified-buyer reports, and use-case fit.</p>
       ) : (
-        <div class="posts">
-          {latest.map((p) => (
-            <a class="card" href={p.href}>
-              <div class="cb">
-                <div class="meta">{p.kind}{p.pillar ? ` · ${p.pillar.replace(/-/g, " ")}` : ""}</div>
-                <h4>{p.title}</h4>
-                <p>{p.desc}</p>
-              </div>
-            </a>
-          ))}
+        <div class="reviews__grid">
+          {latestReviews.map((entry) => <ReviewCard entry={entry} />)}
         </div>
       )}
+    </div>
+  </section>
+
+  {otherGuides.length > 0 && (
+    <section class="more-guides">
+      <div class="more-guides__inner">
+        <header class="section-head">
+          <div>
+            <span class="section-head__kicker">By use case</span>
+            <h2 class="section-head__title">More buying guides</h2>
+          </div>
+        </header>
+        <div class="more-guides__grid">
+          {otherGuides.map((entry) => <BuyersGuideCard entry={entry} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="manifesto">
+    <div class="manifesto__inner">
+      <span class="manifesto__kicker">How we work</span>
+      <h2 class="manifesto__title">Cross-brand and honest, by design.</h2>
+      <p>
+        We do not sell the products and we do not run a workshop. We read
+        manufacturer spec sheets, aggregate verified-buyer reports, watch
+        independent reviewer testing, and ask one question: for the person
+        reading this, which pick actually fits? When the cheaper option is the
+        right answer, we say so.
+      </p>
+      <p>
+        Every buy link goes through our own redirect so we can swap retailers
+        without breaking older posts. We earn a commission on Amazon purchases
+        at no extra cost to you.
+      </p>
+      <div class="manifesto__actions">
+        <CTA href="/about/" variant="ghost" external={false}>How we choose picks</CTA>
+        <CTA href="/disclosure/" variant="ghost" external={false}>Affiliate disclosure</CTA>
+      </div>
     </div>
   </section>
 </MainLayout>
 
 <style>
-  .wrap { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--space-6); }
-  .section { padding: var(--space-16) var(--space-6); }
-  .band .section { padding-left: 0; padding-right: 0; }
-
-  /* ─── Hero ─── */
-  .hero {
-    position: relative;
-    min-height: 640px;
+  /* Hero CTAs — ghost button needs paper outline on the dark veil */
+  .hero-actions {
     display: flex;
-    align-items: flex-end;
-    background:
-      linear-gradient(180deg, rgba(20, 12, 7, 0.45) 0%, rgba(20, 12, 7, 0.15) 35%, rgba(20, 12, 7, 0.7) 100%),
-      url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=80");
-    background-size: cover;
-    background-position: center;
-  }
-  .hero-content { padding-bottom: 64px; padding-top: 120px; max-width: 760px; }
-  .hero .kicker {
-    font-size: 13px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--color-brass-soft);
-    font-weight: 600;
-    margin-bottom: 18px;
-  }
-  .hero h1 {
-    font-family: var(--font-serif);
-    font-weight: 900;
-    color: #fdf4e4;
-    font-size: clamp(42px, 6.5vw, 74px);
-    line-height: 1.02;
-    letter-spacing: -0.02em;
-    text-shadow: 0 2px 30px rgba(0, 0, 0, 0.4);
-    margin-bottom: 20px;
-  }
-  .hero h1 em {
-    font-style: italic;
-    color: var(--color-brass);
-    /* Ray 2026-05-31: brass accent read low-contrast over the busy latte photo.
-       Tight dark halo (over the soft parent shadow) restores legibility. */
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6), 0 0 2px rgba(0, 0, 0, 0.5);
-  }
-  .hero p {
-    font-size: 19px;
-    color: #f0e3cf;
-    max-width: 34em;
-    margin-bottom: 24px;
-    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45);
-    line-height: 1.55;
-  }
-  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
-  .chips span {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--color-brass-soft);
-    background: rgba(40, 25, 15, 0.55);
-    border: 1px solid rgba(236, 212, 168, 0.4);
-    padding: 7px 15px;
-    border-radius: 40px;
-    backdrop-filter: blur(3px);
-  }
-
-  /* ─── Section heading ─── */
-  .shead {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin-bottom: 34px;
+    gap: var(--space-3);
     flex-wrap: wrap;
-    gap: 12px;
+    margin-top: var(--space-3);
   }
-  .shead .eyebrow {
-    font-size: 12px;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--color-brass-hover);
-    font-weight: 600;
-    margin-bottom: 8px;
+  :global(.hero--with-image) .hero-actions :global(.cta--ghost) {
+    color: var(--color-paper);
+    border-color: var(--color-paper);
   }
-  .shead h2 {
-    font-family: var(--font-serif);
-    font-weight: 600;
-    font-size: 36px;
+  :global(.hero--with-image) .hero-actions :global(.cta--ghost:hover) {
+    background: var(--color-paper);
     color: var(--color-forest);
-    letter-spacing: -0.01em;
-    margin: 0;
   }
-  .shead__more {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-brass-hover);
-    text-decoration: none;
-  }
-  .shead__more:hover { text-decoration: underline; }
 
-  /* ─── Pillar tiles ─── */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 20px;
+  /* Lead — single column, sans body with serif drop cap */
+  .lead {
+    background: var(--color-bg);
+    padding: var(--space-10) var(--space-6) var(--space-8);
   }
-  .tile {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    min-height: 280px;
+  .lead__inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .lead p {
+    font-family: var(--font-sans);
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--color-fg);
+    margin: 0;
+    font-weight: var(--weight-regular);
+  }
+  .lead p::first-letter {
+    font-family: var(--font-serif);
+    font-size: 64px;
+    font-weight: var(--weight-semibold);
+    color: var(--color-forest);
+    float: left;
+    line-height: 0.9;
+    margin: 6px 12px 0 0;
+  }
+
+  /* Section heads — shared */
+  .section-head {
     display: flex;
+    justify-content: space-between;
     align-items: flex-end;
-    color: #fff;
-    text-decoration: none;
-    box-shadow: 0 18px 38px -26px rgba(36, 23, 16, 0.6);
-    transition: transform 0.3s var(--ease-out);
+    margin-bottom: var(--space-10);
+    flex-wrap: wrap;
+    gap: var(--space-4);
   }
-  .tile:hover { transform: translateY(-5px); }
-  .tile:hover img { transform: scale(1.06); }
-  .tile img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-    transition: transform 0.5s var(--ease-out);
-  }
-  .tile .scrim {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: linear-gradient(180deg, rgba(28, 17, 10, 0.05) 30%, rgba(28, 17, 10, 0.82) 100%);
-  }
-  .tile .t-body { position: relative; z-index: 2; padding: 24px; }
-  .tile .lab {
-    font-size: 11px;
-    letter-spacing: 0.14em;
+  .section-head__kicker {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wide);
     text-transform: uppercase;
-    font-weight: 600;
     color: var(--color-brass);
-    margin-bottom: 8px;
+    display: block;
+    margin-bottom: var(--space-2);
   }
-  .tile h3 {
+  .section-head__title {
     font-family: var(--font-serif);
-    font-weight: 600;
-    font-size: 22px;
-    line-height: 1.18;
+    font-size: clamp(1.875rem, 3.2vw, 2.5rem);
     margin: 0;
-    color: #fdf4e4;
-    max-width: 26ch;
+    color: var(--color-forest);
+    letter-spacing: var(--tracking-display);
   }
-  .tile.big { grid-column: span 3; min-height: 360px; }
-  .tile.big h3 { font-size: 28px; }
-  .tile.med { grid-column: span 3; }
-  .tile.third { grid-column: span 2; }
+  .section-head__link {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--color-forest);
+    text-decoration: none;
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--color-brass);
+  }
+  .section-head__link:hover { color: var(--color-brass); }
 
-  /* ─── Latest band ─── */
-  .band { background: var(--color-forest); color: var(--color-brass-soft); }
-  .band .shead h2 { color: #fdf4e4; }
-  .band .shead .eyebrow { color: var(--color-brass); }
-  .band .shead__more { color: var(--color-brass); }
-  .band-empty {
-    font-family: var(--font-serif);
+  /* Featured — single guide call-out */
+  .featured {
+    background: var(--color-bg);
+    padding: var(--space-16) var(--space-6);
+  }
+  .featured__inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+  .featured__card {
+    max-width: var(--content-wide);
+    margin: 0 auto;
+  }
+
+  /* Reviews — centered card grid (locked grid rule: no orphan-row stretch) */
+  .reviews {
+    background: var(--color-paper-muted);
+    padding: var(--space-16) var(--space-6);
+  }
+  .reviews__inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+  .reviews__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
+    justify-content: center;
+    gap: var(--space-6);
+  }
+  @media (max-width: 720px) {
+    .reviews__grid { grid-template-columns: 1fr; }
+  }
+  .empty {
+    color: var(--color-muted);
     font-style: italic;
-    font-size: 19px;
-    color: #cdb697;
-    max-width: 48ch;
-    margin: 0;
-  }
-  .posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
-  .card {
-    background: var(--color-forest-mid);
-    border: 1px solid rgba(236, 212, 168, 0.14);
-    border-radius: 12px;
-    overflow: hidden;
-    text-decoration: none;
-    transition: transform 0.25s var(--ease-out), border-color 0.25s var(--ease-out);
-  }
-  .card:hover { transform: translateY(-5px); border-color: rgba(176, 111, 44, 0.5); }
-  .card .cb { padding: 22px 24px 26px; }
-  .card .meta {
-    font-size: 11px;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-    color: var(--color-brass);
-    font-weight: 600;
-    margin-bottom: 9px;
-  }
-  .card h4 {
     font-family: var(--font-serif);
-    font-weight: 500;
-    font-size: 21px;
-    color: #fdf4e4;
-    line-height: 1.18;
-    margin: 0 0 9px;
+    max-width: 60ch;
   }
-  .card p { font-size: 14px; color: #cdb697; margin: 0; line-height: 1.55; }
 
-  @media (max-width: 900px) {
-    .grid { grid-template-columns: repeat(2, 1fr); }
-    .tile.big, .tile.med, .tile.third { grid-column: span 1; }
-    .posts { grid-template-columns: 1fr 1fr; }
+  /* More guides — centered card grid (locked grid rule) */
+  .more-guides {
+    background: var(--color-bg);
+    padding: var(--space-16) var(--space-6);
   }
-  @media (max-width: 600px) {
-    .grid, .posts { grid-template-columns: 1fr; }
-    .hero { min-height: 540px; }
-    .hero-content { padding-top: 96px; }
+  .more-guides__inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+  .more-guides__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 320px));
+    justify-content: center;
+    gap: var(--space-6);
+  }
+  @media (max-width: 720px) {
+    .more-guides__grid { grid-template-columns: 1fr; }
+  }
+
+  /* Manifesto — tokenized contrast band (forest), the page's one inversion.
+     Fully token-driven so it reads correctly on every skin. */
+  .manifesto {
+    background: var(--color-forest);
+    padding: var(--space-20) var(--space-6);
+  }
+  .manifesto__inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    text-align: center;
+  }
+  .manifesto__kicker {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--color-brass-soft);
+    margin-bottom: var(--space-4);
+    display: inline-block;
+  }
+  .manifesto__title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 3.4vw, 2.75rem);
+    margin: 0 0 var(--space-6);
+    color: var(--color-paper);
+    letter-spacing: -0.018em;
+    font-weight: var(--weight-semibold);
+  }
+  .manifesto p {
+    font-family: var(--font-sans);
+    font-size: var(--text-lg);
+    line-height: var(--leading-normal);
+    color: var(--color-paper);
+    opacity: 0.82;
+    margin: 0 auto var(--space-4);
+    max-width: 60ch;
+  }
+  .manifesto :global(.cta--ghost) {
+    color: var(--color-brass-soft);
+    border-color: var(--color-brass-soft);
+  }
+  .manifesto :global(.cta--ghost:hover) {
+    background: var(--color-brass-soft);
+    color: var(--color-forest);
+    border-color: var(--color-brass-soft);
+  }
+  .manifesto__actions {
+    display: inline-flex;
+    gap: var(--space-3);
+    justify-content: center;
+    margin-top: var(--space-6);
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 760px) {
+    .lead { padding: var(--space-10) var(--space-4) var(--space-8); }
+    .featured,
+    .reviews,
+    .more-guides { padding: var(--space-12) var(--space-4); }
+    .manifesto { padding: var(--space-16) var(--space-4); }
   }
 </style>

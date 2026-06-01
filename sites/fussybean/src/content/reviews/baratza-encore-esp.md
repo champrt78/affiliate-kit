@@ -15,6 +15,10 @@ product:
   currency: "USD"
   affiliate:
     amazon: "https://www.amazon.com/dp/B0BL9JC2DJ?tag=fussybean-20"
+images:
+  hero: "https://m.media-amazon.com/images/I/618pZAdKDBL._AC_SL1500_.jpg"
+  heroCaption: "Baratza Encore ESP conical burr espresso grinder, Black. Photo: Baratza manufacturer media via Amazon."
+  imageScale: 1.0
 faq:
   - question: "Is the Encore ESP good for espresso?"
     answer: "Per the spec, yes, within its tier. Baratza lists 40mm conical burrs with the step range retuned so more of it sits in the espresso zone than on the original Encore, and positions it as an entry espresso grinder rather than an all-purpose one. Owner reports note the stepped adjustment can feel coarse at the very fine end next to a stepless grinder, which matches how Baratza frames it. It is built to reach espresso fineness at an entry price, not to match a dedicated stepless espresso grinder."

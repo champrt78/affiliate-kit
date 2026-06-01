@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library · 01 · Nav Bar — 5 skins</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Press+Start+2P&family=Poppins:wght@500;600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #c8ccd0; font-family: "Inter", system-ui, sans-serif; color: #1a1a1a; padding: 28px 0 80px; }
+  .page-head { max-width: 1200px; margin: 0 auto 22px; padding: 0 24px; }
+  .page-head h1 { font-size: 19px; font-weight: 700; }
+  .page-head p { font-size: 14px; color: #44484c; margin-top: 4px; max-width: 70ch; }
+  .page-head .hint { margin-top: 8px; font-size: 13px; color: #555; background: #fff; border-left: 3px solid #888; padding: 8px 12px; border-radius: 0 6px 6px 0; }
+
+  .specimen { max-width: 1200px; margin: 0 auto 26px; }
+  .specimen__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #4a4e52; margin: 0 4px 7px; display: flex; justify-content: space-between; }
+  .specimen__label span:last-child { font-weight: 500; color: #70757a; letter-spacing: 0; text-transform: none; }
+  .frame { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 14px rgba(0,0,0,.14); }
+
+  /* ── THE NAV COMPONENT (one definition, skinned by vars) ── */
+  .nav {
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--header-border);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; padding: 0 30px; height: 70px;
+  }
+  .nav__brand { display: flex; align-items: center; gap: 11px; text-decoration: none; flex-shrink: 0; }
+  .nav__logo { width: 30px; height: 30px; border-radius: 999px;
+    background: radial-gradient(circle at 35% 30%, var(--logo-hi), var(--logo)); flex-shrink: 0; }
+  .nav__word { font-family: var(--serif); font-size: 23px; font-weight: var(--word-wt, 600);
+    letter-spacing: var(--word-ls, -0.01em); line-height: 1; color: var(--word-a); white-space: nowrap; }
+  .nav__word b { font-weight: inherit; color: var(--word-b); }
+  .nav__links { display: flex; align-items: center; gap: var(--link-gap, 22px); flex-wrap: wrap; justify-content: flex-end; }
+  .nav__links a { font-family: var(--sans); font-size: var(--link-size, 15px); font-weight: 500;
+    color: var(--link); text-decoration: none; white-space: nowrap; padding: 4px 0; transition: color .15s; }
+  .nav__links a:hover { color: var(--accent); }
+  .nav__links a.is-active { color: var(--accent); border-bottom: 2px solid var(--accent); }
+
+  /* gog pixel font needs smaller size + its own metrics to stay legible */
+  .skin--gog .nav__word { font-size: 15px; letter-spacing: 0; }
+  .skin--gog .nav__links a { font-family: "Inter", sans-serif; }
+
+  /* ── SKINS (color + font only) ── */
+  .skin--mwc {
+    --header-bg:#FAF7EF; --header-border:#E5DDC9; --logo:#1F3D2F; --logo-hi:#4A7C5F;
+    --serif:"Fraunces",serif; --sans:"Inter Tight",sans-serif;
+    --word-a:#1F3D2F; --word-b:#A07C3A; --link:#1C1C1A; --accent:#A07C3A; }
+  .skin--dtp {
+    --header-bg:#F4F2EE; --header-border:#D6D2C8; --logo:#2C5E8C; --logo-hi:#7BA0C5;
+    --serif:"Instrument Serif",serif; --sans:"Inter Tight",sans-serif; --word-wt:400; --word-ls:0;
+    --word-a:#14181C; --word-b:#2C5E8C; --link:#14181C; --accent:#2C5E8C; }
+  .skin--fb {
+    --header-bg:#241710; --header-border:#3a2418; --logo:#b06f2c; --logo-hi:#ecd4a8;
+    --serif:"Fraunces",serif; --sans:"Inter",sans-serif;
+    --word-a:#f4e8d4; --word-b:#d59b54; --link:#ecd9bf; --accent:#b06f2c; }
+  .skin--gog {
+    --header-bg:#0e0b1c; --header-border:#3a3470; --logo:#2ee6ff; --logo-hi:#aef6ff;
+    --serif:"Press Start 2P",monospace; --sans:"Inter",sans-serif; --link-gap:18px; --link-size:13.5px;
+    --word-a:#ede9ff; --word-b:#2ee6ff; --link:#c9c2f0; --accent:#2ee6ff; }
+  .skin--sa {
+    --header-bg:#f6fcfd; --header-border:#cfeaef; --logo:#0c5470; --logo-hi:#1f97ad;
+    --serif:"Poppins",sans-serif; --sans:"Nunito Sans",sans-serif; --word-wt:700;
+    --word-a:#103642; --word-b:#0c5470; --link:#103642; --accent:#e0573a; }
+</style>
+</head>
+<body>
+  <div class="page-head">
+    <h1>Component 01 — Nav / Header bar</h1>
+    <p>The same nav structure (logo left · links right · active link underlined) rendered in all 5 skins. Only color + font change between them. GameOverGear (9 links, pixel font) is the stress test.</p>
+    <p class="hint">Bang on the <b>structure</b> — height, logo size/shape, spacing, link size, active-link style, where things sit. The skins follow automatically. Tell me what to change and I'll redraw.</p>
+  </div>
+
+  <div class="specimen">
+    <div class="specimen__label"><span>MyWildlifeCam</span><span>forest + cream + brass · Fraunces / Inter Tight</span></div>
+    <div class="frame skin--mwc">
+      <header class="nav">
+        <a class="nav__brand"><span class="nav__logo"></span><span class="nav__word">My<b>WildlifeCam</b></span></a>
+        <nav class="nav__links">
+          <a class="is-active">Home</a><a>Cellular Cams</a><a>Trail Cameras</a><a>Game Cameras</a><a>Buying Guides</a><a>How We Evaluate</a><a>About</a>
+        </nav>
+      </header>
+    </div>
+  </div>
+
+  <div class="specimen">
+    <div class="specimen__label"><span>DetailerPicks</span><span>slate blue + paper · Instrument Serif / Inter Tight</span></div>
+    <div class="frame skin--dtp">
+      <header class="nav">
+        <a class="nav__brand"><span class="nav__logo"></span><span class="nav__word">Detailer<b>Picks</b></span></a>
+        <nav class="nav__links">
+          <a class="is-active">Home</a><a>Wash &amp; Soap</a><a>Wheels &amp; Tires</a><a>Interior</a><a>Foam Cannons</a><a>Quick Picks</a><a>About</a>
+        </nav>
+      </header>
+    </div>
+  </div>
+
+  <div class="specimen">
+    <div class="specimen__label"><span>FussyBean</span><span>espresso + cream + caramel · Fraunces / Inter</span></div>
+    <div class="frame skin--fb">
+      <header class="nav">
+        <a class="nav__brand"><span class="nav__logo"></span><span class="nav__word">Fussy<b>Bean</b></span></a>
+        <nav class="nav__links">
+          <a class="is-active">Home</a><a>Espresso Machines</a><a>Grinders</a><a>Kettles &amp; Scales</a><a>What It Costs</a><a>Gifts &amp; Fun</a><a>About</a>
+        </nav>
+      </header>
+    </div>
+  </div>
+
+  <div class="specimen">
+    <div class="specimen__label"><span>GameOverGear</span><span>dark + neon cyan · Press Start 2P / Inter</span></div>
+    <div class="frame skin--gog">
+      <header class="nav">
+        <a class="nav__brand"><span class="nav__logo"></span><span class="nav__word">GameOver<b>Gear</b></span></a>
+        <nav class="nav__links">
+          <a class="is-active">Home</a><a>Consoles &amp; Systems</a><a>Controllers</a><a>Arcade Sticks</a><a>Handhelds</a><a>Displays &amp; Scalers</a><a>Level Up</a><a>Gifts &amp; 1-Ups</a><a>About</a>
+        </nav>
+      </header>
+    </div>
+  </div>
+
+  <div class="specimen">
+    <div class="specimen__label"><span>StarterAquarium</span><span>aqua teal + coral pop · Poppins / Nunito Sans</span></div>
+    <div class="frame skin--sa">
+      <header class="nav">
+        <a class="nav__brand"><span class="nav__logo"></span><span class="nav__word">Starter<b>Aquarium</b></span></a>
+        <nav class="nav__links">
+          <a class="is-active">Home</a><a>Tanks &amp; Kits</a><a>Filters</a><a>Heaters</a><a>Lighting</a><a>Tank School</a><a>Fun Finds</a><a>About</a>
+        </nav>
+      </header>
+    </div>
+  </div>
+</body>
+</html>

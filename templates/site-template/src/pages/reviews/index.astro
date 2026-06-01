@@ -1,7 +1,28 @@
 ---
 import { getCollection } from "astro:content";
 import MainLayout from "../../layouts/MainLayout.astro";
+import PageHeader from "@affkit/shared-ui/PageHeader.astro";
 import ReviewCard from "@affkit/shared-ui/ReviewCard.astro";
+
+/* ============================================================================
+   CANONICAL REVIEWS INDEX — rebuilt from the shared component library.
+   Byte-identical across template + all 5 sites EXCEPT the PAGE block below.
+   Shared <PageHeader> + locked-rule centered card grid. Reads the site's
+   reviews collection.
+   ========================================================================== */
+
+/* ─── PER-SITE CONTENT (the only block that differs between sites) ─── */
+const PAGE = {
+  seoTitle: "Single-product reviews",
+  seoDescription:
+    "Spec-driven single-product reviews for __NICHE__. What it does well, what it does badly, and who it's the right fit for.",
+  kicker: "Reviews",
+  title: "Single-product reviews",
+  lede:
+    "We read the spec sheets, owner reviews, and independent teardowns, then ask who this is actually the right pick for. Each piece is one product, one verdict.",
+  empty: "No reviews yet. New ones land every quarter.",
+};
+/* ─────────────────────────────────────────────────────────────────── */
 
 const entries = await getCollection("reviews");
 const sorted = entries.sort((a, b) => {
@@ -10,32 +31,45 @@ const sorted = entries.sort((a, b) => {
   return bTime - aTime;
 });
 ---
-<MainLayout
-  title="Reviews"
-  description="Hands-on product reviews — what works, what doesn't, and what we'd actually buy."
->
-  <header class="page-header">
-    <h1>Reviews</h1>
-    <p class="lede">Hands-on product reviews. What works, what doesn't, and what we'd buy with our own money.</p>
-  </header>
+<MainLayout title={PAGE.seoTitle} description={PAGE.seoDescription}>
+  <PageHeader kicker={PAGE.kicker} title={PAGE.title} lede={PAGE.lede} />
 
-  {sorted.length === 0 ? (
-    <p class="empty">No reviews yet — check back soon.</p>
-  ) : (
-    <div class="grid">
-      {sorted.map((entry) => <ReviewCard entry={entry} />)}
+  <section class="grid-section">
+    <div class="grid-section__inner">
+      {sorted.length === 0 ? (
+        <p class="empty">{PAGE.empty}</p>
+      ) : (
+        <div class="grid">
+          {sorted.map((entry) => <ReviewCard entry={entry} />)}
+        </div>
+      )}
     </div>
-  )}
+  </section>
 </MainLayout>
 
 <style>
-  .page-header { margin-bottom: var(--space-8); }
-  .page-header h1 { font-size: var(--text-3xl); margin: 0 0 var(--space-3); }
-  .lede { font-size: var(--text-lg); color: var(--color-muted); margin: 0; }
-  .empty { color: var(--color-muted); }
+  .grid-section {
+    padding: var(--space-12) var(--space-6) var(--space-20);
+    background: var(--color-bg);
+  }
+  .grid-section__inner { max-width: var(--container-max); margin: 0 auto; }
+  /* Locked grid rule: capped + centered, no orphan-row stretch. */
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
+    justify-content: center;
     gap: var(--space-6);
+  }
+  .empty {
+    color: var(--color-muted);
+    font-family: var(--font-serif);
+    font-style: italic;
+  }
+
+  @media (max-width: 760px) {
+    .grid-section { padding: var(--space-10) var(--space-4) var(--space-16); }
+  }
+  @media (max-width: 720px) {
+    .grid { grid-template-columns: 1fr; }
   }
 </style>

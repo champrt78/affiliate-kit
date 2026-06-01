@@ -1,0 +1,83 @@
+---
+/* <PageHeader kicker title lede /> — light editorial listing/topic header.
+   Mockup lineage: the satellite sites' `.page-header` block (fussybean /
+   gameovergear / starteraquarium / mywildlifecam reviews+guides indexes), now
+   extracted to one token-mapped shared component so every listing and topic
+   page renders an identical header that auto-skins per site.
+
+   NOT the same as <GuideHeader> — that one is the heavy guide-detail header
+   (facts panel, byline footer, nowrap serif title). This is the lightweight
+   kicker rule + serif title + lede used at the top of card-grid pages.
+
+   Token-mapped: --color-brass (kicker rule + label), --color-forest (title),
+   --color-muted (lede). On inverted skins (gog: --color-forest → light ink) the
+   title reads light on the near-black surface, which is correct. */
+interface Props {
+  kicker?: string;
+  title: string;
+  lede?: string;
+}
+
+const { kicker, title, lede } = Astro.props;
+---
+<header class="page-header">
+  <div class="page-header__inner">
+    {kicker && <span class="page-header__kicker">{kicker}</span>}
+    <h1 class="page-header__title">{title}</h1>
+    {lede && <p class="page-header__lede" set:html={lede}></p>}
+  </div>
+</header>
+
+<style>
+  .page-header {
+    background: var(--color-bg);
+    padding: var(--space-10) var(--space-6) var(--space-6);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .page-header__inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+  .page-header__kicker {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-brass);
+    margin-bottom: var(--space-2);
+  }
+  .page-header__kicker::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--color-brass);
+    vertical-align: middle;
+    margin-right: 10px;
+    transform: translateY(-2px);
+  }
+  .page-header__title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.625rem, 2.6vw, 2.125rem);
+    line-height: 1.1;
+    color: var(--color-forest);
+    letter-spacing: var(--tracking-display);
+    margin: 0;
+    font-weight: var(--weight-semibold);
+  }
+  .page-header__lede {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+    line-height: 1.5;
+    color: var(--color-muted);
+    margin: var(--space-3) 0 0;
+    max-width: 56ch;
+  }
+
+  @media (max-width: 760px) {
+    .page-header { padding: var(--space-10) var(--space-4) var(--space-5); }
+  }
+</style>

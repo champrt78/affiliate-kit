@@ -123,7 +123,7 @@ The two sizes overlap at the 20 to 30 gallon band. There the 50 is the more flex
 
 ## How It Compares
 
-The AquaClear 50 sits in the [Filters](/filters) pillar. A few more natural points of comparison, all spec-sourced:
+The AquaClear 50 sits in the [Filters](/topics/filters/) pillar. A few more natural points of comparison, all spec-sourced:
 
 **AquaClear vs Seachem Tidal.** The Seachem Tidal is the other large-basket hang-on-back beginners weigh against the AquaClear, and the spec differences are the whole story. Per Seachem's listing the Tidal 35 is **self-priming** and adds a surface skimmer and a maintenance-alert indicator, where the AquaClear asks you to fill and prime it on first start-up and has no skimmer. The Tidal's flow dial spans roughly 90 to 450 GPH against the AquaClear 50's fixed-pump-with-lever 300 GPH. Both run a refillable media basket rather than throwaway cartridges, so the choice is really **self-priming convenience and a skimmer (Tidal) versus a longer, cheaper track record (AquaClear)**. The Tidal usually carries the higher price of the two.
 

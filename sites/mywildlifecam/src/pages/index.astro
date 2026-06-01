@@ -6,6 +6,40 @@ import ReviewCard from "@affkit/shared-ui/ReviewCard.astro";
 import BuyersGuideCard from "@affkit/shared-ui/BuyersGuideCard.astro";
 import CTA from "@affkit/shared-ui/CTA.astro";
 
+/* ============================================================================
+   CANONICAL HOMEPAGE — rebuilt from the shared component library.
+   This file is byte-identical across the template and all 5 sites EXCEPT the
+   PAGE block below. Structure, layout, and CSS are shared; only the per-site
+   hero copy + scene photo + SEO strings change (that is the allowed per-site
+   "content"). The page reads each site's content collections + tokens, so the
+   skin (colors/fonts) and the cards auto-personalize with zero code change.
+
+   Sections (the FussyBean gold-standard set):
+     1. Hero            — scene photo + kicker rule + serif headline + 2 CTAs
+     2. Lead            — one-paragraph editorial intro (drop cap)
+     3. Featured pick   — this-month's guide (featured BuyersGuideCard)
+     4. Latest reviews  — centered card grid (locked grid rule)
+     5. More guides     — centered card grid
+     6. Manifesto       — tokenized contrast band ("how we work")
+   ========================================================================== */
+
+/* ─── PER-SITE CONTENT (the only block that differs between sites) ─── */
+const PAGE = {
+  seoTitle: "MyWildlifeCam",
+  seoDescription:
+    "Trail cameras for the backyard naturalist. Spec-driven buying guides and single-product reviews, by use case.",
+  heroKicker: "Trail cams · buyer’s-eye reviews",
+  heroTitle: "The backyard, on camera.",
+  heroLede:
+    "We compare trail cameras the way a careful first-time buyer would. Spec, fit, and use case. The pick you would actually live with.",
+  heroImage:
+    "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=2400&q=80",
+  heroImageAlt: "Light through a misty pine forest",
+  leadBody:
+    "Trail cameras have outgrown the deer stand. They live on garden sheds, across koi ponds, above backyard bird feeders, on cabin porches. We sift the catalog so the right pick is obvious for the use case you actually have, by the spec and fit signals that matter.",
+};
+/* ─────────────────────────────────────────────────────────────────── */
+
 function sortByDateDesc<T extends { data: { pubDate: Date | string } }>(arr: T[]) {
   return [...arr].sort((a, b) => {
     const aTime = a.data.pubDate instanceof Date ? a.data.pubDate.getTime() : new Date(a.data.pubDate).getTime();
@@ -14,26 +48,27 @@ function sortByDateDesc<T extends { data: { pubDate: Date | string } }>(arr: T[]
   });
 }
 
-const allReviews = await getCollection("reviews");
-const allGuides = await getCollection("buyers-guides");
+// Only published pieces reach the homepage. A piece is published once its
+// Bottom Line verdict is filled (the repo's DRAFT/noindex gate). This predicate
+// works across all 5 sites because every content schema shares bottomLine.verdict.
+const isPublished = (e: any) =>
+  e.data.bottomLine && typeof e.data.bottomLine.verdict === "string" && e.data.bottomLine.verdict.trim() !== "";
+
+const allReviews = (await getCollection("reviews")).filter(isPublished);
+const allGuides = (await getCollection("buyers-guides")).filter(isPublished);
 
 const latestReviews = sortByDateDesc(allReviews).slice(0, 6);
 const latestGuides = sortByDateDesc(allGuides);
 const featuredGuide = latestGuides[0];
 const otherGuides = latestGuides.slice(1, 4);
-
-const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=2400&q=80";
 ---
-<MainLayout
-  title="MyWildlifeCam"
-  description="Trail cameras for the backyard naturalist. Buying guides and single-product reviews from a buyer's perspective."
->
+<MainLayout title={PAGE.seoTitle} description={PAGE.seoDescription}>
   <Hero
-    title="The backyard, on camera."
-    kicker="Trail cams · buyer's-eye reviews"
-    tagline="We compare trail cameras the way a careful first-time buyer would. Spec, fit, and use case. The pick you'd actually live with."
-    image={heroImage}
-    imageAlt="Light through a misty pine forest"
+    title={PAGE.heroTitle}
+    kicker={PAGE.heroKicker}
+    tagline={PAGE.heroLede}
+    image={PAGE.heroImage}
+    imageAlt={PAGE.heroImageAlt}
     size="full"
   >
     <div class="hero-actions">
@@ -50,12 +85,7 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
 
   <section class="lead">
     <div class="lead__inner">
-      <p>
-        Trail cameras have outgrown the deer-stand. They live on garden sheds,
-        across koi ponds, above backyard bird feeders, on cabin porches. We
-        sift the catalog so the right pick is obvious for the use case you
-        actually have, by the spec and fit signals that matter.
-      </p>
+      <p>{PAGE.leadBody}</p>
     </div>
   </section>
 
@@ -89,7 +119,7 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
       </header>
 
       {latestReviews.length === 0 ? (
-        <p class="empty">No reviews yet. New ones land every quarter.</p>
+        <p class="empty">New single-product reviews land every quarter. The first pieces are in the works, built from published specs, verified-buyer reports, and use-case fit.</p>
       ) : (
         <div class="reviews__grid">
           {latestReviews.map((entry) => <ReviewCard entry={entry} />)}
@@ -117,17 +147,16 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
   <section class="manifesto">
     <div class="manifesto__inner">
       <span class="manifesto__kicker">How we work</span>
-      <h2 class="manifesto__title">Rigorous comparison, mapped to who you are.</h2>
+      <h2 class="manifesto__title">Cross-brand and honest, by design.</h2>
       <p>
-        Every pick is verified against manufacturer spec sheets, cross-referenced
-        with TrailCamPro's measured testing data, and weighed against hundreds of
-        verified-buyer reports on Amazon and the major hunting and wildlife forums.
-        We match each camera to the reader who will actually use it: backyard
-        property owners, gift buyers, the cellular-curious, the covert-deployment
-        scout.
+        We do not sell the products and we do not run a workshop. We read
+        manufacturer spec sheets, aggregate verified-buyer reports, watch
+        independent reviewer testing, and ask one question: for the person
+        reading this, which pick actually fits? When the cheaper option is the
+        right answer, we say so.
       </p>
       <p>
-        Every "buy" link goes through our own redirect so we can swap retailers
+        Every buy link goes through our own redirect so we can swap retailers
         without breaking older posts. We earn a commission on Amazon purchases
         at no extra cost to you.
       </p>
@@ -140,13 +169,13 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
 </MainLayout>
 
 <style>
+  /* Hero CTAs — ghost button needs paper outline on the dark veil */
   .hero-actions {
     display: flex;
     gap: var(--space-3);
     flex-wrap: wrap;
     margin-top: var(--space-3);
   }
-  /* On image hero, ghost CTA needs to be visible on dark backdrop */
   :global(.hero--with-image) .hero-actions :global(.cta--ghost) {
     color: var(--color-paper);
     border-color: var(--color-paper);
@@ -156,8 +185,7 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
     color: var(--color-forest);
   }
 
-  /* Lead — Tightened + Drop Cap (Ray's pick from lead-mockup playground).
-     Single column, sans 18px body at 1.6, Fraunces drop cap on first letter. */
+  /* Lead — single column, sans body with serif drop cap */
   .lead {
     background: var(--color-bg);
     padding: var(--space-10) var(--space-6) var(--space-8);
@@ -170,10 +198,9 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
     font-family: var(--font-sans);
     font-size: 18px;
     line-height: 1.6;
-    color: var(--color-paper-ink);
+    color: var(--color-fg);
     margin: 0;
     font-weight: var(--weight-regular);
-    letter-spacing: 0;
   }
   .lead p::first-letter {
     font-family: var(--font-serif);
@@ -183,7 +210,6 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
     float: left;
     line-height: 0.9;
     margin: 6px 12px 0 0;
-    font-variation-settings: "opsz" 144;
   }
 
   /* Section heads — shared */
@@ -221,9 +247,7 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
     padding: var(--space-2) 0;
     border-bottom: 1px solid var(--color-brass);
   }
-  .section-head__link:hover {
-    color: var(--color-brass);
-  }
+  .section-head__link:hover { color: var(--color-brass); }
 
   /* Featured — single guide call-out */
   .featured {
@@ -239,7 +263,7 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
     margin: 0 auto;
   }
 
-  /* Reviews section */
+  /* Reviews — centered card grid (locked grid rule: no orphan-row stretch) */
   .reviews {
     background: var(--color-paper-muted);
     padding: var(--space-16) var(--space-6);
@@ -250,9 +274,6 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
   }
   .reviews__grid {
     display: grid;
-    /* 3-up forced on desktop (we have 3 reviews and Ray wants them
-       on one row at typical desktop widths). The 960px collapse-to-2
-       was kicking in too early on his viewport. Hold 3-up to 720px. */
     grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
     justify-content: center;
     gap: var(--space-6);
@@ -264,9 +285,10 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
     color: var(--color-muted);
     font-style: italic;
     font-family: var(--font-serif);
+    max-width: 60ch;
   }
 
-  /* More guides */
+  /* More guides — centered card grid (locked grid rule) */
   .more-guides {
     background: var(--color-bg);
     padding: var(--space-16) var(--space-6);
@@ -277,16 +299,19 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
   }
   .more-guides__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 320px));
+    justify-content: center;
     gap: var(--space-6);
   }
+  @media (max-width: 720px) {
+    .more-guides__grid { grid-template-columns: 1fr; }
+  }
 
-  /* Manifesto — deep-forest contrast band: the page's one inversion.
-     Mirrors DTP's #14181C ink-band treatment but in MWC's forest palette. */
+  /* Manifesto — tokenized contrast band (forest), the page's one inversion.
+     Fully token-driven so it reads correctly on every skin. */
   .manifesto {
-    background: #0F1B14;
+    background: var(--color-forest);
     padding: var(--space-20) var(--space-6);
-    border-top: 1px solid #1F2D24;
   }
   .manifesto__inner {
     max-width: var(--content-max);
@@ -299,7 +324,7 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
     font-weight: var(--weight-semibold);
     letter-spacing: var(--tracking-wide);
     text-transform: uppercase;
-    color: var(--color-brass);
+    color: var(--color-brass-soft);
     margin-bottom: var(--space-4);
     display: inline-block;
   }
@@ -307,7 +332,7 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
     font-family: var(--font-serif);
     font-size: clamp(2rem, 3.4vw, 2.75rem);
     margin: 0 0 var(--space-6);
-    color: #F5F0E6;
+    color: var(--color-paper);
     letter-spacing: -0.018em;
     font-weight: var(--weight-semibold);
   }
@@ -315,18 +340,19 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
     font-family: var(--font-sans);
     font-size: var(--text-lg);
     line-height: var(--leading-normal);
-    color: #BFC5BC;
+    color: var(--color-paper);
+    opacity: 0.82;
     margin: 0 auto var(--space-4);
     max-width: 60ch;
   }
   .manifesto :global(.cta--ghost) {
-    color: var(--color-brass-soft, #E8D6A8);
-    border-color: rgba(232, 214, 168, 0.4);
+    color: var(--color-brass-soft);
+    border-color: var(--color-brass-soft);
   }
   .manifesto :global(.cta--ghost:hover) {
-    background: var(--color-brass-soft, #E8D6A8);
-    color: #0F1B14;
-    border-color: var(--color-brass-soft, #E8D6A8);
+    background: var(--color-brass-soft);
+    color: var(--color-forest);
+    border-color: var(--color-brass-soft);
   }
   .manifesto__actions {
     display: inline-flex;
@@ -338,10 +364,9 @@ const heroImage = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?
 
   @media (max-width: 760px) {
     .lead { padding: var(--space-10) var(--space-4) var(--space-8); }
-    .lead__inner { grid-template-columns: 1fr; row-gap: var(--space-3); }
     .featured,
     .reviews,
     .more-guides { padding: var(--space-12) var(--space-4); }
-    .manifesto { padding: var(--space-12) var(--space-4); }
+    .manifesto { padding: var(--space-16) var(--space-4); }
   }
 </style>

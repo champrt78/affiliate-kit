@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library · 09 · FAQ Block — 5 skins</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Press+Start+2P&family=Poppins:wght@500;600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #c8ccd0; font-family: "Inter", system-ui, sans-serif; color: #1a1a1a; padding: 28px 0 80px; }
+  .page-head { max-width: 1200px; margin: 0 auto 22px; padding: 0 24px; }
+  .page-head h1 { font-size: 19px; font-weight: 700; }
+  .page-head p { font-size: 14px; color: #44484c; margin-top: 4px; max-width: 72ch; }
+  .page-head .hint { margin-top: 8px; font-size: 13px; color: #555; background: #fff; border-left: 3px solid #888; padding: 8px 12px; border-radius: 0 6px 6px 0; }
+
+  .specimen { max-width: 1200px; margin: 0 auto 26px; }
+  .specimen__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #4a4e52; margin: 0 4px 7px; display: flex; justify-content: space-between; }
+  .specimen__label span:last-child { font-weight: 500; color: #70757a; letter-spacing: 0; text-transform: none; }
+  .frame { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 14px rgba(0,0,0,.14); }
+
+  /* ── THE FAQ COMPONENT (one definition, skinned by vars) ── */
+  .faq { background: var(--paper); padding: 48px 30px 54px; }
+  .faq__inner { max-width: 65ch; margin: 0 auto; }   /* readable measure, centered */
+  .faq__heading { font-family: var(--serif); font-weight: var(--word-wt, 600); font-size: var(--faq-h-size, 30px);
+    letter-spacing: var(--word-ls, -.015em); color: var(--forest); text-align: center; line-height: 1.15; }
+  .faq__eyebrow { display: inline-flex; align-items: center; gap: 11px; font-family: var(--sans); font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .16em; color: var(--accent); margin-bottom: 10px; }
+  .faq__eyebrow::before { content: ""; width: 26px; height: 2px; background: var(--accent); display: inline-block; flex-shrink: 0; }
+  .faq__list { margin-top: 30px; }
+
+  .faq__item { border-bottom: 1px solid var(--border); }
+  .faq__item:first-child { border-top: 1px solid var(--border); }
+  .faq__q { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+    cursor: pointer; padding: 20px 2px 6px; }
+  .faq__q-text { font-family: var(--serif); font-weight: var(--word-wt, 600); font-size: var(--faq-q-size, 19px);
+    letter-spacing: var(--word-ls, -.01em); color: var(--ink); line-height: 1.3; }
+  .faq__icon { flex-shrink: 0; width: 26px; height: 26px; border-radius: 999px; background: var(--brass-soft);
+    color: var(--forest); font-family: var(--sans); font-size: 18px; font-weight: 700; line-height: 24px;
+    text-align: center; margin-top: 2px; user-select: none; }
+  .faq__a { font-family: var(--sans); font-size: 15px; line-height: 1.65; color: var(--muted);
+    padding: 0 40px 22px 2px; }
+
+  /* gog pixel font: only the section heading + question use Press Start, kept small & legible */
+  .skin--gog .faq__eyebrow { font-size: 9.5px; letter-spacing: .08em; }
+  .skin--gog .faq__heading { font-family: "Press Start 2P", monospace; font-size: 16px; letter-spacing: 0; line-height: 1.5; }
+  .skin--gog .faq__q-text { font-family: "Press Start 2P", monospace; font-size: 11px; letter-spacing: 0; line-height: 1.7; }
+
+  /* ── SKINS (color + font only) ── */
+  .skin--mwc {
+    --paper:#FAF7EF; --paper-muted:#F2EBDC; --ink:#1C1C1A; --forest:#1F3D2F; --brass:#A07C3A;
+    --brass-soft:#D9C29B; --muted:#5C5A4F; --border:#E5DDC9; --accent:#A07C3A;
+    --serif:"Fraunces",serif; --sans:"Inter Tight",sans-serif; }
+  .skin--dtp {
+    --paper:#F4F2EE; --paper-muted:#ECEAE4; --ink:#14181C; --forest:#2C5E8C; --brass:#2C5E8C;
+    --brass-soft:#F7E9C8; --muted:#6A7079; --border:#D6D2C8; --accent:#2C5E8C;
+    --serif:"Instrument Serif",serif; --sans:"Inter Tight",sans-serif; --word-wt:400; --word-ls:0;
+    --faq-h-size:36px; --faq-q-size:22px; }
+  .skin--fb {
+    --paper:#f4e8d4; --paper-muted:#f8efe0; --ink:#2c2018; --forest:#241710; --brass:#b06f2c;
+    --brass-soft:#ecd4a8; --muted:#7c6750; --border:#e3d4bd; --accent:#b06f2c;
+    --serif:"Fraunces",serif; --sans:"Inter",sans-serif; }
+  .skin--gog {
+    --paper:#0e0b1c; --paper-muted:#171331; --ink:#ede9ff; --forest:#ede9ff; --brass:#2ee6ff;
+    --brass-soft:#2c2752; --muted:#9a93c7; --border:#3a3470; --accent:#2ee6ff;
+    --serif:"Press Start 2P",monospace; --sans:"Inter",sans-serif; }
+  .skin--sa {
+    --paper:#f6fcfd; --paper-muted:#ffffff; --ink:#103642; --forest:#0c5470; --brass:#e0573a;
+    --brass-soft:#bfe9ef; --muted:#557079; --border:#cfeaef; --accent:#e0573a;
+    --serif:"Poppins",sans-serif; --sans:"Nunito Sans",sans-serif; --word-wt:700;
+    --faq-h-size:28px; --faq-q-size:18px; }
+</style>
+</head>
+<body>
+  <div class="page-head">
+    <h1>Component 09 — FAQ block</h1>
+    <p>Accordion-style FAQ in all 5 skins: a centered "Common questions" heading, then 4 Q&amp;A items, each with a bold serif question, a +/− indicator, and an answer paragraph. Shown fully expanded so the full styling is visible. The text column is held to a readable ~65ch measure and centered in the container.</p>
+    <p class="hint">Bang on the <b>structure</b> — heading treatment, question size/weight, the +/− indicator style, answer measure + leading, divider lines, spacing between items. The skins follow automatically. Tell me what to change and I'll redraw.</p>
+  </div>
+
+  <!-- ── MWC ─────────────────────────────────────────── -->
+  <div class="specimen">
+    <div class="specimen__label"><span>MyWildlifeCam</span><span>forest + cream + brass · Fraunces / Inter Tight</span></div>
+    <div class="frame skin--mwc"><div class="faq"><div class="faq__inner">
+      <span class="faq__eyebrow">FAQ</span>
+      <h2 class="faq__heading">Common questions</h2>
+      <div class="faq__list">
+        <div class="faq__item">
+          <div class="faq__q"><span class="faq__q-text">Do cellular trail cameras need a monthly plan?</span><span class="faq__icon">−</span></div>
+          <p class="faq__a">Yes. Cellular cams send photos over LTE, so they need a data plan from the manufacturer or a carrier SIM. Plans usually scale by photo count per month, and most brands offer a free starter tier so you can test coverage before committing.</p>
+        </div>
+        <div class="faq__item">
+          <div class="faq__q"><span class="faq__q-text">How far away will a camera detect movement?</span><span class="faq__icon">−</span></div>
+          <p class="faq__a">Detection range depends on the PIR sensor and is typically 50 to 100 feet. Listed ranges are best case in cool weather. On hot days the temperature gap between an animal and the background shrinks, so real-world detection often comes in shorter than the spec.</p>
+        </div>
+        <div class="faq__item">
+          <div class="faq__q"><span class="faq__q-text">What is trigger speed and why does it matter?</span><span class="faq__icon">−</span></div>
+          <p class="faq__a">Trigger speed is the lag between detecting motion and capturing the frame. Faster is better for animals crossing a trail. Anything at or under 0.3 seconds reliably catches moving subjects; slower units tend to photograph the tail end or an empty frame.</p>
+        </div>
+        <div class="faq__item">
+          <div class="faq__q"><span class="faq__q-text">Will a no-glow camera spook animals at night?</span><span class="faq__icon">−</span></div>
+          <p class="faq__a">No-glow infrared emits no visible red light, so it is the least likely to alert wary animals or trespassers. Low-glow shows a faint red glow up close. For pressured game or security use, no-glow is the safer pick despite slightly shorter night range.</p>
+        </div>
+      </div>
+    </div></div></div>
+  </div>
+
+  <!-- ── DTP ─────────────────────────────────────────── -->
+  <div class="specimen">
+    <div class="specimen__label"><span>DetailerPicks</span><span>slate blue + paper · Instrument Serif / Inter Tight</span></div>
+    <div class="frame skin--dtp"><div class="faq"><div class="faq__inner">
+      <span class="faq__eyebrow">FAQ</span>
+      <h2 class="faq__heading">Common questions</h2>
+      <div class="faq__list">
+        <div class="faq__item">
+          <div class="faq__q"><span class="faq__q-text">Do I really need a foam cannon, or will a foam gun do?</span><span class="faq__icon">−</span></div>
+          <p class="faq__a">A foam gun runs off a garden hose and lays down thin suds; a foam cannon needs a pressure washer but produces thick clinging foam that lifts grit before you touch the paint. If you own a pressure washer, the cannon is the safer wash for your clear coat.</p>
+        </div>
+        <div class="faq__item">
+          <div class="faq__q"><span class="faq__q-text">What pressure washer PSI works with most cannons?</span><span class="faq__icon">−</span></div>
+          <p class="faq__a">Most foam cannons are happy between 1000 and 3000 PSI with a flow rate around 1.4 to 2 GPM. Below 1000 PSI the foam comes out watery. Match the connector too, usually a 1/4-inch quick-connect or an M22 fitting, before you buy.</p>
+        </div>
+        <div class="faq__item">
+          <div class="faq__q"><span class="faq__q-text">How much soap should I put in the canister?</span><span class="faq__icon">−</span></div>
+          <p class="faq__a">Start with one to three ounces of a dedicated snow-foam soap per liter of water, then top up with water. Too much soap actually thins the foam. Adjust the thickness dial after the first pass rather than overloading the mix up front.</p>
+        </div>
+        <div class="faq__item">
+          <div class="faq__q"><span class="faq__q-text">Can foam alone replace the two-bucket wash?</span><span class="faq__icon">−</span></div>
+          <p class="faq__a">No. Foaming loosens and floats off surface grit, which reduces wash-induced scratches, but it will not lift bonded dirt on its own. Treat it as the pre-wash step before a proper two-bucket contact wash, not a substitute for it.</p>
+        </div>
+      </div>
+    </div></div></div>
+  </div>
+
+  <!-- ── FB ──────────────────────────────────────────── -->
+  <div class="specimen">
+    <div class="specimen__label"><span>FussyBean</span><span>espresso + cream + caramel · Fraunces / Inter</span></div>
+    <div class="frame skin--fb"><div class="faq"><div class="faq__inner">
+      <span class="faq__eyebrow">FAQ</span>
+      <h2 class="faq__heading">Common questions</h2>
+      <div class="faq__list">
+        <div class="faq__item">
+          <div class="faq__q"><span class="faq__q-text">Single boiler, heat exchanger, or dual boiler?</span><span class="faq__icon">−</span></div>
+          <p class="faq__a">Single boilers make great espresso but pause to switch to steam. Heat exchangers pull a shot and steam at once for less money. Dual boilers hold separate, stable temperatures for both. If milk drinks are your daily routine, the jump to dual is worth it.</p>
+        </div>
+        <div class="faq__item">
+          <div class="faq__q"><span class="faq__q-text">Does the grinder matter more than the machine?</span><span class="faq__icon">−</span></div>
+          <p class="faq__a">For espresso, yes. A consistent burr grinder with fine adjustment does more for shot quality than upgrading the machine. A pricey machine fed by a cheap grinder still pulls uneven, channeling shots, so budget for the grinder first if you have to choose.</p>
+        </div>
+        <div class="faq__item">
+          <div class="faq__q"><span class="faq__q-text">What pressure should an espresso machine pull at?</span><span class="faq__icon">−</span></div>
+          <p class="faq__a">Nine bar at the puck is the long-standing standard. Machines advertising 15 or 20 bar are quoting pump maximum, not brew pressure. A built-in or aftermarket pressure gauge helps you dial in and confirm you are actually brewing near nine.</p>
+        </div>
+        <div class="faq__item">
+          <div class="faq__q"><span class="faq__q-text">How long until the machine is ready to brew?</span><span class="faq__icon">−</span></div>
+          <p class="faq__a">Thermoblock and pod machines heat in under a minute. Single boilers warm up in a few minutes; heat exchangers and dual boilers want a full warm-up of fifteen to twenty minutes for stable temperature. A timed smart plug solves the morning wait.</p>
+        </div>
+      </div>
+    </div></div></div>
+  </div>
+
+  <!-- ── GOG ─────────────────────────────────────────── -->
+  <div class="specimen">
+    <div class="specimen__label"><span>GameOverGear</span><span>dark + neon cyan · Press Start 2P / Inter</span></div>
+    <div class="frame skin--gog"><div class="faq"><div class="faq__inner">
+      <span class="faq__eyebrow">FAQ</span>
+      <h2 class="faq__heading">Common questions</h2>
+      <div class="faq__list">
+        <div class="faq__item">
+          <div class="faq__q"><span class="faq__q-text">Is emulation on these handhelds legal?</span><span class="faq__icon">−</span></div>
+          <p class="faq__a">The emulator software itself is legal. The legal gray area is the ROMs. The safe path is dumping games you physically own or playing homebrew and public-domain titles. Devices ship without copyrighted games preloaded; what you add is on you.</p>
+        </div>
+        <div class="faq__item">
+          <div class="faq__q"><span class="faq__q-text">What systems can a budget handheld actually run?</span><span class="faq__icon">−</span></div>
+          <p class="faq__a">Entry-level units handle NES, SNES, Genesis, and Game Boy line smoothly. Mid-tier chips add PS1 and N64. Demanding systems like PSP, Dreamcast, and Saturn need a stronger SoC, so check the exact chipset, not just the marketing tier name.</p>
+        </div>
+        <div class="faq__item">
+          <div class="faq__q"><span class="faq__q-text">Do I need an original CRT for the best look?</span><span class="faq__icon">−</span></div>
+          <p class="faq__a">Not necessarily. A good upscaler or RetroTINK plus shader presets gets you scanlines and the soft CRT glow on a modern screen with far less weight and heat. Purists still prefer a real tube for lightgun games, where CRTs have a genuine edge.</p>
+        </div>
+        <div class="faq__item">
+          <div class="faq__q"><span class="faq__q-text">Wired or wireless retro controllers?</span><span class="faq__icon">−</span></div>
+          <p class="faq__a">Wired is zero latency and never needs charging, which matters for tight platformers and fighters. Modern 2.4GHz wireless adds only a frame or two and is fine for most play. Avoid generic Bluetooth pads for timing-critical games where the lag stacks up.</p>
+        </div>
+      </div>
+    </div></div></div>
+  </div>
+
+  <!-- ── SA ──────────────────────────────────────────── -->
+  <div class="specimen">
+    <div class="specimen__label"><span>StarterAquarium</span><span>aqua teal + coral pop · Poppins / Nunito Sans</span></div>
+    <div class="frame skin--sa"><div class="faq"><div class="faq__inner">
+      <span class="faq__eyebrow">FAQ</span>
+      <h2 class="faq__heading">Common questions</h2>
+      <div class="faq__list">
+        <div class="faq__item">
+          <div class="faq__q"><span class="faq__q-text">How long before I can add fish to a new tank?</span><span class="faq__icon">−</span></div>
+          <p class="faq__a">Plan on three to six weeks to cycle the tank first. Cycling grows the beneficial bacteria that convert toxic ammonia and nitrite into safer nitrate. Adding fish before the cycle finishes is the number one cause of beginner losses, so be patient here.</p>
+        </div>
+        <div class="faq__item">
+          <div class="faq__q"><span class="faq__q-text">What size tank is best for a beginner?</span><span class="faq__icon">−</span></div>
+          <p class="faq__a">Bigger is actually easier. A 20-gallon holds more water, so temperature and water chemistry swing slowly and forgive small mistakes. Tiny 3 to 5 gallon tanks look beginner-friendly but crash fast, which makes them harder, not easier, to keep stable.</p>
+        </div>
+        <div class="faq__item">
+          <div class="faq__q"><span class="faq__q-text">Do I need a heater for my fish?</span><span class="faq__icon">−</span></div>
+          <p class="faq__a">Most popular beginner fish are tropical and want stable water around 76 to 80°F, so yes. Size the heater to roughly 5 watts per gallon. Coldwater fish like goldfish are the exception, but they need far more space than a starter kit provides.</p>
+        </div>
+        <div class="faq__item">
+          <div class="faq__q"><span class="faq__q-text">How often should I do water changes?</span><span class="faq__icon">−</span></div>
+          <p class="faq__a">A weekly change of 20 to 25 percent suits most starter tanks. Use a gravel vacuum to pull waste from the substrate and always match the temperature and treat for chlorine before refilling. Regular small changes beat occasional big ones for fish health.</p>
+        </div>
+      </div>
+    </div></div></div>
+  </div>
+</body>
+</html>

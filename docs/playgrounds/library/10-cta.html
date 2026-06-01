@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library · 10 · CTA / Affiliate Button — 5 skins</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Press+Start+2P&family=Poppins:wght@500;600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #c8ccd0; font-family: "Inter", system-ui, sans-serif; color: #1a1a1a; padding: 28px 0 80px; }
+  .page-head { max-width: 1200px; margin: 0 auto 22px; padding: 0 24px; }
+  .page-head h1 { font-size: 19px; font-weight: 700; }
+  .page-head p { font-size: 14px; color: #44484c; margin-top: 4px; max-width: 72ch; }
+  .page-head .hint { margin-top: 8px; font-size: 13px; color: #555; background: #fff; border-left: 3px solid #888; padding: 8px 12px; border-radius: 0 6px 6px 0; }
+
+  .specimen { max-width: 1200px; margin: 0 auto 26px; }
+  .specimen__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #4a4e52; margin: 0 4px 7px; display: flex; justify-content: space-between; }
+  .specimen__label span:last-child { font-weight: 500; color: #70757a; letter-spacing: 0; text-transform: none; }
+  .frame { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 14px rgba(0,0,0,.14); }
+
+  /* ── THE CTA STAGE (panel the buttons sit on, skinned by vars) ── */
+  .cta-stage {
+    background: var(--paper);
+    color: var(--ink);
+    padding: 40px 44px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 40px;
+    align-items: center;
+  }
+  .cta-cell { display: flex; flex-direction: column; gap: 9px; }
+  .cta-cell__tag { font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+
+  /* ── THE BUTTON (one definition, variants + baked hover via modifier) ── */
+  .cta {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-family: var(--sans); font-weight: 700; letter-spacing: .01em;
+    text-decoration: none; cursor: pointer;
+    padding: 13px 20px; font-size: 14px;
+    border-radius: 8px; border: 1px solid transparent;
+    align-self: flex-start;
+  }
+  .cta__arrow { width: 14px; height: 14px; flex-shrink: 0; }
+
+  /* Primary — brass/accent fill, paper text */
+  .cta--primary {
+    background: var(--brass); color: var(--paper);
+    box-shadow: 0 2px 9px rgba(0,0,0,.18);
+  }
+  /* Ghost — outline in forest, transparent fill */
+  .cta--ghost {
+    background: transparent; color: var(--forest); border-color: var(--forest);
+  }
+
+  /* Baked hover states (static file can't show :hover — use .is-hover). */
+  .cta--primary.is-hover {
+    filter: brightness(.92);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0,0,0,.22);
+  }
+  .cta--primary.is-hover .cta__arrow { transform: translateX(3px); }
+  .cta--ghost.is-hover {
+    background: var(--forest); color: var(--paper);
+    transform: translateY(-1px);
+  }
+
+  /* gog buttons stay Inter (sans) — never the pixel heading font. */
+  .skin--gog .cta { font-family: "Inter", sans-serif; }
+
+  /* ── SKINS (generic token set) ── */
+  .skin--mwc {
+    --paper:#FAF7EF; --paper-muted:#F2EBDC; --ink:#1C1C1A; --forest:#1F3D2F;
+    --brass:#A07C3A; --brass-soft:#D9C29B; --muted:#5C5A4F; --border:#E5DDC9;
+    --serif:"Fraunces",serif; --sans:"Inter Tight",sans-serif; }
+  .skin--dtp {
+    --paper:#F4F2EE; --paper-muted:#ECEAE4; --ink:#14181C; --forest:#2C5E8C;
+    --brass:#2C5E8C; --brass-soft:#F7E9C8; --muted:#6A7079; --border:#D6D2C8;
+    --serif:"Instrument Serif",serif; --sans:"Inter Tight",sans-serif; }
+  .skin--fb {
+    --paper:#f4e8d4; --paper-muted:#f8efe0; --ink:#2c2018; --forest:#241710;
+    --brass:#b06f2c; --brass-soft:#ecd4a8; --muted:#7c6750; --border:#e3d4bd;
+    --accent:#b06f2c; --serif:"Fraunces",serif; --sans:"Inter",sans-serif; }
+  .skin--gog {
+    --paper:#0e0b1c; --paper-muted:#171331; --ink:#ede9ff; --forest:#ede9ff;
+    --brass:#2ee6ff; --brass-soft:#2c2752; --muted:#9a93c7; --border:#3a3470;
+    --serif:"Press Start 2P",monospace; --sans:"Inter",sans-serif; }
+  .skin--sa {
+    --paper:#f6fcfd; --paper-muted:#ffffff; --ink:#103642; --forest:#0c5470;
+    --brass:#e0573a; --brass-soft:#bfe9ef; --muted:#557079; --border:#cfeaef;
+    --serif:"Poppins",sans-serif; --sans:"Nunito Sans",sans-serif; }
+
+  /* gog primary fill is bright cyan — paper text would vanish; use ink-dark. */
+  .skin--gog .cta--primary { color: #0e0b1c; }
+</style>
+</head>
+<body>
+  <div class="page-head">
+    <h1>Component 10 — CTA / affiliate button</h1>
+    <p>The two button variants used everywhere: <b>primary</b> (&ldquo;See on Amazon&rdquo; — the affiliate click) and <b>ghost</b> (&ldquo;Read the full review&rdquo; — secondary). Each shown at rest and with the hover state baked in, across all 5 skins.</p>
+    <p class="hint">Hover states are pre-applied on the right column (a real static file can&rsquo;t hover). Bang on fill color, radius, padding, arrow, and whether ghost should outline in forest (shown) or brass. Tell me what to change.</p>
+  </div>
+
+  <div class="specimen">
+    <div class="specimen__label"><span>MyWildlifeCam</span><span>forest + cream + brass · Fraunces / Inter Tight</span></div>
+    <div class="frame skin--mwc"><div class="cta-stage">
+      <div class="cta-cell"><span class="cta-cell__tag">Primary · rest</span>
+        <a class="cta cta--primary">See on Amazon <svg class="cta__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9.5M9 4.5l3.5 3.5L9 11.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="cta-cell"><span class="cta-cell__tag">Primary · hover</span>
+        <a class="cta cta--primary is-hover">See on Amazon <svg class="cta__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9.5M9 4.5l3.5 3.5L9 11.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="cta-cell"><span class="cta-cell__tag">Ghost · rest</span>
+        <a class="cta cta--ghost">Read the full review</a></div>
+      <div class="cta-cell"><span class="cta-cell__tag">Ghost · hover</span>
+        <a class="cta cta--ghost is-hover">Read the full review</a></div>
+    </div></div>
+  </div>
+
+  <div class="specimen">
+    <div class="specimen__label"><span>DetailerPicks</span><span>slate blue + paper · Instrument Serif / Inter Tight</span></div>
+    <div class="frame skin--dtp"><div class="cta-stage">
+      <div class="cta-cell"><span class="cta-cell__tag">Primary · rest</span>
+        <a class="cta cta--primary">See on Amazon <svg class="cta__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9.5M9 4.5l3.5 3.5L9 11.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="cta-cell"><span class="cta-cell__tag">Primary · hover</span>
+        <a class="cta cta--primary is-hover">See on Amazon <svg class="cta__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9.5M9 4.5l3.5 3.5L9 11.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="cta-cell"><span class="cta-cell__tag">Ghost · rest</span>
+        <a class="cta cta--ghost">Read the full review</a></div>
+      <div class="cta-cell"><span class="cta-cell__tag">Ghost · hover</span>
+        <a class="cta cta--ghost is-hover">Read the full review</a></div>
+    </div></div>
+  </div>
+
+  <div class="specimen">
+    <div class="specimen__label"><span>FussyBean</span><span>espresso + cream + caramel · Fraunces / Inter</span></div>
+    <div class="frame skin--fb"><div class="cta-stage">
+      <div class="cta-cell"><span class="cta-cell__tag">Primary · rest</span>
+        <a class="cta cta--primary">See on Amazon <svg class="cta__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9.5M9 4.5l3.5 3.5L9 11.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="cta-cell"><span class="cta-cell__tag">Primary · hover</span>
+        <a class="cta cta--primary is-hover">See on Amazon <svg class="cta__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9.5M9 4.5l3.5 3.5L9 11.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="cta-cell"><span class="cta-cell__tag">Ghost · rest</span>
+        <a class="cta cta--ghost">Read the full review</a></div>
+      <div class="cta-cell"><span class="cta-cell__tag">Ghost · hover</span>
+        <a class="cta cta--ghost is-hover">Read the full review</a></div>
+    </div></div>
+  </div>
+
+  <div class="specimen">
+    <div class="specimen__label"><span>GameOverGear</span><span>dark + neon cyan · Press Start 2P / Inter</span></div>
+    <div class="frame skin--gog"><div class="cta-stage">
+      <div class="cta-cell"><span class="cta-cell__tag">Primary · rest</span>
+        <a class="cta cta--primary">See on Amazon <svg class="cta__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9.5M9 4.5l3.5 3.5L9 11.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="cta-cell"><span class="cta-cell__tag">Primary · hover</span>
+        <a class="cta cta--primary is-hover">See on Amazon <svg class="cta__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9.5M9 4.5l3.5 3.5L9 11.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="cta-cell"><span class="cta-cell__tag">Ghost · rest</span>
+        <a class="cta cta--ghost">Read the full review</a></div>
+      <div class="cta-cell"><span class="cta-cell__tag">Ghost · hover</span>
+        <a class="cta cta--ghost is-hover">Read the full review</a></div>
+    </div></div>
+  </div>
+
+  <div class="specimen">
+    <div class="specimen__label"><span>StarterAquarium</span><span>aqua teal + coral pop · Poppins / Nunito Sans</span></div>
+    <div class="frame skin--sa"><div class="cta-stage">
+      <div class="cta-cell"><span class="cta-cell__tag">Primary · rest</span>
+        <a class="cta cta--primary">See on Amazon <svg class="cta__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9.5M9 4.5l3.5 3.5L9 11.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="cta-cell"><span class="cta-cell__tag">Primary · hover</span>
+        <a class="cta cta--primary is-hover">See on Amazon <svg class="cta__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9.5M9 4.5l3.5 3.5L9 11.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="cta-cell"><span class="cta-cell__tag">Ghost · rest</span>
+        <a class="cta cta--ghost">Read the full review</a></div>
+      <div class="cta-cell"><span class="cta-cell__tag">Ghost · hover</span>
+        <a class="cta cta--ghost is-hover">Read the full review</a></div>
+    </div></div>
+  </div>
+</body>
+</html>

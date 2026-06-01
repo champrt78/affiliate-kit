@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library · 07 · Listing cards (guide + review) — 5 skins</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Press+Start+2P&family=Poppins:wght@500;600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #c8ccd0; font-family: "Inter", system-ui, sans-serif; color: #1a1a1a; padding: 28px 0 80px; }
+  .page-head { max-width: 1200px; margin: 0 auto 22px; padding: 0 24px; }
+  .page-head h1 { font-size: 19px; font-weight: 700; }
+  .page-head p { font-size: 14px; color: #44484c; margin-top: 4px; max-width: 72ch; }
+  .page-head .hint { margin-top: 8px; font-size: 13px; color: #555; background: #fff; border-left: 3px solid #888; padding: 8px 12px; border-radius: 0 6px 6px 0; }
+
+  .specimen { max-width: 1200px; margin: 0 auto 26px; }
+  .specimen__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #4a4e52; margin: 0 4px 7px; display: flex; justify-content: space-between; }
+  .specimen__label span:last-child { font-weight: 500; color: #70757a; letter-spacing: 0; text-transform: none; }
+  .frame { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 14px rgba(0,0,0,.14); }
+
+  /* ── THE GRID (the FIX) ──
+     auto-fit + minmax(280px, 340px) + justify-content:center means a lone card
+     sits at its natural width, centered — never stretched full-bleed or
+     orphaned. Cards keep a tidy max width as the row fills. */
+  .listing-stage { background: var(--paper); padding: 32px; }
+  .listing-stage + .listing-stage { border-top: 1px solid var(--border); }
+  .listing-stage__caption {
+    font-family: var(--sans); font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+    margin-bottom: 16px; text-align: center;
+  }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 340px));
+    gap: 24px;
+    justify-content: center;
+  }
+
+  /* ── GUIDE CARD (image top · body) — scene photo, cover, height-capped ── */
+  .guide-card {
+    background: var(--forest); color: var(--paper);
+    border-radius: 14px; overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    display: flex; flex-direction: column; height: 100%;
+    text-decoration: none;
+  }
+  .guide-card__media {
+    aspect-ratio: 4 / 3; max-height: 200px;   /* HEIGHT CAP so cards aren't tall */
+    overflow: hidden; background: var(--paper-muted);
+  }
+  .guide-card__media img {
+    width: 100%; height: 100%;
+    object-fit: cover;        /* guide hero is a full scene photo — bleeds to edge */
+    display: block;
+  }
+  .guide-card__media .ph {     /* photo placeholder (scene, not product) */
+    width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+    text-align: center; color: var(--paper); font-family: var(--sans); font-size: 12px;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--forest) 70%, #000), var(--forest));
+    opacity: .9;
+  }
+  .guide-card__body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
+  .guide-card__kicker {
+    font-family: var(--sans); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--brass-soft); margin-bottom: 10px;
+  }
+  .guide-card__title {
+    font-family: var(--serif); font-size: 21px; font-weight: var(--head-wt, 600);
+    line-height: 1.2; letter-spacing: -0.015em; color: var(--paper); margin: 0 0 10px;
+  }
+  .guide-card__desc {
+    color: var(--paper); opacity: 0.78; font-size: 14px; line-height: 1.5;
+    margin: 0 0 16px; flex: 1; font-family: var(--sans);
+  }
+  .guide-card__meta {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11.5px; color: var(--paper); opacity: 0.7;
+    letter-spacing: 0.04em; padding-top: 14px;
+    border-top: 1px solid rgba(245,240,230,0.15); font-family: var(--sans);
+  }
+  .guide-card__date { text-transform: uppercase; }
+
+  /* ── REVIEW CARD (image top · body) — product PNG, contain-on-white ── */
+  .review-card {
+    background: var(--paper-muted); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    display: flex; flex-direction: column; height: 100%; text-decoration: none;
+  }
+  .review-card__media {
+    aspect-ratio: 4 / 3; max-height: 200px;   /* HEIGHT CAP */
+    overflow: hidden; background: #fff;        /* contain-on-white, every skin */
+    display: flex; align-items: center; justify-content: center; padding: 20px;
+  }
+  .review-card__media img {
+    max-width: 88%; max-height: 100%;
+    width: auto; height: auto;
+    object-fit: contain;        /* NEVER cropped / zoomed */
+  }
+  .review-card__media .ph {     /* white-box product placeholder */
+    width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+    text-align: center; color: #9aa0a6; font-family: "Inter", sans-serif; font-size: 12px;
+    line-height: 1.4; border: 1px dashed #d4d7da; border-radius: 6px;
+  }
+  .review-card__body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
+  .review-card__kicker {
+    font-family: var(--sans); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--brass); margin-bottom: 10px;
+  }
+  .review-card__title {
+    font-family: var(--serif); font-size: 21px; font-weight: var(--head-wt, 600);
+    line-height: 1.2; letter-spacing: -0.015em; color: var(--forest); margin: 0 0 10px;
+  }
+  .review-card__desc {
+    color: var(--muted); font-size: 14px; line-height: 1.5;
+    margin: 0 0 16px; flex: 1; font-family: var(--sans);
+  }
+  .review-card__meta {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11.5px; color: var(--muted); letter-spacing: 0.04em;
+    padding-top: 14px; border-top: 1px solid var(--border); font-family: var(--sans);
+  }
+  .review-card__rating { display: inline-flex; align-items: center; gap: 6px; }
+  .review-card__stars { color: var(--brass-soft); letter-spacing: 0.05em; }
+  .review-card__stars .is-on { color: var(--brass); }
+  .review-card__rating-num { color: var(--forest); font-weight: 600; }
+  .review-card__date { text-transform: uppercase; }
+
+  /* gog: pixel font only legible small — cap card titles, body stays Inter */
+  .skin--gog .guide-card__title,
+  .skin--gog .review-card__title { font-size: 12px; line-height: 1.55; letter-spacing: 0; }
+  /* gog: forest token is light text, so review title reads on the dark card */
+
+  @media (max-width: 640px) {
+    .card-grid { grid-template-columns: minmax(0, 360px); }
+  }
+
+  /* ── SKINS (color + font only) ── */
+  .skin--mwc {
+    --paper:#FAF7EF; --paper-muted:#F2EBDC; --ink:#1C1C1A; --forest:#1F3D2F;
+    --brass:#A07C3A; --brass-soft:#D9C29B; --muted:#5C5A4F; --border:#E5DDC9;
+    --accent:#A07C3A; --serif:"Fraunces",serif; --sans:"Inter Tight",sans-serif; }
+  .skin--dtp {
+    --paper:#F4F2EE; --paper-muted:#ECEAE4; --ink:#14181C; --forest:#2C5E8C;
+    --brass:#2C5E8C; --brass-soft:#F7E9C8; --muted:#6A7079; --border:#D6D2C8;
+    --accent:#2C5E8C; --serif:"Instrument Serif",serif; --sans:"Inter Tight",sans-serif; --head-wt:400; }
+  .skin--fb {
+    --paper:#f4e8d4; --paper-muted:#f8efe0; --ink:#2c2018; --forest:#241710;
+    --brass:#b06f2c; --brass-soft:#ecd4a8; --muted:#7c6750; --border:#e3d4bd;
+    --accent:#b06f2c; --serif:"Fraunces",serif; --sans:"Inter",sans-serif; }
+  .skin--gog {
+    --paper:#0e0b1c; --paper-muted:#171331; --ink:#ede9ff; --forest:#ede9ff;
+    --brass:#2ee6ff; --brass-soft:#2c2752; --muted:#9a93c7; --border:#3a3470;
+    --accent:#2ee6ff; --serif:"Press Start 2P",monospace; --sans:"Inter",sans-serif; }
+  .skin--sa {
+    --paper:#f6fcfd; --paper-muted:#ffffff; --ink:#103642; --forest:#0c5470;
+    --brass:#e0573a; --brass-soft:#bfe9ef; --muted:#557079; --border:#cfeaef;
+    --accent:#e0573a; --serif:"Poppins",sans-serif; --sans:"Nunito Sans",sans-serif; --head-wt:700; }
+
+  /* sa: paper-muted is pure white → give the review card a faint border-fill so it reads */
+  .skin--sa .review-card { background: #fbfeff; }
+  /* gog: review card sits on the dark page; kicker brass(cyan) + light title already legible.
+     --brass-soft (#2c2752) is the shared indigo, which would vanish for the EMPTY rating stars
+     on the dark review card — recolor just those stars locally (legibility fix at the component,
+     not by bending the shared token). Guide-card kicker reads fine: its card bg is the LIGHT
+     --forest (#ede9ff) in this skin, so dark #2c2752 on light is correct. */
+  .skin--gog .review-card__stars { color: #9a93c7; }
+</style>
+</head>
+<body>
+  <div class="page-head">
+    <h1>Component 07 — Listing cards (guide + review)</h1>
+    <p>The thumbnails that fill index and hub pages, in all 5 skins. Two card types share one anatomy: <b>image top · body</b> (kicker, title, description, meta row). Each stage shows a guide + a review card side by side, then a row of three guide cards. The fix: the image is height-capped (~200px) so cards stay short, and the grid is <code>auto-fit minmax(280–340px)</code> centered — a lone card sits at natural width, never stretched or orphaned.</p>
+    <p class="hint">Bang on the <b>card anatomy</b> — image cap, kicker/title/desc sizing, meta row, grid behavior with 1 vs 2 vs 3 cards. Guide heroes are scene photos (cover); review images are product PNGs on white (contain, never cropped). Tell me what to change.</p>
+  </div>
+
+  <!-- MWC -->
+  <div class="specimen">
+    <div class="specimen__label"><span>MyWildlifeCam</span><span>forest + cream + brass · Fraunces / Inter Tight</span></div>
+    <div class="frame skin--mwc">
+      <div class="listing-stage">
+        <div class="listing-stage__caption">Guide card + review card (the pair)</div>
+        <div class="card-grid">
+          <a class="guide-card">
+            <div class="guide-card__media"><div class="ph">scene photo (cover, capped)</div></div>
+            <div class="guide-card__body">
+              <span class="guide-card__kicker">Buying Guide</span>
+              <h3 class="guide-card__title">Best Cellular Trail Cameras</h3>
+              <p class="guide-card__desc">Six cellular cams ranked by carrier coverage, trigger speed, and battery life for property scouting.</p>
+              <div class="guide-card__meta"><span>6 picks compared</span><time class="guide-card__date">May 28, 2026</time></div>
+            </div>
+          </a>
+          <a class="review-card">
+            <div class="review-card__media"><div class="ph">product image<br>(contain, capped)</div></div>
+            <div class="review-card__body">
+              <span class="review-card__kicker">Review · Tactacam</span>
+              <h3 class="review-card__title">Tactacam Reveal X Pro</h3>
+              <p class="review-card__desc">Dual-network cellular cam with on-camera AI tagging and the widest documented detection range in the guide.</p>
+              <div class="review-card__meta"><span class="review-card__rating"><span class="review-card__stars"><span class="is-on">★</span><span class="is-on">★</span><span class="is-on">★</span><span class="is-on">★</span><span>★</span></span><span class="review-card__rating-num">4.5</span></span><time class="review-card__date">May 28, 2026</time></div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="listing-stage">
+        <div class="listing-stage__caption">Row of 3 guide cards (hub grid)</div>
+        <div class="card-grid">
+          <a class="guide-card"><div class="guide-card__media"><div class="ph">scene photo (cover, capped)</div></div><div class="guide-card__body"><span class="guide-card__kicker">Buying Guide</span><h3 class="guide-card__title">Best Cellular Trail Cameras</h3><p class="guide-card__desc">Six cellular cams ranked by coverage and trigger speed.</p><div class="guide-card__meta"><span>6 picks compared</span><time class="guide-card__date">May 28, 2026</time></div></div></a>
+          <a class="guide-card"><div class="guide-card__media"><div class="ph">scene photo (cover, capped)</div></div><div class="guide-card__body"><span class="guide-card__kicker">Buying Guide</span><h3 class="guide-card__title">Best Budget Trail Cameras</h3><p class="guide-card__desc">Solid no-glow cams under $100 for casual property watching.</p><div class="guide-card__meta"><span>5 picks compared</span><time class="guide-card__date">May 21, 2026</time></div></div></a>
+          <a class="guide-card"><div class="guide-card__media"><div class="ph">scene photo (cover, capped)</div></div><div class="guide-card__body"><span class="guide-card__kicker">Buying Guide</span><h3 class="guide-card__title">Best Game Cameras for Food Plots</h3><p class="guide-card__desc">Wide-angle cams tuned for open-field plot monitoring.</p><div class="guide-card__meta"><span>6 picks compared</span><time class="guide-card__date">May 14, 2026</time></div></div></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DTP -->
+  <div class="specimen">
+    <div class="specimen__label"><span>DetailerPicks</span><span>slate blue + paper · Instrument Serif / Inter Tight</span></div>
+    <div class="frame skin--dtp">
+      <div class="listing-stage">
+        <div class="listing-stage__caption">Guide card + review card (the pair)</div>
+        <div class="card-grid">
+          <a class="guide-card">
+            <div class="guide-card__media"><div class="ph">scene photo (cover, capped)</div></div>
+            <div class="guide-card__body">
+              <span class="guide-card__kicker">Buying Guide</span>
+              <h3 class="guide-card__title">Best Car Wash Soaps</h3>
+              <p class="guide-card__desc">Six pH-neutral shampoos ranked on foam, gloss, and rinse behavior for weekly maintenance washes.</p>
+              <div class="guide-card__meta"><span>6 picks compared</span><time class="guide-card__date">May 28, 2026</time></div>
+            </div>
+          </a>
+          <a class="review-card">
+            <div class="review-card__media"><div class="ph">product image<br>(contain, capped)</div></div>
+            <div class="review-card__body">
+              <span class="review-card__kicker">Review · Adam's</span>
+              <h3 class="review-card__title">Adam's Mega Foam</h3>
+              <p class="review-card__desc">High-sudsing pH-neutral shampoo owners say sheets off cleanly with no spotting on a maintenance wash.</p>
+              <div class="review-card__meta"><span class="review-card__rating"><span class="review-card__stars"><span class="is-on">★</span><span class="is-on">★</span><span class="is-on">★</span><span class="is-on">★</span><span class="is-on">★</span></span><span class="review-card__rating-num">4.7</span></span><time class="review-card__date">May 28, 2026</time></div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="listing-stage">
+        <div class="listing-stage__caption">Row of 3 guide cards (hub grid)</div>
+        <div class="card-grid">
+          <a class="guide-card"><div class="guide-card__media"><div class="ph">scene photo (cover, capped)</div></div><div class="guide-card__body"><span class="guide-card__kicker">Buying Guide</span><h3 class="guide-card__title">Best Car Wash Soaps</h3><p class="guide-card__desc">Six pH-neutral shampoos ranked on foam and gloss.</p><div class="guide-card__meta"><span>6 picks compared</span><time class="guide-card__date">May 28, 2026</time></div></div></a>
+          <a class="guide-card"><div class="guide-card__media"><div class="ph">scene photo (cover, capped)</div></div><div class="guide-card__body"><span class="guide-card__kicker">Buying Guide</span><h3 class="guide-card__title">Best Foam Cannons</h3><p class="guide-card__desc">Thick clinging foam for pressure washers under $80.</p><div class="guide-card__meta"><span>5 picks compared</span><time class="guide-card__date">May 20, 2026</time></div></div></a>
+          <a class="guide-card"><div class="guide-card__media"><div class="ph">scene photo (cover, capped)</div></div><div class="guide-card__body"><span class="guide-card__kicker">Buying Guide</span><h3 class="guide-card__title">Best Wheel Cleaners</h3><p class="guide-card__desc">Acid-free, color-changing cleaners safe on coated wheels.</p><div class="guide-card__meta"><span>6 picks compared</span><time class="guide-card__date">May 13, 2026</time></div></div></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FB -->
+  <div class="specimen">
+    <div class="specimen__label"><span>FussyBean</span><span>espresso + cream + caramel · Fraunces / Inter</span></div>
+    <div class="frame skin--fb">
+      <div class="listing-stage">
+        <div class="listing-stage__caption">Guide card + review card (the pair)</div>
+        <div class="card-grid">
+          <a class="guide-card">
+            <div class="guide-card__media"><div class="ph">scene photo (cover, capped)</div></div>
+            <div class="guide-card__body">
+              <span class="guide-card__kicker">Buying Guide</span>
+              <h3 class="guide-card__title">Best Home Espresso Machines</h3>
+              <p class="guide-card__desc">Six machines ranked on heat-up, steam power, and how forgiving they are for the daily ritual.</p>
+              <div class="guide-card__meta"><span>6 picks compared</span><time class="guide-card__date">May 28, 2026</time></div>
+            </div>
+          </a>
+          <a class="review-card">
+            <div class="review-card__media"><div class="ph">product image<br>(contain, capped)</div></div>
+            <div class="review-card__body">
+              <span class="review-card__kicker">Review · Breville</span>
+              <h3 class="review-card__title">Breville Bambino Plus</h3>
+              <p class="review-card__desc">Fast-heating compact machine with automatic milk texturing — the one owners say they use every morning.</p>
+              <div class="review-card__meta"><span class="review-card__rating"><span class="review-card__stars"><span class="is-on">★</span><span class="is-on">★</span><span class="is-on">★</span><span class="is-on">★</span><span class="is-on">★</span></span><span class="review-card__rating-num">4.6</span></span><time class="review-card__date">May 28, 2026</time></div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="listing-stage">
+        <div class="listing-stage__caption">Row of 3 guide cards (hub grid)</div>
+        <div class="card-grid">
+          <a class="guide-card"><div class="guide-card__media"><div class="ph">scene photo (cover, capped)</div></div><div class="guide-card__body"><span class="guide-card__kicker">Buying Guide</span><h3 class="guide-card__title">Best Home Espresso Machines</h3><p class="guide-card__desc">Six machines ranked on heat-up and steam power.</p><div class="guide-card__meta"><span>6 picks compared</span><time class="guide-card__date">May 28, 2026</time></div></div></a>
+          <a class="guide-card"><div class="guide-card__media"><div class="ph">scene photo (cover, capped)</div></div><div class="guide-card__body"><span class="guide-card__kicker">Buying Guide</span><h3 class="guide-card__title">Best Burr Grinders</h3><p class="guide-card__desc">Consistent grind for espresso and pour-over under $200.</p><div class="guide-card__meta"><span>5 picks compared</span><time class="guide-card__date">May 19, 2026</time></div></div></a>
+          <a class="guide-card"><div class="guide-card__media"><div class="ph">scene photo (cover, capped)</div></div><div class="guide-card__body"><span class="guide-card__kicker">Buying Guide</span><h3 class="guide-card__title">Best Gooseneck Kettles</h3><p class="guide-card__desc">Variable-temp kettles for precise pour-over control.</p><div class="guide-card__meta"><span>6 picks compared</span><time class="guide-card__date">May 12, 2026</time></div></div></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GOG -->
+  <div class="specimen">
+    <div class="specimen__label"><span>GameOverGear</span><span>dark + neon cyan · Press Start 2P / Inter</span></div>
+    <div class="frame skin--gog">
+      <div class="listing-stage">
+        <div class="listing-stage__caption">Guide card + review card (the pair)</div>
+        <div class="card-grid">
+          <a class="guide-card">
+            <div class="guide-card__media"><div class="ph">scene photo (cover, capped)</div></div>
+            <div class="guide-card__body">
+              <span class="guide-card__kicker">Buying Guide</span>
+              <h3 class="guide-card__title">Best Retro Controllers</h3>
+              <p class="guide-card__desc">Six pads ranked on latency, build, and how close the feel gets to the originals.</p>
+              <div class="guide-card__meta"><span>6 picks compared</span><time class="guide-card__date">May 28, 2026</time></div>
+            </div>
+          </a>
+          <a class="review-card">
+            <div class="review-card__media"><div class="ph">product image<br>(contain, capped)</div></div>
+            <div class="review-card__body">
+              <span class="review-card__kicker">Review · 8BitDo</span>
+              <h3 class="review-card__title">8BitDo Pro 2</h3>
+              <p class="review-card__desc">Low-latency wireless pad with four onboard profiles — the one retro players reach for across emulators.</p>
+              <div class="review-card__meta"><span class="review-card__rating"><span class="review-card__stars"><span class="is-on">★</span><span class="is-on">★</span><span class="is-on">★</span><span class="is-on">★</span><span class="is-on">★</span></span><span class="review-card__rating-num">4.8</span></span><time class="review-card__date">May 28, 2026</time></div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="listing-stage">
+        <div class="listing-stage__caption">Row of 3 guide cards (hub grid)</div>
+        <div class="card-grid">
+          <a class="guide-card"><div class="guide-card__media"><div class="ph">scene photo (cover, capped)</div></div><div class="guide-card__body"><span class="guide-card__kicker">Buying Guide</span><h3 class="guide-card__title">Best Retro Controllers</h3><p class="guide-card__desc">Six pads ranked on latency and build.</p><div class="guide-card__meta"><span>6 picks compared</span><time class="guide-card__date">May 28, 2026</time></div></div></a>
+          <a class="guide-card"><div class="guide-card__media"><div class="ph">scene photo (cover, capped)</div></div><div class="guide-card__body"><span class="guide-card__kicker">Buying Guide</span><h3 class="guide-card__title">Best Emulation Handhelds</h3><p class="guide-card__desc">Pocketable handhelds for 8 to 32-bit libraries.</p><div class="guide-card__meta"><span>5 picks compared</span><time class="guide-card__date">May 18, 2026</time></div></div></a>
+          <a class="guide-card"><div class="guide-card__media"><div class="ph">scene photo (cover, capped)</div></div><div class="guide-card__body"><span class="guide-card__kicker">Buying Guide</span><h3 class="guide-card__title">Best Upscalers and Scalers</h3><p class="guide-card__desc">Get clean retro output on a modern display.</p><div class="guide-card__meta"><span>6 picks compared</span><time class="guide-card__date">May 11, 2026</time></div></div></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SA -->
+  <div class="specimen">
+    <div class="specimen__label"><span>StarterAquarium</span><span>aqua teal + coral pop · Poppins / Nunito Sans</span></div>
+    <div class="frame skin--sa">
+      <div class="listing-stage">
+        <div class="listing-stage__caption">Guide card + review card (the pair)</div>
+        <div class="card-grid">
+          <a class="guide-card">
+            <div class="guide-card__media"><div class="ph">scene photo (cover, capped)</div></div>
+            <div class="guide-card__body">
+              <span class="guide-card__kicker">Buying Guide</span>
+              <h3 class="guide-card__title">Best Starter Aquarium Kits</h3>
+              <p class="guide-card__desc">Six all-in-one kits ranked on filtration, lighting, and how beginner-proof the setup is out of the box.</p>
+              <div class="guide-card__meta"><span>6 picks compared</span><time class="guide-card__date">May 28, 2026</time></div>
+            </div>
+          </a>
+          <a class="review-card">
+            <div class="review-card__media"><div class="ph">product image<br>(contain, capped)</div></div>
+            <div class="review-card__body">
+              <span class="review-card__kicker">Review · Fluval</span>
+              <h3 class="review-card__title">Fluval Flex 15</h3>
+              <p class="review-card__desc">Curved-front nano kit that bundles filtration and LED lighting, with the equipment hidden in a rear chamber.</p>
+              <div class="review-card__meta"><span class="review-card__rating"><span class="review-card__stars"><span class="is-on">★</span><span class="is-on">★</span><span class="is-on">★</span><span class="is-on">★</span><span>★</span></span><span class="review-card__rating-num">4.4</span></span><time class="review-card__date">May 28, 2026</time></div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="listing-stage">
+        <div class="listing-stage__caption">Row of 3 guide cards (hub grid)</div>
+        <div class="card-grid">
+          <a class="guide-card"><div class="guide-card__media"><div class="ph">scene photo (cover, capped)</div></div><div class="guide-card__body"><span class="guide-card__kicker">Buying Guide</span><h3 class="guide-card__title">Best Starter Aquarium Kits</h3><p class="guide-card__desc">Six all-in-one kits ranked on filtration and lighting.</p><div class="guide-card__meta"><span>6 picks compared</span><time class="guide-card__date">May 28, 2026</time></div></div></a>
+          <a class="guide-card"><div class="guide-card__media"><div class="ph">scene photo (cover, capped)</div></div><div class="guide-card__body"><span class="guide-card__kicker">Buying Guide</span><h3 class="guide-card__title">Best Hang-On-Back Filters</h3><p class="guide-card__desc">Quiet, tunable filtration for tanks up to 50 gallons.</p><div class="guide-card__meta"><span>5 picks compared</span><time class="guide-card__date">May 17, 2026</time></div></div></a>
+          <a class="guide-card"><div class="guide-card__media"><div class="ph">scene photo (cover, capped)</div></div><div class="guide-card__body"><span class="guide-card__kicker">Buying Guide</span><h3 class="guide-card__title">Best Aquarium Heaters</h3><p class="guide-card__desc">Reliable, accurate heaters for beginner community tanks.</p><div class="guide-card__meta"><span>6 picks compared</span><time class="guide-card__date">May 10, 2026</time></div></div></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

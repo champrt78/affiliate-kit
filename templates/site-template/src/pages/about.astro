@@ -1,18 +1,24 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import ProsePage from "@affkit/shared-ui/ProsePage.astro";
+
+/* CANONICAL ABOUT — shared <ProsePage> shell; the COPY below is per-site (each
+   site keeps its real about text). Structure + typography are shared. */
 ---
 <MainLayout
   title="About"
   description="About __SITE_NAME__ — who we are and how we review."
 >
-  <article>
-    <h1>About __SITE_NAME__</h1>
-
+  <ProsePage
+    kicker="About"
+    title="About __SITE_NAME__"
+    lede="__SITE_NAME__ is a small, independent site covering __NICHE__. We rank the gear by spec and use case, not by who we are."
+  >
     <p>
       __SITE_NAME__ is a small, independent site covering __NICHE__.
       We research products thoroughly so you don't have to. Spec sheets,
-      owner reviews, third-party teardowns, and use-case fit analysis —
-      that's the research stack we run for every recommendation.
+      owner reviews, third-party teardowns, and use-case fit analysis are the
+      research stack we run for every recommendation.
     </p>
 
     <h2>How we research</h2>
@@ -22,23 +28,23 @@ import MainLayout from "../layouts/MainLayout.astro";
       feature-axis analysis. We synthesize what owners report, what
       manufacturers publish, and what spec sheets confirm into use-case-fit
       recommendations. Our goal is to save you hours of cross-shopping by
-      surfacing which option fits which use case — and why.
+      surfacing which option fits which use case, and why.
     </p>
     <ul>
       <li>
-        <strong>Spec verification</strong> — we cross-reference manufacturer
+        <strong>Spec verification.</strong> We cross-reference manufacturer
         documentation, listing specs, and independent teardowns.
       </li>
       <li>
-        <strong>User-review aggregation</strong> — we read the verified-buyer
+        <strong>User-review aggregation.</strong> We read the verified-buyer
         reviews most relevant to the use case, including the critical ones.
       </li>
       <li>
-        <strong>Use-case fit</strong> — we match products to reader scenarios,
+        <strong>Use-case fit.</strong> We match products to reader scenarios,
         not the other way around.
       </li>
       <li>
-        <strong>Methodology transparency</strong> — every recommendation cites
+        <strong>Methodology transparency.</strong> Every recommendation cites
         its evidence base.
       </li>
     </ul>
@@ -46,19 +52,10 @@ import MainLayout from "../layouts/MainLayout.astro";
     <h2>How we make money</h2>
     <p>
       We earn affiliate commissions when you buy through our links. It
-      doesn't change the price you pay. We don't accept payment in exchange
-      for positive coverage and we'll flag any product where we have a
+      does not change the price you pay. We do not accept payment in exchange
+      for positive coverage and we will flag any product where we have a
       conflict of interest. Full details in our
       <a href="/disclosure/">affiliate disclosure</a>.
     </p>
-  </article>
+  </ProsePage>
 </MainLayout>
-
-<style>
-  article {
-    max-width: var(--content-max);
-    margin: 0 auto;
-  }
-  h1 { font-size: var(--text-3xl); margin-bottom: var(--space-6); }
-  h2 { margin-top: var(--space-8); }
-</style>

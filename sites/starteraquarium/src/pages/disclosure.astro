@@ -1,17 +1,16 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import ProsePage from "@affkit/shared-ui/ProsePage.astro";
 ---
 <MainLayout
   title="Affiliate disclosure"
-  description="Affiliate disclosure for StarterAquarium."
+  description="Affiliate disclosure for Starter Aquarium."
 >
-  <article>
-    <h1>Affiliate disclosure</h1>
-
+  <ProsePage title="Affiliate disclosure">
     <p><strong>Last updated:</strong> {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</p>
 
     <p>
-      StarterAquarium ("we", "us", "our") participates in affiliate marketing
+      Starter Aquarium ("we", "us", "our") participates in affiliate marketing
       programs. When you click a link on this site and make a purchase,
       we may receive a commission from the retailer at no additional cost
       to you.
@@ -19,7 +18,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 
     <h2>Amazon Services LLC Associates Program</h2>
     <p>
-      StarterAquarium is a participant in the Amazon Services LLC Associates
+      Starter Aquarium is a participant in the Amazon Services LLC Associates
       Program, an affiliate advertising program designed to provide a means
       for sites to earn advertising fees by advertising and linking to
       Amazon.com.
@@ -28,7 +27,7 @@ import MainLayout from "../layouts/MainLayout.astro";
     <h2>Other affiliate relationships</h2>
     <p>
       We may also participate in affiliate programs with other retailers
-      and manufacturers relevant to beginner aquariums. These relationships
+      and manufacturers relevant to beginner aquarium gear. These relationships
       do not influence our editorial recommendations.
     </p>
 
@@ -47,12 +46,5 @@ import MainLayout from "../layouts/MainLayout.astro";
       from affiliated retailers when readers click affiliate links and
       make purchases.
     </p>
-  </article>
+  </ProsePage>
 </MainLayout>
-
-<style>
-  article { max-width: var(--content-max); margin: 0 auto; }
-  h1 { font-size: var(--text-3xl); margin-bottom: var(--space-6); }
-  h2 { margin-top: var(--space-8); }
-  code { background: var(--color-surface); padding: 0 var(--space-1); border-radius: var(--radius-sm); }
-</style>

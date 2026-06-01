@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library · 02 · Footer — 5 skins</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Press+Start+2P&family=Poppins:wght@500;600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #c8ccd0; font-family: "Inter", system-ui, sans-serif; color: #1a1a1a; padding: 28px 0 80px; }
+  .page-head { max-width: 1200px; margin: 0 auto 22px; padding: 0 24px; }
+  .page-head h1 { font-size: 19px; font-weight: 700; }
+  .page-head p { font-size: 14px; color: #44484c; margin-top: 4px; max-width: 72ch; }
+  .page-head .hint { margin-top: 8px; font-size: 13px; color: #555; background: #fff; border-left: 3px solid #888; padding: 8px 12px; border-radius: 0 6px 6px 0; }
+
+  .specimen { max-width: 1200px; margin: 0 auto 26px; }
+  .specimen__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #4a4e52; margin: 0 4px 7px; }
+  .frame { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 14px rgba(0,0,0,.14); }
+
+  /* ── THE FOOTER COMPONENT (one definition, skinned by vars) ── */
+  .ft { background: var(--footer-bg); color: var(--footer-fg); font-family: var(--sans); padding: 30px 40px 0; }
+  .ft__inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 36px; max-width: 1120px; margin: 0 auto; padding-bottom: 24px; }
+  .ft__brand-name { font-family: var(--serif); font-size: var(--ft-name-size, 24px); font-weight: var(--word-wt,600); color: var(--footer-name); letter-spacing: var(--word-ls,-.01em); }
+  .ft__blurb { font-size: 14px; line-height: 1.55; color: var(--footer-blurb); margin-top: 9px; max-width: 34ch; }
+  .ft__col h4 { font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--footer-heading); margin-bottom: 10px; }
+  .ft__col a { display: block; font-size: 14px; color: var(--footer-link); text-decoration: none; margin-bottom: 6px; transition: color .15s; }
+  .ft__col a:hover { color: var(--accent); }
+  .ft__base { border-top: 1px solid var(--footer-border); max-width: 1120px; margin: 0 auto; padding: 13px 0 16px;
+    display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .ft__disc { font-size: 12.5px; color: var(--footer-blurb); line-height: 1.5; white-space: nowrap; }
+  @media (max-width: 720px) { .ft__disc { white-space: normal; } }
+  .ft__copy { font-size: 12.5px; color: var(--footer-blurb); white-space: nowrap; }
+  .skin--gog .ft__brand-name { font-size: 15px; letter-spacing: 0; }
+
+  /* ── SKINS ── */
+  .skin--mwc { --footer-bg:#1F3D2F; --footer-fg:#FAF7EF; --footer-name:#FAF7EF; --footer-blurb:#C9CFC4;
+    --footer-heading:#D9C29B; --footer-link:#FAF7EF; --footer-border:rgba(245,240,230,.15); --accent:#D9C29B;
+    --serif:"Fraunces",serif; --sans:"Inter Tight",sans-serif; }
+  .skin--dtp { --footer-bg:#ECEAE4; --footer-fg:#14181C; --footer-name:#14181C; --footer-blurb:#6A7079;
+    --footer-heading:#2C5E8C; --footer-link:#14181C; --footer-border:#D6D2C8; --accent:#2C5E8C;
+    --serif:"Instrument Serif",serif; --sans:"Inter Tight",sans-serif; --word-wt:400; --word-ls:0; }
+  .skin--fb { --footer-bg:#241710; --footer-fg:#f4e8d4; --footer-name:#f4e8d4; --footer-blurb:#bda58a;
+    --footer-heading:#d59b54; --footer-link:#ecd9bf; --footer-border:rgba(245,240,230,.13); --accent:#b06f2c;
+    --serif:"Fraunces",serif; --sans:"Inter",sans-serif; }
+  .skin--gog { --footer-bg:#0a0816; --footer-fg:#ede9ff; --footer-name:#ede9ff; --footer-blurb:#9a93c7;
+    --footer-heading:#2ee6ff; --footer-link:#c9c2f0; --footer-border:#2c2752; --accent:#2ee6ff;
+    --serif:"Press Start 2P",monospace; --sans:"Inter",sans-serif; }
+  .skin--sa { --footer-bg:#0c5470; --footer-fg:#f6fcfd; --footer-name:#f6fcfd; --footer-blurb:#bfe9ef;
+    --footer-heading:#ffd9cf; --footer-link:#eafafd; --footer-border:rgba(255,255,255,.18); --accent:#ffd9cf;
+    --serif:"Poppins",sans-serif; --sans:"Nunito Sans",sans-serif; --word-wt:700; }
+</style>
+</head>
+<body>
+  <div class="page-head">
+    <h1>Component 02 — Footer</h1>
+    <p>Same footer structure in all 5 skins: brand + blurb · link columns (Guides / The Site / Legal) · base row with the affiliate disclosure + copyright. Column count flexes per site.</p>
+    <p class="hint">Bang on it — column layout, what goes in each column, disclosure placement/wording, spacing, whether DTP's footer should be light (shown) or dark like the others. Tell me what to change.</p>
+  </div>
+
+  <div class="specimen"><div class="specimen__label">MyWildlifeCam</div><div class="frame skin--mwc">
+    <footer class="ft"><div class="ft__inner">
+      <div class="ft__brand"><div class="ft__brand-name">MyWildlifeCam</div><p class="ft__blurb">Spec-driven trail-camera guides for hunters, property owners, and wildlife watchers. Researched, never guessed.</p></div>
+      <div class="ft__col"><h4>Buying Guides</h4><a>Cellular cams</a><a>Trail cameras</a><a>Game cameras</a><a>All guides</a></div>
+      <div class="ft__col"><h4>The Site</h4><a>How We Evaluate</a><a>About</a><a>Contact</a></div>
+      <div class="ft__col"><h4>Legal</h4><a>Affiliate Disclosure</a><a>Privacy</a></div>
+    </div><div class="ft__base"><p class="ft__disc">As an Amazon Associate we earn from qualifying purchases. We never claim hands-on testing.</p><p class="ft__copy">© 2026 MyWildlifeCam</p></div></footer>
+  </div></div>
+
+  <div class="specimen"><div class="specimen__label">DetailerPicks</div><div class="frame skin--dtp">
+    <footer class="ft"><div class="ft__inner">
+      <div class="ft__brand"><div class="ft__brand-name">DetailerPicks</div><p class="ft__blurb">The car-detailing gear worth buying, matched to how you actually wash. Specs and owner reports, not hype.</p></div>
+      <div class="ft__col"><h4>Buying Guides</h4><a>Wash &amp; soap</a><a>Wheels &amp; tires</a><a>Interior</a><a>Quick Picks</a></div>
+      <div class="ft__col"><h4>The Site</h4><a>How We Evaluate</a><a>About</a><a>Contact</a></div>
+      <div class="ft__col"><h4>Legal</h4><a>Affiliate Disclosure</a><a>Privacy</a></div>
+    </div><div class="ft__base"><p class="ft__disc">As an Amazon Associate we earn from qualifying purchases. We never claim hands-on testing.</p><p class="ft__copy">© 2026 DetailerPicks</p></div></footer>
+  </div></div>
+
+  <div class="specimen"><div class="specimen__label">FussyBean</div><div class="frame skin--fb">
+    <footer class="ft"><div class="ft__inner">
+      <div class="ft__brand"><div class="ft__brand-name">FussyBean</div><p class="ft__blurb">Home coffee gear for people who keep going back to the good cup. The kit, the cost, the upgrades.</p></div>
+      <div class="ft__col"><h4>Buying Guides</h4><a>Espresso machines</a><a>Grinders</a><a>Kettles &amp; scales</a><a>What It Costs</a></div>
+      <div class="ft__col"><h4>The Site</h4><a>How We Evaluate</a><a>About</a><a>Contact</a></div>
+      <div class="ft__col"><h4>Legal</h4><a>Affiliate Disclosure</a><a>Privacy</a></div>
+    </div><div class="ft__base"><p class="ft__disc">As an Amazon Associate we earn from qualifying purchases. We never claim hands-on testing.</p><p class="ft__copy">© 2026 FussyBean</p></div></footer>
+  </div></div>
+
+  <div class="specimen"><div class="specimen__label">GameOverGear</div><div class="frame skin--gog">
+    <footer class="ft"><div class="ft__inner">
+      <div class="ft__brand"><div class="ft__brand-name">GameOverGear</div><p class="ft__blurb">Retro gaming gear that actually feels like the originals. Controllers, handhelds, scalers, and the fun stuff.</p></div>
+      <div class="ft__col"><h4>Buying Guides</h4><a>Controllers</a><a>Handhelds</a><a>Displays &amp; scalers</a><a>Level Up</a></div>
+      <div class="ft__col"><h4>The Site</h4><a>How We Evaluate</a><a>About</a><a>Contact</a></div>
+      <div class="ft__col"><h4>Legal</h4><a>Affiliate Disclosure</a><a>Privacy</a></div>
+    </div><div class="ft__base"><p class="ft__disc">As an Amazon Associate we earn from qualifying purchases. We never claim hands-on testing.</p><p class="ft__copy">© 2026 GameOverGear</p></div></footer>
+  </div></div>
+
+  <div class="specimen"><div class="specimen__label">StarterAquarium</div><div class="frame skin--sa">
+    <footer class="ft"><div class="ft__inner">
+      <div class="ft__brand"><div class="ft__brand-name">StarterAquarium</div><p class="ft__blurb">Beginner-friendly fishkeeping gear, explained without the jargon. Start the tank right the first time.</p></div>
+      <div class="ft__col"><h4>Buying Guides</h4><a>Tanks &amp; kits</a><a>Filters</a><a>Heaters &amp; lighting</a><a>Tank School</a></div>
+      <div class="ft__col"><h4>The Site</h4><a>How We Evaluate</a><a>About</a><a>Contact</a></div>
+      <div class="ft__col"><h4>Legal</h4><a>Affiliate Disclosure</a><a>Privacy</a></div>
+    </div><div class="ft__base"><p class="ft__disc">As an Amazon Associate we earn from qualifying purchases. We never claim hands-on testing.</p><p class="ft__copy">© 2026 StarterAquarium</p></div></footer>
+  </div></div>
+</body>
+</html>

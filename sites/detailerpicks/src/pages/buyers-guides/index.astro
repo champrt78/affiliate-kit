@@ -1,56 +1,82 @@
 ---
 import { getCollection } from "astro:content";
 import MainLayout from "../../layouts/MainLayout.astro";
+import PageHeader from "@affkit/shared-ui/PageHeader.astro";
 import BuyersGuideCard from "@affkit/shared-ui/BuyersGuideCard.astro";
 
-const entries = await getCollection("buyers-guides");
+/* ============================================================================
+   CANONICAL BUYING-GUIDES INDEX — rebuilt from the shared component library.
+   Byte-identical across template + all 5 sites EXCEPT the PAGE block below
+   (per-site copy, the homepage rebuild model). Header is the shared <PageHeader>;
+   the grid follows the locked rule (auto-fit, minmax 240..300, centered) so a
+   partial last row never stretches to fill. Reads the site's buyers-guides
+   collection, so the same code auto-personalizes.
+   ========================================================================== */
+
+/* ─── PER-SITE CONTENT (the only block that differs between sites) ─── */
+const PAGE = {
+  seoTitle: "Buying guides",
+  seoDescription:
+    "Comparative roundups for car detailing gear, by use case: which one to buy for which scenario.",
+  kicker: "Buying guides",
+  title: "Comparative roundups, by use case.",
+  lede:
+    "The field lines up differently depending on the job. These guides compare a handful of products for one well-defined use case, then name the pick we think most readers should default to.",
+  empty: "No buying guides yet. New ones land every quarter.",
+};
+/* ─────────────────────────────────────────────────────────────────── */
+
+const __BL_PH = "_The Bottom Line is being written._";
+// Drafts are noindex; keep them out of the public index (no imageless/draft cards).
+const entries = (await getCollection("buyers-guides")).filter((e) => {
+  const v = e.data.bottomLine?.verdict ?? "";
+  return v.trim() !== "" && !v.includes(__BL_PH);
+});
 const sorted = entries.sort((a, b) => {
   const aTime = a.data.pubDate instanceof Date ? a.data.pubDate.getTime() : new Date(a.data.pubDate).getTime();
   const bTime = b.data.pubDate instanceof Date ? b.data.pubDate.getTime() : new Date(b.data.pubDate).getTime();
   return bTime - aTime;
 });
 ---
-<MainLayout
-  title="Buyer's guides"
-  description="Comparative roundups of products we've researched but don't own — which one to buy for which use case."
->
-  <div class="page-inner">
-    <header class="page-header">
-      <h1>Buyer's guides</h1>
-      <p class="lede">Comparative roundups of products we've researched but don't own. Honest about the sourcing; useful for picking what to buy.</p>
-    </header>
+<MainLayout title={PAGE.seoTitle} description={PAGE.seoDescription}>
+  <PageHeader kicker={PAGE.kicker} title={PAGE.title} lede={PAGE.lede} />
 
-    {sorted.length === 0 ? (
-      <p class="empty">No buyer's guides yet. Check back soon.</p>
-    ) : (
-      <div class="grid">
-        {sorted.map((entry) => <BuyersGuideCard entry={entry} />)}
-      </div>
-    )}
-  </div>
+  <section class="grid-section">
+    <div class="grid-section__inner">
+      {sorted.length === 0 ? (
+        <p class="empty">{PAGE.empty}</p>
+      ) : (
+        <div class="grid">
+          {sorted.map((entry) => <BuyersGuideCard entry={entry} />)}
+        </div>
+      )}
+    </div>
+  </section>
 </MainLayout>
 
 <style>
-  /* Centered, padded shell so the heading + grid don't sit flush against the
-     page-shell edge. Matches the horizontal gutter the article pages carry. */
-  .page-inner {
-    max-width: var(--container-max);
-    margin: 0 auto;
+  .grid-section {
     padding: var(--space-12) var(--space-6) var(--space-20);
+    background: var(--color-bg);
   }
-  .page-header { margin-bottom: var(--space-8); }
-  .page-header h1 { font-size: var(--text-3xl); margin: 0 0 var(--space-3); }
-  .lede { font-size: var(--text-lg); color: var(--color-muted); margin: 0; }
-  .empty { color: var(--color-muted); }
+  .grid-section__inner { max-width: var(--container-max); margin: 0 auto; }
+  /* Locked grid rule: capped + centered, no orphan-row stretch. */
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: var(--space-5);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
+    justify-content: center;
+    gap: var(--space-6);
   }
+  .empty {
+    color: var(--color-muted);
+    font-family: var(--font-serif);
+    font-style: italic;
+  }
+
   @media (max-width: 760px) {
-    .page-inner { padding: var(--space-10) var(--space-4) var(--space-16); }
+    .grid-section { padding: var(--space-10) var(--space-4) var(--space-16); }
   }
-  .grid :global(.guide-card__title) { font-size: 1.0625rem; }
-  .grid :global(.guide-card__desc) { font-size: 0.8125rem; }
-  .grid :global(.guide-card__body) { padding: var(--space-4); }
+  @media (max-width: 720px) {
+    .grid { grid-template-columns: 1fr; }
+  }
 </style>

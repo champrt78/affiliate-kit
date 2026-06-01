@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library · Award label — Pill vs Banner (finding #4)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Serif&family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Press+Start+2P&family=Poppins:wght@500;600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #c8ccd0; font-family: "Inter", system-ui, sans-serif; color: #1a1a1a; padding: 28px 0 80px; }
+  .page-head { max-width: 1200px; margin: 0 auto 22px; padding: 0 24px; }
+  .page-head h1 { font-size: 19px; font-weight: 700; }
+  .page-head p { font-size: 14px; color: #44484c; margin-top: 4px; max-width: 78ch; line-height: 1.55; }
+  .page-head .hint { margin-top: 8px; font-size: 13px; color: #555; background: #fff; border-left: 3px solid #888; padding: 8px 12px; border-radius: 0 6px 6px 0; }
+
+  .specimen { max-width: 1200px; margin: 0 auto 26px; }
+  .specimen__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #4a4e52; margin: 0 4px 7px; display: flex; justify-content: space-between; }
+  .specimen__label span:last-child { font-weight: 500; color: #70757a; letter-spacing: 0; text-transform: none; }
+  .frame { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 14px rgba(0,0,0,.14); }
+
+  /* per-card option label inside the stage */
+  .opt-tag { font-family: "Inter", sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px 2px; }
+  .opt-tag.is-left  { color: #b4493b; }
+  .opt-tag.is-right { color: #3f6e4e; }
+
+  /* ── HARMONIZED DEEP CARD (copied from 06 after the cohesion pass:
+       14px radius · 24px padding · canonical resting shadow · 10px image box)
+       Two columns here (image + body + rail), one card per side. ── */
+  .deep-wrap { background: var(--paper); padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+  @media (max-width: 900px) { .deep-wrap { grid-template-columns: 1fr; } }
+
+  .deep-card {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 24px;
+    align-items: start;
+    padding: 24px;
+    background: var(--paper-bright, var(--paper));
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  }
+
+  /* image column */
+  .deep-card__img-col { display: flex; flex-direction: column; align-items: center; }
+  .deep-card__img {
+    width: 100%; height: 180px; background: #fff;
+    border: 1px solid var(--border); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; padding: 14px; overflow: hidden;
+  }
+  .deep-card__img .ph {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    color: #9aa0a6; font-family: "Inter", sans-serif; font-size: 12px; line-height: 1.4;
+    border: 1px dashed #d4d7da; border-radius: 6px;
+  }
+  .deep-card__rank {
+    margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border);
+    width: 100%; text-align: center; font-family: var(--sans);
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
+  }
+  .deep-card__rank span {
+    color: var(--ink); font-family: var(--serif); font-size: 22px; margin-right: 6px;
+    font-weight: 600; letter-spacing: 0; text-transform: none; vertical-align: -2px;
+  }
+
+  /* body */
+  .deep-card__body { min-width: 0; }
+  /* OPTION A — the pill (current deep-card award, unchanged from 06) */
+  .deep-card__award {
+    display: inline-block; font-family: var(--sans); font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--paper); background: var(--accent);
+    padding: 4px 10px; border-radius: 999px; margin-bottom: 12px;
+  }
+  .deep-card__persona {
+    font-family: var(--sans); font-size: 15px; line-height: 1.35;
+    letter-spacing: -0.005em; color: var(--ink); margin-bottom: 10px; font-weight: 700;
+  }
+  .deep-card__heading {
+    font-family: var(--serif); font-size: 25px; line-height: 1.25; margin: 0 0 16px;
+    font-weight: var(--head-wt, 500); color: var(--ink); letter-spacing: -0.015em; max-width: 28ch;
+  }
+  .deep-card__heading .reason {
+    display: block; color: var(--muted); font-weight: 400; font-style: italic;
+    font-size: 18px; line-height: 1.3; margin-bottom: 4px; letter-spacing: 0;
+  }
+  .deep-card__heading .product-link {
+    color: var(--forest); font-weight: var(--head-wt, 500);
+    border-bottom: 2px solid var(--brass-soft); text-decoration: none;
+  }
+  .deep-card__body p {
+    font-size: 15px; line-height: 1.65; color: var(--ink); margin: 0 0 14px; max-width: 52ch; opacity: 0.9; font-family: var(--sans);
+  }
+  .deep-card__points { list-style: none; margin: 6px 0 0; padding: 0; }
+  .deep-card__points li {
+    font-family: var(--sans); font-size: 14px; line-height: 1.5; color: var(--ink);
+    padding-left: 22px; position: relative; margin-bottom: 8px;
+  }
+  .deep-card__points li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 700; }
+
+  /* ── OPTION B — the banner variant ──
+     Card becomes a flex column: a full-width accent bar across the WHOLE card top
+     (above the image|body grid), matching the at-a-glance top banner metrics
+     (~32px tall, centered, uppercase, .14em, accent bg, accent-ink). The inner
+     image+body grid is reused unchanged. */
+  .deep-card--banner { display: flex; flex-direction: column; padding: 0; overflow: hidden; }
+  .deep-card--banner .deep-card__banner {
+    width: 100%; height: 34px; display: flex; align-items: center; justify-content: center;
+    background: var(--accent); color: var(--paper);
+    font-family: var(--sans); font-size: 11.5px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.14em;
+  }
+  .deep-card--banner .deep-card__inner {
+    display: grid; grid-template-columns: 200px 1fr; gap: 24px; align-items: start; padding: 24px;
+  }
+
+  /* gog: pixel font only legible small */
+  .skin--gog .deep-card__heading { font-size: 14px; line-height: 1.5; letter-spacing: 0; }
+  .skin--gog .deep-card__heading .reason { font-size: 11px; font-style: normal; }
+  .skin--gog .deep-card__heading .product-link { font-size: 14px; }
+  .skin--gog .deep-card__rank span { font-size: 14px; }
+
+  /* ── SKINS (light DTP + dark gog) ── */
+  .skin--dtp {
+    --paper:#F4F2EE; --paper-muted:#ECEAE4; --ink:#14181C; --forest:#2C5E8C;
+    --brass:#2C5E8C; --brass-soft:#F7E9C8; --muted:#6A7079; --border:#D6D2C8;
+    --accent:#2C5E8C; --serif:"Instrument Serif",serif; --sans:"Inter Tight",sans-serif; --head-wt:400; }
+  .skin--gog {
+    --paper:#0e0b1c; --paper-muted:#171331; --ink:#ede9ff; --forest:#ede9ff;
+    --brass:#2ee6ff; --brass-soft:#2c2752; --muted:#9a93c7; --border:#3a3470;
+    --accent:#2ee6ff; --serif:"Press Start 2P",monospace; --sans:"Inter",sans-serif; }
+
+  /* gog: bright cyan award bg → paper text would vanish; award/banner text goes dark.
+     forest token is light text, so product-link underline uses cyan. */
+  .skin--gog .deep-card__award,
+  .skin--gog .deep-card__banner { color: #0e0b1c; }
+  .skin--gog .deep-card__heading .product-link { border-bottom-color: #2ee6ff; }
+</style>
+</head>
+<body>
+  <div class="page-head">
+    <h1>Finding #4 — Award label: pill vs banner (real example)</h1>
+    <p>The deep card (component 06) rendered twice, side by side, in the post-cohesion styling. <b>LEFT = the current rounded pill.</b> <b>RIGHT = the award restyled as a full-width banner</b> across the whole card top, matching the at-a-glance card's top banner (component 05). Shown in a light skin (DetailerPicks) and the dark skin (GameOverGear) so the call holds either way. Everything else on the card is identical between the two — only the award treatment differs.</p>
+    <p class="hint">The question for you: should the deep card adopt the at-a-glance <b>banner</b> so both card tiers share one award shape, or keep the deep card's <b>pill</b> (and treat the banner as the at-a-glance-only variant)? Pick one and I'll lock it across the library.</p>
+  </div>
+
+  <!-- ── DTP (light) ─────────────────────────────────────── -->
+  <div class="specimen">
+    <div class="specimen__label"><span>DetailerPicks</span><span>slate blue + paper · Instrument Serif / Inter Tight</span></div>
+    <div class="frame skin--dtp"><div class="deep-wrap">
+
+      <div>
+        <p class="opt-tag is-left">Pill (current)</p>
+        <article class="deep-card">
+          <div class="deep-card__img-col">
+            <div class="deep-card__img"><div class="ph">product image<br>(contain, capped)</div></div>
+            <div class="deep-card__rank"><span>1</span>of 6 picks</div>
+          </div>
+          <div class="deep-card__body">
+            <span class="deep-card__award">Top Pick</span>
+            <div class="deep-card__persona">Best for weekly maintenance washers</div>
+            <h3 class="deep-card__heading"><span class="reason">The slickest foam-to-rinse of the bunch</span><a class="product-link">Adam's Mega Foam &rarr;</a></h3>
+            <p>A high-sudsing, pH-neutral shampoo that owners consistently report sheets off cleanly without spotting.</p>
+            <ul class="deep-card__points"><li>pH-neutral, wax-safe formula</li><li>Thick clinging foam for pre-wash</li><li>Dilutes 1&ndash;3 oz per gallon</li></ul>
+          </div>
+        </article>
+      </div>
+
+      <div>
+        <p class="opt-tag is-right">Banner (match at-a-glance)</p>
+        <article class="deep-card deep-card--banner">
+          <div class="deep-card__banner">Top Pick</div>
+          <div class="deep-card__inner">
+            <div class="deep-card__img-col">
+              <div class="deep-card__img"><div class="ph">product image<br>(contain, capped)</div></div>
+              <div class="deep-card__rank"><span>1</span>of 6 picks</div>
+            </div>
+            <div class="deep-card__body">
+              <div class="deep-card__persona">Best for weekly maintenance washers</div>
+              <h3 class="deep-card__heading"><span class="reason">The slickest foam-to-rinse of the bunch</span><a class="product-link">Adam's Mega Foam &rarr;</a></h3>
+              <p>A high-sudsing, pH-neutral shampoo that owners consistently report sheets off cleanly without spotting.</p>
+              <ul class="deep-card__points"><li>pH-neutral, wax-safe formula</li><li>Thick clinging foam for pre-wash</li><li>Dilutes 1&ndash;3 oz per gallon</li></ul>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div></div>
+  </div>
+
+  <!-- ── GOG (dark) ──────────────────────────────────────── -->
+  <div class="specimen">
+    <div class="specimen__label"><span>GameOverGear</span><span>dark + neon cyan · Press Start 2P / Inter</span></div>
+    <div class="frame skin--gog"><div class="deep-wrap">
+
+      <div>
+        <p class="opt-tag is-left">Pill (current)</p>
+        <article class="deep-card">
+          <div class="deep-card__img-col">
+            <div class="deep-card__img"><div class="ph">product image<br>(contain, capped)</div></div>
+            <div class="deep-card__rank"><span>1</span>of 6 picks</div>
+          </div>
+          <div class="deep-card__body">
+            <span class="deep-card__award">Top Pick</span>
+            <div class="deep-card__persona">Best for couch co-op with originals</div>
+            <h3 class="deep-card__heading"><span class="reason">The most accurate 8BitDo pad yet</span><a class="product-link">8BitDo Pro 2 &rarr;</a></h3>
+            <p>Low-latency wireless and swappable profiles make this the pad retro players reach for across emulators.</p>
+            <ul class="deep-card__points"><li>Four onboard custom profiles</li><li>Bluetooth + 2.4G + USB-C wired</li><li>Works with Switch, PC, mobile</li></ul>
+          </div>
+        </article>
+      </div>
+
+      <div>
+        <p class="opt-tag is-right">Banner (match at-a-glance)</p>
+        <article class="deep-card deep-card--banner">
+          <div class="deep-card__banner">Top Pick</div>
+          <div class="deep-card__inner">
+            <div class="deep-card__img-col">
+              <div class="deep-card__img"><div class="ph">product image<br>(contain, capped)</div></div>
+              <div class="deep-card__rank"><span>1</span>of 6 picks</div>
+            </div>
+            <div class="deep-card__body">
+              <div class="deep-card__persona">Best for couch co-op with originals</div>
+              <h3 class="deep-card__heading"><span class="reason">The most accurate 8BitDo pad yet</span><a class="product-link">8BitDo Pro 2 &rarr;</a></h3>
+              <p>Low-latency wireless and swappable profiles make this the pad retro players reach for across emulators.</p>
+              <ul class="deep-card__points"><li>Four onboard custom profiles</li><li>Bluetooth + 2.4G + USB-C wired</li><li>Works with Switch, PC, mobile</li></ul>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div></div>
+  </div>
+</body>
+</html>
