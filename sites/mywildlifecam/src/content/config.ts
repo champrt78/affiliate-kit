@@ -136,4 +136,40 @@ const learn = defineCollection({
   }),
 });
 
-export const collections = { reviews, "buyers-guides": buyersGuides, learn };
+/* Head-to-head "X vs Y" comparisons (revenue plan 2026-06-01). 2-3 products
+   compared head-to-head; `winner` highlights in the table; `verdict` is the
+   human-written winner call and is the DRAFT/noindex GATE (empty => noindex). */
+const comparisonProductSchema = z.object({
+  name: z.string(),
+  brand: z.string(),
+  affiliateUrl: z.string(),
+  image: z.string().optional(),
+  priceFrom: z.number().optional(),
+  priceUnit: z.string().optional(),
+  bestFor: z.string().optional(),
+  facts: z.record(z.string(), z.string()).optional(),
+  body: z.string().optional(),
+});
+const comparisons = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    description: z.string().max(160),
+    rubric: z.string().optional(),
+    deck: z.string().optional(),
+    products: z.array(comparisonProductSchema).min(2).max(3),
+    winner: z.string().optional(),
+    verdict: bottomLineSchema,
+    dealBreakers: z.array(z.string()).optional(),
+    pubDate: z.date(),
+    lastUpdated: z.date(),
+    images: z.object({
+      hero: z.string().optional(),
+      heroCaption: z.string().optional(),
+    }).optional(),
+    faq: faqSchema,
+    bgTheme: bgThemeSchema,
+  }),
+});
+
+export const collections = { reviews, "buyers-guides": buyersGuides, learn, comparisons };

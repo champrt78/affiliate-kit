@@ -8,6 +8,7 @@
     "./SiteShell.astro": "./src/components/SiteShell.astro",
     "./CTA.astro": "./src/components/CTA.astro",
     "./ComparisonTable.astro": "./src/components/ComparisonTable.astro",
+    "./ComparisonArticle.astro": "./src/components/ComparisonArticle.astro",
     "./Hero.astro": "./src/components/Hero.astro",
     "./Media.astro": "./src/components/Media.astro",
     "./AffiliateDisclosure.astro": "./src/components/AffiliateDisclosure.astro",
