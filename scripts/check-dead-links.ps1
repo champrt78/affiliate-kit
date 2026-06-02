@@ -64,13 +64,17 @@ foreach ($sd in $siteDirs) {
     if ($assetExt -contains $ext) { continue }
 
     $clean = $p.Trim("/")
-    $cands = @(
-      (Join-Path $dist $clean),
-      (Join-Path $dist (Join-Path $clean "index.html")),
-      (Join-Path $dist "$clean.html")
-    )
-    $found = $false
-    foreach ($c in $cands) { if (Test-Path $c) { $found = $true; break } }
+    # A candidate counts as resolved ONLY if it points at an actual FILE:
+    #   dist/<clean>/index.html  (directory route with an index page)
+    #   dist/<clean>.html        (flat .html route)
+    #   dist/<clean>             ONLY when it exists as a file (-PathType Leaf)
+    # A bare directory (e.g. dist/comparisons/ with no index.html inside) must
+    # NOT count — that was the false-negative: section/trailing-slash URLs were
+    # treated as resolved just because the directory existed.
+    $found =
+      (Test-Path (Join-Path $dist (Join-Path $clean "index.html")) -PathType Leaf) -or
+      (Test-Path (Join-Path $dist "$clean.html") -PathType Leaf) -or
+      (Test-Path (Join-Path $dist $clean) -PathType Leaf)
     if (-not $found) { $dead += $p }
   }
 

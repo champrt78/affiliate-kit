@@ -1,0 +1,139 @@
+---
+import { getCollection } from "astro:content";
+import MainLayout from "../../layouts/MainLayout.astro";
+import PageHeader from "@affkit/shared-ui/PageHeader.astro";
+
+/* ============================================================================
+   CANONICAL COMPARISONS INDEX — modeled on the reviews/buyers-guides indexes.
+   Byte-identical across template + all 5 sites EXCEPT the PAGE block below.
+   Shared <PageHeader> + locked-rule centered card grid. Reads the site's
+   comparisons collection. There's no ComparisonCard component, so each card is
+   a small inline card (title + the two product names + winner line), token-
+   mapped via the same classes the review-index cards use so it auto-skins.
+   ========================================================================== */
+
+/* ─── PER-SITE CONTENT (the only block that differs between sites) ─── */
+const PAGE = {
+  seoTitle: "Head-to-head comparisons",
+  seoDescription:
+    "Retro gaming gear head-to-heads. Two pieces of kit, one well-defined matchup, and a clear call on which one earns the credit.",
+  kicker: "Comparisons",
+  title: "Head-to-head comparisons",
+  lede:
+    "When two pieces of kit keep landing on the same shortlist, we line them up on compatibility, build, lag, and value, then name the one most players should grab.",
+  empty: "No comparisons yet. New head-to-heads land every quarter.",
+};
+/* ─────────────────────────────────────────────────────────────────── */
+
+const __BL_PH = "_The Bottom Line is being written._";
+// Comparisons use `verdict` (not `bottomLine`) as the DRAFT/noindex gate.
+// Drafts are noindex; keep them out of the public index.
+const entries = (await getCollection("comparisons")).filter((e) => {
+  const v = e.data.verdict?.verdict ?? "";
+  return v.trim() !== "" && !v.includes(__BL_PH);
+});
+const sorted = entries.sort((a, b) => {
+  const aTime = a.data.pubDate instanceof Date ? a.data.pubDate.getTime() : new Date(a.data.pubDate).getTime();
+  const bTime = b.data.pubDate instanceof Date ? b.data.pubDate.getTime() : new Date(b.data.pubDate).getTime();
+  return bTime - aTime;
+});
+---
+<MainLayout title={PAGE.seoTitle} description={PAGE.seoDescription}>
+  <PageHeader kicker={PAGE.kicker} title={PAGE.title} lede={PAGE.lede} />
+
+  <section class="grid-section">
+    <div class="grid-section__inner">
+      {sorted.length === 0 ? (
+        <p class="empty">{PAGE.empty}</p>
+      ) : (
+        <div class="grid">
+          {sorted.map((entry) => (
+            <a class="cmp-card" href={`/comparisons/${entry.slug}/`}>
+              <h2 class="cmp-card__title">{entry.data.title}</h2>
+              <p class="cmp-card__vs">
+                <span>{entry.data.products[0].name}</span>
+                <span class="cmp-card__vs-sep">vs</span>
+                <span>{entry.data.products[1].name}</span>
+              </p>
+              {entry.data.winner && (
+                <p class="cmp-card__winner">Winner: {entry.data.winner}</p>
+              )}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .grid-section {
+    padding: var(--space-12) var(--space-6) var(--space-20);
+    background: var(--color-bg);
+  }
+  .grid-section__inner { max-width: var(--container-max); margin: 0 auto; }
+  /* Locked grid rule: capped + centered, no orphan-row stretch. */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
+    justify-content: center;
+    gap: var(--space-6);
+  }
+  .empty {
+    color: var(--color-muted);
+    font-family: var(--font-serif);
+    font-style: italic;
+  }
+
+  /* Inline comparison card — token-mapped so it auto-skins per site. */
+  .cmp-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-6);
+    background: var(--color-surface, var(--color-bg));
+    border: 1px solid var(--color-border, rgba(0, 0, 0, 0.1));
+    border-radius: var(--radius-lg, 12px);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .cmp-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+  .cmp-card__title {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg, 1.25rem);
+    line-height: 1.25;
+    margin: 0;
+    color: var(--color-text, var(--color-fg));
+  }
+  .cmp-card__vs {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: var(--text-sm, 0.9rem);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    align-items: baseline;
+  }
+  .cmp-card__vs-sep {
+    font-family: var(--font-serif);
+    font-style: italic;
+    opacity: 0.75;
+  }
+  .cmp-card__winner {
+    margin: 0;
+    font-weight: 600;
+    font-size: var(--text-sm, 0.9rem);
+    color: var(--color-accent, var(--color-text));
+  }
+
+  @media (max-width: 760px) {
+    .grid-section { padding: var(--space-10) var(--space-4) var(--space-16); }
+  }
+  @media (max-width: 720px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
