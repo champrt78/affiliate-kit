@@ -123,10 +123,10 @@ The two sizes overlap at the 20 to 30 gallon band. There the 50 is the more flex
 
 ## How It Compares
 
-The AquaClear 50 sits in the [Filters](/topics/filters/) pillar. A few more natural points of comparison, all spec-sourced:
+The AquaClear 50 sits in the [Filters](/topics/filters/) pillar, and our [best aquarium filters for beginners](/buyers-guides/best-aquarium-filters-for-beginners) guide ranks it against the wider hang-on-back, sponge, and internal field. A few more natural points of comparison, all spec-sourced:
 
 **AquaClear vs Seachem Tidal.** The Seachem Tidal is the other large-basket hang-on-back beginners weigh against the AquaClear, and the spec differences are the whole story. Per Seachem's listing the Tidal 35 is **self-priming** and adds a surface skimmer and a maintenance-alert indicator, where the AquaClear asks you to fill and prime it on first start-up and has no skimmer. The Tidal's flow dial spans roughly 90 to 450 GPH against the AquaClear 50's fixed-pump-with-lever 300 GPH. Both run a refillable media basket rather than throwaway cartridges, so the choice is really **self-priming convenience and a skimmer (Tidal) versus a longer, cheaper track record (AquaClear)**. The Tidal usually carries the higher price of the two.
 
 **AquaClear vs a cartridge-style HOB filter.** A cartridge filter is **simpler on day one**: drop in a cartridge, replace it monthly. The AquaClear asks you to think a little more about your media, but in exchange you get a far larger media basket, separately swappable foam, carbon, and BioMax, and the option to skip the carbon. The trade-off is **convenience now versus lower cost and more control later**.
 
-**AquaClear vs a canister filter.** A canister filter is a sealed unit that sits below the tank and suits **heavily stocked or larger setups**, at a higher price and a more involved setup. For a first freshwater tank in the 10 to 50 gallon range, a hang-on-back like the AquaClear is the **right-sized, lower-friction choice**.
+**AquaClear vs a canister filter.** A canister filter is a sealed unit that sits below the tank and suits **heavily stocked or larger setups**, at a higher price and a more involved setup. For a first freshwater tank in the 10 to 50 gallon range, a hang-on-back like the AquaClear is the **right-sized, lower-friction choice**. We put the two directly side by side in our [Fluval 107 vs AquaClear 50 comparison](/comparisons/fluval-107-vs-aquaclear-50).

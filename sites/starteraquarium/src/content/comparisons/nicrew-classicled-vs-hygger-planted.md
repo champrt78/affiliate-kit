@@ -49,8 +49,10 @@ faq:
 
 These two lights cost about the same, so the choice is about the job, not the price. The NICREW optimizes for clean fish-first viewing at the lowest sensible cost. The hygger optimizes for an automatic light cycle and enough output to grow easy plants.
 
-The NICREW ClassicLED Plus is the value default. Clean white LEDs make fish look good, a dim blue moonlight covers the evening, and an optional timer keeps the schedule steady. The honest caveat is reliability that is good rather than premium, with a minority of units dimming early, though a replacement is cheap.
+The NICREW ClassicLED Plus is the value default. Clean white LEDs make fish look good, a dim blue moonlight covers the evening, and an optional timer keeps the schedule steady. The honest caveat is reliability that is good rather than premium, with a minority of units dimming early, though a replacement is cheap. Our [NICREW ClassicLED Plus review](/reviews/nicrew-classicled-light-review) covers the built-in timer and the sunrise-sunset ramp in more depth.
 
 The hygger Clip On 24/7 answers with a built-in sunrise-to-moonlight cycle, color and brightness control, and more growing power for easy live plants. You accept a clip mount sized for smaller rims and a busier control set in exchange for an all-in-one light that runs itself.
+
+If you want the wider field of fish-only and planted options, our [best aquarium lights for beginners](/buyers-guides/best-aquarium-lights-for-beginners) guide splits the picks along exactly that line, and the [lighting topic hub](/topics/lighting) gathers every light review and comparison on the site.
 
 This comparison is built from manufacturer specifications, synthesized verified-buyer reports, and independent coverage. We do not take payment from either brand.

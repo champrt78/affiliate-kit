@@ -140,6 +140,6 @@ For a school of active swimmers like neon tetras, those same owner reports point
 
 ## How It Compares
 
-The Flex 9 sits in the [Tanks & Kits](/topics/tanks-and-kits/) pillar. One more natural comparison, fit-based:
+The Flex 9 sits in the [Tanks & Kits](/topics/tanks-and-kits/) pillar, and our [best starter aquarium kits](/buyers-guides/best-starter-aquarium-kits) guide places it against five other all-in-one kits, including a direct Flex-versus-SPEC-V breakdown. One more natural comparison, fit-based:
 
-**Flex 9 vs a plain glass tank plus separate gear.** A bare tank with a separately bought filter, heater, and light can be **cheaper and more customizable**, but it asks the beginner to match components correctly. The Flex 9 trades that flexibility for an integrated, hidden-equipment kit where the filtration, pump, and LED are chosen for the tank. The trade-off is **convenience and looks at the cost of part-by-part control**, and you still add a heater either way.
+**Flex 9 vs a plain glass tank plus separate gear.** A bare tank with a separately bought filter, heater, and light can be **cheaper and more customizable**, but it asks the beginner to match components correctly. The Flex 9 trades that flexibility for an integrated, hidden-equipment kit where the filtration, pump, and LED are chosen for the tank. The trade-off is **convenience and looks at the cost of part-by-part control**, and you still add a heater either way. Our [best aquarium heaters for beginners](/buyers-guides/best-aquarium-heaters-for-beginners) guide covers sizing the right wattage for a 9 gallon like this one.

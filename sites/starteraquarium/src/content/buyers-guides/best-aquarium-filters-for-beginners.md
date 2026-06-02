@@ -145,11 +145,11 @@ All specs are manufacturer or Amazon listing claims captured on 2026-05-30, and 
 
 Beginner filters split into a few styles, and the difference matters more than the brand on the box.
 
-- **Hang-on-back (HOB).** Four of these six are HOB filters: they clip onto the rim and hang behind the tank, drawing water up an intake tube and spilling it back over a waterfall lip. They are the beginner default because they are easy to access for cleaning and combine mechanical, chemical, and biological filtration in one unit. The AquaClear, Tidal, QuietFlow, and Whisper IQ are all HOB. They differ on flow control, noise, and whether you use a refillable basket or replaceable cartridges.
-- **Sponge filters.** The hygger is air-driven, running on bubbles from a separate air pump rather than a motor. The flow is gentle, which is exactly why sponge filters are the standard pick for betta tanks, fry, and shrimp where a strong HOB intake can stress small or long-finned fish. The trade-off is that you also need an air pump and air hose to run it.
+- **Hang-on-back (HOB).** Four of these six are HOB filters: they clip onto the rim and hang behind the tank, drawing water up an intake tube and spilling it back over a waterfall lip. They are the beginner default because they are easy to access for cleaning and combine mechanical, chemical, and biological filtration in one unit. The AquaClear, Tidal, QuietFlow, and Whisper IQ are all HOB. They differ on flow control, noise, and whether you use a refillable basket or replaceable cartridges. If you are torn between a hang-on-back and a hidden canister, our [Fluval 107 vs AquaClear 50 comparison](/comparisons/fluval-107-vs-aquaclear-50) walks that exact fork.
+- **Sponge filters.** The hygger is air-driven, running on bubbles from a separate air pump rather than a motor. The flow is gentle, which is exactly why sponge filters are the standard pick for betta tanks, fry, and shrimp where a strong HOB intake can stress small or long-finned fish. The trade-off is that you also need an air pump and air hose to run it. Our [Aquarium Co-Op sponge filter review](/reviews/aquarium-coop-sponge-filter-review) goes deeper on how an air-driven filter runs and where it fits.
 - **Internal filters.** The Penn-Plax Cascade 400 mounts fully submerged inside the tank on suction cups. It is the answer when a tank sits flush against a wall or under a tight canopy where a hang-on-back simply will not fit, at the cost of taking up visible space inside the tank.
 
-There is no single correct type. Match the filter to your tank size, your fish, and where the tank physically sits.
+There is no single correct type. Match the filter to your tank size, your fish, and where the tank physically sits. For everything in the category, the [filters topic hub](/topics/filters) collects every filter review and comparison on the site.
 
 ## How we picked
 

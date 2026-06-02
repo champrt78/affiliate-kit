@@ -97,7 +97,7 @@ The one thing to plan around is covered below. This is **color-matching liquid c
 
 ## How It Compares
 
-A few natural points of comparison for the API Freshwater Master Test Kit, all spec-sourced.
+A few natural points of comparison for the API Freshwater Master Test Kit, all spec-sourced. The reason a beginner reaches for it at all is the nitrogen cycle, and our [how to cycle your first aquarium](/buyers-guides/how-to-cycle-your-first-aquarium) guide walks through exactly which of these four readings you watch and when. For the wider set of beginner basics, the [Tank School hub](/topics/tank-school) collects the foundational how-to pieces on the site.
 
 **Liquid master kit vs dip strips.** This is the core decision. Dip strips are **faster and simpler**: dip, wait seconds, compare. The liquid master kit trades that speed for **precision the hobby trusts more**, especially on nitrate. Pick strips for a quick daily look. Pick the liquid kit when you want a reading you can act on, which during cycling is most of the time. Many keepers run both.
 

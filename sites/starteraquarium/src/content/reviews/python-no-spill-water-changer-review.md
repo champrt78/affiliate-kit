@@ -98,7 +98,7 @@ The two things to settle first are covered below. The system depends on a **comp
 
 ## How It Compares
 
-A few natural points of comparison for the Python No Spill Clean and Fill, all spec-sourced.
+A few natural points of comparison for the Python No Spill Clean and Fill, all spec-sourced. A water changer earns its keep on the regular partial water changes that keep nitrate in check, the maintenance step our [how to cycle your first aquarium](/buyers-guides/how-to-cycle-your-first-aquarium) guide explains as the back half of the nitrogen cycle. For the wider set of beginner basics, the [Tank School hub](/topics/tank-school) collects the foundational how-to pieces on the site.
 
 **Python vs a bucket and siphon.** This is the core decision. A bucket-and-siphon setup is **far cheaper and dead simple**: drop the siphon, drain into a bucket, carry it to the sink, refill, carry it back. The Python trades that low cost for **no lifting, no spills, and reach across the room**. Pick the bucket and siphon for a small tank a few steps from a faucet on a tight budget. Pick the Python when the tank is far from the sink or large enough that buckets are the real chore.
 

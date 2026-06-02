@@ -163,7 +163,7 @@ bottomLine:
   supporting: "Ten cheap, giftable aquarium finds, all verified in stock on 2026-05-30 and priced from about $6 to $19: betta comforts, a bubbling shipwreck, no-fuss Marimo moss balls, glow-up pebbles, and a few small tools that make everyday fishkeeping easier."
 ---
 
-Once your tank is filtered, heated, and lit, the fun part begins: making it yours. These are the cheap, giftable extras that turn a glass box into a little world, from a betta lounging on a leaf to a shipwreck blowing bubbles in the corner. None of it is essential gear, and that is exactly the point. Everything here was checked in stock on 2026-05-30 and runs from about $6 to $19, so it is easy to grab one or three on impulse.
+Once your tank is filtered, heated, and lit, with the core gear sorted in our [best starter aquarium kits](/buyers-guides/best-starter-aquarium-kits) guide, the fun part begins: making it yours. These are the cheap, giftable extras that turn a glass box into a little world, from a betta lounging on a leaf to a shipwreck blowing bubbles in the corner. None of it is essential gear, and that is exactly the point. Everything here was checked in stock on 2026-05-30 and runs from about $6 to $19, so it is easy to grab one or three on impulse.
 
 ## Best betta tank accessories
 
@@ -174,6 +174,6 @@ If you are setting up a betta tank, a few of these finds are near-universal favo
 - **Live Marimo moss balls** add a no-fuss touch of green that needs no special light or CO2.
 - **A floating feeding ring** keeps food in one corner so it is not pulled into the filter before your betta eats.
 
-All of them sit **under $20**, which makes them easy add-ons or a small gift for a new betta keeper. The one rule to keep in mind: bettas have delicate fins, so **favor soft silicone and smooth surfaces** over anything sharp.
+All of them sit **under $20**, which makes them easy add-ons or a small gift for a new betta keeper. The one rule to keep in mind: bettas have delicate fins, so **favor soft silicone and smooth surfaces** over anything sharp. For more in this vein, the [Fun Finds hub](/topics/fun-finds) collects the giftable extras on the site.
 
 ## The list

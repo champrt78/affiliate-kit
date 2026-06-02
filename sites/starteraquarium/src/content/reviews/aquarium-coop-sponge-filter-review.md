@@ -98,9 +98,9 @@ The two things to plan around are covered below. It needs a **separate air pump*
 
 ## How It Compares
 
-The Aquarium Co-Op sponge filter sits in the [Filters](/topics/filters/) pillar. A few natural points of comparison, all spec-sourced.
+The Aquarium Co-Op sponge filter sits in the [Filters](/topics/filters/) pillar, and our [best aquarium filters for beginners](/buyers-guides/best-aquarium-filters-for-beginners) guide weighs air-driven sponge filters against the hang-on-back and internal options. A few natural points of comparison, all spec-sourced.
 
-**Sponge filter vs hang-on-back.** This is the core decision. A hang-on-back clips on the rim, hides the filtration outside the tank, and pushes more water, which suits a busier display tank. The sponge filter trades that power and hidden placement for **gentleness, simplicity, and a lower price**, plus the air pump it needs to run. Pick the hang-on-back for a stocked display tank you want to look clean. Pick the sponge filter for a gentle, beginner-proof setup, a fry or shrimp tank, or a quarantine tank.
+**Sponge filter vs hang-on-back.** This is the core decision. A hang-on-back clips on the rim, hides the filtration outside the tank, and pushes more water, which suits a busier display tank. If a powered filter is more your speed, our [Fluval 107 vs AquaClear 50 comparison](/comparisons/fluval-107-vs-aquaclear-50) covers the canister-versus-hang-on-back fork. The sponge filter trades that power and hidden placement for **gentleness, simplicity, and a lower price**, plus the air pump it needs to run. Pick the hang-on-back for a stocked display tank you want to look clean. Pick the sponge filter for a gentle, beginner-proof setup, a fry or shrimp tank, or a quarantine tank.
 
 **Sponge filter vs canister.** A canister hides large media capacity in the cabinet and moves a lot of water, which is overkill and over-budget for most first tanks. The sponge filter answers with near-zero setup, gentle flow, and a fraction of the cost. For a beginner who is not stocking heavily, the canister's capacity is power you are paying for but not using.
 

@@ -99,9 +99,9 @@ The thing to plan around is covered below: this is a **low-to-moderate light**, 
 
 ## How It Compares
 
-The NICREW ClassicLED Plus sits in the [Lighting](/topics/lighting/) pillar. A few natural points of comparison, all spec-sourced:
+The NICREW ClassicLED Plus sits in the [Lighting](/topics/lighting/) pillar, and our [best aquarium lights for beginners](/buyers-guides/best-aquarium-lights-for-beginners) guide ranks it across the fish-only and planted field. A few natural points of comparison, all spec-sourced:
 
-**ClassicLED vs an app-controlled planted light.** The trade is **price and simplicity versus control and growing power**. App-controlled fixtures let you tune color, intensity, and sunrise-sunset ramps from a phone and push enough light for demanding plants, at several times the cost. The ClassicLED answers with a low price and a fixture that just works for fish and easy plants. Pick the app light for a high-tech aquascape. Pick the ClassicLED for value on a first community tank.
+**ClassicLED vs a planted clip-on light.** The trade is **price and simplicity versus an automatic cycle and growing power**. A planted-leaning fixture like the hygger Clip On runs a sunrise-to-moonlight cycle and pushes more light for easy live plants, a split we walk through in our [NICREW ClassicLED vs Hygger comparison](/comparisons/nicrew-classicled-vs-hygger-planted). The ClassicLED answers with a low price and a fixture that just works for fish and easy plants. Pick the planted clip-on for an automatic cycle and more growing power. Pick the ClassicLED for value on a first community tank.
 
 **ClassicLED vs a tank kit's bundled light.** Many starter kits include a light already, but those bundled fixtures are often dim and fixed. The ClassicLED is a reasonable, low-cost upgrade if your kit light underwhelms, and the extendable brackets let it sit on a standard rim. The trade is a small extra spend for a brighter, better-looking tank.
 

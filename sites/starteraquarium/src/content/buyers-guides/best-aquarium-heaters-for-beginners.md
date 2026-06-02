@@ -176,12 +176,12 @@ The roughly 5 watts per gallon sizing guidance is attributed to hobby sources su
 This guide is built for the first-tank beginner, the betta keeper, the family setting up a kids' tank, and the gift buyer who wants a heater that is hard to get wrong. Match the pick to what matters most to you:
 
 - **Least fuss possible** (2 to 10 gallon tank): the preset Tetra HT removes every decision but plugging it in.
-- **Exact temperature control**: the Eheim Jager's recalibratable dial is the longtime favorite.
+- **Exact temperature control**: the Eheim Jager's recalibratable dial is the longtime favorite, and our [Eheim Jager review](/reviews/eheim-jager-heater-review) covers that dial and its run-dry cutoff in depth.
 - **No cracked glass tube**: the shatterproof Aqueon Pro or the titanium hygger answer that worry directly.
-- **A live readout on the heater**: the Fluval E200 shows the temperature right on the unit.
+- **A live readout on the heater**: the Fluval E200 shows the temperature right on the unit. If those two are the ones you are torn between, our [Eheim Jager vs Fluval E200 comparison](/comparisons/eheim-jager-vs-fluval-e200) frames the proven-dial-versus-visible-screen split.
 - **Matching wattage to gallons on a budget**: the Orlushy lets you size it without overspending.
 
-Start by sizing the heater to your tank with the 5 watts per gallon rule, then pick the feature that buys you the most peace of mind, and you will have the one piece of gear that quietly keeps your fish comfortable handled on day one.
+Start by sizing the heater to your tank with the 5 watts per gallon rule, then pick the feature that buys you the most peace of mind, and you will have the one piece of gear that quietly keeps your fish comfortable handled on day one. For everything in the category, the [heaters topic hub](/topics/heaters) collects every heater review and comparison on the site.
 
 ## FAQ
 

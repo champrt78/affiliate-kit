@@ -166,13 +166,13 @@ So a realistic first-tank shopping list on top of most kits is:
 - A bottle of **water conditioner**, if the kit lacks it
 - A **thermometer** to confirm the heater
 
-The Aqueon kit is the exception that bundles the heater, conditioner, food, net, and thermometer, which is the convenience you are paying for. Knowing the gap up front is the difference between a kit that is ready for fish and one that still needs a few parts.
+The Aqueon kit is the exception that bundles the heater, conditioner, food, net, and thermometer, which is the convenience you are paying for. Knowing the gap up front is the difference between a kit that is ready for fish and one that still needs a few parts. Before you add fish, our [how to cycle your first aquarium](/buyers-guides/how-to-cycle-your-first-aquarium) guide explains why that test kit is the one tool you cannot skip.
 
 ## Fluval Flex vs SPEC V: which Fluval kit?
 
 Both are design-forward Fluval nano kits, and the choice is mostly size and light. Per Fluval the **SPEC V** is a 5 gallon etched-glass tank with aluminum trim, a 37-LED 7000K light rated at 821 lumens, and a 3-stage filter in an integrated end chamber. The **Flex 9** is a curved-front 9 gallon tank with an adjustable 7500K plus RGB LED rated at 1900 lumens controlled by a FLEXPad remote, with the 3-stage filter hidden in the rear.
 
-The SPEC V is the more compact desktop pick with a bright fixed-white light. The Flex 9 gives you more water volume and a tunable color light at a higher price. Neither includes a heater. Pick the **SPEC V** when a small 5 gallon footprint matters most, and the **Flex 9** when you want the larger tank and the adjustable color lighting as a display centerpiece.
+The SPEC V is the more compact desktop pick with a bright fixed-white light. The Flex 9 gives you more water volume and a tunable color light at a higher price. Neither includes a heater. Pick the **SPEC V** when a small 5 gallon footprint matters most, and the **Flex 9** when you want the larger tank and the adjustable color lighting as a display centerpiece. Our [Fluval Flex 9 Gallon review](/reviews/fluval-flex-9-gallon-review) digs into the curved-glass build, the FLEXPad remote, and the concealed rear filtration. For everything in the category, the [tanks and kits topic hub](/topics/tanks-and-kits) collects every kit review and comparison on the site.
 
 ## How we picked
 

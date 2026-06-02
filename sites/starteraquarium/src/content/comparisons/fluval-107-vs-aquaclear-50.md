@@ -53,4 +53,6 @@ The Fluval 107 is a sealed canister that sits in the cabinet below the tank and 
 
 The AquaClear 50 clips onto the back rim and runs in minutes. A large media basket, an adjustable flow lever to soften the current for small fish, and a much lower starting cost make it the default first filter for a new keeper. You accept that it hangs visibly on the back and has an open intake worth guarding around very small fish.
 
+If neither of these two is quite your tank, our [best aquarium filters for beginners](/buyers-guides/best-aquarium-filters-for-beginners) guide ranks the hang-on-back, sponge, and internal options side by side, and the [filters topic hub](/topics/filters) gathers every filter review and comparison on the site.
+
 This comparison is built from manufacturer specifications, synthesized verified-buyer reports, and independent coverage. We do not take payment from either brand.

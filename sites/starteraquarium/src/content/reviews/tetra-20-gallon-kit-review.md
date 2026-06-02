@@ -99,7 +99,7 @@ The one thing to plan around is covered below: there is **no heater in the box**
 
 ## How It Compares
 
-The Tetra 20 Gallon kit sits in the [Tanks & Kits](/topics/tanks-and-kits/) pillar. A few natural points of comparison, all spec-sourced:
+The Tetra 20 Gallon kit sits in the [Tanks & Kits](/topics/tanks-and-kits/) pillar, and our [best starter aquarium kits](/buyers-guides/best-starter-aquarium-kits) guide ranks it across six all-in-one options. If you want the most direct fork at this size, the value-first Tetra against the fuller-box Aqueon, our [Aqueon vs Tetra 20-gallon comparison](/comparisons/aqueon-vs-tetra-20-gallon-kit) frames exactly that. A few natural points of comparison, all spec-sourced:
 
 **Tetra kit vs a designer nano kit.** The trade is **forgiving size and value versus a finished look in a small footprint**. A curved-glass nano kit with hidden filtration and tunable RGB light looks like a show-piece and suits a desk or shelf, at a higher price and a smaller, less-forgiving water volume. The Tetra kit answers with more water, lower cost, and a matched component set. Pick the nano kit for aesthetics in a tight space. Pick the Tetra kit for a forgiving, value first tank.
 

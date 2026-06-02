@@ -99,9 +99,9 @@ The trade-off is covered below: a canister is a **step up in setup and cleaning*
 
 ## How It Compares
 
-The Fluval 107 sits in the [Filters](/topics/filters/) pillar. A few natural points of comparison, all spec-sourced:
+The Fluval 107 sits in the [Filters](/topics/filters/) pillar, and our [best aquarium filters for beginners](/buyers-guides/best-aquarium-filters-for-beginners) guide places it against the hang-on-back, sponge, and internal field. A few natural points of comparison, all spec-sourced:
 
-**Canister vs hang-on-back.** This is the core decision. A hang-on-back is **simpler and cheaper**: it clips on the rim, sets up in minutes, and cleans quickly, which is why it is the usual first-tank filter. The 107 trades that simplicity for **hidden placement, larger media baskets, and quiet sealed running**. Pick the hang-on-back when you want the lowest-friction filter on a small tank. Pick the 107 when the canister benefits matter to you and you accept the extra setup and cleaning.
+**Canister vs hang-on-back.** This is the core decision, and we put it head to head in our [Fluval 107 vs AquaClear 50 comparison](/comparisons/fluval-107-vs-aquaclear-50). A hang-on-back is **simpler and cheaper**: it clips on the rim, sets up in minutes, and cleans quickly, which is why it is the usual first-tank filter. The 107 trades that simplicity for **hidden placement, larger media baskets, and quiet sealed running**. Pick the hang-on-back when you want the lowest-friction filter on a small tank. Pick the 107 when the canister benefits matter to you and you accept the extra setup and cleaning.
 
 **Fluval 107 vs 207, 307, and 407.** These are the same canister design in ascending sizes, rated up to 30, 45, 70, and 100 gallons respectively. The 107 is the small-tank pick. **Size the model to the tank**: undersizing leaves a canister working at its limit, while the right size runs comfortably. When you are between sizes, stepping up gives headroom you can run gently.
 
