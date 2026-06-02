@@ -1,0 +1,50 @@
+[
+  {
+    "site": "mywildlifecam",
+    "type": "comparison",
+    "path": "sites/mywildlifecam/src/content/comparisons/gardepro-e5-vs-stealth-cam-ds4k.md",
+    "slug": "gardepro-e5-vs-stealth-cam-ds4k",
+    "title": "GardePro E5 vs Stealth Cam DS4K: Which SD-Card Trail Cam Wins?",
+    "products": ["GardePro E5", "Stealth Cam DS4K Ultimate"],
+    "winner": "Stealth Cam DS4K Ultimate",
+    "summary": "Rock-bottom price ($42) vs native 4K image quality ($250), both no-subscription SD-card cams.",
+    "flags": [],
+    "options": [
+      {"verdict": "If image quality is the point of the camera, the Stealth Cam DS4K Ultimate wins. Its native 4K sensor pulls detail the GardePro E5 cannot match, and neither camera charges a subscription, so the only ongoing cost is batteries and a card.", "supporting": "Go with the GardePro E5 if the goal is simply a working camera under fifty dollars and you can live with softer footage."},
+      {"verdict": "The DS4K Ultimate is the better camera, but it runs about six times the price of the GardePro E5. For a single yard camera where you mainly want to know what is passing through, the GardePro covers it. For the camera you actually want sharp footage from, the Stealth Cam earns the jump.", "supporting": "Most backyard watchers start with the GardePro and upgrade to the DS4K once they know which spot deserves the better sensor."},
+      {"verdict": "Pick by spot. A high-traffic corner you check often justifies the Stealth Cam DS4K Ultimate and its 4K detail. A set-and-forget edge of the yard is exactly what the forty-dollar GardePro E5 is for.", "supporting": "Both skip the monthly bill, so this is a one-time hardware decision rather than a recurring cost."}
+    ]
+  },
+  {
+    "site": "mywildlifecam",
+    "type": "comparison",
+    "path": "sites/mywildlifecam/src/content/comparisons/tactacam-reveal-x-vs-moultrie-edge-2.md",
+    "slug": "tactacam-reveal-x-vs-moultrie-edge-2",
+    "title": "Tactacam Reveal X vs Moultrie Edge 2: Which Cellular Cam Wins?",
+    "products": ["Tactacam Reveal X", "Moultrie Edge 2"],
+    "winner": "Tactacam Reveal X",
+    "summary": "Cheaper + faster trigger + pausable plans (manages an SD card) vs auto carrier-pick with no card to buy.",
+    "flags": [],
+    "options": [
+      {"verdict": "For most cellular setups the Tactacam Reveal X is the smarter buy. It costs less, triggers faster, and its plans can be paused in the off-season, which keeps the camera cheap to run year round.", "supporting": "Choose the Moultrie Edge 2 if your land sits on the edge of coverage, since it picks the stronger carrier for you and needs no SD card."},
+      {"verdict": "These two are close, and coverage breaks the tie. On solid signal the Tactacam Reveal X wins on price, trigger speed, and pausable plans. On marginal signal the Moultrie Edge 2 auto-carrier selection is worth the small premium.", "supporting": "Check your bars at the actual tree before deciding, not at the house."},
+      {"verdict": "The Tactacam Reveal X is the value pick: lower upfront cost, a faster trigger, and plans you can suspend when the season ends. The Moultrie Edge 2 answers one specific problem, which is weak or uncertain coverage.", "supporting": "If you already know one carrier is strong on your land, the Tactacam is the easy call."}
+    ]
+  },
+  {
+    "site": "mywildlifecam",
+    "type": "comparison",
+    "path": "sites/mywildlifecam/src/content/comparisons/browning-strike-force-vs-gardepro-e5.md",
+    "slug": "browning-strike-force-vs-gardepro-e5",
+    "title": "Browning Strike Force vs GardePro E5: Which Budget SD-Card Cam Wins?",
+    "products": ["Browning Strike Force Pro X 1080", "GardePro E5"],
+    "winner": "Browning Strike Force Pro X 1080",
+    "summary": "Fastest trigger + small concealable body ($140) vs a working no-subscription cam for a quarter the price ($42).",
+    "flags": [],
+    "options": [
+      {"verdict": "For catching fast movement the Browning Strike Force Pro X wins. Its quicker trigger and small, concealable body are built to freeze animals crossing a trail, where the budget GardePro E5 tends to catch the tail end of the frame.", "supporting": "Go with the GardePro E5 if you mainly want presence-or-absence coverage of a backyard spot for a quarter of the price."},
+      {"verdict": "The Browning is the better trail camera, but it costs more than three times the GardePro E5. For a busy trail where timing matters, the Browning earns it. For a slow backyard corner, the GardePro does the job for forty dollars.", "supporting": "Match the camera to the traffic: fast crossings reward the Browning trigger, lingering visitors do not."},
+      {"verdict": "Pick by what you are filming. Animals that move through quickly need the Browning Strike Force Pro X fast trigger and tight detection. Slow, repeat visitors at a feeder are fine on the budget GardePro E5.", "supporting": "Both run on SD cards with no subscription, so the choice comes down to trigger speed versus price."}
+    ]
+  }
+]
