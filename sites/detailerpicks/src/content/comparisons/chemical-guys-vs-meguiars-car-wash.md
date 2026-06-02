@@ -1,6 +1,7 @@
 ---
 title: "Chemical Guys Mr. Pink vs Meguiar's Gold Class: Which Car Wash Wins?"
 description: "Chemical Guys Mr. Pink vs Meguiar's Gold Class compared on chemistry, suds, conditioning, and value, and which car wash soap most home detailers should buy."
+pillar: "washing-and-foam"
 rubric: "Car Detailing · Head-to-Head"
 deck: "Two of the most-bought car wash soaps in the category. The split comes down to a lightweight pure-cleaning shampoo versus a richer conditioning wash that adds gloss as it cleans."
 products:

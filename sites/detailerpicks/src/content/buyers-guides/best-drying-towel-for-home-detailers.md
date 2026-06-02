@@ -1,6 +1,7 @@
 ---
 title: "Best Drying Towels for Cars"
 description: "Six spec-verified drying towels for home detailers, sorted by weave and GSM: twist-loop, waffle, and plush picks across single towels and value 2-packs."
+pillar: "drying-and-towels"
 rubric: "Drying Towel · Buying Guide"
 deck: "Twist-loop, waffle-weave, and plush, sorted by GSM and channel. Six spec-verified picks across single towels and value 2-packs."
 products:

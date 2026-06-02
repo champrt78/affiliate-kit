@@ -1,6 +1,7 @@
 ---
 title: "Best Ceramic Coatings for Cars"
 description: "Six spec-verified picks across the DIY spectrum: easy spray-on toppers under $36, a step-up SiO2 spray, and two wipe-on enthusiast coatings."
+pillar: "ceramic-and-protection"
 rubric: "Ceramic Coating · Buying Guide"
 deck: "The DIY ceramic spectrum runs from spray-and-rinse toppers to wipe-on coatings with multi-year claims. Six spec-verified picks, six brands, six price points."
 products:

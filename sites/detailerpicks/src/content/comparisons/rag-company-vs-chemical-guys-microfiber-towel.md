@@ -1,6 +1,7 @@
 ---
 title: "The Rag Company Gauntlet vs Chemical Guys Woolly Mammoth: Which Wins?"
 description: "The Rag Company Gauntlet vs Chemical Guys Woolly Mammoth drying towel compared on GSM, size, absorbency, and value for home detailers."
+pillar: "drying-and-towels"
 rubric: "Car Detailing · Head-to-Head"
 deck: "Two plush microfiber drying towels that show up on every shortlist. The split comes down to a dense twist-pile cult favorite versus a huge single sheet that swallows a whole panel in one pass."
 products:

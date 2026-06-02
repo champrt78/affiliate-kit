@@ -1,6 +1,7 @@
 ---
 title: "Best Car Interior Cleaner (Leather, Upholstery and Plastic)"
 description: "Six interior cleaners segmented by surface: leather seats, cloth upholstery, dashboard and plastic. InnerClean covers most cars, 303 adds UV defense."
+pillar: "interior"
 rubric: "Interior Cleaner · Buying Guide"
 deck: "Two products handle 90% of weekly maintenance for most home detailers. The other four cover edge cases the first two cannot."
 products:

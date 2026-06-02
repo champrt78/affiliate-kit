@@ -1,6 +1,7 @@
 ---
 title: "MTM Hydro PF22 vs Chemical Guys TORQ: Which Foam Cannon Wins?"
 description: "MTM Hydro PF22 vs Chemical Guys TORQ foam cannon compared on build, foam thickness, bottle size, and value for home detailers."
+pillar: "washing-and-foam"
 rubric: "Car Detailing · Head-to-Head"
 deck: "Two pressure-washer foam cannons that anchor every home detailing kit. The split comes down to brass build and dialed foam control versus a familiar brand and a wide-mouth bottle that is easy to fill."
 products:

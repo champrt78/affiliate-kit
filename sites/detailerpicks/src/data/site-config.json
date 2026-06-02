@@ -59,6 +59,50 @@
     "glass-care",
     "applicators-tools"
   ],
+  "navigation": {
+    "pillars": [
+      {
+        "slug": "washing-and-foam",
+        "label": "Washing & Foam",
+        "type": "commercial",
+        "categoryPillar": "washing-and-foam",
+        "blurb": "Shampoos, snow foam, and the foam cannons that lay it down, the safe first step in any wash.",
+        "hubKicker": "Buying guides"
+      },
+      {
+        "slug": "wheels-and-iron",
+        "label": "Wheels & Iron",
+        "type": "commercial",
+        "categoryPillar": "wheels-and-iron",
+        "blurb": "Wheel cleaners and iron removers that pull brake dust and fallout without touching your paint.",
+        "hubKicker": "Buying guides"
+      },
+      {
+        "slug": "ceramic-and-protection",
+        "label": "Ceramic & Protection",
+        "type": "commercial",
+        "categoryPillar": "ceramic-and-protection",
+        "blurb": "Ceramic sprays and coatings that add gloss and months of beading after the wash is done.",
+        "hubKicker": "Buying guides"
+      },
+      {
+        "slug": "drying-and-towels",
+        "label": "Drying & Towels",
+        "type": "commercial",
+        "categoryPillar": "drying-and-towels",
+        "blurb": "Drying towels that lift water fast and soft, the cheapest swirl insurance you can buy.",
+        "hubKicker": "Buying guides"
+      },
+      {
+        "slug": "interior",
+        "label": "Interior",
+        "type": "commercial",
+        "categoryPillar": "interior",
+        "blurb": "Cleaners for seats, carpet, plastics, and glass that freshen a cabin without leaving a greasy shine.",
+        "hubKicker": "Buying guides"
+      }
+    ]
+  },
   "brandsCovered": [
     "Chemical Guys",
     "Adam's Polishes",

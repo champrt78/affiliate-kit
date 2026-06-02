@@ -1,6 +1,7 @@
 ---
 title: "Best Wheel Cleaner for Brake Dust"
 description: "Six wheel cleaners for brake dust, picked by finish safety. Brake Buster for daily-driver dust, Sonax for the iron-killer reference, plus coated-wheel picks."
+pillar: "wheels-and-iron"
 rubric: "Wheel Cleaner · Buying Guide"
 deck: "Two products carry most of the wheel-cleaning workload. A third handles periodic iron decon. The other two cover mass-retail and gel-format slots."
 products:

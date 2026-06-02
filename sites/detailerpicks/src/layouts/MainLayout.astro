@@ -3,6 +3,7 @@ import SiteShell from "@affkit/shared-ui/SiteShell.astro";
 import AffiliateDisclosure from "@affkit/shared-ui/AffiliateDisclosure.astro";
 // Charcoal + electric blue + amber palette overrides
 import "../styles/site-tokens.css";
+import siteConfig from "../data/site-config.json";
 
 /* bgTheme — per-page detailing gutter theme. Defaults to "foam-cascade"
    when omitted. The shell paints the body and floats the cream page-shell on
@@ -41,10 +42,14 @@ const themeBackgrounds: Record<typeof bgTheme, string> = {
 };
 const pageBg = themeBackgrounds[bgTheme];
 
+// Primary nav: Home + each pillar (/topics/<slug>/) + About — matches the
+// satellite pattern. Guides/Reviews indexes stay reachable via the footer.
 const navItems = [
   { href: "/", label: "Home" },
-  { href: "/buyers-guides/", label: "Guides" },
-  { href: "/reviews/", label: "Reviews" },
+  ...siteConfig.navigation.pillars.map((p) => ({
+    href: `/topics/${p.slug}/`,
+    label: p.label,
+  })),
   { href: "/about/", label: "About" },
 ];
 

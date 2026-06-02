@@ -58,6 +58,7 @@ const reviews = defineCollection({
     description: z.string().max(160),
     rubric: z.string().optional(),
     deck: z.string().optional(),
+    pillar: z.string().optional(),   // FK → navigation.pillars[].slug
     product: z.object({
       name: z.string(),
       brand: z.string(),
@@ -95,6 +96,7 @@ const buyersGuides = defineCollection({
     description: z.string().max(160),
     rubric: z.string().optional(),
     deck: z.string().optional(),
+    pillar: z.string().optional(),   // FK → navigation.pillars[].slug
     products: z.array(z.object({
       name: z.string(),
       brand: z.string(),
@@ -160,6 +162,7 @@ const comparisons = defineCollection({
     description: z.string().max(160),
     rubric: z.string().optional(),
     deck: z.string().optional(),
+    pillar: z.string().optional(),   // FK → navigation.pillars[].slug
     products: z.array(comparisonProductSchema).min(2).max(3),
     winner: z.string().optional(),     // name of the recommended product (table highlight)
     verdict: bottomLineSchema,         // {verdict, supporting} — the winner call; Ray's gate

@@ -1,6 +1,7 @@
 ---
 title: "CarPro IronX vs Adam's Iron Remover: Which Fallout Remover Wins?"
 description: "CarPro IronX vs Adam's Iron Remover compared on chemistry, smell, coating safety, and value, and which iron and fallout remover most home detailers should buy."
+pillar: "wheels-and-iron"
 rubric: "Car Detailing · Head-to-Head"
 deck: "Two color-changing iron removers that turn purple as they dissolve brake dust and rail fallout. The split comes down to the original benchmark formula versus a lower-odor option that is easier to live with."
 products:

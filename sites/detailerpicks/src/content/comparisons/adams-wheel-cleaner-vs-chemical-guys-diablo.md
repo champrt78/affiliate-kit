@@ -1,6 +1,7 @@
 ---
 title: "Adam's Deep Wheel Cleaner vs Chemical Guys Diablo Gel: Which Wheel Cleaner Wins?"
 description: "Adam's Deep Wheel Cleaner vs Chemical Guys Diablo Gel on chemistry, dilution, coating safety, and value, and which most detailers should pick."
+pillar: "wheels-and-iron"
 rubric: "Car Detailing · Head-to-Head"
 deck: "Two pH-balanced wheel cleaners that show up on every short list. The split comes down to a ready-to-use color-changing spray versus a dilutable gel concentrate that stretches further per dollar."
 products:

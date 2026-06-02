@@ -1,6 +1,7 @@
 ---
 title: "Adam's Graphene Ceramic Spray Coating Review"
 description: "Spec-based review of Adam's Graphene Ceramic Spray Coating (12oz). Spray-and-wipe graphene protection, gloss, water beading, no hands-on testing."
+pillar: "ceramic-and-protection"
 rubric: "Ceramic Spray Coatings · Review"
 deck: "The spray-and-wipe graphene layer for home detailers who want roughly a year of gloss and beading without the working time of a professional installed coating."
 product:

@@ -1,6 +1,7 @@
 ---
 title: "Best Car Wash Soap for Ceramic-Coated Cars (and Foam Cannons)"
 description: "Six spec-verified soaps for ceramic-coated paint and foam-cannon use. Picks across the pH scale, two doctrines, budget to pro, plus a hard-water reset."
+pillar: "washing-and-foam"
 rubric: "Car Wash Soap · Buying Guide"
 deck: "Two genuinely opposed doctrines on what to put on a coated car. Five spec-verified picks across both schools and one acidic reset shampoo."
 products:

@@ -1,6 +1,7 @@
 ---
 title: "Best Foam Cannon for Pressure Washers"
 description: "Three pressure-washer foam cannons across the spec spectrum. MTM for build, Carbon Collective for weight, MJJC for the parts kit."
+pillar: "washing-and-foam"
 rubric: "Foam Cannon · Buying Guide"
 deck: "When seven cannons foam roughly the same, the differentiators are build quality, weight, and what's in the box."
 products:

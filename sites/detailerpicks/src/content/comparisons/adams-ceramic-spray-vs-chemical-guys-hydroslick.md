@@ -1,6 +1,7 @@
 ---
 title: "Adam's Graphene Ceramic Spray vs Chemical Guys HydroSlick: Which Wins?"
 description: "Adam's Graphene Ceramic Spray vs Chemical Guys HydroSlick HyperWax compared on form, durability, ease of use, and value for home detailers."
+pillar: "ceramic-and-protection"
 rubric: "Car Detailing · Head-to-Head"
 deck: "Two ceramic protectants that promise gloss and water beading without a pro install. The split comes down to a fast spray-on maintenance coat versus a committed gel that aims for a full year of protection."
 products:

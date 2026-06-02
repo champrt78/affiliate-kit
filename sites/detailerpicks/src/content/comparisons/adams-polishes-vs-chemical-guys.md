@@ -1,6 +1,7 @@
 ---
 title: "Adam's Polishes vs Chemical Guys: Which Detailing Brand Wins?"
 description: "Adam's Polishes vs Chemical Guys compared through each brand's flagship car wash soap, covering chemistry, value, and which ecosystem to build a kit around."
+pillar: "washing-and-foam"
 rubric: "Car Detailing · Head-to-Head"
 deck: "Two of the biggest names in consumer car care, compared through their flagship wash soaps. The split comes down to a tightly curated premium lineup versus a sprawling budget-friendly catalog you can build a whole kit from."
 products:
