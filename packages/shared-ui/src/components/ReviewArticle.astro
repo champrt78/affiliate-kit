@@ -13,7 +13,7 @@
  */
 import type { CollectionEntry } from "astro:content";
 import CTA from "./CTA.astro";
-import AffiliateDisclosure from "./AffiliateDisclosure.astro";
+import MethodBox from "./MethodBox.astro";
 import BottomLine from "./BottomLine.astro";
 import Media from "./Media.astro";
 import { cloakedLink, productSchema } from "@affkit/shared-utils";
@@ -221,7 +221,7 @@ const flaws = (data as any).flaws as Array<{ title: string; body: string }> | un
         guides per Ray's migrate-to-buy/skip, 2026-06-01). The old standalone
         .buyif section was removed to avoid showing buy/skip twice. */}
 
-    <AffiliateDisclosure siteName={siteName} variant="inline" />
+    <MethodBox siteName={siteName} />
 
     <div class="prose">
       <Content />

@@ -11,6 +11,7 @@
 import type { CollectionEntry } from "astro:content";
 import Media from "./Media.astro";
 import FaqList from "./FaqList.astro";
+import MethodBox from "./MethodBox.astro";
 import CTA from "./CTA.astro";
 import { cloakedLink } from "@affkit/shared-utils";
 
@@ -125,6 +126,8 @@ const faqLd = faq && faq.length > 0 ? {
             : verdict.supporting ? <p class="verdict__supporting">{verdict.supporting}</p> : null}
         </section>
       )}
+
+      <MethodBox siteName={siteName} />
 
       {/* ── Comparison table — products as columns, facts as rows, winner highlighted ── */}
       <section class="cmp-table-wrap" aria-label="Side-by-side comparison">

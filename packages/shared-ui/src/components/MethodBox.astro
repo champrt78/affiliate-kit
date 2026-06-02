@@ -1,0 +1,61 @@
+---
+/* <MethodBox /> — the prominent "How we evaluate" methodology box.
+   Revenue plan 2026-06-01, Workstream B (EEAT). The Dec-2025 helpful-content
+   update rewarded transparent methodology + first-hand/analysis signals and
+   punished spec-recitation. Our voice doctrine forbids hands-on claims, so the
+   defensible move (per the research) is to disclose the method clearly and make
+   it PROMINENT. This box also carries the FTC affiliate disclosure, so it
+   replaces the small inline AffiliateDisclosure. Token-mapped → auto-skins.
+
+   Optional `sources` prop carries an original-data signal (a number boosts
+   AI-Overview citation odds), e.g. "47 verified-owner reports across 3 models".
+   Falls back to a generic, still-truthful line when omitted. */
+interface Props {
+  siteName?: string;
+  sources?: string;
+}
+const { siteName = "We", sources } = Astro.props;
+const sourceLine = sources
+  ? `synthesized ${sources}`
+  : "synthesized verified-owner reports";
+const subject = siteName === "We" ? "We" : siteName;
+---
+<aside class="methodbox" aria-label="How we evaluate">
+  <span class="methodbox__eyebrow">How we evaluate</span>
+  <p class="methodbox__body">
+    {subject} compared these on published manufacturer specifications, {sourceLine},
+    and independent reviewer testing. We do not accept payment from brands for
+    placement or ranking. {siteName === "We" ? "We" : siteName} earns a commission
+    when you buy through our links, at no extra cost to you.
+  </p>
+</aside>
+
+<style>
+  .methodbox {
+    background: var(--color-paper-muted);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-brass);
+    border-radius: var(--radius-button, 8px);
+    padding: 14px 18px;
+    margin: var(--space-6, 1.5rem) 0;
+  }
+  .methodbox__eyebrow {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: var(--weight-bold, 700);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-brass);
+    margin-bottom: 6px;
+  }
+  .methodbox__body {
+    font-family: var(--font-sans);
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--color-paper-ink);
+    margin: 0;
+    opacity: 0.92;
+    max-width: 70ch;
+  }
+</style>
