@@ -2,73 +2,101 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Comparison verdicts — write the winner calls</title>
+<title>Comparison verdicts — pick the winner call</title>
 <style>
   :root{--bg:#0f1311;--panel:#171c1a;--panel2:#1e2522;--ink:#e8eae7;--muted:#9aa49f;--line:#2a322e;--brass:#c9a227;--good:#5fb877;--radius:14px;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;--serif:Georgia,serif;}
   *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;}
-  .wrap{max-width:880px;margin:0 auto;padding:0 24px 140px;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px 140px;}
   header.top{padding:32px 0 8px;} h1{font-family:var(--serif);font-size:30px;margin:0 0 6px;}
-  .sub{color:var(--muted);font-size:14.5px;max-width:74ch;}
+  .sub{color:var(--muted);font-size:14.5px;max-width:76ch;}
   .bar{position:sticky;top:0;z-index:20;background:rgba(15,19,17,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 0;margin-bottom:18px;display:flex;align-items:center;gap:16px;}
   .bar b{font-size:17px;color:var(--good)} .bar .spacer{flex:1}
   .bar button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);border-radius:8px;padding:7px 14px;cursor:pointer;} .bar button:hover{border-color:var(--brass)}
   h2{font-family:var(--serif);font-size:20px;margin:34px 0 4px;} h2 .s{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-left:8px;font-family:var(--sans);}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin:14px 0;}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin:16px 0;}
   .card.done{border-color:var(--good)}
-  .card__t{font-size:16px;font-weight:700;margin-bottom:3px;}
-  .card__slug{font-size:11.5px;color:var(--muted);font-family:ui-monospace,monospace;}
-  .win{display:flex;gap:8px;margin:12px 0 6px;flex-wrap:wrap;} .win .lab{font-size:12px;color:var(--muted);align-self:center;margin-right:4px;}
-  .win button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer;}
-  .win button.on{background:var(--good);color:#06270f;border-color:var(--good);font-weight:700;}
-  label{display:block;font-size:12px;color:var(--muted);margin:8px 0 3px;}
-  textarea{width:100%;font:inherit;font-size:13.5px;background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:9px;resize:vertical;}
-  .verdict{min-height:54px;} .supp{min-height:38px;}
+  .card__t{font-size:16px;font-weight:700;margin-bottom:2px;} .card__slug{font-size:11.5px;color:var(--muted);font-family:ui-monospace,monospace;margin-bottom:10px;}
+  .opt{border:1px solid var(--line);border-radius:10px;padding:11px 13px;margin:8px 0;cursor:pointer;transition:border-color .12s,background .12s;}
+  .opt:hover{border-color:var(--brass);} .opt.on{border-color:var(--good);background:rgba(95,184,119,.07);}
+  .opt__w{font-size:12px;font-weight:700;color:var(--good);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;}
+  .opt__v{font-size:13.5px;color:var(--ink);} .opt__s{font-size:12.5px;color:var(--muted);margin-top:6px;}
+  .edit{margin-top:10px;} .edit summary{font-size:12px;color:var(--muted);cursor:pointer;}
+  .edit label{display:block;font-size:11px;color:var(--muted);margin:8px 0 3px;}
+  .edit input,.edit textarea{width:100%;font:inherit;font-size:13px;background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px;}
+  .edit textarea{min-height:46px;resize:vertical;}
   code{background:var(--panel2);padding:1px 6px;border-radius:5px;font-size:11.5px;color:#cfe0d6;}
   .note{background:var(--panel);border:1px solid var(--brass);border-radius:var(--radius);padding:14px 18px;margin:14px 0;font-size:13.5px;color:var(--muted);} .note b{color:var(--ink)}
   #ex{position:fixed;inset:0;background:rgba(5,8,7,.9);display:none;align-items:center;justify-content:center;z-index:60;padding:24px;}
-  #ex .box{background:var(--panel);border:1px solid var(--brass);border-radius:12px;padding:18px;max-width:700px;width:100%;}
-  #ex textarea{min-height:340px;font-family:ui-monospace,Menlo,monospace;font-size:12px;} #ex .x{float:right;cursor:pointer;color:var(--muted);font-size:18px;}
+  #ex .box{background:var(--panel);border:1px solid var(--brass);border-radius:12px;padding:18px;max-width:720px;width:100%;}
+  #ex textarea{width:100%;min-height:340px;font-family:ui-monospace,Menlo,monospace;font-size:12px;background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px;} #ex .x{float:right;cursor:pointer;color:var(--muted);font-size:18px;}
 </style></head>
 <body><div class="wrap">
 <header class="top">
-  <h1>Comparison verdicts — write the winner calls</h1>
-  <p class="sub">All 12 comparison pages are built and live as <b>noindex drafts</b>. Each needs its <b>winner call</b> (your gate) before it publishes. For each: tap the winner, write a 1-2 sentence verdict (and an optional supporting line). Then <b>Copy</b> and paste back — I write them into the pages (flips them index-eligible) and run a pass to swap the placeholder links to cloaked <code>/go/</code> ones before they go live.</p>
+  <h1>Comparison verdicts — pick the winner call</h1>
+  <p class="sub">All 12 comparison pages are live as <b>noindex drafts</b>. I drafted <b>2 winner-call options</b> for each (a recommended pick + an alternate framing). Tap the one you want. Tweak the wording under "edit" if you like. Then <b>Copy</b> and paste back, and I write them in, flip the pages live, and swap the placeholder links to cloaked <code>/go/</code> ones.</p>
 </header>
-<div class="bar"><span>Verdicts written: <b id="done">0</b> / 12</span><span class="spacer"></span>
+<div class="bar"><span>Chosen: <b id="done">0</b> / 12</span><span class="spacer"></span>
   <button onclick="copyV(event)">Copy verdicts</button><button onclick="showEx()">View / export</button></div>
-<div class="note"><b>Preview any draft locally:</b> <code>pnpm --filter mywildlifecam preview</code> (or <code>detailerpicks</code>) then open <code>/comparisons/&lt;slug&gt;/</code>. The table + per-product cards render now; the verdict block appears once you write it.</div>
+<div class="note"><b>Preview a draft:</b> <code>pnpm --filter mywildlifecam preview</code> (or <code>detailerpicks</code>) then <code>/comparisons/&lt;slug&gt;/</code>. The verdict block fills in once you pick.</div>
 <div id="mwc"></div><div id="dtp"></div>
 </div>
 <div id="ex"><div class="box"><span class="x" onclick="ex.style.display='none'">✕</span><h3 style="margin:2px 0 10px;font-family:var(--serif)">Verdicts — paste back to Claude</h3><textarea id="exT" readonly></textarea></div></div>
 <script>
-const LSK="cmp-verdicts-v1";
+const LSK="cmp-verdicts-v2";
 const C=[
- {g:"mwc",slug:"spypoint-flex-vs-tactacam-reveal",t:"Spypoint Flex vs Tactacam Reveal X",a:"Spypoint Flex",b:"Tactacam Reveal X"},
- {g:"mwc",slug:"spypoint-flex-vs-moultrie-edge",t:"Spypoint Flex vs Moultrie Edge 2",a:"Spypoint Flex",b:"Moultrie Edge 2"},
- {g:"mwc",slug:"spypoint-flex-vs-bushnell-cellucore",t:"Spypoint Flex vs Bushnell CelluCORE 20",a:"Spypoint Flex",b:"Bushnell CelluCORE 20"},
- {g:"mwc",slug:"browning-strike-force-vs-stealth-cam",t:"Browning Strike Force Pro X vs Stealth Cam DS4K",a:"Browning Strike Force Pro X",b:"Stealth Cam DS4K Ultimate"},
- {g:"mwc",slug:"cellular-vs-sd-card-trail-cameras",t:"Cellular vs SD-card trail cameras",a:"Spypoint Flex (cellular)",b:"Browning Strike Force Pro X (SD-card)"},
- {g:"dtp",slug:"adams-wheel-cleaner-vs-chemical-guys-diablo",t:"Adam's Deep Wheel Cleaner vs Chemical Guys Diablo",a:"Adam's Deep Wheel Cleaner",b:"Chemical Guys Diablo Gel"},
- {g:"dtp",slug:"carpro-ironx-vs-adams-iron-remover",t:"CarPro IronX vs Adam's Iron Remover",a:"CarPro IronX",b:"Adam's Iron Remover"},
- {g:"dtp",slug:"adams-polishes-vs-chemical-guys",t:"Adam's vs Chemical Guys (brand / car wash)",a:"Adam's Car Wash Shampoo",b:"Chemical Guys Mr. Pink"},
- {g:"dtp",slug:"chemical-guys-vs-meguiars-car-wash",t:"Chemical Guys Mr. Pink vs Meguiar's Gold Class",a:"Chemical Guys Mr. Pink",b:"Meguiar's Gold Class"},
- {g:"dtp",slug:"mtm-hydro-foam-cannon-vs-chemical-guys-torq",t:"MTM Hydro PF22 vs Chemical Guys TORQ (foam cannon)",a:"MTM Hydro PF22",b:"Chemical Guys TORQ"},
- {g:"dtp",slug:"adams-ceramic-spray-vs-chemical-guys-hydroslick",t:"Adam's Graphene Ceramic Spray vs Chemical Guys HydroSlick",a:"Adam's Graphene Ceramic Spray",b:"Chemical Guys HydroSlick HyperWax"},
- {g:"dtp",slug:"rag-company-vs-chemical-guys-microfiber-towel",t:"Rag Company Gauntlet vs Chemical Guys Woolly Mammoth",a:"The Rag Company Gauntlet",b:"Chemical Guys Woolly Mammoth"},
+ {g:"mwc",slug:"spypoint-flex-vs-tactacam-reveal",t:"Spypoint Flex vs Tactacam Reveal X",o:[
+   {w:"Spypoint Flex",v:"For most hunters the Spypoint Flex is the safer default. The dual-SIM radio locks onto the stronger of two carriers, which removes the single biggest reason cellular cams go dark, and the free 100-photo plan keeps a lightly-checked camera running at no cost.",s:"Choose the Tactacam Reveal X if your spot already has rock-solid single-carrier coverage and you value battery life and daytime image quality over connectivity insurance."},
+   {w:"Tactacam Reveal X",v:"If your property has reliable coverage on one carrier, the Tactacam Reveal X is the stronger pick: longer real-world battery life, a no-glow flash, and the daytime image quality owner reports favor.",s:"Step to the Spypoint Flex if coverage is spotty, since its dual-SIM is the cheapest insurance against a dead camera."}]},
+ {g:"mwc",slug:"spypoint-flex-vs-moultrie-edge",t:"Spypoint Flex vs Moultrie Edge 2",o:[
+   {w:"Spypoint Flex",v:"The Spypoint Flex wins on running cost. Its free 100-photo plan and dual-SIM connectivity make it the lower-risk, lower-cost pick for most first cellular cameras.",s:"Pick the Moultrie Edge 2 if you want built-in GPS theft tracking and the longer battery life, and you do not mind paying for a plan."},
+   {w:"Moultrie Edge 2",v:"The Moultrie Edge 2 is the more feature-complete camera: GPS location, strong battery life, and tidy in-app tagging. It is the pick if you will pay for a plan and want the extras.",s:"Choose the Spypoint Flex if a genuinely free plan and dual-carrier connectivity matter more than GPS and battery."}]},
+ {g:"mwc",slug:"spypoint-flex-vs-bushnell-cellucore",t:"Spypoint Flex vs Bushnell CelluCORE 20",o:[
+   {w:"Bushnell CelluCORE 20",v:"For a no-fuss budget cellular cam, the Bushnell CelluCORE 20 is the value pick at around $100 with a no-glow flash, as long as your chosen carrier has coverage at the tree.",s:"Step to the Spypoint Flex if you want dual-SIM insurance and a free photo plan and can spend a little more."},
+   {w:"Spypoint Flex",v:"The Spypoint Flex earns the edge for its dual-SIM connectivity and free plan, which together lower the two biggest cellular-cam risks: dead coverage and creeping plan cost.",s:"The Bushnell CelluCORE 20 is the better buy if you want the lowest price and already know your single carrier is strong on site."}]},
+ {g:"mwc",slug:"browning-strike-force-vs-stealth-cam",t:"Browning Strike Force Pro X vs Stealth Cam DS4K",o:[
+   {w:"Browning Strike Force Pro X",v:"The Browning Strike Force Pro X is the better all-rounder of the two SD-card cams, with the faster, more accurate trigger and the longer battery life that decide most real-world sets.",s:"Consider the Stealth Cam DS4K Ultimate if image detail is your top priority and you check cameras often enough that battery life is less of a concern."},
+   {w:"Stealth Cam DS4K Ultimate",v:"If image detail is what you are after, the Stealth Cam DS4K Ultimate leads on resolution. It is the pick for close, well-lit sets where picture quality matters most.",s:"The Browning Strike Force Pro X is the safer everyday choice for trigger speed and battery life."}]},
+ {g:"mwc",slug:"cellular-vs-sd-card-trail-cameras",t:"Cellular vs SD-card trail cameras",o:[
+   {w:"Spypoint Flex (cellular)",v:"Go cellular if you cannot get to the camera often or want photos the moment they happen. The convenience and theft deterrence are worth the ongoing plan cost for most modern setups.",s:"Stay with an SD-card camera if you check it regularly, dislike subscriptions, or run it where there is no cell coverage. The battery lasts longer and there are no monthly fees."},
+   {w:"Browning Strike Force Pro X (SD-card)",v:"If you visit the property regularly and want zero recurring cost, an SD-card camera is still the smarter buy: longer battery, no plan, and no coverage worries.",s:"Choose cellular if remote access or theft alerts matter more than avoiding a monthly fee."}]},
+ {g:"dtp",slug:"adams-wheel-cleaner-vs-chemical-guys-diablo",t:"Adam's Deep Wheel Cleaner vs Chemical Guys Diablo",o:[
+   {w:"Adam's Deep Wheel Cleaner",v:"The Adam's Deep Wheel Cleaner is the safer everyday pick: pH-balanced, coating-friendly, and its color-change formula shows you exactly where embedded iron is lifting.",s:"Reach for the Chemical Guys Diablo gel when you want a clinging gel for heavier grime on uncoated wheels."},
+   {w:"Chemical Guys Diablo Gel",v:"Chemical Guys Diablo's gel consistency clings to vertical wheel faces and cuts built-up brake grime well, making it the pick for dirtier, uncoated wheels.",s:"Use the Adam's Deep Wheel Cleaner on coated or delicate finishes where a pH-balanced, iron-indicating formula is the safer call."}]},
+ {g:"dtp",slug:"carpro-ironx-vs-adams-iron-remover",t:"CarPro IronX vs Adam's Iron Remover",o:[
+   {w:"Adam's Iron Remover",v:"Adam's Iron Remover is the value winner. Owner reports put its iron-dissolving performance on par with the category benchmark at a noticeably lower price, with a far less harsh smell.",s:"CarPro IronX remains the reference if you want the original pro-shop formula and do not mind paying more for the name."},
+   {w:"CarPro IronX",v:"CarPro IronX is the established pro-tier standard and the safe choice if you want the formula detailers have trusted for years.",s:"Adam's Iron Remover is the better buy for most home detailers: comparable results, lower price, and a better smell."}]},
+ {g:"dtp",slug:"adams-polishes-vs-chemical-guys",t:"Adam's vs Chemical Guys (car wash / brand)",o:[
+   {w:"Chemical Guys Mr. Pink",v:"For building a first kit, Chemical Guys is the easier entry. Mr. Pink is a slick, affordable, widely available shampoo, and the lineup around it is huge.",s:"Adam's is the step up if you want a more premium feel and a tighter, higher-quality range, and you do not mind paying for it."},
+   {w:"Adam's Car Wash Shampoo",v:"Adam's earns the edge on quality and consistency. Its car wash shampoo is a slick, high-suds, pH-neutral wash, and the brand's guarantees reward buyers building a long-term kit.",s:"Chemical Guys is the better value entry point if breadth of products and lower price matter more than premium polish."}]},
+ {g:"dtp",slug:"chemical-guys-vs-meguiars-car-wash",t:"Chemical Guys Mr. Pink vs Meguiar's Gold Class",o:[
+   {w:"Chemical Guys Mr. Pink",v:"Mr. Pink is the enthusiast step-up: more suds, more slickness, and a pH-neutral formula safe on coatings. It is the pick once you care about wash technique.",s:"Meguiar's Gold Class is the grab-anywhere baseline, easy to find on a shelf and perfectly fine for a quick wash."},
+   {w:"Meguiar's Gold Class",v:"Meguiar's Gold Class is the convenient mainstream choice: available in nearly any auto aisle, conditioner-rich, and reliable for routine washes.",s:"Chemical Guys Mr. Pink is the better pick for enthusiasts who want maximum slickness and a coating-safe, pH-neutral wash."}]},
+ {g:"dtp",slug:"mtm-hydro-foam-cannon-vs-chemical-guys-torq",t:"MTM Hydro PF22 vs Chemical Guys TORQ (foam cannon)",o:[
+   {w:"MTM Hydro PF22",v:"The MTM Hydro PF22 is the pick if you own a pressure washer worth pairing it with: better build, thicker foam, and the parts support that makes it last.",s:"The Chemical Guys TORQ is the smarter entry buy if you are new to foam and want a capable cannon without the premium price."},
+   {w:"Chemical Guys TORQ",v:"For a first foam cannon, the Chemical Guys TORQ delivers thick foam at a friendly price and is the sensible starting point.",s:"Upgrade to the MTM Hydro PF22 when you want pro-grade build quality, denser foam, and replaceable parts."}]},
+ {g:"dtp",slug:"adams-ceramic-spray-vs-chemical-guys-hydroslick",t:"Adam's Graphene Ceramic Spray vs Chemical Guys HydroSlick",o:[
+   {w:"Adam's Graphene Ceramic Spray",v:"For most people the Adam's Graphene Ceramic Spray is the easier win: a fast spray-on, wipe-off maintenance coat that boosts gloss and water-beading in minutes.",s:"Choose the Chemical Guys HydroSlick HyperWax if you want maximum durability from a single application and do not mind the slower gel process."},
+   {w:"Chemical Guys HydroSlick HyperWax",v:"If you want the longest-lasting protection from one session, the Chemical Guys HydroSlick HyperWax gel is the pick, with the maker claiming up to a year of durability.",s:"The Adam's Graphene Ceramic Spray is the better everyday choice: far easier to apply and ideal as a quick maintenance topper."}]},
+ {g:"dtp",slug:"rag-company-vs-chemical-guys-microfiber-towel",t:"Rag Company Gauntlet vs Chemical Guys Woolly Mammoth",o:[
+   {w:"The Rag Company Gauntlet",v:"The Rag Company Gauntlet is the safer pick for soft, dark paint: a plush, high-GSM twist-loop that holds a lot of water and rides on its own layer to reduce marring.",s:"The Chemical Guys Woolly Mammoth is a strong, more affordable alternative that dries most cars well."},
+   {w:"Chemical Guys Woolly Mammoth",v:"The Chemical Guys Woolly Mammoth is the value plush drying towel, soaking up plenty of water for less money.",s:"Step to the Rag Company Gauntlet if you have soft or dark paint and want the plushest, safest-feeling dry."}]},
 ];
 const st=JSON.parse(localStorage.getItem(LSK)||"{}");
 function save(){localStorage.setItem(LSK,JSON.stringify(st));render();}
 function card(c){
-  const s=st[c.slug]||{w:"",v:"",sup:""};
+  const s=st[c.slug]||{pick:-1,w:"",v:"",sup:""};
   const el=document.createElement("div");el.className="card"+(s.v&&s.w?" done":"");
   el.innerHTML=`<div class="card__t">${c.t}</div><div class="card__slug">/comparisons/${c.slug}/</div>`;
-  const win=document.createElement("div");win.className="win";win.innerHTML='<span class="lab">Winner:</span>';
-  [["a",c.a],["b",c.b]].forEach(([k,nm])=>{const btn=document.createElement("button");btn.textContent=nm;if(s.w===nm)btn.className="on";btn.onclick=()=>{st[c.slug]={...s,w:s.w===nm?"":nm};save();};win.appendChild(btn);});
-  el.appendChild(win);
-  const vl=document.createElement("label");vl.textContent="Verdict (the winner call, 1-2 sentences)";el.appendChild(vl);
-  const vt=document.createElement("textarea");vt.className="verdict";vt.value=s.v||"";vt.placeholder="e.g. For most hunters the "+c.a+" is the pick: ...";vt.oninput=()=>{st[c.slug]={...st[c.slug],w:(st[c.slug]||{}).w||"",v:vt.value,sup:(st[c.slug]||{}).sup||""};localStorage.setItem(LSK,JSON.stringify(st));el.classList.toggle("done",!!(vt.value&&(st[c.slug]||{}).w));};el.appendChild(vt);
-  const sl=document.createElement("label");sl.textContent="Supporting line (optional)";el.appendChild(sl);
-  const sp=document.createElement("textarea");sp.className="supp";sp.value=s.sup||"";sp.oninput=()=>{st[c.slug]={...st[c.slug],sup:sp.value};localStorage.setItem(LSK,JSON.stringify(st));};el.appendChild(sp);
+  c.o.forEach((opt,i)=>{
+    const o=document.createElement("div");o.className="opt"+(s.pick===i?" on":"");
+    o.innerHTML=`<div class="opt__w">▸ ${opt.w}${i===0?" (recommended)":""}</div><div class="opt__v">${opt.v}</div><div class="opt__s">${opt.s}</div>`;
+    o.onclick=()=>{st[c.slug]={pick:i,w:opt.w,v:opt.v,sup:opt.s};save();};
+    el.appendChild(o);
+  });
+  const ed=document.createElement("details");ed.className="edit";ed.innerHTML="<summary>edit the chosen wording</summary>";
+  const mk=(lab,val,key,ta)=>{const l=document.createElement("label");l.textContent=lab;ed.appendChild(l);const f=document.createElement(ta?"textarea":"input");f.value=val||"";f.oninput=()=>{st[c.slug]={...(st[c.slug]||{pick:-1}),[key]:f.value};localStorage.setItem(LSK,JSON.stringify(st));};ed.appendChild(f);};
+  mk("Winner",s.w,"w",false);mk("Verdict",s.v,"v",true);mk("Supporting",s.sup,"sup",true);
+  el.appendChild(ed);
   return el;
 }
 function render(){
@@ -78,7 +106,7 @@ function render(){
   C.forEach(c=>(c.g==="mwc"?m:d).appendChild(card(c)));
   document.getElementById("done").textContent=C.filter(c=>{const s=st[c.slug]||{};return s.v&&s.w;}).length;
 }
-function vtext(){const o=["COMPARISON VERDICTS",""];C.forEach(c=>{const s=st[c.slug]||{};if(s.v&&s.w){o.push(`${c.slug}`,`  WINNER: ${s.w}`,`  VERDICT: ${s.v}`);if(s.sup)o.push(`  SUPPORTING: ${s.sup}`);o.push("");}});return o.join("\n");}
+function vtext(){const o=["COMPARISON VERDICTS",""];C.forEach(c=>{const s=st[c.slug]||{};if(s.v&&s.w){o.push(c.slug,`  WINNER: ${s.w}`,`  VERDICT: ${s.v}`);if(s.sup)o.push(`  SUPPORTING: ${s.sup}`);o.push("");}});return o.join("\n");}
 function copyV(e){navigator.clipboard.writeText(vtext()).then(()=>{const b=e.target,t=b.textContent;b.textContent="Copied ✓";setTimeout(()=>b.textContent=t,1400);});}
 function showEx(){document.getElementById("exT").value=vtext();document.getElementById("ex").style.display="flex";}
 render();
