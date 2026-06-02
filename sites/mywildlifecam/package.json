@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "postbuild": "node ../../scripts/prune-sitemap-noindex.mjs",
     "preview": "astro preview",
     "typecheck": "astro check"
   },
