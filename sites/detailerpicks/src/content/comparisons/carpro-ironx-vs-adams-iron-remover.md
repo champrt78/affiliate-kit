@@ -57,3 +57,5 @@ CarPro IronX is the formula most reviewers benchmark against, and that reputatio
 Adam's Iron Remover lands the same purple-bleeding result with a smell that owner reports describe as much easier to tolerate. For detailers who already shop the Adam's lineup, that plus the lower price is usually enough. Neither replaces a clay bar. Both belong in the decontamination step before you seal the paint.
 
 This comparison is built from manufacturer specifications, synthesized verified-buyer reports, and independent reviewer testing. We do not take payment from either brand.
+
+For the full breakdown of the benchmark formula here, see our [CarPro IronX review](/reviews/carpro-ironx-review). The [best wheel cleaner buying guide](/buyers-guides/best-wheel-cleaner-for-home-detailers) places IronX alongside the surfactant cleaners built for weekly washing, and the [wheels and iron](/topics/wheels-and-iron) hub gathers every wheel piece on the site.

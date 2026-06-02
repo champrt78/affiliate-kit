@@ -55,3 +55,5 @@ These two drying towels land on the same shortlist for home detailers, so the ch
 The Rag Company Gauntlet is the enthusiast cult favorite, a dense 1100 GSM twist-loop towel in a manageable 15 by 24 inch size, sold as a two-pack. The Chemical Guys Woolly Mammoth answers with a single oversized 1463 GSM sheet that drapes across a hood so you dry big flat panels in fewer passes.
 
 This comparison is built from manufacturer specifications, synthesized verified-buyer reports, and independent reviewer testing. We do not take payment from either brand.
+
+For the full breakdown of the twist-loop cult favorite, see our [The Rag Company Gauntlet review](/reviews/rag-company-gauntlet-review). The [best drying towels buying guide](/buyers-guides/best-drying-towel-for-home-detailers) ranks both against twist-loop, plush, and waffle options, and the [drying and towels](/topics/drying-and-towels) hub gathers every drying piece on the site.

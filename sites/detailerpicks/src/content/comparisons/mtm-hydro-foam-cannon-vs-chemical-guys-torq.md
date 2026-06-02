@@ -55,3 +55,5 @@ These two foam cannons land in the same aisle of every home detailing kit, so th
 The MTM Hydro PF22 carries the reputation as the cannon other cannons get measured against, thanks to its brass internals and stainless tip. The Chemical Guys TORQ EQP321 answers with a familiar brand, a large 32 oz bottle, and a thread-lock system that protects the bottle neck, all at a lower price.
 
 This comparison is built from manufacturer specifications, synthesized verified-buyer reports, and independent reviewer testing. We do not take payment from either brand.
+
+For the full three-cannon field these two pull from, see the [best foam cannon buying guide](/buyers-guides/best-foam-cannon-for-home-detailers). Since foam thickness depends as much on the soap as the cannon, the [best car wash soap buying guide](/buyers-guides/best-car-wash-soap-for-home-detailers) covers which shampoos publish foam-cannon dilution, and the [washing and foam](/topics/washing-and-foam) hub gathers every wash piece on the site.

@@ -57,3 +57,5 @@ Mr. Pink is a pure shampoo. It cleans, it foams, and it rinses away with nothing
 Gold Class goes the other direction. It carries paint conditioners that boost gloss and feed existing wax as you wash, which is great for maintaining a car that is already protected and that you want to keep looking warm. The same conditioners that help a finished car are exactly what you do not want right before decontamination. For most home detailers the honest answer is that these are not rivals so much as two tools, one for prep and one for maintenance.
 
 This comparison is built from manufacturer specifications, synthesized verified-buyer reports, and independent reviewer testing. We do not take payment from either brand.
+
+For the full breakdown of the pure-shampoo side, see our [Chemical Guys Mr. Pink review](/reviews/chemical-guys-mr-pink-review). The [best car wash soap buying guide](/buyers-guides/best-car-wash-soap-for-home-detailers) ranks Mr. Pink against five other coating-safe options, and the [washing and foam](/topics/washing-and-foam) hub gathers every wash piece on the site.

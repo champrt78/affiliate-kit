@@ -161,11 +161,11 @@ All specs verified directly from the manufacturer or the product's own retailer 
 
 Drying towels split into three constructions, and the right one depends on the job, not the highest number on the box.
 
-- **Twist-loop** towels, like The Rag Company's Gauntlet, use long bundles of twisted microfiber that pull a large volume of water in a single pass. This is the construction enthusiasts reach for to dry a whole vehicle quickly. They tend to run high in absorbency and price.
+- **Twist-loop** towels, like [The Rag Company's Gauntlet](/reviews/rag-company-gauntlet-review), use long bundles of twisted microfiber that pull a large volume of water in a single pass. This is the construction enthusiasts reach for to dry a whole vehicle quickly. They tend to run high in absorbency and price.
 - **Plush** towels, like the Chemical Guys Woolly Mammoth, Adam's Ultra Plush, and Adam's Jumbo Plush, use dense looped microfiber for a soft, high-capacity wipe. Adam's says a single Ultra Plush can dry a fullsize sedan. The high-GSM plush 2-packs (Adam's Jumbo at 1500 GSM, SMINDER at 1200 GSM) are the soak-it-all towels in this group.
 - **Waffle-weave** towels, like Dry Me A River at 390 GSM, are deliberately thin with a grid texture that wicks fast and lies flat. They are not meant to hold a gallon. They are meant for glass, mirrors, and final wipe-downs, and they pair with a plush or twist-loop primary towel rather than replacing it.
 
-A common home-detailer setup is **one plush or twist-loop primary towel plus a thin waffle towel for glass**. Buying a 2-pack of the primary keeps a dry spare ready and a clean one in the wash rotation.
+A common home-detailer setup is **one plush or twist-loop primary towel plus a thin waffle towel for glass**. Buying a 2-pack of the primary keeps a dry spare ready and a clean one in the wash rotation. For a control-versus-coverage matchup between two of these picks, see [The Rag Company Gauntlet vs Chemical Guys Woolly Mammoth](/comparisons/rag-company-vs-chemical-guys-microfiber-towel), and browse the full [drying and towels](/topics/drying-and-towels) hub for every drying piece on the site.
 
 ## Drying a ceramic-coated car: why lower-pile and twist-loop matter
 

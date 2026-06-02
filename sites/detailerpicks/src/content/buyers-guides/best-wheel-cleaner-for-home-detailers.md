@@ -200,7 +200,7 @@ Brake dust is not just grime. **It is largely ferrous iron particles shed by the
 
 **Iron removers** use thiocarbamate compounds that chemically bond to the iron particles and convert them into water-soluble complexes that rinse away. Sonax Full Effect, Meguiar's Ultimate, and CarPro Iron X all work this way, and the purple or red color change you see is the chemistry reacting with the dissolved iron. Because these formulas are pH-neutral or acid-free, they dissolve embedded brake dust without the etching risk of the old approach.
 
-That old approach is **acid cleaners and wheel brighteners**, which strip contamination fast but can etch clear coat, dull anodizing, and damage coated finishes. This guide deliberately excludes acid brighteners for that reason. For dissolving brake dust safely, **an acid-free iron remover for periodic decon plus a pH-neutral maintenance cleaner like P&S Brake Buster for weekly washing** covers the job without the finish risk.
+That old approach is **acid cleaners and wheel brighteners**, which strip contamination fast but can etch clear coat, dull anodizing, and damage coated finishes. This guide deliberately excludes acid brighteners for that reason. For dissolving brake dust safely, **an acid-free iron remover for periodic decon plus a pH-neutral maintenance cleaner like P&S Brake Buster for weekly washing** covers the job without the finish risk. Our [CarPro IronX review](/reviews/carpro-ironx-review) breaks down the benchmark iron remover in that decon step.
 
 ## Is it safe for my wheel finish?
 
@@ -212,6 +212,8 @@ Finish safety is the line that separates a smart wheel-cleaner buy from an expen
 - **Ceramic-coated wheels.** Sonax Full Effect and Adam's both carry explicit ceramic-coat-safe language and pair pH-neutral or acid-free chemistry, which makes them the safest picks for a coated wheel. The rule for coated wheels is to favor a pH-neutral non-acidic cleaner and to skip aggressive iron-remover decon as a weekly habit, using it only for occasional resets per the manufacturer's guidance.
 
 The **single most common shopping mistake** in this category is grabbing an acid wheel brightener or a high-alkaline formula for a sensitive finish. Read the pH claim, look for the specific finish named on the label, and treat any product that only says 'safe on most surfaces' as a reason to keep looking.
+
+For two head-to-heads inside this category, see [CarPro IronX vs Adam's Iron Remover](/comparisons/carpro-ironx-vs-adams-iron-remover) on the decon side and [Adam's Deep Wheel Cleaner vs Chemical Guys Diablo Gel](/comparisons/adams-wheel-cleaner-vs-chemical-guys-diablo) on the weekly-wash side. The full [wheels and iron](/topics/wheels-and-iron) hub gathers every wheel piece on the site.
 
 ## How we picked
 

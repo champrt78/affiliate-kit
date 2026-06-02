@@ -180,7 +180,7 @@ The honest answer for a first coating is a spray-on, and the reason is **forgive
 
 A wipe-on coating (CarPro CQUARTZ UK 3.0, Gtechniq Crystal Serum Light) is the opposite bargain. It chemically bonds to the paint, so the listing's multi-year durability claim depends on thorough decontamination and careful, even application in sections. Get it right and you get years. Get it wrong and high spots can require machine polishing. For a first attempt, the lower-stakes spray is the place to learn the motions.
 
-**The natural progression:** start with a spray topper, learn how the paint should feel and look after a wash, then step up to Gyeon CanCoat EVO as a true spray-on coating or to a wipe-on once you are comfortable doing the prep. Beginners who want the cheapest entry can start with the **under-$20 Turtle Wax topper** and decide later whether durability is worth the extra effort.
+**The natural progression:** start with a spray topper, learn how the paint should feel and look after a wash, then step up to the [Gyeon Q2 CanCoat EVO](/reviews/gyeon-q2-cancoat-evo-review) as a true spray-on coating or to a wipe-on once you are comfortable doing the prep. Beginners who want the cheapest entry can start with the **under-$20 Turtle Wax topper** and decide later whether durability is worth the extra effort.
 
 ## Best pick for black paint and the streak risk
 
@@ -189,10 +189,12 @@ Dark paint is the unforgiving case for any coating because high spots, streaks, 
 Two listing details point the way for black-car owners:
 
 - **Turtle Wax** states its spray can be applied in direct sunlight, which lowers the flash-too-fast risk that catches people working a dark hood in the open.
-- **Adam's Graphene's** own write-up describes letting the rainbow sheen dissipate up to two minutes before wiping, a longer, more controllable window that one buyer found forgiving.
+- **[Adam's Graphene's](/reviews/adams-graphene-ceramic-spray-review)** own write-up describes letting the rainbow sheen dissipate up to two minutes before wiping, a longer, more controllable window that one buyer found forgiving.
 - **Meguiar's** spray-on rinse-off method sidesteps streaking on dark paint entirely because there is no buff step to leave marks.
 
 Whichever you pick, work one panel at a time, out of direct midday heat where you can, and buff with a clean low-pile microfiber. **The technique matters more than the product** here, along with the working window the listing gives you.
+
+For a spray-versus-gel showdown between two of these protection styles, see [Adam's Graphene Ceramic Spray vs Chemical Guys HydroSlick](/comparisons/adams-ceramic-spray-vs-chemical-guys-hydroslick), and browse the full [ceramic and protection](/topics/ceramic-and-protection) hub for every coating piece on the site.
 
 ## How we picked
 

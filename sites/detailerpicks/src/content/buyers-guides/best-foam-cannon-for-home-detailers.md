@@ -144,7 +144,7 @@ There is a separate product class built for hoses, usually called a **foam gun**
 
 **Mostly no.** Most pH-neutral car wash soaps foam well in a cannon, and foam thickness depends as much on your pressure washer's GPM and the cannon's orifice size as on the soap itself. A 2.1 GPM or stronger machine produces thick foam with most quality shampoos, while a weaker 1.2 to 1.3 GPM washer benefits from a smaller 1.1mm orifice in place of the standard 1.25mm. That is why the MJJC Pro V3.0's in-box 1.1mm and 1.35mm orifices matter for tuning foam to your specific machine.
 
-Where dedicated foam soaps earn their place is **cling and dwell**. A high-foaming or foam-specific shampoo whips into a denser blanket that clings to vertical panels longer, which gives the soap more time to soften dirt before you rinse. The win is **dwell time, not peak foam height**. For which shampoos publish foam-cannon dilution guidance and how they compare, see the [car wash soap buying guide](/buyers-guides/best-car-wash-soap-for-home-detailers).
+Where dedicated foam soaps earn their place is **cling and dwell**. A high-foaming or foam-specific shampoo whips into a denser blanket that clings to vertical panels longer, which gives the soap more time to soften dirt before you rinse. The win is **dwell time, not peak foam height**. For which shampoos publish foam-cannon dilution guidance and how they compare, see the [car wash soap buying guide](/buyers-guides/best-car-wash-soap-for-home-detailers). For a direct head-to-head between two of the cannons here, see [MTM Hydro PF22 vs Chemical Guys TORQ](/comparisons/mtm-hydro-foam-cannon-vs-chemical-guys-torq), and browse the full [washing and foam](/topics/washing-and-foam) hub for every wash piece on the site.
 
 ## How we picked
 

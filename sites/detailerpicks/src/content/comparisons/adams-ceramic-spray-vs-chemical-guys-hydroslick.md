@@ -55,3 +55,5 @@ These two ceramic products both promise gloss and water beading you can get in a
 Adam's Graphene Ceramic Spray is the forgiving entry point, sprayed on and wiped off with no curing window to manage. Chemical Guys HydroSlick is the buyable HyperWax gel, worked in with an applicator and buffed off like a wax, with a maker claim of up to a year of protection from a single application.
 
 This comparison is built from manufacturer specifications, synthesized verified-buyer reports, and independent reviewer testing. We do not take payment from either brand.
+
+For a closer look at the spray-on side of this matchup, see our full [Adam's Graphene Ceramic Spray review](/reviews/adams-graphene-ceramic-spray-review). The [best ceramic coatings buying guide](/buyers-guides/best-ceramic-coating-for-home-detailers) ranks both against the wider field of toppers, kits, and wipe-on coatings, and the [ceramic and protection](/topics/ceramic-and-protection) hub gathers every protection piece on the site.

@@ -57,3 +57,5 @@ Adam's runs a curated premium lineup. The catalog is tighter, the packaging is p
 Chemical Guys runs the opposite playbook. The catalog is enormous, the prices skew lower, and Mr. Pink is the value staple that gets most people in the door. The upside is selection and cost. The downside is that the sheer number of products can feel overwhelming when you are starting out. For most home detailers the decision is less about which soap cleans better and more about which shelf you want to live with.
 
 This comparison is built from manufacturer specifications, synthesized verified-buyer reports, and independent reviewer testing. We do not take payment from either brand.
+
+For a deeper read on the Chemical Guys value staple, see our full [Chemical Guys Mr. Pink review](/reviews/chemical-guys-mr-pink-review). The [best car wash soap buying guide](/buyers-guides/best-car-wash-soap-for-home-detailers) ranks Mr. Pink against five other coating-safe shampoos, and the [washing and foam](/topics/washing-and-foam) hub gathers every wash piece on the site.

@@ -57,3 +57,5 @@ The Adam's spray is the no-thinking option. You point it at a dirty wheel, it cl
 Owner reports for both cluster around the same praise, that they cut brake dust without harsh acid fumes. The deciding factor for most home detailers is workflow. If you wash a couple of cars now and then, the spray is friendlier. If you wash often and watch your supply cost, the concentrate wins.
 
 This comparison is built from manufacturer specifications, synthesized verified-buyer reports, and independent reviewer testing. We do not take payment from either brand.
+
+If embedded brake-dust decontamination is the part you care about, the related [CarPro IronX vs Adam's Iron Remover](/comparisons/carpro-ironx-vs-adams-iron-remover) matchup covers the iron-remover step. The [best wheel cleaner buying guide](/buyers-guides/best-wheel-cleaner-for-home-detailers) ranks both of these against four more options, and the [wheels and iron](/topics/wheels-and-iron) hub gathers every wheel piece on the site.
