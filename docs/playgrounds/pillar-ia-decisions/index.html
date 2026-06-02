@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Pillar IA — MWC + DTP silos</title>
+<style>
+  :root{--bg:#0f1311;--panel:#171c1a;--panel2:#1e2522;--ink:#e8eae7;--muted:#9aa49f;--line:#2a322e;--brass:#c9a227;--good:#5fb877;--bad:#e0625f;--radius:14px;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;--serif:Georgia,serif;}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px 140px}
+  header.top{padding:32px 0 8px}h1{font-family:var(--serif);font-size:30px;margin:0 0 6px}
+  .sub{color:var(--muted);font-size:14.5px;max-width:78ch}
+  .bar{position:sticky;top:0;z-index:20;background:rgba(15,19,17,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 0;margin-bottom:18px;display:flex;gap:16px;align-items:center}
+  .bar .spacer{flex:1}.bar button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);border-radius:8px;padding:7px 14px;cursor:pointer}.bar button:hover{border-color:var(--brass)}
+  h2{font-family:var(--serif);font-size:22px;margin:34px 0 4px}h2 .s{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-left:8px;font-family:var(--sans)}
+  .note{background:var(--panel);border:1px solid var(--brass);border-radius:var(--radius);padding:14px 18px;margin:14px 0;font-size:13.5px;color:var(--muted)}.note b{color:var(--ink)}
+  .pillar{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;margin:12px 0}
+  .pillar.drop{opacity:.5;border-color:var(--bad)}
+  .prow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .prow input.name{font:inherit;font-size:15px;font-weight:700;background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 10px;min-width:230px}
+  .prow .slug{font-size:12px;color:var(--muted);font-family:ui-monospace,monospace}
+  .prow button{font:inherit;font-size:12px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);border-radius:8px;padding:6px 12px;cursor:pointer;margin-left:auto}
+  .prow button.dropped{background:var(--bad);color:#2a0707;border-color:var(--bad)}
+  .content{margin:9px 0 0;padding-left:4px;font-size:12.5px;color:var(--muted);line-height:1.7}
+  .content .tag{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--brass);margin-right:4px}
+  code{background:var(--panel2);padding:1px 6px;border-radius:5px;font-size:11.5px;color:#cfe0d6}
+  #ex{position:fixed;inset:0;background:rgba(5,8,7,.9);display:none;align-items:center;justify-content:center;z-index:60;padding:24px}
+  #ex .box{background:var(--panel);border:1px solid var(--brass);border-radius:12px;padding:18px;max-width:720px;width:100%}
+  #ex textarea{width:100%;min-height:320px;font-family:ui-monospace,Menlo,monospace;font-size:12px;background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px}#ex .x{float:right;cursor:pointer;color:var(--muted);font-size:18px}
+</style></head><body><div class="wrap">
+<header class="top"><h1>Pillar IA — the money-site silos</h1>
+<p class="sub">MWC and DTP have flat nav today (Home / Guides / Reviews / About). To build the silo the satellites already have, I need your sign-off on the <b>pillar set</b> — these become nav links + hub pages at <code>/topics/&lt;slug&gt;/</code> (permanent URLs), and each existing piece gets tagged to one. I grouped your real content below. <b>Rename any pillar</b> (edit the box), <b>Drop</b> any you don't want, then <b>Copy</b> and paste back. The slug auto-derives from the name; tell me if you want a specific slug.</p></header>
+<div class="bar"><span class="spacer"></span><button onclick="copyP(event)">Copy decisions</button><button onclick="showEx()">View / export</button></div>
+<div class="note"><b>Heads-up on thinness:</b> a hub with only one article is a bit sparse. Where a pillar has just 1 piece below, consider dropping it or merging it into a neighbor (I noted those). 2-3 well-filled pillars beats 5 thin ones.</div>
+<div id="mwc"></div><div id="dtp"></div>
+</div>
+<div id="ex"><div class="box"><span class="x" onclick="ex.style.display='none'">✕</span><h3 style="margin:2px 0 10px;font-family:var(--serif)">Pillar IA — paste back</h3><textarea id="exT" readonly></textarea></div></div>
+<script>
+const LSK="pillar-ia-v1";
+const SITES=[
+ {key:"mwc",name:"MyWildlifeCam",sub:"trail cameras",pillars:[
+   {id:"mwc-cellular",name:"Cellular Cams",content:["GUIDE best-cellular-trail-cameras","REVIEW bushnell-cellucore-20","REVIEW moultrie-edge-2","REVIEW spypoint-flex-g36","REVIEW spypoint-flex-m","REVIEW tactacam-reveal-x-3","VS cellular-vs-sd-card","VS spypoint-flex-vs-bushnell-cellucore","VS spypoint-flex-vs-moultrie-edge","VS spypoint-flex-vs-tactacam-reveal"]},
+   {id:"mwc-sdcard",name:"SD-Card Cams",content:["GUIDE best-trail-cameras-for-backyard-wildlife","REVIEW browning-strike-force-pro-x-1080","REVIEW stealth-cam-ds4k-ultimate","REVIEW gardepro-e5","REVIEW vikeri-trail-camera","VS browning-strike-force-vs-stealth-cam"]},
+   {id:"mwc-usecase",name:"By Use Case",thin:true,content:["GUIDE best-stealth-cam-trail-camera-by-use-case","(thin — only 1 piece; could merge into SD-Card or keep as an evergreen hub)"]},
+ ]},
+ {key:"dtp",name:"DetailerPicks",sub:"car detailing",pillars:[
+   {id:"dtp-wash",name:"Washing & Foam",content:["GUIDE best-car-wash-soap-for-home-detailers","GUIDE best-foam-cannon-for-home-detailers","VS chemical-guys-vs-meguiars-car-wash","VS adams-polishes-vs-chemical-guys","VS mtm-hydro-foam-cannon-vs-chemical-guys-torq"]},
+   {id:"dtp-wheels",name:"Wheels & Iron",content:["GUIDE best-wheel-cleaner-for-home-detailers","VS adams-wheel-cleaner-vs-chemical-guys-diablo","VS carpro-ironx-vs-adams-iron-remover"]},
+   {id:"dtp-ceramic",name:"Ceramic & Protection",content:["GUIDE best-ceramic-coating-for-home-detailers","REVIEW adams-graphene-ceramic-spray","VS adams-ceramic-spray-vs-chemical-guys-hydroslick"]},
+   {id:"dtp-drying",name:"Drying & Towels",content:["GUIDE best-drying-towel-for-home-detailers","VS rag-company-vs-chemical-guys-microfiber-towel"]},
+   {id:"dtp-interior",name:"Interior",thin:true,content:["GUIDE best-interior-cleaner-for-home-detailers","(thin — only 1 piece; keep if you'll add interior content, else merge)"]},
+ ]},
+];
+const slugify=s=>s.toLowerCase().replace(/&/g,"and").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const st=JSON.parse(localStorage.getItem(LSK)||"{}");
+function save(){localStorage.setItem(LSK,JSON.stringify(st));render();}
+function pillarEl(p){
+  const s=st[p.id]||{name:p.name,drop:false};
+  const el=document.createElement("div");el.className="pillar"+(s.drop?" drop":"");
+  const row=document.createElement("div");row.className="prow";
+  const inp=document.createElement("input");inp.className="name";inp.value=s.name;
+  inp.oninput=()=>{st[p.id]={...(st[p.id]||{}),name:inp.value,drop:(st[p.id]||{}).drop||false};slug.textContent="/topics/"+slugify(inp.value)+"/";localStorage.setItem(LSK,JSON.stringify(st));};
+  const slug=document.createElement("span");slug.className="slug";slug.textContent="/topics/"+slugify(s.name)+"/";
+  const btn=document.createElement("button");btn.textContent=s.drop?"Dropped":"Drop";if(s.drop)btn.className="dropped";
+  btn.onclick=()=>{st[p.id]={...(st[p.id]||{name:p.name}),drop:!s.drop};save();};
+  row.append(inp,slug,btn);el.appendChild(row);
+  const c=document.createElement("div");c.className="content";
+  c.innerHTML=p.content.map(x=>{const m=x.match(/^(GUIDE|REVIEW|VS) (.+)$/);return m?`<span class="tag">${m[1]}</span>${m[2]}`:`<em>${x}</em>`;}).join("<br>");
+  el.appendChild(c);return el;
+}
+function render(){
+  const m=document.getElementById("mwc"),d=document.getElementById("dtp");m.innerHTML="";d.innerHTML="";
+  SITES.forEach(site=>{const host=site.key==="mwc"?m:d;const h=document.createElement("h2");h.innerHTML=`${site.name} <span class="s">${site.sub} — ${site.pillars.length} proposed pillars</span>`;host.appendChild(h);site.pillars.forEach(p=>host.appendChild(pillarEl(p)));});
+}
+function copyText(){const o=["PILLAR IA DECISIONS",""];SITES.forEach(site=>{o.push(site.name.toUpperCase()+":");site.pillars.forEach(p=>{const s=st[p.id]||{name:p.name,drop:false};if(s.drop)o.push(`  DROP  ${p.name}`);else o.push(`  KEEP  ${s.name}  -> /topics/${slugify(s.name)}/`);});o.push("");});return o.join("\n");}
+function copyP(e){navigator.clipboard.writeText(copyText()).then(()=>{const b=e.target,t=b.textContent;b.textContent="Copied ✓";setTimeout(()=>b.textContent=t,1400);});}
+function showEx(){document.getElementById("exT").value=copyText();document.getElementById("ex").style.display="flex";}
+render();
+</script></body></html>
