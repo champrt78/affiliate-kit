@@ -61,6 +61,9 @@ faq:
     answer: "It depends on what you play. For fighting games, shmups, and arcade ports, a stick and buttons is the format those games were designed around, and many players strongly prefer it. For retro 2D platformers and most console RPGs, a controller with a good d-pad is cheaper and more practical. Buy the stick when your library leans arcade and fighting, not as a general-purpose pad."
   - question: "8BitDo Arcade Stick vs an all-button (leverless) controller, which one?"
     answer: "8BitDo sells both a traditional lever-and-buttons arcade stick and separate all-button leverless controllers. The classic stick reviewed here gives you the familiar arcade-cabinet feel with a physical joystick. The all-button format replaces the lever with directional buttons and is favored by some competitive fighting-game players for speed and consistency. Pick the lever stick for the arcade-cabinet feel, the all-button for a flat leverless layout, and confirm each model's platform support before buying."
+bottomLine:
+  verdict: "Buy it if your library leans fighting games and arcade ports. The 8BitDo Arcade Stick delivers the lever-and-buttons format those games were designed around, backed by a 4.6-star average across more than 4,400 ratings."
+  supporting: "It fits the player who wants a real stick over a d-pad and lives across Switch and PC, with Bluetooth, a 2.4GHz receiver, and wired USB-C covering couch and desk. Full remapping through Ultimate Software and a panel you can open to swap parts make it a stick built to be customized over time."
 ---
 
 ## Who This Is For

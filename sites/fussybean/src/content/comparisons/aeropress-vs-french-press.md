@@ -44,6 +44,9 @@ faq:
     answer: "The AeroPress makes the cleaner cup. Its paper micro-filter traps oils and fine sediment, so the result is closer to a refined immersion brew with very little grit. A French press uses a reusable steel mesh that lets oils and fines through, which produces a fuller, heavier body and a little sediment at the bottom of the cup. Neither is wrong, they are two different styles, but if low sediment is the priority the AeroPress wins."
   - question: "Is the AeroPress or French press better for travel?"
     answer: "The AeroPress, easily. It is light, made of tough plastic that survives a backpack, and the spent puck pops straight out so cleanup needs almost no water. A French press is a glass carafe that is heavier, more fragile, and messier to clean away from a sink. For camping, hotels, or a desk drawer, the AeroPress is the obvious pick. The French press earns its place at home where batch size and zero paper matter more."
+verdict:
+  verdict: "For most single-serving drinkers the AeroPress wins. Its paper micro-filter delivers a clean low-sediment cup, the spent puck pops straight out for a near-instant rinse, and it is light and tough enough to live in a bag."
+  supporting: "Choose the Bodum French press if you brew for two or more, since its 34oz carafe is built for batches the AeroPress simply cannot match."
 ---
 
 These two immersion brewers both cost very little and both forgive a beginner, so the choice is about the cup and the context, not the price. The AeroPress optimizes for a clean cup, fast cleanup, and travel. The French press optimizes for body, batch size, and never buying a filter again.

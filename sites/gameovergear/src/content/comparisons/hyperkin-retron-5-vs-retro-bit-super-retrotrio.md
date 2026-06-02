@@ -44,6 +44,9 @@ faq:
     answer: "Not exactly, and the two take different paths. The Hyperkin RetroN 5 reads original cartridges but plays them through an emulation layer, which is what enables its save states, filters, and HD output, at the cost of the accuracy purists chase. The Retro-Bit Super RetroTRIO leans on hardware-based playback, closer in spirit to the original consoles, with fewer software features. Neither is a perfect stand-in for the real hardware on a CRT, so pick based on whether you value features and HD convenience or a more hardware-faithful approach."
   - question: "Which one supports more cartridge types?"
     answer: "The Hyperkin RetroN 5 covers more on paper, reading NES, SNES, Genesis, and the Game Boy, Game Boy Color, and Game Boy Advance family, plus Famicom with the right setup. The Retro-Bit Super RetroTRIO focuses on three systems, NES, SNES, and Genesis. If your library spans handheld carts and multiple home systems, the RetroN 5's breadth is the draw. If you only need the big three home consoles, the Super RetroTRIO covers them in a simpler box."
+verdict:
+  verdict: "For most multi-cart buyers the RetroN 5 wins on breadth and features: it reads NES, SNES, Genesis, and the Game Boy family, then adds HDMI output, save states, and on-screen filters the RetroTRIO lacks."
+  supporting: "Choose the Super RetroTRIO if emulation accuracy bothers you and you prefer hardware-based playback, accepting NES, SNES, and Genesis only with fewer on-screen features."
 ---
 
 These two clone consoles both play original cartridges, so the choice is not about whether they accept your carts. It is about how they play them and how much you want the box to do.

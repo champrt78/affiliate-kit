@@ -57,6 +57,9 @@ faq:
     answer: "IronX is the formula most independent reviewers benchmark against, so other iron removers tend to get framed by how close they get to it. Owner reports put the core iron-dissolving performance of milder, lower-priced alternatives like the one in the Adam's lineup on par with IronX, with the main differences being a less harsh smell and a lower price. Part of the IronX premium reflects its reference-formula reputation rather than a measured performance gap."
   - question: "Is CarPro IronX worth it?"
     answer: "For the buyer who wants the reference formula, yes. IronX is the iron remover most reviewers treat as the benchmark, it bleeds aggressively on heavy fallout, and CarPro positions it as pH-neutral and acid-free for use on paint, wheels, and coated finishes. The honest caveats from owner reports are the strong sulfur smell and a price above some comparable removers. If a milder smell or a lower price is the deciding axis, a comparable iron remover gets you most of the way. If you want the formula everything else is measured against, IronX is it."
+bottomLine:
+  verdict: "Buy it. IronX is the iron remover the rest of the category gets measured against, and it earns that status by bleeding hard on embedded brake-dust and rail fallout while staying pH-neutral and acid-free per CarPro."
+  supporting: "It is built for the enthusiast running a proper decontamination step before clay, wax, or a coating, and the purple bleed gives a clear visual cue that the iron is dissolving. The main thing to plan around is the strong sulfur odor it throws as it reacts, so good ventilation matters."
 ---
 
 ## Who This Is For

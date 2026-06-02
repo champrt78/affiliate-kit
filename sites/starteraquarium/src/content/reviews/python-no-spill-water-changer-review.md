@@ -59,6 +59,9 @@ faq:
     answer: "Yes. The system includes a gravel tube, so while you drain the tank you sink the tube into the substrate and it lifts debris out of the gravel the same way a standalone gravel vacuum does. That means the water change and the gravel cleaning happen in one pass, which is part of why keepers say it cuts maintenance time so much."
   - question: "Is the Python worth it for a beginner?"
     answer: "It is worth it for the beginner whose tank is far from a sink or large enough that buckets are a chore, because the recurring owner theme is that it makes water changes easy enough that people actually keep up with them. For a small tank a few steps from a faucet, a cheap siphon and a bucket may be all you need. The deciding factors are tank distance, tank size, and whether your faucet will accept the adapter."
+bottomLine:
+  verdict: "The Python turns the worst chore in fishkeeping into a few minutes at the sink, and the recurring owner theme is that it is the reason they actually keep up with water changes. No buckets, no spills, no mouth-siphoning, and the gravel tube cleans the substrate in the same pass."
+  supporting: "Made for the keeper whose tank is far from a sink or large enough that hauling buckets is the real chore. Confirm your faucet takes the brass adapter first, since the whole system hangs on that connection."
 ---
 
 ## Who This Is For

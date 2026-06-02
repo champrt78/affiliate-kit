@@ -45,6 +45,9 @@ faq:
     answer: "Yes. Both are cellular cameras, so phone delivery depends on an ongoing data plan billed separately from the hardware. The Reveal X starts around $5 per month and can be suspended during the off-season. The Edge 2 uses a Moultrie Mobile plan tiered by photo volume. Factor the plan cost into the decision, not just the camera price."
   - question: "Which one is easier to set up?"
     answer: "The Moultrie Edge 2, for two reasons. It auto-connects nationwide so you never pick a carrier, and its built-in memory means there is no class-10 SD card to buy or format. The Reveal X is quick to set up too, but it asks you to choose AT&T or Verizon at purchase and to supply a compatible SD card."
+verdict:
+  verdict: "For most cellular setups the Tactacam Reveal X is the smarter buy. It costs less, triggers faster, and its plans can be paused in the off-season, which keeps the camera cheap to run year round."
+  supporting: "Choose the Moultrie Edge 2 if your land sits on the edge of coverage, since it picks the stronger carrier for you and needs no SD card."
 ---
 
 These two land in the same sub-$150 cellular bracket and the same short lists, so the choice is rarely about price. It comes down to two trade-offs. Trigger speed and plan flexibility against carrier simplicity and storage.

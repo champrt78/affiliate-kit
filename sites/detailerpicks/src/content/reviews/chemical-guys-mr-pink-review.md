@@ -57,6 +57,9 @@ faq:
     answer: "Mr. Pink is a pH-balanced maintenance soap rather than a dedicated stripping wash, so it is not designed to aggressively remove sealant or coating. Owner reports do note it can wear a wax-style topper faster than a wax-infused shampoo would, which the detailing community generally considers appropriate for owners on a coating-care path who do not want to keep re-depositing wax. For a full strip before applying a new coating, a dedicated prep wash is the right tool."
   - question: "Is Mr. Pink worth it?"
     answer: "For the buyer it targets, yes. It sits at an under-ten-dollar entry price, is widely stocked at parts stores, and clears the bar of being pH-balanced and coating-safe with strong foam. The honest caveat from owner reports is that its contact-wash slickness trails dedicated maintenance shampoos, so a buyer chasing the safest possible glide on soft dark paint will spend more elsewhere. As a first car wash soap for the grocery-aisle buyer, it earns its slot."
+bottomLine:
+  verdict: "Buy it as a first soap. At around ten dollars Mr. Pink clears the only bar that matters for a starter shampoo: pH-balanced, coating-safe, and high-foam, with the convenience of being stocked at most parts stores."
+  supporting: "It fits the first-time detailer, gift buyer, or daily-driver owner who wants to wash safely without overthinking the chemistry, and the wax-free formula keeps a ceramic-coated car clean without leaving a film. The foam lifts grit before the mitt touches paint, which is the part that protects the finish."
 ---
 
 ## Who This Is For

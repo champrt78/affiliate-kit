@@ -59,6 +59,9 @@ faq:
     answer: "It depends on your collection. If your carts span several families, the RetroN 5 consolidates them into one HDMI box, which is its strongest case at the $179.95 listed price. If you only play one system, a dedicated single-system clone or the original console is cheaper and often more accurate. Buy the RetroN 5 to consolidate multiple systems, not as a single-system player."
   - question: "RetroN 5 HD vs an FPGA console, which is more accurate?"
     answer: "An FPGA-based console recreates original hardware behavior in programmable logic and is generally considered more accurate than emulation, which is why purists prefer it. The RetroN 5 is emulation-based and trades some of that accuracy for broad multi-family cartridge support in a single affordable box. Pick FPGA for accuracy on fewer systems, the RetroN 5 for breadth across many cartridge families at a lower price."
+bottomLine:
+  verdict: "Buy it to consolidate a shelf into one box. The RetroN 5 HD plays an unusually wide range of carts across five families over a single HDMI input, and adds save states and on-screen menus the original consoles never offered."
+  supporting: "It is built for the collector whose carts span multiple generations and who wants modern conveniences on old games. The breadth is the headline, and a 4.1-star average across more than 1,700 ratings backs the read that it does the consolidation job it is bought for."
 ---
 
 ## Who This Is For

@@ -59,6 +59,9 @@ faq:
     answer: "Not necessarily, but it is optional. A hang-on-back will keep a 20 gallon healthy and is simpler and cheaper. A canister like the 107 makes sense on a small tank when you want the filter hidden in the cabinet, value the larger media capacity for a heavier-stocked or planted tank, or prefer the quiet sealed design. If those reasons matter to you, the 107 is a reasonable choice on a small tank. If not, a hang-on-back is the lower-friction pick."
   - question: "Is the Fluval 107 worth it?"
     answer: "For a beginner who specifically wants hidden, high-capacity, quiet filtration on a tank up to 30 gallons, yes. The Fluval canister line is a long-running hobby staple and owners praise the 107 for quiet, sealed, dependable operation. The honest caveats are that it costs more than a hang-on-back, takes longer to set up, and is more of a project to clean. If you want the simplest cheapest filter for a first tank, choose a hang-on-back. If you want the canister benefits and accept the trade-offs, the 107 earns it."
+bottomLine:
+  verdict: "If you specifically want hidden, high-capacity, quiet filtration on a tank up to 30 gallons, the 107 is the small-tank canister to get. The Fluval Performance line is a hobby staple, and owners praise this one for quiet, sealed, dependable running with large multi-stage media baskets."
+  supporting: "Made for the keeper who wants the filter out of sight in the cabinet and accepts a little more involvement to get there. A hang-on-back is the simpler, cheaper pick if those canister benefits do not matter to you."
 ---
 
 ## Who This Is For

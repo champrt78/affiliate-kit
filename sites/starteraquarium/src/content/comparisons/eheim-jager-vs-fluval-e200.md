@@ -45,6 +45,9 @@ faq:
     answer: "That is the whole reason it earns its reputation. The Jager uses a calibrated thermostat with a plus-or-minus-0.5-degree claim, which is what separates it from genuinely cheap unregulated heaters that can swing the temperature or stick on, the failure mode that actually harms fish. Owner reports cite years of steady, hands-off running. Any heater can eventually fail, so a separate stick-on or floating thermometer to spot-check is still smart, but as set-and-forget heaters go the Jager is the dependable default."
   - question: "Is the Fluval E200 digital display worth paying for?"
     answer: "It depends on what reassures you. The E200 shows the actual water temperature on an LCD, flashes a color warning when the reading drifts from your set point, and includes a guard around the hot glass. For a nervous first-time keeper that visible feedback is genuinely calming and a small price step over the Jager. The counterpoint is that more electronics mean more that can eventually break, where the Jager's simpler dial design has a longer hands-off track record. Pick the E200 for the screen and guard, the Jager for the longest proven simplicity."
+verdict:
+  verdict: "For most first-tank keepers the Eheim Jager wins because its calibrated thermostat and tight plus-or-minus-0.5-degree claim are what separate it from cheap unregulated heaters, and owner reports cite years of steady hands-off running."
+  supporting: "Choose the Fluval E200 if you want the exact water temperature on a screen, a warning when it drifts, and a guard around the hot glass, none of which the dial-only Jager provides."
 ---
 
 These two heaters cost almost the same, so the choice is not about price. It is about whether you want the simplest proven design or the one with a screen and a guard.

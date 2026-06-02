@@ -56,6 +56,9 @@ faq:
     answer: "It is straightforward but rewards a little technique. Like most pour-over, a steady controlled pour gives the best, most even extraction, which is easier with a gooseneck kettle, and a scale helps with consistency. It still makes good coffee without them, but to get the clean, bright cup the Chemex is known for, the pour and the supporting gear matter more than with an immersion brewer like a French press."
   - question: "Is the Chemex 6-Cup Classic worth it?"
     answer: "For the brewer who wants a clean, bright cup, brews for a small group, and likes a carafe that doubles as a design piece, it lines up well, which is why our scorecard scores Value 8.0 and Brew Control 8.0 out of 10. The honest caveats are that it uses proprietary filters as a recurring cost, it is glass and can break, and the clean cup is not for someone who wants a heavier body. If you want a single-cup brewer, a full-bodied cup, or a travel-tough one, look elsewhere. If the clean carafe brew is the goal, the Chemex is the icon for a reason."
+bottomLine:
+  verdict: "If a clean, bright cup served from a carafe that looks like a museum piece is the goal, the Chemex is the icon for a reason. The thick bonded filter strips oils and sediment for a tea-like clarity, and the one-piece carafe brews and serves a small group in one go."
+  supporting: "Made for the brewer who wants clarity and a design object on the counter and brews for two people or a few guests at a time. The trade-off is the proprietary filters, a recurring cost tied to that clean result."
 ---
 
 ## Who This Is For

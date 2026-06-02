@@ -58,6 +58,9 @@ faq:
     answer: "The Bambino is about 7.7 inches wide, which is the narrowest in Breville's espresso lineup and the reason it fits counters where a wider machine will not. The trade-off for that slim body is a smaller water tank and drip tray than larger machines."
   - question: "Is the Breville Bambino worth it?"
     answer: "For the small-counter first-espresso buyer, the spec sheet and owner sentiment line up in its favor, which is why our scorecard scores Footprint 9.5 and Value 8.0 out of 10. It gives you a 54mm commercial-style portafilter, fast heat-up, and real semi-automatic espresso in the smallest footprint Breville sells. The honest caveat is that it has no grinder, so the true cost is the machine plus a separate burr grinder. Factor that in and it is a strong entry. If you want the grinder built in, step up to the Barista Express instead."
+bottomLine:
+  verdict: "The Bambino is the first-espresso pick for anyone whose counter has been the obstacle. At about 7.7 inches wide it still uses a real 54mm portafilter, a 15 bar pump, and a heater ready in seconds, so it delivers genuine semi-automatic espresso where a wider machine will not fit."
+  supporting: "Made for the small-counter beginner stepping up from pods who is ready to learn to dial in a shot. The honest catch is there is no grinder, so the true cost is the machine plus a separate burr grinder."
 ---
 
 ## Who This Is For

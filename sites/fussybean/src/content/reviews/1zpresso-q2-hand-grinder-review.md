@@ -58,6 +58,9 @@ faq:
     answer: "The Q2 uses a numbered internal adjustment, so each setting is a specific number you can write down and return to. That repeatability is the practical benefit over a grinder you adjust by feel. The trade-off is that internal adjustment is changed at the burr rather than via a quick external dial, so it is precise but a little slower to move between very different settings."
   - question: "Is the 1Zpresso Q2 worth it?"
     answer: "For the traveler or small-space brewer who wants real burr quality in a pocket-size grinder, the spec and owner sentiment line up in its favor, which is why our scorecard scores Footprint 9.5 and Value 8.5 out of 10. The build, the conical burrs, and the repeatable numerical adjustment are well above what the size and price suggest. The honest caveats are that it is built for filter coffee rather than espresso, it holds only a single brew at a time, and it is manual effort every cup. If those fit your use, it is a strong pick. If you grind large batches or want hands-off grinding, an electric is the better spend."
+bottomLine:
+  verdict: "The Q2 S is the grinder to buy when packability is the whole point. It delivers a genuine conical-burr grind and repeatable numbered settings in a body small enough to slip inside an AeroPress, and the spec sheet and owner reports both rate it well above its size and price."
+  supporting: "Built for the traveler, camper, or small-kitchen brewer making pour-over, drip, French press, or AeroPress. The main caveat is the single-brew capacity, so anyone grinding for a group will be refilling and cranking more than once."
 ---
 
 ## Who This Is For

@@ -59,6 +59,9 @@ faq:
     answer: "No. The Jager is an analog thermostat heater with a setpoint dial and no built-in display, so you read the actual water temperature on a separate aquarium thermometer. Budget a couple of dollars for a stick-on or floating thermometer and place it on the opposite side of the tank from the heater to confirm the whole tank is at temperature, not just the water right at the element."
   - question: "Is the Eheim Jager good for a beginner?"
     answer: "It is a strong beginner heater for someone willing to learn two habits: handle the glass body gently, and unplug it before water changes. In exchange you get an accuracy claim of about plus or minus 0.5 degrees Celsius and a line with a long reputation for steady, multi-year service. A beginner who wants zero learning curve and a digital readout might prefer a shatter-resistant digital heater, but for reliability per dollar the Jager is one of the most recommended picks in the hobby."
+bottomLine:
+  verdict: "For reliability per dollar, the Jager is one of the most recommended heaters in the hobby, and the spec backs the reputation: an Eheim-listed accuracy of about plus or minus 0.5 degrees Celsius from an analog dial, with a long owner record of steady multi-year service."
+  supporting: "Built for the keeper who wants temperature handled by something dependable rather than clever. It asks for two habits in return, gentle handling of the glass body and unplugging it before water changes so it never runs dry in air."
 ---
 
 ## Who This Is For

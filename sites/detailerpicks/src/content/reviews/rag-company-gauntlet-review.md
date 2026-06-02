@@ -57,6 +57,9 @@ faq:
     answer: "The two things that protect paint are a clean towel and a properly washed surface. Wash and decontaminate the car first so there is no grit for the towel to drag, keep the towel off the ground, and launder it separately from cotton towels and without fabric softener, which can clog the pile. The Gauntlet's wrapped edges and twist-loop pile reduce marring risk by design, but technique and a clean towel are what actually prevent swirls."
   - question: "Is The Rag Company Gauntlet worth it?"
     answer: "For the buyer who wants a controllable, coating-safe drying towel, yes. It is the towel enthusiasts keep recommending, a dense 1100 GSM twist-loop that owner reports praise for drinking water fast, with soft wrapped edges that reduce marring risk, sold as a value two-pack. The honest caveat is that the 15-by-24 size covers less per pass than an oversized sheet, so a buyer who mostly dries big flat panels on a truck may prefer the larger format. For control, paint safety, and two towels per pack, the Gauntlet earns its cult status."
+bottomLine:
+  verdict: "Buy it. The Gauntlet is the towel enthusiasts keep recommending for a reason: a dense 1100 GSM twist-loop that owner reports praise for drinking water fast, with wrapped edges that keep marring risk low on coated and freshly waxed paint."
+  supporting: "It fits the weekend enthusiast and coating-care owner who values control on curves, mirrors, and tight panels, and the two-pack means one towel stays clean while the other works. For dark, soft paint where swirl risk is the central worry, the plush gliding pile is the appeal."
 ---
 
 ## Who This Is For

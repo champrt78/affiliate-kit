@@ -55,6 +55,9 @@ faq:
     answer: "Timemore sells several close-named C3 models. The standard C3 reviewed here has a 25g capacity, a CNC stainless conical burr, and a fixed handle. The C3 ESP is retuned with finer steps for espresso. The C3S and C3 Pro variants add upgrades like a different burr coating or a foldable handle. Because the names are close and the line changes over time, confirm the exact burr, adjustment, and intended brew range on the listing before buying."
   - question: "Is the Timemore Chestnut C3 worth it?"
     answer: "For the budget-minded filter-coffee brewer it lines up well, which is why our scorecard scores Value 9.0 and Build Quality 8.5 out of 10. The CNC conical burr and metal body are widely described as outclassing the price, and the numbered internal adjustment is repeatable. The honest caveats are that espresso is reachable but not its strong suit, the 25g capacity is a single brew, and it is manual effort every cup. If those fit your use, it is a strong first grinder. If you grind large batches, want hands-off grinding, or pull daily espresso, look elsewhere."
+bottomLine:
+  verdict: "The C3 is the budget hand grinder reviewers keep naming as the one that punches above its tier. A CNC conical burr and a metal body, with build and grind quality owners say outclass the price, make it the obvious first real grinder for filter coffee, which is why it scores Value 9.0."
+  supporting: "Made for the budget-minded brewer making pour-over, drip, French press, or AeroPress who wants real burr quality well under the price of a benchtop electric. The caveats are the 25g single-brew capacity and the daily hand-cranking, both inherent to a compact manual grinder."
 ---
 
 ## Who This Is For

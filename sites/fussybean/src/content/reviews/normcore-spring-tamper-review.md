@@ -55,6 +55,9 @@ faq:
     answer: "The model ships with all three so you can choose. Thirty pounds is the most commonly cited target and a reasonable default for most setups, which is why many owners install it and leave it. Lighter springs let you experiment with a softer tamp. The practical point is that whichever you pick, the spring delivers that same pressure every time, which is the consistency the tool is built to provide."
   - question: "Is the Normcore spring tamper worth it?"
     answer: "For the espresso maker who wants repeatable tamping without paying boutique-tamper prices, it lines up strongly, which is why our scorecard scores Tamp Consistency 9.0 and Value 9.0 out of 10. It delivers calibrated, even pressure at a price far below high-end tampers, and it is a common first upgrade for newer baristas removing a variable. The honest caveats are that it only solves the pressure variable, the base must match your 58mm basket, and some experienced hand-tampers prefer a solid tamper. If those fit, it is an easy recommendation."
+bottomLine:
+  verdict: "For the newer espresso maker still dialing in, the Normcore is an easy recommendation. The calibrated spring releases at the same force every shot, so it removes tamp pressure from the list of variables you are juggling, and it does it at a fraction of a boutique tamper's price."
+  supporting: "Made for the buyer with a 58mm portafilter who wants repeatable tamping without learning to feel 30 pounds by hand. The honest limit is that it solves only the pressure variable, so grind, dose, and distribution still matter as much."
 ---
 
 ## Who This Is For

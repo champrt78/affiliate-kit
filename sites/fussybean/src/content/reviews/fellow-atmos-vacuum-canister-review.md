@@ -54,6 +54,9 @@ faq:
     answer: "Match it to how you buy beans. The 1.2L reviewed here holds roughly a pound, which suits most home buyers who keep one bag going. Fellow also sells smaller 0.4L and 0.7L sizes for those who buy less at a time or want to split roasts. A canister noticeably larger than your usual bag leaves more air to evacuate and is harder to keep efficiently sealed, so sizing close to your bag is the better fit."
   - question: "Is the Fellow Atmos worth it?"
     answer: "For the buyer who purchases larger bags, wants beans protected over days or weeks, and likes a steel canister that looks the part, it lines up, which is why our scorecard scores Build Quality 8.5 and Freshness Sealing 8.0 out of 10. The honest caveats are that the freshness gain is incremental rather than magic, it costs well above a plain jar, and the vacuum is created by hand and can need re-pumping. If you finish a bag in days or just want the cheapest seal, a basic airtight jar does most of the job. If slowing staling on larger bags and the design matter, the Atmos earns its place."
+bottomLine:
+  verdict: "Recommended only if the math fits your habits: the freshness benefit is incremental, not magic, so the Atmos pays off for bulk buyers and barely registers for anyone finishing a bag in days. It slows staling, it does not reverse it."
+  supporting: "A fit for the buyer who splits roasts or keeps a bag for two or more weeks. Anyone finishing beans quickly gets most of the benefit from a basic airtight jar at a fraction of the price, and no canister keeps pre-ground coffee fresh."
 ---
 
 ## Who This Is For

@@ -57,6 +57,9 @@ faq:
     answer: "It depends on how much durability and effort you want. CanCoat EVO offers a stated 12 months of protection from a fast spray-to-microfiber application with no special tools. A full wipe-on kit offers a longer stated service life, often multiple years, for more careful application and working time. Pick CanCoat EVO when you want coating-grade protection without the commitment of a kit. Step up to a wipe-on kit when multi-year durability is the priority and you are willing to do the more involved install."
   - question: "Is Gyeon Q2 CanCoat EVO worth it?"
     answer: "For the buyer who has outgrown a plain spray topper but does not want a full wipe-on kit, yes. It is a true SiO2 coating in spray form with a stated 12 months of protection, a forgiving spray-to-microfiber application, and broad surface compatibility. The honest caveats are that it costs more than a simple ceramic topper and lasts less than a multi-year kit. If you want the step-up DIY coating that splits that gap, owner discussion repeatedly lands on CanCoat EVO as the answer."
+bottomLine:
+  verdict: "Buy it if you have outgrown a spray topper. CanCoat EVO is a real SiO2 coating in spray form, forgiving to apply, with broad surface compatibility and a layering path, which is exactly the step-up DIY tier it is built to fill."
+  supporting: "It targets the weekend enthusiast who wants coating-grade protection without the working time and leveling of a full wipe-on kit, and the spray-to-microfiber method needs no special lighting or tools. Proper prep is what the finish depends on, so plan to wash and decontaminate first."
 ---
 
 ## Who This Is For

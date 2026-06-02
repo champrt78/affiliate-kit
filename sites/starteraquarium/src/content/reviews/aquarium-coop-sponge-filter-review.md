@@ -59,6 +59,9 @@ faq:
     answer: "Lift the sponge out, then swish or gently squeeze it in a bucket of water you removed from the tank during a water change. The dirty water clouds, the sponge comes clean, and you put it back. The key rule is to clean it in old tank water, never under the tap, because chlorinated tap water kills the beneficial bacteria living in the foam and can set your tank's cycle back. Done in tank water, the cleaning is quick and harmless."
   - question: "Can a sponge filter be the only filter on my tank?"
     answer: "On a small, lightly stocked tank, yes, a sponge filter can be the sole filter and many keepers run them exactly that way for nano tanks, shrimp tanks, and quarantine setups. On a larger or heavily stocked tank it may not move enough water on its own, so keepers either run two sponges, pair one with a hang-on-back, or step up to a more powerful filter. Match the filtration to how much you are stocking, not just the tank size."
+bottomLine:
+  verdict: "About as beginner-proof as filtration gets. Attach the airline, drop it in, plug in the air pump, and there is almost no way to assemble it wrong. The coarse foam stretches the cleaning interval and the gentle flow will not pull anything small against an intake."
+  supporting: "Made for the first-tank keeper who wants gentle and forgiving over powerful, or anyone running fry, shrimp, or bettas. It needs a separate air pump and airline to run, so budget for those alongside it."
 ---
 
 ## Who This Is For

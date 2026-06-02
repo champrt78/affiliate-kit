@@ -45,6 +45,9 @@ faq:
     answer: "The Retro-Bit Saturn Pro is the genre specialist here. Its six-button face and the Saturn-style d-pad are exactly the layout fighting and 2D-action fans praised on the original, and owner reports point to that d-pad as its standout feature. The 8BitDo Pro 2 is capable and remappable enough to play fighters well, but it is an all-rounder shape rather than a dedicated fightpad. For mainly fighters, the Saturn Pro's layout is the draw. For a pad that does fighters plus everything else, the Pro 2 is the flexible choice."
   - question: "Do both work on modern platforms like Switch and PC?"
     answer: "The 8BitDo Pro 2 is the broader of the two, with documented support for Switch, Windows, Android, macOS, and Steam over Bluetooth or 2.4GHz. The Retro-Bit Saturn Pro's platform reach varies by SKU and edition, with Saturn-era and select modern support over 2.4GHz wireless, so confirm the exact version covers your system before buying. If wide platform coverage is the priority, the Pro 2 is the safer default. If you want the Saturn feel on a specific setup, check the Saturn Pro SKU details first."
+verdict:
+  verdict: "For most players the 8BitDo Pro 2 wins as the do-everything pad: a modern SNES-style layout that covers Switch, Windows, Android, and more over Bluetooth or 2.4GHz, with deep remapping, profiles, and back paddles."
+  supporting: "Choose the Retro-Bit Saturn Pro if you mainly play fighters and 2D action and want that exact Saturn six-button face and d-pad, the genre-specific feel the all-rounder Pro 2 is not built around."
 ---
 
 These two pads cost within a few dollars of each other, so the choice is not about price. It is about whether you want one controller that does everything or one that nails a specific feel.

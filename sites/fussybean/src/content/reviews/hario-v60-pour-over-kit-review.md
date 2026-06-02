@@ -58,6 +58,9 @@ faq:
     answer: "They are the same 60-degree cone in different materials. Ceramic holds heat well and feels substantial but can chip if dropped. Plastic is the cheapest, lightest, and most travel-friendly. Glass matches the look of the server. Metal is the most durable. This set uses the ceramic dripper, which is the popular choice for a home counter where heat retention and feel matter more than portability."
   - question: "Is the Hario V60 worth it?"
     answer: "For the buyer who wants to learn manual pour-over, the spec and owner sentiment line up in its favor, which is why our scorecard scores Brew Control 9.0 and Value 8.5 out of 10. The V60 is the reference design that most recipes and videos are written around, the set is a complete and inexpensive starting point, and it gives you real control over the cup. The honest caveat is the learning curve and the fact that a gooseneck kettle and scale are near-essential for the best results, so the true cost is a bit higher than the set alone. If you want a low-effort brewer instead, an immersion or flat-bottom brewer is more forgiving."
+bottomLine:
+  verdict: "The V60 is the pour-over to learn on, full stop. It is the reference cone the whole hobby is built around, so every recipe, ratio, and technique video a beginner finds applies directly, and the ceramic set bundles everything but the kettle and scale into one box."
+  supporting: "Made for the brewer who wants a clean, bright cup and is willing to build a little technique to get it. The catch is the learning curve, and a gooseneck kettle and scale are near-essential for the best results, so the true cost runs a bit past the set alone."
 ---
 
 ## Who This Is For

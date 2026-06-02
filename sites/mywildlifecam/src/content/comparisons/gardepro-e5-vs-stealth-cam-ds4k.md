@@ -45,6 +45,9 @@ faq:
     answer: "No. Both are SD-card cameras with no cellular radio and no monthly plan. You retrieve images by swapping the card in person, which keeps running cost at zero in exchange for a walk out to the camera. Neither has an app for remote viewing."
   - question: "Which one has better image quality?"
     answer: "The Stealth Cam DS4K Ultimate, clearly. Its native 4K sensor scores at the top of its price band in independent testing, while the E5 leans on a 48MP interpolated figure that holds up at backyard range but softens at distance. If image detail is the deciding axis, the DS4K is the pick."
+verdict:
+  verdict: "If image quality is the point of the camera, the Stealth Cam DS4K Ultimate wins. Its native 4K sensor pulls detail the GardePro E5 cannot match, and neither camera charges a subscription, so the only ongoing cost is batteries and a card."
+  supporting: "Go with the GardePro E5 if the goal is simply a working camera under fifty dollars and you can live with softer footage."
 ---
 
 These two cameras sit at opposite ends of the no-subscription SD-card category, so the choice is really about budget against image quality. Both skip the app, the SIM, and the monthly bill. After that they pull apart hard.

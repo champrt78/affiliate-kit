@@ -59,6 +59,9 @@ faq:
     answer: "Most owners eventually upgrade the bundled filter to a larger hang-on-back unit for more biological filtration, and some swap the basic LED hood if they move toward live plants. Neither is required to start, and the kit components run fine for a first community tank. Think of the kit as a complete, working starting point that you can improve piece by piece as the hobby grows on you."
   - question: "Is the Tetra 20 Gallon kit worth it?"
     answer: "For a first-time keeper who wants the lowest-friction path to a running tank, yes. The value is in skipping the research-and-buy-five-things step: the tank, hood, light, and filter arrive matched in one box. The honest caveats are that there is no heater included and the bundled filter and hood are entry-level. If you account for a separate heater and a few consumables, it is a solid, forgiving first setup. If you want premium components from day one, you would piece a tank together instead."
+bottomLine:
+  verdict: "For the lowest-friction path to a running first tank, this kit delivers. The tank, hood, light, and filter arrive matched in one box, which skips the research-and-buy-five-things step that stalls a lot of first setups, and the 20 gallon volume is forgiving of the small mistakes every new keeper makes."
+  supporting: "Built for the first-timer who wants the hard parts handled in one box. The one thing to plan for is a heater, which the kit leaves out and a tropical tank needs bought separately."
 ---
 
 ## Who This Is For

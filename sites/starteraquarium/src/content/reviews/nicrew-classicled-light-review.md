@@ -59,6 +59,9 @@ faq:
     answer: "A common beginner photoperiod is about 6 to 8 hours of the white light per day. Running it too long, especially on a tank getting sunlight, encourages algae. A timer makes this effortless by holding the same on-off schedule daily. Start on the shorter side, watch for algae, and adjust. The blue moonlight can run a little longer in the evening since it does not drive plant growth or algae the way the white channel does."
   - question: "Is the NICREW ClassicLED worth it?"
     answer: "For a beginner who wants a good-looking, well-lit community tank or a low-light planted setup at a low price, yes. It is among the lowest-cost name-brand LED bars that still does the job, which is why it is a frequent budget recommendation in beginner threads. The honest caveats are that it is a low-to-moderate light not suited to demanding plants, and that at this price a minority of units dim early. If you want premium longevity or high-light planted performance, spend up. For value lighting on a first tank, it earns the slot."
+bottomLine:
+  verdict: "For value lighting on a first community tank, the ClassicLED Plus earns its slot. It is among the lowest-cost name-brand LED bars that still renders fish colors well, gives you a white daytime channel plus a blue moonlight look, and can run on an automatic timer."
+  supporting: "Built for the keeper who wants a good-looking, well-lit fish-only or lightly planted tank without spending on a high-end fixture. At this price a minority of owners report early dimming, so you are buying value rather than premium longevity."
 ---
 
 ## Who This Is For

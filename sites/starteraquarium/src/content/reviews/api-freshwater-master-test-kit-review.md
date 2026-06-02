@@ -58,6 +58,9 @@ faq:
     answer: "During the initial cycle of a brand-new tank, frequent testing, often daily, is how you watch ammonia rise and fall, then nitrite rise and fall, then nitrate appear, which tells you the tank has cycled. Once the tank is established and stable, most keepers drop to testing weekly or before water changes. The high test count in this kit is sized for that heavy early-cycling use."
   - question: "Is the API kit good for a beginner?"
     answer: "It is one of the most recommended first test kits in the hobby because it bundles the four cycling parameters into one affordable box with a high test count. The learning curve is small: follow the drop counts and shake times exactly, and read the color chart in good light. A beginner who wants a one-second dip answer might prefer strips, but for understanding what is actually happening in a new tank, the liquid master kit is the standard pick."
+bottomLine:
+  verdict: "If you are cycling a first tank and want the four readings that actually matter in one box, this is the kit the hobby reaches for, and the reasons hold up: pH, ammonia, nitrite, and nitrate together, the liquid method keepers trust over strips, and over 800 tests to burn through."
+  supporting: "Built for the beginner who would rather know than guess what ammonia is doing to a new tank. The one habit to learn is the nitrate test, which reads low if you skip its vigorous shake step."
 ---
 
 ## Who This Is For

@@ -43,6 +43,9 @@ faq:
     answer: "No, but the device's reputation is built on it. The Mini Plus ships with stock firmware and will play games out of the box, yet owner threads consistently point to OnionOS as the step that unlocks the smooth menus, save states, and box-art presentation people praise. If flashing community firmware sounds like a fun afternoon, the Mini Plus rewards it. If you would rather not, factor that in, because a meaningful part of its appeal lives in that optional manual step."
   - question: "Which one has the better screen and battery on paper?"
     answer: "On the spec sheet they share the same 3.5-inch 640x480 IPS panel, so screen sharpness reads as a wash between them. Battery is where the listings differ. Miyoo lists a 3000mAh cell on the Mini Plus against the base RG35XX's listed 2100mAh, which on paper favors the Mini Plus for longer sessions. These are manufacturer figures rather than measured runtimes, so treat them as a relative guide, not a stopwatch result."
+verdict:
+  verdict: "For most budget buyers the Miyoo Mini Plus wins because it lists on-board WiFi and RTC plus a larger 3000mAh battery, and its OnionOS community scene is the reason owner threads keep recommending it."
+  supporting: "Choose the Anbernic RG35XX if you would rather not flash community firmware to get the best of the device, since its stock Linux build boots and plays out of the box."
 ---
 
 These two handhelds land in the same pocket and the same sub-$100 short lists, so the choice is rarely about price. It is about firmware polish and connectivity against a simpler stock baseline.

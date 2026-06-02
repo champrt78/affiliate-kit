@@ -44,6 +44,9 @@ faq:
     answer: "The Chemex makes the cleaner cup. Its thick bonded filter is heavier than ordinary paper and traps more oils and fine sediment, which produces a very clear, light-bodied result. The V60 uses thin paper, so it lets a little more body and oil through and leans bright and articulate rather than ultra-clean. Both are clean compared to a French press, but the Chemex is the clarity champion of the two."
   - question: "Is the Chemex harder to use than a V60?"
     answer: "It is generally more forgiving, not harder. The Chemex thick filter restricts flow and sets much of the brewing pace for you, so an uneven pour matters less. The V60 puts the pace almost entirely in your hands through pour rate, which gives more control but exposes mistakes. For a beginner who wants a reliable cup without studying technique, the Chemex tends to be the easier daily brewer, while the V60 rewards those who enjoy dialing it in."
+verdict:
+  verdict: "For most pour-over drinkers the V60 wins on a bright articulate cup and control, plus thin filters that are cheap and stocked everywhere. It is the more flexible single-cup tool at a lower starting price."
+  supporting: "Choose the Chemex if you want the cleanest possible cup and brew for more than one person, since its thick bonded filter and 30oz carafe are built for clarity and batches the V60 is not."
 ---
 
 Both of these are pour-over landmarks, and choosing between them is really about the cup you want, not which one is better made. The split comes down to the filter.

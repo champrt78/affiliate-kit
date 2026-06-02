@@ -45,6 +45,9 @@ faq:
     answer: "More water is more forgiving, which matters most when you are new. A 20-gallon tank dilutes mistakes, swings temperature and water chemistry more slowly, and gives fish more room than a 5 or 10 gallon nano, so small errors are less likely to turn fatal. Both of these kits give you that forgiving volume in a matched set. The smaller tanks are fine for a single betta or a desk, but if you have the space, the larger volume is the easier first tank to keep stable."
   - question: "Does the Tetra 20-gallon kit include a heater?"
     answer: "No, the base Tetra 20 Gallon Complete kit covers the tank, the Whisper filter, the LED hood, and decor, but not a heater. Tropical fish need stable warmth, so plan to add a separate heater, which means the kit's sticker price is not the full setup cost. The Aqueon SmartClean kit, by contrast, includes a preset 50W heater along with a thermometer, net, food, and conditioner. That fuller box is a big part of why the Aqueon costs more up front, so compare total setup cost, not just the kit price."
+verdict:
+  verdict: "For most beginners the Tetra kit wins on value: a matched Whisper filter and LED hood deliver a forgiving 20 gallons for notably less, and 20 gallons is far steadier than a nano tank."
+  supporting: "Choose the Aqueon SmartClean kit if you want a heater and extras already in the box, since its preset 50W heater, thermometer, net, food, and conditioner mean you start closer to ready."
 ---
 
 These two kits both give a beginner a forgiving 20 gallons of water, so the choice is about what comes in the box and total setup cost, not tank size. The Tetra optimizes for the most water per dollar. The Aqueon optimizes for the fullest, closest-to-ready bundle.

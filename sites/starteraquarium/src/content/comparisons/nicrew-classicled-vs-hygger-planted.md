@@ -45,6 +45,9 @@ faq:
     answer: "It can grow the easiest low-light plants like java fern, anubias, and many mosses, which is plenty for a first community tank. What it is not built for is a demanding high-light aquascape with carpeting plants or heavy stems. If your plan is fish with a few hardy plants, the NICREW's clean white light is the right-sized, low-cost pick. If you already know you want a planted tank, the hygger's higher output and automatic cycle give you more room to grow into without stepping up to a pricier fixture."
   - question: "What does the hygger 24/7 mode actually do?"
     answer: "It runs an automatic daily cycle so you do not have to touch the light. The fixture ramps up from a soft sunrise to full daylight, holds the photoperiod, then fades to a dim moonlight in the evening, all on a built-in timer. For a beginner that means a consistent light schedule, which helps plants and keeps algae in check, without buying a separate outlet timer. The NICREW reaches a similar consistency only if you add an optional timer, so the hygger bundles that convenience in."
+verdict:
+  verdict: "For most beginners the NICREW ClassicLED is the pick: clean white LEDs render fish colors well, a dim blue moonlight covers the evening, and it pairs with an optional timer, all at among the lowest name-brand prices."
+  supporting: "Choose the hygger Clip On if you want to grow live plants beyond the easiest low-light species, since its higher output and built-in 24/7 cycle give planted tanks the base the fish-first NICREW is not tuned for."
 ---
 
 These two lights cost about the same, so the choice is about the job, not the price. The NICREW optimizes for clean fish-first viewing at the lowest sensible cost. The hygger optimizes for an automatic light cycle and enough output to grow easy plants.

@@ -58,6 +58,9 @@ faq:
     answer: "No. There is no official game store. You add game files yourself to the SD card, which means sourcing them legally and managing the files. This is standard for open-firmware retro handhelds, but it is a real difference from a plug-and-play Android device with an app store."
   - question: "Miyoo Mini Plus vs an Android retro handheld, which one?"
     answer: "It comes down to scope and effort. The Miyoo Mini Plus is a focused, pocketable 2D-and-early-3D device built around custom firmware, at a price well below Android handhelds. An Android-based handheld plays more demanding 3D systems and offers an app-store, plug-and-play experience, at a higher price and larger size. Pick the Mini Plus for cheap, pocketable classic gaming you are happy to tinker with, and an Android handheld when you want 3D systems and minimal setup."
+bottomLine:
+  verdict: "Buy it for classic-library handheld gaming on a budget. The Miyoo Mini Plus nails the 8-bit, 16-bit, and PS1-era libraries most people actually replay, on a sharp 3.5-inch 640x480 IPS screen in a genuinely pocket-size body."
+  supporting: "It fits the player whose sweet spot is Game Boy, NES, SNES, Genesis, and PS1-era classics and who wants real portability, with a 3000mAh battery sized for long sessions plus WiFi and RTC. The price sitting well below Android handhelds is what makes it punch above its class."
 ---
 
 ## Who This Is For

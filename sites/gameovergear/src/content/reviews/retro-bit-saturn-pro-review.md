@@ -59,6 +59,9 @@ faq:
     answer: "It comes down to wireless versus price. The wired Saturn USB pads from Retro-Bit are cheaper and plug straight into PC and USB systems, which is ideal if you only play on a computer. The 2.4GHz Saturn Pro reviewed here adds wireless play, two receivers, and broader system coverage including original Saturn hardware, at the higher $49.99 price. Pick the wired pad for cheap PC use, the Pro for wireless and original-hardware support."
   - question: "Is the Saturn Pro worth it for fighting games?"
     answer: "For 2D fighters, the Saturn d-pad is one of the most praised pads of its era, and this is an officially licensed reproduction of it, which is the core reason fighting-game players seek out Saturn controllers. At $49.99 you also get wireless and multi-system support. If you mainly play fighters and 2D games and want that specific d-pad without wires, it is a strong fit. If you only need a PC pad, the cheaper wired version covers the same d-pad."
+bottomLine:
+  verdict: "Buy it for the Saturn d-pad, now wireless. The Saturn Pro is an officially licensed reproduction of the wide 8-button Saturn pad whose d-pad is one of the most praised of its era for fighting and 2D games, with 2.4GHz wireless and two receivers in the box."
+  supporting: "It fits the player whose library leans fighters and 2D classics and who wants that d-pad untethered across both original Saturn hardware and modern systems. Spanning Saturn, Genesis Mini, Switch, PC, and Mac is unusual reach for a retro-style pad, and a 4.2-star average across 116 ratings backs the read."
 ---
 
 ## Who This Is For

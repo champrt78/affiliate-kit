@@ -58,6 +58,9 @@ faq:
     answer: "The AeroPress uses paper micro-filters as a consumable, and they are cheap with a large pack lasting a long time. If you would rather not rebuy paper, an inexpensive reusable metal filter is a common aftermarket swap. The trade-off is a slightly less-clean cup with a bit more body, since metal lets through fine particles and oils that paper holds back."
   - question: "Is the AeroPress worth it?"
     answer: "For the forgiving-everyday-brewer and the traveler, the spec and owner sentiment line up strongly in its favor, which is why our scorecard scores Value 9.5 and Ease of Use 9.0 out of 10. It is inexpensive, near-indestructible, fast to brew, easy to clean, and backed by a deep recipe community. The honest caveats are that it makes espresso-style concentrate rather than true espresso, it brews only 1 to 3 cups at a time, and it uses paper filters. For most home and travel use those barely register. If you need true espresso or large batches, it is the wrong tool, and a pump machine or a larger brewer is the answer."
+bottomLine:
+  verdict: "The AeroPress is an easy recommendation for almost any home or travel brewer. It is cheap, near-indestructible, forgiving of loose technique, fast to brew, and cleans up in seconds, which is why it scores Value 9.5 and Ease of Use 9.0."
+  supporting: "Made for the everyday brewer who wants a clean, low-bitterness cup without a learning curve, and for the traveler who needs a brewer that survives a backpack. The one caveat to set going in is that it makes an espresso-style concentrate, not true 9-bar espresso."
 ---
 
 ## Who This Is For

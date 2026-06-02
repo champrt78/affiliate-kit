@@ -45,6 +45,9 @@ faq:
     answer: "It depends on how you play. The 8BitDo Arcade Stick sits in value territory and leans on wireless flexibility plus broad-enough platform support for Switch and Windows. The Hori Fighting Stick Alpha costs more than double and spends that on arcade-quality parts, a wired competition connection, and an openable panel for swapping components. For casual and couch play the 8BitDo's flexibility tends to win on value. For a player chasing tournament-grade feel on PlayStation or PC, the Alpha's parts and build are the reason to pay up."
   - question: "Can I swap the parts on either stick?"
     answer: "Both are friendlier to modding than a sealed pad, in different ways. The 8BitDo Arcade Stick uses a standard layout and owners report swapping buttons without much fuss. The Hori Fighting Stick Alpha is built around the idea, with a panel Hori says opens for easy customization and replaceable artwork on top. If part-swapping and arcade authenticity are a priority, the Alpha is designed for it. If light button customization is enough, the 8BitDo handles that at a lower price."
+verdict:
+  verdict: "These two barely cross-shop, since the Hori costs more than double, but for the casual buyer the 8BitDo is the value default on wireless freedom and platform reach. The Alpha wins on parts and loses on price and Switch support."
+  supporting: "If you chase tournament-grade feel and play on PlayStation or PC, flip to the Alpha, since its arcade-quality parts and competition pedigree are the reason to pay up."
 ---
 
 These two sticks rarely cross-shop on price alone, because they sit in different tiers. The choice is platform reach and wireless value against tournament-grade parts and a wired competition build.

@@ -44,6 +44,9 @@ faq:
     answer: "Not well. The original Encore is tuned for drip, pour-over, French press, and cold brew, and its finest setting does not reliably reach espresso fineness. Owner reports describe it stalling or producing an inconsistent grind when pushed that far. If espresso is the goal, the Encore ESP re-gears the lower half of its range specifically for it."
   - question: "Are the burrs the same on both grinders?"
     answer: "Yes. Both use Baratza's 40mm M2 conical steel burrs. The difference is the adjustment mechanism, not the burrs. The ESP splits its 40 steps into a dedicated espresso range and a filter range, and adds a shim system to fine-tune where espresso lands, which is what lets it reach a fineness the original cannot."
+verdict:
+  verdict: "For most buyers the Encore ESP is the safer pick because it keeps the same proven 40mm burrs but re-gears the fine range to actually reach espresso, so one grinder covers filter today and a shot tomorrow."
+  supporting: "Choose the original Encore if espresso is genuinely never on the table, since it does drip, pour-over, and French press cleanly for less money."
 ---
 
 These two grinders share a body, a burr set, and a reputation, so the choice is not about quality. It is about one question. Do you pull espresso, or are you ever going to?

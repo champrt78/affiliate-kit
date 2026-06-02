@@ -45,6 +45,9 @@ faq:
     answer: "Usually not for a first tank. A canister filter like the Fluval 107 shines on heavily stocked or larger setups and when you want the gear hidden in the cabinet, but it asks for a more involved setup with hoses and priming. For a first freshwater tank in the 10 to 50 gallon range a hang-on-back like the AquaClear 50 is the right-sized, lower-friction choice, and it costs far less to start. Step up to a canister later if your stocking or tank size grows."
   - question: "Which is easier to maintain week to week?"
     answer: "The hang-on-back wins on routine simplicity. The AquaClear 50 opens from the top, so swapping or rinsing media is a quick lid-off job with the filter still on the tank. A canister like the Fluval 107 holds more media and needs cleaning less often, but each clean means disconnecting hoses and opening the sealed unit, which is more of a project. For a beginner who wants low weekly friction, the AquaClear is the gentler routine."
+verdict:
+  verdict: "For most first tanks the AquaClear 50 wins because it clips on in minutes, dials its flow down for small fish, and costs far less to start, with a big media basket that does more biological work than its size suggests."
+  supporting: "Choose the Fluval 107 if your tank is heavily stocked or you want filtration completely hidden, since the sealed canister holds more media and tucks out of sight in the cabinet."
 ---
 
 These two filters answer the same question two different ways, so the choice is about how much setup and visibility you want, not just price. The Fluval 107 optimizes for hidden, high-capacity filtration. The AquaClear 50 optimizes for the lowest-friction path from box to running tank.

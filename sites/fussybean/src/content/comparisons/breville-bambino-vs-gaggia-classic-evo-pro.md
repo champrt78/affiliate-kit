@@ -44,6 +44,9 @@ faq:
     answer: "The Bambino is the gentler start for most beginners because the ThermoJet heater is ready in seconds and the workflow is simple, so you spend your attention on grind and dose rather than warm-up timing. The Gaggia rewards patience and tinkering. It is the machine people grow into, but the learning curve and the conventional heat-up make it the more involved daily driver out of the box."
   - question: "Why does the 58mm versus 54mm portafilter matter?"
     answer: "The Gaggia's 58mm portafilter is the commercial standard, so accessories like bottomless portafilters, precision baskets, and tampers are abundant and interchangeable with the wider enthusiast ecosystem. The Bambino's 54mm size is shared across Breville's own lineup, so skills and some accessories transfer within Breville, but the 58mm world is larger. Neither size changes the cup quality on its own, it changes the accessory and upgrade ecosystem around the machine."
+verdict:
+  verdict: "For most first-machine buyers the Bambino wins because its ThermoJet heater is ready in seconds, which removes the warm-up wait that kills weekday espresso, and its 54mm portafilter shares technique with Breville's pricier machines."
+  supporting: "Choose the Gaggia Classic Evo Pro if you want a machine to grow into rather than out of, since its metal body and 58mm commercial portafilter are the platform for years of mods."
 ---
 
 These two land on nearly every short list of first espresso machines, and they could not be more philosophically opposed. The Breville Bambino optimizes for speed and footprint. The Gaggia Classic Evo Pro optimizes for longevity and a high ceiling.
