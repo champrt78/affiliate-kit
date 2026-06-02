@@ -2,7 +2,16 @@
 
 > Canonical open-work list per global CLAUDE.md. Update as we work. `cat docs/TODO.md` or open in VS Code any time. For deeper context on past wins + walkthroughs, see `docs/RAY_QUEUE.md`.
 
-**Last refreshed:** 2026-05-30
+**Last refreshed:** 2026-06-02
+
+---
+
+## ⭐⭐ READY FOR RAY — VERDICT QUEUE (35 drafts, built while you were away 2026-06-02)
+
+**Open `docs/playgrounds/verdict-queue/index.html`.** All 5 sites are now richly + evenly populated (MWC 17 · DTP 18 · FussyBean 18 · SA 19 · gog 17). The new content is **35 noindex drafts** (23 single-product reviews + 12 head-to-head comparisons) across the 4 satellite/lighter sites. Each needs ONE decision: reviews need a Bottom Line, comparisons need the winner call.
+
+- [ ] **Walk the sheet, pick a verdict per draft (or write your own), Copy decisions, paste back to Claude.** Claude writes each into its file and flips it noindex → live. Skip any you want; they stay drafts.
+- [ ] Flagged on the sheet: several drafts have **omitted prices** (Canopy returned none — mostly SA reviews + a few fussybean/gog) and a couple of image/tier notes (gog Hori-vs-8BitDo tier mismatch; SA Python parts-photo hero). Backfill is optional, not a publish blocker.
 
 ---
 
