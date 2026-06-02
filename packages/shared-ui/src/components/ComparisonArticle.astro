@@ -13,7 +13,7 @@ import Media from "./Media.astro";
 import FaqList from "./FaqList.astro";
 import MethodBox from "./MethodBox.astro";
 import CTA from "./CTA.astro";
-import { cloakedLink } from "@affkit/shared-utils";
+import { cloakedLink, productSchema } from "@affkit/shared-utils";
 
 interface Props {
   entry: CollectionEntry<"comparisons">;
@@ -80,8 +80,20 @@ const faqLd = faq && faq.length > 0 ? {
   "@context": "https://schema.org", "@type": "FAQPage",
   mainEntity: faq.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })),
 } : null;
+
+// Product JSON-LD per compared product (AIO citation eligibility; guides+reviews
+// already emit this — comparisons were missing it).
+const productLds = products.map((p) => productSchema({
+  name: p.name,
+  brand: p.brand,
+  sku: p.name,
+  image: p.image ?? "",
+  description: data.description,
+  offerUrl: p.affiliateUrl,
+}));
 ---
 {faqLd && <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />}
+{productLds.map((ld) => <script type="application/ld+json" set:html={JSON.stringify(ld)} />)}
 
 {isDraft && (
   <aside class="draft-banner" role="alert">
