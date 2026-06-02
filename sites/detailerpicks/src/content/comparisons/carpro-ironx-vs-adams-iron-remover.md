@@ -6,7 +6,7 @@ deck: "Two color-changing iron removers that turn purple as they dissolve brake 
 products:
   - name: "CarPro IronX"
     brand: "CarPro"
-    affiliateUrl: "https://www.amazon.com/dp/B004UM6DLE"
+    affiliateUrl: "https://www.amazon.com/dp/B004UM6DLE?tag=detailerpicks-20"
     image: "https://m.media-amazon.com/images/I/51zmW0m-w7L.jpg"
     priceFrom: 19.99
     bestFor: "You want the formula most reviewers treat as the benchmark, it bleeds aggressively on heavy fallout and is the reference point other iron removers get measured against."
@@ -20,7 +20,7 @@ products:
     body: "<p>IronX is the formula most independent reviewers treat as the reference, so owner reports tend to frame everything else as how close it gets to IronX. It is pH-neutral and bleeds hard on embedded iron, which is why it shows up in so many decontamination guides. The well-known downside is the sulfur smell that kicks in as it reacts, which is the price of an aggressive reaction.</p>"
   - name: "Adam's Iron Remover"
     brand: "Adam's Polishes"
-    affiliateUrl: "https://www.amazon.com/dp/B07C39H9YX"
+    affiliateUrl: "https://www.amazon.com/dp/B07C39H9YX?tag=detailerpicks-20"
     image: "https://m.media-amazon.com/images/I/6161itjhXEL._AC_SL1500_.jpg"
     priceFrom: 14.99
     bestFor: "You want the same purple-bleeding decontamination action with a noticeably milder smell, plus easy access through the Adam's lineup most home detailers already buy from."
@@ -32,7 +32,10 @@ products:
       Use stage: "Decontamination, before clay and wax"
       Size and value: "16 oz, used neat, often priced lower"
     body: "<p>Adam's Iron Remover does the same job and bleeds the same purple, and owner reports most often praise it for being easier on the nose than the benchmark formulas. It is pH-balanced and slots into the same decontamination step before clay. For detailers who already buy from the Adam's ecosystem, the lower price and milder smell are the draw rather than any difference in the core reaction.</p>"
-winner: ""
+winner: "Adam's Iron Remover"
+verdict:
+  verdict: "Adam's Iron Remover is the value winner. Owner reports put its iron-dissolving performance on par with the category benchmark at a noticeably lower price, with a far less harsh smell."
+  supporting: "CarPro IronX remains the reference if you want the original pro-shop formula and do not mind paying more for the name."
 dealBreakers:
   - "If you want the formula reviewers treat as the gold standard and do not mind a strong smell, IronX is the benchmark."
   - "If the sulfur smell is a dealbreaker or you work in a closed garage, the milder Adam's formula is the more pleasant daily option."

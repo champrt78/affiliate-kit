@@ -6,7 +6,7 @@ deck: "Two auto-connect cellular cams aimed at the same buyer. The split comes d
 products:
   - name: "Spypoint Flex"
     brand: "Spypoint"
-    affiliateUrl: "https://www.amazon.com/dp/B0DGLFX2DH"
+    affiliateUrl: "https://www.amazon.com/dp/B0DGLFX2DH?tag=mywildlifecam-20"
     image: "https://m.media-amazon.com/images/I/91bV2GM0vnL.jpg"
     priceFrom: 129.99
     bestFor: "You want a genuinely usable free plan of 100 photos per month and a dual-SIM radio with a long owner-report track record."
@@ -20,7 +20,7 @@ products:
     body: "<p>The Flex leans on a dual-SIM radio that auto-selects the stronger of two carriers, plus a free 100-photo monthly plan that lets a lightly-checked camera run at no cost. Owner reports point to fast triggers and reliable delivery as the reasons buyers stick with it.</p>"
   - name: "Moultrie Edge 2"
     brand: "Moultrie"
-    affiliateUrl: "https://www.amazon.com/dp/B0F8RFXD47"
+    affiliateUrl: "https://www.amazon.com/dp/B0F8RFXD47?tag=mywildlifecam-20"
     image: "https://m.media-amazon.com/images/I/61rbyid-wcL._AC_SL1500_.jpg"
     priceFrom: 149.99
     bestFor: "You value a clean app and near-automatic setup, and you are comfortable paying for a data plan from day one."
@@ -32,7 +32,10 @@ products:
       Battery: "AA (solar accessory available)"
       Free plan: "Limited. Paid plans from about $10 per month"
     body: "<p>The Edge 2 sells itself on setup that is close to plug and play, with an auto-connect radio and an app owner reports call easy to live with. The trade is a thinner free tier, so the data plan becomes part of the running cost from the start rather than an optional upgrade.</p>"
-winner: ""
+winner: "Spypoint Flex"
+verdict:
+  verdict: "The Spypoint Flex wins on running cost. Its free 100-photo plan and dual-SIM connectivity make it the lower-risk, lower-cost pick for most first cellular cameras."
+  supporting: "Pick the Moultrie Edge 2 if you want built-in GPS theft tracking and the longer battery life, and you do not mind paying for a plan."
 dealBreakers:
   - "If you want to run a camera for free or near-free, the Spypoint free tier wins. The Edge 2 expects a paid plan from the start."
   - "If a fiddly app is a dealbreaker, owner reports favor the Moultrie experience over Spypoint's busier interface."

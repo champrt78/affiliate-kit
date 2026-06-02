@@ -6,7 +6,7 @@ deck: "Two pressure-washer foam cannons that anchor every home detailing kit. Th
 products:
   - name: "MTM Hydro PF22"
     brand: "MTM Hydro"
-    affiliateUrl: "https://www.amazon.com/dp/B083QTGTBM"
+    affiliateUrl: "https://www.amazon.com/dp/B083QTGTBM?tag=detailerpicks-20"
     image: "https://m.media-amazon.com/images/I/71N6F0pBMGL._AC_SL1500_.jpg"
     priceFrom: 79.99
     bestFor: "You want the build and foam control that enthusiasts treat as the benchmark, with a stainless tip and brass internals that hold up over years of weekend washes."
@@ -20,7 +20,7 @@ products:
     body: "<p>The PF22 is the cannon enthusiasts point to when someone asks for the benchmark. The brass internals and stainless tip are the reason it shows up in long-term kits, and owner reports lean on the thick, dialed foam and the wide-mouth bottle that takes a funnel without fuss. It connects to most consumer and prosumer pressure washers through the standard quick-connect.</p>"
   - name: "Chemical Guys TORQ EQP321"
     brand: "Chemical Guys"
-    affiliateUrl: "https://www.amazon.com/dp/B01NAS6QYM"
+    affiliateUrl: "https://www.amazon.com/dp/B01NAS6QYM?tag=detailerpicks-20"
     image: "https://m.media-amazon.com/images/I/81dxjKdrQ2L._AC_SL1500_.jpg"
     priceFrom: 59.99
     bestFor: "You already buy Chemical Guys soaps and want a cannon from the same brand, with a large bottle and a thread-lock system that protects the bottle neck."
@@ -32,7 +32,10 @@ products:
       Build: "Brass components, UV-resistant plastics"
       Value: "Lower upfront cost, brand-matched to CG soaps"
     body: "<p>The TORQ EQP321 is the natural pick if your shelf is already Chemical Guys soaps. It rates for pressure washers from 500 to 3500 PSI, carries a 32 oz bottle that covers a full SUV, and adds the patented thread-lock system that saves the bottle neck from early wear. Owner reports describe thick, sticky foam once the soap dial is tuned.</p>"
-winner: ""
+winner: "MTM Hydro PF22"
+verdict:
+  verdict: "The MTM Hydro PF22 is the pick if you own a pressure washer worth pairing it with: better build, thicker foam, and the parts support that makes it last."
+  supporting: "The Chemical Guys TORQ is the smarter entry buy if you are new to foam and want a capable cannon without the premium price."
 dealBreakers:
   - "If you want the build that enthusiasts treat as a buy-once benchmark, the MTM Hydro PF22 brass internals are the safer long-term bet."
   - "If your detailing shelf is already Chemical Guys and brand-matching matters to you, the TORQ keeps the kit consistent for less upfront."

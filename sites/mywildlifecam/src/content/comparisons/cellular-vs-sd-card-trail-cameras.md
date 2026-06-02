@@ -6,7 +6,7 @@ deck: "The first fork every trail-cam buyer hits. Pay a monthly plan for photos 
 products:
   - name: "Spypoint Flex"
     brand: "Spypoint"
-    affiliateUrl: "https://www.amazon.com/dp/B0DGLFX2DH"
+    affiliateUrl: "https://www.amazon.com/dp/B0DGLFX2DH?tag=mywildlifecam-20"
     image: "https://m.media-amazon.com/images/I/91bV2GM0vnL.jpg"
     priceFrom: 129.99
     bestFor: "You want photos pushed to your phone from a remote or hard-to-reach spot, and you accept a monthly data plan as the cost of that convenience."
@@ -20,7 +20,7 @@ products:
     body: "<p>As the cellular stand-in, the Flex shows what you gain by going wireless. Photos arrive on your phone without a trip to the woods, and the dual-SIM radio keeps a remote camera connected. The recurring cost is a data plan, though the free 100-photo tier softens that for a lightly-checked camera.</p>"
   - name: "Browning Strike Force Pro X 1080"
     brand: "Browning"
-    affiliateUrl: "https://www.amazon.com/dp/B0BX4S5KN8"
+    affiliateUrl: "https://www.amazon.com/dp/B0BX4S5KN8?tag=mywildlifecam-20"
     image: "https://m.media-amazon.com/images/I/71dX0CswaJL._AC_SL1500_.jpg"
     priceFrom: 139.99
     bestFor: "You check cameras close to home, want zero recurring cost, and prefer the fastest trigger and a small, concealable body."
@@ -32,7 +32,10 @@ products:
       Battery: "AA (long life in picture mode)"
       Resolution: "1080p video, high-megapixel stills"
     body: "<p>As the SD-card stand-in, the Strike Force Pro X shows what you gain by skipping cellular. There is no plan, no carrier, and nothing to debug, plus a faster trigger and a smaller body. The cost is the walk, since you retrieve images by swapping the card in person.</p>"
-winner: ""
+winner: "Spypoint Flex"
+verdict:
+  verdict: "Go cellular if you cannot get to the camera often or want photos the moment they happen. The convenience and theft deterrence are worth the ongoing plan cost for most modern setups."
+  supporting: "Stay with an SD-card camera if you check it regularly, dislike subscriptions, or run it where there is no cell coverage. The battery lasts longer and there are no monthly fees."
 dealBreakers:
   - "If the camera sits far from home or on land you visit rarely, cellular wins. Walking out to an SD card you cannot easily reach defeats the purpose."
   - "If you hate recurring bills and the camera is a short walk away, SD-card wins. There is no plan, no carrier handshake, and nothing extra to maintain."

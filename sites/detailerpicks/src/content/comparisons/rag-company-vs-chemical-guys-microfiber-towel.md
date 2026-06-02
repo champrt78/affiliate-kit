@@ -6,7 +6,7 @@ deck: "Two plush microfiber drying towels that show up on every shortlist. The s
 products:
   - name: "The Rag Company The Gauntlet (15x24, 2-Pack)"
     brand: "The Rag Company"
-    affiliateUrl: "https://www.amazon.com/dp/B083KPZR9C"
+    affiliateUrl: "https://www.amazon.com/dp/B083KPZR9C?tag=detailerpicks-20"
     image: "https://m.media-amazon.com/images/I/71KLb+aRfgS._AC_SL1500_.jpg"
     priceFrom: 24.99
     bestFor: "You want the enthusiast cult favorite, a dense twist-pile towel in a manageable size that is easy to control on curves, mirrors, and tighter panels."
@@ -20,7 +20,7 @@ products:
     body: "<p>The Gauntlet is the towel enthusiasts keep recommending, a 1100 GSM twist-loop sheet that owner reports praise for drinking water fast without dragging. The 15 by 24 inch size is easy to control on mirrors, curves, and tighter panels, and the two-pack means one stays clean while the other works. The wrapped edges keep it safe on coated and freshly waxed paint.</p>"
   - name: "Chemical Guys Woolly Mammoth"
     brand: "Chemical Guys"
-    affiliateUrl: "https://www.amazon.com/dp/B086M83K76"
+    affiliateUrl: "https://www.amazon.com/dp/B086M83K76?tag=detailerpicks-20"
     image: "https://m.media-amazon.com/images/I/812hkcaaMTS._AC_SL1500_.jpg"
     priceFrom: 19.99
     bestFor: "You want maximum coverage per pass, one oversized sheet that drapes across a hood or roof so you dry big flat panels in fewer strokes."
@@ -32,7 +32,10 @@ products:
       Edges: "Soft satin-wrapped, coating-safe"
       Value: "One large sheet, lower upfront cost"
     body: "<p>The Woolly Mammoth trades the manageable size for sheer coverage, a 25 by 36 inch sheet that drapes across a hood or roof so big flat panels dry in fewer passes. At 1463 GSM it holds a lot of water, and owner reports favor it for SUVs and trucks where surface area is the enemy. The satin-wrapped edges keep it gentle on coated paint.</p>"
-winner: ""
+winner: "The Rag Company The Gauntlet (15x24, 2-Pack)"
+verdict:
+  verdict: "The Rag Company Gauntlet is the safer pick for soft, dark paint: a plush, high-GSM twist-loop that holds a lot of water and rides on its own layer to reduce marring."
+  supporting: "The Chemical Guys Woolly Mammoth is a strong, more affordable alternative that dries most cars well."
 dealBreakers:
   - "If you value control on curves, mirrors, and tighter panels, the smaller Gauntlet is easier to handle and you get two towels."
   - "If you mostly dry large flat panels on an SUV or truck and want fewer passes, the oversized Woolly Mammoth covers more per stroke."

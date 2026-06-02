@@ -6,7 +6,7 @@ deck: "A dual-SIM all-rounder against a single-carrier value pick. The split com
 products:
   - name: "Spypoint Flex"
     brand: "Spypoint"
-    affiliateUrl: "https://www.amazon.com/dp/B0DGLFX2DH"
+    affiliateUrl: "https://www.amazon.com/dp/B0DGLFX2DH?tag=mywildlifecam-20"
     image: "https://m.media-amazon.com/images/I/91bV2GM0vnL.jpg"
     priceFrom: 129.99
     bestFor: "You want coverage insurance from a dual-SIM radio plus a free 100-photo monthly plan, regardless of which carrier is strong at your spot."
@@ -20,7 +20,7 @@ products:
     body: "<p>The Flex carries a dual-SIM radio that auto-selects the stronger of two carriers, which removes the single biggest cause of a dead cellular cam. Pair that with a free 100-photo monthly plan and a fast trigger, and owner reports describe a camera that just keeps reporting in.</p>"
   - name: "Bushnell CelluCORE 20"
     brand: "Bushnell"
-    affiliateUrl: "https://www.amazon.com/dp/B098KPX5B4"
+    affiliateUrl: "https://www.amazon.com/dp/B098KPX5B4?tag=mywildlifecam-20"
     image: "https://m.media-amazon.com/images/I/51Dg-GV34eL._AC_SL1200_.jpg"
     priceFrom: 99.99
     bestFor: "You already know one carrier is strong at your spot and you want a trusted brand name at the lowest cellular entry price."
@@ -32,7 +32,10 @@ products:
       Battery: "AA (external power port)"
       Free plan: "Limited. Paid plans from about $10 per month"
     body: "<p>The CelluCORE 20 is the value entry in Bushnell's cellular line, and it asks you to buy the SKU that matches your carrier. There is no auto-switching on this model, so coverage at the exact mounting site is the deciding factor. Owner reports like the price and the brand, and flag the single-carrier lock as the main caveat.</p>"
-winner: ""
+winner: "Bushnell CelluCORE 20"
+verdict:
+  verdict: "For a no-fuss budget cellular cam, the Bushnell CelluCORE 20 is the value pick at around $100 with a no-glow flash, as long as your chosen carrier has coverage at the tree."
+  supporting: "Step to the Spypoint Flex if you want dual-SIM insurance and a free photo plan and can spend a little more."
 dealBreakers:
   - "If your coverage is uncertain or marginal, the Spypoint dual-SIM is the safer bet. A wrong-carrier CelluCORE 20 simply will not report."
   - "If you want the lowest possible cellular entry price and you already know your carrier, the CelluCORE 20 undercuts the Flex."

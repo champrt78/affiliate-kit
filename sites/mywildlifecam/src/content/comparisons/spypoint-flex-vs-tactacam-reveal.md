@@ -6,7 +6,7 @@ deck: "Two mid-priced cellular cams that show up in every short list. The split 
 products:
   - name: "Spypoint Flex"
     brand: "Spypoint"
-    affiliateUrl: "https://www.amazon.com/dp/B0DGLFX2DH"
+    affiliateUrl: "https://www.amazon.com/dp/B0DGLFX2DH?tag=mywildlifecam-20"
     image: "https://m.media-amazon.com/images/I/91bV2GM0vnL.jpg"
     priceFrom: 129.99
     bestFor: "You want the best connectivity insurance, it picks the strongest of two carriers automatically, plus a genuinely usable free plan of 100 photos per month."
@@ -20,7 +20,7 @@ products:
     body: "<p>The Flex's headline is the dual-SIM radio. It reads both major networks and locks onto whichever is stronger at the tree, which is the single biggest cause of dead cellular cams. Owner reports consistently call out the fast trigger and the free 100-photo plan as the reasons they picked it over a single-carrier camera.</p>"
   - name: "Tactacam Reveal X"
     brand: "Tactacam"
-    affiliateUrl: "https://www.amazon.com/dp/B0D7FQNM38"
+    affiliateUrl: "https://www.amazon.com/dp/B0D7FQNM38?tag=mywildlifecam-20"
     image: "https://m.media-amazon.com/images/I/61dt2qC02LL._AC_SL1500_.jpg"
     priceFrom: 119.99
     bestFor: "You prioritize battery life and clean daytime images, and your spot already has reliable coverage on one carrier."
@@ -32,7 +32,10 @@ products:
       Battery: "AA (longer real-world life per owner reports)"
       Free plan: "Limited. Paid plans from about $5 per month"
     body: "<p>The Reveal X trades the dual-SIM trick for longer battery runs and a no-glow flash, and owner reports favor its daytime image quality. The catch is you commit to one carrier at purchase, so it rewards spots where you already know coverage is solid.</p>"
-winner: ""
+winner: "Spypoint Flex"
+verdict:
+  verdict: "For most hunters the Spypoint Flex is the safer default. The dual-SIM radio locks onto the stronger of two carriers, which removes the single biggest reason cellular cams go dark, and the free 100-photo plan keeps a lightly-checked camera running at no cost."
+  supporting: "Choose the Tactacam Reveal X if your spot already has rock-solid single-carrier coverage and you value battery life and daytime image quality over connectivity insurance."
 dealBreakers:
   - "If your property has weak or single-carrier coverage, the Spypoint dual-SIM is the safer bet. A single-carrier Reveal X can go dark."
   - "If you check cameras rarely and hate swapping batteries, the Reveal X longer runtime matters more than trigger speed."

@@ -6,7 +6,7 @@ deck: "Two pH-balanced wheel cleaners that show up on every short list. The spli
 products:
   - name: "Adam's Deep Wheel Cleaner"
     brand: "Adam's Polishes"
-    affiliateUrl: "https://www.amazon.com/dp/B00BPGGSCW"
+    affiliateUrl: "https://www.amazon.com/dp/B00BPGGSCW?tag=detailerpicks-20"
     image: "https://m.media-amazon.com/images/I/71OuhMfQvJL._AC_SL1500_.jpg"
     priceFrom: 16.99
     bestFor: "You want a grab-and-go spray that clings, turns purple as it reacts with brake dust, and is safe to use on coated or sealed wheels without dilution math."
@@ -20,7 +20,7 @@ products:
     body: "<p>The Deep Wheel Cleaner leans on convenience. It sprays on, clings to the barrel, and bleeds purple as it dissolves embedded iron, so owner reports often cite the visual feedback as the reason they trust it on coated wheels. Because it is used neat rather than diluted, a 16 oz bottle does not stretch as far as a concentrate, which is the trade for the simplicity.</p>"
   - name: "Chemical Guys Diablo Gel Concentrate"
     brand: "Chemical Guys"
-    affiliateUrl: "https://www.amazon.com/dp/B003TTRORQ"
+    affiliateUrl: "https://www.amazon.com/dp/B003TTRORQ?tag=detailerpicks-20"
     image: "https://m.media-amazon.com/images/I/71W1R17a4PL.jpg"
     priceFrom: 18.99
     bestFor: "You want the lowest cost per wash and do not mind diluting, the gel body clings to vertical surfaces and one bottle of concentrate lasts a long time."
@@ -32,7 +32,10 @@ products:
       Scent: "Sweet detailing-shop scent"
       Size and value: "16 oz concentrate, dilutes into far more usable product"
     body: "<p>The Diablo Gel trades the color-change trick for economy. As a concentrate it dilutes down, so owner reports consistently call out the long life per bottle and the thick gel body that grips vertical barrel faces instead of running off. The catch is you mix it yourself, so it rewards detailers who do not mind a spray bottle and a dilution ratio.</p>"
-winner: ""
+winner: "Adam's Deep Wheel Cleaner"
+verdict:
+  verdict: "The Adam's Deep Wheel Cleaner is the safer everyday pick: pH-balanced, coating-friendly, and its color-change formula shows you exactly where embedded iron is lifting."
+  supporting: "Reach for the Chemical Guys Diablo gel when you want a clinging gel for heavier grime on uncoated wheels."
 dealBreakers:
   - "If you want zero setup and instant visual feedback that the cleaner is working, the color-changing Adam's spray is the easier daily driver."
   - "If cost per wash matters most and you wash often, the Diablo Gel concentrate stretches much further than a ready-to-use bottle."

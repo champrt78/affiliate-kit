@@ -6,7 +6,7 @@ deck: "Two of the biggest names in consumer car care, compared through their fla
 products:
   - name: "Adam's Car Wash Shampoo"
     brand: "Adam's Polishes"
-    affiliateUrl: "https://www.amazon.com/dp/B0058JJS0Q"
+    affiliateUrl: "https://www.amazon.com/dp/B0058JJS0Q?tag=detailerpicks-20"
     image: "https://m.media-amazon.com/images/I/51hkRqDWMbL._AC_SL1000_.jpg"
     priceFrom: 14.99
     bestFor: "You want a curated premium ecosystem where the products are designed to work together, and you are willing to pay a little more for a tighter, more guided lineup."
@@ -20,7 +20,7 @@ products:
     body: "<p>Adam's flagship shampoo is the front door to a curated premium ecosystem. The brand keeps its lineup tighter than its rivals and leans on guided kits and bundles, so owner reports often describe Adam's as the easier brand to build a coherent kit from without overthinking. The shampoo itself is pH-neutral and coating-safe, and the trade for the polish and packaging is a higher price per ounce.</p>"
   - name: "Chemical Guys Mr. Pink"
     brand: "Chemical Guys"
-    affiliateUrl: "https://www.amazon.com/dp/B00AFBXQNC"
+    affiliateUrl: "https://www.amazon.com/dp/B00AFBXQNC?tag=detailerpicks-20"
     image: "https://m.media-amazon.com/images/I/611ZmeSQ3zL.jpg"
     priceFrom: 9.99
     bestFor: "You want the lowest cost of entry into a huge catalog, Mr. Pink is the value-class staple and the brand sells a product for nearly every detailing step."
@@ -32,7 +32,10 @@ products:
       Scent: "Bubblegum, the brand signature"
       Size and value: "16 oz, strong value per ounce"
     body: "<p>Mr. Pink is the value-class staple at the front of a sprawling catalog. Where Adam's curates, Chemical Guys floods the shelf with a product for nearly every step, so owner reports frame the brand as the place to assemble a full kit cheaply and experiment widely. Mr. Pink itself is a pH-neutral everyday shampoo, and the trade for the low price and huge selection is that the catalog can feel overwhelming.</p>"
-winner: ""
+winner: "Chemical Guys Mr. Pink"
+verdict:
+  verdict: "For building a first kit, Chemical Guys is the easier entry. Mr. Pink is a slick, affordable, widely available shampoo, and the lineup around it is huge."
+  supporting: "Adam's is the step up if you want a more premium feel and a tighter, higher-quality range, and you do not mind paying for it."
 dealBreakers:
   - "If you want a guided, curated kit and do not want to sift through hundreds of products, the tighter Adam's lineup is the calmer choice."
   - "If you want the widest selection and the lowest cost of entry to build a full detailing arsenal, the Chemical Guys catalog and Mr. Pink win."

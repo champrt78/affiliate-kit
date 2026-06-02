@@ -6,7 +6,7 @@ deck: "Two ceramic protectants that promise gloss and water beading without a pr
 products:
   - name: "Adam's Graphene Ceramic Spray Coating"
     brand: "Adam's Polishes"
-    affiliateUrl: "https://www.amazon.com/dp/B08CPDDGZZ"
+    affiliateUrl: "https://www.amazon.com/dp/B08CPDDGZZ?tag=detailerpicks-20"
     image: "https://m.media-amazon.com/images/I/715P3t+v0kL._AC_SL1500_.jpg"
     priceFrom: 24.99
     bestFor: "You want the fastest path to gloss and beading, sprayed onto a wet or dry panel after a wash and wiped off, with no curing window to babysit."
@@ -20,7 +20,7 @@ products:
     body: "<p>Adam's Graphene Ceramic Spray is the low-commitment entry point. You spray it on a clean panel, spread it, and wipe it off, and owner reports praise how forgiving the process is for a first ceramic. It reads as a maintenance coat rather than a long-haul coating, so the trade is convenience now for more frequent reapplication later. It layers cleanly over an existing coating as a refresher.</p>"
   - name: "Chemical Guys HydroSlick HyperWax"
     brand: "Chemical Guys"
-    affiliateUrl: "https://www.amazon.com/dp/B07V25MZHV"
+    affiliateUrl: "https://www.amazon.com/dp/B07V25MZHV?tag=detailerpicks-20"
     image: "https://m.media-amazon.com/images/I/41R1-NleWaL._AC_SL1500_.jpg"
     priceFrom: 69.99
     bestFor: "You want longer protection from one application and do not mind working a gel with an applicator and buffing it off, in exchange for up to a year of coverage per maker."
@@ -32,7 +32,10 @@ products:
       Top-coat safe: "Yes, works over clear coat and coated finishes"
       Value: "Higher upfront cost, far fewer applications"
     body: "<p>HydroSlick HyperWax is the more committed choice. It is a SiO2 gel applied with a foam applicator and buffed off like a wax, not a spray, and the maker rates it for up to a year of protection. Owner reports describe a deep gloss and strong beading, with the trade being a more deliberate application than a quick spray-on. It works over clear coat, single-stage, and already-coated finishes.</p>"
-winner: ""
+winner: "Adam's Graphene Ceramic Spray Coating"
+verdict:
+  verdict: "For most people the Adam's Graphene Ceramic Spray is the easier win: a fast spray-on, wipe-off maintenance coat that boosts gloss and water-beading in minutes."
+  supporting: "Choose the Chemical Guys HydroSlick HyperWax if you want maximum durability from a single application and do not mind the slower gel process."
 dealBreakers:
   - "If you want the fastest, most forgiving application and do not mind reapplying more often, Adam's spray-on is the easier path."
   - "If you want the longest stretch between applications and will work a gel by hand, HydroSlick's up-to-a-year claim is the bigger payoff."

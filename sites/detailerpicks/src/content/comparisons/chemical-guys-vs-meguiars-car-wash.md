@@ -6,7 +6,7 @@ deck: "Two of the most-bought car wash soaps in the category. The split comes do
 products:
   - name: "Chemical Guys Mr. Pink"
     brand: "Chemical Guys"
-    affiliateUrl: "https://www.amazon.com/dp/B00AFBXQNC"
+    affiliateUrl: "https://www.amazon.com/dp/B00AFBXQNC?tag=detailerpicks-20"
     image: "https://m.media-amazon.com/images/I/611ZmeSQ3zL.jpg"
     priceFrom: 9.99
     bestFor: "You want a clean-rinsing pure shampoo that strips dirt without leaving residue, ideal as a prep wash before clay, polish, or a fresh coat of protection."
@@ -20,7 +20,7 @@ products:
     body: "<p>Mr. Pink is a lightweight pure-cleaning shampoo, which is exactly why detailers reach for it as a prep wash. It lifts dirt and rinses clean without leaving behind gloss agents that would interfere with clay, polish, or a new coating. Owner reports praise the high suds and the value, and the trade is that it adds nothing to the finish on its own, which is the point.</p>"
   - name: "Meguiar's Gold Class Car Wash"
     brand: "Meguiar's"
-    affiliateUrl: "https://www.amazon.com/dp/B0009IQXFO"
+    affiliateUrl: "https://www.amazon.com/dp/B0009IQXFO?tag=detailerpicks-20"
     image: "https://m.media-amazon.com/images/I/81HCN2EyH2L._AC_SL1500_.jpg"
     priceFrom: 9.97
     bestFor: "You want a richer conditioning wash that boosts gloss and feeds existing wax in one step, best on a car that is already waxed and that you want to keep looking warm."
@@ -32,7 +32,10 @@ products:
       Scent: "Classic Meguiar's wash scent"
       Size and value: "64 oz bottle, high volume per dollar"
     body: "<p>Gold Class is the conditioning counterpoint. It carries added paint conditioners that boost gloss and feed existing wax as you wash, so owner reports favor it for keeping an already-waxed car looking warm between full details. The flip side of those conditioners is that it is not the cleanest prep wash, since you generally want a bare surface before polish or a new coating.</p>"
-winner: ""
+winner: "Chemical Guys Mr. Pink"
+verdict:
+  verdict: "Mr. Pink is the enthusiast step-up: more suds, more slickness, and a pH-neutral formula safe on coatings. It is the pick once you care about wash technique."
+  supporting: "Meguiar's Gold Class is the grab-anywhere baseline, easy to find on a shelf and perfectly fine for a quick wash."
 dealBreakers:
   - "If you are washing to prep for clay, polish, or a new coating, Mr. Pink rinses cleaner and leaves nothing behind to interfere."
   - "If your car is already waxed and you just want a glossy maintenance wash, the conditioners in Gold Class do more for the finish."
