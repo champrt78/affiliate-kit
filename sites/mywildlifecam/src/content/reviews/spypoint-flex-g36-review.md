@@ -1,6 +1,7 @@
 ---
 title: "Spypoint Flex G36 Review"
 description: "Spec-based review of the Spypoint Flex G36 cellular trail camera. 36MP, 1080p, dual-SIM auto-connect, 0.3s trigger, 100ft detection."
+pillar: "cellular-cameras"
 rubric: "Trail Cameras · Review"
 deck: "The dual-SIM cellular cam that auto-picks the strongest of two carriers, paired with a quick 0.3-second trigger and 36MP stills. The catch is the brand's broader SD-card track record."
 product:

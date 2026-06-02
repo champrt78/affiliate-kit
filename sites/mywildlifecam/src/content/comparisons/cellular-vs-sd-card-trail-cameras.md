@@ -1,6 +1,7 @@
 ---
 title: "Cellular vs SD-Card Trail Cameras: Which Should You Buy?"
 description: "Cellular vs SD-card trail cameras compared on cost, convenience, and reliability, using the Spypoint Flex and Browning Strike Force as stand-ins."
+pillar: "cellular-cameras"
 rubric: "Trail Cameras · Head-to-Head"
 deck: "The first fork every trail-cam buyer hits. Pay a monthly plan for photos on your phone, or pay nothing and walk out for the SD card. We use one flagship of each to make the trade-off concrete."
 products:

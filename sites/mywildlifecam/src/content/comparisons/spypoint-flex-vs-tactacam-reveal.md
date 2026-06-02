@@ -1,6 +1,7 @@
 ---
 title: "Spypoint Flex vs Tactacam Reveal X: Which Cellular Trail Cam Wins?"
 description: "Spypoint Flex vs Tactacam Reveal X on trigger speed, battery, image quality, and plan cost, and which one most hunters should buy."
+pillar: "cellular-cameras"
 rubric: "Cellular Trail Cameras · Head-to-Head"
 deck: "Two mid-priced cellular cams that show up in every short list. The split comes down to dual-SIM connectivity and trigger speed versus battery life and daytime image quality."
 products:

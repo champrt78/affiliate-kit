@@ -1,6 +1,7 @@
 ---
 title: "Tactacam Reveal X 3.0 Review (2026): Budget Cellular That Holds Up"
 description: "Spec-based review of the Tactacam Reveal X 3.0: cross-confirmed reviewer findings on durability, cellular plans, and the low-glow flash."
+pillar: "cellular-cameras"
 rubric: "Trail Cameras · Review"
 deck: "The cellular pick for budget-conscious deployments where reliable hardware over a 4+ year window matters more than top-of-line image quality."
 product:

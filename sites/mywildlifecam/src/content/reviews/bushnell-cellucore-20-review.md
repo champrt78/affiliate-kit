@@ -1,6 +1,7 @@
 ---
 title: "Bushnell CelluCORE 20 Review (2026): The AT&T Budget Cellular Cam"
 description: "Spec-based review of the Bushnell CelluCORE 20 (119904A) AT&T cellular trail camera. 20MP interpolated, 80ft range, 0.64s trigger, single-carrier AT&T, 12 AA."
+pillar: "cellular-cameras"
 rubric: "Trail Cameras · Review"
 deck: "The budget AT&T-locked cellular pick for buyers with confirmed AT&T coverage who want simple Bushnell data plans and good daytime image quality over speed."
 product:

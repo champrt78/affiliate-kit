@@ -1,6 +1,7 @@
 ---
 title: "Vikeri Trail Camera Review (2026): The Under-$80 Backyard Entry Point"
 description: "Spec-based review of the Vikeri Trail Camera. 2.7K resolution, 0.1s trigger, 65ft night vision, IP66 weatherproof. The budget pick that doesn't get returned."
+pillar: "sd-card-cameras"
 rubric: "Trail Cameras · Review"
 deck: "The under-$80 SD-card pick for first-time buyers, gift-givers, and anyone testing whether they care about trail-cam photos before spending real money."
 product:

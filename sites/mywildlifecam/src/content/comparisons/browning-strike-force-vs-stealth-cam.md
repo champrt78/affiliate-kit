@@ -1,6 +1,7 @@
 ---
 title: "Browning Strike Force vs Stealth Cam DS4K: Which SD-Card Cam Wins?"
 description: "Browning Strike Force Pro X vs Stealth Cam DS4K on trigger speed, resolution, flash, and battery, and which SD-card cam fits your setup."
+pillar: "sd-card-cameras"
 rubric: "Trail Cameras · Head-to-Head"
 deck: "Two no-subscription SD-card cams from opposite design schools. The split comes down to Browning's lightning trigger and small footprint versus Stealth Cam's 4K image quality and long battery runs."
 products:

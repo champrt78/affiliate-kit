@@ -31,5 +31,25 @@
     "night-vision range",
     "mounting flexibility",
     "price tier"
-  ]
+  ],
+  "navigation": {
+    "pillars": [
+      {
+        "slug": "cellular-cameras",
+        "label": "Cellular Cameras",
+        "type": "commercial",
+        "categoryPillar": "cellular-cameras",
+        "blurb": "Cameras that text photos to your phone over a cell network, so you never walk to the tree to pull a card.",
+        "hubKicker": "Buying guides"
+      },
+      {
+        "slug": "sd-card-cameras",
+        "label": "SD-Card Cameras",
+        "type": "commercial",
+        "categoryPillar": "sd-card-cameras",
+        "blurb": "No-subscription cameras that record to a memory card, the simplest way to watch a backyard or property.",
+        "hubKicker": "Buying guides"
+      }
+    ]
+  }
 }

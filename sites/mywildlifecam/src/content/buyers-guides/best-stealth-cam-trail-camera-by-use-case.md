@@ -1,6 +1,7 @@
 ---
 title: "Best Stealth Cam Trail Cameras by Use Case"
 description: "Seven Stealth Cams mapped to seven reader segments. Cellular vs SD-card, 940nm no-glow vs 850nm low-glow, 4K vs 1080P, $72 to $250."
+pillar: "sd-card-cameras"
 rubric: "Stealth Cam · Buying Guide"
 deck: "Seven distinct use cases. Seven Stealth Cam picks. The 4K flagship, the cellular 4K, the no-glow covert, the 360, the budget cellular, the entry-level, and the under-$100 no-glow."
 products:

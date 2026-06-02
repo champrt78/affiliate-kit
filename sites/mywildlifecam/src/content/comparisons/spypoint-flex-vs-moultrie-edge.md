@@ -1,6 +1,7 @@
 ---
 title: "Spypoint Flex vs Moultrie Edge 2: Which Cellular Trail Cam Wins?"
 description: "Spypoint Flex vs Moultrie Edge 2 on connectivity, trigger speed, app experience, and plan cost, and which cellular cam fits your property."
+pillar: "cellular-cameras"
 rubric: "Cellular Trail Cameras · Head-to-Head"
 deck: "Two auto-connect cellular cams aimed at the same buyer. The split comes down to Spypoint's free photo tier and proven dual-SIM radio versus Moultrie's cleaner app and tidier setup."
 products:

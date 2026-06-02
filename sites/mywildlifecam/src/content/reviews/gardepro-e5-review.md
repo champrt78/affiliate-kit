@@ -1,6 +1,7 @@
 ---
 title: "GardePro E5 Review (2026): The Under-$50 No-Hassle Trail Camera"
 description: "Spec-based review of the GardePro E5 non-cellular trail camera. 48MP photos, 1296P video, 100ft no-glow IR, IP66, no subscription required."
+pillar: "sd-card-cameras"
 rubric: "Trail Cameras · Review"
 deck: "The budget non-cellular pick for backyard wildlife watchers who don't want apps, subscriptions, or anything to configure beyond aiming and mounting."
 product:

@@ -1,6 +1,7 @@
 ---
 title: "Browning Strike Force Pro X 1080 Review"
 description: "Spec-based review of the Browning Strike Force Pro X 1080 (BTC-5PX-1080) non-cellular trail camera. 0.22s trigger, 120ft IR, no monthly fees."
+pillar: "sd-card-cameras"
 rubric: "Trail Cameras · Review"
 deck: "The fast, compact, no-subscription SD-card pick for scouting and property locations you can physically reach, where same-day cellular alerts are not the point."
 product:

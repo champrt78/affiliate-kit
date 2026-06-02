@@ -1,6 +1,7 @@
 ---
 title: "Best Trail Cameras for Backyard Wildlife (2026): Spec-Based Picks"
 description: "Three trail cameras for backyard wildlife and home-security property monitoring, matched to buyer type. Cellular vs SD-card, free tier vs no subscription."
+pillar: "sd-card-cameras"
 rubric: "Trail Cameras · Buying Guide"
 deck: "Three trail cameras, three buyer types. The cellular pick. The image-quality pick. The gift-buyer entry point."
 products:

@@ -1,6 +1,7 @@
 ---
 title: "Spypoint Flex vs Bushnell CelluCORE 20: Which Cellular Cam Wins?"
 description: "Spypoint Flex vs Bushnell CelluCORE 20 on connectivity, trigger speed, flash type, and plan cost, and which cellular cam suits your spot."
+pillar: "cellular-cameras"
 rubric: "Cellular Trail Cameras · Head-to-Head"
 deck: "A dual-SIM all-rounder against a single-carrier value pick. The split comes down to coverage insurance and a free photo tier versus a lower entry price on a locked carrier."
 products:

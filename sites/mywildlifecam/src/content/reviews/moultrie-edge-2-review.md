@@ -1,6 +1,7 @@
 ---
 title: "Moultrie Edge 2 Review"
 description: "Spec-based review of the Moultrie Edge 2 cellular trail camera. 36MP, 1080p, nationwide 4G LTE auto-connect, built-in memory, 100ft detection."
+pillar: "cellular-cameras"
 rubric: "Trail Cameras · Review"
 deck: "The cellular trail cam that picks the carrier for you, with no SD card to manage. The trade-offs are a modest trigger and a narrow field of view."
 product:

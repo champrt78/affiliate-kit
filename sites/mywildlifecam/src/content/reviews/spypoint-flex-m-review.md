@@ -1,6 +1,7 @@
 ---
 title: "Spypoint Flex-M Review (2026): Cellular Without the Subscription Panic"
 description: "Spec-based review of the Spypoint Flex-M cellular trail camera. Dual-SIM, 100 free photos a month, what owner reviews and independent testing actually say."
+pillar: "cellular-cameras"
 rubric: "Trail Cameras · Review"
 deck: "The cellular pick for backyard wildlife watchers who'd rather see photos arrive on their phone than walk out to swap an SD card."
 product:

@@ -1,6 +1,7 @@
 ---
 title: "Stealth Cam DS4K Ultimate Review (2026): The Image-Quality Pick"
 description: "Spec-based review of the Stealth Cam DS4K Ultimate. 32MP, 4K video, NO-GLO IR, 14-month battery, and zero monthly subscription. The trade-offs that matter."
+pillar: "sd-card-cameras"
 rubric: "Trail Cameras · Review"
 deck: "The SD-card pick for backyard wildlife watchers who'd rather see gallery-quality photos and walk out to swap a card than pay any monthly cellular bill."
 product:

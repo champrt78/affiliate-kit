@@ -1,6 +1,7 @@
 ---
 title: "Best Cellular Trail Cameras (2026): Spec-Based Picks"
 description: "Six cellular trail cameras matched to buyer types, including no-monthly-fee and free-plan picks. Best overall, best image, best budget, solar, and best value."
+pillar: "cellular-cameras"
 rubric: "Cellular Trail Cameras · Buying Guide"
 deck: "Six cellular trail cameras across six buyer needs. The multi-carrier default, the 4K image pick, the budget cloud pick, the solar dual-SIM, the endurance pick, and the value pick."
 products:
