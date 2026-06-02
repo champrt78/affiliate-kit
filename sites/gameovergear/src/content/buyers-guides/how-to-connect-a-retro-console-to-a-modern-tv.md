@@ -173,3 +173,5 @@ This guide is for the retro gamer who has the consoles boxed up and a **TV that 
 - **Picture works but looks soft:** the inline mClassic Retro Edition adds a convenient quality pass without an extra box to configure.
 
 Whatever the path, a **known-good high-speed HDMI cable** like the Amazon Basics one closes the chain and rules out the cable as the culprit when something looks off.
+
+If you want to compare the gear options side by side rather than follow the setup steps, our [best retro scalers and display gear](/buyers-guides/best-retro-scalers-and-displays) guide ranks converters, upscalers, and a line multiplier from budget to premium. For everything in the category, the [Level Up topic hub](/topics/level-up) collects every setup guide on the site.

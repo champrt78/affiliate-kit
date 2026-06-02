@@ -53,4 +53,6 @@ The 8BitDo Pro 2 is the do-everything pick. Broad platform support across Switch
 
 The Retro-Bit Saturn Pro bets the other way. The authentic Saturn six-button face and the d-pad the original was famous for make it the pick for fighters and 2D action, now with wireless added. You give up the wide platform reach and the remap depth in exchange for that exact feel.
 
+If neither of these two is the right fit, our [best controllers for retro gaming and emulation](/buyers-guides/best-retro-controllers) guide ranks six pads across every classic layout from SNES to arcade, and the [controllers topic hub](/topics/controllers) gathers every controller review and comparison on the site.
+
 This comparison is built from manufacturer specifications, synthesized verified-buyer reports, and independent coverage. We do not take payment from either brand.

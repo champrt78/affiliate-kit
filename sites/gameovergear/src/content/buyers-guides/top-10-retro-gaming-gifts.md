@@ -202,4 +202,4 @@ Ten picks, ranked one through ten. Number one is the no-brainer stocking stuffer
 
 **What do you get someone who is into emulation handhelds?** If your giftee is past novelties and actually plays, the gift they will use is a handheld itself or an accessory for one. A **budget emulation handheld** covers everything up through PS1 for well under $100, and our [best retro handhelds guide](/buyers-guides/best-retro-handhelds/) breaks down which shape fits which player, from a pocketable pick to a clamshell to an Android powerhouse.
 
-For a handheld owner who already has the device, a **high-capacity microSD card or a quality USB-C charger** is the practical add-on. Pair a small novelty from this list with a real handheld and you cover both the fun and the function.
+For a handheld owner who already has the device, a **high-capacity microSD card or a quality USB-C charger** is the practical add-on. Pair a small novelty from this list with a real handheld and you cover both the fun and the function. For more giftable extras in this vein, the [Gifts and 1-Ups topic hub](/topics/1-up) collects the novelties and stocking-stuffers on the site.

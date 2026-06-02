@@ -131,3 +131,5 @@ The Pro 2 sits in the [Controllers](/topics/controllers/) pillar. Three natural 
 **Pro 2 vs 8BitDo Ultimate.** The Ultimate line is the modern competitive pad, with a 2.4GHz low-latency dongle, a charging dock, and often Hall Effect sticks. The Pro 2 is the retro-feel pad: the SNES-style body and standout d-pad, Bluetooth or USB-C only with no 2.4GHz dongle, and no dock in the box. Choose the **Pro 2 for d-pad and retro feel**, the **Ultimate for wireless latency and dock convenience**.
 
 **Pro 2 vs 8BitDo Pro 3.** Amazon labels the Pro 3 the newer version. At roughly $58 it adds TMR joysticks, swappable ABXY buttons, a charging dock, and Hall triggers. It is a different, pricier product. The **Pro 2 is the value and retro pick at $39.99**.
+
+For a head-to-head against an authentic Saturn fightpad, see our [8BitDo Pro 2 vs Retro-Bit Saturn Pro](/comparisons/8bitdo-pro-2-vs-retro-bit-saturn-pro) comparison, and for where the Pro 2 ranks among layout specialists, our [best controllers for retro gaming and emulation](/buyers-guides/best-retro-controllers) guide lines up six pads across every classic silhouette.

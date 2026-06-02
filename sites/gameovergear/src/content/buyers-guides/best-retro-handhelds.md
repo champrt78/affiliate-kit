@@ -171,7 +171,7 @@ The Android RG406H and Retroid Pocket 5 both sit well above $100 because that is
 
 Game Boy Advance runs comfortably across every device here, since GBA sits below the PS1 ceiling all six clear. The **3:2 RG34XX is the standout for GBA** specifically: Retro Dodo found its 720x480 3:2 panel scales GBA visuals more cleanly than the squarer 640x480 screens, calling it a better GBA replica than the RG35XX SP.
 
-Nintendo DS is the harder half of this pairing because of its dual-screen layout. Per the RG40XX H review companion to this guide, GBAtemp found DS ran well with zero configuration on the H700 platform, so the budget Linux picks handle DS, though the single-screen layout means DS is emulated onto one display rather than two physical screens. If a true clamshell feel matters for DS-style play, the **RG35XX SP is the flip-shut option**, with the same DS-capable internals.
+Nintendo DS is the harder half of this pairing because of its dual-screen layout. Per the [RG40XX H review](/reviews/anbernic-rg40xx-review) companion to this guide, GBAtemp found DS ran well with zero configuration on the H700 platform, so the budget Linux picks handle DS, though the single-screen layout means DS is emulated onto one display rather than two physical screens. If a true clamshell feel matters for DS-style play, the **RG35XX SP is the flip-shut option**, with the same DS-capable internals. For everything in the category, the [handhelds topic hub](/topics/retro-handhelds) collects every handheld review and comparison on the site.
 
 ## Best handheld for PSP emulation
 

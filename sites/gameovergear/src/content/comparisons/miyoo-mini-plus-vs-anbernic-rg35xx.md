@@ -51,4 +51,6 @@ The Miyoo Mini Plus is the budget default. A 3.5-inch 640x480 IPS panel, a liste
 
 The base Anbernic RG35XX answers with the same pocketable shape and screen on a stock Linux build that boots and plays without the extra step. You give up WiFi on this base model and a chunk of listed battery in exchange for a device that asks nothing of you on day one.
 
+If you want the wider field of pocketable, clamshell, and horizontal handhelds, our [best retro emulation handhelds](/buyers-guides/best-retro-handhelds) guide sorts six picks by form factor and power tier, and the [handhelds topic hub](/topics/retro-handhelds) gathers every handheld review and comparison on the site.
+
 This comparison is built from manufacturer specifications, synthesized verified-buyer reports, and independent coverage. We do not take payment from either brand.

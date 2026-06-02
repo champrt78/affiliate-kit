@@ -52,4 +52,6 @@ The Hyperkin RetroN 5 is the feature-rich pick. Wide cartridge coverage across N
 
 The Retro-Bit Super RetroTRIO answers with a simpler three-in-one for NES, SNES, and Genesis, built around hardware-based playback. You give up the Game Boy support and the on-screen features in exchange for a more straightforward, hardware-driven design.
 
+If you are weighing clone consoles against minis and FPGA systems, our [best retro consoles and reissue systems](/buyers-guides/best-retro-consoles-and-systems) guide spans six picks from official minis to an FPGA premium option, and the [consoles and systems topic hub](/topics/consoles-and-systems) gathers every console review and comparison on the site.
+
 This comparison is built from manufacturer specifications, synthesized verified-buyer reports, and independent coverage. We do not take payment from either brand.

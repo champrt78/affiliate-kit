@@ -139,3 +139,5 @@ This guide is for the retro gamer who has the consoles but a **picture that look
 - **Super Nintendo or Super Famicom, clean RGB without modding:** the LEVELHIKE cable is the most targeted option.
 - **Already have a reasonable HDMI or component signal:** the inline mClassic Retro Edition adds a convenient quality pass with no extra box to configure.
 - **Chasing sharp, low-latency output from RGB-capable consoles:** the Kaico OSSC is the enthusiast pick among what Amazon stocks, with the honest note that the RetroTINK tier above it sells direct rather than here.
+
+If you want the full setup walkthrough rather than the gear shortlist, our [how to connect a retro console to a modern TV](/buyers-guides/how-to-connect-a-retro-console-to-a-modern-tv) guide walks the signal path from composite to RGB to HDMI and covers lag and region lock. For everything in the category, the [displays and scalers topic hub](/topics/displays-and-scalers) collects every display review and comparison on the site.

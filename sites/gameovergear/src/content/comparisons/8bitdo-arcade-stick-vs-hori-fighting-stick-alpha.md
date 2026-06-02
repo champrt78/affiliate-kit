@@ -53,4 +53,6 @@ The 8BitDo Arcade Stick is the value-and-flexibility pick. Switch and Windows su
 
 The Hori Fighting Stick Alpha bets the other way. Arcade-quality parts, replaceable artwork, and an openable panel on a wired PS5, PS4, and PC build are the reasons competition-minded players pay more than double. You give up Switch support and wireless in exchange for the parts and the pedigree.
 
+If neither of these two is the stick for your setup, our [best arcade sticks for retro gaming](/buyers-guides/best-arcade-sticks-for-retro-gaming) guide ranks six picks from a budget Sanwa-moddable base to a tournament lever and a leverless option, and the [arcade sticks topic hub](/topics/arcade-sticks) gathers every stick review and comparison on the site.
+
 This comparison is built from manufacturer specifications, synthesized verified-buyer reports, and independent coverage. We do not take payment from either brand.

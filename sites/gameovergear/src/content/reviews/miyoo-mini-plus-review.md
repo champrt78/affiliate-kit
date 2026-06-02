@@ -108,3 +108,5 @@ The Miyoo Mini Plus sits in the [Handhelds](/topics/retro-handhelds/) pillar. Tw
 **Mini Plus vs an Android retro handheld.** An Android-based handheld plays more demanding 3D systems and offers a plug-and-play, app-store experience, at a higher price and larger size. The Mini Plus is a focused, pocketable 2D-and-early-3D device built around custom firmware at a much lower price. Choose the **Mini Plus for cheap, pocketable classic gaming**, an Android handheld for 3D systems and minimal setup.
 
 **Mini Plus vs a horizontal handheld.** A horizontal device offers full-size shoulder ergonomics and a more comfortable long-session grip, often with a bigger screen. The Mini Plus trades that for true pocketability in a vertical body. Pick the **vertical Mini Plus for portability**, a horizontal handheld for comfort on longer sessions.
+
+For the matchup budget threads argue over most, see our [Miyoo Mini Plus vs Anbernic RG35XX](/comparisons/miyoo-mini-plus-vs-anbernic-rg35xx) comparison, and for where the Mini Plus lands across form factors and power tiers, our [best retro emulation handhelds](/buyers-guides/best-retro-handhelds) guide sorts six picks by shape.

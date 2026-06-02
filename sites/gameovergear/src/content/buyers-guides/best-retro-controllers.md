@@ -163,7 +163,9 @@ A few picks blur these lines on purpose. The Pro 2, SN30 Pro, and M30 run Blueto
 
 For a controller aimed at PC emulators rather than a single console, the spec that matters most is a **clean X-input (Xbox-style) mode**, which is what RetroArch, standalone emulators, and Steam read with zero remapping. The **8BitDo Pro 2 is the pick here** on the listing specs: its 4-way mode switch includes an X-input position, it connects to Windows over Bluetooth or wired USB-C, and it lists Steam Deck and Raspberry Pi support, so one pad covers a desktop PC, a Steam Deck, and a Pi emulation box.
 
-The two programmable back paddles and three onboard profiles map well to the save-state and fast-forward hotkeys that PC emulation leans on. An r/SBCGaming thread cited in the picks above still rates the Pro 2 the controller to beat for emulation handhelds, and Inverse named it the best controller for retro gaming. If you want a fixed desktop or cabinet pad with nothing to charge, the **wired-only SN30 Pro USB is the budget route** on Windows, Switch, and Raspberry Pi.
+The two programmable back paddles and three onboard profiles map well to the save-state and fast-forward hotkeys that PC emulation leans on. An r/SBCGaming thread cited in the picks above still rates the Pro 2 the controller to beat for emulation handhelds, and Inverse named it the best controller for retro gaming. Our [8BitDo Pro 2 review](/reviews/8bitdo-pro-2-review) covers the d-pad, the profiles, and the platform support in depth, and our [8BitDo Pro 2 vs Retro-Bit Saturn Pro](/comparisons/8bitdo-pro-2-vs-retro-bit-saturn-pro) comparison sets the do-everything pad against an authentic Saturn fightpad. If you want a fixed desktop or cabinet pad with nothing to charge, the **wired-only SN30 Pro USB is the budget route** on Windows, Switch, and Raspberry Pi.
+
+For everything in the category, the [controllers topic hub](/topics/controllers) collects every controller review and comparison on the site.
 
 ## How we picked
 

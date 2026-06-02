@@ -180,7 +180,7 @@ If you are coming back to fighting games or arcade compilations and want a stick
 After that, match the pick to your platform:
 
 - **PlayStation:** the Qanba Drone 2 is the light, officially licensed entry option for PS5, PS4, and PC, while the Razer Kitsune is the premium leverless choice for the all-button format.
-- **Switch:** the 8BitDo Arcade Stick is the one wireless pick and doubles as a Sanwa mod platform.
+- **Switch:** the 8BitDo Arcade Stick is the one wireless pick and doubles as a Sanwa mod platform, and our [8BitDo Arcade Stick review](/reviews/8bitdo-arcade-stick-review) covers its three connection modes and panel access in full.
 - **Xbox and PC:** the Hori Fighting Stick Alpha is the tournament-grade lever with replaceable artwork and Hayabusa parts, with the caveat that its parts feel is a different ecosystem from Sanwa.
 
-Match the stick to the system you play on first, then decide how far down the modding path you want to go.
+Match the stick to the system you play on first, then decide how far down the modding path you want to go. If your shortlist comes down to the wireless value pick against a wired tournament build, our [8BitDo Arcade Stick vs Hori Fighting Stick Alpha](/comparisons/8bitdo-arcade-stick-vs-hori-fighting-stick-alpha) comparison frames that exact fork, and the [arcade sticks topic hub](/topics/arcade-sticks) collects every stick review and comparison on the site.
