@@ -9,14 +9,18 @@ import siteConfig from "../../data/site-config.json";
 /* ============================================================================
    CANONICAL TOPIC HUB — rebuilt from the shared component library.
    One page per navigation.pillars[] entry. Lists the spokes whose `pillar` FK
-   matches, grouped by collection (guides + reviews), each in a locked-rule
-   centered card grid. Empty pillars render a friendly placeholder so nav never
-   404s. Header is the shared <PageHeader>.
+   matches, grouped by collection (guides + reviews + comparisons), each in a
+   locked-rule centered card grid. Empty pillars render a friendly placeholder so
+   nav never 404s. Header is the shared <PageHeader>.
 
-   This file is byte-identical across the 3 sites that have topics (fussybean /
-   gameovergear / starteraquarium) — it reads each site's site-config pillars +
-   content collections, so identical code auto-personalizes. (Not in the
-   site-template: the template ships no site-config.json to drive getStaticPaths.)
+   This file is byte-identical across the 5 sites — it reads each site's
+   site-config pillars + content collections, so identical code auto-personalizes.
+   The comparisons block is CONDITIONAL: it only renders when a pillar has >=1
+   comparison, so satellites with zero comparison content show no empty heading.
+   Comparisons have no `product`/`rating`, so ReviewCard can't type them — they
+   render via a lightweight inline card that reuses the hub's own .grid/.block CSS.
+   (Not in the site-template: the template ships no site-config.json to drive
+   getStaticPaths.)
    ========================================================================== */
 
 export async function getStaticPaths() {
@@ -39,6 +43,7 @@ const { pillar } = Astro.props as { pillar: PillarDef };
 
 const allReviews = await getCollection("reviews");
 const allGuides = await getCollection("buyers-guides");
+const allComparisons = await getCollection("comparisons");
 
 const byDate = (a: any, b: any) => {
   const at = a.data.pubDate instanceof Date ? a.data.pubDate.getTime() : new Date(a.data.pubDate).getTime();
@@ -48,7 +53,8 @@ const byDate = (a: any, b: any) => {
 
 const guides = allGuides.filter((e) => (e.data as any).pillar === pillar.slug).sort(byDate);
 const reviews = allReviews.filter((e) => (e.data as any).pillar === pillar.slug).sort(byDate);
-const isEmpty = guides.length === 0 && reviews.length === 0;
+const comparisons = allComparisons.filter((e) => (e.data as any).pillar === pillar.slug).sort(byDate);
+const isEmpty = guides.length === 0 && reviews.length === 0 && comparisons.length === 0;
 ---
 <MainLayout title={pillar.label} description={pillar.blurb}>
   <PageHeader kicker={pillar.hubKicker} title={pillar.label} lede={pillar.blurb} />
@@ -75,6 +81,22 @@ const isEmpty = guides.length === 0 && reviews.length === 0;
               <h2 class="block__title">Reviews</h2>
               <div class="grid">
                 {reviews.map((entry) => <ReviewCard entry={entry} />)}
+              </div>
+            </div>
+          )}
+          {comparisons.length > 0 && (
+            <div class="block">
+              <h2 class="block__title">Head-to-head comparisons</h2>
+              <div class="grid">
+                {comparisons.map((entry) => (
+                  <article class="cmp-card">
+                    <a class="cmp-card__link" href={`/comparisons/${entry.slug}/`}>
+                      <span class="cmp-card__kicker">Comparison</span>
+                      <h3 class="cmp-card__title">{entry.data.title}</h3>
+                      {entry.data.deck && <p class="cmp-card__desc">{entry.data.deck}</p>}
+                    </a>
+                  </article>
+                ))}
               </div>
             </div>
           )}
@@ -110,6 +132,56 @@ const isEmpty = guides.length === 0 && reviews.length === 0;
     font-family: var(--font-serif);
     font-style: italic;
     max-width: 52ch;
+  }
+
+  /* Comparison card — text-only card (comparisons have no hero/rating). Reuses
+     the card surface + hover treatment of ReviewCard so the grid stays cohesive. */
+  .cmp-card {
+    background: var(--color-surface-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    height: 100%;
+    transition: transform var(--duration-base) var(--ease-out),
+                box-shadow var(--duration-base) var(--ease-out),
+                border-color var(--duration-base) var(--ease-out);
+  }
+  .cmp-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-sage);
+  }
+  .cmp-card__link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--space-6);
+    color: var(--color-fg);
+    text-decoration: none;
+  }
+  .cmp-card__kicker {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--color-brass);
+    margin-bottom: var(--space-3);
+  }
+  .cmp-card__title {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    font-weight: var(--weight-semibold);
+    line-height: var(--leading-tight);
+    letter-spacing: -0.015em;
+    color: var(--color-forest);
+    margin: 0 0 var(--space-3);
+  }
+  .cmp-card__desc {
+    color: var(--color-muted);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+    margin: 0;
   }
 
   @media (max-width: 760px) {

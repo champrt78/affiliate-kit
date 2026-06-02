@@ -1,0 +1,42 @@
+---
+/* Head-to-head comparison route. Mirrors the guide/review wrappers: isDraft is
+   computed from the verdict (the winner call) so MainLayout flips robots to
+   noindex until Ray writes it — same DRAFT/noindex gate as Bottom Lines. */
+import { getCollection, type CollectionEntry } from "astro:content";
+import MainLayout from "../../layouts/MainLayout.astro";
+import ComparisonArticle from "@affkit/shared-ui/ComparisonArticle.astro";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("comparisons");
+  return entries.map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+
+interface Props {
+  entry: CollectionEntry<"comparisons">;
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+
+const BOTTOMLINE_PLACEHOLDER = "_The Bottom Line is being written._";
+const v = (data as any).verdict;
+const isDraft = !v || !v.verdict || v.verdict.trim() === "" || v.verdict.includes(BOTTOMLINE_PLACEHOLDER);
+const robotsContent = isDraft ? "noindex, nofollow" : "index, follow";
+---
+<MainLayout
+  title={data.title}
+  description={data.description}
+  robotsContent={robotsContent}
+  ogType="article"
+  bgTheme={data.bgTheme}
+>
+  <ComparisonArticle
+    entry={entry}
+    siteName="FussyBean"
+    crumbLabel="All comparisons"
+    crumbHref="/comparisons/"
+    editorialTeamName="The FussyBean editorial team"
+    credentialLine="Spec analysis · verified-buyer reports · independent teardowns. We don't take payment from brands."
+    bottomCtaLabel="See the winner on Amazon"
+  />
+</MainLayout>
