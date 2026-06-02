@@ -1,0 +1,177 @@
+[
+  {
+    "site": "starteraquarium",
+    "type": "review",
+    "path": "sites/starteraquarium/src/content/reviews/api-freshwater-master-test-kit-review.md",
+    "slug": "api-freshwater-master-test-kit-review",
+    "title": "API Freshwater Master Test Kit Review",
+    "product": "API Freshwater Master Test Kit",
+    "price": "omitted",
+    "summary": "Liquid reagent test kit covering pH, high-range pH, ammonia, nitrite, and nitrate. API lists over 800 tests, results read by color match against a printed chart. Freshwater only.",
+    "flags": ["price omitted from frontmatter"],
+    "options": [
+      {
+        "verdict": "If you are cycling a first tank and want the four readings that actually matter in one box, this is the kit the hobby reaches for, and the reasons hold up: pH, ammonia, nitrite, and nitrate together, the liquid method keepers trust over strips, and over 800 tests to burn through.",
+        "supporting": "Built for the beginner who would rather know than guess what ammonia is doing to a new tank. The one habit to learn is the nitrate test, which reads low if you skip its vigorous shake step."
+      },
+      {
+        "verdict": "A strong pick as long as you accept that this is liquid chemistry, not a one-second dip. Each parameter is its own tube, drops, and wait, so the full four-reading panel is a several-minute routine you trade speed for precision on.",
+        "supporting": "Right for the keeper who wants readings they can act on during cycling, when most readings need to be. Anyone after a fast daily glance may keep dip strips around alongside it."
+      },
+      {
+        "verdict": "The value math is hard to argue with. Buying ammonia, pH, nitrite, and nitrate as separate kits costs more than this single bundle, and the 800-plus test count means one box lasts a first tank many months to over a year.",
+        "supporting": "Best for the first-timer who wants the most-recommended kit rather than guessing between unfamiliar brands. Note the reagents are a consumable with a shelf life, so a years-old kit pulled from a drawer can read less reliably than a fresh one."
+      }
+    ]
+  },
+  {
+    "site": "starteraquarium",
+    "type": "review",
+    "path": "sites/starteraquarium/src/content/reviews/aquarium-coop-sponge-filter-review.md",
+    "slug": "aquarium-coop-sponge-filter-review",
+    "title": "Aquarium Co-Op Sponge Filter Review",
+    "product": "Aquarium Co-Op Coarse Sponge Filter (Medium)",
+    "price": "omitted",
+    "summary": "Air-driven coarse-foam sponge filter doing mechanical and biological filtration. Gentle fry- and shrimp-safe flow, slower-clogging coarse foam, sits inside the tank, requires a separate air pump and airline.",
+    "flags": ["price omitted from frontmatter"],
+    "options": [
+      {
+        "verdict": "About as beginner-proof as filtration gets. Attach the airline, drop it in, plug in the air pump, and there is almost no way to assemble it wrong. The coarse foam stretches the cleaning interval and the gentle flow will not pull anything small against an intake.",
+        "supporting": "Made for the first-tank keeper who wants gentle and forgiving over powerful, or anyone running fry, shrimp, or bettas. It needs a separate air pump and airline to run, so budget for those alongside it."
+      },
+      {
+        "verdict": "The right filter only if you match it to a lightly stocked tank. The same soft, air-driven flow that protects small fish moves less water than a powered filter, so a busy or larger tank can outpace a single sponge.",
+        "supporting": "Suited to nano tanks, shrimp tanks, and quarantine setups. A heavily stocked tank may want a second sponge, a hang-on-back, or a step up in throughput."
+      },
+      {
+        "verdict": "As a cheap, quiet, dependable backup or quarantine filter, this is the one experienced keepers reach for. There is no motor in the water and no impeller, so the failure points are few and the parts that wear are cheap.",
+        "supporting": "A natural fit for the keeper who wants a trusted second filter or a hospital-tank standby. It sits visibly in a tank corner rather than hidden away, which is the look of any air-driven sponge."
+      }
+    ]
+  },
+  {
+    "site": "starteraquarium",
+    "type": "review",
+    "path": "sites/starteraquarium/src/content/reviews/eheim-jager-heater-review.md",
+    "slug": "eheim-jager-heater-review",
+    "title": "Eheim Jager Aquarium Heater Review",
+    "product": "Eheim Jager Aquarium Thermostat Heater 100W",
+    "price": "omitted",
+    "summary": "Fully submersible glass-tube thermostat heater with an analog TruTemp dial and an Eheim-listed accuracy of about plus or minus 0.5 degrees Celsius. The 100W model is rated for roughly a 25 to 30 gallon tank.",
+    "flags": ["price omitted from frontmatter"],
+    "options": [
+      {
+        "verdict": "For reliability per dollar, the Jager is one of the most recommended heaters in the hobby, and the spec backs the reputation: an Eheim-listed accuracy of about plus or minus 0.5 degrees Celsius from an analog dial, with a long owner record of steady multi-year service.",
+        "supporting": "Built for the keeper who wants temperature handled by something dependable rather than clever. It asks for two habits in return, gentle handling of the glass body and unplugging it before water changes so it never runs dry in air."
+      },
+      {
+        "verdict": "A heater worth buying as long as you are comfortable with glass and an analog dial. The most repeated owner caution is a cracked tube from rough handling, and there is no screen, so you confirm the real water temp on a separate thermometer.",
+        "supporting": "Right for the keeper who values a proven track record over a digital readout. Anyone who wants a heater they can be careless with is better matched to a shatter-resistant model."
+      },
+      {
+        "verdict": "Sized correctly, the Jager is the structural step up from a genuinely cheap unregulated heater that can swing temperature or stick on, the failure mode that actually harms fish. The 100W lands on roughly a 25 to 30 gallon tank per Eheim's own chart.",
+        "supporting": "A good fit for the beginner moving from a nano tank to a first standard setup. Check the wattage-to-volume guidance before buying, since undersizing leaves it running nonstop without reaching temperature."
+      }
+    ]
+  },
+  {
+    "site": "starteraquarium",
+    "type": "review",
+    "path": "sites/starteraquarium/src/content/reviews/fluval-107-canister-filter-review.md",
+    "slug": "fluval-107-canister-filter-review",
+    "title": "Fluval 107 Canister Filter Review",
+    "product": "Fluval 107 Performance Canister Filter",
+    "price": "omitted",
+    "summary": "Smallest canister in Fluval's Performance line, rated for tanks up to 30 gallons at about 145 GPH. Self-priming, multi-stage media baskets, quiet sealed design, sits in the cabinet below the tank.",
+    "flags": ["price omitted from frontmatter"],
+    "options": [
+      {
+        "verdict": "If you specifically want hidden, high-capacity, quiet filtration on a tank up to 30 gallons, the 107 is the small-tank canister to get. The Fluval Performance line is a hobby staple, and owners praise this one for quiet, sealed, dependable running with large multi-stage media baskets.",
+        "supporting": "Made for the keeper who wants the filter out of sight in the cabinet and accepts a little more involvement to get there. A hang-on-back is the simpler, cheaper pick if those canister benefits do not matter to you."
+      },
+      {
+        "verdict": "Worth it only if you actually want what a canister offers, because it is a real step up in work from a clip-on filter. Setup means routing intake and output hoses, and cleaning means disconnecting them, lifting the unit out, and opening it to rinse media.",
+        "supporting": "Right for the keeper who values hidden placement and capacity over plug-and-play simplicity. Anyone who just wants the easiest filter for a first tank will be happier with a hang-on-back."
+      },
+      {
+        "verdict": "Best understood as the small-tank entry to a line with a clear upgrade path. The 107 covers up to 30 gallons, with the 207, 307, and 407 stepping up to 45, 70, and 100 gallons in the same design you already know.",
+        "supporting": "A fit for the beginner who may move to a bigger tank later and wants to stay inside one brand. Size the model to the tank, since the 107 on a larger tank leaves the filter working at its limit."
+      }
+    ]
+  },
+  {
+    "site": "starteraquarium",
+    "type": "review",
+    "path": "sites/starteraquarium/src/content/reviews/nicrew-classicled-light-review.md",
+    "slug": "nicrew-classicled-light-review",
+    "title": "NICREW ClassicLED Plus Aquarium Light Review",
+    "product": "NICREW ClassicLED Plus Aquarium Light (15W, 18 to 24 in)",
+    "price": "omitted",
+    "summary": "Slim 15W rim-mounted LED bar with white and blue channels and extendable brackets for tanks roughly 18 to 24 inches. Low-to-moderate output suited to easy plants, optional automatic timer on some configurations.",
+    "flags": ["price omitted from frontmatter"],
+    "options": [
+      {
+        "verdict": "For value lighting on a first community tank, the ClassicLED Plus earns its slot. It is among the lowest-cost name-brand LED bars that still renders fish colors well, gives you a white daytime channel plus a blue moonlight look, and can run on an automatic timer.",
+        "supporting": "Built for the keeper who wants a good-looking, well-lit fish-only or lightly planted tank without spending on a high-end fixture. At this price a minority of owners report early dimming, so you are buying value rather than premium longevity."
+      },
+      {
+        "verdict": "A good light as long as you match it to the right job. This is low-to-moderate output, so it grows easy species like java fern, anubias, and beginner stems well, but it is not built to drive demanding carpeting plants or a CO2 aquascape.",
+        "supporting": "Right for a first planted tank stocked with forgiving species. A high-tech aquascape wants a stronger planted-specific fixture instead."
+      },
+      {
+        "verdict": "As a low-cost upgrade over a dim bundled kit hood, this is an easy win. The white-and-blue channels give two looks, the extendable brackets fit a standard 18 to 24 inch rim, and the timer-equipped versions hold a steady photoperiod that helps discourage algae.",
+        "supporting": "A fit for the keeper whose starter-kit light underwhelms and who wants a brighter, better-looking tank for a small extra spend. Output fades with depth, so it is best on a normal-height tank rather than a tall or deep one."
+      }
+    ]
+  },
+  {
+    "site": "starteraquarium",
+    "type": "review",
+    "path": "sites/starteraquarium/src/content/reviews/python-no-spill-water-changer-review.md",
+    "slug": "python-no-spill-water-changer-review",
+    "title": "Python No Spill Clean and Fill Water Changer Review",
+    "product": "Python No Spill Clean and Fill Aquarium Maintenance System, 50 Foot",
+    "price": "$78.23",
+    "summary": "Faucet-driven water changer that drains and refills straight from a sink with no buckets and no mouth-siphoning. The 50-foot length reaches across most rooms, includes a gravel tube, and connects with a universal brass faucet adapter.",
+    "flags": ["hero image is a parts/components layout photo, not a single product shot"],
+    "options": [
+      {
+        "verdict": "The Python turns the worst chore in fishkeeping into a few minutes at the sink, and the recurring owner theme is that it is the reason they actually keep up with water changes. No buckets, no spills, no mouth-siphoning, and the gravel tube cleans the substrate in the same pass.",
+        "supporting": "Made for the keeper whose tank is far from a sink or large enough that hauling buckets is the real chore. Confirm your faucet takes the brass adapter first, since the whole system hangs on that connection."
+      },
+      {
+        "verdict": "A near-essential convenience as long as your faucet cooperates. The system threads onto standard kitchen and bathroom faucets, but many modern pull-down sprayers and specialty fixtures need an extra adapter sourced separately, and that connection is the one thing that can stop it working.",
+        "supporting": "Right for the keeper with a compatible threaded faucet and a tank worth the reach. The faucet pump also runs tap water to create suction, which is worth knowing on metered or limited water."
+      },
+      {
+        "verdict": "The value case rests entirely on distance and tank size. At noticeably more than a bucket and siphon, the Python pays for itself when the tank is across the room or big enough that lifting buckets is the bottleneck, and far less when the tank is a few steps from a faucet.",
+        "supporting": "A fit for the keeper whose maintenance pain is the hauling, not the cost. On a small tank near a sink, a cheap siphon and a single bucket may genuinely be all you need."
+      }
+    ]
+  },
+  {
+    "site": "starteraquarium",
+    "type": "review",
+    "path": "sites/starteraquarium/src/content/reviews/tetra-20-gallon-kit-review.md",
+    "slug": "tetra-20-gallon-kit-review",
+    "title": "Tetra 20 Gallon Aquarium Starter Kit Review",
+    "product": "Tetra 20 Gallon Complete Aquarium Kit",
+    "price": "omitted",
+    "summary": "All-in-one 20 gallon starter bundle: glass tank, LED hood, Tetra Whisper power filter, and starter decor in one box. No heater included. The 20 gallon volume is forgiving of beginner mistakes.",
+    "flags": ["price omitted from frontmatter"],
+    "options": [
+      {
+        "verdict": "For the lowest-friction path to a running first tank, this kit delivers. The tank, hood, light, and filter arrive matched in one box, which skips the research-and-buy-five-things step that stalls a lot of first setups, and the 20 gallon volume is forgiving of the small mistakes every new keeper makes.",
+        "supporting": "Built for the first-timer who wants the hard parts handled in one box. The one thing to plan for is a heater, which the kit leaves out and a tropical tank needs bought separately."
+      },
+      {
+        "verdict": "A solid first setup as long as you treat the complete kit as a starting point, not a finished one. The bundled Tetra Whisper filter and LED hood are entry-level components many owners upgrade over time, and there is no heater, substrate, test kit, or dechlorinator in the box.",
+        "supporting": "Right for the beginner who accounts for a separate heater and a short list of consumables. Anyone who wants premium components from day one would piece a tank together instead."
+      },
+      {
+        "verdict": "The value is in the forgiving size and the matched gear. A 20 gallon swings in temperature and chemistry more slowly than a nano tank, giving a new keeper margin to learn, and the bundled components are sized to the tank so nothing is left to guess.",
+        "supporting": "A fit for the first community or family tank where a 20 gallon footprint suits the space. If you have the room and budget, a larger tank is even more forgiving for a true beginner."
+      }
+    ]
+  }
+]

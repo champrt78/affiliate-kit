@@ -1,0 +1,302 @@
+[
+  {
+    "site": "fussybean",
+    "type": "comparison",
+    "path": "sites/fussybean/src/content/comparisons/aeropress-vs-french-press.md",
+    "slug": "aeropress-vs-french-press",
+    "title": "AeroPress vs French Press: Which Immersion Brewer Wins?",
+    "products": ["AeroPress Original Coffee Press", "Bodum Brazil 34oz French Press"],
+    "winner": "AeroPress Original Coffee Press",
+    "summary": "Clean cup, fast cleanup, and travel against full body, batch size, and a paperless steel filter.",
+    "flags": [],
+    "options": [
+      {
+        "verdict": "For most single-serving drinkers the AeroPress wins. Its paper micro-filter delivers a clean low-sediment cup, the spent puck pops straight out for a near-instant rinse, and it is light and tough enough to live in a bag.",
+        "supporting": "Choose the Bodum French press if you brew for two or more, since its 34oz carafe is built for batches the AeroPress simply cannot match."
+      },
+      {
+        "verdict": "The AeroPress edges it on the things most beginners actually rank first: a clean cup and the fastest cleanup, with the puck popping out in one motion. The French press is close on ease but loses on sediment and rinse time.",
+        "supporting": "If a full heavy body is the cup you want, flip to the Bodum, since its reusable steel mesh lets oils and fines through for exactly that richer result the paper filter strips out."
+      },
+      {
+        "verdict": "On a pure cost-of-keeping basis the AeroPress earns the pick for a solo drinker who values a clean cup and a brewer that survives a backpack. The paper filters are cheap and stocked everywhere.",
+        "supporting": "Choose the Bodum if you never want to buy a consumable again, since its steel mesh means there is nothing to restock and it sits a few dollars cheaper up front."
+      }
+    ]
+  },
+  {
+    "site": "fussybean",
+    "type": "comparison",
+    "path": "sites/fussybean/src/content/comparisons/baratza-encore-vs-encore-esp.md",
+    "slug": "baratza-encore-vs-encore-esp",
+    "title": "Baratza Encore vs Encore ESP: Which Entry Burr Grinder Wins?",
+    "products": ["Baratza Encore", "Baratza Encore ESP"],
+    "winner": "Baratza Encore ESP",
+    "summary": "Same burrs and body, but the ESP re-gears the adjustment to reach espresso the original cannot.",
+    "flags": ["Encore and Encore ESP prices were approximate at scaffold time"],
+    "options": [
+      {
+        "verdict": "For most buyers the Encore ESP is the safer pick because it keeps the same proven 40mm burrs but re-gears the fine range to actually reach espresso, so one grinder covers filter today and a shot tomorrow.",
+        "supporting": "Choose the original Encore if espresso is genuinely never on the table, since it does drip, pour-over, and French press cleanly for less money."
+      },
+      {
+        "verdict": "It is a closer call than the price gap suggests, but the ESP wins on headroom: the original stalls at the bottom of its range while the ESP's dedicated espresso steps and shim system land where the original cannot.",
+        "supporting": "If you have firmly decided you brew filter only, the original Encore is the right call, since paying for an espresso range you never touch is the wrong trade."
+      },
+      {
+        "verdict": "On long-run value the ESP is the buy-once grinder for anyone who might add an espresso machine, and it ships with a dosing cup the original leaves out. Buying the original then upgrading costs more than buying the ESP first.",
+        "supporting": "Choose the original Encore for a filter-only setup where the lower price is the whole point and the espresso range would sit idle."
+      }
+    ]
+  },
+  {
+    "site": "fussybean",
+    "type": "comparison",
+    "path": "sites/fussybean/src/content/comparisons/breville-bambino-vs-gaggia-classic-evo-pro.md",
+    "slug": "breville-bambino-vs-gaggia-classic-evo-pro",
+    "title": "Breville Bambino vs Gaggia Classic Evo Pro: Which Entry Espresso Machine Wins?",
+    "products": ["Breville Bambino Espresso Machine BES450", "Gaggia Classic Evo Pro (RI9380/46)"],
+    "winner": "Breville Bambino Espresso Machine BES450",
+    "summary": "Instant heat-up and a small footprint against a metal body, a 58mm portafilter, and a deep mod path.",
+    "flags": ["Gaggia Classic Evo Pro price was approximate at scaffold time"],
+    "options": [
+      {
+        "verdict": "For most first-machine buyers the Bambino wins because its ThermoJet heater is ready in seconds, which removes the warm-up wait that kills weekday espresso, and its 54mm portafilter shares technique with Breville's pricier machines.",
+        "supporting": "Choose the Gaggia Classic Evo Pro if you want a machine to grow into rather than out of, since its metal body and 58mm commercial portafilter are the platform for years of mods."
+      },
+      {
+        "verdict": "These two sit in opposite camps, but for the daily-driver who ranks low friction first the Bambino takes it on heat-up speed and simplicity alone. The Gaggia is close on cup ceiling and loses on morning convenience.",
+        "supporting": "If you want to mod, tune, and keep one machine for a decade, flip to the Gaggia, since its serviceable Italian build and aftermarket PID path are exactly what the sealed Bambino cannot offer."
+      },
+      {
+        "verdict": "On value for a rushed household the Bambino is the pick: it pulls a real shot in seconds at the lower price and asks the least of you to get there. The Gaggia costs notably more for a ceiling many beginners never use.",
+        "supporting": "Choose the Gaggia if a high upgrade ceiling and the wider 58mm accessory ecosystem matter more than heat-up speed and footprint."
+      }
+    ]
+  },
+  {
+    "site": "fussybean",
+    "type": "comparison",
+    "path": "sites/fussybean/src/content/comparisons/hario-v60-vs-chemex.md",
+    "slug": "hario-v60-vs-chemex",
+    "title": "Hario V60 vs Chemex: Which Pour-Over Brewer Wins?",
+    "products": ["Hario V60 Ceramic Pour Over Set, Size 02", "Chemex Classic Series 6-Cup"],
+    "winner": "Hario V60 Ceramic Pour Over Set, Size 02",
+    "summary": "A bright, controllable single-cup cone against a cleaner, slower, forgiving carafe for two or three.",
+    "flags": ["Chemex price was approximate at scaffold time"],
+    "options": [
+      {
+        "verdict": "For most pour-over drinkers the V60 wins on a bright articulate cup and control, plus thin filters that are cheap and stocked everywhere. It is the more flexible single-cup tool at a lower starting price.",
+        "supporting": "Choose the Chemex if you want the cleanest possible cup and brew for more than one person, since its thick bonded filter and 30oz carafe are built for clarity and batches the V60 is not."
+      },
+      {
+        "verdict": "It is a genuine taste fork, but for the keeper who enjoys dialing in pour rate and temperature the V60 is the pick, since its single large hole puts the brew in your hands. The Chemex is close on quality and trades that control away.",
+        "supporting": "If you would rather not fuss over pour technique, flip to the Chemex, since its thick filter sets the pace and forgives an uneven pour the V60 punishes."
+      },
+      {
+        "verdict": "On everyday value for a solo drinker the V60 takes it: cheap widely stocked filters and a fast single-cup brew at the lower price. The Chemex carries pricier proprietary filters and a glass body to handle with care.",
+        "supporting": "Choose the Chemex when you regularly serve two or three and want the clearest light-bodied cup, where the bigger carafe and ultra-clean filter earn their cost."
+      }
+    ]
+  },
+  {
+    "site": "starteraquarium",
+    "type": "comparison",
+    "path": "sites/starteraquarium/src/content/comparisons/aqueon-vs-tetra-20-gallon-kit.md",
+    "slug": "aqueon-vs-tetra-20-gallon-kit",
+    "title": "Aqueon vs Tetra 20-Gallon Starter Kit: Which to Buy?",
+    "products": ["Tetra 20 Gallon Complete Aquarium Kit", "Aqueon 20 Gallon SmartClean Aquarium Starter Kit"],
+    "winner": "Tetra 20 Gallon Complete Aquarium Kit",
+    "summary": "The most forgiving water volume per dollar against the fuller, closer-to-ready box.",
+    "flags": [],
+    "options": [
+      {
+        "verdict": "For most beginners the Tetra kit wins on value: a matched Whisper filter and LED hood deliver a forgiving 20 gallons for notably less, and 20 gallons is far steadier than a nano tank.",
+        "supporting": "Choose the Aqueon SmartClean kit if you want a heater and extras already in the box, since its preset 50W heater, thermometer, net, food, and conditioner mean you start closer to ready."
+      },
+      {
+        "verdict": "It is closer once you budget the missing heater, but the Tetra still edges it for a buyer who likes adding pieces to taste, since the base set keeps the up-front cost down while delivering the same forgiving volume.",
+        "supporting": "If you would rather not shop for a heater separately, flip to the Aqueon, since its SmartClean filtration and included preset heater turn the higher sticker into one closer-to-complete purchase."
+      },
+      {
+        "verdict": "On total setup cost the Tetra is the pick for a value-first beginner who is comfortable choosing a heater to suit the fish, since the matched components cover the core for less and 20 gallons forgives early mistakes.",
+        "supporting": "Choose the Aqueon when you want the fullest single box and will pay more to skip buying pieces one at a time."
+      }
+    ]
+  },
+  {
+    "site": "starteraquarium",
+    "type": "comparison",
+    "path": "sites/starteraquarium/src/content/comparisons/eheim-jager-vs-fluval-e200.md",
+    "slug": "eheim-jager-vs-fluval-e200",
+    "title": "Eheim Jager vs Fluval E200: Which Heater for a First Tank?",
+    "products": ["Eheim Jager Aquarium Thermostat Heater 100W", "Fluval E200 Advanced Electronic Heater"],
+    "winner": "Eheim Jager Aquarium Thermostat Heater 100W",
+    "summary": "A calibrated simple dial with a long track record against a digital readout, drift alert, and guard.",
+    "flags": [],
+    "options": [
+      {
+        "verdict": "For most first-tank keepers the Eheim Jager wins because its calibrated thermostat and tight plus-or-minus-0.5-degree claim are what separate it from cheap unregulated heaters, and owner reports cite years of steady hands-off running.",
+        "supporting": "Choose the Fluval E200 if you want the exact water temperature on a screen, a warning when it drifts, and a guard around the hot glass, none of which the dial-only Jager provides."
+      },
+      {
+        "verdict": "The two cost almost the same, so it comes down to nerves: the Jager wins for a keeper who trusts a proven dial and simpler design with fewer parts to eventually fail. The E200 is close and trades that simplicity for features.",
+        "supporting": "If visible feedback is what calms you, flip to the E200, since its LCD readout and color drift alert give a nervous first-timer the reassurance a set-and-trust dial cannot."
+      },
+      {
+        "verdict": "On long-run dependability the Jager is the value pick: a simpler sealed design with the longest hands-off track record, and the lower price of the two. Fewer electronics means fewer failure points over the years.",
+        "supporting": "Choose the E200 when a protective guard matters because a curious fish bumps the bare glass, or when a digital set point and screen are worth the small step up."
+      }
+    ]
+  },
+  {
+    "site": "starteraquarium",
+    "type": "comparison",
+    "path": "sites/starteraquarium/src/content/comparisons/fluval-107-vs-aquaclear-50.md",
+    "slug": "fluval-107-vs-aquaclear-50",
+    "title": "Fluval 107 vs AquaClear 50: Canister or Hang-On-Back?",
+    "products": ["Fluval 107 Performance Canister Filter", "AquaClear 50 Power Filter"],
+    "winner": "AquaClear 50 Power Filter",
+    "summary": "A hidden high-capacity canister against the lowest-friction clip-on path for a first tank.",
+    "flags": [],
+    "options": [
+      {
+        "verdict": "For most first tanks the AquaClear 50 wins because it clips on in minutes, dials its flow down for small fish, and costs far less to start, with a big media basket that does more biological work than its size suggests.",
+        "supporting": "Choose the Fluval 107 if your tank is heavily stocked or you want filtration completely hidden, since the sealed canister holds more media and tucks out of sight in the cabinet."
+      },
+      {
+        "verdict": "Both filter a 20-something-gallon tank well, but for a beginner who ranks setup friction first the AquaClear takes it, since a hang-on-back goes box to running in minutes while the canister asks for hoses and priming.",
+        "supporting": "If you do not mind a more involved setup for the payoff, flip to the Fluval 107, since its quiet sealed running and large multi-stage baskets reward the extra patience up front."
+      },
+      {
+        "verdict": "On starting cost and weekly upkeep the AquaClear is the pick: far cheaper to begin and a quick lid-off rinse keeps maintenance simple. It is the right-sized choice for a first freshwater tank.",
+        "supporting": "Choose the Fluval 107 when stocking or tank size grows enough to want hidden high-capacity filtration and you accept the heavier setup and clean routine that come with a canister."
+      }
+    ]
+  },
+  {
+    "site": "starteraquarium",
+    "type": "comparison",
+    "path": "sites/starteraquarium/src/content/comparisons/nicrew-classicled-vs-hygger-planted.md",
+    "slug": "nicrew-classicled-vs-hygger-planted",
+    "title": "NICREW ClassicLED vs Hygger: Budget Light or Planted-Ready?",
+    "products": ["NICREW ClassicLED Plus (18 to 24 in)", "hygger Clip On 24/7 Aquarium Light (14W, 12 to 20 in)"],
+    "winner": "NICREW ClassicLED Plus (18 to 24 in)",
+    "summary": "Clean fish-first viewing at the lowest sensible cost against an auto cycle and planted-ready output.",
+    "flags": [],
+    "options": [
+      {
+        "verdict": "For most beginners the NICREW ClassicLED is the pick: clean white LEDs render fish colors well, a dim blue moonlight covers the evening, and it pairs with an optional timer, all at among the lowest name-brand prices.",
+        "supporting": "Choose the hygger Clip On if you want to grow live plants beyond the easiest low-light species, since its higher output and built-in 24/7 cycle give planted tanks the base the fish-first NICREW is not tuned for."
+      },
+      {
+        "verdict": "They cost about the same, so the call follows the job: for a fish-first tank over a standard rim the NICREW wins on plug-and-go simplicity. The hygger is close and trades that simplicity for a busier mode menu.",
+        "supporting": "If a planted nano is the goal, flip to the hygger, since its automatic sunrise-to-moonlight cycle and color control bundle the convenience and growing power a plain fixture leaves out."
+      },
+      {
+        "verdict": "On value the NICREW takes it for a beginner who wants clean light and a steady photoperiod without overbuying, and a cheap unit swap covers the good-not-premium reliability caveat owners raise.",
+        "supporting": "Choose the hygger when you want the 24/7 timer built in so you skip a separate outlet timer, plus the extra output for easy live plants."
+      }
+    ]
+  },
+  {
+    "site": "gameovergear",
+    "type": "comparison",
+    "path": "sites/gameovergear/src/content/comparisons/8bitdo-arcade-stick-vs-hori-fighting-stick-alpha.md",
+    "slug": "8bitdo-arcade-stick-vs-hori-fighting-stick-alpha",
+    "title": "8BitDo Arcade Stick vs Hori Fighting Stick Alpha: Which Stick?",
+    "products": ["8BitDo Arcade Stick", "Hori Fighting Stick Alpha"],
+    "winner": "8BitDo Arcade Stick",
+    "summary": "Wireless value and Switch plus Windows reach against tournament-grade wired parts on PlayStation and PC.",
+    "flags": ["Tier mismatch: Hori Fighting Stick Alpha ~$200 vs 8BitDo Arcade Stick ~$80, premium-vs-value cross-shop"],
+    "options": [
+      {
+        "verdict": "For most casual and couch players the 8BitDo Arcade Stick wins because it covers Switch and Windows over 2.4GHz wireless, Bluetooth, or USB-C at under half the Alpha's price, with remap software and a tournament-mode lock.",
+        "supporting": "Choose the Hori Fighting Stick Alpha if you want tournament-grade arcade parts on PS5, PS4, and PC and an openable panel for swapping components, the things its higher price actually buys."
+      },
+      {
+        "verdict": "These two barely cross-shop, since the Hori costs more than double, but for the casual buyer the 8BitDo is the value default on wireless freedom and platform reach. The Alpha wins on parts and loses on price and Switch support.",
+        "supporting": "If you chase tournament-grade feel and play on PlayStation or PC, flip to the Alpha, since its arcade-quality parts and competition pedigree are the reason to pay up."
+      },
+      {
+        "verdict": "On platform value the 8BitDo is the pick for a Switch owner, since it covers that system the Alpha does not, runs wireless, and lands in value territory while still allowing light button swaps.",
+        "supporting": "Choose the Alpha when authentic part-swapping and a wired competition connection matter more than wireless and the lower price, and your setup is PlayStation or PC."
+      }
+    ]
+  },
+  {
+    "site": "gameovergear",
+    "type": "comparison",
+    "path": "sites/gameovergear/src/content/comparisons/8bitdo-pro-2-vs-retro-bit-saturn-pro.md",
+    "slug": "8bitdo-pro-2-vs-retro-bit-saturn-pro",
+    "title": "8BitDo Pro 2 vs Retro-Bit Saturn Pro: Which Wireless Pad?",
+    "products": ["8BitDo Pro 2", "Retro-Bit Saturn Pro"],
+    "winner": "8BitDo Pro 2",
+    "summary": "A do-everything multi-platform pad with deep remapping against an authentic Saturn fightpad feel.",
+    "flags": [],
+    "options": [
+      {
+        "verdict": "For most players the 8BitDo Pro 2 wins as the do-everything pad: a modern SNES-style layout that covers Switch, Windows, Android, and more over Bluetooth or 2.4GHz, with deep remapping, profiles, and back paddles.",
+        "supporting": "Choose the Retro-Bit Saturn Pro if you mainly play fighters and 2D action and want that exact Saturn six-button face and d-pad, the genre-specific feel the all-rounder Pro 2 is not built around."
+      },
+      {
+        "verdict": "They cost within a few dollars, so it is a feel-versus-flexibility call, and for a player who wants one pad for everything the Pro 2 takes it on platform breadth and software. The Saturn Pro is close only for its niche.",
+        "supporting": "If fighters are your main genre, flip to the Saturn Pro, since its authentic d-pad and six-button face are exactly the layout the original was loved for, where the Pro 2 is merely capable."
+      },
+      {
+        "verdict": "On versatility for the money the Pro 2 is the pick: the widest documented platform support plus remapping and back buttons make it the safe default that adapts to whatever you play next.",
+        "supporting": "Choose the Saturn Pro when the authentic Saturn shape on a specific setup is the whole point and you are fine confirming the SKU covers your system before buying."
+      }
+    ]
+  },
+  {
+    "site": "gameovergear",
+    "type": "comparison",
+    "path": "sites/gameovergear/src/content/comparisons/hyperkin-retron-5-vs-retro-bit-super-retrotrio.md",
+    "slug": "hyperkin-retron-5-vs-retro-bit-super-retrotrio",
+    "title": "Hyperkin RetroN 5 vs Retro-Bit Super RetroTRIO: Which Clone?",
+    "products": ["Hyperkin RetroN 5", "Retro-Bit Super RetroTRIO"],
+    "winner": "Hyperkin RetroN 5",
+    "summary": "Wide cartridge coverage with HD output and save states against simpler hardware-based three-system playback.",
+    "flags": ["Retro-Bit Super RetroTRIO price omitted (RetroN 5 lists 179.95)"],
+    "options": [
+      {
+        "verdict": "For most multi-cart buyers the RetroN 5 wins on breadth and features: it reads NES, SNES, Genesis, and the Game Boy family, then adds HDMI output, save states, and on-screen filters the RetroTRIO lacks.",
+        "supporting": "Choose the Super RetroTRIO if emulation accuracy bothers you and you prefer hardware-based playback, accepting NES, SNES, and Genesis only with fewer on-screen features."
+      },
+      {
+        "verdict": "It comes down to features against fidelity, and for a player who wants the box to do more the RetroN 5 takes it on cartridge coverage and quality-of-life tools. The RetroTRIO is close only if you value a hardware-faithful path.",
+        "supporting": "If you only need the big three home consoles and want playback closer in spirit to the originals, flip to the Super RetroTRIO, since its hardware-driven design skips the emulation layer purists weigh against."
+      },
+      {
+        "verdict": "On coverage for a varied library the RetroN 5 is the pick, since its support spans handheld carts and multiple home systems with a Bluetooth controller and HD convenience in one box.",
+        "supporting": "Choose the Super RetroTRIO when a simpler three-in-one for NES, SNES, and Genesis is all you need and a straightforward hardware design is the appeal."
+      }
+    ]
+  },
+  {
+    "site": "gameovergear",
+    "type": "comparison",
+    "path": "sites/gameovergear/src/content/comparisons/miyoo-mini-plus-vs-anbernic-rg35xx.md",
+    "slug": "miyoo-mini-plus-vs-anbernic-rg35xx",
+    "title": "Miyoo Mini Plus vs Anbernic RG35XX: Which Budget Retro Handheld?",
+    "products": ["Miyoo Mini Plus", "Anbernic RG35XX"],
+    "winner": "Miyoo Mini Plus",
+    "summary": "Firmware polish and connectivity against a stock-Linux baseline that asks nothing on day one.",
+    "flags": ["Both Miyoo Mini Plus and Anbernic RG35XX prices omitted"],
+    "options": [
+      {
+        "verdict": "For most budget buyers the Miyoo Mini Plus wins because it lists on-board WiFi and RTC plus a larger 3000mAh battery, and its OnionOS community scene is the reason owner threads keep recommending it.",
+        "supporting": "Choose the Anbernic RG35XX if you would rather not flash community firmware to get the best of the device, since its stock Linux build boots and plays out of the box."
+      },
+      {
+        "verdict": "They share the same 3.5-inch 640x480 IPS panel and a sub-$100 price band, so the Mini Plus wins on the extras: WiFi, RTC, and a bigger listed battery tip it for a buyer happy to flash OnionOS. The RG35XX is close on the screen alone.",
+        "supporting": "If a manual firmware step is not how you want to spend an afternoon, flip to the RG35XX, since it asks nothing on day one and trades away the WiFi and some battery for that simplicity."
+      },
+      {
+        "verdict": "On the longer-session spec sheet the Mini Plus is the pick: a listed 3000mAh cell against the base RG35XX's 2100mAh, plus WiFi and RTC the base Anbernic skips, all at a similar budget price.",
+        "supporting": "Choose the base RG35XX when you want a similar pocketable form factor on stock Linux without committing to a community-firmware project, and WiFi is not a priority."
+      }
+    ]
+  }
+]
