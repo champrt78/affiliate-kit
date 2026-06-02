@@ -91,6 +91,31 @@ function Invoke-WithRetry {
   throw $lastErr
 }
 
+# Image HEAD/GET fetch with VALUE-level retry. curl returns "000" on a connection
+# failure / timeout (Amazon rate-limits bursts of HEAD requests by hanging the
+# socket), which is NOT a curl exception and NOT covered by Invoke-WithRetry's
+# try/catch — so before this, a transient 000 fell straight through to a spurious
+# "HTTP 000" finding and blocked the commit (bit the overnight cross-linking run
+# 2026-06-02, forcing --no-verify twice). We retry on a transient-code set with
+# backoff and only treat a DEFINITIVE non-200 (404/403/etc.) or a 000 that
+# survives all retries as a real failure. --retry-connrefused makes curl itself
+# re-attempt refused/timed-out connections too.
+$script:transientCodes = @('000', '408', '425', '429', '500', '502', '503', '504')
+function Invoke-ImageHeadFetch {
+  param([string]$Url, [string]$UA, [int]$Tries = 4, [int]$DelayMs = 700)
+  $code = '000'; $bytes = @()
+  for ($i = 1; $i -le $Tries; $i++) {
+    $tmp = [System.IO.Path]::GetTempFileName()
+    $code = (& curl.exe -s -L -A $UA --retry 2 --retry-connrefused --max-time 25 -w "%{http_code}" -o $tmp $Url 2>$null)
+    $bytes = if (Test-Path $tmp) { [System.IO.File]::ReadAllBytes($tmp) } else { @() }
+    Remove-Item $tmp -ErrorAction SilentlyContinue
+    # Stop as soon as we have a definitive answer (200, 404, 403, ...).
+    if ($script:transientCodes -notcontains "$code") { break }
+    if ($i -lt $Tries) { Start-Sleep -Milliseconds ($DelayMs * $i) }
+  }
+  return @{ code = "$code"; bytes = $bytes }
+}
+
 foreach ($file in $mdFiles) {
   $content = Get-Content -Raw -LiteralPath $file.FullName
   # Extract every `image: "URL"` (or `hero: "URL"`) in frontmatter
@@ -112,10 +137,9 @@ foreach ($file in $mdFiles) {
     # curl fetches all of them correctly. (Confirmed 2026-05-29: curl 200 /
     # IWR 400 on the same Amazon URLs, with and without '+'.) curl.exe ships
     # with Windows 10+ and git, so it's always on PATH for the pre-commit hook.
-    $tmp = [System.IO.Path]::GetTempFileName()
-    $httpCode = (& curl.exe -s -L -A $browserUA --retry 2 --max-time 20 -w "%{http_code}" -o $tmp $url 2>$null)
-    $bytes = if (Test-Path $tmp) { [System.IO.File]::ReadAllBytes($tmp) } else { @() }
-    Remove-Item $tmp -ErrorAction SilentlyContinue
+    $fetch = Invoke-ImageHeadFetch -Url $url -UA $browserUA
+    $httpCode = $fetch.code
+    $bytes = $fetch.bytes
 
     if ("$httpCode" -ne "200") {
       $findings += [PSCustomObject]@{ File = $file.FullName.Replace($repoRoot, '').TrimStart('\','/'); Url = $url; Issue = "HTTP $httpCode" }
