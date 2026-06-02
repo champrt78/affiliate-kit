@@ -26,6 +26,9 @@ faq:
     answer: "It depends on your machine and your budget. The recurring strength in published owner reviews is value, a known-reliable Baratza burr platform at an entry price near $199. If you have settled on a non-pressurized portafilter machine and want a first grinder that reaches espresso without jumping to a $400 unit, the spec sheet and owner sentiment line up in its favor. If your brewing is mostly pour-over or press, the cheaper original Encore covers it for less."
   - question: "Encore ESP vs ESP Pro?"
     answer: "We carry and have spec data for the Encore ESP, the entry espresso grinder reviewed here. Baratza's higher tiers add finer control and convenience at a higher price, so the honest framing is the one in this review. The Encore ESP trades the micro-adjustment of a pricier grinder for affordability and a proven burr set. If you want to step up later, that is the axis you are paying along, control and convenience for more money."
+bottomLine:
+  verdict: "The Encore ESP earns its place as the value entry to espresso grinding: 40mm conical burrs retuned finer, a known-reliable Baratza platform, and a price near $199 that pairs with most first espresso machines."
+  supporting: "Owner reports agree the strength is value and the common gripe is a stepped adjustment that feels coarse at the very fine end. Buy it to reach espresso affordably, and step up later if you start chasing precision."
 ---
 
 ## Who this is for
@@ -52,6 +55,3 @@ The original Encore is rated for a coarser range aimed at pour-over, drip, and p
 
 Across published owner reviews on Amazon, the **recurring strength is value**: a known burr platform at an entry price. The most common critical note is the **step adjustment feeling coarse at the very fine end** compared with stepless grinders, which is consistent with how the manufacturer positions it.
 
-## Bottom Line
-
-_The Bottom Line is being written._
