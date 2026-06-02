@@ -50,8 +50,8 @@ faq:
     answer: "The Spypoint Flex, because you do not have to know your carrier in advance. Its dual-SIM radio sorts out coverage at the tree. The CelluCORE 20 only makes sense once you have confirmed which carrier is strong at that exact spot."
 ---
 
-These two cameras chase the same goal from opposite ends of the price range. The CelluCORE 20 wins on sticker price and brand trust, while the Flex wins on coverage insurance and running cost. The right call depends almost entirely on how confident you are about cell signal at the mounting site.
+These two cameras chase the same goal from opposite ends of the price range. The CelluCORE 20 wins on sticker price and brand trust, while the Flex wins on coverage insurance and running cost. The right call depends almost entirely on how confident you are about cell signal at the mounting site. Our [Spypoint Flex review](/reviews/spypoint-flex-g36-review) and the [Bushnell CelluCORE 20 review](/reviews/bushnell-cellucore-20-review) each go deeper on the single-camera picture.
 
-If you have run cameras on the property before and you know one carrier is solid, the cheaper single-carrier CelluCORE 20 is a reasonable buy. If the spot is new, remote, or marginal, the Spypoint dual-SIM radio is cheap insurance against the most common cellular failure, which is simply picking the wrong network.
+If you have run cameras on the property before and you know one carrier is solid, the cheaper single-carrier CelluCORE 20 is a reasonable buy. If the spot is new, remote, or marginal, the Spypoint dual-SIM radio is cheap insurance against the most common cellular failure, which is simply picking the wrong network. For how both stack up against the rest of the field, see our guide to the [best cellular trail cameras](/buyers-guides/best-cellular-trail-cameras).
 
 This comparison is built from manufacturer specifications, synthesized verified-buyer reports, and independent reviewer testing. We do not take payment from either brand.

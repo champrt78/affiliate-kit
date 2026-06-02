@@ -213,7 +213,7 @@ Four design decisions divide this lineup. Knowing which side of each split matte
 
 The DS4K name and the "Max" naming both span more than one Stealth Cam model, and buyers routinely arrive confused about which is which. The split is clean once you separate connectivity from the imaging stack.
 
-The **DS4K Ultimate** is the SD-card 4K flagship. Per stealthcam.com, 32MP photos, 4K at 30 FPS, a 0.2-second trigger, 100 ft detection, and 850nm low-glow IR, with no cellular and no monthly fee. You walk out and pull the card.
+The **DS4K Ultimate** is the SD-card 4K flagship. Per stealthcam.com, 32MP photos, 4K at 30 FPS, a 0.2-second trigger, 100 ft detection, and 850nm low-glow IR, with no cellular and no monthly fee. You walk out and pull the card. Our [Stealth Cam DS4K Ultimate review](/reviews/stealth-cam-ds4k-ultimate-review) digs into the image quality that defines it, and two head-to-heads place it against the no-subscription field: [Browning Strike Force vs Stealth Cam DS4K](/comparisons/browning-strike-force-vs-stealth-cam) on speed versus image quality, and [GardePro E5 vs Stealth Cam DS4K](/comparisons/gardepro-e5-vs-stealth-cam-ds4k) on budget versus image quality.
 
 The **DS4K Transmit** carries that same 32MP and 4K-at-30-FPS imaging stack and adds dual-SIM AT&T and Verizon cellular plus GPS, so photos reach your phone. It runs a $5 to $20 a month Command Pro plan, and it uses the same 850nm low-glow IR as the Ultimate, not no-glow. So it is the cellular 4K pick, not the covert pick.
 

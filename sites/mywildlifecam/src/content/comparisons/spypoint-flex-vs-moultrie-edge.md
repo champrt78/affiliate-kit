@@ -52,6 +52,8 @@ faq:
 
 These two sit one notch apart on price and aim at the same buyer, which is someone who wants photos pushed to a phone without babysitting a carrier setting. The decision rarely comes down to image specs. It comes down to running cost and how much you care about the app.
 
-Spypoint's pitch is the free 100-photo tier plus a dual-SIM radio that has logged years of owner reports on weak-signal land. Moultrie's pitch is the smoother out-of-box experience, with setup that is close to automatic and an app owners tend to like, at the cost of leaning on a paid plan sooner.
+Spypoint's pitch is the free 100-photo tier plus a dual-SIM radio that has logged years of owner reports on weak-signal land, which our [Spypoint Flex review](/reviews/spypoint-flex-g36-review) covers in depth. Moultrie's pitch is the smoother out-of-box experience, with setup that is close to automatic and an app owners tend to like, at the cost of leaning on a paid plan sooner, as the [Moultrie Edge 2 review](/reviews/moultrie-edge-2-review) breaks down.
+
+If you are still weighing the wider field, our guide to the [best cellular trail cameras](/buyers-guides/best-cellular-trail-cameras) places both of these against the rest of the band.
 
 This comparison is built from manufacturer specifications, synthesized verified-buyer reports, and independent reviewer testing. We do not take payment from either brand.

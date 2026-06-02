@@ -115,8 +115,10 @@ The buyer this fits well is someone who values consistent daytime image quality 
 
 The CelluCORE 20 reviewed here (119904A) is single-carrier, locked to AT&T, which is its main competitive weakness against rivals that market auto-connect or dual-carrier networking. The comparisons below are framed at the positioning level. Specific rival spec numbers were not independently verified for this review and should be confirmed against a head-to-head before relying on them.
 
-**CelluCORE 20 (AT&T) vs Spypoint Flex.** Spypoint markets dual-carrier auto-connect, where the camera picks the best available network rather than being locked to one. For a buyer unsure of local coverage, that flexibility is the headline advantage the AT&T-locked CelluCORE lacks. The CelluCORE counters on price for buyers who already know AT&T is strong where they hunt or watch.
+**CelluCORE 20 (AT&T) vs Spypoint Flex.** Spypoint markets dual-carrier auto-connect, where the camera picks the best available network rather than being locked to one. For a buyer unsure of local coverage, that flexibility is the headline advantage the AT&T-locked CelluCORE lacks. The CelluCORE counters on price for buyers who already know AT&T is strong where they hunt or watch. Our head-to-head on [Spypoint Flex vs Bushnell CelluCORE 20](/comparisons/spypoint-flex-vs-bushnell-cellucore) lays out exactly when the price saving is worth the carrier lock.
 
 **CelluCORE 20 (AT&T) vs Moultrie.** Moultrie's mobile line also markets auto-connect across carriers. Again, the differentiator over the AT&T-locked CelluCORE is not having to buy the right carrier SKU up front.
 
 **CelluCORE 20 (AT&T) vs Bushnell's own CelluCORE 20 Dual SIM (119904D).** Bushnell's current product page states the Dual SIM automatically connects to the strongest network signal, AT&T or Verizon. For a buyer who wants the Bushnell ecosystem without carrier lock-in, the Dual SIM is the in-family upgrade. The AT&T 119904A on Amazon undercuts it on price but not on flexibility.
+
+To see where the CelluCORE 20 lands against the rest of the field, our guide to the [best cellular trail cameras](/buyers-guides/best-cellular-trail-cameras) ranks the band by use case.
