@@ -160,7 +160,10 @@ const showCard = !!(buyHref || buyImage || buyPrice);
     display: grid;
     grid-template-columns: 1fr 248px;
     gap: var(--space-16, 4rem);
-    align-items: stretch;
+    /* start, not stretch: the buy-card (image + button) is short, so stretching
+       it to match a tall Buy/Skip list left a big empty card below the button
+       (Ray 2026-06-01). Let it sit at its natural height at the top. */
+    align-items: start;
   }
   .bl__main {
     display: flex;
