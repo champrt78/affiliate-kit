@@ -48,8 +48,8 @@ faq:
 
 These two land on nearly every short list of first espresso machines, and they could not be more philosophically opposed. The Breville Bambino optimizes for speed and footprint. The Gaggia Classic Evo Pro optimizes for longevity and a high ceiling.
 
-The Bambino's ThermoJet heater is the reason it wins so many weekday mornings. It is ready in seconds, its 54mm portafilter shares parts and technique with Breville's pricier machines, and it asks very little of you to make a good shot. The catch is that it is a compact sealed appliance, so what you buy is what you keep.
+The Bambino's ThermoJet heater is the reason it wins so many weekday mornings. It is ready in seconds, its 54mm portafilter shares parts and technique with Breville's pricier machines, and it asks very little of you to make a good shot. Our [Breville Bambino review](/reviews/breville-bambino-espresso-machine-review) covers that fast-heat, small-footprint workflow in detail. The catch is that it is a compact sealed appliance, so what you buy is what you keep.
 
-The Gaggia bets the other way. A 58mm commercial portafilter, a metal Italian body, and a 9-bar OPV give it a ceiling the Bambino does not have, and a famous community of mods, including the popular PID add-on, lets owners keep tuning it for years. You give up instant heat-up and a smaller footprint to get there.
+The Gaggia bets the other way. A 58mm commercial portafilter, a metal Italian body, and a 9-bar OPV give it a ceiling the Bambino does not have, and a famous community of mods, including the popular PID add-on, lets owners keep tuning it for years. You give up instant heat-up and a smaller footprint to get there. Both sit in our guide to the [best espresso machine for beginners](/buyers-guides/best-espresso-machine-for-beginners), which ranks them against the wider entry field, and the [espresso machines topic hub](/topics/espresso-machines) collects every espresso piece on the site.
 
 This comparison is built from manufacturer specifications, synthesized verified-buyer reports, and independent reviewer teardowns. We do not take payment from either brand.

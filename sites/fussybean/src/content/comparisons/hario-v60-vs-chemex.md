@@ -48,8 +48,8 @@ faq:
 
 Both of these are pour-over landmarks, and choosing between them is really about the cup you want, not which one is better made. The split comes down to the filter.
 
-The Hario V60 has a thin paper cone, a single large hole, and spiral ribs, so flow is fast and you control nearly all of it through how you pour. That produces a bright, articulate cup that shows off a coffee's character, and it asks for technique in return. Its filters are thin, cheap, and everywhere.
+The Hario V60 has a thin paper cone, a single large hole, and spiral ribs, so flow is fast and you control nearly all of it through how you pour. That produces a bright, articulate cup that shows off a coffee's character, and it asks for technique in return. Its filters are thin, cheap, and everywhere. Our [Hario V60 review](/reviews/hario-v60-pour-over-kit-review) covers the starter set and the gear that gets the most from the cone.
 
-The Chemex goes the other way. Its thick bonded filter is heavier than ordinary paper, restricts flow, and yields an exceptionally clean, light-bodied cup with little sediment. The thick filter also forgives an imperfect pour, and the 30 oz carafe brews for two or three people. You pay for proprietary filters and you handle glass with care.
+The Chemex goes the other way. Its thick bonded filter is heavier than ordinary paper, restricts flow, and yields an exceptionally clean, light-bodied cup with little sediment. The thick filter also forgives an imperfect pour, and the 30 oz carafe brews for two or three people. You pay for proprietary filters and you handle glass with care. Our [Chemex 6-Cup review](/reviews/chemex-6-cup-pour-over-review) digs into the carafe design and the proprietary-filter trade.
 
-This comparison is built from manufacturer specifications, synthesized verified-buyer reports, and independent pour-over coverage. We do not take payment from either brand.
+This comparison is built from manufacturer specifications, synthesized verified-buyer reports, and independent pour-over coverage. We do not take payment from either brand. For the wider manual range, the [manual brewing topic hub](/topics/manual-brewing) collects every pour-over and immersion piece on the site.

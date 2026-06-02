@@ -45,7 +45,7 @@ The manufacturer lists the Encore ESP with **40mm conical burrs** and a step adj
 
 ## Baratza Encore ESP vs the original Encore
 
-The original Encore is rated for a coarser range aimed at pour-over, drip, and press. **The ESP shifts the steps finer for espresso.** If your brewing is mostly espresso, the ESP is the relevant one. If it is mostly pour-over, the cheaper original covers it.
+The original Encore is rated for a coarser range aimed at pour-over, drip, and press. **The ESP shifts the steps finer for espresso.** If your brewing is mostly espresso, the ESP is the relevant one. If it is mostly pour-over, the cheaper original covers it. We put the two side by side in our [Baratza Encore vs Encore ESP comparison](/comparisons/baratza-encore-vs-encore-esp).
 
 ## How it compares
 
@@ -53,5 +53,5 @@ The original Encore is rated for a coarser range aimed at pour-over, drip, and p
 
 ## What owner reports flag
 
-Across published owner reviews on Amazon, the **recurring strength is value**: a known burr platform at an entry price. The most common critical note is the **step adjustment feeling coarse at the very fine end** compared with stepless grinders, which is consistent with how the manufacturer positions it.
+Across published owner reviews on Amazon, the **recurring strength is value**: a known burr platform at an entry price. The most common critical note is the **step adjustment feeling coarse at the very fine end** compared with stepless grinders, which is consistent with how the manufacturer positions it. For how it stacks up against the rest of the entry field, our guide to the [best coffee grinder for beginners](/buyers-guides/best-coffee-grinder-for-beginners) ranks it across price bands, and the [grinders topic hub](/topics/grinders) gathers every grinder review and comparison on the site.
 

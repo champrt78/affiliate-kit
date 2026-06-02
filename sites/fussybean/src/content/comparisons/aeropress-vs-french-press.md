@@ -48,8 +48,10 @@ faq:
 
 These two immersion brewers both cost very little and both forgive a beginner, so the choice is about the cup and the context, not the price. The AeroPress optimizes for a clean cup, fast cleanup, and travel. The French press optimizes for body, batch size, and never buying a filter again.
 
-The AeroPress brews under light pressure through a paper micro-filter, so the cup is clean and low in sediment, and the spent puck pops straight out for a near-instant rinse. It is light and tough enough to travel. The catch is small batches and paper filters you restock.
+The AeroPress brews under light pressure through a paper micro-filter, so the cup is clean and low in sediment, and the spent puck pops straight out for a near-instant rinse. It is light and tough enough to travel. The catch is small batches and paper filters you restock. Our [AeroPress Original review](/reviews/aeropress-original-review) covers how forgiving it is and where the small batch size bites.
 
 The Bodum French press goes for body and simplicity. Coarse grind, hot water, four minutes, press, and its steel mesh means there is nothing to buy again. The 34 oz carafe brews for a household. You accept a heavier cup with some sediment, a messier cleanup, and a glass body that stays home.
+
+If you would rather compare the two big pour-over brewers instead of immersion, our [Hario V60 vs Chemex comparison](/comparisons/hario-v60-vs-chemex) covers that split, and the [manual brewing topic hub](/topics/manual-brewing) collects every pour-over and immersion piece on the site.
 
 This comparison is built from manufacturer specifications, synthesized verified-buyer reports, and independent coverage. We do not take payment from either brand.

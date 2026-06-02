@@ -64,7 +64,7 @@ faq:
 
 This is for the home brewer who wants to start manual pour-over with the design the whole hobby is built around. The Hario V60 is the reference cone: most pour-over recipes, technique guides, and videos are written for it, so learning on a V60 means the entire library of how-to content applies directly to your brewer. It suits the person who wants a clean, bright cup and is willing to build a little technique to get it, and who would rather buy one complete starter set than assemble a dripper, server, and filters piece by piece.
 
-One thing to set expectations on up front: the V60 is a brewer that rewards control. The single large hole and spiral ribs hand the timing and flow to you, which is the appeal, but it also means a gooseneck kettle and a scale are the two upgrades that most help a beginner get consistent. Neither is in the set, so think of this as the core of a pour-over kit rather than the whole thing.
+One thing to set expectations on up front: the V60 is a brewer that rewards control. The single large hole and spiral ribs hand the timing and flow to you, which is the appeal, but it also means a gooseneck kettle and a scale are the two upgrades that most help a beginner get consistent. A precision gooseneck like the [Fellow Stagg EKG Pro](/reviews/fellow-stagg-ekg-electric-kettle-review) is the upgrade that most changes the pour. Neither is in the set, so think of this as the core of a pour-over kit rather than the whole thing.
 
 ## At a Glance
 
@@ -109,3 +109,5 @@ The V60 is the **control-and-clarity** manual brewer rather than the most forgiv
 This is a common point of confusion, so here is the plain answer. The number is the size of the cone, not a model generation. The **01** is the small cone aimed at single cups. The **02** reviewed here is the mid-size, suited to roughly 1 to 4 cups, and it is the standard most home brewers buy. The **03** is the large cone for bigger batches. Crucially, the filters are size-specific, so an 02 dripper takes 02 filters.
 
 For almost everyone starting out, the 02 is the right size. It covers a single mug and scales up to a small batch for two, and because it is the most common size, it is the one most recipes assume and the easiest to find filters for. Step down to the 01 only if you exclusively brew one small cup at a time, and up to the 03 only if you regularly brew for a group.
+
+If you are weighing the V60 against the other pour-over landmark, our [Hario V60 vs Chemex comparison](/comparisons/hario-v60-vs-chemex) covers the control-versus-clarity split, and the [manual brewing topic hub](/topics/manual-brewing) collects every pour-over and immersion piece on the site.

@@ -90,13 +90,13 @@ One thing to settle up front: the clean cup the Chemex is known for comes from i
 - **The filters are a proprietary recurring cost.** The clean cup is tied to Chemex's thick bonded filters, which cost more than standard cone filters and must be restocked. Owners who love the result accept it. Anyone who wants to avoid a proprietary consumable should weigh that in.
 - **It is glass and can break.** The borosilicate carafe is durable in use but a drop will shatter it. On the counter that is rarely a problem. For travel or a crowded kitchen, a plastic brewer carries no such risk.
 - **The clean cup is not universal.** The thick filter that gives the Chemex its clarity also strips body. If you prefer a heavier, oilier cup, the same filtering is the wrong choice, and a French press or metal-filter brewer fits you better.
-- **It rewards technique and gear.** A steady controlled pour gives the best extraction, which is easier with a gooseneck kettle, and a scale helps consistency. It makes good coffee without them, but the clean, even cup it is capable of comes more readily with the supporting gear than an immersion brewer would need.
+- **It rewards technique and gear.** A steady controlled pour gives the best extraction, which is easier with a gooseneck kettle like the [Fellow Stagg EKG Pro](/reviews/fellow-stagg-ekg-electric-kettle-review), and a scale helps consistency. It makes good coffee without them, but the clean, even cup it is capable of comes more readily with the supporting gear than an immersion brewer would need.
 
 ## How It Compares
 
 The Chemex is the **clean-cup carafe** pour-over rather than a single-cup dripper or a full-bodied immersion brewer. A few useful reference points:
 
-**Chemex vs a Hario V60.** Both are pour-over, but the V60 is a single-cone dripper that sits on a mug or server and uses thin standard cone filters, while the Chemex is a carafe with thick bonded filters that brews a batch. The V60 is faster to a single cup and more flexible on filters. The Chemex brews for a group and gives a heavier, slower, very clean result. We lay this out in detail in our [Hario V60 vs Chemex comparison](/comparisons/hario-v60-vs-chemex/).
+**Chemex vs a Hario V60.** Both are pour-over, but the [V60](/reviews/hario-v60-pour-over-kit-review) is a single-cone dripper that sits on a mug or server and uses thin standard cone filters, while the Chemex is a carafe with thick bonded filters that brews a batch. The V60 is faster to a single cup and more flexible on filters. The Chemex brews for a group and gives a heavier, slower, very clean result. We lay this out in detail in our [Hario V60 vs Chemex comparison](/comparisons/hario-v60-vs-chemex/).
 
 **Chemex vs a French press.** A French press steeps in metal mesh for a full-bodied, oilier cup with some sediment and never needs paper. The Chemex filters all of that out for a clean, bright cup but ties you to its proprietary filters. Pick the Chemex for clarity and a carafe that looks the part. Pick a French press for body, batch size, and zero consumables.
 
@@ -108,4 +108,4 @@ A common point of confusion is that Chemex sells the Classic carafe in several s
 
 For most buyers the 6-Cup is the right starting point. It brews enough for a couple or a few guests without being oversized, and it is the size most recipes and filter packs assume. Step down to the 3-Cup only if you almost always brew a single serving, and up to the 8-Cup only if you regularly make coffee for a larger group and would otherwise be brewing in rounds. Note that there is also a Glass Handle series that swaps the wood collar for a blown-glass handle. It is the same brewer in a different look, so choose on aesthetics there.
 
-This is comparison-and-fit analysis built from manufacturer specifications and attributed third-party reviewer sentiment, not in-house testing. Where we cite a spec, price, or reviewer, the source is named. See [how we evaluate](/how-we-evaluate/) for the full method.
+This is comparison-and-fit analysis built from manufacturer specifications and attributed third-party reviewer sentiment, not in-house testing. Where we cite a spec, price, or reviewer, the source is named. See [how we evaluate](/how-we-evaluate/) for the full method, and the [manual brewing topic hub](/topics/manual-brewing) collects every pour-over and immersion piece on the site.
