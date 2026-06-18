@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request Indexing — Satellite Checklist</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --panel: #171a21;
+    --panel-2: #1e222b;
+    --ink: #e7e9ee;
+    --muted: #9aa3b2;
+    --line: #2a2f3a;
+    --accent: #4ea1ff;
+    --done: #3ecf8e;
+    --gog: #c084fc;
+    --sa: #38bdf8;
+    --fb: #f0a868;
+    --warn: #ffcc66;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    padding: 0 0 80px;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+  header {
+    background: linear-gradient(160deg, #1b2230, #12151c);
+    border-bottom: 1px solid var(--line);
+    padding: 36px 0 28px;
+  }
+  h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.02em; }
+  .sub { color: var(--muted); font-size: 15px; }
+  h2 { font-size: 20px; margin: 36px 0 4px; letter-spacing: -0.01em; }
+  h3 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 20px 0 8px; }
+  .blurb {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+    padding: 20px 22px; margin: 24px 0;
+  }
+  .blurb ol { margin: 8px 0 0; padding-left: 22px; }
+  .blurb li { margin: 6px 0; }
+  .rules { display: grid; gap: 10px; margin: 16px 0 0; }
+  .rule {
+    display: flex; gap: 10px; align-items: flex-start;
+    background: var(--panel-2); border: 1px solid var(--line);
+    border-left: 3px solid var(--warn); border-radius: 8px; padding: 10px 14px;
+    font-size: 14.5px;
+  }
+  .rule b { color: var(--warn); }
+  code { background: #0b0d11; border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px; font-size: 13px; color: #cfe3ff; }
+  .site { margin-top: 28px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--panel); }
+  .site-head { padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+  .site-head .name { font-weight: 700; font-size: 17px; }
+  .gog .name { color: var(--gog); } .sa .name { color: var(--sa); } .fb .name { color: var(--fb); }
+  .count { font-size: 13px; color: var(--muted); }
+  .day { padding: 6px 18px 14px; }
+  .day h3 { margin-top: 14px; }
+  .row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 7px 8px; border-radius: 8px; transition: background .12s;
+  }
+  .row:hover { background: var(--panel-2); }
+  .row input[type=checkbox] {
+    appearance: none; width: 19px; height: 19px; min-width: 19px; border: 1.5px solid var(--line);
+    border-radius: 5px; background: #0b0d11; cursor: pointer; position: relative; transition: .12s;
+  }
+  .row input[type=checkbox]:checked { background: var(--done); border-color: var(--done); }
+  .row input[type=checkbox]:checked::after {
+    content: "✓"; color: #0b0d11; font-size: 13px; font-weight: 800;
+    position: absolute; top: -1px; left: 3px;
+  }
+  .path { flex: 1; font-size: 13.5px; word-break: break-all; cursor: pointer; color: var(--ink); font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+  .row.checked .path { color: var(--muted); text-decoration: line-through; }
+  .copy { background: var(--panel-2); border: 1px solid var(--line); color: var(--muted); border-radius: 6px; padding: 3px 9px; font-size: 12px; cursor: pointer; transition: .12s; white-space: nowrap; }
+  .copy:hover { color: var(--ink); border-color: var(--accent); }
+  .copy.copied { color: var(--done); border-color: var(--done); }
+  .progress-bar { height: 5px; background: var(--panel-2); border-radius: 99px; overflow: hidden; margin-top: 6px; }
+  .progress-fill { height: 100%; background: var(--done); width: 0; transition: width .3s; }
+  .toolbar { display: flex; gap: 10px; align-items: center; margin: 18px 0 0; flex-wrap: wrap; }
+  .btn { background: var(--panel-2); border: 1px solid var(--line); color: var(--muted); border-radius: 8px; padding: 7px 14px; font-size: 13px; cursor: pointer; }
+  .btn:hover { color: var(--ink); }
+  .footnote { color: var(--muted); font-size: 13.5px; margin-top: 30px; border-top: 1px solid var(--line); padding-top: 16px; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Request Indexing — Satellite Checklist</h1>
+    <div class="sub">gameovergear.games · starteraquarium.com · fussybean.com — generated 2026-06-12</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="blurb">
+    <b>What this is.</b> Google has <em>discovered</em> these pages but hasn't crawled/indexed them yet — normal for new, low-authority domains. Manually requesting indexing nudges them to the front of Google's crawl queue. It's a push, not a cure (the durable fix is backlinks + links from MWC), but it's free and it helps.
+
+    <h3 style="margin-top:18px">How to do each one</h3>
+    <ol>
+      <li>Open <a href="https://search.google.com/search-console" target="_blank">Google Search Console</a> and select the property for the site you're working (each site is its own property).</li>
+      <li>Paste a URL from the list below into the <b>search bar at the very top</b> ("Inspect any URL in…"). Click the row's <b>Copy</b> button or click the URL text to copy it.</li>
+      <li>Wait for the inspection to finish, then click <b>Request Indexing</b>.</li>
+      <li>It runs a quick live test (~30–60s), then queues the page. Tick the checkbox here and move to the next.</li>
+    </ol>
+
+    <div class="rules">
+      <div class="rule"><span>📊</span><div><b>~10 per day, per site.</b> Each site is a separate property with its own daily quota — you can do 10 on each of the three the same day. If it says "quota exceeded," stop and resume tomorrow.</div></div>
+      <div class="rule"><span>🚫</span><div><b>Don't re-submit.</b> Requesting the same URL twice does nothing and wastes a slot. Tick it here so you don't repeat it.</div></div>
+      <div class="rule"><span>⏭️</span><div><b>Money pages only.</b> Legal/utility pages (privacy, disclosure, contact, about) and the homepage are intentionally left off — they don't need to rank and would waste your 10 slots. Google finds them on its own.</div></div>
+      <div class="rule"><span>⏳</span><div><b>Be patient after.</b> Indexing can take days to weeks on a young domain, and some may get indexed then dropped until the site earns authority. That's expected — don't re-request.</div></div>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <button class="btn" id="resetBtn">Reset all checkboxes</button>
+    <span class="sub" id="globalProgress"></span>
+  </div>
+
+  <!-- ============ GAMEOVERGEAR ============ -->
+  <div class="site gog" data-site="gog">
+    <div class="site-head">
+      <span class="name">gameovergear.games</span>
+      <span class="count" data-count></span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" data-fill></div></div>
+    <div class="day">
+      <h3>Day 1</h3>
+      <div class="row"><input type="checkbox"><span class="path">https://gameovergear.games/buyers-guides/best-arcade-sticks-for-retro-gaming/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://gameovergear.games/buyers-guides/best-retro-consoles-and-systems/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://gameovergear.games/buyers-guides/best-retro-controllers/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://gameovergear.games/buyers-guides/best-retro-handhelds/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://gameovergear.games/buyers-guides/best-retro-scalers-and-displays/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://gameovergear.games/buyers-guides/how-to-connect-a-retro-console-to-a-modern-tv/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://gameovergear.games/buyers-guides/top-10-retro-gaming-gifts/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://gameovergear.games/reviews/8bitdo-arcade-stick-review/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://gameovergear.games/reviews/8bitdo-pro-2-review/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://gameovergear.games/reviews/anbernic-rg40xx-review/</span><button class="copy">Copy</button></div>
+    </div>
+    <div class="day">
+      <h3>Day 2</h3>
+      <div class="row"><input type="checkbox"><span class="path">https://gameovergear.games/reviews/hyperkin-retron-5-hd-review/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://gameovergear.games/reviews/miyoo-mini-plus-review/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://gameovergear.games/reviews/retro-bit-saturn-pro-review/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://gameovergear.games/comparisons/8bitdo-arcade-stick-vs-hori-fighting-stick-alpha/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://gameovergear.games/comparisons/8bitdo-pro-2-vs-retro-bit-saturn-pro/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://gameovergear.games/comparisons/hyperkin-retron-5-vs-retro-bit-super-retrotrio/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://gameovergear.games/comparisons/miyoo-mini-plus-vs-anbernic-rg35xx/</span><button class="copy">Copy</button></div>
+    </div>
+  </div>
+
+  <!-- ============ STARTERAQUARIUM ============ -->
+  <div class="site sa" data-site="sa">
+    <div class="site-head">
+      <span class="name">starteraquarium.com</span>
+      <span class="count" data-count></span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" data-fill></div></div>
+    <div class="day">
+      <h3>Day 1</h3>
+      <div class="row"><input type="checkbox"><span class="path">https://starteraquarium.com/buyers-guides/best-aquarium-filters-for-beginners/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://starteraquarium.com/buyers-guides/best-aquarium-heaters-for-beginners/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://starteraquarium.com/buyers-guides/best-aquarium-lights-for-beginners/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://starteraquarium.com/buyers-guides/best-starter-aquarium-kits/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://starteraquarium.com/buyers-guides/how-to-cycle-your-first-aquarium/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://starteraquarium.com/buyers-guides/top-10-fun-aquarium-finds/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://starteraquarium.com/reviews/api-freshwater-master-test-kit-review/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://starteraquarium.com/reviews/aquaclear-power-filter-review/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://starteraquarium.com/reviews/aquarium-coop-sponge-filter-review/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://starteraquarium.com/reviews/eheim-jager-heater-review/</span><button class="copy">Copy</button></div>
+    </div>
+    <div class="day">
+      <h3>Day 2</h3>
+      <div class="row"><input type="checkbox"><span class="path">https://starteraquarium.com/reviews/fluval-107-canister-filter-review/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://starteraquarium.com/reviews/fluval-flex-9-gallon-review/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://starteraquarium.com/reviews/nicrew-classicled-light-review/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://starteraquarium.com/reviews/python-no-spill-water-changer-review/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://starteraquarium.com/reviews/tetra-20-gallon-kit-review/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://starteraquarium.com/comparisons/aqueon-vs-tetra-20-gallon-kit/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://starteraquarium.com/comparisons/eheim-jager-vs-fluval-e200/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://starteraquarium.com/comparisons/fluval-107-vs-aquaclear-50/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://starteraquarium.com/comparisons/nicrew-classicled-vs-hygger-planted/</span><button class="copy">Copy</button></div>
+    </div>
+  </div>
+
+  <!-- ============ FUSSYBEAN ============ -->
+  <div class="site fb" data-site="fb">
+    <div class="site-head">
+      <span class="name">fussybean.com</span>
+      <span class="count" data-count></span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" data-fill></div></div>
+    <div class="day">
+      <h3>Day 1</h3>
+      <div class="row"><input type="checkbox"><span class="path">https://fussybean.com/buyers-guides/best-coffee-grinder-for-beginners/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://fussybean.com/buyers-guides/best-espresso-machine-for-beginners/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://fussybean.com/buyers-guides/home-coffee-on-a-budget/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://fussybean.com/buyers-guides/top-10-coffee-gifts-and-gadgets/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://fussybean.com/reviews/1zpresso-q2-hand-grinder-review/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://fussybean.com/reviews/aeropress-original-review/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://fussybean.com/reviews/baratza-encore-esp/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://fussybean.com/reviews/breville-bambino-espresso-machine-review/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://fussybean.com/reviews/chemex-6-cup-pour-over-review/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://fussybean.com/reviews/fellow-atmos-vacuum-canister-review/</span><button class="copy">Copy</button></div>
+    </div>
+    <div class="day">
+      <h3>Day 2</h3>
+      <div class="row"><input type="checkbox"><span class="path">https://fussybean.com/reviews/fellow-stagg-ekg-electric-kettle-review/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://fussybean.com/reviews/hario-v60-pour-over-kit-review/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://fussybean.com/reviews/normcore-spring-tamper-review/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://fussybean.com/reviews/timemore-chestnut-c3-hand-grinder-review/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://fussybean.com/comparisons/aeropress-vs-french-press/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://fussybean.com/comparisons/baratza-encore-vs-encore-esp/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://fussybean.com/comparisons/breville-bambino-vs-gaggia-classic-evo-pro/</span><button class="copy">Copy</button></div>
+      <div class="row"><input type="checkbox"><span class="path">https://fussybean.com/comparisons/hario-v60-vs-chemex/</span><button class="copy">Copy</button></div>
+    </div>
+  </div>
+
+  <div class="footnote">
+    Progress is saved in this browser (localStorage). Closing the tab keeps your checkmarks; opening on a different machine starts fresh.
+    <br>The real durable lever is still <b>MWC → satellite links</b> + a few external backlinks — Request Indexing only nudges the queue.
+  </div>
+
+</div>
+
+<script>
+  const KEY = "reqIndex.v1";
+  const state = JSON.parse(localStorage.getItem(KEY) || "{}");
+
+  function save() { localStorage.setItem(KEY, JSON.stringify(state)); }
+
+  function refresh() {
+    let gAll = 0, gDone = 0;
+    document.querySelectorAll(".site").forEach(site => {
+      const rows = site.querySelectorAll(".row");
+      let done = 0;
+      rows.forEach(r => { if (r.querySelector("input").checked) done++; });
+      site.querySelector("[data-count]").textContent = done + " / " + rows.length + " requested";
+      site.querySelector("[data-fill]").style.width = (done / rows.length * 100) + "%";
+      gAll += rows.length; gDone += done;
+    });
+    document.getElementById("globalProgress").textContent = gDone + " of " + gAll + " total requested";
+  }
+
+  document.querySelectorAll(".row").forEach(row => {
+    const cb = row.querySelector("input");
+    const path = row.querySelector(".path").textContent.trim();
+    const copyBtn = row.querySelector(".copy");
+
+    if (state[path]) { cb.checked = true; row.classList.add("checked"); }
+
+    cb.addEventListener("change", () => {
+      state[path] = cb.checked;
+      row.classList.toggle("checked", cb.checked);
+      save(); refresh();
+    });
+
+    function copy() {
+      navigator.clipboard.writeText(path).then(() => {
+        copyBtn.textContent = "Copied"; copyBtn.classList.add("copied");
+        setTimeout(() => { copyBtn.textContent = "Copy"; copyBtn.classList.remove("copied"); }, 1200);
+      });
+    }
+    copyBtn.addEventListener("click", copy);
+    row.querySelector(".path").addEventListener("click", copy);
+  });
+
+  document.getElementById("resetBtn").addEventListener("click", () => {
+    if (!confirm("Clear all checkmarks?")) return;
+    for (const k in state) delete state[k];
+    save();
+    document.querySelectorAll(".row").forEach(r => { r.querySelector("input").checked = false; r.classList.remove("checked"); });
+    refresh();
+  });
+
+  refresh();
+</script>
+</body>
+</html>
