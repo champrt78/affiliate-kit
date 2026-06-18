@@ -1,7 +1,9 @@
 # Deletes an affiliate-link key from the production KV namespace.
 #
 # Prompts for confirmation unless -Force is supplied.
-# --remote is baked in.
+# Deletes from REMOTE (production) KV. --remote is passed only if the installed
+# wrangler supports it (older wrangler needed it; 3.60+ rejects it — remote is now
+# the default). We probe `kv key delete --help` and add it conditionally.
 
 [CmdletBinding()]
 param(
@@ -65,7 +67,10 @@ if (-not $Force) {
 
 Write-Host "[..] Deleting $key"
 
-& wrangler kv key delete --remote --namespace-id=$namespaceId $key
+$remoteArgs = @()
+if ((& wrangler kv key delete --help 2>&1 | Out-String) -match '--remote') { $remoteArgs = @('--remote') }
+
+& wrangler kv key delete @remoteArgs --namespace-id=$namespaceId $key
 if ($LASTEXITCODE -ne 0) {
     Write-Host "[err] wrangler kv key delete failed (exit $LASTEXITCODE)" -ForegroundColor Red
     exit $LASTEXITCODE

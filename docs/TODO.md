@@ -2,16 +2,13 @@
 
 > Canonical open-work list per global CLAUDE.md. Update as we work. `cat docs/TODO.md` or open in VS Code any time. For deeper context on past wins + walkthroughs, see `docs/RAY_QUEUE.md`.
 
-**Last refreshed:** 2026-06-02
+**Last refreshed:** 2026-06-18
 
 ---
 
-## ⭐⭐ READY FOR RAY — VERDICT QUEUE (35 drafts, built while you were away 2026-06-02)
+## ✅ DONE — VERDICT QUEUE (was 38 drafts) — all live since 2026-06-02
 
-**Open `docs/playgrounds/verdict-queue/index.html`.** All 5 sites are now richly + evenly populated (MWC 17 · DTP 18 · FussyBean 18 · SA 19 · gog 17). The new content is **35 noindex drafts** (23 single-product reviews + 12 head-to-head comparisons) across the 4 satellite/lighter sites. Each needs ONE decision: reviews need a Bottom Line, comparisons need the winner call.
-
-- [ ] **Walk the sheet, pick a verdict per draft (or write your own), Copy decisions, paste back to Claude.** Claude writes each into its file and flips it noindex → live. Skip any you want; they stay drafts.
-- [ ] Flagged on the sheet: several drafts have **omitted prices** (Canopy returned none — mostly SA reviews + a few fussybean/gog) and a couple of image/tier notes (gog Hori-vs-8BitDo tier mismatch; SA Python parts-photo hero). Backfill is optional, not a publish blocker.
+All 38 noindex drafts (23 reviews + 12 comparisons + 3 MWC hero comparisons) got verdicts applied and flipped to live in `1a26389`. `draft: true` count across all sites is now **0**. The verdict-queue sheet is retired. (Left here as a marker; delete on next big TODO prune.)
 
 ---
 
@@ -26,12 +23,11 @@
 
 ---
 
-## 🔧 REBUILD — all 5 sites on the component library (branch `rebuild/component-library`, AWAITING ACCEPTANCE)
+## ✅ DONE — REBUILD: all 5 sites on the component library (merged + live 2026-06-01)
 
-**Open `docs/playgrounds/acceptance-gallery/index.html`** — screenshots of every rebuilt page type per site (desktop + mobile), the merge-safety proof, and the 2 bespoke items needing your call.
+Merged to `main` in `f6ec24a` (milestone logged `3daf3d4`). All 25 Go + 13 fixed No-Go shipped; every page on all 5 sites runs on the shared component library. (Section kept as a marker; delete on next prune.)
 
-- [ ] **ACCEPT THE REBUILD → merge.** Every page on all 5 sites was nuked + rebuilt from the shared component library (no custom per-page layout left). Guide/review pages = approved components; the NEW compositions (homepages, listing indexes, topic hubs, about/legal, 404) + 3 new components (`PageHeader`, `ProsePage`, `NotFound`) need your sign-off per your "present for acceptance" rule. Say "merge it" → branch → `main` → auto-deploys all 5. **Nothing live yet.**
-- [ ] **2 bespoke-item calls** (in the gallery): keep `how-we-evaluate` as the config-driven rubric (vs folding into ProsePage)? keep DTP `quick-picks` as the numbered-row layout (vs QuickPickGrid)? Both left as-is pending your word.
+- [x] ACCEPTED + merged → auto-deployed all 5. The new compositions (homepages, listing indexes, topic hubs, about/legal, 404) + `PageHeader`/`ProsePage`/`NotFound` are live.
 - [x] 2026-05-31 — Gold "Best Overall" banner + buy/skip Bottom Line wired (your two latest decisions); magic-go emits buyIf for guides too.
 - [x] 2026-05-31 — **Merge-safety verified:** DRAFT/noindex gate survived the rebuild on both review + guide paths (built-HTML grep + synthetic DRAFT-guide test). All 5 build green, lint:images passes.
 - [x] 2026-06-01 — **Before/after review: 25 Go, 13 No-Go → all 13 fixed** (commits `6abbf53` dead links, `da0adc7` review buy/skip unify + draft-filter indexes, `cef0d3c` gog white images/title-wrap/pixel brand, `5335e72` distinct DTP+MWC+baratza images, `36bc6b2` dead-link guard). Re-screenshotted; doc's After column refreshed. **Re-check the After column + flip your 13 No-Gos to Go, then merge.**

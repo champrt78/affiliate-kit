@@ -3,7 +3,9 @@
 # Pass -Site <slug> to filter to that site's prefix (`<Site>:`). With no -Site,
 # lists every key in the namespace.
 #
-# --remote is baked in. Local state is not what you want.
+# Reads REMOTE (production) KV. --remote is passed only if the installed wrangler
+# supports it: older wrangler needed it; 3.60+ made remote the default and rejects
+# the flag. We probe `kv key list --help` and add it conditionally.
 
 [CmdletBinding()]
 param(
@@ -48,7 +50,10 @@ if (-not (Get-Command wrangler -ErrorAction SilentlyContinue)) {
     exit 1
 }
 
-$raw = & wrangler kv key list --remote --namespace-id=$namespaceId
+$remoteArgs = @()
+if ((& wrangler kv key list --help 2>&1 | Out-String) -match '--remote') { $remoteArgs = @('--remote') }
+
+$raw = & wrangler kv key list @remoteArgs --namespace-id=$namespaceId
 if ($LASTEXITCODE -ne 0) {
     Write-Host "[err] wrangler kv key list failed (exit $LASTEXITCODE)" -ForegroundColor Red
     exit $LASTEXITCODE

@@ -6,7 +6,10 @@
 # The KV key is `<Site>:<Slug>` — storage stays namespaced even though the
 # public URL shape (post-U9) is the clean `/go/<slug>`.
 #
-# --remote is baked in. Phase 1 got bit by wrangler defaulting to local state.
+# Writes to REMOTE (production) KV. wrangler changed its kv flags over versions:
+# older wrangler defaulted to LOCAL and needed --remote; wrangler 3.60+ made remote
+# the default and REJECTS --remote ("Unknown argument: remote"). So we probe the
+# installed wrangler's help and pass --remote only when it's actually supported.
 
 [CmdletBinding()]
 param(
@@ -81,8 +84,11 @@ $key = "${Site}:${Slug}"
 
 Write-Host "[..] Writing $key -> $json"
 
-# --remote is REQUIRED. wrangler defaults to local state otherwise.
-& wrangler kv key put --remote --namespace-id=$namespaceId $key $json
+# Pass --remote only if this wrangler version supports it (see header note).
+$remoteArgs = @()
+if ((& wrangler kv key put --help 2>&1 | Out-String) -match '--remote') { $remoteArgs = @('--remote') }
+
+& wrangler kv key put @remoteArgs --namespace-id=$namespaceId $key $json
 if ($LASTEXITCODE -ne 0) {
     Write-Host "[err] wrangler kv key put failed (exit $LASTEXITCODE)" -ForegroundColor Red
     exit $LASTEXITCODE
