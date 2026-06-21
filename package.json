@@ -20,7 +20,10 @@
     "indexnow:submit": "node scripts/indexnow-submit.mjs",
     "audit:images:apply": "pwsh ./scripts/audit-product-images.ps1 -Apply",
     "ops": "pwsh ./scripts/ops.ps1 -Open",
-    "install-desktop-shortcut": "pwsh ./scripts/install-desktop-shortcut.ps1"
+    "install-desktop-shortcut": "pwsh ./scripts/install-desktop-shortcut.ps1",
+    "kit:bootstrap": "pnpm --filter @affkit/kit-bootstrap",
+    "kit:scaffold": "pnpm --filter @affkit/kit-scaffold",
+    "kit:audit": "pnpm --filter @affkit/kit-audit"
   },
   "devDependencies": {
     "typescript": "^5.4.0"
