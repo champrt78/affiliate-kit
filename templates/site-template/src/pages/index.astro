@@ -5,6 +5,7 @@ import Hero from "@affkit/shared-ui/Hero.astro";
 import ReviewCard from "@affkit/shared-ui/ReviewCard.astro";
 import BuyersGuideCard from "@affkit/shared-ui/BuyersGuideCard.astro";
 import CTA from "@affkit/shared-ui/CTA.astro";
+import siteConfig from "../data/site-config.json";
 
 /* ============================================================================
    CANONICAL HOMEPAGE — rebuilt from the shared component library.
@@ -25,16 +26,14 @@ import CTA from "@affkit/shared-ui/CTA.astro";
 
 /* ─── PER-SITE CONTENT (the only block that differs between sites) ─── */
 const PAGE = {
-  seoTitle: "__SITE_NAME__",
+  seoTitle: siteConfig.siteName,
   seoDescription:
-    "__SITE_NAME__: spec-driven reviews and buyer's guides for __NICHE__, by use case.",
-  heroKicker: "__NICHE__ · buyer's-eye picks",
-  heroTitle: "__TAGLINE__",
-  heroLede:
-    "We compare the field the way a careful first-time buyer would. Spec, fit, and use case. The pick you would actually live with.",
-  heroImage:
-    "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=2400&q=80",
-  heroImageAlt: "Scene photo",
+    `${siteConfig.siteName}: spec-driven reviews and buyer's guides for ${siteConfig.niche}, by use case.`,
+  heroKicker: siteConfig.hero.kicker,
+  heroTitle: siteConfig.hero.title,
+  heroLede: siteConfig.hero.lede,
+  heroImage: siteConfig.hero.image,
+  heroImageAlt: siteConfig.hero.imageAlt,
   leadBody:
     "Most buying content is either a retailer pitching its own brand or a publisher rehashing a generic Top 10. We do the boring work of comparing across brands by use case, naming the trade-offs, and saying honestly when the cheaper option is the right one.",
 };
@@ -51,7 +50,7 @@ function sortByDateDesc<T extends { data: { pubDate: Date | string } }>(arr: T[]
 // Only published pieces reach the homepage. A piece is published once its
 // Bottom Line verdict is filled (the repo's DRAFT/noindex gate). This predicate
 // works across all 5 sites because every content schema shares bottomLine.verdict.
-const isPublished = (e: any) =>
+const isPublished = (e: { data: { bottomLine?: { verdict?: string } } }) =>
   e.data.bottomLine && typeof e.data.bottomLine.verdict === "string" && e.data.bottomLine.verdict.trim() !== "";
 
 const allReviews = (await getCollection("reviews")).filter(isPublished);

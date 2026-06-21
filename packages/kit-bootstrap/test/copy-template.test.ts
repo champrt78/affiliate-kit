@@ -10,15 +10,29 @@ describe("copyTemplate", () => {
 
   beforeEach(() => {
     root = mkdtempSync(join(tmpdir(), "kit-bootstrap-"));
-    mkdirSync(join(root, "templates", "site-template", "src"), { recursive: true });
+    mkdirSync(join(root, "templates", "site-template", "src", "data"), { recursive: true });
     mkdirSync(join(root, "sites"), { recursive: true });
     writeFileSync(
       join(root, "templates", "site-template", "package.json"),
       JSON.stringify({ name: "@affkit/site-template" }, null, 2)
     );
     writeFileSync(
+      join(root, "templates", "site-template", "astro.config.mjs"),
+      'export default { site: "__SITE_URL__" };'
+    );
+    writeFileSync(
       join(root, "templates", "site-template", "src", "index.astro"),
-      "Hello __SITE_NAME__ from __NICHE__"
+      "Hello {siteConfig.siteName} from {siteConfig.niche}"
+    );
+    writeFileSync(
+      join(root, "templates", "site-template", "src", "data", "site-config.json"),
+      JSON.stringify({
+        siteName: "__SITE_NAME__",
+        siteUrl: "__SITE_URL__",
+        niche: "__NICHE__",
+        tagline: "__TAGLINE__",
+        contactEmail: "__CONTACT_EMAIL__",
+      }, null, 2)
     );
   });
 
@@ -26,7 +40,7 @@ describe("copyTemplate", () => {
     rmSync(root, { recursive: true, force: true });
   });
 
-  it("copies the template and applies replacements", async () => {
+  it("copies the template and applies replacements only to site-config.json", async () => {
     await copyTemplate({
       monorepoRoot: root,
       slug: "fussybeanv2",
@@ -37,9 +51,20 @@ describe("copyTemplate", () => {
       contactEmail: "hi@fussybeanv2.com",
     });
 
-    const content = readFileSync(join(root, "sites", "fussybeanv2", "src", "index.astro"), "utf-8");
-    expect(content).toContain("Hello Fussy Bean V2 from coffee");
-    expect(content).not.toContain("__SITE_NAME__");
+    const astroContent = readFileSync(join(root, "sites", "fussybeanv2", "src", "index.astro"), "utf-8");
+    expect(astroContent).toContain("{siteConfig.siteName}");
+    expect(astroContent).not.toContain("__SITE_NAME__");
+
+    const astroConfig = readFileSync(join(root, "sites", "fussybeanv2", "astro.config.mjs"), "utf-8");
+    expect(astroConfig).toContain("https://fussybeanv2.com");
+    expect(astroConfig).not.toContain("__SITE_URL__");
+
+    const config = JSON.parse(readFileSync(join(root, "sites", "fussybeanv2", "src", "data", "site-config.json"), "utf-8"));
+    expect(config.siteName).toBe("Fussy Bean V2");
+    expect(config.siteUrl).toBe("https://fussybeanv2.com");
+    expect(config.niche).toBe("coffee");
+    expect(config.tagline).toBe("Better beans");
+    expect(config.contactEmail).toBe("hi@fussybeanv2.com");
 
     const pkg = JSON.parse(readFileSync(join(root, "sites", "fussybeanv2", "package.json"), "utf-8"));
     expect(pkg.name).toBe("@affkit/fussybeanv2");

@@ -1,6 +1,7 @@
 ---
 import SiteShell from "@affkit/shared-ui/SiteShell.astro";
 import AffiliateDisclosure from "@affkit/shared-ui/AffiliateDisclosure.astro";
+import siteConfig from "../data/site-config.json";
 // Per-site palette/font token overrides. Create this file when you spawn the
 // site; it sets --color-*, --font-*, and (optionally) --page-scale.
 // import "../styles/site-tokens.css";
@@ -22,7 +23,8 @@ interface Props {
 }
 
 const { title, description, canonical, robotsContent, ogType, ogImage, bgTheme = "solid" } = Astro.props;
-const siteName = "__SITE_NAME__";
+const siteName = siteConfig.siteName;
+const niche = siteConfig.niche;
 
 /* Resolve bgTheme → CSS `background` shorthand value. Add real photo layers per
    the site's visual direction. "solid" → "none" (gutter shows gutterColor). */
@@ -40,7 +42,7 @@ const navItems = [
 ];
 
 const footerBlurb =
-  "__SITE_NAME__ — short one-line description of what the site covers and how it helps.";
+  `${siteName} — short one-line description of what we cover in ${niche} and how it helps.`;
 
 const footerColumns = [
   {
@@ -79,7 +81,7 @@ const footerColumns = [
       it — Astro scopes slot styles to the authoring component, not SiteShell.
       Swap in the site's real wordmark / mark per its visual direction. */}
   <a href="/" class="brand" slot="brand">
-    <span class="brand__name">__SITE_NAME__</span>
+    <span class="brand__name">{siteName}</span>
   </a>
 
   <AffiliateDisclosure slot="footer-legal" siteName={siteName} variant="footer" />
