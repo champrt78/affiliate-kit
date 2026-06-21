@@ -37,6 +37,31 @@ importers:
         specifier: ^3.0.0
         version: 3.114.17(@cloudflare/workers-types@4.20260511.1)
 
+  packages/kit-scaffold:
+    dependencies:
+      '@affkit/shared-utils':
+        specifier: workspace:*
+        version: link:../shared-utils
+      commander:
+        specifier: ^12.0.0
+        version: 12.1.0
+    devDependencies:
+      '@types/node':
+        specifier: ^20.11.0
+        version: 20.19.41
+      tsx:
+        specifier: ^4.16.0
+        version: 4.21.0
+      typescript:
+        specifier: ^5.4.0
+        version: 5.9.3
+      vitest:
+        specifier: ^1.6.0
+        version: 1.6.1(@types/node@20.19.41)
+      wrangler:
+        specifier: ^3.0.0
+        version: 3.114.17(@cloudflare/workers-types@4.20260511.1)
+
   packages/shared-styles: {}
 
   packages/shared-ui:
