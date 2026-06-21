@@ -1,0 +1,27 @@
+{
+  "name": "@affkit/kit-bootstrap",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "affkit-bootstrap": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "tsx src/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@affkit/shared-utils": "workspace:*",
+    "commander": "^12.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "tsx": "^4.16.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0",
+    "wrangler": "^3.0.0"
+  }
+}

@@ -12,6 +12,31 @@ importers:
         specifier: ^5.4.0
         version: 5.9.3
 
+  packages/kit-bootstrap:
+    dependencies:
+      '@affkit/shared-utils':
+        specifier: workspace:*
+        version: link:../shared-utils
+      commander:
+        specifier: ^12.0.0
+        version: 12.1.0
+    devDependencies:
+      '@types/node':
+        specifier: ^20.11.0
+        version: 20.19.41
+      tsx:
+        specifier: ^4.16.0
+        version: 4.21.0
+      typescript:
+        specifier: ^5.4.0
+        version: 5.9.3
+      vitest:
+        specifier: ^1.6.0
+        version: 1.6.1(@types/node@20.19.41)
+      wrangler:
+        specifier: ^3.0.0
+        version: 3.114.17(@cloudflare/workers-types@4.20260511.1)
+
   packages/shared-styles: {}
 
   packages/shared-ui:
@@ -1538,6 +1563,10 @@ packages:
 
   comma-separated-tokens@2.0.3:
     resolution: {integrity: sha512-Fu4hJdvzeylCfQPp9SGWidpzrMs7tTrlu6Vb8XGaRGck8QSNZJJp538Wrb60Lax4fPwR64ViY468OIUTbRlGZg==}
+
+  commander@12.1.0:
+    resolution: {integrity: sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA==}
+    engines: {node: '>=18'}
 
   common-ancestor-path@1.0.1:
     resolution: {integrity: sha512-L3sHRo1pXXEqX8VU28kfgUY+YGsk09hPqZiZmLacNib6XNTCM8ubYeT7ryXQw8asB1sKgcU5lkB7ONug08aB8w==}
@@ -4274,6 +4303,8 @@ snapshots:
     optional: true
 
   comma-separated-tokens@2.0.3: {}
+
+  commander@12.1.0: {}
 
   common-ancestor-path@1.0.1: {}
 
