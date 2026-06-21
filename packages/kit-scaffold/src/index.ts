@@ -5,6 +5,7 @@ import { scaffoldGuide } from "./scaffold-guide.js";
 import { writeReviewPrompt } from "./prompt.js";
 import { registerCloakedLink } from "./kv.js";
 import { readSiteConfig } from "./config-reader.js";
+import { runShell } from "./run-shell.js";
 
 program.name("affkit-scaffold").version("0.0.1");
 
@@ -38,7 +39,27 @@ program
       amazonUrl: options.url,
       description: options.description ?? "",
     });
-    console.log(`Scaffolded review at ${path}`);
+
+    const apiToken = process.env.CLOUDFLARE_API_TOKEN;
+    const accountId = process.env.CLOUDFLARE_ACCOUNT_ID;
+    if (!apiToken || !accountId) {
+      throw new Error("CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID must be set to register cloaked links");
+    }
+
+    await registerCloakedLink({
+      repoRoot,
+      site,
+      slug,
+      url: options.url,
+      tag: options.tag,
+      merchant: "amazon",
+      apiToken,
+      accountId,
+    });
+    console.log(`Registered cloaked link /go/${slug}`);
+
+    await runShell("pnpm", ["--filter", site, "build"], repoRoot);
+    console.log(`Scaffolded review at ${path} and build clean.`);
   });
 
 program
@@ -58,6 +79,8 @@ program
       description: options.description ?? "",
     });
     console.log(`Scaffolded buyer's guide at ${path}`);
+    await runShell("pnpm", ["--filter", site, "build"], repoRoot);
+    console.log("Build clean.");
   });
 
 program.parse();
