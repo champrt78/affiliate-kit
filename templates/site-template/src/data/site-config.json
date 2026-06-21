@@ -1,0 +1,26 @@
+{
+  "siteName": "__SITE_NAME__",
+  "siteUrl": "__SITE_URL__",
+  "niche": "__NICHE__",
+  "tagline": "__TAGLINE__",
+  "contactEmail": "__CONTACT_EMAIL__",
+  "affiliate": {
+    "amazonTag": ""
+  },
+  "brandTone": "snarky-but-friendly",
+  "readerSegments": {
+    "primary": [],
+    "secondary": [],
+    "excluded": []
+  },
+  "navigation": {
+    "pillars": []
+  },
+  "hero": {
+    "kicker": "__NICHE__ · buyer's-eye picks",
+    "title": "__TAGLINE__",
+    "lede": "We compare the field the way a careful first-time buyer would. Spec, fit, and use case. The pick you would actually live with.",
+    "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=2400&q=80",
+    "imageAlt": "Scene photo"
+  }
+}
