@@ -28,6 +28,10 @@ This file teaches Claude the conventions for working inside this monorepo. Read 
 
 Full rule with audiences and rationale lives in `~/.claude/CLAUDE.md` "Session Documentation." Project rule mirrors it; this section makes the bar visible in-repo.
 
+## Kimi compatibility
+
+Kimi Code reads `.kimi-code/AGENTS.md` and uses the same `docs/sessions/` + `docs/PROJECT_STATE.md` files. Session logs and project-state wins are shared across Claude and Kimi sessions. A global `SessionEnd` hook in `~/.kimi-code/config.toml` also appends a git-activity floor to today's session file for any project that has `docs/sessions/`.
+
 ## The big picture
 
 **Start at `docs/SYSTEM.md` — that's the architecture doc.** It shows how this repo fits with Cloudflare, AIOS, Second Brain, and external SaaS. If anything below conflicts with `docs/SYSTEM.md`, SYSTEM.md wins.
