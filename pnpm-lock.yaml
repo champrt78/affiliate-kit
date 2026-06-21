@@ -211,6 +211,31 @@ importers:
         specifier: ^5.4.0
         version: 5.9.3
 
+  sites/test-kimi-site:
+    dependencies:
+      '@affkit/shared-styles':
+        specifier: workspace:*
+        version: link:../../packages/shared-styles
+      '@affkit/shared-ui':
+        specifier: workspace:*
+        version: link:../../packages/shared-ui
+      '@affkit/shared-utils':
+        specifier: workspace:*
+        version: link:../../packages/shared-utils
+      '@astrojs/sitemap':
+        specifier: 3.4.1
+        version: 3.4.1
+      astro:
+        specifier: ^4.16.0
+        version: 4.16.19(@types/node@20.19.41)(rollup@4.60.3)(typescript@5.9.3)
+    devDependencies:
+      '@astrojs/check':
+        specifier: ^0.9.0
+        version: 0.9.9(prettier@3.8.3)(typescript@5.9.3)
+      typescript:
+        specifier: ^5.4.0
+        version: 5.9.3
+
   templates/site-template:
     dependencies:
       '@affkit/shared-styles':
