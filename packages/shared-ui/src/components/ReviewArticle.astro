@@ -83,6 +83,7 @@ const productLd = productSchema({
   offerUrl,
   price: data.product.price,
   currency: data.product.currency,
+  rating: data.rating,
 });
 
 const faqData = (data as any).faq as Array<{ question: string; answer: string }> | undefined;

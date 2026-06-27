@@ -39,6 +39,58 @@ describe("productSchema", () => {
     });
     expect(result.offers).toBeUndefined();
   });
+
+  it("adds aggregateRating when rating is provided", () => {
+    const result = productSchema({
+      name: "X",
+      brand: "Y",
+      sku: "Z",
+      image: "img",
+      description: "d",
+      rating: 4.5,
+    });
+    expect(result.aggregateRating).toEqual({
+      "@type": "AggregateRating",
+      ratingValue: "4.5",
+      bestRating: "5",
+      worstRating: "1",
+      ratingCount: 1,
+    });
+    expect(result.offers).toBeUndefined();
+  });
+
+  it("omits aggregateRating when rating is undefined", () => {
+    const result = productSchema({
+      name: "X",
+      brand: "Y",
+      sku: "Z",
+      image: "img",
+      description: "d",
+    });
+    expect(result.aggregateRating).toBeUndefined();
+  });
+
+  it("includes both offers and aggregateRating when both are provided", () => {
+    const result = productSchema({
+      name: "X",
+      brand: "Y",
+      sku: "Z",
+      image: "img",
+      description: "d",
+      offerUrl: "https://example.com/buy",
+      price: 29.99,
+      currency: "USD",
+      rating: 4.5,
+    });
+    expect(result.offers).toBeDefined();
+    expect(result.aggregateRating).toEqual({
+      "@type": "AggregateRating",
+      ratingValue: "4.5",
+      bestRating: "5",
+      worstRating: "1",
+      ratingCount: 1,
+    });
+  });
 });
 
 describe("reviewSchema", () => {
