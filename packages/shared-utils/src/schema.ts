@@ -10,6 +10,7 @@ export interface ProductSchemaInput {
   price?: number;
   currency?: string;
   availability?: Availability;
+  rating?: number;
 }
 
 export interface ReviewSchemaInput {
@@ -43,6 +44,16 @@ export function productSchema(input: ProductSchemaInput): Record<string, unknown
       priceCurrency: input.currency,
       price: input.price.toFixed(2),
       availability: `https://schema.org/${input.availability ?? "InStock"}`,
+    };
+  }
+
+  if (input.rating !== undefined) {
+    result.aggregateRating = {
+      "@type": "AggregateRating",
+      ratingValue: input.rating.toFixed(1),
+      bestRating: "5",
+      worstRating: "1",
+      ratingCount: 1,
     };
   }
 
